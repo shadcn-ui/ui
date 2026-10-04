@@ -1,20 +1,23 @@
 import { promises as fs } from "fs"
 import path from "path"
-import { getRegistryBaseColor } from "@/src/registry/api"
-import { BASE_COLORS } from "@/src/registry/constants"
+import { getRegistryBaseColor } from "@shadcn/registry/internal/registry/api"
+import { BASE_COLORS } from "@shadcn/registry/internal/registry/constants"
+import { Config } from "@shadcn/registry/internal/utils/get-config"
 import {
-  registryBaseColorSchema,
-  registryItemCssVarsSchema,
-} from "@/src/schema"
-import { Config } from "@/src/utils/get-config"
-import { getProjectInfo, TailwindVersion } from "@/src/utils/get-project-info"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
-import { spinner } from "@/src/utils/spinner"
+  getProjectInfo,
+  TailwindVersion,
+} from "@shadcn/registry/internal/utils/get-project-info"
+import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
+import { logger } from "@shadcn/registry/internal/utils/logger"
+import { spinner } from "@shadcn/registry/internal/utils/spinner"
 import {
   isLocalHSLValue,
   updateCssVars,
-} from "@/src/utils/updaters/update-css-vars"
+} from "@shadcn/registry/internal/utils/updaters/update-css-vars"
+import {
+  registryBaseColorSchema,
+  registryItemCssVarsSchema,
+} from "@shadcn/registry/schema"
 import fsExtra from "fs-extra"
 import postcss from "postcss"
 import prompts from "prompts"

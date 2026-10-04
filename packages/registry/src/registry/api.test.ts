@@ -44,10 +44,6 @@ import {
 import { RegistriesIndexParseError } from "./errors"
 import { registryItemSchema } from "./schema"
 
-vi.mock("@/src/utils/handle-error", () => ({
-  handleError: vi.fn(),
-}))
-
 vi.mock("@/src/utils/logger", () => ({
   logger: {
     error: vi.fn(),

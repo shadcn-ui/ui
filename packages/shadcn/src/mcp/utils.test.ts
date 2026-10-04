@@ -1,5 +1,8 @@
-import { SEARCHABLE_TYPES } from "@/src/registry/search"
-import type { registryItemSchema, searchResultsSchema } from "@/src/schema"
+import { SEARCHABLE_TYPES } from "@shadcn/registry/internal/registry/search"
+import type {
+  registryItemSchema,
+  searchResultsSchema,
+} from "@shadcn/registry/schema"
 import { describe, expect, it, vi } from "vitest"
 import { z } from "zod"
 
@@ -11,7 +14,7 @@ import {
   formatSkippedRegistries,
 } from "./utils"
 
-vi.mock("@/src/utils/get-package-manager", () => ({
+vi.mock("@shadcn/registry/internal/utils/get-package-manager", () => ({
   getPackageRunner: vi.fn().mockResolvedValue("npx"),
 }))
 
