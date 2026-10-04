@@ -111,7 +111,7 @@ export default function RootLayout({
             <NuqsAdapter>
               <BaseTooltipProvider delay={0}>
                 <RadixTooltipProvider delayDuration={0}>
-                  <div className="relative flex min-h-screen flex-col">
+                  <div className="relative">
                     {children}
                   </div>
                   <Toaster position="top-center" />
