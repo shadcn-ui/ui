@@ -1,0 +1,103 @@
+{
+  "name": "@shadcn/registry",
+  "version": "0.1.0",
+  "description": "Fetch, resolve and install shadcn registry items.",
+  "homepage": "https://ui.shadcn.com/docs/registry",
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "shadcn",
+    "url": "https://twitter.com/shadcn"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shadcn-ui/ui.git",
+    "directory": "packages/registry"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "shadcn",
+    "registry",
+    "components"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/registry/index.d.ts",
+      "default": "./dist/registry/index.js"
+    },
+    "./schema": {
+      "types": "./dist/schema/index.d.ts",
+      "default": "./dist/schema/index.js"
+    },
+    "./internal/*": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
+    }
+  },
+  "types": "./dist/registry/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "schema": [
+        "./dist/schema/index.d.ts"
+      ],
+      "internal/*": [
+        "./dist/*"
+      ]
+    }
+  },
+  "engines": {
+    "node": ">=20.18.1"
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf dist",
+    "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
+    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/parser": "^7.28.0",
+    "@babel/plugin-transform-typescript": "^7.28.0",
+    "@babel/preset-typescript": "^7.27.1",
+    "@dotenvx/dotenvx": "^1.48.4",
+    "cn": "^0.2.4",
+    "cosmiconfig": "^9.0.0",
+    "deepmerge": "^4.3.1",
+    "execa": "^9.6.0",
+    "fast-glob": "^3.3.3",
+    "fs-extra": "^11.3.1",
+    "fuzzysort": "^3.1.0",
+    "kleur": "^4.1.5",
+    "ora": "^8.2.0",
+    "postcss": "^8.5.23",
+    "prompts": "^2.4.2",
+    "recast": "^0.23.11",
+    "socks": "^2.8.8",
+    "stringify-object": "^5.0.0",
+    "ts-morph": "^26.0.0",
+    "tsconfig-paths": "^4.2.0",
+    "type-fest": "^4.41.0",
+    "undici": "^7.29.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@antfu/ni": "^25.0.0",
+    "@types/babel__core": "^7.20.5",
+    "@types/fs-extra": "^11.0.4",
+    "@types/prompts": "^2.4.9",
+    "@types/stringify-object": "^4.0.5",
+    "msw": "^2.10.4",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2"
+  }
+}

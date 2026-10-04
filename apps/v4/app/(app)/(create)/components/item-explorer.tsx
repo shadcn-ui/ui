@@ -2,10 +2,10 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { cn } from "cn"
 import { ChevronRightIcon } from "lucide-react"
 import { type RegistryItem } from "shadcn/schema"
 
-import { cn } from "@/lib/utils"
 import { type Base } from "@/registry/bases"
 import {
   Collapsible,

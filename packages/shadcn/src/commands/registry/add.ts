@@ -1,10 +1,10 @@
 import path from "path"
-import { getRegistries } from "@/src/registry/api"
-import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
 import { handleError } from "@/src/utils/handle-error"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
-import { spinner } from "@/src/utils/spinner"
+import { getRegistries } from "@shadcn/registry/internal/registry/api"
+import { BUILTIN_REGISTRIES } from "@shadcn/registry/internal/registry/constants"
+import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
+import { logger } from "@shadcn/registry/internal/utils/logger"
+import { spinner } from "@shadcn/registry/internal/utils/spinner"
 import { Command } from "commander"
 import fs from "fs-extra"
 import prompts from "prompts"
@@ -70,19 +70,26 @@ function pluralize(count: number, singular: string, plural: string) {
   return `${count} ${count === 1 ? singular : plural}`
 }
 
-async function addRegistriesToConfig(
+export async function addRegistriesToConfig(
   registryArgs: string[],
   cwd: string,
   options: { silent?: boolean }
 ) {
-  const configPath = path.resolve(cwd, "components.json")
-  if (!fs.existsSync(configPath)) {
+  // Write to components.json when it exists, otherwise fall back to
+  // package.json. This mirrors how registries are resolved.
+  const configPath = ["components.json", "package.json"]
+    .map((file) => path.resolve(cwd, file))
+    .find((file) => fs.existsSync(file))
+
+  if (!configPath) {
     throw new Error(
-      `No ${highlighter.info("components.json")} found. Run ${highlighter.info(
-        "shadcn init"
-      )} first.`
+      `No ${highlighter.info("components.json")} or ${highlighter.info(
+        "package.json"
+      )} found. Run ${highlighter.info("shadcn init")} first.`
     )
   }
+
+  const configFileName = path.basename(configPath)
 
   const parsed = registryArgs.map(parseRegistryArg)
   const needsLookup = parsed.filter((p) => !p.url)
@@ -179,7 +186,7 @@ async function addRegistriesToConfig(
     },
   }
 
-  const writeSpinner = spinner("Updating components.json.", {
+  const writeSpinner = spinner(`Updating ${configFileName}.`, {
     silent: options.silent,
   }).start()
   await fs.writeJson(configPath, updatedConfig, { spaces: 2 })

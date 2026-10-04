@@ -1,11 +1,11 @@
 import { promises as fs } from "fs"
 import path from "path"
-import { SHADCN_URL } from "@/src/registry/constants"
-import { Config } from "@/src/utils/get-config"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
-import { spinner } from "@/src/utils/spinner"
-import { transformDirection } from "@/src/utils/transformers/transform-rtl"
+import { SHADCN_URL } from "@shadcn/registry/internal/registry/constants"
+import { Config } from "@shadcn/registry/internal/utils/get-config"
+import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
+import { logger } from "@shadcn/registry/internal/utils/logger"
+import { spinner } from "@shadcn/registry/internal/utils/spinner"
+import { transformDirection } from "@shadcn/registry/internal/utils/transformers/transform-rtl"
 import fg from "fast-glob"
 import prompts from "prompts"
 
@@ -36,6 +36,7 @@ export async function migrateRtl(
         cwd: basePath,
         onlyFiles: true,
         ignore: ["**/node_modules/**"],
+        suppressErrors: true,
       })
     } else {
       const fullPath = path.resolve(basePath, options.path)
@@ -51,6 +52,7 @@ export async function migrateRtl(
           cwd: basePath,
           onlyFiles: true,
           ignore: ["**/node_modules/**"],
+          suppressErrors: true,
         })
       } else if (stat.isFile()) {
         files = [options.path]
@@ -74,6 +76,7 @@ export async function migrateRtl(
     files = await fg("**/*.{js,ts,jsx,tsx}", {
       cwd: basePath,
       onlyFiles: true,
+      suppressErrors: true,
     })
   }
 

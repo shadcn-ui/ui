@@ -6,6 +6,7 @@ export const PAGES_NEW = [
   "/docs/components/base/questionnaire",
   "/docs/components/aria/questionnaire",
   "/docs/react/questionnaire",
+  "/docs/registry/health",
 ]
 
 export const PAGES_UPDATED = []

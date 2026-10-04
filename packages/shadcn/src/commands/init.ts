@@ -2,34 +2,19 @@ import { promises as fs } from "fs"
 import path from "path"
 import { preFlightInit } from "@/src/preflights/preflight-init"
 import {
-  decodePreset,
-  isPresetBase,
-  isPresetCode,
-  PRESET_BASES,
-  type PresetBase,
-} from "@/src/preset/preset"
-import {
   DEFAULT_PRESETS,
   promptForBase,
   promptForPreset,
   resolveInitUrl,
   resolveRegistryBaseConfig,
 } from "@/src/preset/presets"
-import { getRegistryBaseColors, getRegistryStyles } from "@/src/registry/api"
-import { BUILTIN_REGISTRIES, SHADCN_URL } from "@/src/registry/constants"
-import { clearRegistryContext } from "@/src/registry/context"
-import { registryConfigSchema } from "@/src/registry/schema"
-import { isUrl } from "@/src/registry/utils"
-import { rawConfigSchema } from "@/src/schema"
 import {
   getTemplateForFramework,
   resolveTemplate,
   templates,
 } from "@/src/templates/index"
-import { addComponents } from "@/src/utils/add-components"
 import { getInitAliasDefaults } from "@/src/utils/alias"
 import { createProject } from "@/src/utils/create-project"
-import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
 import {
   createFileBackup,
@@ -37,6 +22,26 @@ import {
   FILE_BACKUP_SUFFIX,
   restoreFileBackup,
 } from "@/src/utils/file-helper"
+import { handleError } from "@/src/utils/handle-error"
+import { ensureRegistriesInConfig } from "@/src/utils/registries"
+import { getRegistryStyles } from "@/src/utils/registry-api"
+import {
+  decodePreset,
+  isPresetBase,
+  isPresetCode,
+  PRESET_BASES,
+  type PresetBase,
+} from "@shadcn/registry/internal/preset/preset"
+import { getRegistryBaseColors } from "@shadcn/registry/internal/registry/api"
+import {
+  BUILTIN_REGISTRIES,
+  SHADCN_URL,
+} from "@shadcn/registry/internal/registry/constants"
+import { clearRegistryContext } from "@shadcn/registry/internal/registry/context"
+import { registryConfigSchema } from "@shadcn/registry/internal/registry/schema"
+import { isUrl } from "@shadcn/registry/internal/registry/utils"
+import { addComponents } from "@shadcn/registry/internal/utils/add-components"
+import { loadEnvFiles } from "@shadcn/registry/internal/utils/env-loader"
 import {
   DEFAULT_COMPONENTS,
   DEFAULT_TAILWIND_CONFIG,
@@ -48,23 +53,22 @@ import {
   getWorkspaceConfig,
   resolveConfigPaths,
   type Config,
-} from "@/src/utils/get-config"
+} from "@shadcn/registry/internal/utils/get-config"
 import {
   formatMonorepoMessage,
   getMonorepoTargets,
   isMonorepoRoot,
-} from "@/src/utils/get-monorepo-info"
+} from "@shadcn/registry/internal/utils/get-monorepo-info"
 import {
   getProjectComponents,
   getProjectConfig,
   getProjectInfo,
   getProjectTailwindVersionFromConfig,
-} from "@/src/utils/get-project-info"
-import { handleError } from "@/src/utils/handle-error"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
-import { ensureRegistriesInConfig } from "@/src/utils/registries"
-import { spinner } from "@/src/utils/spinner"
+} from "@shadcn/registry/internal/utils/get-project-info"
+import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
+import { logger } from "@shadcn/registry/internal/utils/logger"
+import { spinner } from "@shadcn/registry/internal/utils/spinner"
+import { rawConfigSchema } from "@shadcn/registry/schema"
 import { Command } from "commander"
 import deepmerge from "deepmerge"
 import fsExtra from "fs-extra"
@@ -712,17 +716,20 @@ export async function runInit(
 
   // Ensure registries are configured for the components we're about to add.
   const fullConfigForRegistry = await resolveConfigPaths(options.cwd, config)
-  const { config: configWithRegistries } = await ensureRegistriesInConfig(
-    components,
-    fullConfigForRegistry,
-    {
+  const { discoveredRegistries, packageJsonRegistries } =
+    await ensureRegistriesInConfig(components, fullConfigForRegistry, {
       silent: true,
-    }
-  )
+      writeFile: false,
+    })
 
-  // Update config with any new registries found.
-  if (configWithRegistries.registries) {
-    config.registries = configWithRegistries.registries
+  // Update config with registries discovered from the registries index.
+  // Registries declared in package.json are resolved in memory below and
+  // never persisted to components.json.
+  if (Object.keys(discoveredRegistries).length > 0) {
+    config.registries = {
+      ...config.registries,
+      ...discoveredRegistries,
+    }
   }
 
   const componentSpinner = spinner(`Writing components.json.`).start()
@@ -775,6 +782,16 @@ export async function runInit(
 
   // Propagate design settings to workspace components.json files.
   const fullConfig = await resolveConfigPaths(options.cwd, config)
+
+  // Include package.json-declared registries for installation. These are
+  // resolved in memory and stay out of the components.json we just wrote.
+  if (Object.keys(packageJsonRegistries).length > 0) {
+    fullConfig.registries = {
+      ...fullConfig.registries,
+      ...packageJsonRegistries,
+    }
+  }
+
   const workspaceConfig = await getWorkspaceConfig(fullConfig)
   if (workspaceConfig) {
     const designSettings: Record<string, unknown> = {}

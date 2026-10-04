@@ -1,6 +1,6 @@
-import { searchRegistries } from "@/src/registry/search"
-import { getConfig } from "@/src/utils/get-config"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
+import { searchRegistries } from "@shadcn/registry/internal/registry/search"
+import { getConfig } from "@shadcn/registry/internal/utils/get-config"
 import fsExtra from "fs-extra"
 import { beforeEach, describe, expect, it, vi } from "vitest"
 
@@ -69,11 +69,11 @@ vi.mock("fs-extra", () => ({
   },
 }))
 
-vi.mock("@/src/utils/env-loader", () => ({
+vi.mock("@shadcn/registry/internal/utils/env-loader", () => ({
   loadEnvFiles: vi.fn(),
 }))
 
-vi.mock("@/src/utils/get-config", () => ({
+vi.mock("@shadcn/registry/internal/utils/get-config", () => ({
   createConfig: vi.fn(() => baseConfig),
   getConfig: vi.fn(() => null),
 }))
@@ -82,21 +82,25 @@ vi.mock("@/src/utils/registries", () => ({
   ensureRegistriesInConfig: vi.fn(() => ({
     config: baseConfig,
     newRegistries: [],
+    discoveredRegistries: {},
+    packageJsonRegistries: {},
   })),
 }))
 
-vi.mock("@/src/registry/validator", () => ({
+vi.mock("@shadcn/registry/internal/registry/validator", () => ({
   validateRegistryConfigForItems: vi.fn(),
 }))
 
 // Stub searchRegistries but keep the real printSearchResults (both now live
 // in @/src/registry/search) so the human-readable output is exercised.
-vi.mock("@/src/registry/search", async (importActual) => ({
-  ...(await importActual<typeof import("@/src/registry/search")>()),
+vi.mock("@shadcn/registry/internal/registry/search", async (importActual) => ({
+  ...(await importActual<
+    typeof import("@shadcn/registry/internal/registry/search")
+  >()),
   searchRegistries: vi.fn(() => mockResults),
 }))
 
-vi.mock("@/src/registry/context", () => ({
+vi.mock("@shadcn/registry/internal/registry/context", () => ({
   clearRegistryContext: vi.fn(),
   withRegistryContext: vi.fn((callback: () => unknown) => callback()),
 }))

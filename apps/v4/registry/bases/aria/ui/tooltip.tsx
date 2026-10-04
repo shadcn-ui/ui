@@ -1,14 +1,13 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "cn"
 import {
   Focusable,
   OverlayArrow,
   Tooltip as TooltipPrimitive,
   TooltipTrigger as TooltipTriggerPrimitive,
 } from "react-aria-components"
-
-import { cn } from "@/registry/bases/aria/lib/utils"
 
 function TooltipTrigger({
   delay = 0,
