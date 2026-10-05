@@ -122,7 +122,11 @@ export async function removeDependencies(cwd: string, dependencies: string[]) {
 
   const packageManager = await getPackageManager(cwd)
   if (packageManager === "npm") {
-    await execa("npm", ["uninstall", "--", ...dependencies], { cwd })
+    await execa(
+      "npm",
+      ["uninstall", ...NPM_INSTALL_FLAGS, "--", ...dependencies],
+      { cwd }
+    )
     return
   }
 
@@ -324,6 +328,16 @@ async function installWithPackageManager(
   }
 }
 
+/**
+ * npm runs `npm audit` and a funding check after every install and uninstall.
+ * We capture npm's output and never show it, so that report is thrown away,
+ * yet the audit can dominate the install: for each vulnerable package npm
+ * fetches the full packument of it and of every dependent to look for a fixed
+ * version. A single new advisory deep in a tree (braces, via eslint-config-next)
+ * took a cold `npm install` from ~18s to over 60s.
+ */
+const NPM_INSTALL_FLAGS = ["--no-audit", "--no-fund"]
+
 async function installWithNpm(
   dependencies: string[],
   devDependencies: string[],
@@ -336,7 +350,13 @@ async function installWithNpm(
   if (dependencies.length) {
     await execa(
       "npm",
-      ["install", ...(flag ? [`--${flag}`] : []), "--", ...dependencies],
+      [
+        "install",
+        ...NPM_INSTALL_FLAGS,
+        ...(flag ? [`--${flag}`] : []),
+        "--",
+        ...dependencies,
+      ],
       { cwd }
     )
   }
@@ -346,6 +366,7 @@ async function installWithNpm(
       "npm",
       [
         "install",
+        ...NPM_INSTALL_FLAGS,
         ...(flag ? [`--${flag}`] : []),
         "-D",
         "--",
