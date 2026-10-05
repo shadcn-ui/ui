@@ -103,7 +103,6 @@ describe("explorer", () => {
       ["invalid JSON", "{ invalid }"],
       ["a trailing comma", '{ "style": "new-york", }'],
       ["a comment", '// shadcn\n{ "style": "new-york" }'],
-      ["a byte order mark", '\uFEFF{ "style": "new-york" }'],
       ["UTF-16", Buffer.from('\uFEFF{ "style": "new-york" }', "utf16le")],
     ])("throws on %s, naming the file", async (_, contents) => {
       const dir = await createTempDir({ "components.json": contents })
@@ -111,6 +110,17 @@ describe("explorer", () => {
       await expect(explorer.search(dir)).rejects.toThrow(
         `JSON Error in ${path.join(dir, "components.json")}:\n`
       )
+    })
+
+    it("reads a file that starts with a byte order mark", async () => {
+      const dir = await createTempDir({
+        "components.json": '\uFEFF{ "style": "new-york" }',
+      })
+
+      expect(await explorer.search(dir)).toEqual({
+        config: { style: "new-york" },
+        filepath: path.join(dir, "components.json"),
+      })
     })
 
     it("resolves a relative directory from the working directory", async () => {

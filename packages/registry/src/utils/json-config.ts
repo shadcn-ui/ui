@@ -55,7 +55,8 @@ async function readJsonConfig(
   filepath: string,
   property?: string
 ): Promise<JsonConfigResult> {
-  const contents = await readFile(filepath, "utf8")
+  // Editors on Windows can save JSON with a byte order mark.
+  const contents = (await readFile(filepath, "utf8")).replace(/^\uFEFF/, "")
   if (contents.trim() === "") {
     return null
   }

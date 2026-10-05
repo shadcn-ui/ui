@@ -2410,16 +2410,25 @@ describe("getPackageJsonRegistries", () => {
     })
   })
 
-  it.each([
-    ["invalid JSON", "{ invalid }"],
-    ["a byte order mark", '\uFEFF{ "registries": {} }'],
-  ])("throws on %s, naming the file", async (_, contents) => {
+  it("throws on invalid JSON, naming the file", async () => {
     await withTempDir(async (dir) => {
-      await writeFiles(dir, { "package.json": contents })
+      await writeFiles(dir, { "package.json": "{ invalid }" })
 
       await expect(getPackageJsonRegistries(dir)).rejects.toThrow(
         `JSON Error in ${path.join(dir, "package.json")}:\n`
       )
+    })
+  })
+
+  it("reads a package.json that starts with a byte order mark", async () => {
+    const registries = { "@acme": "https://acme.com/{name}.json" }
+
+    await withTempDir(async (dir) => {
+      await writeFiles(dir, {
+        "package.json": `\uFEFF${JSON.stringify({ registries })}`,
+      })
+
+      expect(await getPackageJsonRegistries(dir)).toEqual(registries)
     })
   })
 
