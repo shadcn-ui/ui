@@ -576,6 +576,9 @@ importers:
       '@types/stringify-object':
         specifier: ^4.0.5
         version: 4.0.5
+      esbuild:
+        specifier: ^0.27.7
+        version: 0.27.7
       msw:
         specifier: ^2.10.4
         version: 2.10.4(@types/node@20.19.10)(typescript@5.9.2)

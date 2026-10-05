@@ -1,10 +1,7 @@
 import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
-import {
-  registryItemCssVarsSchema,
-  registryItemTailwindSchema,
-} from "@/src/schema"
+import { registryItemTailwindSchema } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { TailwindVersion } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
@@ -22,6 +19,8 @@ import {
   VariableStatement,
 } from "ts-morph"
 import { z } from "zod"
+
+export { buildTailwindThemeColorsFromCssVars } from "@/src/utils/tailwind-theme-colors"
 
 // Stands in for tailwindcss's Config, which has an index signature, so the
 // published types do not depend on tailwindcss.
@@ -502,42 +501,4 @@ function parseValue(node: any): any {
     default:
       return node.getText()
   }
-}
-
-export function buildTailwindThemeColorsFromCssVars(
-  cssVars: z.infer<typeof registryItemCssVarsSchema>
-) {
-  const result: Record<string, any> = {}
-
-  for (const key of Object.keys(cssVars)) {
-    const parts = key.split("-")
-    const colorName = parts[0]
-    const subType = parts.slice(1).join("-")
-
-    if (subType === "") {
-      if (typeof result[colorName] === "object") {
-        result[colorName].DEFAULT = `hsl(var(--${key}))`
-      } else {
-        result[colorName] = `hsl(var(--${key}))`
-      }
-    } else {
-      if (typeof result[colorName] !== "object") {
-        result[colorName] = { DEFAULT: `hsl(var(--${colorName}))` }
-      }
-      result[colorName][subType] = `hsl(var(--${key}))`
-    }
-  }
-
-  // Remove DEFAULT if it's not in the original cssVars
-  for (const [colorName, value] of Object.entries(result)) {
-    if (
-      typeof value === "object" &&
-      value.DEFAULT === `hsl(var(--${colorName}))` &&
-      !(colorName in cssVars)
-    ) {
-      delete value.DEFAULT
-    }
-  }
-
-  return result
 }

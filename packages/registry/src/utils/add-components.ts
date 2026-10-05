@@ -455,7 +455,7 @@ export function validateFilesTarget(
 ) {
   for (const file of files) {
     // `target` decides the write location when present; otherwise the path is
-    // derived from `file.path` (see resolveFilePath in update-files.ts). Both
+    // derived from `file.path` (see resolveFilePath in resolve-file-path.ts). Both
     // are registry-controlled, so validate whichever one is used.
     const locationField = file?.target ?? file?.path
     if (!locationField) {
