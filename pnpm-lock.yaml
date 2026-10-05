@@ -28,7 +28,7 @@ importers:
         version: 20.1.0(@types/node@20.19.10)(typescript@5.9.2)
       '@commitlint/config-conventional':
         specifier: ^21.2.2
-        version: 21.2.2
+        version: 21.2.3
       '@ianvs/prettier-plugin-sort-imports':
         specifier: ^4.6.1
         version: 4.6.1(prettier@3.6.2)
@@ -212,7 +212,7 @@ importers:
         version: 1.5.0(next@16.3.3(@babel/core@7.28.0)(@opentelemetry/api@1.9.0)(@types/node@20.19.10)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
       ai:
         specifier: canary
-        version: 7.0.0-canary.176(zod@3.25.76)
+        version: 7.0.0-canary.159(zod@3.25.76)
       change-case:
         specifier: ^5.4.4
         version: 5.4.4
@@ -773,12 +773,6 @@ packages:
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
-  '@ai-sdk/gateway@4.0.0-canary.107':
-    resolution: {integrity: sha512-BPmARy2rc0ChkmoMhrmHa+L5lg7HWO8BZ1bMEWx3m3wH6lSy7a2CFu4T28PC2qaCPuWgpu5+PnSWC9eMpZh9rQ==}
-    engines: {node: '>=22'}
-    peerDependencies:
-      zod: ^3.25.76 || ^4.1.8
-
   '@ai-sdk/gateway@4.0.0-canary.93':
     resolution: {integrity: sha512-/d0d/DfJRmdMJJww/ihrYezgKedJhrOCsREuAuSHmd/kVzFB5p2bBuCZH3EBxKFQ8NLtPJpOR+QJxOUmDLD8PA==}
     engines: {node: '>=22'}
@@ -1104,8 +1098,8 @@ packages:
     engines: {node: '>=v18'}
     hasBin: true
 
-  '@commitlint/config-conventional@21.2.2':
-    resolution: {integrity: sha512-NxA37SZviusFUEYOQZ5hNnZ1h7O/KiemPkxjOlpzKJNnWxThiwc6/SaZhaPa8fyLvfRBAywhQhJJk8XESHWlpQ==}
+  '@commitlint/config-conventional@21.2.3':
+    resolution: {integrity: sha512-EP2n5DN2GwRWNVrLX0Jx3mpQlW5PfFi9HnD9OJ8hN/H0xFqpCFyHeGDhg+0P8/21iMMcdkcQgbNqmVklebqYsQ==}
     engines: {node: '>=22.12.0'}
 
   '@commitlint/config-validator@20.0.0':
@@ -1168,8 +1162,8 @@ packages:
     resolution: {integrity: sha512-bVUNBqG6aznYcYjTjnc3+Cat/iBgbgpflxbIBTnsHTX0YVpnmINPEkSRWymT2Q8aSH3Y7aKnEbunilkYe8TybA==}
     engines: {node: '>=v18'}
 
-  '@commitlint/types@21.2.0':
-    resolution: {integrity: sha512-7zVFCDB2reMvJH5dmbKnOQPjZEvjdJTH8jc0U/PIPU1r3/+vf5pD1HlfitV2MWsWXrvu7u39iY1lyLUPOaN0Gw==}
+  '@commitlint/types@21.2.3':
+    resolution: {integrity: sha512-sGEA473TlCvhCGNoTBY9OXZVWdscIXdGt0dm8EpB+2MRfmt8LNh/X56P/T3nCtEB+eH5qGEa3odphSAoUxSfSQ==}
     engines: {node: '>=22.12.0'}
 
   '@conventional-changelog/template@1.4.0':
@@ -4855,12 +4849,6 @@ packages:
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
-  ai@7.0.0-canary.176:
-    resolution: {integrity: sha512-0a+PeTou1uLouzrlLaEZNyBj21oFyYCI1BeOrP9uLJ2YGW6tsUAGME6zetfDdbl/bouIc4neUA36sH7mNjNp1g==}
-    engines: {node: '>=22'}
-    peerDependencies:
-      zod: ^3.25.76 || ^4.1.8
-
   ajv-formats@3.0.1:
     resolution: {integrity: sha512-8iUql50EUR+uUcdRQ3HDqa6EVyo3docL8g5WJ3FNcWmu62IbkGUue/pEyLBW8VGKKucTPgqeks4fIU1DA4yowQ==}
     peerDependencies:
@@ -6188,10 +6176,6 @@ packages:
 
   eventsource-parser@3.1.0:
     resolution: {integrity: sha512-kJezFj9YFAMLeORyi7aCLxLbD5/qWMQnoMVlVPyHIll7lgRJCc3JVln9Vgl9nwQi0YkMnhdGTMNn7CkRRAptMg==}
-    engines: {node: '>=18.0.0'}
-
-  eventsource-parser@3.1.1:
-    resolution: {integrity: sha512-EKN1vKAMcZ8MlYMpaNuxN6R9yakzH6uajHcHVTqWJzvu5pWw9DyhbP35HH8MVBQ+dZjAfDxk+A8NiR9KWaXiyQ==}
     engines: {node: '>=18.0.0'}
 
   eventsource@3.0.7:
@@ -9971,13 +9955,6 @@ snapshots:
       '@ai-sdk/provider-utils': 5.0.0-canary.48(zod@3.25.76)
       zod: 3.25.76
 
-  '@ai-sdk/gateway@4.0.0-canary.107(zod@3.25.76)':
-    dependencies:
-      '@ai-sdk/provider': 4.0.0-canary.18
-      '@ai-sdk/provider-utils': 5.0.0-canary.48(zod@3.25.76)
-      '@vercel/oidc': 3.2.0
-      zod: 3.25.76
-
   '@ai-sdk/gateway@4.0.0-canary.93(zod@3.25.76)':
     dependencies:
       '@ai-sdk/provider': 4.0.0-canary.17
@@ -10003,7 +9980,7 @@ snapshots:
       '@ai-sdk/provider': 4.0.0-canary.17
       '@standard-schema/spec': 1.1.0
       '@workflow/serde': 4.1.0
-      eventsource-parser: 3.1.1
+      eventsource-parser: 3.1.0
       zod: 3.25.76
 
   '@ai-sdk/provider-utils@5.0.0-canary.48(zod@3.25.76)':
@@ -10011,7 +9988,7 @@ snapshots:
       '@ai-sdk/provider': 4.0.0-canary.18
       '@standard-schema/spec': 1.1.0
       '@workflow/serde': 4.1.0
-      eventsource-parser: 3.1.1
+      eventsource-parser: 3.1.0
       zod: 3.25.76
 
   '@ai-sdk/provider@4.0.0-canary.17':
@@ -10482,9 +10459,9 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@commitlint/config-conventional@21.2.2':
+  '@commitlint/config-conventional@21.2.3':
     dependencies:
-      '@commitlint/types': 21.2.0
+      '@commitlint/types': 21.2.3
       conventional-changelog-conventionalcommits: 10.4.0
 
   '@commitlint/config-validator@20.0.0':
@@ -10579,7 +10556,7 @@ snapshots:
       '@types/conventional-commits-parser': 5.0.2
       chalk: 5.6.2
 
-  '@commitlint/types@21.2.0':
+  '@commitlint/types@21.2.3':
     dependencies:
       conventional-commits-parser: 7.1.2
       picocolors: 1.1.1
@@ -13983,13 +13960,6 @@ snapshots:
       '@ai-sdk/provider-utils': 5.0.0-canary.44(zod@3.25.76)
       zod: 3.25.76
 
-  ai@7.0.0-canary.176(zod@3.25.76):
-    dependencies:
-      '@ai-sdk/gateway': 4.0.0-canary.107(zod@3.25.76)
-      '@ai-sdk/provider': 4.0.0-canary.18
-      '@ai-sdk/provider-utils': 5.0.0-canary.48(zod@3.25.76)
-      zod: 3.25.76
-
   ajv-formats@3.0.1(ajv@8.17.1):
     optionalDependencies:
       ajv: 8.17.1
@@ -15680,11 +15650,9 @@ snapshots:
 
   eventsource-parser@3.1.0: {}
 
-  eventsource-parser@3.1.1: {}
-
   eventsource@3.0.7:
     dependencies:
-      eventsource-parser: 3.0.6
+      eventsource-parser: 3.1.0
 
   execa@5.1.1:
     dependencies:
