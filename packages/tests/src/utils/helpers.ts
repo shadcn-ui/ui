@@ -69,7 +69,8 @@ export async function runCommand(
     return {
       stdout: result.stdout || "",
       stderr: result.stderr || "",
-      exitCode: result.exitCode ?? 0,
+      // No exit code means the process was killed, e.g. by a signal.
+      exitCode: result.exitCode ?? 1,
     }
   } catch (error: any) {
     return {
