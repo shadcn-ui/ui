@@ -2,6 +2,7 @@ import { promises as fs } from "fs"
 import os from "os"
 import path from "path"
 import { getProjectInfo, ProjectInfo } from "@/src/utils/get-project-info"
+import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
@@ -3318,6 +3319,66 @@ export default function App({ Component, pageProps }: AppProps) {
 
     expect(await fs.readFile(layoutPath, "utf8")).toBe(layout)
     expect((await fs.stat(layoutPath)).mtime.getTime()).toBe(past.getTime())
+  })
+
+  // cn() holds only the heading font, which the edit removes before adding
+  // both fonts back, leaving `cn(, ...)`.
+  async function writeLayoutTheEditBreaks() {
+    const layout = await transformLayoutFonts(
+      LAYOUT,
+      [playfairHeading],
+      mockConfig
+    )
+    await writeProjectFile(cwd, "app/layout.tsx", layout)
+    return layout
+  }
+
+  it("leaves a layout the edit would break untouched and warns", async () => {
+    await writeNextProject({ typescript: true })
+    const layout = await writeLayoutTheEditBreaks()
+    const warn = vi.spyOn(logger, "warn").mockImplementation(() => {})
+
+    await updateFonts([interSans, playfairHeading], configFor(cwd), {
+      silent: false,
+    })
+
+    expect(await fs.readFile(path.join(cwd, "app/layout.tsx"), "utf8")).toBe(
+      layout
+    )
+    expect(warn).toHaveBeenCalledOnce()
+    expect(warn).toHaveBeenCalledWith(
+      "Skipped app/layout.tsx: adding font-inter, font-playfair-display would leave it with a syntax error. Add the fonts to it manually."
+    )
+    expect(lastSpinner().succeed).toHaveBeenCalledWith("Updating fonts.")
+    warn.mockRestore()
+  })
+
+  it("leaves a layout the edit would break untouched without a warning when silent", async () => {
+    await writeNextProject({ typescript: true })
+    const layout = await writeLayoutTheEditBreaks()
+    const warn = vi.spyOn(logger, "warn").mockImplementation(() => {})
+
+    await updateFonts([interSans, playfairHeading], configFor(cwd), {
+      silent: true,
+    })
+
+    expect(await fs.readFile(path.join(cwd, "app/layout.tsx"), "utf8")).toBe(
+      layout
+    )
+    expect(warn).not.toHaveBeenCalled()
+    warn.mockRestore()
+  })
+
+  it("updates a layout whose syntax errors were already there", async () => {
+    await writeNextProject({ typescript: true })
+    const layout = `${LAYOUT}\nconst missingInitializer\n`
+    await writeProjectFile(cwd, "app/layout.tsx", layout)
+
+    await updateFonts([interSans], configFor(cwd), { silent: true })
+
+    expect(await fs.readFile(path.join(cwd, "app/layout.tsx"), "utf8")).toBe(
+      await transformLayoutFonts(layout, [interSans], mockConfig)
+    )
   })
 
   it("skips projects that are not Next.js", async () => {
