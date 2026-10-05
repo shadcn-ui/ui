@@ -22,7 +22,13 @@ export function resolveFilePath(
       ? options.path
       : path.join(config.resolvedPaths.cwd, options.path)
 
-    const isFilePath = /\.[^/\\]+$/.test(resolvedPath)
+    // A file when its last segment has a dot before the last character, e.g.
+    // "button.tsx" or ".env". A regex for this is quadratic on long paths.
+    const name = resolvedPath.slice(
+      Math.max(resolvedPath.lastIndexOf("/"), resolvedPath.lastIndexOf("\\")) +
+        1
+    )
+    const isFilePath = name.slice(0, -1).includes(".")
 
     if (isFilePath) {
       // We'll only use the custom path for the first file.
