@@ -1,13 +1,13 @@
 import { promises as fs } from "fs"
 import path from "path"
-import { getPackageInfo } from "@/src/utils/get-package-info"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
-import { spinner } from "@/src/utils/spinner"
+import { getPackageInfo } from "@shadcn/registry/internal/utils/get-package-info"
+import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
+import { logger } from "@shadcn/registry/internal/utils/logger"
+import { spinner } from "@shadcn/registry/internal/utils/spinner"
 import {
   installDependencies,
   removeDependencies,
-} from "@/src/utils/updaters/update-dependencies"
+} from "@shadcn/registry/internal/utils/updaters/update-dependencies"
 import fsExtra from "fs-extra"
 import prompts from "prompts"
 

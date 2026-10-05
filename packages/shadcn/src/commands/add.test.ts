@@ -1,11 +1,14 @@
 import path from "path"
 import { runInit } from "@/src/commands/init"
-import { REGISTRY_URL, SHADCN_URL } from "@/src/registry/constants"
 import { getFixturesDir, withTempDir } from "@/src/test-helpers"
-import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
 import { dryRunComponents } from "@/src/utils/dry-run"
 import { updateAppIndex } from "@/src/utils/update-app-index"
+import {
+  REGISTRY_URL,
+  SHADCN_URL,
+} from "@shadcn/registry/internal/registry/constants"
+import { addComponents } from "@shadcn/registry/internal/utils/add-components"
 import fs from "fs-extra"
 import { http, HttpResponse } from "msw"
 import { setupServer } from "msw/node"
@@ -25,7 +28,7 @@ import { add } from "./add"
 
 // --- Mocked seams (the collaborators add.ts delegates to). ---
 
-vi.mock("@/src/utils/add-components", () => ({
+vi.mock("@shadcn/registry/internal/utils/add-components", () => ({
   addComponents: vi.fn(),
 }))
 
@@ -49,7 +52,7 @@ vi.mock("prompts", () => ({
   default: vi.fn(),
 }))
 
-vi.mock("@/src/utils/spinner", () => ({
+vi.mock("@shadcn/registry/internal/utils/spinner", () => ({
   spinner: vi.fn(() => ({
     start: vi.fn().mockReturnThis(),
     stop: vi.fn(),
@@ -59,7 +62,7 @@ vi.mock("@/src/utils/spinner", () => ({
   })),
 }))
 
-vi.mock("@/src/utils/logger", () => ({
+vi.mock("@shadcn/registry/internal/utils/logger", () => ({
   logger: {
     break: vi.fn(),
     error: vi.fn(),
@@ -387,7 +390,9 @@ describe("add command", () => {
           name: "no-config-project",
           version: "1.0.0",
         })
-        const { logger } = await import("@/src/utils/logger")
+        const { logger } = await import(
+          "@shadcn/registry/internal/utils/logger"
+        )
 
         mockPrompts({
           proceed: true,
@@ -407,7 +412,9 @@ describe("add command", () => {
   describe("empty/missing project (create-project flow)", () => {
     it("does not scaffold before warning about toast for a non-Base UI library", async () => {
       await withTempDir(async (emptyDir) => {
-        const { logger } = await import("@/src/utils/logger")
+        const { logger } = await import(
+          "@shadcn/registry/internal/utils/logger"
+        )
 
         mockPrompts({
           base: "radix",
@@ -608,7 +615,9 @@ describe("add command", () => {
   describe("deprecated components guard (Tailwind v4)", () => {
     it("exits 1 and warns when adding toaster", async () => {
       await withFixtureCopy("vite-with-tailwind", async (cwd) => {
-        const { logger } = await import("@/src/utils/logger")
+        const { logger } = await import(
+          "@shadcn/registry/internal/utils/logger"
+        )
 
         await expect(runAdd(["toaster"], cwd)).rejects.toThrow("process.exit:1")
 
@@ -621,7 +630,9 @@ describe("add command", () => {
 
     it("exits 1 and warns when adding toast to a legacy style", async () => {
       await withFixtureCopy("vite-with-tailwind", async (cwd) => {
-        const { logger } = await import("@/src/utils/logger")
+        const { logger } = await import(
+          "@shadcn/registry/internal/utils/logger"
+        )
 
         await expect(runAdd(["toast"], cwd)).rejects.toThrow("process.exit:1")
 
@@ -636,7 +647,9 @@ describe("add command", () => {
       "exits 1 and warns when adding toast to %s",
       async (style) => {
         await withFixtureCopy("vite-with-tailwind", async (cwd) => {
-          const { logger } = await import("@/src/utils/logger")
+          const { logger } = await import(
+            "@shadcn/registry/internal/utils/logger"
+          )
           await setConfigStyle(cwd, style)
 
           await expect(runAdd(["toast"], cwd)).rejects.toThrow("process.exit:1")
