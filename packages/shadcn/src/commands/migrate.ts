@@ -7,7 +7,7 @@ import { migrateRtl } from "@/src/migrations/migrate-rtl"
 import { preFlightMigrate } from "@/src/preflights/preflight-migrate"
 import * as ERRORS from "@/src/utils/errors"
 import { handleError } from "@/src/utils/handle-error"
-import { logger } from "@/src/utils/logger"
+import { logger } from "@shadcn/registry/internal/utils/logger"
 import { Command } from "commander"
 import { z } from "zod"
 

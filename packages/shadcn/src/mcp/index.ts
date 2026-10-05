@@ -1,15 +1,15 @@
-import { getRegistryItems, searchRegistries } from "@/src/registry"
-import { withRegistryContext } from "@/src/registry/context"
-import { RegistryError } from "@/src/registry/errors"
-import {
-  resolveSearchRegistries,
-  SEARCHABLE_TYPES,
-} from "@/src/registry/search"
 import { Server } from "@modelcontextprotocol/sdk/server/index.js"
 import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js"
+import { getRegistryItems, searchRegistries } from "@shadcn/registry"
+import { withRegistryContext } from "@shadcn/registry/internal/registry/context"
+import { RegistryError } from "@shadcn/registry/internal/registry/errors"
+import {
+  resolveSearchRegistries,
+  SEARCHABLE_TYPES,
+} from "@shadcn/registry/internal/registry/search"
 import dedent from "dedent"
 import { z } from "zod"
 import { zodToJsonSchema } from "zod-to-json-schema"

@@ -11,8 +11,8 @@ on:
       - "packages/shadcn/src/commands/init.ts"
       - "packages/shadcn/src/templates/**"
       - "packages/shadcn/src/utils/create-project.ts"
-      - "packages/shadcn/src/utils/get-monorepo-info.ts"
-      - "packages/shadcn/src/utils/get-package-manager.ts"
+      - "packages/registry/src/utils/get-monorepo-info.ts"
+      - "packages/registry/src/utils/get-package-manager.ts"
       - "pnpm-lock.yaml"
       - "templates/**"
 
@@ -87,8 +87,31 @@ jobs:
 
       - name: Build packages
         run: |
-          pnpm --filter=shadcn build
+          pnpm --filter=shadcn... build
           pnpm --filter=v4 registry:build
+
+      # bun and yarn cannot resolve the workspace: protocol in
+      # packages/shadcn/package.json. Stage a copy of the package whose
+      # @shadcn/registry dependency points at a packed tarball instead. The
+      # node_modules link keeps npm, which links the folder, working as before.
+      - name: Stage shadcn package
+        run: |
+          set -euo pipefail
+          pkgs="$RUNNER_TEMP/packages"
+          staged="$RUNNER_TEMP/shadcn"
+          rm -rf "$pkgs" "$staged"
+          mkdir -p "$pkgs" "$staged"
+          pnpm --filter=@shadcn/registry pack --pack-destination "$pkgs"
+          cp -R packages/shadcn/dist packages/shadcn/package.json "$staged"
+          ln -s "$GITHUB_WORKSPACE/packages/shadcn/node_modules" "$staged/node_modules"
+          node -e '
+            const fs = require("fs")
+            const [file, tarball] = process.argv.slice(1)
+            const pkg = JSON.parse(fs.readFileSync(file, "utf8"))
+            pkg.dependencies["@shadcn/registry"] = `file:${tarball}`
+            fs.writeFileSync(file, JSON.stringify(pkg, null, 2))
+          ' "$staged/package.json" "$(ls "$pkgs"/shadcn-registry-*.tgz)"
+          echo "SHADCN_PACKAGE_DIR=$staged" >> "$GITHUB_ENV"
 
       - name: Validate templates
         env:
@@ -262,7 +285,7 @@ jobs:
                   SHADCN_TEMPLATE_DIR="$SHADCN_TEMPLATE_DIR" \
                     REGISTRY_URL="$REGISTRY_URL" \
                     npm_config_user_agent="bun/$(bun --version)" \
-                    bunx --bun --package "$GITHUB_WORKSPACE/packages/shadcn" \
+                    bunx --bun --package "$SHADCN_PACKAGE_DIR" \
                       shadcn "${args[@]}"
                 )
                 validate_non_pnpm_project \
@@ -277,7 +300,7 @@ jobs:
                   SHADCN_TEMPLATE_DIR="$SHADCN_TEMPLATE_DIR" \
                     REGISTRY_URL="$REGISTRY_URL" \
                     npm_config_user_agent="npm/$(npm --version)" \
-                    npx --yes --package "$GITHUB_WORKSPACE/packages/shadcn" \
+                    npx --yes --package "$SHADCN_PACKAGE_DIR" \
                       shadcn "${args[@]}"
                 )
                 validate_non_pnpm_project \
@@ -293,7 +316,7 @@ jobs:
                     REGISTRY_URL="$REGISTRY_URL" \
                     COREPACK_ENABLE_PROJECT_SPEC=0 \
                     npm_config_user_agent="yarn/$(COREPACK_ENABLE_PROJECT_SPEC=0 yarn --version)" \
-                    yarn dlx --package "$GITHUB_WORKSPACE/packages/shadcn" \
+                    yarn dlx --package "$SHADCN_PACKAGE_DIR" \
                       shadcn "${args[@]}"
                 )
                 validate_non_pnpm_project \

@@ -1,9 +1,9 @@
 import path from "path"
 import { buildOptionsSchema } from "@/src/commands/build"
 import * as ERRORS from "@/src/utils/errors"
-import { getConfig } from "@/src/utils/get-config"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
+import { getConfig } from "@shadcn/registry/internal/utils/get-config"
+import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
+import { logger } from "@shadcn/registry/internal/utils/logger"
 import fs from "fs-extra"
 import { z } from "zod"
 
