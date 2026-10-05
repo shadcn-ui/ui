@@ -1,5 +1,6 @@
 ---
 "@shadcn/registry": patch
+"shadcn": patch
 ---
 
-Edit the Next.js layout for font items without ts-morph, and skip with a warning instead of writing an invalid layout.
+Leave the Next.js layout untouched and warn, instead of writing an invalid layout or failing the install, when adding font items would introduce a syntax error or the layout cannot be parsed. The layout font editor no longer uses ts-morph.

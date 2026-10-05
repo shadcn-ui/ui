@@ -14,7 +14,13 @@ const PARSER_OPTIONS: ParserOptions = {
   errorRecovery: true,
   // TypeScript keeps parentheses as ParenthesizedExpression nodes.
   createParenthesizedExpressions: true,
-  plugins: ["typescript", "jsx", "decorators-legacy"],
+  plugins: [
+    "typescript",
+    "jsx",
+    "decorators-legacy",
+    // TypeScript 4.9's `accessor` class fields.
+    "decoratorAutoAccessors",
+  ],
 }
 
 // With errorRecovery, Babel also reports these, which TypeScript reports as
@@ -30,7 +36,9 @@ export function parseModule(code: string, options: { tokens?: boolean } = {}) {
   return parse(code, { ...PARSER_OPTIONS, tokens: options.tokens })
 }
 
-// How many syntactic diagnostics TypeScript would report for the file.
+// Babel's recoverable parse errors, without those TypeScript reports as
+// semantic errors: close enough to TypeScript's syntactic diagnostics to
+// tell whether an edit broke the file.
 export function countSyntaxErrors(code: string) {
   try {
     const errors = parseModule(code).errors ?? []

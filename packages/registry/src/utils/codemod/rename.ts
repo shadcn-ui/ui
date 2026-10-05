@@ -39,9 +39,12 @@ export function renameVariable(
   )!
   const { id } = declaration.node
   if (id.type !== "Identifier") {
-    throw new Error(
-      `Not implemented renameable scenario for ${id.type === "ArrayPattern" ? "ArrayBindingPattern" : "ObjectBindingPattern"}.`
-    )
+    // ts-morph's own message, with TypeScript's names for the patterns.
+    const patternKind =
+      id.type === "ArrayPattern"
+        ? "ArrayBindingPattern"
+        : "ObjectBindingPattern"
+    throw new Error(`Not implemented renameable scenario for ${patternKind}.`)
   }
 
   const binding = declaration.scope.getBinding(id.name)!
@@ -101,15 +104,22 @@ function isReference(path: NodePath<t.Identifier | t.JSXIdentifier>) {
       return key === "local"
     case "TSQualifiedName":
       return key === "left"
+    case "JSXOpeningElement":
+    case "JSXClosingElement":
+      // TypeScript treats a lowercase or dashed tag name as an intrinsic
+      // element, not a reference.
+      return !/^[a-z]|-/.test(path.node.name)
     // An import declares a binding of its own.
     case "ImportSpecifier":
     case "ImportDefaultSpecifier":
     case "ImportNamespaceSpecifier":
+      return false
+    // A type name, a #private name, an attribute or namespaced JSX name, or a
+    // label.
     case "TSTypeReference":
     case "PrivateName":
     case "JSXAttribute":
-    case "JSXOpeningElement":
-    case "JSXClosingElement":
+    case "JSXNamespacedName":
     case "LabeledStatement":
     case "BreakStatement":
     case "ContinueStatement":

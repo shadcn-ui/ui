@@ -69,9 +69,10 @@ function insertIntoCommaSeparatedNodes(
   const afterLastNode = skipTrivia(code, lastNodeEnd)
   const hasTrailingComma = code[afterLastNode] === ","
 
+  const commentsAfterLastNode = getTrailingComments(code, lastNodeEnd)
   const separator = hasTrailingComma
-    ? `${getTrailingComments(code, lastNodeEnd)},${getTrailingComments(code, afterLastNode + 1)}`
-    : `,${getTrailingComments(code, lastNodeEnd)}`
+    ? `${commentsAfterLastNode},${getTrailingComments(code, afterLastNode + 1)}`
+    : `,${commentsAfterLastNode}`
   const closeBrace = hasTrailingComma
     ? skipTrivia(code, afterLastNode + 1)
     : afterLastNode

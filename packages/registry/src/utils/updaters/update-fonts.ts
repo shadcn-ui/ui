@@ -4,7 +4,11 @@ import {
   RegistryFontItem,
   registryResolvedItemsTreeSchema,
 } from "@/src/registry/schema"
-import { applyEdits, applyManipulation } from "@/src/utils/codemod/edits"
+import {
+  applyEdits,
+  applyManipulation,
+  SyntaxErrorInsertedError,
+} from "@/src/utils/codemod/edits"
 import { getReplacementText } from "@/src/utils/codemod/indentation"
 import { addNamedImport } from "@/src/utils/codemod/named-imports"
 import {
@@ -146,15 +150,11 @@ export async function updateFonts(
   })?.start()
 
   try {
-    const skippedLayoutPath = await updateNextFonts(fonts, config, projectInfo)
+    const skippedLayout = await updateNextFonts(fonts, config, projectInfo)
     fontsSpinner?.succeed("Updating fonts.")
     // Warn once the spinner has stopped, so the warning gets its own line.
-    if (skippedLayoutPath && !options.silent) {
-      const layout = path.relative(config.resolvedPaths.cwd, skippedLayoutPath)
-      const fontNames = fonts.map((font) => font.name).join(", ")
-      logger.warn(
-        `Skipped ${layout}: adding ${fontNames} would leave it with a syntax error. Add the fonts to it manually.`
-      )
+    if (skippedLayout && !options.silent) {
+      logger.warn(getSkippedLayoutWarning(skippedLayout, fonts, config))
     }
   } catch (error) {
     fontsSpinner?.fail(`Failed to update fonts.`)
@@ -162,13 +162,32 @@ export async function updateFonts(
   }
 }
 
-// Returns the layout's path when it is left as it was because the edit would
-// break its syntax.
+// A layout updateNextFonts left as it was, and why.
+interface SkippedLayout {
+  path: string
+  reason: "unparsable" | "syntax-error-inserted"
+}
+
+function getSkippedLayoutWarning(
+  skippedLayout: SkippedLayout,
+  fonts: RegistryFontItem[],
+  config: Config
+) {
+  const layout = path.relative(config.resolvedPaths.cwd, skippedLayout.path)
+  const fontNames = fonts.map((font) => font.name).join(", ")
+  const problem =
+    skippedLayout.reason === "unparsable"
+      ? `could not parse it to add ${fontNames}`
+      : `adding ${fontNames} would leave it with a syntax error`
+
+  return `Skipped ${layout}: ${problem}. Add the fonts to it manually.`
+}
+
 async function updateNextFonts(
   fonts: RegistryFontItem[],
   config: Config,
   projectInfo: ProjectInfo
-) {
+): Promise<SkippedLayout | undefined> {
   // Find layout file.
   const layoutPath = await findLayoutFile(config, projectInfo)
 
@@ -177,16 +196,28 @@ async function updateNextFonts(
   }
 
   const layoutContent = await fs.readFile(layoutPath, "utf-8")
-  const updatedContent = await transformLayoutFonts(
-    layoutContent,
-    fonts,
-    config
-  )
 
-  // The edit can break a layout the editor does not expect, like a cn()
-  // className with only font arguments, which becomes `cn(, ...)`.
+  // Babel gives up on some syntax errors that TypeScript, and so ts-morph,
+  // parsed through.
+  if (countSyntaxErrors(layoutContent) === Infinity) {
+    return { path: layoutPath, reason: "unparsable" }
+  }
+
+  let updatedContent: string
+  try {
+    updatedContent = await transformLayoutFonts(layoutContent, fonts, config)
+  } catch (error) {
+    if (error instanceof SyntaxErrorInsertedError) {
+      return { path: layoutPath, reason: "syntax-error-inserted" }
+    }
+    throw error
+  }
+
+  // ts-morph writes some edits that break a layout the editor does not
+  // expect, like a cn() className with only font arguments, which becomes
+  // `cn(, ...)`.
   if (countSyntaxErrors(updatedContent) > countSyntaxErrors(layoutContent)) {
-    return layoutPath
+    return { path: layoutPath, reason: "syntax-error-inserted" }
   }
 
   if (updatedContent !== layoutContent) {
@@ -282,8 +313,6 @@ export async function transformLayoutFonts(
 
     if (existingVarDecl) {
       const { id } = existingVarDecl
-      const existingName =
-        id.type === "Identifier" ? id.name : getText(code, id)
       // Replace the initializer of the existing declaration.
       code = setInitializer(
         code,
@@ -292,7 +321,7 @@ export async function transformLayoutFonts(
       )
       // Update the variable name if different. The name comes before the
       // initializer, so it has not moved.
-      if (existingName !== varName) {
+      if (id.type !== "Identifier" || id.name !== varName) {
         code = renameVariable(code, id.start!, varName)
       }
       resolvedVarName = varName
@@ -302,7 +331,7 @@ export async function transformLayoutFonts(
       const insertPosition = findInsertPosition(statements)
 
       // Add variable declaration.
-      const statement = insertStatement(
+      const inserted = insertStatement(
         code,
         statements,
         insertPosition,
@@ -311,8 +340,8 @@ export async function transformLayoutFonts(
       )
 
       // Add a blank line after the declaration.
-      code = applyEdits(statement.code, [
-        { start: statement.end, end: statement.end, text: "\n" },
+      code = applyEdits(inserted.code, [
+        { start: inserted.end, end: inserted.end, text: "\n" },
       ])
     }
 
@@ -524,7 +553,15 @@ function getHtmlOpeningElements(file: t.File) {
       elements.push(node)
     }
   })
+  // traverseFast follows VISITOR_KEYS, and ts-morph's getDescendantsOfKind
+  // is in source order.
   return elements.sort((a, b) => a.start! - b.start!)
+}
+
+// Each edit reparses the code, and no edit adds or removes an <html>
+// element, so it is found again by index.
+function getHtmlOpeningElement(code: string, index: number) {
+  return getHtmlOpeningElements(parseModule(code))[index]
 }
 
 function getClassNameAttribute(element: t.JSXOpeningElement) {
@@ -536,22 +573,20 @@ function getClassNameAttribute(element: t.JSXOpeningElement) {
   )
 }
 
+function getClassNameInitializer(code: string, index: number) {
+  return getClassNameAttribute(getHtmlOpeningElement(code, index))!.value!
+}
+
 function updateHtmlClassName(
   code: string,
   fontVariableNames: string[],
   fontUtilityClasses: string[],
   config: Config
 ) {
-  // Find the <html> JSX elements. Each edit reparses the code, and no edit
-  // adds or removes one, so the elements are found again by index.
-  const getElement = (index: number) =>
-    getHtmlOpeningElements(parseModule(code))[index]
+  // Find the <html> JSX elements.
   const elementCount = getHtmlOpeningElements(parseModule(code)).length
 
   for (let index = 0; index < elementCount; index++) {
-    const getClassNameInitializer = () =>
-      getClassNameAttribute(getElement(index))!.value!
-
     // Build the new expressions: utility classes as strings, then .variable expressions.
     const newUtilityClasses = fontUtilityClasses.map((cls) => `"${cls}"`)
     const newVarExpressions = fontVariableNames.map(
@@ -559,13 +594,15 @@ function updateHtmlClassName(
     )
     const allNewArgs = [...newUtilityClasses, ...newVarExpressions]
 
-    const classNameAttr = getClassNameAttribute(getElement(index))
+    const classNameAttr = getClassNameAttribute(
+      getHtmlOpeningElement(code, index)
+    )
     if (!classNameAttr) {
       // Add className attribute with font utility classes and variables.
       code = ensureCnImport(code, config)
       return addJsxAttribute(
         code,
-        getElement(index),
+        getHtmlOpeningElement(code, index),
         `className={cn(${allNewArgs.join(", ")})}`
       )
     }
@@ -581,7 +618,7 @@ function updateHtmlClassName(
       code = ensureCnImport(code, config)
       code = setJsxAttributeInitializer(
         code,
-        getClassNameAttribute(getElement(index))!,
+        getClassNameAttribute(getHtmlOpeningElement(code, index))!,
         `{cn("${currentValue}", ${allNewArgs.join(", ")})}`
       )
     } else if (initializer.type === "JSXExpressionContainer") {
@@ -615,18 +652,22 @@ function updateHtmlClassName(
         const newExpr = insertFontVariablesIntoCn(cleanedExpr, allNewArgs)
         // Without arguments left, or with a trailing comma, cn() gets an
         // empty argument: `cn(, ...)`. See takesCommaAt.
-        const emptyArgument = /[(,]\s*\)$/.exec(cleanedExpr)
+        const emptyArgument = EMPTY_ARGUMENT.exec(cleanedExpr)
         if (
           emptyArgument &&
           takesCommaAt(
             parseModule(code),
             initializer.start!,
-            emptyArgument[0].includes("\n")
+            LINE_BREAK.test(emptyArgument[0])
           )
         ) {
-          throw new Error("Manipulation error: A syntax error was inserted.")
+          throw new SyntaxErrorInsertedError()
         }
-        code = replaceJsxExpression(code, initializer, `{${newExpr}}`)
+        code = replaceJsxExpression(
+          code,
+          getClassNameInitializer(code, index),
+          `{${newExpr}}`
+        )
       } else if (/^\w+\.variable$/.test(exprText)) {
         // Single font variable like {inter.variable}.
         // Check if it's already one of our font variables.
@@ -644,7 +685,7 @@ function updateHtmlClassName(
           fontUtilityClasses.length === 0
         code = replaceJsxExpression(
           code,
-          getClassNameInitializer(),
+          getClassNameInitializer(code, index),
           shouldPreserveExisting
             ? `{cn(${exprText}, ${allNewArgs.join(", ")})}`
             : `{cn(${allNewArgs.join(", ")})}`
@@ -663,7 +704,7 @@ function updateHtmlClassName(
         )
         code = replaceJsxExpression(
           code,
-          getClassNameInitializer(),
+          getClassNameInitializer(code, index),
           `{cn(${[...cleanedCnArgs, ...allNewArgs].join(", ")})}`
         )
       } else {
@@ -671,7 +712,7 @@ function updateHtmlClassName(
         code = ensureCnImport(code, config)
         code = replaceJsxExpression(
           code,
-          getClassNameInitializer(),
+          getClassNameInitializer(code, index),
           `{cn(${exprText}, ${allNewArgs.join(", ")})}`
         )
       }
@@ -689,12 +730,12 @@ function addJsxAttribute(
   attributeText: string
 ) {
   const { attributes } = element
-  const insertPos =
+  const insertPosition =
     attributes.length > 0
       ? attributes[attributes.length - 1].end!
       : element.name.end!
   return applyManipulation(code, [
-    { start: insertPos, end: insertPos, text: ` ${attributeText}` },
+    { start: insertPosition, end: insertPosition, text: ` ${attributeText}` },
   ])
 }
 
@@ -730,11 +771,20 @@ function replaceJsxExpression(code: string, expression: t.Node, text: string) {
   ])
 }
 
+// The empty argument at the end of a cn() call, with the comments and line
+// breaks TypeScript skips before its comma.
+const EMPTY_ARGUMENT =
+  /[(,](?:\s|\/\*[\s\S]*?\*\/|\/\/[^\n\r\u2028\u2029]*)*\)$/
+
+// TypeScript's line breaks.
+const LINE_BREAK = /[\n\r\u2028\u2029]/
+
 // TypeScript recovers from an empty argument by skipping its comma, so the
 // call keeps its shape and ts-morph writes the broken text. But when a list
 // around the call takes a comma, TypeScript ends the call there instead, and
-// ts-morph rejects the edit. Those lists are JSX children, array elements,
-// and variable declarations when a line break comes before the comma.
+// ts-morph rejects the edit. Those lists are JSX children, array elements and
+// array patterns, and variable declarations when a line break comes before
+// the comma.
 function takesCommaAt(file: t.File, position: number, afterLineBreak: boolean) {
   let takesComma = false
   t.traverseFast(file, (node) => {
@@ -745,6 +795,7 @@ function takesCommaAt(file: t.File, position: number, afterLineBreak: boolean) {
     if (
       isInJsxChildren(node, position) ||
       node.type === "ArrayExpression" ||
+      node.type === "ArrayPattern" ||
       (node.type === "VariableDeclaration" && afterLineBreak)
     ) {
       takesComma = true

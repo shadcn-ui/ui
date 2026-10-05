@@ -206,9 +206,10 @@ export function getReplacementText(
 }
 
 // TypeScript's SmartIndenter.getIndentation, which ts-morph calls through the
-// language service's getIndentationAtPosition. Ported for positions at the
-// start of a node inside JSX: the comment and literal special cases are left
-// out, and getSmartIndent never assumes a new line before a closing brace.
+// language service's getIndentationAtPosition. Ported for the start of a JSX
+// attribute or its initializer, the positions the font editor replaces at:
+// the comment and literal special cases are left out, and getSmartIndent never
+// assumes a new line before a closing brace.
 function getIndentationAtPosition(code: string, position: number) {
   const file = parseModule(code, { tokens: true })
   const source: Source = {
@@ -615,7 +616,7 @@ function findToken(source: Source, from: number, label: string) {
 // token, or a token node under the deepest node that contains it.
 function getTokenNode(root: SyntaxNode, token: Token): SyntaxNode {
   let node = root
-  for (;;) {
+  while (true) {
     const child = node.children.find(
       (child) => child.start <= token.start && token.end <= child.end
     )
@@ -743,6 +744,7 @@ function addList(
 
 // The Babel nodes directly under node, in no particular order.
 function getChildNodes(node: t.Node) {
+  // Babel's node types have no index signature for VISITOR_KEYS.
   const fields = node as unknown as Record<string, unknown>
   const children: t.Node[] = []
   for (const key of t.VISITOR_KEYS[node.type]) {
