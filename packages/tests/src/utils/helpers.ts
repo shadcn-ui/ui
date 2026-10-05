@@ -36,6 +36,8 @@ export async function runCommand(
     timeout?: number
   }
 ) {
+  const timeout = options?.timeout ?? 60000
+
   try {
     const childProcess = execa("node", [SHADCN_CLI_PATH, ...args], {
       cwd,
@@ -47,10 +49,22 @@ export async function runCommand(
       },
       input: options?.input,
       reject: false,
-      timeout: options?.timeout ?? 60000,
+      timeout,
     })
 
     const result = await childProcess
+
+    // A command killed by the timeout has no exit code. Report it as a
+    // failure, with the reason, instead of letting it pass as exit 0.
+    if (result.timedOut) {
+      return {
+        stdout: result.stdout || "",
+        stderr: [`Command timed out after ${timeout}ms.`, result.stderr]
+          .filter(Boolean)
+          .join("\n"),
+        exitCode: 1,
+      }
+    }
 
     return {
       stdout: result.stdout || "",
