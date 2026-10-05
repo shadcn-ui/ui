@@ -759,4 +759,607 @@ describe("recursivelyResolveFileImports", () => {
 
     expect(result.dependencies).toContain("cn")
   })
+
+  // The crawler only reads `config.resolvedPaths.cwd` and
+  // `projectInfo.aliasPrefix`.
+  function crawl(
+    filePath: string,
+    options: { aliasPrefix?: string; processedFiles?: Set<string> } = {}
+  ) {
+    return recursivelyResolveFileImports(
+      filePath,
+      { resolvedPaths: { cwd: fixtureDir } } as Config,
+      { aliasPrefix: options.aliasPrefix ?? "@" } as ProjectInfo,
+      options.processedFiles
+    )
+  }
+
+  async function writeFiles(files: Record<string, string>) {
+    for (const [filePath, content] of Object.entries(files)) {
+      const absolutePath = path.join(fixtureDir, filePath)
+      await fs.mkdir(path.dirname(absolutePath), { recursive: true })
+      await fs.writeFile(absolutePath, content)
+    }
+  }
+
+  it("crawls relative imports and collects bare packages as dependencies", async () => {
+    await writeFiles({
+      "components/login-form.tsx": `"use client"
+
+import * as React from "react"
+import { createRoot } from "react-dom/client"
+import Link from "next/link"
+import fs from "node:fs"
+import { Slot } from "@radix-ui/react-slot"
+import { cva } from 'class-variance-authority'
+import get from "lodash/get"
+import { Primitive } from "@scope/pkg/sub/path"
+import { helper } from "./login-helpers"
+import { Field } from "../components/field"
+
+export function LoginForm() {
+  return <Field />
+}
+`,
+      "components/login-helpers.ts": `export const helper = 1\n`,
+      "components/field.tsx": `export function Field() {\n  return null\n}\n`,
+    })
+
+    expect(await crawl("components/login-form.tsx")).toMatchInlineSnapshot(`
+      {
+        "dependencies": [
+          "@radix-ui/react-slot",
+          "class-variance-authority",
+          "lodash",
+          "@scope/pkg",
+        ],
+        "files": [
+          {
+            "path": "components/login-form.tsx",
+            "target": "",
+            "type": "registry:component",
+          },
+          {
+            "path": "components/login-helpers.ts",
+            "target": "",
+            "type": "registry:component",
+          },
+          {
+            "path": "components/field.tsx",
+            "target": "",
+            "type": "registry:component",
+          },
+        ],
+      }
+    `)
+  })
+
+  it("crawls alias imports through tsconfig paths and types files by specifier", async () => {
+    await writeFiles({
+      "components/dashboard.tsx": `import { Button } from "@/components/ui/button"
+import { useMobile } from "@/hooks/use-mobile"
+import { formatDate } from "@/lib/format"
+import { cn } from "@/lib/utils"
+import { Chart } from "@/components/chart"
+import { config } from "@/config/site"
+`,
+      "hooks/use-mobile.ts": `import { useSyncExternalStore } from "react"\n`,
+      "lib/format.ts": `import { format } from "date-fns"\n`,
+      "lib/utils.ts": `import { clsx } from "clsx"\n`,
+      "components/chart.tsx": `import * as Recharts from "recharts"\n`,
+      "config/site.ts": `export const config = {}\n`,
+    })
+
+    // `@/lib/utils` is in the file skip list, so `clsx` is never collected.
+    expect(await crawl("components/dashboard.tsx")).toMatchInlineSnapshot(`
+      {
+        "dependencies": [
+          "cn",
+          "date-fns",
+          "recharts",
+        ],
+        "files": [
+          {
+            "path": "components/dashboard.tsx",
+            "target": "",
+            "type": "registry:component",
+          },
+          {
+            "path": "components/ui/button.tsx",
+            "target": "",
+            "type": "registry:ui",
+          },
+          {
+            "path": "hooks/use-mobile.ts",
+            "target": "",
+            "type": "registry:hook",
+          },
+          {
+            "path": "lib/format.ts",
+            "target": "",
+            "type": "registry:lib",
+          },
+          {
+            "path": "components/chart.tsx",
+            "target": "",
+            "type": "registry:component",
+          },
+          {
+            "path": "config/site.ts",
+            "target": "",
+            "type": "registry:component",
+          },
+        ],
+      }
+    `)
+  })
+
+  it("types the root file and relative imports by path substring", async () => {
+    await writeFiles({
+      "components/ui/dialog.tsx": `import { Button } from "./button"\n`,
+      "hooks/use-mobile.ts": `export const useMobile = () => true\n`,
+      "src/lib/format.ts": `export const format = () => ""\n`,
+    })
+
+    // Current behavior: a relative import is always `registry:component`,
+    // even when it points into `ui/`.
+    expect(await crawl("components/ui/dialog.tsx")).toMatchInlineSnapshot(`
+      {
+        "dependencies": [
+          "cn",
+        ],
+        "files": [
+          {
+            "path": "components/ui/dialog.tsx",
+            "target": "",
+            "type": "registry:ui",
+          },
+          {
+            "path": "components/ui/button.tsx",
+            "target": "",
+            "type": "registry:component",
+          },
+        ],
+      }
+    `)
+    // Current behavior: the root path has no leading slash, so `hooks/...`
+    // does not match "/hooks/" and falls back to `registry:component`.
+    expect(await crawl("hooks/use-mobile.ts")).toMatchInlineSnapshot(`
+      {
+        "dependencies": [],
+        "files": [
+          {
+            "path": "hooks/use-mobile.ts",
+            "target": "",
+            "type": "registry:component",
+          },
+        ],
+      }
+    `)
+    expect(await crawl("src/lib/format.ts")).toMatchInlineSnapshot(`
+      {
+        "dependencies": [],
+        "files": [
+          {
+            "path": "src/lib/format.ts",
+            "target": "",
+            "type": "registry:lib",
+          },
+        ],
+      }
+    `)
+  })
+
+  it("keeps dependencies but drops files more than one import deep", async () => {
+    await writeFiles({
+      "components/root.tsx": `import { A } from "./a"\n`,
+      "components/a.tsx": `import { B } from "./b"\nimport { z } from "zod"\nimport data from "./a-data.json"\n`,
+      "components/b.tsx": `import { C } from "@/hooks/use-c"\nimport get from "lodash/get"\n`,
+      "hooks/use-c.ts": `import { motion } from "motion/react"\n`,
+      "components/a-data.json": `{}\n`,
+    })
+
+    // Current behavior: nested files are marked as processed by their own
+    // recursive call, so the parent skips them and only direct imports of the
+    // root (plus never-crawled files like `.json`) end up in `files`.
+    expect(await crawl("components/root.tsx")).toMatchInlineSnapshot(`
+      {
+        "dependencies": [
+          "motion",
+          "lodash",
+          "zod",
+        ],
+        "files": [
+          {
+            "path": "components/root.tsx",
+            "target": "",
+            "type": "registry:component",
+          },
+          {
+            "path": "components/a.tsx",
+            "target": "",
+            "type": "registry:component",
+          },
+          {
+            "path": "components/a-data.json",
+            "target": "",
+            "type": "registry:component",
+          },
+        ],
+      }
+    `)
+  })
+
+  it("counts type-only imports as dependencies and crawls type-only files", async () => {
+    await writeFiles({
+      "components/typed.tsx": `import type { ClassValue } from "clsx"
+import { type VariantProps, cva } from "class-variance-authority"
+import type { Props } from "./types"
+
+export type TypedProps = Props & VariantProps<typeof cva> & { value: ClassValue }
+`,
+      "components/types.ts": `export type Props = { id: string }\n`,
+    })
+
+    expect(await crawl("components/typed.tsx")).toMatchInlineSnapshot(`
+      {
+        "dependencies": [
+          "clsx",
+          "class-variance-authority",
+        ],
+        "files": [
+          {
+            "path": "components/typed.tsx",
+            "target": "",
+            "type": "registry:component",
+          },
+          {
+            "path": "components/types.ts",
+            "target": "",
+            "type": "registry:component",
+          },
+        ],
+      }
+    `)
+  })
+
+  it("reads quoted @import rules in css files as imports", async () => {
+    await writeFiles({
+      "styles/globals.css": `@import "tailwindcss";
+@import "tw-animate-css";
+@import "./theme.css";
+@import url("./url-theme.css");
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.625rem;
+}
+
+@import "late-package";
+`,
+      "styles/theme.css": `@import "./nested-theme.css";\n\n@theme inline {\n  --color-primary: red;\n}\n`,
+      "styles/nested-theme.css": `:root {\n  --nested: 1;\n}\n`,
+      "styles/url-theme.css": `:root {\n  --url: 1;\n}\n`,
+      "components/styled.tsx": `import "./styled.css"\nimport "@/styles/globals.css"\n`,
+      "components/styled.css": `.styled {\n  color: red;\n}\n`,
+    })
+
+    // Current behavior: css is parsed as TSX. Every quoted `@import` becomes an
+    // import declaration (even after other rules), `url(...)` is ignored, and
+    // `nested-theme.css` is dropped because it is two imports deep.
+    expect(await crawl("styles/globals.css")).toMatchInlineSnapshot(`
+      {
+        "dependencies": [
+          "tailwindcss",
+          "tw-animate-css",
+          "shadcn",
+          "late-package",
+        ],
+        "files": [
+          {
+            "path": "styles/globals.css",
+            "target": "",
+            "type": "registry:component",
+          },
+          {
+            "path": "styles/theme.css",
+            "target": "",
+            "type": "registry:component",
+          },
+        ],
+      }
+    `)
+    expect(await crawl("components/styled.tsx")).toMatchInlineSnapshot(`
+      {
+        "dependencies": [
+          "tailwindcss",
+          "tw-animate-css",
+          "shadcn",
+          "late-package",
+        ],
+        "files": [
+          {
+            "path": "components/styled.tsx",
+            "target": "",
+            "type": "registry:component",
+          },
+          {
+            "path": "components/styled.css",
+            "target": "",
+            "type": "registry:component",
+          },
+          {
+            "path": "styles/globals.css",
+            "target": "",
+            "type": "registry:component",
+          },
+        ],
+      }
+    `)
+  })
+
+  it("does not follow export-from, dynamic import(), require() or import-equals", async () => {
+    await writeFiles({
+      "components/barrel.tsx": `import * as React from "react"
+
+export * from "./reexported"
+export { named } from "./named"
+export * as ns from "export-only-package"
+
+const Lazy = React.lazy(() => import("./lazy"))
+const required = require("./required")
+import fsExtra = require("fs-extra")
+
+export { Lazy, required, fsExtra }
+`,
+      "components/reexported.tsx": `import "reexported-dependency"\n`,
+      "components/named.tsx": `export const named = 1\n`,
+      "components/lazy.tsx": `export default function Lazy() {\n  return null\n}\n`,
+      "components/required.ts": `module.exports = {}\n`,
+    })
+
+    expect(await crawl("components/barrel.tsx")).toMatchInlineSnapshot(`
+      {
+        "dependencies": [],
+        "files": [
+          {
+            "path": "components/barrel.tsx",
+            "target": "",
+            "type": "registry:component",
+          },
+        ],
+      }
+    `)
+  })
+
+  it("handles import cycles and self imports", async () => {
+    await writeFiles({
+      "components/cycle-a.tsx": `import { B } from "./cycle-b"\nimport { A } from "./cycle-a"\nimport "a-dependency"\n`,
+      "components/cycle-b.tsx": `import { A } from "./cycle-a"\nimport { B } from "@/components/cycle-b"\nimport "b-dependency"\n`,
+    })
+
+    expect(await crawl("components/cycle-a.tsx")).toMatchInlineSnapshot(`
+      {
+        "dependencies": [
+          "b-dependency",
+          "a-dependency",
+        ],
+        "files": [
+          {
+            "path": "components/cycle-a.tsx",
+            "target": "",
+            "type": "registry:component",
+          },
+          {
+            "path": "components/cycle-b.tsx",
+            "target": "",
+            "type": "registry:component",
+          },
+        ],
+      }
+    `)
+  })
+
+  it("tries lookup extensions in order for extensionless imports", async () => {
+    await writeFiles({
+      "components/entry.tsx": `import { Widget } from "./widget"
+import { legacy } from "./legacy"
+import "./theme"
+import data from "./data.json"
+import again from "./data.json"
+`,
+      "components/widget.tsx": `export const Widget = "tsx"\n`,
+      "components/widget.ts": `export const Widget = "ts"\n`,
+      "components/legacy.js": `export const legacy = 1\n`,
+      "components/theme.css": `.theme {\n}\n`,
+      "components/data.json": `{}\n`,
+    })
+
+    // `.json` imports are listed but never crawled; the duplicate import is
+    // collapsed into one entry.
+    expect(await crawl("components/entry.tsx")).toMatchInlineSnapshot(`
+      {
+        "dependencies": [],
+        "files": [
+          {
+            "path": "components/entry.tsx",
+            "target": "",
+            "type": "registry:component",
+          },
+          {
+            "path": "components/widget.tsx",
+            "target": "",
+            "type": "registry:component",
+          },
+          {
+            "path": "components/legacy.js",
+            "target": "",
+            "type": "registry:component",
+          },
+          {
+            "path": "components/theme.css",
+            "target": "",
+            "type": "registry:component",
+          },
+          {
+            "path": "components/data.json",
+            "target": "",
+            "type": "registry:component",
+          },
+        ],
+      }
+    `)
+  })
+
+  it("lists unresolved extensionless imports without crawling them", async () => {
+    await writeFiles({
+      "components/missing.tsx": `import { Missing } from "./does-not-exist"
+import { Nope } from "@/components/nope"
+import { Folder } from "./folder"
+import { Hash } from "#unmapped/thing"
+`,
+      "components/folder/index.tsx": `import "folder-dependency"\n`,
+    })
+
+    // Current behavior: directory imports do not resolve `index` files,
+    // unresolved paths are still listed (without an extension), and an
+    // unmapped `#` import falls through tsconfig's match-all to `<cwd>/#...`.
+    expect(await crawl("components/missing.tsx")).toMatchInlineSnapshot(`
+      {
+        "dependencies": [],
+        "files": [
+          {
+            "path": "components/missing.tsx",
+            "target": "",
+            "type": "registry:component",
+          },
+          {
+            "path": "components/does-not-exist",
+            "target": "",
+            "type": "registry:component",
+          },
+          {
+            "path": "components/nope",
+            "target": "",
+            "type": "registry:component",
+          },
+          {
+            "path": "components/folder",
+            "target": "",
+            "type": "registry:component",
+          },
+          {
+            "path": "#unmapped/thing",
+            "target": "",
+            "type": "registry:component",
+          },
+        ],
+      }
+    `)
+  })
+
+  it("skips alias imports that tsconfig paths cannot resolve", async () => {
+    await writeFiles({
+      "components/scoped.tsx": `import { Button } from "@acme/ui/button"
+import { Slot } from "@radix-ui/react-slot"
+`,
+    })
+
+    // `@acme/ui/button` looks like a scoped package and no tsconfig path
+    // matches it, so it is neither a file nor a dependency.
+    expect(await crawl("components/scoped.tsx", { aliasPrefix: "@acme" }))
+      .toMatchInlineSnapshot(`
+      {
+        "dependencies": [
+          "@radix-ui/react-slot",
+        ],
+        "files": [
+          {
+            "path": "components/scoped.tsx",
+            "target": "",
+            "type": "registry:component",
+          },
+        ],
+      }
+    `)
+  })
+
+  it("rejects when an import with an extension points to a missing file", async () => {
+    await writeFiles({
+      "components/gone.tsx": `import { Gone } from "./gone-file.tsx"\n`,
+      "components/esm.tsx": `import { format } from "./format.js"\n`,
+      "components/format.ts": `export const format = 1\n`,
+    })
+
+    await expect(crawl("components/gone.tsx")).rejects.toThrow(/^ENOENT/)
+    // Current behavior: an ESM-style `.js` specifier for a `.ts` file is not
+    // mapped back to the source file.
+    await expect(crawl("components/esm.tsx")).rejects.toThrow(/^ENOENT/)
+  })
+
+  it("rejects when the root file does not exist", async () => {
+    await expect(crawl("components/not-there.tsx")).rejects.toThrow(/^ENOENT/)
+  })
+
+  it("returns empty results for skipped, unsupported, processed and non-file paths", async () => {
+    await writeFiles({
+      "lib/utils.ts": `import { clsx } from "clsx"\n`,
+      "README.md": `# Readme\n`,
+      "components/processed.tsx": `import "processed-dependency"\n`,
+    })
+    await fs.mkdir(path.join(fixtureDir, "components", "directory.tsx"), {
+      recursive: true,
+    })
+
+    const empty = { dependencies: [], files: [] }
+    expect(await crawl("lib/utils.ts")).toEqual(empty)
+    expect(await crawl("README.md")).toEqual(empty)
+    expect(
+      await crawl("components/processed.tsx", {
+        processedFiles: new Set(["components/processed.tsx"]),
+      })
+    ).toEqual(empty)
+    expect(await crawl("components/directory.tsx")).toEqual(empty)
+  })
+
+  it("adds the crawled path to processedFiles", async () => {
+    await writeFiles({
+      "components/tracked.tsx": `import { Helper } from "./tracked-helper"\n`,
+      "components/tracked-helper.tsx": `export const Helper = 1\n`,
+    })
+
+    const processedFiles = new Set<string>()
+    await crawl("components/tracked.tsx", { processedFiles })
+
+    expect(Array.from(processedFiles)).toEqual([
+      "components/tracked.tsx",
+      "components/tracked-helper.tsx",
+    ])
+  })
+
+  it("returns empty results when tsconfig cannot be loaded", async () => {
+    const noTsConfigDir = await fs.mkdtemp(
+      path.join(tmpdir(), "shadcn-registry-no-tsconfig-")
+    )
+
+    try {
+      await fs.mkdir(path.join(noTsConfigDir, "components"))
+      await fs.writeFile(
+        path.join(noTsConfigDir, "components", "card.tsx"),
+        `import { Slot } from "@radix-ui/react-slot"\n`
+      )
+
+      expect(
+        await recursivelyResolveFileImports(
+          "components/card.tsx",
+          { resolvedPaths: { cwd: noTsConfigDir } } as Config,
+          { aliasPrefix: "@" } as ProjectInfo
+        )
+      ).toEqual({ dependencies: [], files: [] })
+    } finally {
+      await fs.rm(noTsConfigDir, { recursive: true, force: true })
+    }
+  })
 })

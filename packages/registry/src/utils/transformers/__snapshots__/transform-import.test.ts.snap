@@ -154,3 +154,63 @@ async function load() {
 }
     "
 `;
+
+exports[`transformImport characterization > cn imports and the workspace alias derived from utils: '# alias' 1`] = `
+"import { cn } from "#utils"
+import { cn as cx } from "#utils"
+import { cn as pkg } from "@acme/ui/lib/utils"
+import { cn as local } from "~/lib/utils"
+import { cn as bare } from "utils/lib/utils"
+import { other } from "@acme/ui/lib/utils"
+"
+`;
+
+exports[`transformImport characterization > cn imports and the workspace alias derived from utils: '/lib/utils suffix' 1`] = `
+"import { cn } from "@acme/ui/lib/utils"
+import { cn as cx } from "@acme/ui/lib/utils"
+import { cn as pkg } from "@acme/ui/lib/utils"
+import { cn as local } from "~/lib/utils"
+import { cn as bare } from "utils/lib/utils"
+import { other } from "@acme/ui/lib/utils"
+"
+`;
+
+exports[`transformImport characterization > cn imports and the workspace alias derived from utils: 'scoped alias without a name' 1`] = `
+"import { cn } from "@utils"
+import { cn as cx } from "@utils"
+import { cn as pkg } from "@acme/ui/lib/utils"
+import { cn as local } from "~/lib/utils"
+import { cn as bare } from "utils/lib/utils"
+import { other } from "@acme/ui/lib/utils"
+"
+`;
+
+exports[`transformImport characterization > cn imports and the workspace alias derived from utils: 'scoped package with subpath' 1`] = `
+"import { cn } from "@acme/ui/utils"
+import { cn as cx } from "@acme/ui/utils"
+import { cn as pkg } from "@acme/ui/utils"
+import { cn as local } from "~/lib/utils"
+import { cn as bare } from "utils/lib/utils"
+import { other } from "@acme/ui/lib/utils"
+"
+`;
+
+exports[`transformImport characterization > cn imports and the workspace alias derived from utils: 'unscoped alias with a slash' 1`] = `
+"import { cn } from "~/utils"
+import { cn as cx } from "~/utils"
+import { cn as pkg } from "@acme/ui/lib/utils"
+import { cn as local } from "~/utils"
+import { cn as bare } from "utils/lib/utils"
+import { other } from "@acme/ui/lib/utils"
+"
+`;
+
+exports[`transformImport characterization > cn imports and the workspace alias derived from utils: 'unscoped alias without a slash' 1`] = `
+"import { cn } from "utils"
+import { cn as cx } from "utils"
+import { cn as pkg } from "@acme/ui/lib/utils"
+import { cn as local } from "~/lib/utils"
+import { cn as bare } from "utils"
+import { other } from "@acme/ui/lib/utils"
+"
+`;
