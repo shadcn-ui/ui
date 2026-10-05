@@ -5,13 +5,13 @@ import {
   RegistrySourceFileError,
   RegistryValidationError,
 } from "@/src/registry/errors"
-import { isUrl } from "@/src/registry/utils"
 import {
   registryChunkSchema,
   registryItemSchema,
   type Registry,
   type RegistryItem,
-} from "@/src/schema"
+} from "@/src/registry/schema"
+import { isUrl } from "@/src/registry/utils"
 import { z } from "zod"
 
 type RegistryChunk = z.infer<typeof registryChunkSchema>

@@ -7,7 +7,7 @@ import {
   registryItemFileSchema,
   registryItemSchema,
   workspaceConfigSchema,
-} from "@/src/schema"
+} from "@/src/registry/schema"
 import { getSupportedFontMarkers } from "@/src/utils/font-markers"
 import {
   findCommonRoot,

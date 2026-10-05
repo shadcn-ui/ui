@@ -5,7 +5,7 @@ import {
   configSchema,
   registryItemFileSchema,
   registryItemSchema,
-} from "@/src/schema"
+} from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { getProjectInfo, ProjectInfo } from "@/src/utils/get-project-info"
 import {
