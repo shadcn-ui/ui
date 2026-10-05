@@ -8,6 +8,12 @@ updates:
       deps:
         applies-to: "version-updates"
         update-types: ["minor", "patch"]
+        exclude-patterns:
+          ["ai", "@ai-sdk/*", "@tanstack/*", "@base-ui/*", "fumadocs*"]
+      framework-deps:
+        applies-to: "version-updates"
+        update-types: ["minor", "patch"]
+        patterns: ["ai", "@ai-sdk/*", "@tanstack/*", "@base-ui/*", "fumadocs*"]
     ignore:
       - dependency-name: "@types/node"
         update-types: ["version-update:semver-major"]

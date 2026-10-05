@@ -25,11 +25,11 @@
     "@vitejs/plugin-react": "^6",
     "eslint": "^10",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
+    "eslint-plugin-react-refresh": "^0.5.7",
     "globals": "^17",
-    "prettier": "^3.9.6",
+    "prettier": "^3.9.9",
     "prettier-plugin-tailwindcss": "^0.8.1",
-    "typescript": "~6",
+    "typescript": "~6.0.2",
     "typescript-eslint": "^8",
     "vite": "^8"
   }
