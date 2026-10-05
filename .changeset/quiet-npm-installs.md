@@ -3,4 +3,4 @@
 "shadcn": patch
 ---
 
-skip `npm audit` and the funding check when installing or removing dependencies with npm
+Skip `npm audit` and the funding check when installing or removing dependencies, or creating a project, with npm.

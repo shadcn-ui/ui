@@ -104,6 +104,9 @@ export function getInstallArgs(packageManager: string): string[] {
       // Yarn enables immutable installs in CI by default.
       // New template projects need to create their lockfile on first install.
       return ["--no-immutable"]
+    case "npm":
+      // The output is not shown, and npm's audit can take most of the install time.
+      return ["--no-audit", "--no-fund"]
     default:
       return []
   }
