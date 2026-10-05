@@ -6,6 +6,8 @@ import {
   getContentBottom,
   getElementScrollTop,
   getLastScrollAnchor,
+  getFirstMessageItem,
+  getMessageIndex,
   getMessageScrollerScrollable,
   getNewScrollAnchor,
   getUnanchoredScrollAnchor,
@@ -447,5 +449,24 @@ describe("getMessageScrollerScrollable", () => {
       start: true,
       end: true,
     })
+  })
+})
+
+describe("getFirstMessageItem / getMessageIndex", () => {
+  it("skips rows without a messageId", () => {
+    const lead = document.createElement("div")
+    const items = [lead, ...createItems([{ id: "a" }, { id: "b" }])]
+
+    expect(getFirstMessageItem(items)).toBe(items[1])
+    expect(getMessageIndex(items, items[2]!)).toBe(1)
+  })
+
+  it("counts only messages before the item", () => {
+    const lead = document.createElement("div")
+    const items = createItems([{ id: "o0" }, { id: "o1" }, { id: "a" }])
+    items.unshift(lead)
+
+    expect(getMessageIndex(items, items[3]!)).toBe(2)
+    expect(getMessageIndex(items, document.createElement("div"))).toBe(-1)
   })
 })

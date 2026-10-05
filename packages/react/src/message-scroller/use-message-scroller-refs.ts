@@ -25,7 +25,7 @@ type MessageScrollerRefs = {
   streamingTurnRef: React.RefObject<HTMLElement | null>
   contentRef: React.RefObject<HTMLDivElement | null>
   defaultScrollPositionAppliedRef: React.RefObject<boolean>
-  firstItemRef: React.RefObject<HTMLElement | null>
+  firstMessageItemRef: React.RefObject<HTMLElement | null>
   itemCountRef: React.RefObject<number>
   lastScrollTopRef: React.RefObject<number>
   messageElementsRef: React.RefObject<Map<string, HTMLElement>>
@@ -79,7 +79,7 @@ function useMessageScrollerRefs({
   const defaultScrollPositionAppliedRef = React.useRef(false)
   const scrollEdgeThresholdRef = React.useRef(scrollEdgeThreshold)
   const itemCountRef = React.useRef(0)
-  const firstItemRef = React.useRef<HTMLElement | null>(null)
+  const firstMessageItemRef = React.useRef<HTMLElement | null>(null)
   // The scrollTop seen by the previous state commit, so follow-release can tell
   // a reader scrolling up from content growing past the live edge.
   const lastScrollTopRef = React.useRef(0)
@@ -155,7 +155,7 @@ function useMessageScrollerRefs({
     streamingTurnRef,
     contentRef,
     defaultScrollPositionAppliedRef,
-    firstItemRef,
+    firstMessageItemRef,
     itemCountRef,
     lastScrollTopRef,
     messageElementsRef,
