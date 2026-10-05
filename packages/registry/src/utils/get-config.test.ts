@@ -183,15 +183,10 @@ describe("explorer", () => {
       })
     })
 
-    it("returns an empty result for an empty file", async () => {
+    it("returns null for an empty file", async () => {
       const dir = await createTempDir({ "components.json": "" })
-      const file = path.join(dir, "components.json")
 
-      expect(await explorer.load(file)).toEqual({
-        config: undefined,
-        filepath: file,
-        isEmpty: true,
-      })
+      expect(await explorer.load(path.join(dir, "components.json"))).toBeNull()
     })
 
     it("throws when the file cannot be read", async () => {
@@ -221,21 +216,22 @@ describe("explorer", () => {
     })
   })
 
-  // Current behavior, removed with cosmiconfig.
-  it("merges the files listed in $import", async () => {
+  it("treats $import as a plain key", async () => {
     const dir = await createTempDir({
-      "base.json": JSON.stringify({ style: "new-york", rsc: true }),
+      "base.json": JSON.stringify({ style: "new-york" }),
       "components.json": JSON.stringify({ $import: "./base.json", rsc: false }),
     })
 
     expect(await explorer.search(dir)).toMatchObject({
-      config: { style: "new-york", rsc: false },
+      config: { $import: "./base.json", rsc: false },
     })
   })
 
-  // Current behavior, removed with cosmiconfig.
-  it("follows a cosmiconfig meta config in the working directory", async () => {
+  it("is not affected by files in the working directory", async () => {
+    // cosmiconfig read a meta config from here when it was created, and
+    // threw on an invalid package.json.
     const root = await createTempDir({
+      "package.json": "{ invalid }",
       ".config/config.json": JSON.stringify({
         cosmiconfig: { searchPlaces: [".config/{name}.json"] },
       }),
@@ -248,9 +244,7 @@ describe("explorer", () => {
       vi.resetModules()
       const { explorer } = await import("./get-config")
 
-      expect(await explorer.search(path.join(root, "project"))).toMatchObject({
-        config: { style: "new-york" },
-      })
+      expect(await explorer.search(path.join(root, "project"))).toBeNull()
     } finally {
       process.chdir(cwd)
     }

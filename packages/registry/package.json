@@ -70,7 +70,6 @@
     "@babel/preset-typescript": "^7.27.1",
     "@dotenvx/dotenvx": "^1.48.4",
     "cn": "^0.2.4",
-    "cosmiconfig": "^9.0.0",
     "deepmerge": "^4.3.1",
     "execa": "^9.6.0",
     "fast-glob": "^3.3.3",
