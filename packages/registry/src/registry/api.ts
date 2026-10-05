@@ -35,12 +35,12 @@ import {
   registrySchema,
 } from "@/src/schema"
 import { Config, explorer } from "@/src/utils/get-config"
-import { cosmiconfig } from "cosmiconfig"
+import { createJsonConfigExplorer } from "@/src/utils/json-config"
 import { z } from "zod"
 
-const packageRegistriesExplorer = cosmiconfig("registries", {
-  packageProp: "registries",
-  searchPlaces: ["package.json"],
+const packageRegistriesExplorer = createJsonConfigExplorer({
+  filename: "package.json",
+  property: "registries",
 })
 
 const registriesConfigFileSchema = z.object({

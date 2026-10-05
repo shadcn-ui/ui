@@ -1,17 +1,255 @@
 import os from "os"
 import path from "path"
-import { getFixturesDir } from "@/src/test-helpers"
+import { getFixturesDir, writeFiles } from "@/src/test-helpers"
 import { getProjectConfig } from "@/src/utils/get-project-info"
 import fs from "fs-extra"
-import { describe, expect, it } from "vitest"
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
 import {
   createConfig,
+  explorer,
   getBase,
   getConfig,
   getRawConfig,
   getWorkspaceConfig,
 } from "./get-config"
+
+const tempDirs: string[] = []
+
+async function createTempDir(files: Record<string, string | Buffer> = {}) {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), "shadcn-config-"))
+  tempDirs.push(dir)
+  await writeFiles(dir, files)
+  return dir
+}
+
+afterEach(async () => {
+  await Promise.all(tempDirs.splice(0).map((dir) => fs.remove(dir)))
+})
+
+describe("explorer", () => {
+  beforeEach(() => {
+    explorer.clearCaches()
+  })
+
+  describe("search", () => {
+    it("returns the components.json in the directory", async () => {
+      const dir = await createTempDir({
+        "components.json": JSON.stringify({ style: "new-york" }),
+      })
+
+      expect(await explorer.search(dir)).toEqual({
+        config: { style: "new-york" },
+        filepath: path.join(dir, "components.json"),
+      })
+    })
+
+    it("only looks in the given directory", async () => {
+      const dir = await createTempDir({
+        "components.json": JSON.stringify({ style: "new-york" }),
+        "child/.gitkeep": "",
+      })
+
+      expect(await explorer.search(path.join(dir, "child"))).toBeNull()
+    })
+
+    it("returns null when the directory does not exist", async () => {
+      const dir = await createTempDir()
+
+      expect(await explorer.search(path.join(dir, "missing"))).toBeNull()
+    })
+
+    it.each([
+      ["is missing", {}],
+      ["is empty", { "components.json": "" }],
+      ["is whitespace", { "components.json": " \n\t\n" }],
+      ["is a byte order mark and CRLF", { "components.json": "\uFEFF\r\n" }],
+      ["is JSON null", { "components.json": "null" }],
+      ["is a directory", { "components.json/.gitkeep": "" }],
+    ])("returns null when components.json %s", async (_, files) => {
+      const dir = await createTempDir(files)
+
+      expect(await explorer.search(dir)).toBeNull()
+    })
+
+    it("caches a null result until clearCaches()", async () => {
+      const dir = await createTempDir()
+
+      expect(await explorer.search(dir)).toBeNull()
+      await fs.writeJson(path.join(dir, "components.json"), {
+        style: "new-york",
+      })
+      expect(await explorer.search(dir)).toBeNull()
+
+      explorer.clearCaches()
+      expect(await explorer.search(dir)).toMatchObject({
+        config: { style: "new-york" },
+      })
+    })
+
+    it.skipIf(process.platform === "win32" || process.getuid?.() === 0)(
+      "returns null when components.json is unreadable",
+      async () => {
+        const dir = await createTempDir({
+          "components.json": JSON.stringify({ style: "new-york" }),
+        })
+        await fs.chmod(path.join(dir, "components.json"), 0o000)
+
+        expect(await explorer.search(dir)).toBeNull()
+      }
+    )
+
+    it.each([
+      ["invalid JSON", "{ invalid }"],
+      ["a trailing comma", '{ "style": "new-york", }'],
+      ["a comment", '// shadcn\n{ "style": "new-york" }'],
+      ["a byte order mark", '\uFEFF{ "style": "new-york" }'],
+      ["UTF-16", Buffer.from('\uFEFF{ "style": "new-york" }', "utf16le")],
+    ])("throws on %s, naming the file", async (_, contents) => {
+      const dir = await createTempDir({ "components.json": contents })
+
+      await expect(explorer.search(dir)).rejects.toThrow(
+        `JSON Error in ${path.join(dir, "components.json")}:\n`
+      )
+    })
+
+    it("resolves a relative directory from the working directory", async () => {
+      const dir = await createTempDir({
+        "components.json": JSON.stringify({ style: "new-york" }),
+      })
+
+      expect(await explorer.search(path.relative(process.cwd(), dir))).toEqual({
+        config: { style: "new-york" },
+        filepath: path.join(dir, "components.json"),
+      })
+    })
+
+    it("caches results until clearCaches()", async () => {
+      const dir = await createTempDir({
+        "components.json": JSON.stringify({ style: "new-york" }),
+      })
+
+      const first = await explorer.search(dir)
+      await fs.writeJson(path.join(dir, "components.json"), {
+        style: "default",
+      })
+      expect(await explorer.search(dir)).toBe(first)
+
+      explorer.clearCaches()
+      expect(await explorer.search(dir)).toMatchObject({
+        config: { style: "default" },
+      })
+    })
+
+    it("caches a failed read until clearCaches()", async () => {
+      const dir = await createTempDir({ "components.json": "{ invalid }" })
+
+      await expect(explorer.search(dir)).rejects.toThrow("JSON Error")
+      await fs.writeJson(path.join(dir, "components.json"), {
+        style: "new-york",
+      })
+      await expect(explorer.search(dir)).rejects.toThrow("JSON Error")
+
+      explorer.clearCaches()
+      expect(await explorer.search(dir)).toMatchObject({
+        config: { style: "new-york" },
+      })
+    })
+
+    it("shares one read between concurrent calls", async () => {
+      const dir = await createTempDir({
+        "components.json": JSON.stringify({ style: "new-york" }),
+      })
+
+      const [first, second] = await Promise.all([
+        explorer.search(dir),
+        explorer.search(dir),
+      ])
+      expect(first).not.toBeNull()
+      expect(second).toBe(first)
+    })
+  })
+
+  describe("load", () => {
+    it("returns the parsed file", async () => {
+      const dir = await createTempDir({
+        "components.json": JSON.stringify({ style: "new-york" }),
+      })
+      const file = path.join(dir, "components.json")
+
+      expect(await explorer.load(file)).toEqual({
+        config: { style: "new-york" },
+        filepath: file,
+      })
+    })
+
+    it("returns null for an empty file", async () => {
+      const dir = await createTempDir({ "components.json": "" })
+
+      expect(await explorer.load(path.join(dir, "components.json"))).toBeNull()
+    })
+
+    it("throws when the file cannot be read", async () => {
+      const dir = await createTempDir({ "components.json/.gitkeep": "" })
+
+      await expect(
+        explorer.load(path.join(dir, "missing.json"))
+      ).rejects.toMatchObject({ code: "ENOENT" })
+      await expect(
+        explorer.load(path.join(dir, "components.json"))
+      ).rejects.toMatchObject({ code: "EISDIR" })
+    })
+
+    it("caches separately from search()", async () => {
+      const dir = await createTempDir({
+        "components.json": JSON.stringify({ style: "new-york" }),
+      })
+      const file = path.join(dir, "components.json")
+
+      const searched = await explorer.search(dir)
+      await fs.writeJson(file, { style: "default" })
+
+      expect(await explorer.load(file)).toMatchObject({
+        config: { style: "default" },
+      })
+      expect(await explorer.search(dir)).toBe(searched)
+    })
+  })
+
+  it("treats $import as a plain key", async () => {
+    const dir = await createTempDir({
+      "base.json": JSON.stringify({ style: "new-york" }),
+      "components.json": JSON.stringify({ $import: "./base.json", rsc: false }),
+    })
+
+    expect(await explorer.search(dir)).toMatchObject({
+      config: { $import: "./base.json", rsc: false },
+    })
+  })
+
+  it("is not affected by files in the working directory", async () => {
+    // cosmiconfig read a meta config from here when it was created, and
+    // threw on an invalid package.json.
+    const root = await createTempDir({
+      "package.json": "{ invalid }",
+      ".config/config.json": JSON.stringify({
+        cosmiconfig: { searchPlaces: [".config/{name}.json"] },
+      }),
+      "project/.config/components.json": JSON.stringify({ style: "new-york" }),
+    })
+    const cwd = process.cwd()
+
+    process.chdir(root)
+    try {
+      vi.resetModules()
+      const { explorer } = await import("./get-config")
+
+      expect(await explorer.search(path.join(root, "project"))).toBeNull()
+    } finally {
+      process.chdir(cwd)
+    }
+  })
+})
 
 describe("getRawConfig", () => {
   it("get raw config", async () => {
@@ -36,6 +274,31 @@ describe("getRawConfig", () => {
     await expect(
       getRawConfig(getFixturesDir("config-invalid"))
     ).rejects.toThrowError()
+  })
+
+  it("returns null for an empty components.json", async () => {
+    const dir = await createTempDir({ "components.json": "" })
+
+    expect(await getRawConfig(dir)).toBeNull()
+  })
+
+  it.each(["false", "0", '""', "[]"])(
+    "reports a components.json of %s as an invalid configuration",
+    async (contents) => {
+      const dir = await createTempDir({ "components.json": contents })
+
+      await expect(getRawConfig(dir)).rejects.toThrow(
+        "Invalid configuration found in"
+      )
+    }
+  )
+
+  it("reports invalid JSON as an invalid configuration", async () => {
+    const dir = await createTempDir({ "components.json": "{ invalid }" })
+
+    await expect(getRawConfig(dir)).rejects.toThrow(
+      "Invalid configuration found in"
+    )
   })
 })
 
