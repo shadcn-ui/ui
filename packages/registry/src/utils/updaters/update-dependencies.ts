@@ -10,6 +10,11 @@ import { execa } from "execa"
 import fsExtra from "fs-extra"
 import prompts from "prompts"
 
+// npm runs an audit and a funding check after every install and uninstall.
+// We never show npm's output, and the audit can take most of the install
+// time, so skip both.
+const NPM_FLAGS = ["--no-audit", "--no-fund"]
+
 export async function updateDependencies(
   dependencies: RegistryItem["dependencies"],
   devDependencies: RegistryItem["devDependencies"],
@@ -122,7 +127,9 @@ export async function removeDependencies(cwd: string, dependencies: string[]) {
 
   const packageManager = await getPackageManager(cwd)
   if (packageManager === "npm") {
-    await execa("npm", ["uninstall", "--", ...dependencies], { cwd })
+    await execa("npm", ["uninstall", ...NPM_FLAGS, "--", ...dependencies], {
+      cwd,
+    })
     return
   }
 
@@ -336,7 +343,13 @@ async function installWithNpm(
   if (dependencies.length) {
     await execa(
       "npm",
-      ["install", ...(flag ? [`--${flag}`] : []), "--", ...dependencies],
+      [
+        "install",
+        ...NPM_FLAGS,
+        ...(flag ? [`--${flag}`] : []),
+        "--",
+        ...dependencies,
+      ],
       { cwd }
     )
   }
@@ -346,6 +359,7 @@ async function installWithNpm(
       "npm",
       [
         "install",
+        ...NPM_FLAGS,
         ...(flag ? [`--${flag}`] : []),
         "-D",
         "--",
