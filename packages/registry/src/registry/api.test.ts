@@ -15,7 +15,7 @@ import {
   RegistryUnauthorizedError,
   RegistryValidationError,
 } from "@/src/registry/errors"
-import { getFixturesDir } from "@/src/test-helpers"
+import { getFixturesDir, withTempDir, writeFiles } from "@/src/test-helpers"
 import { getConfig } from "@/src/utils/get-config"
 import { http, HttpResponse } from "msw"
 import { setupServer } from "msw/node"
@@ -32,6 +32,7 @@ import { z } from "zod"
 
 import {
   getItemTargetPath,
+  getPackageJsonRegistries,
   getRegistries,
   getRegistriesConfig,
   getRegistriesIndex,
@@ -1861,11 +1862,9 @@ describe("getRegistriesConfig", () => {
     await fs.writeFile(configFile, "{ invalid json }")
 
     try {
-      // Malformed JSON should throw an error from cosmiconfig
       await getRegistriesConfig(tempDir)
       expect.fail("Should have thrown an error")
     } catch (error) {
-      // cosmiconfig throws a JSONError for malformed JSON
       expect((error as Error).message).toContain("JSON Error")
     } finally {
       await fs.unlink(configFile)
@@ -1953,6 +1952,30 @@ describe("getRegistriesConfig", () => {
       await fs.rmdir(tempDir)
     }
   })
+
+  it("rejects an empty components.json", async () => {
+    await withTempDir(async (dir) => {
+      await writeFiles(dir, { "components.json": "" })
+
+      await expect(getRegistriesConfig(dir)).rejects.toBeInstanceOf(
+        ConfigParseError
+      )
+    })
+  })
+
+  it.skipIf(process.platform === "win32" || process.getuid?.() === 0)(
+    "throws when components.json is unreadable",
+    async () => {
+      await withTempDir(async (dir) => {
+        await writeFiles(dir, { "components.json": "{}" })
+        await fs.chmod(path.join(dir, "components.json"), 0o000)
+
+        await expect(getRegistriesConfig(dir)).rejects.toMatchObject({
+          code: "EACCES",
+        })
+      })
+    }
+  )
 
   describe("caching behavior", () => {
     it("should cache package.json registries and clear them when requested", async () => {
@@ -2367,6 +2390,65 @@ describe("getRegistriesConfig", () => {
       await expect(getRegistriesIndex({ useCache: false })).rejects.toThrow()
     })
   })
+})
+
+describe("getPackageJsonRegistries", () => {
+  it.each([
+    ["there is no package.json", {}],
+    ["package.json is empty", { "package.json": "" }],
+    [
+      "package.json is a byte order mark and CRLF",
+      { "package.json": "\uFEFF\r\n" },
+    ],
+    ["there is no registries key", { "package.json": '{ "name": "app" }' }],
+    ["registries is null", { "package.json": '{ "registries": null }' }],
+  ])("returns no registries when %s", async (_, files) => {
+    await withTempDir(async (dir) => {
+      await writeFiles(dir, files)
+
+      expect(await getPackageJsonRegistries(dir)).toEqual({})
+    })
+  })
+
+  it.each([
+    ["invalid JSON", "{ invalid }"],
+    ["a byte order mark", '\uFEFF{ "registries": {} }'],
+  ])("throws on %s, naming the file", async (_, contents) => {
+    await withTempDir(async (dir) => {
+      await writeFiles(dir, { "package.json": contents })
+
+      await expect(getPackageJsonRegistries(dir)).rejects.toThrow(
+        `JSON Error in ${path.join(dir, "package.json")}:\n`
+      )
+    })
+  })
+
+  it.each(["false", "0", '""', "[]", '"@acme"'])(
+    "rejects registries: %s",
+    async (value) => {
+      await withTempDir(async (dir) => {
+        await writeFiles(dir, { "package.json": `{ "registries": ${value} }` })
+
+        await expect(getPackageJsonRegistries(dir)).rejects.toBeInstanceOf(
+          ConfigParseError
+        )
+      })
+    }
+  )
+
+  it.skipIf(process.platform === "win32" || process.getuid?.() === 0)(
+    "throws when package.json is unreadable",
+    async () => {
+      await withTempDir(async (dir) => {
+        await writeFiles(dir, { "package.json": "{}" })
+        await fs.chmod(path.join(dir, "package.json"), 0o000)
+
+        await expect(getPackageJsonRegistries(dir)).rejects.toMatchObject({
+          code: "EACCES",
+        })
+      })
+    }
+  )
 })
 
 describe("resolveTree", () => {
