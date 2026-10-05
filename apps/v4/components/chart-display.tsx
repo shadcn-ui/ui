@@ -1,10 +1,10 @@
 import * as React from "react"
+import { cn } from "cn"
 import { type registryItemSchema } from "shadcn/schema"
 import { type z } from "zod"
 
 import { highlightCode } from "@/lib/highlight-code"
 import { getRegistryItem } from "@/lib/registry"
-import { cn } from "@/lib/utils"
 import { ChartIframe } from "@/components/chart-iframe"
 import { ChartToolbar } from "@/components/chart-toolbar"
 import { type Style } from "@/registry/_legacy-styles"

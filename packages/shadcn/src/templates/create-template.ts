@@ -1,10 +1,10 @@
 import os from "os"
 import path from "path"
-import type { RegistryItem } from "@/src/registry/schema"
-import type { Config } from "@/src/utils/get-config"
-import { parsePnpmWorkspacePackages } from "@/src/utils/get-monorepo-info"
 import { handleError } from "@/src/utils/handle-error"
-import { spinner } from "@/src/utils/spinner"
+import type { RegistryItem } from "@shadcn/registry/internal/registry/schema"
+import type { Config } from "@shadcn/registry/internal/utils/get-config"
+import { parsePnpmWorkspacePackages } from "@shadcn/registry/internal/utils/get-monorepo-info"
+import { spinner } from "@shadcn/registry/internal/utils/spinner"
 import { execa } from "execa"
 import fs from "fs-extra"
 
@@ -104,6 +104,9 @@ export function getInstallArgs(packageManager: string): string[] {
       // Yarn enables immutable installs in CI by default.
       // New template projects need to create their lockfile on first install.
       return ["--no-immutable"]
+    case "npm":
+      // The output is not shown, and npm's audit can take most of the install time.
+      return ["--no-audit", "--no-fund"]
     default:
       return []
   }

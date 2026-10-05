@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "cn"
 
-import { cn } from "@/lib/utils"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { useMounted } from "@/hooks/use-mounted"
 import { Icons } from "@/components/icons"

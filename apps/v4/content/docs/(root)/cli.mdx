@@ -410,6 +410,7 @@ npx shadcn@latest migrate [migration]
 
 | Migration    | Description                                             |
 | ------------ | ------------------------------------------------------- |
+| `cn`         | Migrate `clsx` and `tailwind-merge` to `cn`.            |
 | `icons`      | Migrate your UI components to a different icon library. |
 | `base-color` | Migrate your theme to a different base color.           |
 | `radix`      | Migrate to radix-ui.                                    |
@@ -434,6 +435,89 @@ Options:
   -t, --to <name>    the base color or icon library to migrate to.
   -h, --help         display help for command
 ```
+
+---
+
+### migrate cn
+
+The `cn` migration replaces `clsx`, `tailwind-merge` and `cnfast` with [`cn`](https://github.com/shadcn-ui/cn).
+
+```bash
+npx shadcn@latest migrate cn
+```
+
+Unlike the other migrations, `migrate cn` does not require a `components.json` file. You can run it in any JavaScript or TypeScript package project using Tailwind CSS v4.
+
+This will:
+
+1. Rewrite imports from `clsx`, `clsx/lite`, `tailwind-merge` and `cnfast`.
+2. Replace `twMerge(clsx(...))` compositions with direct `cn(...)` calls.
+3. Replace the standard shadcn utility with a direct re-export.
+4. Install `cn` and remove the old packages when no references remain.
+
+**Before**
+
+```tsx
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+```
+
+**After**
+
+```tsx
+export { cn } from "cn"
+```
+
+The migration also preserves separate APIs when they are used independently:
+
+```diff
+- import { clsx } from "clsx"
+- import { twMerge } from "tailwind-merge"
++ import { clsx, twMerge } from "cn"
+```
+
+Because `cnfast` has the same root API, its module specifiers are replaced directly:
+
+```diff
+- import { cn } from "cnfast"
++ import { cn } from "cn"
+```
+
+Custom configuration APIs are moved to `cn/config`. Existing local names are preserved when an export was renamed:
+
+```diff
+- import { createTailwindMerge, getDefaultConfig } from "tailwind-merge"
++ import {
++   createTwMerge as createTailwindMerge,
++   defaultConfig as getDefaultConfig,
++ } from "cn/config"
+```
+
+<Callout icon={<TriangleAlertIcon />}>
+  The `cn` merge engine supports Tailwind CSS v4, like `tailwind-merge` v3.
+  Projects using Tailwind CSS v3 should continue using `tailwind-merge` v2. A
+  `clsx`-only migration is safe in a Tailwind CSS v3 project.
+</Callout>
+
+**Migrate specific files**
+
+You can migrate a file, directory or glob pattern:
+
+```bash
+# Migrate a specific file.
+npx shadcn@latest migrate cn src/lib/utils.ts
+
+# Migrate files matching a glob pattern.
+npx shadcn@latest migrate cn "src/**/*.{ts,tsx}"
+```
+
+Scoped migrations install `cn` but keep `clsx`, `tailwind-merge` and `cnfast` in `package.json`, because files outside the selected path may still use them.
+
+The command leaves unsupported imports unchanged and reports them for manual review. This includes `experimentalParseClassName`, namespace imports, dynamic import shapes, direct calls to `validators` and variadic `createTailwindMerge` calls that cannot be migrated safely. An old dependency is retained whenever one of its references remains.
 
 ---
 

@@ -1,16 +1,21 @@
 import path from "path"
 import { migrateBaseColor } from "@/src/migrations/migrate-base-color"
+import { migrateCn } from "@/src/migrations/migrate-cn"
 import { migrateIcons } from "@/src/migrations/migrate-icons"
 import { migrateRadix } from "@/src/migrations/migrate-radix"
 import { migrateRtl } from "@/src/migrations/migrate-rtl"
 import { preFlightMigrate } from "@/src/preflights/preflight-migrate"
 import * as ERRORS from "@/src/utils/errors"
 import { handleError } from "@/src/utils/handle-error"
-import { logger } from "@/src/utils/logger"
+import { logger } from "@shadcn/registry/internal/utils/logger"
 import { Command } from "commander"
 import { z } from "zod"
 
 export const migrations = [
+  {
+    name: "cn",
+    description: "migrate clsx and tailwind-merge to cn.",
+  },
   {
     name: "icons",
     description: "migrate your ui components to a different icon library.",
@@ -86,18 +91,24 @@ export const migrate = new Command()
         return
       }
 
-      if (!options.migration) {
+      if (options.migration === "cn") {
+        await migrateCn({
+          cwd: options.cwd,
+          path: options.path,
+          yes: options.yes,
+        })
+        return
+      }
+
+      const { errors, config } = await preFlightMigrate(options)
+
+      if (errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
         throw new Error(
-          "You must specify a migration. Run `shadcn migrate --list` to see available migrations."
+          "No `components.json` file found. Ensure you are at the root of your project."
         )
       }
 
-      let { errors, config } = await preFlightMigrate(options)
-
-      if (
-        errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT] ||
-        errors[ERRORS.MISSING_CONFIG]
-      ) {
+      if (errors[ERRORS.MISSING_CONFIG]) {
         throw new Error(
           "No `components.json` file found. Ensure you are at the root of your project."
         )

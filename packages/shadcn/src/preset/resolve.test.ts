@@ -1,11 +1,14 @@
 import { promises as fs } from "fs"
 import os from "os"
 import path from "path"
-import { FRAMEWORKS } from "@/src/utils/frameworks"
-import { createConfig } from "@/src/utils/get-config"
+import {
+  encodePreset,
+  type PresetConfig,
+} from "@shadcn/registry/internal/preset/preset"
+import { FRAMEWORKS } from "@shadcn/registry/internal/utils/frameworks"
+import { createConfig } from "@shadcn/registry/internal/utils/get-config"
 import { afterEach, describe, expect, it } from "vitest"
 
-import { encodePreset, type PresetConfig } from "./preset"
 import { resolveProjectPreset } from "./resolve"
 
 const tempDirs: string[] = []

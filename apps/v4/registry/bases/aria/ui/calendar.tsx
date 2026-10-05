@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { cva } from "class-variance-authority"
+import { cn } from "cn"
 import {
   Calendar as AriaCalendar,
   CalendarGridHeader as AriaCalendarGridHeader,
@@ -19,7 +20,6 @@ import {
   type RangeCalendarProps,
 } from "react-aria-components"
 
-import { cn } from "@/registry/bases/aria/lib/utils"
 import { Button, buttonVariants } from "@/registry/bases/aria/ui/button"
 import {
   Select,

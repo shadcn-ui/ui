@@ -1,19 +1,22 @@
-import { getRegistryItems } from "@/src/registry/api"
-import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
-import { configWithDefaults } from "@/src/registry/config"
-import { REGISTRY_URL, SHADCN_URL } from "@/src/registry/constants"
-import { type registryConfigSchema } from "@/src/registry/schema"
-import { isUrl } from "@/src/registry/utils"
-import { createConfig } from "@/src/utils/get-config"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
+import { type PresetBase } from "@shadcn/registry/internal/preset/preset"
+import { getRegistryItems } from "@shadcn/registry/internal/registry/api"
+import { buildUrlAndHeadersForRegistryItem } from "@shadcn/registry/internal/registry/builder"
+import { configWithDefaults } from "@shadcn/registry/internal/registry/config"
+import {
+  REGISTRY_URL,
+  SHADCN_URL,
+} from "@shadcn/registry/internal/registry/constants"
+import { type registryConfigSchema } from "@shadcn/registry/internal/registry/schema"
+import { isUrl } from "@shadcn/registry/internal/registry/utils"
+import { createConfig } from "@shadcn/registry/internal/utils/get-config"
+import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
+import { logger } from "@shadcn/registry/internal/utils/logger"
 import open from "open"
 import prompts from "prompts"
 import { type z } from "zod"
 
 import { DEFAULT_PRESETS } from "./defaults"
-import { type PresetBase } from "./preset"
 
 export { DEFAULT_PRESETS } from "./defaults"
 
