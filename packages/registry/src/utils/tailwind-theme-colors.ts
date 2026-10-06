@@ -1,4 +1,4 @@
-import { registryItemCssVarsSchema } from "@/src/schema"
+import { registryItemCssVarsSchema } from "@/src/registry/schema"
 import { z } from "zod"
 
 export function buildTailwindThemeColorsFromCssVars(

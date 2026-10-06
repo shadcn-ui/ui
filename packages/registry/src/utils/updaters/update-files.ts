@@ -2,7 +2,7 @@ import { existsSync, promises as fs, statSync } from "fs"
 import { tmpdir } from "os"
 import path, { basename } from "path"
 import { getRegistryBaseColor } from "@/src/registry/api"
-import { RegistryItem } from "@/src/schema"
+import { RegistryItem } from "@/src/registry/schema"
 import { isContentSame } from "@/src/utils/compare"
 import {
   findExistingEnvFile,

@@ -1,5 +1,5 @@
 import path from "path"
-import { registryItemFileSchema } from "@/src/schema"
+import { registryItemFileSchema } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { ProjectInfo } from "@/src/utils/get-project-info"
 import { isTargetAliasKey } from "@/src/utils/target-aliases"

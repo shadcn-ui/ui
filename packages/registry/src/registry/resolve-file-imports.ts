@@ -1,7 +1,7 @@
 import * as fs from "fs/promises"
 import { tmpdir } from "os"
 import * as path from "path"
-import { configSchema, registryItemSchema } from "@/src/schema"
+import { configSchema, registryItemSchema } from "@/src/registry/schema"
 import { ProjectInfo } from "@/src/utils/get-project-info"
 import {
   isLocalAliasImport,
