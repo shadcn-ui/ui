@@ -151,11 +151,19 @@ export async function updateFonts(
 
   try {
     const skippedLayout = await updateNextFonts(fonts, config, projectInfo)
-    fontsSpinner?.succeed("Updating fonts.")
-    // Warn once the spinner has stopped, so the warning gets its own line.
-    if (skippedLayout && !options.silent) {
-      logger.warn(getSkippedLayoutWarning(skippedLayout, fonts, config))
+    if (!skippedLayout) {
+      fontsSpinner?.succeed("Updating fonts.")
+      return
     }
+
+    // Stop without a check mark, since the layout was left as it was, and
+    // return the warning so callers that pass silent can still report it.
+    fontsSpinner?.stop()
+    const warning = getSkippedLayoutWarning(skippedLayout, fonts, config)
+    if (!options.silent) {
+      logger.warn(warning)
+    }
+    return warning
   } catch (error) {
     fontsSpinner?.fail(`Failed to update fonts.`)
     throw error
@@ -650,19 +658,6 @@ function updateHtmlClassName(
         let cleanedExpr = removeFontVariablesFromCn(exprText, newVarExpressions)
         cleanedExpr = removeFontFamilyClassesFromCn(cleanedExpr)
         const newExpr = insertFontVariablesIntoCn(cleanedExpr, allNewArgs)
-        // Without arguments left, or with a trailing comma, cn() gets an
-        // empty argument: `cn(, ...)`. See takesCommaAt.
-        const emptyArgument = EMPTY_ARGUMENT.exec(cleanedExpr)
-        if (
-          emptyArgument &&
-          takesCommaAt(
-            parseModule(code),
-            initializer.start!,
-            LINE_BREAK.test(emptyArgument[0])
-          )
-        ) {
-          throw new SyntaxErrorInsertedError()
-        }
         code = replaceJsxExpression(
           code,
           getClassNameInitializer(code, index),
@@ -758,9 +753,8 @@ function setJsxAttributeInitializer(
 }
 
 // ts-morph's Node#replaceWithText(text) on the className expression, without
-// the syntax check: ts-morph writes the text even when the string helpers below
-// break it, as long as the tree keeps its shape (see takesCommaAt).
-// updateNextFonts does not write such a layout.
+// the syntax check: the string helpers below can break the expression, as in
+// `cn(, ...)`, and updateNextFonts does not write such a layout.
 function replaceJsxExpression(code: string, expression: t.Node, text: string) {
   return applyEdits(code, [
     {
@@ -769,57 +763,6 @@ function replaceJsxExpression(code: string, expression: t.Node, text: string) {
       text: getReplacementText(code, expression.start!, text),
     },
   ])
-}
-
-// The empty argument at the end of a cn() call, with the comments and line
-// breaks TypeScript skips before its comma.
-const EMPTY_ARGUMENT =
-  /[(,](?:\s|\/\*[\s\S]*?\*\/|\/\/[^\n\r\u2028\u2029]*)*\)$/
-
-// TypeScript's line breaks.
-const LINE_BREAK = /[\n\r\u2028\u2029]/
-
-// TypeScript recovers from an empty argument by skipping its comma, so the
-// call keeps its shape and ts-morph writes the broken text. But when a list
-// around the call takes a comma, TypeScript ends the call there instead, and
-// ts-morph rejects the edit. Those lists are JSX children, array elements and
-// array patterns, and variable declarations when a line break comes before
-// the comma.
-function takesCommaAt(file: t.File, position: number, afterLineBreak: boolean) {
-  let takesComma = false
-  t.traverseFast(file, (node) => {
-    if (position < node.start! || position >= node.end!) {
-      return
-    }
-
-    if (
-      isInJsxChildren(node, position) ||
-      node.type === "ArrayExpression" ||
-      node.type === "ArrayPattern" ||
-      (node.type === "VariableDeclaration" && afterLineBreak)
-    ) {
-      takesComma = true
-    }
-  })
-  return takesComma
-}
-
-function isInJsxChildren(node: t.Node, position: number) {
-  if (node.type === "JSXElement" && node.closingElement) {
-    return (
-      node.openingElement.end! <= position &&
-      position < node.closingElement.start!
-    )
-  }
-
-  if (node.type === "JSXFragment") {
-    return (
-      node.openingFragment.end! <= position &&
-      position < node.closingFragment.start!
-    )
-  }
-
-  return false
 }
 
 function ensureCnImport(code: string, config: Config) {

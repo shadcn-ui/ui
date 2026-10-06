@@ -1350,6 +1350,7 @@ vi.mock("@/src/utils/spinner", () => ({
   spinner: vi.fn(() => ({
     start: vi.fn().mockReturnThis(),
     succeed: vi.fn(),
+    stop: vi.fn(),
     fail: vi.fn(),
   })),
 }))
@@ -3120,77 +3121,6 @@ ${page}`
       `className={cn(, "font-sans", inter.variable, playfairDisplayHeading.variable)}`
     )
   })
-
-  it.each([
-    {
-      list: "JSX children",
-      page: `export default function RootLayout({ children }) {
-  return (
-    <>
-      <html lang="en" className={cn(playfairDisplayHeading.variable)}>
-        <body>{children}</body>
-      </html>
-    </>
-  )
-}
-`,
-    },
-    {
-      list: "an array",
-      page: `export default function RootLayout({ children }) {
-  return [
-    <html lang="en" className={cn(playfairDisplayHeading.variable)}>
-      <body>{children}</body>
-    </html>,
-  ]
-}
-`,
-    },
-    {
-      list: "an array pattern",
-      page: `export default function RootLayout({ children }) {
-  const [page = <html lang="en" className={cn(playfairDisplayHeading.variable)}></html>] = []
-  return page
-}
-`,
-    },
-    {
-      list: "a variable declaration, after a line break",
-      page: `const RootLayout = ({ children }) => (
-  <html lang="en" className={cn(
-    playfairDisplayHeading.variable
-  )}>
-    <body>{children}</body>
-  </html>
-)
-`,
-    },
-    {
-      list: "a variable declaration, after a carriage return",
-      page: `const RootLayout = ({ children }) => (\r  <html lang="en" className={cn(\r    playfairDisplayHeading.variable\r  )}>\r    <body>{children}</body>\r  </html>\r)\r`,
-    },
-    {
-      list: "JSX children, after a comment",
-      page: `export default function RootLayout({ children }) {
-  return (
-    <>
-      <html lang="en" className={cn(/* fonts */ playfairDisplayHeading.variable)}>
-        <body>{children}</body>
-      </html>
-    </>
-  )
-}
-`,
-    },
-  ])("throws like ts-morph for `cn(, ...)` in $list", async ({ page }) => {
-    await expect(
-      transformLayoutFonts(
-        withOnlyTheHeadingFontInCn(page),
-        [interSans, playfairHeading],
-        mockConfig
-      )
-    ).rejects.toThrow("Manipulation error: A syntax error was inserted.")
-  })
 })
 
 const VITE_PROJECT_INFO = {
@@ -3562,19 +3492,25 @@ export default function App({ Component, pageProps }: AppProps) {
     expect(warn).toHaveBeenCalledWith(
       "Skipped app/layout.tsx: adding font-inter, font-playfair-display would leave it with a syntax error. Add the fonts to it manually."
     )
-    expect(lastSpinner().succeed).toHaveBeenCalledWith("Updating fonts.")
+    expect(lastSpinner().stop).toHaveBeenCalledOnce()
+    expect(lastSpinner().succeed).not.toHaveBeenCalled()
   })
 
-  it("leaves a layout the edit would break untouched without a warning when silent", async () => {
+  it("returns the warning instead of printing it when silent", async () => {
     await writeNextProject({ typescript: true })
     const layout = await writeLayoutWithOnlyTheHeadingFontInCn()
 
-    await updateFonts([interSans, playfairHeading], configFor(cwd), {
-      silent: true,
-    })
+    const warning = await updateFonts(
+      [interSans, playfairHeading],
+      configFor(cwd),
+      { silent: true }
+    )
 
     expect(await fs.readFile(path.join(cwd, "app/layout.tsx"), "utf8")).toBe(
       layout
+    )
+    expect(warning).toBe(
+      "Skipped app/layout.tsx: adding font-inter, font-playfair-display would leave it with a syntax error. Add the fonts to it manually."
     )
     expect(warn).not.toHaveBeenCalled()
   })
@@ -3600,7 +3536,8 @@ export default function App({ Component, pageProps }: AppProps) {
     expect(warn).toHaveBeenCalledWith(
       "Skipped app/layout.tsx: adding font-inter, font-playfair-display would leave it with a syntax error. Add the fonts to it manually."
     )
-    expect(lastSpinner().succeed).toHaveBeenCalledWith("Updating fonts.")
+    expect(lastSpinner().stop).toHaveBeenCalledOnce()
+    expect(lastSpinner().succeed).not.toHaveBeenCalled()
   })
 
   it("leaves a layout untouched and warns when ts-morph would reject the import", async () => {
@@ -3618,7 +3555,8 @@ export default function App({ Component, pageProps }: AppProps) {
     expect(warn).toHaveBeenCalledWith(
       "Skipped app/layout.tsx: adding font-inter would leave it with a syntax error. Add the fonts to it manually."
     )
-    expect(lastSpinner().succeed).toHaveBeenCalledWith("Updating fonts.")
+    expect(lastSpinner().stop).toHaveBeenCalledOnce()
+    expect(lastSpinner().succeed).not.toHaveBeenCalled()
   })
 
   it("leaves a layout Babel cannot parse untouched and warns", async () => {
@@ -3635,7 +3573,8 @@ export default function App({ Component, pageProps }: AppProps) {
     expect(warn).toHaveBeenCalledWith(
       "Skipped app/layout.tsx: could not parse it to add font-inter. Add the fonts to it manually."
     )
-    expect(lastSpinner().succeed).toHaveBeenCalledWith("Updating fonts.")
+    expect(lastSpinner().stop).toHaveBeenCalledOnce()
+    expect(lastSpinner().succeed).not.toHaveBeenCalled()
   })
 
   it("fails the spinner and rethrows when the font import cannot be added", async () => {

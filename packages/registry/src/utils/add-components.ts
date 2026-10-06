@@ -219,7 +219,7 @@ async function addWorkspaceComponents(
   // 4. Update fonts.
   // Fonts modify the app's layout file (e.g. app/layout.tsx),
   // so we use the app config, not the UI workspace config.
-  await updateFonts(tree.fonts, config, {
+  const fontsWarning = await updateFonts(tree.fonts, config, {
     silent: true,
   })
 
@@ -384,6 +384,10 @@ async function addWorkspaceComponents(
     for (const file of dedupedSkipped) {
       logger.log(`  - ${file}`)
     }
+  }
+
+  if (fontsWarning && !options.silent) {
+    logger.warn(fontsWarning)
   }
 
   if (tree.docs) {

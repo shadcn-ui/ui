@@ -3331,7 +3331,17 @@ exports[`heading-playfair-display, then inter + heading-playfair-display > repo-
 +       className={cn("antialiased", fontMono.variable, "font-sans", inter.variable, playfairDisplayHeading.variable)}"
 `;
 
-exports[`heading-playfair-display, then inter + heading-playfair-display > shape--providers.tsx 1`] = `"throws: Error: Manipulation error: A syntax error was inserted."`;
+exports[`heading-playfair-display, then inter + heading-playfair-display > shape--providers.tsx 1`] = `
+"@@ -8 +8 @@
+- import { Playfair_Display } from "next/font/google";
++ import { Playfair_Display, Inter } from "next/font/google";
+@@ -11 +11 @@
++ const inter = Inter({subsets:['latin'],variable:'--font-sans'});
++ 
+@@ -35 +37 @@
+-       <html lang="en" suppressHydrationWarning className={cn(playfairDisplayHeading.variable)}>
++       <html lang="en" suppressHydrationWarning className={cn(, "font-sans", inter.variable, playfairDisplayHeading.variable)}>"
+`;
 
 exports[`heading-playfair-display, then inter + heading-playfair-display > text--crlf.tsx 1`] = `
 "@@ -2 +2 @@

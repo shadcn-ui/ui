@@ -4,6 +4,7 @@ import { resolveRegistryTree } from "@/src/registry/resolver"
 import { addComponents } from "@/src/utils/add-components"
 import type { Config } from "@/src/utils/get-config"
 import { findPackageRoot, getWorkspaceConfig } from "@/src/utils/get-config"
+import { logger } from "@/src/utils/logger"
 import { updateFiles } from "@/src/utils/updaters/update-files"
 import { updateFonts } from "@/src/utils/updaters/update-fonts"
 import fs from "fs-extra"
@@ -950,4 +951,44 @@ export function ExampleCard() {
       expect.anything()
     )
   })
+
+  it.each([
+    { silent: false, reported: true },
+    { silent: true, reported: false },
+  ])(
+    "reports a layout updateFonts skipped, unless silent ($silent)",
+    async ({ silent, reported }) => {
+      const warning =
+        "Skipped app/layout.tsx: adding font-inter would leave it with a syntax error. Add the fonts to it manually."
+      vi.mocked(updateFonts).mockResolvedValueOnce(warning)
+      vi.mocked(getWorkspaceConfig).mockResolvedValue({
+        ui: createMockConfig({
+          resolvedPaths: {
+            cwd: "/packages/ui",
+            tailwindConfig: "/packages/ui/tailwind.config.ts",
+            tailwindCss: "/packages/ui/src/globals.css",
+            utils: "/packages/ui/src/lib/utils",
+            components: "/packages/ui/src/components",
+            lib: "/packages/ui/src/lib",
+            hooks: "/packages/ui/src/hooks",
+            ui: "/packages/ui/src/components/ui",
+          },
+        }),
+      })
+      vi.mocked(resolveRegistryTree).mockResolvedValue({
+        files: [],
+        dependencies: [],
+        devDependencies: [],
+      })
+      vi.mocked(findPackageRoot).mockResolvedValue("/packages/ui")
+
+      await addComponents(["font-inter"], createMockConfig(), { silent })
+
+      if (reported) {
+        expect(logger.warn).toHaveBeenCalledWith(warning)
+      } else {
+        expect(logger.warn).not.toHaveBeenCalled()
+      }
+    }
+  )
 })

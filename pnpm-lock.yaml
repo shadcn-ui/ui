@@ -510,7 +510,7 @@ importers:
         specifier: ^0.2.4
         version: 0.2.4
       code-block-writer:
-        specifier: 13.0.3
+        specifier: ^13.0.3
         version: 13.0.3
       deepmerge:
         specifier: ^4.3.1
