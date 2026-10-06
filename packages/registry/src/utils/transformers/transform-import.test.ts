@@ -1029,4 +1029,27 @@ import { other } from "@/hooks/utils"
       "
     `)
   })
+
+  it.each([
+    // A file without imports or exports: TypeScript collects the non-relative
+    // specifiers inside a declare module block.
+    [
+      `declare module "@/registry/new-york/ui/button" {\n  import { cn } from "@/lib/utils"\n  import { Slot } from "./slot"\n  export { Root } from "@/components/ui/root"\n}\n`,
+      `declare module "@/registry/new-york/ui/button" {\n  import { cn } from "~/lib/utils"\n  import { Slot } from "./slot"\n  export { Root } from "~/components/ui/root"\n}\n`,
+    ],
+    // import.meta makes it a module, where the block is an augmentation.
+    [
+      `const url = import.meta.url\n\ndeclare module "@/registry/new-york/ui/button" {\n  import { cn } from "@/lib/utils"\n}\n`,
+      `const url = import.meta.url\n\ndeclare module "@/registry/new-york/ui/button" {\n  import { cn } from "@/lib/utils"\n}\n`,
+    ],
+    // Every specifier is written again, without its escapes.
+    [
+      `import { cn } from "@/lib/\\u0075tils"\nimport { Button } from '@/components/ui/it\\'s'\n`,
+      `import { cn } from "~/lib/utils"\nimport { Button } from '~/components/ui/it\\'s'\n`,
+    ],
+  ])("ambient modules and escapes: %j", async (raw, expected) => {
+    expect(await transform({ filename: "types.ts", raw, config })).toBe(
+      expected
+    )
+  })
 })

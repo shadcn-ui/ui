@@ -1,55 +1,193 @@
+import { getText, parseTransformInput } from "@/src/utils/codemod/parse"
+import {
+  StringLiterals,
+  type Literal,
+} from "@/src/utils/codemod/string-literals"
 import { Config } from "@/src/utils/get-config"
-import { Transformer } from "@/src/utils/transformers"
-import { SyntaxKind } from "ts-morph"
+import { types as t } from "@babel/core"
 
-export const transformImport: Transformer = async ({
-  sourceFile,
-  config,
-  isRemote,
-}) => {
-  const utilsAlias = config.aliases?.utils
-  const workspaceAlias =
-    typeof utilsAlias === "string"
-      ? getWorkspaceAliasFromUtilsAlias(utilsAlias)
-      : "@"
-  const utilsImport = workspaceAlias
-    ? `${workspaceAlias}/lib/utils`
-    : "@/lib/utils"
+import { fromTextTransformer } from "./text-transformer"
 
-  if (![".tsx", ".ts", ".jsx", ".js"].includes(sourceFile.getExtension())) {
-    return sourceFile
-  }
+export const transformImport = fromTextTransformer(
+  (code, { config, isRemote, filename }) => {
+    const utilsAlias = config.aliases?.utils
+    const workspaceAlias =
+      typeof utilsAlias === "string"
+        ? getWorkspaceAliasFromUtilsAlias(utilsAlias)
+        : "@"
+    const utilsImport = workspaceAlias
+      ? `${workspaceAlias}/lib/utils`
+      : "@/lib/utils"
 
-  for (const specifier of sourceFile.getImportStringLiterals()) {
-    const updated = updateImportAliases(
-      specifier.getLiteralValue(),
-      config,
-      isRemote
-    )
-    specifier.setLiteralValue(updated)
+    if (!hasImportStringLiterals(filename)) {
+      return code
+    }
 
-    // Replace `import { cn } from "@/lib/utils"`
-    if (utilsImport === updated || updated === "@/lib/utils") {
-      const importDeclaration = specifier.getFirstAncestorByKind(
-        SyntaxKind.ImportDeclaration
+    const file = parseTransformInput(code)
+    if (!file) {
+      return code
+    }
+
+    // ts-morph's setLiteralValue() writes each specifier again, even
+    // unchanged, which drops the escapes in it.
+    const literals = new StringLiterals(code, file)
+    for (const { specifier, importDeclaration } of getImportStringLiterals(
+      file.program
+    )) {
+      const updated = updateImportAliases(
+        literals.getValue(specifier),
+        config,
+        isRemote
       )
-      const isCnImport = importDeclaration
-        ?.getNamedImports()
-        .some((namedImport) => namedImport.getName() === "cn")
+      literals.setValue(specifier, updated)
 
-      if (!isCnImport || !config.aliases.utils) {
-        continue
+      // Replace `import { cn } from "@/lib/utils"`
+      if (utilsImport === updated || updated === "@/lib/utils") {
+        const isCnImport = importDeclaration?.specifiers.some(
+          (namedImport) =>
+            namedImport.type === "ImportSpecifier" &&
+            getImportedName(code, namedImport) === "cn"
+        )
+
+        if (!isCnImport || !config.aliases.utils) {
+          continue
+        }
+
+        literals.setValue(
+          specifier,
+          utilsImport === updated
+            ? updated.replace(utilsImport, config.aliases.utils)
+            : config.aliases.utils
+        )
       }
+    }
 
-      specifier.setLiteralValue(
-        utilsImport === updated
-          ? updated.replace(utilsImport, config.aliases.utils)
-          : config.aliases.utils
-      )
+    return literals.apply()
+  }
+)
+
+// Whether TypeScript collects the file's imports: ts-morph's getExtension()
+// is ".tsx" or ".ts", which it is not for a .d.ts file. The extension check
+// also passes .js and .jsx, but the runner's Project does not allow JS, and
+// TypeScript collects no imports from them.
+function hasImportStringLiterals(filename: string) {
+  const baseName = filename.split(/[\\/]/).pop()!
+  return /.\.tsx?$/.test(baseName) && !/\.d\.ts$/i.test(baseName)
+}
+
+interface ImportStringLiteral {
+  specifier: Literal
+  // The import declaration the specifier is the source of.
+  importDeclaration?: t.ImportDeclaration
+}
+
+// ts-morph's SourceFile#getImportStringLiterals(), TypeScript's imports of a
+// .tsx file (collectExternalModuleReferences): the module specifiers of the
+// top-level import, export and import-equals declarations, then of each
+// import() call and import type. In a file that is not a module, that takes
+// the non-relative specifiers of the declarations in a `declare module`
+// block too.
+function getImportStringLiterals(program: t.Program): ImportStringLiteral[] {
+  const dynamicImports: Literal[] = []
+  let usesImportMeta = false
+  t.traverseFast(program, (node) => {
+    if (node.type === "CallExpression" && node.callee.type === "Import") {
+      const [argument] = node.arguments
+      if (
+        argument?.type === "StringLiteral" ||
+        (argument?.type === "TemplateLiteral" &&
+          argument.expressions.length === 0)
+      ) {
+        dynamicImports.push(argument)
+      }
+    } else if (node.type === "TSImportType") {
+      dynamicImports.push(node.argument)
+    } else if (node.type === "MetaProperty" && node.meta.name === "import") {
+      usesImportMeta = true
+    }
+  })
+  dynamicImports.sort((a, b) => a.start! - b.start!)
+
+  // TypeScript's isFileProbablyExternalModule.
+  const isModule = usesImportMeta || program.body.some(isModuleIndicator)
+
+  const literals: ImportStringLiteral[] = []
+  function collect(statement: t.Statement, inAmbientModule: boolean) {
+    const specifier = getModuleSpecifier(statement)
+    if (specifier) {
+      if (!inAmbientModule || !isExternalModuleNameRelative(specifier.value)) {
+        literals.push({
+          specifier,
+          importDeclaration:
+            statement.type === "ImportDeclaration" ? statement : undefined,
+        })
+      }
+    } else if (
+      !isModule &&
+      !inAmbientModule &&
+      statement.type === "TSModuleDeclaration" &&
+      statement.declare &&
+      statement.id.type === "StringLiteral" &&
+      statement.body?.type === "TSModuleBlock"
+    ) {
+      for (const child of statement.body.body) {
+        collect(child, true)
+      }
     }
   }
+  for (const statement of program.body) {
+    collect(statement, false)
+  }
 
-  return sourceFile
+  return [...literals, ...dynamicImports.map((specifier) => ({ specifier }))]
+}
+
+function getModuleSpecifier(statement: t.Statement) {
+  switch (statement.type) {
+    case "ImportDeclaration":
+    case "ExportAllDeclaration":
+      return statement.source
+    case "ExportNamedDeclaration":
+      return statement.source ?? undefined
+    case "TSImportEqualsDeclaration":
+      return statement.moduleReference.type === "TSExternalModuleReference"
+        ? statement.moduleReference.expression
+        : undefined
+    default:
+      return undefined
+  }
+}
+
+// TypeScript's isAnExternalModuleIndicatorNode.
+function isModuleIndicator(statement: t.Statement) {
+  switch (statement.type) {
+    case "ImportDeclaration":
+    case "ExportAllDeclaration":
+    case "ExportNamedDeclaration":
+    case "ExportDefaultDeclaration":
+    case "TSExportAssignment":
+      return true
+    case "TSImportEqualsDeclaration":
+      return (
+        statement.isExport ||
+        statement.moduleReference.type === "TSExternalModuleReference"
+      )
+    default:
+      return false
+  }
+}
+
+// TypeScript's isExternalModuleNameRelative: a relative path, or one that
+// starts at a root or a drive.
+function isExternalModuleNameRelative(name: string) {
+  return /^\.\.?($|[\\/])|^[\\/]|^[a-zA-Z]:([\\/]|$)/.test(name)
+}
+
+// ts-morph's ImportSpecifier#getName(): the imported name, as written.
+function getImportedName(code: string, specifier: t.ImportSpecifier) {
+  return specifier.imported.type === "StringLiteral"
+    ? specifier.imported.value
+    : getText(code, specifier.imported)
 }
 
 function updateImportAliases(
