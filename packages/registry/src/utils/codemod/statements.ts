@@ -35,7 +35,7 @@ export function getStatementsWithComments(
 }
 
 // ts-morph's Node#getNonWhitespaceStart() for a top-level statement.
-function getStatementNonWhitespaceStart(
+export function getStatementNonWhitespaceStart(
   code: string,
   statements: Statement[],
   index: number

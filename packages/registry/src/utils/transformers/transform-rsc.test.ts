@@ -282,4 +282,24 @@ export async function action() {}
   it("a file that only contains the directive", async () => {
     expect(await rsc(`"use client"\n`)).toBe(``)
   })
+
+  it.each([
+    // A blank line when the statement before or after has a body.
+    [
+      `function a() {}\n\n"use client"\n\nfunction b() {}\n`,
+      `function a() {}\n\nfunction b() {}\n`,
+    ],
+    // A line break otherwise.
+    [
+      `import a from "a"\n"use client"\nimport b from "b"\n`,
+      `import a from "a"\nimport b from "b"\n`,
+    ],
+    // Current behavior: remove() takes a shebang before the directive along.
+    [
+      `#!/usr/bin/env node\n"use client"\n\nconsole.log(1)\n`,
+      `console.log(1)\n`,
+    ],
+  ])("separates the statements around it: %j", async (raw, expected) => {
+    expect(await rscFullText(raw)).toBe(expected)
+  })
 })
