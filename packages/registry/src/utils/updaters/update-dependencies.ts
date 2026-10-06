@@ -1,6 +1,6 @@
 import path from "path"
 import { SHADCN_URL } from "@/src/registry/constants"
-import { RegistryItem } from "@/src/schema"
+import { RegistryItem } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { getPackageInfo } from "@/src/utils/get-package-info"
 import { getPackageManager } from "@/src/utils/get-package-manager"
