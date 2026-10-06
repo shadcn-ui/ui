@@ -328,7 +328,7 @@ importers:
         specifier: ^0.0.1
         version: 0.0.1
       shadcn:
-        specifier: 4.21.1
+        specifier: 4.21.2
         version: link:../../packages/shadcn
       shiki:
         specifier: ^3.23.0
@@ -509,9 +509,6 @@ importers:
       cn:
         specifier: ^0.2.4
         version: 0.2.4
-      cosmiconfig:
-        specifier: ^9.0.0
-        version: 9.0.0(typescript@5.9.2)
       deepmerge:
         specifier: ^4.3.1
         version: 4.3.1
@@ -627,9 +624,6 @@ importers:
       commander:
         specifier: ^14.0.0
         version: 14.0.0
-      cosmiconfig:
-        specifier: ^9.0.0
-        version: 9.0.0(typescript@5.9.2)
       dedent:
         specifier: ^1.6.0
         version: 1.6.0

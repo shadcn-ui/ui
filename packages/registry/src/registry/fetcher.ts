@@ -13,8 +13,8 @@ import {
   RegistryUnauthorizedError,
 } from "@/src/registry/errors"
 import { fetchWithProxy } from "@/src/registry/proxy"
+import { registryItemSchema } from "@/src/registry/schema"
 import { resolveRegistryUrl } from "@/src/registry/url"
-import { registryItemSchema } from "@/src/schema"
 import { z } from "zod"
 
 const registryCache = new Map<string, Promise<any>>()

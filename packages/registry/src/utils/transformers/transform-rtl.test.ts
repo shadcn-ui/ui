@@ -3,7 +3,29 @@ import ts from "typescript"
 import { describe, expect, it } from "vitest"
 
 import { transform } from "."
-import { applyRtlMapping } from "./transform-rtl"
+import {
+  applyRtlMapping,
+  transformDirection,
+  transformRtl,
+} from "./transform-rtl"
+
+const rtlConfig = {
+  rtl: true,
+  tailwind: {
+    baseColor: "neutral",
+  },
+  aliases: {
+    components: "@/components",
+    utils: "@/lib/utils",
+  },
+} as Config
+
+// Runs only transformRtl through the string seam.
+function transformWithRtl(raw: string) {
+  return transform({ filename: "test.tsx", raw, config: rtlConfig }, [
+    transformRtl,
+  ])
+}
 
 describe("applyRtlMapping", () => {
   it("transforms margin classes", () => {
@@ -297,6 +319,49 @@ describe("applyRtlMapping", () => {
   it("skips manually specified ltr:/rtl: translate pairs", () => {
     expect(applyRtlMapping("ltr:-translate-x-1/2 rtl:-translate-x-1/2")).toBe(
       "ltr:-translate-x-1/2 rtl:-translate-x-1/2"
+    )
+  })
+
+  it("preserves empty segments from leading, trailing and repeated spaces", () => {
+    expect(applyRtlMapping(" ml-2  mr-2 ")).toBe(" ms-2  me-2 ")
+    expect(applyRtlMapping("")).toBe("")
+  })
+
+  it("leaves a variant without a value unchanged", () => {
+    expect(applyRtlMapping("hover: ml-2")).toBe("hover: ms-2")
+  })
+
+  it("only splits classes on spaces", () => {
+    // Current behavior: a tab or newline does not separate classes, so only the first one is mapped.
+    expect(applyRtlMapping("ml-2\tmr-2")).toBe("ms-2\tmr-2")
+    expect(applyRtlMapping("text-left\nmr-2")).toBe("text-left\nmr-2")
+  })
+
+  it("preserves modifiers on slide animations inside logical side variants", () => {
+    expect(
+      applyRtlMapping("data-[side=inline-start]:slide-in-from-right-2/50")
+    ).toBe("data-[side=inline-start]:slide-in-from-end-2/50")
+  })
+
+  it("preserves modifiers together with variant prefixes", () => {
+    expect(applyRtlMapping("hover:border-l-red-500/50")).toBe(
+      "hover:border-s-red-500/50"
+    )
+    expect(applyRtlMapping("data-[state=open]:bg-muted/50")).toBe(
+      "data-[state=open]:bg-muted/50"
+    )
+  })
+
+  it("is not idempotent for classes that add an rtl: variant", () => {
+    const once = applyRtlMapping(
+      "translate-x-2 space-x-2 divide-x-2 cursor-w-resize cn-rtl-flip ml-2"
+    )
+    expect(once).toBe(
+      "translate-x-2 rtl:-translate-x-2 space-x-2 rtl:space-x-reverse divide-x-2 rtl:divide-x-reverse cursor-w-resize rtl:cursor-e-resize rtl:rotate-180 ms-2"
+    )
+    // Current behavior: a second pass appends the rtl: variants again.
+    expect(applyRtlMapping(once)).toBe(
+      "translate-x-2 rtl:-translate-x-2 rtl:-translate-x-2 space-x-2 rtl:space-x-reverse rtl:space-x-reverse divide-x-2 rtl:divide-x-reverse rtl:divide-x-reverse cursor-w-resize rtl:cursor-e-resize rtl:cursor-e-resize rtl:rotate-180 ms-2"
     )
   })
 })
@@ -733,5 +798,737 @@ function Sidebar({
 
     expect(result).toContain('side = "right"')
     expect(result).not.toContain('side = "inline-end"')
+  })
+
+  it("preserves the quote kind of transformed class strings", async () => {
+    const result = await transformWithRtl(
+      `export function Foo({ isActive, isOpen }) {
+  return (
+    <div className='ml-2 text-left'>
+      <span
+        className={cn('pl-2', "pr-2", isActive ? 'left-0' : "right-0", isOpen && 'mr-1')}
+      />
+    </div>
+  )
+}
+`
+    )
+
+    expect(result).toBe(`export function Foo({ isActive, isOpen }) {
+  return (
+    <div className='ms-2 text-start'>
+      <span
+        className={cn('ps-2', "pe-2", isActive ? 'start-0' : "end-0", isOpen && 'me-1')}
+      />
+    </div>
+  )
+}
+`)
+  })
+
+  it("does not transform template literals", async () => {
+    const result = await transformWithRtl(`export function Foo({ active }) {
+  return (
+    <div className={\`ml-2 \${active}\`}>
+      <span className={cn(\`pl-2\`, "pr-2")} />
+    </div>
+  )
+}
+`)
+
+    // Current behavior: only "pr-2" is a StringLiteral, so the template literals keep physical classes.
+    expect(result).toBe(`export function Foo({ active }) {
+  return (
+    <div className={\`ml-2 \${active}\`}>
+      <span className={cn(\`pl-2\`, "pe-2")} />
+    </div>
+  )
+}
+`)
+  })
+
+  it("transforms a multi-line className={cn(...)} in place", async () => {
+    const result = await transformWithRtl(
+      `function SheetContent({ className, side = "right", ...props }) {
+  return (
+    <SheetPrimitive.Content
+      className={cn(
+        "fixed z-50 gap-4 bg-background shadow-lg",
+        side === "right" &&
+          "inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm",
+        side === "left"
+          ? "inset-y-0 left-0 h-full w-3/4 border-r"
+          : "pr-4",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+`
+    )
+
+    expect(result).toBe(
+      `function SheetContent({ className, side = "right", ...props }) {
+  return (
+    <SheetPrimitive.Content
+      className={cn(
+        "fixed z-50 gap-4 bg-background shadow-lg",
+        side === "right" &&
+          "inset-y-0 end-0 h-full w-3/4 border-s sm:max-w-sm",
+        side === "left"
+          ? "inset-y-0 start-0 h-full w-3/4 border-e"
+          : "pe-4",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+`
+    )
+  })
+
+  it("inserts a line continuation into multi-line className strings", async () => {
+    const result = await transformWithRtl(`export function Foo() {
+  return (
+    <div
+      className="ml-2 text-left
+        mr-2"
+    />
+  )
+}
+`)
+
+    // Current behavior: a backslash (kept literally by JSX) is added before the newline, and the "text-left" before it is not mapped.
+    expect(result).toBe(`export function Foo() {
+  return (
+    <div
+      className="ms-2 text-left\\
+        me-2"
+    />
+  )
+}
+`)
+  })
+
+  it("drops a backslash from escaped class strings in cn()", async () => {
+    const result = await transformWithRtl(String.raw`export function Foo() {
+  return (
+    <>
+      <div className={cn("ml-2 before:content-['\\00a0']")} />
+      <div className="ml-2 before:content-['\00a0']" />
+    </>
+  )
+}
+`)
+
+    // Current behavior: the escaped "\\" in the cn() string is written back as a single "\".
+    expect(result).toBe(String.raw`export function Foo() {
+  return (
+    <>
+      <div className={cn("ms-2 before:content-['\00a0']")} />
+      <div className="ms-2 before:content-['\00a0']" />
+    </>
+  )
+}
+`)
+  })
+
+  it("only transforms direct string arguments of the first cn() in a className expression", async () => {
+    const result = await transformWithRtl(`export function Foo({ isOpen }) {
+  return (
+    <>
+      <div className={"ml-2"} />
+      <div className={isOpen ? "ml-2" : "mr-2"} />
+      <div className={cn(cn("ml-2"), "mr-2")} />
+      <div className={cn((isOpen && "ml-2"), "pr-2")} />
+    </>
+  )
+}
+`)
+
+    // Current behavior: bare strings, ternaries outside cn(), nested cn() and parenthesized arguments are skipped.
+    expect(result).toBe(`export function Foo({ isOpen }) {
+  return (
+    <>
+      <div className={"ml-2"} />
+      <div className={isOpen ? "ml-2" : "mr-2"} />
+      <div className={cn(cn("ml-2"), "me-2")} />
+      <div className={cn((isOpen && "ml-2"), "pe-2")} />
+    </>
+  )
+}
+`)
+  })
+
+  it("transforms classNames object properties", async () => {
+    const result = await transformWithRtl(
+      `export function Calendar({ classNames, isRtl, ...props }) {
+  return (
+    <DayPicker
+      classNames={{
+        root: cn("w-fit", defaultClassNames.root),
+        nav: cn(
+          "absolute right-1 top-0",
+          isRtl ? "pl-2" : 'pr-2',
+          defaultClassNames.nav
+        ),
+        day: someHelper("pl-2"),
+        button_previous: "left-1",
+        nested: { day: 'pr-1' },
+        ...classNames,
+      }}
+      {...props}
+    />
+  )
+}
+`
+    )
+
+    expect(result).toBe(
+      `export function Calendar({ classNames, isRtl, ...props }) {
+  return (
+    <DayPicker
+      classNames={{
+        root: cn("w-fit", defaultClassNames.root),
+        nav: cn(
+          "absolute end-1 top-0",
+          isRtl ? "ps-2" : 'pe-2',
+          defaultClassNames.nav
+        ),
+        day: someHelper("ps-2"),
+        button_previous: "start-1",
+        nested: { day: 'pe-1' },
+        ...classNames,
+      }}
+      {...props}
+    />
+  )
+}
+`
+    )
+  })
+
+  it("skips logical cn() arguments, variant keys and string values in classNames", async () => {
+    const result = await transformWithRtl(`export function Calendar({ isRtl }) {
+  return (
+    <>
+      <DayPicker
+        classNames={{
+          nav: cn("pl-2", isRtl && "ml-2"),
+          variant: "ml-2",
+        }}
+      />
+      <DayPicker classNames="ml-2" />
+    </>
+  )
+}
+`)
+
+    // Current behavior: unlike className, "&&" arguments in classNames cn() calls are not transformed.
+    expect(result).toBe(`export function Calendar({ isRtl }) {
+  return (
+    <>
+      <DayPicker
+        classNames={{
+          nav: cn("ps-2", isRtl && "ml-2"),
+          variant: "ml-2",
+        }}
+      />
+      <DayPicker classNames="ml-2" />
+    </>
+  )
+}
+`)
+  })
+
+  it("transforms conditional and logical cn() arguments inside mergeProps", async () => {
+    const result = await transformWithRtl(`function Item({ inset, props }) {
+  const a = mergeProps<"div">(
+    {
+      className: cn("ml-2", inset ? "pl-8" : 'pr-2', inset && "mr-1", \`left-0\`),
+    },
+    props
+  )
+  const b = mergeProps(props, { className: "ml-2" })
+  const c = mergeProps({ className: clsx("ml-2") }, props)
+  const d = mergeProps({ ...props, "data-slot": "item" })
+  return [a, b, c, d]
+}
+`)
+
+    // Current behavior: only a cn() call or string in the first argument is transformed, and template literals are skipped.
+    expect(result).toBe(`function Item({ inset, props }) {
+  const a = mergeProps<"div">(
+    {
+      className: cn("ms-2", inset ? "ps-8" : 'pe-2', inset && "me-1", \`left-0\`),
+    },
+    props
+  )
+  const b = mergeProps(props, { className: "ml-2" })
+  const c = mergeProps({ className: clsx("ml-2") }, props)
+  const d = mergeProps({ ...props, "data-slot": "item" })
+  return [a, b, c, d]
+}
+`)
+  })
+
+  it("leaves side props that are missing, dynamic or unmapped", async () => {
+    const result = await transformWithRtl(`export function Foo({ side }) {
+  return (
+    <>
+      <ContextMenuContent className="ml-2" />
+      <ContextMenuSubContent side={side} />
+      <DropdownMenuSubContent side={"right"}>x</DropdownMenuSubContent>
+      <ContextMenuContent side="top" />
+    </>
+  )
+}
+`)
+
+    // Current behavior: a string inside an expression container (side={"right"}) is not mapped.
+    expect(result).toBe(`export function Foo({ side }) {
+  return (
+    <>
+      <ContextMenuContent className="ms-2" />
+      <ContextMenuSubContent side={side} />
+      <DropdownMenuSubContent side={"right"}>x</DropdownMenuSubContent>
+      <ContextMenuContent side="top" />
+    </>
+  )
+}
+`)
+  })
+
+  it("writes mapped side values with double quotes", async () => {
+    const result = await transformWithRtl(
+      `function ContextMenuContent({ side = 'left' }) {
+  return <ContextMenuSubContent side='right' />
+}
+`
+    )
+
+    // Current behavior: single-quoted side values are rewritten with double quotes.
+    expect(result).toBe(
+      `function ContextMenuContent({ side = "inline-start" }) {
+  return <ContextMenuSubContent side="inline-end" />
+}
+`
+    )
+  })
+
+  it("leaves side defaults that are missing or not string literals", async () => {
+    const result = await transformWithRtl(
+      `function ContextMenuSubContent({ side, align = "start" }) {
+  return <div data-side={side} data-align={align} />
+}
+
+function DropdownMenuSubContent({ side = DEFAULT_SIDE, ...props }) {
+  const { side: placement = "left" } = props
+  return <div data-side={side} data-placement={placement} />
+}
+`
+    )
+
+    expect(result).toBe(
+      `function ContextMenuSubContent({ side, align = "start" }) {
+  return <div data-side={side} data-align={align} />
+}
+
+function DropdownMenuSubContent({ side = DEFAULT_SIDE, ...props }) {
+  const { side: placement = "left" } = props
+  return <div data-side={side} data-placement={placement} />
+}
+`
+    )
+  })
+
+  it("transforms any side binding inside a whitelisted function declaration", async () => {
+    const result = await transformWithRtl(`function ContextMenuContent(props) {
+  const { side = "left" } = props
+  const render = ({ side = "right" }) => <div data-side={side} />
+  return render({ side })
+}
+`)
+
+    // Current behavior: side bindings in the body and in nested arrows are mapped, not just parameters.
+    expect(result).toBe(`function ContextMenuContent(props) {
+  const { side = "inline-start" } = props
+  const render = ({ side = "inline-end" }) => <div data-side={side} />
+  return render({ side })
+}
+`)
+  })
+
+  it("does not transform side defaults in arrow function components", async () => {
+    const result = await transformWithRtl(
+      `const DropdownMenuSubContent = ({ side = "right", ...props }) => (
+  <div data-side={side} {...props} />
+)
+`
+    )
+
+    // Current behavior: only function declarations are matched by name.
+    expect(result).toBe(
+      `const DropdownMenuSubContent = ({ side = "right", ...props }) => (
+  <div data-side={side} {...props} />
+)
+`
+    )
+  })
+
+  it("transforms cva variants but not compoundVariants or template literals", async () => {
+    const result = await transformWithRtl(
+      `const itemVariants = cva('translate-x-2', {
+  variants: {
+    size: { sm: 'pl-2', lg: \`pr-2\` },
+  },
+  compoundVariants: [{ size: "sm", className: "ml-2" }],
+  defaultVariants: { size: "sm" },
+})
+`
+    )
+
+    // Current behavior: compoundVariants and template literal variants keep physical classes.
+    expect(result).toBe(
+      `const itemVariants = cva('translate-x-2 rtl:-translate-x-2', {
+  variants: {
+    size: { sm: 'ps-2', lg: \`pr-2\` },
+  },
+  compoundVariants: [{ size: "sm", className: "ml-2" }],
+  defaultVariants: { size: "sm" },
+})
+`
+    )
+  })
+
+  it("transforms cva variant strings nested two levels deep twice", async () => {
+    const result = await transformWithRtl(`const itemVariants = cva("flex", {
+  variants: {
+    orientation: {
+      horizontal: {
+        start: "translate-x-2 ml-2",
+      },
+    },
+  },
+})
+`)
+
+    // Current behavior: the inner string is visited once per enclosing property, so rtl: is appended twice.
+    expect(result).toBe(`const itemVariants = cva("flex", {
+  variants: {
+    orientation: {
+      horizontal: {
+        start: "translate-x-2 rtl:-translate-x-2 rtl:-translate-x-2 ms-2",
+      },
+    },
+  },
+})
+`)
+  })
+
+  it("preserves CRLF line endings", async () => {
+    const result = await transformWithRtl(
+      'function ContextMenuSubContent({\r\n  side = "right",\r\n}) {\r\n  return <ContextMenuContent side="left" className={cn(\r\n    "ml-2",\r\n    "pr-4"\r\n  )} />\r\n}\r\n'
+    )
+
+    expect(result).toBe(
+      'function ContextMenuSubContent({\r\n  side = "inline-end",\r\n}) {\r\n  return <ContextMenuContent side="inline-start" className={cn(\r\n    "ms-2",\r\n    "pe-4"\r\n  )} />\r\n}\r\n'
+    )
+  })
+})
+
+describe("transformDirection", () => {
+  it("returns the input unchanged when rtl is false", async () => {
+    const input = `// Copyright (c) Acme, Inc.
+
+"use client"
+
+export function Foo() {
+  return <div className="ml-2 text-left" />
+}
+`
+
+    expect(await transformDirection(input, false)).toBe(input)
+  })
+
+  it("transforms a component file", async () => {
+    const result = await transformDirection(
+      `"use client"
+
+import * as React from "react"
+import { ContextMenu as ContextMenuPrimitive } from "@base-ui/react/context-menu"
+import { ChevronRightIcon } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+
+function ContextMenuContent({
+  className,
+  align = "start",
+  side = "right",
+  ...props
+}: ContextMenuPrimitive.Popup.Props &
+  Pick<ContextMenuPrimitive.Positioner.Props, "align" | "side">) {
+  return (
+    <ContextMenuPrimitive.Portal>
+      <ContextMenuPrimitive.Positioner
+        className="isolate z-50 outline-none"
+        align={align}
+        side={side}
+      >
+        <ContextMenuPrimitive.Popup
+          data-slot="context-menu-content"
+          className={cn(
+            "z-50 min-w-36 rounded-md p-1 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:-right-1",
+            className
+          )}
+          {...props}
+        />
+      </ContextMenuPrimitive.Positioner>
+    </ContextMenuPrimitive.Portal>
+  )
+}
+
+function ContextMenuSubTrigger({
+  className,
+  inset,
+  children,
+  ...props
+}: ContextMenuPrimitive.SubmenuTrigger.Props & {
+  inset?: boolean
+}) {
+  return (
+    <ContextMenuPrimitive.SubmenuTrigger
+      data-slot="context-menu-sub-trigger"
+      data-inset={inset}
+      className={cn(
+        "flex items-center gap-2 rounded-sm px-2 py-1.5 text-left",
+        inset && "pl-8",
+        className
+      )}
+      {...props}
+    >
+      {children}
+      <ChevronRightIcon className="cn-rtl-flip ml-auto size-4" />
+    </ContextMenuPrimitive.SubmenuTrigger>
+  )
+}
+
+function ContextMenuSubContent({
+  ...props
+}: React.ComponentProps<typeof ContextMenuContent>) {
+  return (
+    <ContextMenuContent
+      data-slot="context-menu-sub-content"
+      className="shadow-lg"
+      side="right"
+      {...props}
+    />
+  )
+}
+
+export { ContextMenuContent, ContextMenuSubTrigger, ContextMenuSubContent }
+`,
+      true
+    )
+
+    expect(result).toMatchInlineSnapshot(`
+      ""use client"
+
+      import * as React from "react"
+      import { ContextMenu as ContextMenuPrimitive } from "@base-ui/react/context-menu"
+      import { ChevronRightIcon } from "lucide-react"
+
+      import { cn } from "@/lib/utils"
+
+      function ContextMenuContent({
+        className,
+        align = "start",
+        side = "inline-end",
+        ...props
+      }: ContextMenuPrimitive.Popup.Props &
+        Pick<ContextMenuPrimitive.Positioner.Props, "align" | "side">) {
+        return (
+          <ContextMenuPrimitive.Portal>
+            <ContextMenuPrimitive.Positioner
+              className="isolate z-50 outline-none"
+              align={align}
+              side={side}
+            >
+              <ContextMenuPrimitive.Popup
+                data-slot="context-menu-content"
+                className={cn(
+                  "z-50 min-w-36 rounded-md p-1 data-[side=inline-start]:slide-in-from-end-2 data-[side=left]:-right-1",
+                  className
+                )}
+                {...props}
+              />
+            </ContextMenuPrimitive.Positioner>
+          </ContextMenuPrimitive.Portal>
+        )
+      }
+
+      function ContextMenuSubTrigger({
+        className,
+        inset,
+        children,
+        ...props
+      }: ContextMenuPrimitive.SubmenuTrigger.Props & {
+        inset?: boolean
+      }) {
+        return (
+          <ContextMenuPrimitive.SubmenuTrigger
+            data-slot="context-menu-sub-trigger"
+            data-inset={inset}
+            className={cn(
+              "flex items-center gap-2 rounded-sm px-2 py-1.5 text-start",
+              inset && "ps-8",
+              className
+            )}
+            {...props}
+          >
+            {children}
+            <ChevronRightIcon className="rtl:rotate-180 ms-auto size-4" />
+          </ContextMenuPrimitive.SubmenuTrigger>
+        )
+      }
+
+      function ContextMenuSubContent({
+        ...props
+      }: React.ComponentProps<typeof ContextMenuContent>) {
+        return (
+          <ContextMenuContent
+            data-slot="context-menu-sub-content"
+            className="shadow-lg"
+            side="inline-end"
+            {...props}
+          />
+        )
+      }
+
+      export { ContextMenuContent, ContextMenuSubTrigger, ContextMenuSubContent }
+      "
+    `)
+  })
+
+  it("strips a leading license comment", async () => {
+    const result = await transformDirection(
+      `/**
+ * Copyright (c) Acme, Inc.
+ * SPDX-License-Identifier: MIT
+ */
+
+"use client"
+
+export function Foo() {
+  return <div className="ml-2" />
+}
+`,
+      true
+    )
+
+    // Current behavior: getText() drops the leading comment and blank line.
+    expect(result).toBe(`"use client"
+
+export function Foo() {
+  return <div className="ms-2" />
+}
+`)
+  })
+
+  it("strips a leading comment even when no classes change", async () => {
+    const result = await transformDirection(
+      `// Copyright (c) Acme, Inc.
+
+export const a = 1
+`,
+      true
+    )
+
+    // Current behavior: the output differs from the input, so migrate rtl rewrites the file without its header.
+    expect(result).toBe(`export const a = 1
+`)
+  })
+
+  it("strips a leading byte order mark", async () => {
+    const result = await transformDirection(
+      `﻿"use client"
+
+export const Foo = () => <div className="ml-2" />
+`,
+      true
+    )
+
+    expect(result).toBe(`"use client"
+
+export const Foo = () => <div className="ms-2" />
+`)
+  })
+
+  it("preserves CRLF line endings", async () => {
+    const result = await transformDirection(
+      '"use client"\r\n\r\nfunction DropdownMenuSubContent({\r\n  side = "left",\r\n}) {\r\n  return <div className="ml-2 text-right" />\r\n}\r\n',
+      true
+    )
+
+    expect(result).toBe(
+      '"use client"\r\n\r\nfunction DropdownMenuSubContent({\r\n  side = "inline-start",\r\n}) {\r\n  return <div className="ms-2 text-end" />\r\n}\r\n'
+    )
+  })
+
+  it("is not idempotent when run twice", async () => {
+    const input = `"use client"
+
+function Foo({ className }) {
+  return (
+    <div
+      className={cn(
+        "translate-x-2 space-x-2 cursor-w-resize ml-2",
+        className
+      )}
+    >
+      <ChevronRightIcon className="cn-rtl-flip ml-auto" />
+      <ContextMenuContent side="right" />
+    </div>
+  )
+}
+`
+
+    const once = await transformDirection(input, true)
+    expect(once).toBe(`"use client"
+
+function Foo({ className }) {
+  return (
+    <div
+      className={cn(
+        "translate-x-2 rtl:-translate-x-2 space-x-2 rtl:space-x-reverse cursor-w-resize rtl:cursor-e-resize ms-2",
+        className
+      )}
+    >
+      <ChevronRightIcon className="rtl:rotate-180 ms-auto" />
+      <ContextMenuContent side="inline-end" />
+    </div>
+  )
+}
+`)
+
+    // Current behavior: a second run appends the translate-x, space-x and cursor rtl: variants again.
+    expect(await transformDirection(once, true)).toBe(`"use client"
+
+function Foo({ className }) {
+  return (
+    <div
+      className={cn(
+        "translate-x-2 rtl:-translate-x-2 rtl:-translate-x-2 space-x-2 rtl:space-x-reverse rtl:space-x-reverse cursor-w-resize rtl:cursor-e-resize rtl:cursor-e-resize ms-2",
+        className
+      )}
+    >
+      <ChevronRightIcon className="rtl:rotate-180 ms-auto" />
+      <ContextMenuContent side="inline-end" />
+    </div>
+  )
+}
+`)
   })
 })

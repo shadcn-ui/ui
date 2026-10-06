@@ -14,13 +14,6 @@ import {
 import { fetchRegistry, fetchRegistryLocal } from "@/src/registry/fetcher"
 import { fetchGitHubRegistryItem } from "@/src/registry/github"
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
-import { resolveRegistryUrl } from "@/src/registry/url"
-import {
-  deduplicateFilesByTarget,
-  isLocalFile,
-  isUniversalRegistryItem,
-  isUrl,
-} from "@/src/registry/utils"
 import {
   RegistryFontItem,
   registryItemCommonSchema,
@@ -28,7 +21,14 @@ import {
   registryItemSchema,
   registryItemTypeSchema,
   registryResolvedItemsTreeSchema,
-} from "@/src/schema"
+} from "@/src/registry/schema"
+import { resolveRegistryUrl } from "@/src/registry/url"
+import {
+  deduplicateFilesByTarget,
+  isLocalFile,
+  isUniversalRegistryItem,
+  isUrl,
+} from "@/src/registry/utils"
 import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
 import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
 import { buildTailwindThemeColorsFromCssVars } from "@/src/utils/updaters/update-tailwind-config"

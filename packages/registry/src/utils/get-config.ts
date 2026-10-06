@@ -5,11 +5,11 @@ import {
   configSchema,
   rawConfigSchema,
   workspaceConfigSchema,
-} from "@/src/schema"
+} from "@/src/registry/schema"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
+import { createJsonConfigExplorer } from "@/src/utils/json-config"
 import { resolveImportWithMetadata } from "@/src/utils/resolve-import"
-import { cosmiconfig } from "cosmiconfig"
 import fg from "fast-glob"
 import { loadConfig, type ConfigLoaderSuccessResult } from "tsconfig-paths"
 import { z } from "zod"
@@ -21,10 +21,8 @@ export const DEFAULT_TAILWIND_CSS = "app/globals.css"
 export const DEFAULT_TAILWIND_CONFIG = "tailwind.config.js"
 export const DEFAULT_TAILWIND_BASE_COLOR = "slate"
 
-// TODO: Figure out if we want to support all cosmiconfig formats.
-// A simple components.json file would be nice.
-export const explorer = cosmiconfig("components", {
-  searchPlaces: ["components.json"],
+export const explorer = createJsonConfigExplorer({
+  filename: "components.json",
 })
 
 export type Config = z.infer<typeof configSchema>
