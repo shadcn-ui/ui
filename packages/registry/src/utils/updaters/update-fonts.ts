@@ -1,6 +1,9 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
-import { RegistryFontItem, registryResolvedItemsTreeSchema } from "@/src/schema"
+import {
+  RegistryFontItem,
+  registryResolvedItemsTreeSchema,
+} from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { getProjectInfo, ProjectInfo } from "@/src/utils/get-project-info"
 import { spinner } from "@/src/utils/spinner"

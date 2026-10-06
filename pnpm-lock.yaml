@@ -328,7 +328,7 @@ importers:
         specifier: ^0.0.1
         version: 0.0.1
       shadcn:
-        specifier: 4.21.2
+        specifier: 4.21.3
         version: link:../../packages/shadcn
       shiki:
         specifier: ^3.23.0
@@ -576,6 +576,9 @@ importers:
       '@types/stringify-object':
         specifier: ^4.0.5
         version: 4.0.5
+      esbuild:
+        specifier: ^0.27.7
+        version: 0.27.7
       msw:
         specifier: ^2.10.4
         version: 2.10.4(@types/node@20.19.10)(typescript@5.9.2)
