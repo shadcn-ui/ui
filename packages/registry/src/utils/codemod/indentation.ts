@@ -234,7 +234,8 @@ export function getIndentationText(
 // attribute or its initializer, and of an object or array literal, the
 // positions the editors indent at: the comment and literal special cases and
 // the one for a function in a list are left out, and getSmartIndent never
-// assumes a new line before a closing brace.
+// assumes a new line before a closing brace. Babel's tokens have none for a
+// skipped comma (see parseModule), which none of these positions follows.
 function getIndentationAtPosition(
   code: string,
   position: number,

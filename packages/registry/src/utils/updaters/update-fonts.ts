@@ -13,6 +13,7 @@ import {
 import { getReplacementText } from "@/src/utils/codemod/indentation"
 import { addNamedImport } from "@/src/utils/codemod/named-imports"
 import {
+  addsSyntaxErrors,
   countSyntaxErrors,
   getText,
   parseModule,
@@ -225,7 +226,7 @@ async function updateNextFonts(
   // ts-morph writes some edits that break a layout the editor does not
   // expect, like a cn() className with only font arguments, which becomes
   // `cn(, ...)`.
-  if (countSyntaxErrors(updatedContent) > countSyntaxErrors(layoutContent)) {
+  if (addsSyntaxErrors(layoutContent, updatedContent)) {
     return { path: layoutPath, reason: "syntax-error-inserted" }
   }
 
@@ -755,7 +756,9 @@ function setJsxAttributeInitializer(
 
 // ts-morph's Node#replaceWithText(text) on the className expression, without
 // the syntax check: the string helpers below can break the expression, as in
-// `cn(, ...)`, and updateNextFonts does not write such a layout.
+// `cn(, ...)`, and updateNextFonts does not write such a layout. TypeScript
+// skips that comma, so ts-morph took the edit, but Babel recovers from it
+// with an error, which applyManipulation would reject the edit for.
 function replaceJsxExpression(code: string, expression: t.Node, text: string) {
   return applyEdits(code, [
     {

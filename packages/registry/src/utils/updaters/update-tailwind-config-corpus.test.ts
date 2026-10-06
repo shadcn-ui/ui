@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync } from "fs"
 import path from "path"
 import { registryItemTailwindSchema } from "@/src/registry/schema"
-import { countSyntaxErrors } from "@/src/utils/codemod/parse"
+import { addsSyntaxErrors, countSyntaxErrors } from "@/src/utils/codemod/parse"
 import type { Config } from "@/src/utils/get-config"
 import { describe, expect, test } from "vitest"
 
@@ -22,7 +22,7 @@ import {
 // Each snapshot is a line diff from the input, so it pins the output exactly
 // and shows what the editor changed. Inputs it throws on pin the error.
 // Outputs with more syntax errors than their input, counted by Babel, say so
-// on their first line.
+// on their first line. updateTailwindConfig does not write those.
 
 const CORPUS_DIR = path.resolve(
   __dirname,
@@ -308,7 +308,7 @@ async function edit(input: string, setName: ValueSetName, name: string) {
   }
 
   const diff = lineDiff(showCarriageReturns(input), showCarriageReturns(output))
-  if (countSyntaxErrors(output) > countSyntaxErrors(input)) {
+  if (addsSyntaxErrors(input, output)) {
     return `adds syntax errors: ${syntaxErrors(input)} -> ${syntaxErrors(output)}\n${diff}`
   }
   return diff

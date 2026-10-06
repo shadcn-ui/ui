@@ -49,44 +49,56 @@ type ParseModuleOptions = ParseOptions & { tokens?: boolean }
 
 // ts-morph's SourceFile: the whole file, parsed even with syntax errors.
 //
-// TypeScript also parses past a comma where it expects an object literal
-// member, as in `{ a: 1,, b: 2 }`: its parseDelimitedList reports "Property
-// assignment expected." and skips the comma, so the tree has the members
-// around it as if it were not there. ts-morph's edits write such commas (see
-// insertIntoCommaSeparatedNodes), and only reject an edit whose tree is not
-// the one they expect, so those edits go through, and a later edit often
-// takes the comma out again. Babel throws on these commas, so each one is
-// blanked out, which keeps every position, and the code parsed again. They
-// are still syntax errors: see countSyntaxErrors.
+// TypeScript also parses past a skipped comma: a comma where it expects an
+// object literal member, as in `{ a: 1,, b: 2 }`. Its parseDelimitedList
+// reports "Property assignment expected." and skips the comma, so the tree
+// has the members around it as if it were not there. ts-morph's edits write
+// such commas (see insertIntoCommaSeparatedNodes), and only reject an edit
+// whose tree is not the one they expect, so those edits go through, and a
+// later edit often takes the comma out again. Babel throws on these commas,
+// so each one is blanked out, which keeps every position, and the code is
+// parsed again. They are still syntax errors: see countSyntaxErrors.
+//
+// Each comma costs another parse of the whole code. The editors leave an
+// input with one as it is, since Babel cannot parse it as written, so the
+// code only has those the editors' own edits wrote.
 export function parseModule(code: string, options: ParseModuleOptions = {}) {
-  return parsePastSkippedCommas(code, code, options)
-}
-
-// text is code with the commas found so far blanked out. Each one is checked
-// once the rest of the code parses.
-function parsePastSkippedCommas(
-  code: string,
-  text: string,
-  options: ParseModuleOptions
-): ParseResult<t.File> {
   try {
-    return parseAsWritten(text, options)
+    return parseAsWritten(code, options)
   } catch (error) {
-    const pos = getErrorPos(error)
-    if (pos === undefined || text[pos] !== ",") {
-      throw error
-    }
-
-    const file = parsePastSkippedCommas(
-      code,
-      text.slice(0, pos) + " " + text.slice(pos + 1),
-      options
-    )
-    if (!isSkippedComma(code, file, pos)) {
+    const file = parsePastSkippedCommas(code, getErrorPos(error), options)
+    if (!file) {
       throw error
     }
     return file
   }
+}
+
+// code parsed with the comma at pos blanked out, and each comma Babel throws
+// at after that, or undefined if Babel throws at something else or one of
+// the commas is not a skipped comma.
+function parsePastSkippedCommas(
+  code: string,
+  pos: number | undefined,
+  options: ParseModuleOptions
+) {
+  const commas: number[] = []
+  let text = code
+  while (pos !== undefined && text[pos] === ",") {
+    commas.push(pos)
+    text = text.slice(0, pos) + " " + text.slice(pos + 1)
+    try {
+      const file = parseAsWritten(text, options)
+      // Each comma is checked once the rest of the code parses.
+      return commas.every((comma) => isSkippedComma(code, file, comma))
+        ? file
+        : undefined
+    } catch (error) {
+      pos = getErrorPos(error)
+    }
+  }
+
+  return undefined
 }
 
 function parseAsWritten(code: string, options: ParseModuleOptions) {
@@ -121,9 +133,12 @@ function isSkippedComma(code: string, file: t.File, pos: number) {
 
   return !nodes.some((node, index) => {
     switch (node.type) {
-      // An array literal or pattern takes a comma between its elements.
+      // An array literal or pattern, a type argument list and a tuple type
+      // take a comma between their elements.
       case "ArrayExpression":
       case "ArrayPattern":
+      case "TSTypeParameterInstantiation":
+      case "TSTupleType":
         return true
       // JSX children take any token.
       case "JSXElement":
@@ -208,16 +223,30 @@ function countErrors(parseFile: () => ParseResult<t.File>) {
 
 // The syntax errors in code as written: close enough to TypeScript's
 // syntactic diagnostics to tell whether a file is broken. Babel cannot parse a
-// comma TypeScript skips (see parseModule), so it counts as Infinity.
+// skipped comma (see parseModule), so it counts as Infinity.
 export function countSyntaxErrors(code: string, options: ParseOptions = {}) {
   return countErrors(() => parseAsWritten(code, options))
 }
 
-// The syntax errors that can change the tree TypeScript parses code into,
-// which is what ts-morph rejects an edit for: countSyntaxErrors's, except the
-// commas TypeScript skips (see parseModule), which change no node.
-export function countTreeErrors(code: string, options: ParseOptions = {}) {
+// countSyntaxErrors, except the skipped commas parseModule parses past:
+// TypeScript's tree has no node for them, so ts-morph's edits wrote them (see
+// applyManipulation). A comma TypeScript skips in a call's arguments, as in
+// `f(a,, b)`, still counts, since Babel recovers from it with an error.
+export function countSyntaxErrorsExceptSkippedCommas(
+  code: string,
+  options: ParseOptions = {}
+) {
   return countErrors(() => parseModule(code, options))
+}
+
+// Whether output, an edit of input, is broken where input was not. ts-morph
+// wrote some edits that break a file, which the editors leave as it was.
+export function addsSyntaxErrors(
+  input: string,
+  output: string,
+  options: ParseOptions = {}
+) {
+  return countSyntaxErrors(output, options) > countSyntaxErrors(input, options)
 }
 
 // ts-morph's Node#getText().

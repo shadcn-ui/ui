@@ -21,8 +21,9 @@ import {
   removeProperty,
 } from "@/src/utils/codemod/object-literals"
 import {
+  addsSyntaxErrors,
   countSyntaxErrors,
-  countTreeErrors,
+  countSyntaxErrorsExceptSkippedCommas,
   findNodeAt,
   getText,
   parseModule,
@@ -148,8 +149,7 @@ async function updateTailwindConfigFile(
   // ts-morph wrote some edits that broke the config, like a property added
   // after a comment that follows the last comma, which got a second comma
   // that TypeScript skips (see parseModule).
-  const options = getParseOptions(config)
-  if (countSyntaxErrors(output, options) > countSyntaxErrors(raw, options)) {
+  if (addsSyntaxErrors(raw, output, getParseOptions(config))) {
     return "syntax-error-inserted"
   }
 
@@ -495,6 +495,11 @@ export function nestSpreadProperties(
         const spreadText = getText(code, property.argument)
 
         // Replace spread with a property assignment
+        //
+        // As in ts-morph, the index counts comment nodes, so after one, the
+        // placeholder goes in earlier, and the text it copies can bring a
+        // second comma that TypeScript skips (see getCommentNodeTexts). A
+        // later edit, like the theme's reprint, usually takes it out again.
         code = insertPropertyAssignment(
           code,
           object,
@@ -683,18 +688,27 @@ type ThemeValue =
   | { [key: string]: ThemeValue }
 
 // The theme as a plain object to merge into. ts-morph parsed its text on its
-// own, as `const theme = <text>` in TypeScript, which reads JSX in a
-// JavaScript config as a broken type assertion, and ends an object at a comma
-// it skips elsewhere when the comma starts a line (see parseModule). Babel
-// cannot read either one that way.
+// own, as `const theme = <text>` in TypeScript, which Babel cannot always read
+// the same way.
 function parseObjectLiteral(
   objectLiteralString: string,
   options: ParseOptions
 ) {
   const code = `const theme = ${objectLiteralString}`
   const typeScriptOptions = { jsx: false }
-  const treeErrors = countTreeErrors(code, typeScriptOptions)
-  if (treeErrors === Infinity || treeErrors > countTreeErrors(code, options)) {
+  const typeScriptErrors = countSyntaxErrorsExceptSkippedCommas(
+    code,
+    typeScriptOptions
+  )
+  if (
+    // In a declaration, TypeScript ends an object at a comma that starts a
+    // line, which it skips elsewhere (see parseModule). Babel cannot end it
+    // there.
+    typeScriptErrors === Infinity ||
+    // TypeScript reads JSX in a JavaScript config as a broken type
+    // assertion, which Babel does not parse into the same tree.
+    typeScriptErrors > countSyntaxErrorsExceptSkippedCommas(code, options)
+  ) {
     throw new UnparsableConfigError()
   }
 

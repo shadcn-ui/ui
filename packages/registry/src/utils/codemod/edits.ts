@@ -1,7 +1,10 @@
 import { type types as t } from "@babel/core"
 
 import { getReplacementText } from "./indentation"
-import { countTreeErrors, type ParseOptions } from "./parse"
+import {
+  countSyntaxErrorsExceptSkippedCommas,
+  type ParseOptions,
+} from "./parse"
 
 // Replaces code[start, end) with text. Positions are in the original code.
 export interface TextEdit {
@@ -39,9 +42,10 @@ export class SyntaxErrorInsertedError extends Error {
 export type SkipReason = "unparsable" | "syntax-error-inserted"
 
 // ts-morph's doManipulation, which throws when the edited text no longer
-// parses into the tree it expects. A new error that can change the tree
-// stands in for that, so an edit can write a comma TypeScript skips, as
-// ts-morph's did.
+// parses into the tree it expects. A new syntax error stands in for that,
+// except a skipped comma (see parseModule): TypeScript's tree has no node for
+// one, so an edit can write it, as ts-morph's did. ts-morph also threw when
+// its own update of its tree failed, which is not reproduced.
 export function applyManipulation(
   code: string,
   edits: TextEdit[],
@@ -49,7 +53,10 @@ export function applyManipulation(
 ) {
   const result = applyEdits(code, edits)
 
-  if (countTreeErrors(result, options) > countTreeErrors(code, options)) {
+  if (
+    countSyntaxErrorsExceptSkippedCommas(result, options) >
+    countSyntaxErrorsExceptSkippedCommas(code, options)
+  ) {
     throw new SyntaxErrorInsertedError()
   }
 

@@ -39,9 +39,10 @@ export interface CommaSeparatedList {
 }
 
 // The SyntaxList children of a list in brackets: the items and the commas
-// after them. A null item is a hole, TypeScript's OmittedExpression, which is
-// empty and starts where its trivia does. getStartWithJsDoc gives an item's
-// getStart(true) from its pos.
+// after them, and in an object literal, the skipped commas (see parseModule),
+// which TypeScript keeps in the list too. A null item is a hole, TypeScript's
+// OmittedExpression. getStartWithJsDoc gives an item's getStart(true) from
+// its pos.
 export function getListChildren(
   code: string,
   pos: number,
@@ -54,16 +55,11 @@ export function getListChildren(
   // Where the last child ends, and the next one's trivia starts.
   let end = pos
 
-  // Adds the commas from end on: an item's own, and in an object literal,
-  // those TypeScript skips (see parseModule), which are children of the list
-  // too. In an array literal, Babel has a hole between two commas, so only
-  // one comma comes before a hole.
+  // Adds the commas from end on. In an array literal, a hole goes between two
+  // commas, so only one comes before it.
   function addCommas(beforeHole: boolean) {
-    for (
-      let start = skipTrivia(code, end);
-      code[start] === "," && start < closeStart;
-      start = skipTrivia(code, end)
-    ) {
+    let start = skipTrivia(code, end)
+    while (code[start] === "," && start < closeStart) {
       children.push({
         kind: "comma",
         pos: end,
@@ -73,24 +69,29 @@ export function getListChildren(
       })
       end = start + 1
       if (beforeHole) {
-        return
+        break
       }
+      start = skipTrivia(code, end)
     }
   }
 
+  // A list that starts with a hole has its first comma after the hole.
   if (items[0] !== null) {
     addCommas(false)
   }
   items.forEach((item, index) => {
-    const start = item ? item.start! : end
-    children.push({
-      kind: "item",
-      pos: end,
-      start,
-      startWithJsDoc: item ? getStartWithJsDoc(item, end) : start,
-      end: item ? item.end! : end,
-    })
-    end = item ? item.end! : end
+    // A hole is empty, and starts where its trivia does.
+    const child: ListChild = item
+      ? {
+          kind: "item",
+          pos: end,
+          start: item.start!,
+          startWithJsDoc: getStartWithJsDoc(item, end),
+          end: item.end!,
+        }
+      : { kind: "item", pos: end, start: end, startWithJsDoc: end, end }
+    children.push(child)
+    end = child.end
     addCommas(items[index + 1] === null)
   })
 

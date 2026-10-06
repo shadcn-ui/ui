@@ -1,4 +1,4 @@
-import { promises as fs } from "fs"
+import { promises as fs, readFileSync } from "fs"
 import os from "os"
 import path from "path"
 import { SyntaxErrorInsertedError } from "@/src/utils/codemod/edits"
@@ -1393,27 +1393,17 @@ const SHADCN_TAILWIND_CONFIG = {
   },
 }
 
-// The accordion's tailwind.config in the registry.
-const ACCORDION_TAILWIND_CONFIG = {
-  theme: {
-    extend: {
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
-    },
-  },
-}
+// The accordion's tailwind.config in the registry, as the golden corpus has
+// it.
+const ACCORDION_TAILWIND_CONFIG = JSON.parse(
+  readFileSync(
+    path.resolve(
+      __dirname,
+      "../../../test/fixtures/tailwind-config-corpus/values/accordion.json"
+    ),
+    "utf8"
+  )
+)
 
 function configWithPath(tailwindConfig: string) {
   return {
@@ -2876,9 +2866,10 @@ module.exports = config
   ])(
     "should throw on $name, where a second comma starts a line",
     async ({ theme }) => {
-      // ts-morph read the theme as `const theme = <theme>`, where TypeScript
-      // ends an object at a second comma that starts a line. Babel cannot
-      // end it there, so updateTailwindConfig leaves the config untouched.
+      // ts-morph wrote a valid config here. It read the theme as
+      // `const theme = <theme>`, where TypeScript ends an object at a second
+      // comma that starts a line. Babel cannot end it there, so this is a
+      // known difference: updateTailwindConfig leaves the config untouched.
       await expect(
         transformTailwindConfig(
           `module.exports = {\n  content: [],\n  theme: ${theme},\n}\n`,
@@ -2890,9 +2881,11 @@ module.exports = config
   )
 
   it("should throw on a plugin added after a spread whose comma follows a line comment", async () => {
-    // ts-morph puts the new comma after the comment, which comments it out:
-    // `...more // c,`. TypeScript reads past the missing comma, and replacing
-    // the spread in the plugins put one back. Babel cannot read past it.
+    // ts-morph wrote a valid config here. It put the new comma after the
+    // comment, which comments it out: `...more // c,`. TypeScript reads past
+    // the missing comma, and replacing the spread in the plugins put one
+    // back. Babel cannot read past it, so this is a known difference:
+    // updateTailwindConfig leaves the config untouched.
     await expect(
       transformTailwindConfig(
         `module.exports = {\n  content: [],\n  plugins: [\n    ...more // c\n    ,\n  ],\n}\n`,
