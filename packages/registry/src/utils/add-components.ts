@@ -196,17 +196,26 @@ async function addWorkspaceComponents(
   )
 
   // 2. Update tailwind config.
+  let tailwindConfigWarning: string | undefined
   if (tree.tailwind?.config) {
-    await updateTailwindConfig(tree.tailwind?.config, mainTargetConfig, {
-      silent: true,
-      tailwindVersion,
-    })
-    filesUpdated.push(
-      path.relative(
+    tailwindConfigWarning = await updateTailwindConfig(
+      tree.tailwind?.config,
+      mainTargetConfig,
+      {
+        silent: true,
+        tailwindVersion,
         workspaceRoot,
-        mainTargetConfig.resolvedPaths.tailwindConfig
-      )
+      }
     )
+    // A skipped config is left as it was.
+    if (!tailwindConfigWarning) {
+      filesUpdated.push(
+        path.relative(
+          workspaceRoot,
+          mainTargetConfig.resolvedPaths.tailwindConfig
+        )
+      )
+    }
   }
 
   // 3. Update environment variables.
@@ -384,6 +393,10 @@ async function addWorkspaceComponents(
     for (const file of dedupedSkipped) {
       logger.log(`  - ${file}`)
     }
+  }
+
+  if (tailwindConfigWarning && !options.silent) {
+    logger.warn(tailwindConfigWarning)
   }
 
   if (fontsWarning && !options.silent) {
