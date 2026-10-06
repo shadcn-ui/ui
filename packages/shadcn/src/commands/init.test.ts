@@ -3,18 +3,18 @@ import os from "os"
 import path from "path"
 import { preFlightInit } from "@/src/preflights/preflight-init"
 import { templates } from "@/src/templates"
-import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
 import { MISSING_DIR_OR_EMPTY_PROJECT } from "@/src/utils/errors"
+import { ensureRegistriesInConfig } from "@/src/utils/registries"
+import { addComponents } from "@shadcn/registry/internal/utils/add-components"
 import {
   getProjectConfig,
   getProjectInfo,
   getProjectTailwindVersionFromConfig,
-} from "@/src/utils/get-project-info"
-import { ensureRegistriesInConfig } from "@/src/utils/registries"
+} from "@shadcn/registry/internal/utils/get-project-info"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
-import { applyInitUrlOptions, initOptionsSchema, runInit } from "./init"
+import { applyInitUrlOptions, init, initOptionsSchema, runInit } from "./init"
 
 vi.mock("@/src/preflights/preflight-init", () => ({
   preFlightInit: vi.fn(),
@@ -24,7 +24,7 @@ vi.mock("@/src/utils/create-project", () => ({
   createProject: vi.fn(),
 }))
 
-vi.mock("@/src/utils/add-components", () => ({
+vi.mock("@shadcn/registry/internal/utils/add-components", () => ({
   addComponents: vi.fn(),
 }))
 
@@ -32,13 +32,16 @@ vi.mock("@/src/utils/registries", () => ({
   ensureRegistriesInConfig: vi.fn(),
 }))
 
-vi.mock("@/src/registry/api", () => ({
+vi.mock("@shadcn/registry/internal/registry/api", () => ({
   getRegistryBaseColors: vi.fn().mockResolvedValue([
     {
       label: "Zinc",
       name: "zinc",
     },
   ]),
+}))
+
+vi.mock("@/src/utils/registry-api", () => ({
   getRegistryStyles: vi.fn().mockResolvedValue([
     {
       label: "New York",
@@ -47,7 +50,7 @@ vi.mock("@/src/registry/api", () => ({
   ]),
 }))
 
-vi.mock("@/src/utils/get-config", () => ({
+vi.mock("@shadcn/registry/internal/utils/get-config", () => ({
   DEFAULT_COMPONENTS: "@/components",
   DEFAULT_TAILWIND_CONFIG: "tailwind.config.js",
   DEFAULT_TAILWIND_CSS: "app/globals.css",
@@ -74,14 +77,14 @@ vi.mock("@/src/utils/get-config", () => ({
   ),
 }))
 
-vi.mock("@/src/utils/get-project-info", () => ({
+vi.mock("@shadcn/registry/internal/utils/get-project-info", () => ({
   getProjectComponents: vi.fn().mockResolvedValue([]),
   getProjectConfig: vi.fn(),
   getProjectInfo: vi.fn(),
   getProjectTailwindVersionFromConfig: vi.fn(),
 }))
 
-vi.mock("@/src/utils/logger", () => ({
+vi.mock("@shadcn/registry/internal/utils/logger", () => ({
   logger: {
     break: vi.fn(),
     error: vi.fn(),
@@ -91,7 +94,7 @@ vi.mock("@/src/utils/logger", () => ({
   },
 }))
 
-vi.mock("@/src/utils/spinner", () => ({
+vi.mock("@shadcn/registry/internal/utils/spinner", () => ({
   spinner: vi.fn(() => ({
     fail: vi.fn(),
     start: vi.fn().mockReturnThis(),
@@ -99,7 +102,7 @@ vi.mock("@/src/utils/spinner", () => ({
   })),
 }))
 
-vi.mock("@/src/utils/highlighter", () => ({
+vi.mock("@shadcn/registry/internal/utils/highlighter", () => ({
   highlighter: {
     error: (value: string) => value,
     info: (value: string) => value,
@@ -192,7 +195,12 @@ describe("runInit", () => {
       createProjectConfig(projectCwd)
     )
     vi.mocked(ensureRegistriesInConfig).mockImplementation(
-      async (_components, config) => ({ config, newRegistries: [] })
+      async (_components, config) => ({
+        config,
+        newRegistries: [],
+        discoveredRegistries: {},
+        packageJsonRegistries: {},
+      })
     )
     vi.mocked(addComponents).mockResolvedValue(undefined)
   })
@@ -254,6 +262,16 @@ describe("runInit", () => {
 })
 
 describe("init options", () => {
+  it("accepts aria as a base", () => {
+    const result = initOptionsSchema.parse({
+      ...createInitOptions("/tmp/project"),
+      base: "aria",
+    })
+
+    expect(result.base).toBe("aria")
+    expect(init.helpInformation()).toContain("(base, radix, aria)")
+  })
+
   it("parses pointer flags", () => {
     const result = initOptionsSchema.parse({
       ...createInitOptions("/tmp/project"),

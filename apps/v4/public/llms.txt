@@ -8,6 +8,7 @@
 - [CLI](https://ui.shadcn.com/docs/cli): Command-line tool for installing and managing components.
 - [components.json](https://ui.shadcn.com/docs/components-json): Configuration file for customizing the CLI and component installation.
 - [Theming](https://ui.shadcn.com/docs/theming): Guide to customizing colors, typography, and design tokens.
+- [Typeset](https://ui.shadcn.com/docs/typeset): Typography for rendered markdown, from blog posts to streaming chat. One CSS file that scales from its container and reads your theme.
 - [Changelog](https://ui.shadcn.com/docs/changelog): Release notes and version history.
 - [Skills](https://ui.shadcn.com/docs/skills): Deep shadcn/ui knowledge for AI assistants like Claude Code.
 - [Directory](https://ui.shadcn.com/docs/directory): Community registries built into the CLI.

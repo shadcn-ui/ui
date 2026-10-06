@@ -1,13 +1,17 @@
-import { getRegistryItems } from "@/src/registry/api"
-import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
-import { configWithDefaults } from "@/src/registry/config"
-import { REGISTRY_URL, SHADCN_URL } from "@/src/registry/constants"
-import { type registryConfigSchema } from "@/src/registry/schema"
-import { isUrl } from "@/src/registry/utils"
-import { createConfig } from "@/src/utils/get-config"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
+import { type PresetBase } from "@shadcn/registry/internal/preset/preset"
+import { getRegistryItems } from "@shadcn/registry/internal/registry/api"
+import { buildUrlAndHeadersForRegistryItem } from "@shadcn/registry/internal/registry/builder"
+import { configWithDefaults } from "@shadcn/registry/internal/registry/config"
+import {
+  REGISTRY_URL,
+  SHADCN_URL,
+} from "@shadcn/registry/internal/registry/constants"
+import { type registryConfigSchema } from "@shadcn/registry/internal/registry/schema"
+import { isUrl } from "@shadcn/registry/internal/registry/utils"
+import { createConfig } from "@shadcn/registry/internal/utils/get-config"
+import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
+import { logger } from "@shadcn/registry/internal/utils/logger"
 import open from "open"
 import prompts from "prompts"
 import { type z } from "zod"
@@ -22,7 +26,7 @@ export function resolveCreateUrl(
     template: string
     rtl: boolean
     pointer: boolean
-    base: string
+    base: PresetBase
   }>
 ) {
   const url = new URL(`${SHADCN_URL}/create`)
@@ -76,7 +80,7 @@ export async function promptToOpenPresetBuilder(options: {
 
 export function resolveInitUrl(
   preset: {
-    base: string
+    base: PresetBase
     style: string
     baseColor: string
     theme: string
@@ -147,17 +151,18 @@ export async function promptForBase() {
     name: "base",
     message: `Select a ${highlighter.info("component library")}`,
     choices: [
-      { title: "Radix", value: "radix" },
-      { title: "Base", value: "base" },
+      { title: "Base UI (Recommended)", value: "base" },
+      { title: "React Aria", value: "aria" },
+      { title: "Radix UI", value: "radix" },
     ],
   })
   if (!base) process.exit(1)
-  return base as "radix" | "base"
+  return base as PresetBase
 }
 
 export async function promptForPreset(options: {
   rtl: boolean
-  base: string
+  base: PresetBase
   template?: string
   pointer?: boolean
 }) {

@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { Vazirmatn } from "next/font/google"
+import { cn } from "cn"
 import {
   ChevronDownIcon,
   ChevronLeftIcon,
@@ -10,7 +11,6 @@ import {
 import { getDefaultClassNames, type DayButton } from "react-day-picker"
 import { DayPicker } from "react-day-picker/persian"
 
-import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "@/styles/base-nova/ui/button"
 
 const vazirmatn = Vazirmatn({ subsets: ["arabic"] })
@@ -107,7 +107,7 @@ function Calendar({
             : "flex h-8 items-center gap-1 rounded-md pr-1 pl-2 text-sm [&>svg]:size-3.5 [&>svg]:text-muted-foreground",
           defaultClassNames.caption_label
         ),
-        table: "w-full border-collapse",
+        month_grid: cn("w-full border-collapse", defaultClassNames.month_grid),
         weekdays: cn("flex", defaultClassNames.weekdays),
         weekday: cn(
           "flex-1 rounded-md text-[0.8rem] font-normal text-muted-foreground select-none",

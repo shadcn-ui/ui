@@ -5,6 +5,23 @@ on:
     branches: ["*"]
 
 jobs:
+  registry-changeset:
+    runs-on: ubuntu-latest
+    name: "@shadcn/registry changeset"
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - run: node .github/check-registry-changeset.js origin/${{ github.base_ref }}
+
   lint:
     runs-on: ubuntu-latest
     name: pnpm lint
@@ -78,7 +95,7 @@ jobs:
         run: pnpm install
 
       - name: Build packages
-        run: pnpm --filter=shadcn build
+        run: pnpm build:packages
 
       - run: pnpm format:check
 
@@ -113,10 +130,22 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+
       - name: Install dependencies
         run: pnpm install
 
       - name: Build packages
-        run: pnpm --filter=shadcn build
+        run: pnpm build:packages
+
+      # Fails if a public export of shadcn is removed or changes kind.
+      - name: Check shadcn exports
+        run: node packages/shadcn/scripts/check-exports.mjs
+
+      # The generated styles under apps/v4/styles are gitignored, and the v4
+      # typecheck imports them. Build them before typechecking.
+      - name: Build registry styles
+        run: pnpm --filter=v4 registry:build --style all
 
       - run: pnpm typecheck

@@ -1,14 +1,14 @@
 import * as fs from "fs/promises"
 import * as path from "path"
 import { preFlightBuild } from "@/src/preflights/preflight-build"
+import { handleError } from "@/src/utils/handle-error"
 import {
   createRegistryCatalog,
   createRegistryItem,
   readRegistryWithIncludes,
-} from "@/src/registry/loader"
-import { handleError } from "@/src/utils/handle-error"
-import { logger } from "@/src/utils/logger"
-import { spinner } from "@/src/utils/spinner"
+} from "@shadcn/registry/internal/registry/loader"
+import { logger } from "@shadcn/registry/internal/utils/logger"
+import { spinner } from "@shadcn/registry/internal/utils/spinner"
 import { Command } from "commander"
 import { z } from "zod"
 
@@ -69,11 +69,15 @@ export const build = new Command()
         )
 
         // Write the registry item to the output directory.
+        // Item names can contain path segments (e.g. "extension/foo"), so
+        // ensure the nested output directory exists before writing.
+        const outputPath = path.resolve(
+          resolvePaths.outputDir,
+          `${registryItemForBuild.name}.json`
+        )
+        await fs.mkdir(path.dirname(outputPath), { recursive: true })
         await fs.writeFile(
-          path.resolve(
-            resolvePaths.outputDir,
-            `${registryItemForBuild.name}.json`
-          ),
+          outputPath,
           JSON.stringify(registryItemForBuild, null, 2)
         )
       }

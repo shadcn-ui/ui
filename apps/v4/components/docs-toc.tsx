@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { IconMenu3 } from "@tabler/icons-react"
+import { cn } from "cn"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   DropdownMenu,
@@ -107,7 +107,7 @@ export function DocsTableOfContents({
 
   return (
     <div className={cn("flex flex-col gap-2 p-4 pt-0 text-sm", className)}>
-      <p className="sticky top-0 h-6 bg-background text-xs font-medium text-muted-foreground">
+      <p className="h-6 bg-background text-xs font-medium text-muted-foreground">
         On This Page
       </p>
       {toc.map((item) => (

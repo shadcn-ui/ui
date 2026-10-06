@@ -1,9 +1,10 @@
 import type { Metadata } from "next"
+import { cn } from "cn"
 import { NuqsAdapter } from "nuqs/adapters/next/app"
 
 import { META_THEME_COLORS, siteConfig } from "@/lib/config"
+import { DOCS_SIDEBAR_SCROLL_RESTORE_SCRIPT } from "@/lib/docs-sidebar-scroll"
 import { fontVariables } from "@/lib/fonts"
-import { cn } from "@/lib/utils"
 import { ActiveThemeProvider } from "@/components/active-theme"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
@@ -11,15 +12,17 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { TooltipProvider as BaseTooltipProvider } from "@/registry/bases/base/ui/tooltip"
 import { Toaster } from "@/registry/bases/radix/ui/sonner"
 import { TooltipProvider as RadixTooltipProvider } from "@/registry/bases/radix/ui/tooltip"
+import { Toaster as BaseToaster } from "@/styles/base-nova/ui/toast"
 
 import "@/app/globals.css"
+import "@/app/(app)/(typeset)/typeset.css"
 
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL!),
+  metadataBase: new URL(siteConfig.url),
   description: siteConfig.description,
   keywords: ["Next.js", "React", "Tailwind CSS", "Components", "shadcn"],
   authors: [
@@ -32,13 +35,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: process.env.NEXT_PUBLIC_APP_URL!,
+    url: siteConfig.url,
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_APP_URL}/opengraph-image.png`,
+        url: `${siteConfig.url}/opengraph-image.png`,
         width: 1200,
         height: 630,
         alt: siteConfig.name,
@@ -49,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: [`${process.env.NEXT_PUBLIC_APP_URL}/opengraph-image.png`],
+    images: [`${siteConfig.url}/opengraph-image.png`],
     creator: "@shadcn",
   },
   icons: {
@@ -71,8 +74,20 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={fontVariables}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={cn(
+        fontVariables,
+        "[--header-height:calc(var(--spacing)*14)] lg:[--header-height:calc(var(--spacing)*16)]"
+      )}
+    >
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: DOCS_SIDEBAR_SCROLL_RESTORE_SCRIPT,
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -88,7 +103,7 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          "group/body overscroll-none antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] lg:[--header-height:calc(var(--spacing)*16)] xl:[--footer-height:calc(var(--spacing)*24)]"
+          "group/body overscroll-none antialiased [--footer-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]"
         )}
       >
         <ThemeProvider>
@@ -98,6 +113,7 @@ export default function RootLayout({
                 <RadixTooltipProvider delayDuration={0}>
                   {children}
                   <Toaster position="top-center" />
+                  <BaseToaster />
                 </RadixTooltipProvider>
               </BaseTooltipProvider>
             </NuqsAdapter>

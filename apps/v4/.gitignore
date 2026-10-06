@@ -46,3 +46,18 @@ next-env.d.ts
 .contentlayer
 .content-collections
 .source
+.devtools
+
+# generated registry output (rebuilt by registry:build on every deploy).
+# index.json, default and new-york are NOT build outputs: index.json is a
+# static contract older CLIs fetch, and default/new-york are frozen v3
+# styles maintained by editing the JSON directly.
+/public/r/styles/*
+!/public/r/styles/index.json
+!/public/r/styles/default/
+!/public/r/styles/new-york/
+
+# generated style sources (rebuilt by registry:build, or targeted via
+# `pnpm registry:build --style all`). See styles/README.md.
+/styles/*
+!/styles/README.md

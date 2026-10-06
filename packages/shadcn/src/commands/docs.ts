@@ -1,10 +1,15 @@
 import path from "path"
-import { getShadcnRegistryIndex } from "@/src/registry/api"
-import { SHADCN_URL } from "@/src/registry/constants"
-import { getBase, getConfig } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
+import {
+  isPresetBase,
+  PRESET_BASES,
+  type PresetBase,
+} from "@shadcn/registry/internal/preset/preset"
+import { getShadcnRegistryIndex } from "@shadcn/registry/internal/registry/api"
+import { SHADCN_URL } from "@shadcn/registry/internal/registry/constants"
+import { getBase, getConfig } from "@shadcn/registry/internal/utils/get-config"
+import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
+import { logger } from "@shadcn/registry/internal/utils/logger"
 import { Command } from "commander"
 
 const SHADCN_BASE_URL = "https://ui.shadcn.com"
@@ -20,14 +25,14 @@ export const docs = new Command()
   )
   .option(
     "-b, --base <base>",
-    "the base to use either 'base' or 'radix'. defaults to project base."
+    "the base to use: base, radix, or aria. defaults to project base."
   )
   .option("--json", "output as JSON.", false)
   .action(async (components, opts) => {
     try {
       const cwd = path.resolve(opts.cwd)
       const config = await getConfig(cwd)
-      const base = opts.base ?? getBase(config?.style)
+      const base = resolveDocsBase(opts.base, config?.style)
 
       const index = await getShadcnRegistryIndex()
 
@@ -38,7 +43,7 @@ export const docs = new Command()
 
       const results: {
         component: string
-        base: string
+        base: PresetBase
         links: Record<string, string>
       }[] = []
 
@@ -96,11 +101,25 @@ export const docs = new Command()
     }
   })
 
-function normalizeLinks(links: Record<string, string>) {
+export function resolveDocsBase(base: unknown, style: string | undefined) {
+  const resolvedBase = base ?? getBase(style)
+
+  if (!isPresetBase(resolvedBase)) {
+    throw new Error(
+      `Invalid base: ${String(resolvedBase)}. Expected one of: ${PRESET_BASES.join(
+        ", "
+      )}.`
+    )
+  }
+
+  return resolvedBase
+}
+
+export function normalizeLinks(links: Record<string, string>) {
   return Object.fromEntries(
     Object.entries(links).map(([key, value]) => [
       key,
-      value.startsWith(SHADCN_BASE_URL)
+      value === SHADCN_BASE_URL || value.startsWith(`${SHADCN_BASE_URL}/`)
         ? `${SHADCN_URL}${value.slice(SHADCN_BASE_URL.length)}`
         : value,
     ])

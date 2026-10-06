@@ -1,14 +1,9 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
 import { findTailwindColorFamily } from "@/src/colors"
-import type { Config } from "@/src/utils/get-config"
-import { getProjectInfo, type ProjectInfo } from "@/src/utils/get-project-info"
-import postcss from "postcss"
-import { Node, Project, ScriptKind, SyntaxKind } from "ts-morph"
-
-import { DEFAULT_PRESETS } from "./defaults"
 import {
   encodePreset,
+  parsePresetStyle,
   PRESET_BASE_COLORS,
   PRESET_FONT_HEADINGS,
   PRESET_FONTS,
@@ -17,7 +12,16 @@ import {
   PRESET_MENU_COLORS,
   PRESET_THEMES,
   type PresetConfig,
-} from "./preset"
+} from "@shadcn/registry/internal/preset/preset"
+import type { Config } from "@shadcn/registry/internal/utils/get-config"
+import {
+  getProjectInfo,
+  type ProjectInfo,
+} from "@shadcn/registry/internal/utils/get-project-info"
+import postcss from "postcss"
+import { Node, Project, ScriptKind, SyntaxKind } from "ts-morph"
+
+import { DEFAULT_PRESETS } from "./defaults"
 
 const PRESET_BASE_COLOR_SET = new Set<string>(PRESET_BASE_COLORS)
 const PRESET_ICON_LIBRARY_SET = new Set<string>(PRESET_ICON_LIBRARIES)
@@ -189,11 +193,11 @@ async function readCssState(tailwindCssPath?: string) {
 }
 
 function normalizePresetStyle(style: string | undefined) {
-  if (!style) {
+  const normalized = parsePresetStyle(style).style
+  if (!normalized) {
     return null
   }
 
-  const normalized = style.replace(/^(base|radix)-/, "")
   if (!(normalized in DEFAULT_PRESETS)) {
     return null
   }
