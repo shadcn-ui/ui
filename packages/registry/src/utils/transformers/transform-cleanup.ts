@@ -1,13 +1,21 @@
-import { Transformer } from "@/src/utils/transformers"
 import {
-  Node,
-  NoSubstitutionTemplateLiteral,
-  Project,
-  ScriptKind,
-  SourceFile,
-  StringLiteral,
-  SyntaxKind,
-} from "ts-morph"
+  getJsxAttributes,
+  removeJsxAttributes,
+} from "@/src/utils/codemod/jsx-attributes"
+import {
+  getCallExpressions,
+  getText,
+  parseTransformInput,
+} from "@/src/utils/codemod/parse"
+import {
+  StringLiterals,
+  type Literal,
+} from "@/src/utils/codemod/string-literals"
+import { getLineEnd, skipTrivia } from "@/src/utils/codemod/trivia"
+import { types as t } from "@babel/core"
+import { type SourceFile } from "ts-morph"
+
+import { fromTextTransformer, setFullText } from "./text-transformer"
 
 // Generic cleanup should leave font markers alone until transformFont runs.
 const PRESERVED_CN_MARKERS = new Set(["cn-font-heading"])
@@ -29,126 +37,135 @@ function hasRemovableCnMarker(className: string) {
   return className.split(/\s+/).some(isRemovableCnMarker)
 }
 
-type StringLikeLiteral = StringLiteral | NoSubstitutionTemplateLiteral
-
 // Processes a string-like literal and strips cn-* markers.
-function processStringLiteral(node: StringLikeLiteral) {
-  const currentValue = node.getLiteralValue()
+function processStringLiteral(literals: StringLiterals, node: Literal) {
+  const currentValue = literals.getValue(node)
   if (!hasRemovableCnMarker(currentValue)) {
     return
   }
 
   const newValue = stripCnMarkers(currentValue)
   if (newValue !== currentValue) {
-    node.setLiteralValue(newValue)
+    literals.setValue(node, newValue)
   }
 }
 
-function processStringLiterals(node: Node) {
-  for (const stringLit of node.getDescendantsOfKind(SyntaxKind.StringLiteral)) {
-    processStringLiteral(stringLit)
+function processStringLiterals(literals: StringLiterals, node: t.Node) {
+  for (const stringLit of literals.getStringLiterals(node)) {
+    processStringLiteral(literals, stringLit)
   }
 
-  for (const templateLit of node.getDescendantsOfKind(
-    SyntaxKind.NoSubstitutionTemplateLiteral
-  )) {
-    processStringLiteral(templateLit)
+  for (const templateLit of literals.getTemplateLiterals(node)) {
+    processStringLiteral(literals, templateLit)
   }
 }
 
-// Apply cleanup to a SourceFile directly (used by transformDirection).
-export function applyCleanup(sourceFile: SourceFile) {
+// Strips the cn-* markers from code. ts-morph edits the file as it goes: the
+// attributes left empty go after the className edits, and the cva() and
+// mergeProps() calls are read after that.
+function cleanup(code: string) {
+  const file = parseTransformInput(code)
+  if (!file) {
+    return code
+  }
+
   // Collect attributes to remove (can't remove while iterating).
-  const attributesToRemove: ReturnType<
-    typeof sourceFile.getDescendantsOfKind<typeof SyntaxKind.JsxAttribute>
-  > = []
+  const attributesToRemove: number[] = []
+  const literals = new StringLiterals(code, file)
 
   // Process all JSX className attributes.
-  for (const attr of sourceFile.getDescendantsOfKind(SyntaxKind.JsxAttribute)) {
-    const attrName = attr.getNameNode().getText()
+  getJsxAttributes(file).forEach(({ attribute }, index) => {
+    const attrName = getText(code, attribute.name)
     if (attrName !== "className" && attrName !== "classNames") {
-      continue
+      return
     }
 
-    const initializer = attr.getInitializer()
+    const initializer = attribute.value
 
     // className="..."
-    if (initializer?.isKind(SyntaxKind.StringLiteral)) {
-      const currentValue = initializer.getLiteralValue()
+    if (initializer?.type === "StringLiteral") {
+      const currentValue = literals.getValue(initializer)
       if (hasRemovableCnMarker(currentValue)) {
         const newValue = stripCnMarkers(currentValue)
         if (newValue === "") {
           // Remove the entire attribute if className becomes empty.
-          attributesToRemove.push(attr)
+          attributesToRemove.push(index)
         } else if (newValue !== currentValue) {
-          initializer.setLiteralValue(newValue)
+          literals.setValue(initializer, newValue)
         }
       }
     }
 
     // className={...} or classNames={{...}}
-    if (initializer?.isKind(SyntaxKind.JsxExpression)) {
-      processStringLiterals(initializer)
+    if (initializer?.type === "JSXExpressionContainer") {
+      processStringLiterals(literals, initializer)
     }
-  }
+  })
 
   // Remove empty className attributes.
-  for (const attr of attributesToRemove) {
-    attr.remove()
+  return cleanupCalls(removeJsxAttributes(literals.apply(), attributesToRemove))
+}
+
+// The cva() and mergeProps() calls of cleanup().
+function cleanupCalls(code: string) {
+  const file = parseTransformInput(code)
+  if (!file) {
+    return code
   }
 
+  const literals = new StringLiterals(code, file)
+  const calls = getCallExpressions(file)
+
   // Process cva() calls.
-  for (const call of sourceFile.getDescendantsOfKind(
-    SyntaxKind.CallExpression
-  )) {
-    if (call.getExpression().getText() !== "cva") {
+  for (const call of calls) {
+    if (getText(code, call.callee) !== "cva") {
       continue
     }
 
-    for (const arg of call.getArguments()) {
-      if (arg.isKind(SyntaxKind.StringLiteral)) {
-        processStringLiteral(arg)
+    for (const arg of call.arguments) {
+      if (arg.type === "StringLiteral") {
+        processStringLiteral(literals, arg)
         continue
       }
-      if (arg.isKind(SyntaxKind.NoSubstitutionTemplateLiteral)) {
-        processStringLiteral(arg)
+      if (arg.type === "TemplateLiteral" && arg.expressions.length === 0) {
+        processStringLiteral(literals, arg)
         continue
       }
       // Handle object arguments (variants).
-      processStringLiterals(arg)
+      processStringLiterals(literals, arg)
     }
   }
 
   // Process mergeProps() calls.
-  for (const call of sourceFile.getDescendantsOfKind(
-    SyntaxKind.CallExpression
-  )) {
-    if (call.getExpression().getText() !== "mergeProps") {
+  for (const call of calls) {
+    if (getText(code, call.callee) !== "mergeProps") {
       continue
     }
 
-    processStringLiterals(call)
+    processStringLiterals(literals, call)
   }
+
+  return literals.apply()
 }
 
-export const transformCleanup: Transformer = async ({ sourceFile }) => {
-  applyCleanup(sourceFile)
-  return sourceFile
+// Apply cleanup to a SourceFile directly.
+export function applyCleanup(sourceFile: SourceFile) {
+  setFullText(sourceFile, cleanup(sourceFile.getFullText()))
 }
+
+export const transformCleanup = fromTextTransformer(cleanup)
 
 // Standalone function to clean up cn-* markers from source code.
 // This is used by the build script and doesn't require a config object.
 export async function cleanupMarkers(source: string) {
-  const project = new Project({
-    useInMemoryFileSystem: true,
-  })
+  // ts-morph's createSourceFile() drops a leading byte order mark.
+  const code = source.charCodeAt(0) === 0xfeff ? source.slice(1) : source
+  return getSourceFileText(cleanup(code))
+}
 
-  const sourceFile = project.createSourceFile("component.tsx", source, {
-    scriptKind: ScriptKind.TSX,
-    overwrite: true,
-  })
-
-  applyCleanup(sourceFile)
-
-  return sourceFile.getText()
+// ts-morph's SourceFile#getText(), which starts at TypeScript's first token:
+// past the shebang, and the leading whitespace and comments.
+function getSourceFileText(code: string) {
+  const shebangEnd = code.startsWith("#!") ? getLineEnd(code, 0) : 0
+  return code.slice(skipTrivia(code, shebangEnd))
 }
