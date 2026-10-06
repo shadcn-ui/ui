@@ -1,18 +1,29 @@
 import { promises as fs } from "fs"
 import os from "os"
 import path from "path"
+import { SyntaxErrorInsertedError } from "@/src/utils/codemod/edits"
+import { parseModule } from "@/src/utils/codemod/parse"
 import { highlighter } from "@/src/utils/highlighter"
+import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
-import { Project, SyntaxKind } from "ts-morph"
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
+import { types as t } from "@babel/core"
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  vi,
+  type MockInstance,
+} from "vitest"
 
 import {
   buildTailwindThemeColorsFromCssVars,
   nestSpreadElements,
   nestSpreadProperties,
   transformTailwindConfig,
+  unnestSpreadElements,
   unnestSpreadProperties,
-  unsetSpreadElements,
   updateTailwindConfig,
 } from "./update-tailwind-config"
 
@@ -20,6 +31,8 @@ vi.mock("@/src/utils/spinner", () => ({
   spinner: vi.fn(() => ({
     start: vi.fn().mockReturnThis(),
     succeed: vi.fn(),
+    stop: vi.fn(),
+    fail: vi.fn(),
   })),
 }))
 
@@ -949,27 +962,44 @@ export default config
   })
 })
 
-describe("nestSpreadProperties", () => {
-  let project: Project
+// Runs transform on `const config = ${input};` and returns the literal it
+// leaves, as the tests on ts-morph nodes read the node's text after the edits.
+function transformConfigLiteral(
+  input: string,
+  transform: (code: string) => string
+) {
+  const prefix = "const config = "
+  return transform(`${prefix}${input};`).slice(prefix.length, -";".length)
+}
 
-  beforeEach(() => {
-    project = new Project({ useInMemoryFileSystem: true })
+function getFirstObject(code: string) {
+  return findFirstNode(code, t.isObjectExpression)
+}
+
+function getFirstArray(code: string) {
+  return findFirstNode(code, t.isArrayExpression)
+}
+
+function findFirstNode<T extends t.Node>(
+  code: string,
+  isType: (node: t.Node) => node is T
+) {
+  const nodes: T[] = []
+  t.traverseFast(parseModule(code), (node) => {
+    if (isType(node)) {
+      nodes.push(node)
+    }
   })
+  return nodes.sort((a, b) => a.start! - b.start!)[0]
+}
 
+describe("nestSpreadProperties", () => {
   function testTransformation(input: string, expected: string) {
-    const sourceFile = project.createSourceFile(
-      "test.ts",
-      `const config = ${input};`
-    )
-    const configObject = sourceFile.getFirstDescendantByKind(
-      SyntaxKind.ObjectLiteralExpression
-    )
-    if (!configObject) throw new Error("Config object not found")
-
-    nestSpreadProperties(configObject)
-
-    const result = configObject.getText()
-    expect(result.replace(/\s+/g, "")).toBe(expected.replace(/\s+/g, ""))
+    expect(
+      transformConfigLiteral(input, (code) =>
+        nestSpreadProperties(code, getFirstObject(code))
+      ).replace(/\s+/g, "")
+    ).toBe(expected.replace(/\s+/g, ""))
   }
 
   it("should nest spread properties", () => {
@@ -1024,26 +1054,12 @@ describe("nestSpreadProperties", () => {
 })
 
 describe("nestSpreadElements", () => {
-  let project: Project
-
-  beforeEach(() => {
-    project = new Project({ useInMemoryFileSystem: true })
-  })
-
   function testTransformation(input: string, expected: string) {
-    const sourceFile = project.createSourceFile(
-      "test.ts",
-      `const config = ${input};`
-    )
-    const configObject = sourceFile.getFirstDescendantByKind(
-      SyntaxKind.ArrayLiteralExpression
-    )
-    if (!configObject) throw new Error("Config object not found")
-
-    nestSpreadElements(configObject)
-
-    const result = configObject.getText()
-    expect(result.replace(/\s+/g, "")).toBe(expected.replace(/\s+/g, ""))
+    expect(
+      transformConfigLiteral(input, (code) =>
+        nestSpreadElements(code, getFirstArray(code))
+      ).replace(/\s+/g, "")
+    ).toBe(expected.replace(/\s+/g, ""))
   }
 
   it("should spread elements", () => {
@@ -1084,10 +1100,14 @@ describe("nestSpreadElements", () => {
   })
 
   it("should handle computed property paths within spread", () => {
-    testTransformation(
-      `[{ foo: [...foo["bar"]] }]`,
-      `[{ foo: ["...foo["bar"]"] }]`
-    )
+    // ts-morph wrote `["...foo["bar"]"]`, with the spread's quotes inside the
+    // string. That edit adds syntax errors, so it throws, and
+    // updateTailwindConfig leaves such a config untouched.
+    expect(() =>
+      transformConfigLiteral(`[{ foo: [...foo["bar"]] }]`, (code) =>
+        nestSpreadElements(code, getFirstArray(code))
+      )
+    ).toThrow(SyntaxErrorInsertedError)
   })
 
   it("should handle indexed paths in spread", () => {
@@ -1096,26 +1116,12 @@ describe("nestSpreadElements", () => {
 })
 
 describe("unnestSpreadProperties", () => {
-  let project: Project
-
-  beforeEach(() => {
-    project = new Project({ useInMemoryFileSystem: true })
-  })
-
   function testTransformation(input: string, expected: string) {
-    const sourceFile = project.createSourceFile(
-      "test.ts",
-      `const config = ${input};`
-    )
-    const configObject = sourceFile.getFirstDescendantByKind(
-      SyntaxKind.ObjectLiteralExpression
-    )
-    if (!configObject) throw new Error("Config object not found")
-
-    unnestSpreadProperties(configObject)
-
-    const result = configObject.getText()
-    expect(result.replace(/\s+/g, "")).toBe(expected.replace(/\s+/g, ""))
+    expect(
+      transformConfigLiteral(input, (code) =>
+        unnestSpreadProperties(code, getFirstObject(code))
+      ).replace(/\s+/g, "")
+    ).toBe(expected.replace(/\s+/g, ""))
   }
 
   it("should nest spread properties", () => {
@@ -1170,26 +1176,12 @@ describe("unnestSpreadProperties", () => {
 })
 
 describe("unnestSpreadElements", () => {
-  let project: Project
-
-  beforeEach(() => {
-    project = new Project({ useInMemoryFileSystem: true })
-  })
-
   function testTransformation(input: string, expected: string) {
-    const sourceFile = project.createSourceFile(
-      "test.ts",
-      `const config = ${input};`
-    )
-    const configObject = sourceFile.getFirstDescendantByKind(
-      SyntaxKind.ArrayLiteralExpression
-    )
-    if (!configObject) throw new Error("Config object not found")
-
-    unsetSpreadElements(configObject)
-
-    const result = configObject.getText()
-    expect(result.replace(/\s+/g, "")).toBe(expected.replace(/\s+/g, ""))
+    expect(
+      transformConfigLiteral(input, (code) =>
+        unnestSpreadElements(code, getFirstArray(code))
+      ).replace(/\s+/g, "")
+    ).toBe(expected.replace(/\s+/g, ""))
   }
 
   it("should spread elements", () => {
@@ -1374,6 +1366,15 @@ describe("buildTailwindThemeColorsFromCssVars", () => {
   })
 })
 
+// ts-morph broke this config: it added the theme after the comment, with a
+// second comma.
+const COMMENT_AFTER_LAST_PROPERTY = `module.exports = {
+  content: ["./src/**/*.{ts,tsx}"],
+  plugins: [],
+  // theme: {},
+}
+`
+
 const SHADCN_TAILWIND_CONFIG = {
   plugins: ['require("tailwindcss-animate")'],
   theme: {
@@ -1474,6 +1475,89 @@ export default {
         configWithPath("tailwind.config.ts")
       )
     )
+  })
+
+  it("should parse a .ts config without JSX, where <Config> is a type assertion", async () => {
+    const input = `import type { Config } from "tailwindcss"
+
+export default <Partial<Config>>{
+  content: ["./src/**/*.{ts,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+`
+    expect(
+      await transformTailwindConfig(
+        input,
+        SHADCN_TAILWIND_CONFIG,
+        configWithPath("tailwind.config.ts")
+      )
+    ).toMatchInlineSnapshot(`
+      "import type { Config } from "tailwindcss"
+
+      export default <Partial<Config>>{
+          darkMode: ["class"],
+          content: ["./src/**/*.{ts,tsx}"],
+        theme: {
+        	extend: {
+        		colors: {
+        			border: 'hsl(var(--border))',
+        			primary: {
+        				DEFAULT: 'hsl(var(--primary))',
+        				foreground: 'hsl(var(--primary-foreground))'
+        			}
+        		},
+        		borderRadius: {
+        			lg: 'var(--radius)'
+        		}
+        	}
+        },
+        plugins: [require("tailwindcss-animate")],
+      }
+      "
+    `)
+  })
+
+  it("should parse TypeScript syntax in a .js config", async () => {
+    const input = `const config: import("tailwindcss").Config = {
+  content: ["./src/**/*.{js,jsx}"] as string[],
+  plugins: [],
+}
+
+module.exports = config
+`
+    expect(
+      await transformTailwindConfig(
+        input,
+        SHADCN_TAILWIND_CONFIG,
+        configWithPath("tailwind.config.js")
+      )
+    ).toMatchInlineSnapshot(`
+      "const config: import("tailwindcss").Config = {
+          darkMode: ["class"],
+          content: ["./src/**/*.{js,jsx}"] as string[],
+        plugins: [require("tailwindcss-animate")],
+          theme: {
+          	extend: {
+          		colors: {
+          			border: 'hsl(var(--border))',
+          			primary: {
+          				DEFAULT: 'hsl(var(--primary))',
+          				foreground: 'hsl(var(--primary-foreground))'
+          			}
+          		},
+          		borderRadius: {
+          			lg: 'var(--radius)'
+          		}
+          	}
+          }
+      }
+
+      module.exports = config
+      "
+    `)
   })
 
   it("should update a tab-indented module.exports js config", async () => {
@@ -2183,6 +2267,54 @@ module.exports = {
     `)
   })
 
+  it("should throw instead of writing a second comma after a comment after the last property", async () => {
+    // ts-morph copied the text from `plugins: [...]` through the comment
+    // after it, comma included, after a new comma: `plugins: [...],,`.
+    await expect(
+      transformTailwindConfig(
+        COMMENT_AFTER_LAST_PROPERTY,
+        SHADCN_TAILWIND_CONFIG,
+        configWithPath("tailwind.config.js")
+      )
+    ).rejects.toThrow(SyntaxErrorInsertedError)
+  })
+
+  it("should throw on a spread whose ... is on another line than its argument", async () => {
+    // The spread becomes the string "...\n          fontFamily.sans" before the
+    // merge. ts-morph wrote a valid config, since TypeScript reads past the
+    // line break in the string and the merged theme replaces the array. Babel
+    // cannot read past it, so the edit throws, and updateTailwindConfig
+    // leaves the config untouched.
+    const input = `module.exports = {
+  content: ["./src/**/*.{ts,tsx}"],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: [
+          "var(--font-sans)",
+          ...
+          fontFamily.sans,
+        ],
+      },
+    },
+  },
+}
+`
+    await expect(
+      transformTailwindConfig(
+        input,
+        {
+          theme: {
+            extend: {
+              fontFamily: { sans: ["var(--font-sans)", "ui-sans-serif"] },
+            },
+          },
+        },
+        configWithPath("tailwind.config.js")
+      )
+    ).rejects.toThrow(SyntaxErrorInsertedError)
+  })
+
   it("should throw when theme is a shorthand property", async () => {
     const input = `const theme = { extend: {} }
 
@@ -2349,5 +2481,143 @@ module.exports = {
         { silent: true }
       )
     ).rejects.toThrow(/ENOENT/)
+  })
+
+  describe("when it skips the config", () => {
+    let warn: MockInstance<typeof logger.warn>
+
+    const WARNING =
+      "Skipped tailwind.config.js: updating it would leave it with a syntax error. Add darkMode, the tailwindcss-animate plugin, theme.extend.colors and theme.extend.borderRadius to it manually."
+
+    // TypeScript reads past the missing comma, and ts-morph edited the rest of
+    // the config.
+    const UNPARSABLE = `module.exports = {
+  content: ["./src/**/*.{ts,tsx}"],
+  plugins: [require("a") require("b")],
+}
+`
+
+    beforeEach(() => {
+      warn = vi.spyOn(logger, "warn").mockImplementation(() => {})
+    })
+
+    afterEach(() => {
+      warn.mockRestore()
+    })
+
+    function lastSpinner() {
+      return vi.mocked(spinner).mock.results.at(-1)?.value
+    }
+
+    async function writeConfig(input: string) {
+      await fs.writeFile(path.join(cwd, "tailwind.config.js"), input, "utf8")
+    }
+
+    async function readConfig() {
+      return fs.readFile(path.join(cwd, "tailwind.config.js"), "utf8")
+    }
+
+    it("leaves a config the edit would break untouched and warns", async () => {
+      await writeConfig(COMMENT_AFTER_LAST_PROPERTY)
+
+      const warning = await updateTailwindConfig(
+        SHADCN_TAILWIND_CONFIG,
+        configFor("tailwind.config.js"),
+        {}
+      )
+
+      expect(await readConfig()).toBe(COMMENT_AFTER_LAST_PROPERTY)
+      expect(warning).toBe(WARNING)
+      expect(warn).toHaveBeenCalledOnce()
+      expect(warn).toHaveBeenCalledWith(WARNING)
+      expect(lastSpinner().stop).toHaveBeenCalledOnce()
+      expect(lastSpinner().succeed).not.toHaveBeenCalled()
+    })
+
+    it("returns the warning instead of printing it when silent", async () => {
+      await writeConfig(COMMENT_AFTER_LAST_PROPERTY)
+
+      const warning = await updateTailwindConfig(
+        SHADCN_TAILWIND_CONFIG,
+        configFor("tailwind.config.js"),
+        { silent: true }
+      )
+
+      expect(await readConfig()).toBe(COMMENT_AFTER_LAST_PROPERTY)
+      expect(warning).toBe(WARNING)
+      expect(warn).not.toHaveBeenCalled()
+      expect(lastSpinner().stop).toHaveBeenCalledOnce()
+    })
+
+    it("leaves a config Babel cannot parse untouched and warns", async () => {
+      await writeConfig(UNPARSABLE)
+
+      const warning = await updateTailwindConfig(
+        SHADCN_TAILWIND_CONFIG,
+        configFor("tailwind.config.js"),
+        {}
+      )
+
+      expect(await readConfig()).toBe(UNPARSABLE)
+      expect(warning).toBe(
+        "Skipped tailwind.config.js: could not parse it. Add darkMode, the tailwindcss-animate plugin, theme.extend.colors and theme.extend.borderRadius to it manually."
+      )
+      expect(warn).toHaveBeenCalledWith(warning)
+      expect(lastSpinner().stop).toHaveBeenCalledOnce()
+      expect(lastSpinner().succeed).not.toHaveBeenCalled()
+    })
+
+    it("names what the install would have added", async () => {
+      await writeConfig(UNPARSABLE)
+
+      expect(
+        await updateTailwindConfig(
+          {
+            plugins: ['require("@tailwindcss/typography")', "forms"],
+            theme: {
+              container: { center: true },
+              extend: { keyframes: {}, animation: {} },
+            },
+          },
+          configFor("tailwind.config.js"),
+          { silent: true }
+        )
+      ).toBe(
+        "Skipped tailwind.config.js: could not parse it. Add darkMode, the @tailwindcss/typography plugin, the forms plugin, theme.container, theme.extend.keyframes and theme.extend.animation to it manually."
+      )
+      expect(
+        await updateTailwindConfig({}, configFor("tailwind.config.js"), {
+          silent: true,
+        })
+      ).toBe(
+        "Skipped tailwind.config.js: could not parse it. Add darkMode to it manually."
+      )
+    })
+
+    it("fails the spinner and rethrows other errors", async () => {
+      const input = `const theme = { extend: {} }
+
+module.exports = {
+  content: ["./app/**/*.{js,jsx}"],
+  theme,
+}
+`
+      await writeConfig(input)
+
+      await expect(
+        updateTailwindConfig(
+          SHADCN_TAILWIND_CONFIG,
+          configFor("tailwind.config.js"),
+          {}
+        )
+      ).rejects.toThrow(
+        "Expected the node to be of kind PropertyAssignment, but it was ShorthandPropertyAssignment."
+      )
+      expect(await readConfig()).toBe(input)
+      expect(lastSpinner().fail).toHaveBeenCalledWith(
+        `Failed to update ${highlighter.info("tailwind.config.js")}.`
+      )
+      expect(warn).not.toHaveBeenCalled()
+    })
   })
 })

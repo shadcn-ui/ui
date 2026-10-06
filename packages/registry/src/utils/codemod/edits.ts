@@ -1,4 +1,7 @@
-import { countSyntaxErrors } from "./parse"
+import { type types as t } from "@babel/core"
+
+import { getReplacementText } from "./indentation"
+import { countSyntaxErrors, type ParseOptions } from "./parse"
 
 // Replaces code[start, end) with text. Positions are in the original code.
 export interface TextEdit {
@@ -33,12 +36,37 @@ export class SyntaxErrorInsertedError extends Error {
 
 // ts-morph's doManipulation, which throws when the edited text no longer
 // parses into the tree it expects. A new parse error stands in for that.
-export function applyManipulation(code: string, edits: TextEdit[]) {
+export function applyManipulation(
+  code: string,
+  edits: TextEdit[],
+  options: ParseOptions = {}
+) {
   const result = applyEdits(code, edits)
 
-  if (countSyntaxErrors(result) > countSyntaxErrors(code)) {
+  if (countSyntaxErrors(result, options) > countSyntaxErrors(code, options)) {
     throw new SyntaxErrorInsertedError()
   }
 
   return result
+}
+
+// ts-morph's Node#replaceWithText(text), for a node TypeScript attaches no
+// JSDoc comment to.
+export function replaceWithText(
+  code: string,
+  node: t.Node,
+  text: string,
+  options: ParseOptions = {}
+) {
+  return applyManipulation(
+    code,
+    [
+      {
+        start: node.start!,
+        end: node.end!,
+        text: getReplacementText(code, node.start!, text, options),
+      },
+    ],
+    options
+  )
 }

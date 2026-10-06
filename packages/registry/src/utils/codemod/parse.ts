@@ -1,5 +1,5 @@
 import { type types as t } from "@babel/core"
-import { parse, type ParserOptions } from "@babel/parser"
+import { parse, type ParserOptions, type ParserPlugin } from "@babel/parser"
 
 // TypeScript parses any file and reports problems as diagnostics, so these
 // options accept as much as Babel can and recover from errors instead of
@@ -14,14 +14,14 @@ const PARSER_OPTIONS: ParserOptions = {
   errorRecovery: true,
   // TypeScript keeps parentheses as ParenthesizedExpression nodes.
   createParenthesizedExpressions: true,
-  plugins: [
-    "typescript",
-    "jsx",
-    "decorators-legacy",
-    // TypeScript 4.9's `accessor` class fields.
-    "decoratorAutoAccessors",
-  ],
 }
+
+const PLUGINS: ParserPlugin[] = [
+  "typescript",
+  "decorators-legacy",
+  // TypeScript 4.9's `accessor` class fields.
+  "decoratorAutoAccessors",
+]
 
 // With errorRecovery, Babel also reports these, which TypeScript reports as
 // semantic errors. They never make ts-morph reject an edit.
@@ -31,17 +31,32 @@ const SEMANTIC_ERROR_CODES = new Set([
   "ModuleExportUndefined",
 ])
 
-// ts-morph's SourceFile: the whole file as TSX, parsed even with syntax errors.
-export function parseModule(code: string, options: { tokens?: boolean } = {}) {
-  return parse(code, { ...PARSER_OPTIONS, tokens: options.tokens })
+// How a file is parsed. TypeScript parses a .ts file without JSX, where
+// `<Config>{}` is a type assertion, and other files with it.
+export interface ParseOptions {
+  // Defaults to true, as for a .tsx file.
+  jsx?: boolean
+}
+
+// ts-morph's SourceFile: the whole file, parsed even with syntax errors.
+export function parseModule(
+  code: string,
+  options: ParseOptions & { tokens?: boolean } = {}
+) {
+  const { jsx = true, tokens } = options
+  return parse(code, {
+    ...PARSER_OPTIONS,
+    plugins: jsx ? [...PLUGINS, "jsx"] : PLUGINS,
+    tokens,
+  })
 }
 
 // Babel's recoverable parse errors, without those TypeScript reports as
 // semantic errors: close enough to TypeScript's syntactic diagnostics to
 // tell whether an edit broke the file.
-export function countSyntaxErrors(code: string) {
+export function countSyntaxErrors(code: string, options: ParseOptions = {}) {
   try {
-    const errors = parseModule(code).errors ?? []
+    const errors = parseModule(code, options).errors ?? []
     return errors.filter((error) => !SEMANTIC_ERROR_CODES.has(error.reasonCode))
       .length
   } catch {

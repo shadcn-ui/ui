@@ -1,144 +1,38 @@
 import { type types as t } from "@babel/core"
 import CodeBlockWriter from "code-block-writer"
 
+import { getNodesWithComments, type NodeOrComment } from "./comment-nodes"
 import { applyManipulation } from "./edits"
 import { parseModule } from "./parse"
 import {
-  getLineEnd,
-  getLineStart,
   getNextNonWhitespacePos,
   getPosAtStartOfLineOrNonWhitespace,
   getTrailingTriviaEnd,
-  isWhitespace,
 } from "./trivia"
 
 // A top-level statement as ts-morph lists them in getStatementsWithComments:
 // the program's statements and directives, and comment statements, which are
-// comments on their own lines between them.
-export interface Statement {
-  // Where the leading trivia starts: the previous statement's end.
-  pos: number
-  start: number
-  end: number
-  // Undefined for a comment statement.
-  node?: t.Statement | t.Directive
-}
-
-type CommentKind = "line" | "block" | "jsdoc"
+// comments on their own lines between them. A statement's pos is the previous
+// statement's end.
+export type Statement = NodeOrComment<t.Statement | t.Directive>
 
 // ts-morph's StatementedNode#getStatementsWithComments() on a source file.
-export function getStatementsWithComments(code: string, program: t.Program) {
+export function getStatementsWithComments(
+  code: string,
+  program: t.Program
+): Statement[] {
   const nodes = [...program.directives, ...program.body].sort(
     (a, b) => a.start! - b.start!
   )
 
-  if (nodes.length === 0) {
-    return getCommentStatements(code, 0, false)
-  }
-
-  const statements: Statement[] = []
-  let previousEnd = 0
-  for (const node of nodes) {
-    statements.push(...getCommentStatements(code, previousEnd, true))
-    statements.push({
-      pos: previousEnd,
-      start: node.start!,
-      end: node.end!,
+  return getNodesWithComments(
+    code,
+    0,
+    nodes.map((node, index) => ({
+      pos: index === 0 ? 0 : nodes[index - 1].end!,
       node,
-    })
-    previousEnd = node.end!
-  }
-  statements.push(...getCommentStatements(code, previousEnd, false))
-
-  return statements
-}
-
-// ts-morph's CommentNodeParser: the comments after fullStart that are on their
-// own lines, before the next statement. A JSDoc comment before a statement
-// belongs to it, so it stops there unless no statement follows.
-function getCommentStatements(
-  code: string,
-  fullStart: number,
-  stopAtJsDoc: boolean
-) {
-  let pos = fullStart
-  const comments: Statement[] = []
-
-  // Skips what is left of the line pos is on: the trailing comments of what
-  // precedes it.
-  function skipTrailingLine() {
-    if (pos === 0) {
-      return
-    }
-
-    let lineEnd = getLineEnd(code, pos)
-    while (pos < lineEnd) {
-      const kind = getCommentKind(code, pos)
-      if (kind) {
-        pos = skipComment(code, pos, kind)
-        if (kind === "line") {
-          return
-        }
-        lineEnd = getLineEnd(code, pos)
-      } else if (!isWhitespace(code[pos]) && code[pos] !== ",") {
-        return
-      } else {
-        pos++
-      }
-    }
-
-    while (code[pos] === "\n") {
-      pos++
-    }
-  }
-
-  skipTrailingLine()
-
-  while (pos < code.length) {
-    const kind = getCommentKind(code, pos)
-    if (kind) {
-      if (kind === "jsdoc" && stopAtJsDoc) {
-        break
-      }
-      const start = pos
-      pos = skipComment(code, pos, kind)
-      comments.push({ pos: fullStart, start, end: pos })
-      skipTrailingLine()
-    } else if (!isWhitespace(code[pos])) {
-      break
-    } else {
-      pos++
-    }
-  }
-
-  // A comment on the same line as the next statement is not its own statement.
-  const maxEnd =
-    pos === code.length || code[pos] === "}" ? pos : getLineStart(code, pos)
-
-  return comments.filter((comment) => comment.end <= maxEnd)
-}
-
-function getCommentKind(code: string, pos: number): CommentKind | undefined {
-  if (code[pos] !== "/") {
-    return undefined
-  }
-  if (code[pos + 1] === "/") {
-    return "line"
-  }
-  if (code[pos + 1] !== "*") {
-    return undefined
-  }
-  return code[pos + 2] === "*" ? "jsdoc" : "block"
-}
-
-function skipComment(code: string, pos: number, kind: CommentKind) {
-  if (kind === "line") {
-    return getLineEnd(code, pos + 2)
-  }
-
-  // Like ts-morph, look for the end after "/**", so "/**/" does not end there.
-  const close = code.indexOf("*/", pos + (kind === "jsdoc" ? 3 : 2))
-  return close === -1 ? code.length : close + 2
+    }))
+  )
 }
 
 // ts-morph's Node#getNonWhitespaceStart() for a top-level statement.

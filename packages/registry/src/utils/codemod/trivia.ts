@@ -52,9 +52,14 @@ export function getPosAtStartOfLineOrNonWhitespace(code: string, pos: number) {
 }
 
 // Where the comment starting at pos ends, or undefined if none starts there.
-function getCommentEnd(code: string, pos: number) {
+// TypeScript ends a line comment at any of its line breaks.
+export function getCommentEnd(code: string, pos: number) {
   if (code.startsWith("//", pos)) {
-    return getLineEnd(code, pos)
+    let end = pos + 2
+    while (end < code.length && !isLineBreak(code[end])) {
+      end++
+    }
+    return end
   }
 
   if (code.startsWith("/*", pos)) {
@@ -65,30 +70,83 @@ function getCommentEnd(code: string, pos: number) {
   return undefined
 }
 
-// The end of the last comment ts.getTrailingCommentRanges finds at pos: the
-// comments that follow on the same line.
-export function getTrailingCommentsEnd(code: string, pos: number) {
-  let lastCommentEnd: number | undefined
+interface CommentRange {
+  pos: number
+  end: number
+}
+
+// TypeScript's iterateCommentRanges, behind ts.getLeadingCommentRanges and
+// ts.getTrailingCommentRanges: the comments from pos on. Trailing comments
+// stop at the end of the line, and leading ones are those after its first
+// line break. The positions here are never at a shebang, so it is left out.
+export function getCommentRanges(
+  code: string,
+  pos: number,
+  { trailing }: { trailing: boolean }
+) {
+  const ranges: CommentRange[] = []
+  let collecting = trailing || pos === 0
 
   while (pos < code.length) {
-    while (isWhiteSpaceSingleLine(code[pos])) {
-      pos++
+    const char = code[pos]
+
+    if (char === "\r" || char === "\n") {
+      pos += char === "\r" && code[pos + 1] === "\n" ? 2 : 1
+      if (trailing) {
+        break
+      }
+      collecting = true
+      continue
     }
 
     const commentEnd = getCommentEnd(code, pos)
-    if (commentEnd === undefined) {
-      break
+    if (commentEnd !== undefined) {
+      if (collecting) {
+        ranges.push({ pos, end: commentEnd })
+      }
+      pos = commentEnd
+      continue
     }
 
-    lastCommentEnd = commentEnd
-    // A line comment runs to the end of the line.
-    if (code.startsWith("//", pos)) {
+    // Past other whitespace, including the line breaks beyond ASCII, which do
+    // not end trailing comments.
+    if (!isWhiteSpaceSingleLine(char) && !isLineBreak(char)) {
       break
     }
-    pos = commentEnd
+    pos++
   }
 
-  return lastCommentEnd
+  return ranges
+}
+
+// The end of the last comment ts.getTrailingCommentRanges finds at pos: the
+// comments that follow on the same line.
+export function getTrailingCommentsEnd(code: string, pos: number) {
+  return getCommentRanges(code, pos, { trailing: true }).at(-1)?.end
+}
+
+// Where the JSDoc comment TypeScript attaches to a node starts, for a node
+// whose leading trivia starts at pos and that ends at end: the first `/** */`
+// comment among its leading comments, and for some expressions also among
+// the trailing comments at pos (getJSDocCommentRanges). ts-morph's
+// getStart(true) starts there.
+export function getJsDocStart(
+  code: string,
+  pos: number,
+  end: number,
+  { includeTrailingComments }: { includeTrailingComments: boolean }
+) {
+  const ranges = getCommentRanges(code, pos, { trailing: false })
+  if (includeTrailingComments) {
+    ranges.unshift(...getCommentRanges(code, pos, { trailing: true }))
+  }
+
+  return ranges.find(
+    (range) =>
+      range.end <= end &&
+      code.startsWith("/**", range.pos) &&
+      code[range.pos + 3] !== "/"
+  )?.pos
 }
 
 // ts-morph's Node#getTrailingTriviaEnd() for a node ending at end: past the

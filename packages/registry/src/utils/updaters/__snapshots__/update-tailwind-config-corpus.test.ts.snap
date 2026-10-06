@@ -1,41 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`accordion > broken--comment-after-last-property.js 1`] = `
-"adds syntax errors: 0 -> unparsable
-@@ -2 +2 @@
--   content: ["./src/**/*.{ts,tsx}"],
--   plugins: [],
-+     darkMode: ["class"],
-+     content: ["./src/**/*.{ts,tsx}"],
-+   plugins: [],,
-@@ -5 +6 @@
-+     theme: {
-+     	extend: {
-+     		keyframes: {
-+     			'accordion-down': {
-+     				from: {
-+     					height: '0'
-+     				},
-+     				to: {
-+     					height: 'var(--radix-accordion-content-height)'
-+     				}
-+     			},
-+     			'accordion-up': {
-+     				from: {
-+     					height: 'var(--radix-accordion-content-height)'
-+     				},
-+     				to: {
-+     					height: '0'
-+     				}
-+     			}
-+     		},
-+     		animation: {
-+     			'accordion-down': 'accordion-down 0.2s ease-out',
-+     			'accordion-up': 'accordion-up 0.2s ease-out'
-+     		}
-+     	}
-+     }"
-`;
+exports[`accordion > broken--comment-after-last-property.js 1`] = `"throws: Error: Manipulation error: A syntax error was inserted."`;
 
 exports[`accordion > broken--commented-out-plugins.ts 1`] = `
 "@@ -4 +4 @@
@@ -106,95 +71,9 @@ exports[`accordion > broken--plugins-line-comment.js 1`] = `
 +     }"
 `;
 
-exports[`accordion > broken--theme-indexed-spread.js 1`] = `
-"adds syntax errors: 0 -> unparsable
-@@ -4 +4 @@
--   content: ["./src/**/*.{ts,tsx}"],
-+     darkMode: ["class"],
-+     content: ["./src/**/*.{ts,tsx}"],
-@@ -6 +7 @@
--     extend: {
--       fontSize: {
--         xs: ["0.75rem", { ...defaultTheme.fontSize.xs[1], lineHeight: "1rem" }],
--       },
--     },
-+   	extend: {
-+   		fontSize: {
-+   			xs: [
-+   				'0.75rem',
-+   				{
-+   					'___defaultTheme.fontSize.xs[1]: '...defaultTheme.fontSize.xs[1],
-+   					lineHeight: '1rem'
-+   				}
-+   			]
-+   		},
-+   		keyframes: {
-+   			'accordion-down': {
-+   				from: {
-+   					height: '0'
-+   				},
-+   				to: {
-+   					height: 'var(--radix-accordion-content-height)'
-+   				}
-+   			},
-+   			'accordion-up': {
-+   				from: {
-+   					height: 'var(--radix-accordion-content-height)'
-+   				},
-+   				to: {
-+   					height: '0'
-+   				}
-+   			}
-+   		},
-+   		animation: {
-+   			'accordion-down': 'accordion-down 0.2s ease-out',
-+   			'accordion-up': 'accordion-up 0.2s ease-out'
-+   		}
-+   	}"
-`;
+exports[`accordion > broken--theme-indexed-spread.js 1`] = `"throws: Error: Manipulation error: A syntax error was inserted."`;
 
-exports[`accordion > broken--theme-member-access.js 1`] = `
-"adds syntax errors: 0 -> unparsable
-@@ -4 +4 @@
--   content: ["./src/**/*.{ts,tsx}"],
-+     darkMode: ["class"],
-+     content: ["./src/**/*.{ts,tsx}"],
-@@ -6 +7 @@
--     extend: {
--       colors: {
--         gray: colors.zinc,
--         primary: colors.blue[500],
--       },
--     },
-+   	extend: {
-+   		colors: {
-+   			gray: 'colors.zinc',
-+   			primary: 'colors.blue[500]
-+   		},
-+   		keyframes: {
-+   			'accordion-down': {
-+   				from: {
-+   					height: '0'
-+   				},
-+   				to: {
-+   					height: 'var(--radix-accordion-content-height)'
-+   				}
-+   			},
-+   			'accordion-up': {
-+   				from: {
-+   					height: 'var(--radix-accordion-content-height)'
-+   				},
-+   				to: {
-+   					height: '0'
-+   				}
-+   			}
-+   		},
-+   		animation: {
-+   			'accordion-down': 'accordion-down 0.2s ease-out',
-+   			'accordion-up': 'accordion-up 0.2s ease-out'
-+   		}
-+   	}"
-`;
+exports[`accordion > broken--theme-member-access.js 1`] = `"throws: Error: Manipulation error: A syntax error was inserted."`;
 
 exports[`accordion > create-next-app--13.ts 1`] = `
 "@@ -5 +5 @@
@@ -3643,18 +3522,7 @@ exports[`index > broken--comment-after-last-property.js 1`] = `
 +   plugins: [require("tailwindcss-animate")],"
 `;
 
-exports[`index > broken--commented-out-plugins.ts 1`] = `
-"adds syntax errors: 0 -> unparsable
-@@ -4 +4 @@
--   content: ["./src/**/*.{ts,tsx}"],
-+     darkMode: ["class"],
-+     content: ["./src/**/*.{ts,tsx}"],
-@@ -7 +8 @@
--   },
-+   },,
-@@ -9 +10 @@
-+     plugins: [require("tailwindcss-animate")]"
-`;
+exports[`index > broken--commented-out-plugins.ts 1`] = `"throws: Error: Manipulation error: A syntax error was inserted."`;
 
 exports[`index > broken--dark-mode-line-comment.js 1`] = `"throws: Error: Manipulation error: A syntax error was inserted."`;
 
@@ -4221,75 +4089,7 @@ exports[`index, then index > theme--root-spread-comments.js 1`] = `"(unchanged)"
 
 exports[`index, then index > theme--spreads.mjs 1`] = `"(unchanged)"`;
 
-exports[`init-neutral > broken--commented-out-plugins.ts 1`] = `
-"adds syntax errors: 0 -> unparsable
-@@ -4 +4 @@
--   content: ["./src/**/*.{ts,tsx}"],
-+     darkMode: ["class"],
-+     content: ["./src/**/*.{ts,tsx}"],
-@@ -6 +7 @@
--     extend: {},
--   },
-+   	extend: {
-+   		borderRadius: {
-+   			lg: 'var(--radius)',
-+   			md: 'calc(var(--radius) - 2px)',
-+   			sm: 'calc(var(--radius) - 4px)'
-+   		},
-+   		colors: {
-+   			background: 'hsl(var(--background))',
-+   			foreground: 'hsl(var(--foreground))',
-+   			card: {
-+   				DEFAULT: 'hsl(var(--card))',
-+   				foreground: 'hsl(var(--card-foreground))'
-+   			},
-+   			popover: {
-+   				DEFAULT: 'hsl(var(--popover))',
-+   				foreground: 'hsl(var(--popover-foreground))'
-+   			},
-+   			primary: {
-+   				DEFAULT: 'hsl(var(--primary))',
-+   				foreground: 'hsl(var(--primary-foreground))'
-+   			},
-+   			secondary: {
-+   				DEFAULT: 'hsl(var(--secondary))',
-+   				foreground: 'hsl(var(--secondary-foreground))'
-+   			},
-+   			muted: {
-+   				DEFAULT: 'hsl(var(--muted))',
-+   				foreground: 'hsl(var(--muted-foreground))'
-+   			},
-+   			accent: {
-+   				DEFAULT: 'hsl(var(--accent))',
-+   				foreground: 'hsl(var(--accent-foreground))'
-+   			},
-+   			destructive: 'hsl(var(--destructive))',
-+   			border: 'hsl(var(--border))',
-+   			input: 'hsl(var(--input))',
-+   			ring: 'hsl(var(--ring))',
-+   			chart: {
-+   				'1': 'hsl(var(--chart-1))',
-+   				'2': 'hsl(var(--chart-2))',
-+   				'3': 'hsl(var(--chart-3))',
-+   				'4': 'hsl(var(--chart-4))',
-+   				'5': 'hsl(var(--chart-5))'
-+   			},
-+   			sidebar: {
-+   				DEFAULT: 'hsl(var(--sidebar))',
-+   				foreground: 'hsl(var(--sidebar-foreground))',
-+   				primary: 'hsl(var(--sidebar-primary))',
-+   				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-+   				accent: 'hsl(var(--sidebar-accent))',
-+   				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-+   				border: 'hsl(var(--sidebar-border))',
-+   				ring: 'hsl(var(--sidebar-ring))'
-+   			}
-+   		}
-+   	}
-+   },,
-@@ -9 +65 @@
-+     plugins: [require("tailwindcss-animate")]"
-`;
+exports[`init-neutral > broken--commented-out-plugins.ts 1`] = `"throws: Error: Manipulation error: A syntax error was inserted."`;
 
 exports[`init-neutral > broken--theme-member-access.js 1`] = `
 "@@ -4 +4 @@
@@ -5887,32 +5687,7 @@ exports[`init-slate, then init-slate > theme--root-spread-comments.js 1`] = `"(u
 
 exports[`init-slate, then init-slate > theme--spreads.mjs 1`] = `"(unchanged)"`;
 
-exports[`sidebar > broken--comment-after-last-property.js 1`] = `
-"adds syntax errors: 0 -> unparsable
-@@ -2 +2 @@
--   content: ["./src/**/*.{ts,tsx}"],
--   plugins: [],
-+     darkMode: ["class"],
-+     content: ["./src/**/*.{ts,tsx}"],
-+   plugins: [],,
-@@ -5 +6 @@
-+     theme: {
-+     	extend: {
-+     		colors: {
-+     			sidebar: {
-+     				DEFAULT: 'hsl(var(--sidebar-background))',
-+     				foreground: 'hsl(var(--sidebar-foreground))',
-+     				primary: 'hsl(var(--sidebar-primary))',
-+     				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-+     				accent: 'hsl(var(--sidebar-accent))',
-+     				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-+     				border: 'hsl(var(--sidebar-border))',
-+     				ring: 'hsl(var(--sidebar-ring))'
-+     			}
-+     		}
-+     	}
-+     }"
-`;
+exports[`sidebar > broken--comment-after-last-property.js 1`] = `"throws: Error: Manipulation error: A syntax error was inserted."`;
 
 exports[`sidebar > broken--commented-out-plugins.ts 1`] = `
 "@@ -4 +4 @@
@@ -5963,73 +5738,9 @@ exports[`sidebar > broken--plugins-line-comment.js 1`] = `
 +     }"
 `;
 
-exports[`sidebar > broken--theme-indexed-spread.js 1`] = `
-"adds syntax errors: 0 -> unparsable
-@@ -4 +4 @@
--   content: ["./src/**/*.{ts,tsx}"],
-+     darkMode: ["class"],
-+     content: ["./src/**/*.{ts,tsx}"],
-@@ -6 +7 @@
--     extend: {
--       fontSize: {
--         xs: ["0.75rem", { ...defaultTheme.fontSize.xs[1], lineHeight: "1rem" }],
--       },
--     },
-+   	extend: {
-+   		fontSize: {
-+   			xs: [
-+   				'0.75rem',
-+   				{
-+   					'___defaultTheme.fontSize.xs[1]: '...defaultTheme.fontSize.xs[1],
-+   					lineHeight: '1rem'
-+   				}
-+   			]
-+   		},
-+   		colors: {
-+   			sidebar: {
-+   				DEFAULT: 'hsl(var(--sidebar-background))',
-+   				foreground: 'hsl(var(--sidebar-foreground))',
-+   				primary: 'hsl(var(--sidebar-primary))',
-+   				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-+   				accent: 'hsl(var(--sidebar-accent))',
-+   				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-+   				border: 'hsl(var(--sidebar-border))',
-+   				ring: 'hsl(var(--sidebar-ring))'
-+   			}
-+   		}
-+   	}"
-`;
+exports[`sidebar > broken--theme-indexed-spread.js 1`] = `"throws: Error: Manipulation error: A syntax error was inserted."`;
 
-exports[`sidebar > broken--theme-member-access.js 1`] = `
-"adds syntax errors: 0 -> unparsable
-@@ -4 +4 @@
--   content: ["./src/**/*.{ts,tsx}"],
-+     darkMode: ["class"],
-+     content: ["./src/**/*.{ts,tsx}"],
-@@ -6 +7 @@
--     extend: {
--       colors: {
--         gray: colors.zinc,
--         primary: colors.blue[500],
--       },
--     },
-+   	extend: {
-+   		colors: {
-+   			gray: 'colors.zinc',
-+   			primary: 'colors.blue[500],
-+   			sidebar: {
-+   				DEFAULT: 'hsl(var(--sidebar-background))',
-+   				foreground: 'hsl(var(--sidebar-foreground))',
-+   				primary: 'hsl(var(--sidebar-primary))',
-+   				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-+   				accent: 'hsl(var(--sidebar-accent))',
-+   				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-+   				border: 'hsl(var(--sidebar-border))',
-+   				ring: 'hsl(var(--sidebar-ring))'
-+   			}
-+   		}
-+   	}"
-`;
+exports[`sidebar > broken--theme-member-access.js 1`] = `"throws: Error: Manipulation error: A syntax error was inserted."`;
 
 exports[`sidebar > create-next-app--13.ts 1`] = `
 "@@ -5 +5 @@

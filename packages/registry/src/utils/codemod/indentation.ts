@@ -1,7 +1,7 @@
 import { types as t } from "@babel/core"
 import CodeBlockWriter from "code-block-writer"
 
-import { parseModule } from "./parse"
+import { parseModule, type ParseOptions } from "./parse"
 import { isLineBreak, isWhiteSpaceSingleLine } from "./trivia"
 
 // ts-morph indents with four spaces, and TypeScript counts a tab as four.
@@ -190,28 +190,42 @@ interface Source {
 export function getReplacementText(
   code: string,
   position: number,
-  text: string
+  text: string,
+  options: ParseOptions = {}
 ) {
   if (!text.includes("\n")) {
     return text
   }
 
   const writer = new CodeBlockWriter()
-  writer.queueIndentationLevel(
-    getIndentationAtPosition(code, position) / INDENT_SIZE
-  )
+  writer.queueIndentationLevel(getIndentationLevel(code, position, options))
   writer.write(text)
 
   return writer.toString()
 }
 
+// ts-morph's Node#getIndentationLevel() for the node starting at position: its
+// indentation in levels of four spaces, which can be a fraction.
+export function getIndentationLevel(
+  code: string,
+  position: number,
+  options: ParseOptions = {}
+) {
+  return getIndentationAtPosition(code, position, options) / INDENT_SIZE
+}
+
 // TypeScript's SmartIndenter.getIndentation, which ts-morph calls through the
 // language service's getIndentationAtPosition. Ported for the start of a JSX
-// attribute or its initializer, the positions the font editor replaces at:
-// the comment and literal special cases are left out, and getSmartIndent never
+// attribute or its initializer, and of an object or array literal, the
+// positions the editors indent at: the comment and literal special cases and
+// the one for a function in a list are left out, and getSmartIndent never
 // assumes a new line before a closing brace.
-function getIndentationAtPosition(code: string, position: number) {
-  const file = parseModule(code, { tokens: true })
+function getIndentationAtPosition(
+  code: string,
+  position: number,
+  options: ParseOptions
+) {
+  const file = parseModule(code, { ...options, tokens: true })
   const source: Source = {
     code,
     tokens: getTokens(code, file),
@@ -223,10 +237,14 @@ function getIndentationAtPosition(code: string, position: number) {
     return 0
   }
 
-  const precedingToken = getTokenNode(
-    buildSyntaxTree(source, file.program),
-    source.tokens[precedingTokenIndex]
-  )
+  const root = buildSyntaxTree(source, file.program)
+
+  // An object literal's opening brace is indented like a block: to its line.
+  if (findNodeAt(root, position, "ObjectLiteralExpression")) {
+    return getLineIndentation(source, getLineAndCharacter(source, position))
+  }
+
+  const precedingToken = getTokenNode(root, source.tokens[precedingTokenIndex])
   const tokenParent = precedingToken.parent!
 
   if (
@@ -610,6 +628,21 @@ function findToken(source: Source, from: number, label: string) {
   return source.tokens.find(
     (token) => token.start >= from && token.label === label
   )
+}
+
+// The node of kind that starts at position, if there is one.
+function findNodeAt(root: SyntaxNode, position: number, kind: string) {
+  let node: SyntaxNode | undefined = root
+  while (node) {
+    if (node.start === position && node.kind === kind) {
+      return node
+    }
+    node = node.children.find(
+      (child) => child.start <= position && position < child.end
+    )
+  }
+
+  return undefined
 }
 
 // The node findPrecedingToken returns for a token: the leaf node that is the

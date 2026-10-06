@@ -1,7 +1,12 @@
 import { type types as t } from "@babel/core"
 
+import {
+  getListChildren,
+  insertIntoCommaSeparatedNodes,
+  isItem,
+} from "./comma-lists"
 import { applyManipulation } from "./edits"
-import { getTrailingCommentsEnd, skipTrivia } from "./trivia"
+import { skipTrivia } from "./trivia"
 
 // ts-morph's ImportDeclaration#addNamedImport(name).
 export function addNamedImport(
@@ -13,7 +18,32 @@ export function addNamedImport(
     (specifier) => specifier.type === "ImportSpecifier"
   )
   if (namedImports.length > 0) {
-    return insertIntoCommaSeparatedNodes(code, namedImports, name)
+    // `{ a, b }` becomes `{ a, b, name }`.
+    const openBrace = findOpenBrace(code, declaration)!
+    const lastNamedImport = namedImports[namedImports.length - 1]
+    let closeBrace = skipTrivia(code, lastNamedImport.end!)
+    if (code[closeBrace] === ",") {
+      closeBrace = skipTrivia(code, closeBrace + 1)
+    }
+    const children = getListChildren(
+      code,
+      openBrace + 1,
+      closeBrace,
+      namedImports
+    )
+    return insertIntoCommaSeparatedNodes(
+      code,
+      {
+        nodeStart: openBrace,
+        pos: openBrace + 1,
+        closeStart: closeBrace,
+        children,
+      },
+      children.filter(isItem),
+      namedImports.length,
+      name,
+      { surroundWithSpaces: true }
+    )
   }
 
   if (
@@ -28,9 +58,16 @@ export function addNamedImport(
 
   const namedImportsText = `{ ${name} }`
 
-  const emptyBraces = findEmptyBraces(code, declaration)
-  if (emptyBraces) {
-    return applyManipulation(code, [{ ...emptyBraces, text: namedImportsText }])
+  // `import {} from "module"` or `import a, {} from "module"`.
+  const emptyBraces = findOpenBrace(code, declaration)
+  if (emptyBraces !== undefined) {
+    return applyManipulation(code, [
+      {
+        start: emptyBraces,
+        end: skipTrivia(code, emptyBraces + 1) + 1,
+        text: namedImportsText,
+      },
+    ])
   }
 
   const defaultImport = declaration.specifiers.find(
@@ -57,44 +94,15 @@ export function addNamedImport(
   ])
 }
 
-// ts-morph's insertIntoCommaSeparatedNodes, appending an identifier to a list
-// in braces: `{ a, b }` becomes `{ a, b, name }`. Comments trailing the last
-// node or its comma stay in front of the comma that follows them.
-function insertIntoCommaSeparatedNodes(
-  code: string,
-  nodes: t.Node[],
-  name: string
-) {
-  const lastNodeEnd = nodes[nodes.length - 1].end!
-  const afterLastNode = skipTrivia(code, lastNodeEnd)
-  const hasTrailingComma = code[afterLastNode] === ","
-
-  const commentsAfterLastNode = getTrailingComments(code, lastNodeEnd)
-  const separator = hasTrailingComma
-    ? `${commentsAfterLastNode},${getTrailingComments(code, afterLastNode + 1)}`
-    : `,${commentsAfterLastNode}`
-  const closeBrace = hasTrailingComma
-    ? skipTrivia(code, afterLastNode + 1)
-    : afterLastNode
-
-  return applyManipulation(code, [
-    { start: lastNodeEnd, end: closeBrace, text: `${separator} ${name} ` },
-  ])
-}
-
-function getTrailingComments(code: string, pos: number) {
-  return code.slice(pos, getTrailingCommentsEnd(code, pos) ?? pos)
-}
-
-// The `{}` of `import {} from "module"` or `import a, {} from "module"`.
-function findEmptyBraces(code: string, declaration: t.ImportDeclaration) {
+// The `{` of the declaration's named imports.
+function findOpenBrace(code: string, declaration: t.ImportDeclaration) {
   let pos = declaration.start! + "import".length
   const sourceStart = declaration.source.start!
 
   while (pos < sourceStart) {
     pos = skipTrivia(code, pos)
     if (code[pos] === "{") {
-      return { start: pos, end: skipTrivia(code, pos + 1) + 1 }
+      return pos
     }
     pos++
   }
