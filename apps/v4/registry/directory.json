@@ -91,6 +91,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' width='24' height='24'><rect width='24' height='24' rx='4' fill='var(--foreground)'/><g stroke='var(--background)'><path d='M14 18a2 2 0 0 0-4 0m9-7-2.11-6.657a2 2 0 0 0-2.752-1.148l-1.276.61A2 2 0 0 1 12 4H8.5a2 2 0 0 0-1.925 1.456L5 11m-3 0h20'/><circle cx='17' cy='18' r='3'/><circle cx='7' cy='18' r='3'/><path d='M15.46 7.1 13.3 9.26m1.728-4.536-4.104 4.104' stroke-width='1.575'/></g></svg>"
   },
   {
+    "name": "@agentfaces",
+    "homepage": "https://ajibadedapo.github.io/agentfaces/",
+    "url": "https://ajibadedapo.github.io/agentfaces/r/{name}.json",
+    "description": "Animated faces for AI agents that show thinking, working, needs you, done, listening and speaking, with voice lip sync.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 4.5a45.5 45.5 0 1 1 0 91a45.5 45.5 0 1 1 0-91z' fill='#2B90FF'/><g transform='translate(33.75 41.20) rotate(0.00) scale(1 1.00)'><clipPath id='afel'><path d='M -12.30 -14.30 Q 0 -14.30 12.30 -14.30 L 12.30 6.29 Q 0 -2.78 -12.30 6.29 Z'/></clipPath><g clip-path='url(#afel)'><path d='M -11.70 0 C -11.70 -7.90 -6.46 -14.30 0 -14.30 C 6.46 -14.30 11.70 -7.90 11.70 0 C 11.70 7.90 6.46 14.30 0 14.30 C -6.46 14.30 -11.70 7.90 -11.70 0 Z' fill='#FFFDF7'/><circle cx='0.00' cy='0.00' r='6.79' fill='#1C1B22' opacity='1.00'/><circle cx='2.44' cy='-2.58' r='2.17' fill='#FFFFFF' opacity='1.00'/></g></g><g transform='translate(66.25 41.20) rotate(0.00) scale(1 1.00)'><clipPath id='afer'><path d='M -12.30 -14.30 Q 0 -14.30 12.30 -14.30 L 12.30 6.29 Q 0 -2.78 -12.30 6.29 Z'/></clipPath><g clip-path='url(#afer)'><path d='M -11.70 0 C -11.70 -7.90 -6.46 -14.30 0 -14.30 C 6.46 -14.30 11.70 -7.90 11.70 0 C 11.70 7.90 6.46 14.30 0 14.30 C -6.46 14.30 -11.70 7.90 -11.70 0 Z' fill='#FFFDF7'/><circle cx='0.00' cy='0.00' r='6.79' fill='#1C1B22' opacity='1.00'/><circle cx='2.44' cy='-2.58' r='2.17' fill='#FFFFFF' opacity='1.00'/></g></g><path d='M 35.70 64.37 C 43.56 72.48 56.44 72.48 64.30 64.37 C 56.44 72.48 43.56 72.48 35.70 64.37 Z' fill='#15131B' stroke='#15131B' stroke-width='3.51' stroke-linejoin='round' stroke-linecap='round' opacity='0.62'/></svg>"
+  },
+  {
     "name": "@agents-ui",
     "homepage": "https://livekit.com/ui",
     "url": "https://livekit.com/ui/r/{name}.json",
@@ -273,6 +280,14 @@
     "url": "https://ui.balick.me/r/{name}.json",
     "description": "Blocks for shadcn/ui designed to fit together: compose a page, then install it with one command.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect x='2' y='2' width='13' height='13' rx='3' fill='var(--foreground)'/><rect x='9.75' y='9.75' width='12.25' height='12.25' rx='3' fill='none' stroke='var(--foreground)' stroke-width='1.5'/></svg>"
+  },
+  {
+    "name": "@ballmac",
+    "homepage": "https://ui.ballmac.com",
+    "url": "https://ui.ballmac.com/r/{name}.json",
+    "description": "Accessible React and Tailwind v4 components, blocks and templates with native-app motion, built-in keyboard, RTL and translation support, and an MCP server for AI agents.",
+    "author": "Ballmac",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><g fill='none' stroke='var(--foreground)' stroke-width='2.25' stroke-linecap='round'><circle cx='16' cy='16' r='12.5'/><path d='M16.00 21.68C15.93 21.67 15.72 21.66 15.58 21.65C15.44 21.63 15.30 21.62 15.17 21.60C15.03 21.58 14.89 21.56 14.75 21.53C14.61 21.51 14.48 21.48 14.34 21.45C14.20 21.43 14.06 21.39 13.92 21.36C13.78 21.33 13.64 21.29 13.50 21.25C13.37 21.21 13.22 21.17 13.08 21.12C12.94 21.07 12.80 21.03 12.66 20.97C12.52 20.92 12.37 20.86 12.23 20.80C12.09 20.74 11.94 20.68 11.80 20.61C11.65 20.54 11.51 20.46 11.36 20.38C11.22 20.30 11.07 20.22 10.93 20.13C10.79 20.04 10.64 19.94 10.50 19.84C10.36 19.74 10.21 19.63 10.07 19.52C9.93 19.40 9.79 19.28 9.65 19.16C9.52 19.03 9.38 18.90 9.25 18.76C9.12 18.62 8.99 18.47 8.86 18.31C8.74 18.16 8.61 18.00 8.50 17.83C8.38 17.67 8.27 17.49 8.16 17.31C8.06 17.13 7.95 16.94 7.86 16.75C7.77 16.55 7.68 16.35 7.60 16.15C7.52 15.94 7.45 15.73 7.38 15.52C7.32 15.30 7.26 15.08 7.21 14.85C7.17 14.62 7.13 14.39 7.10 14.16C7.08 13.92 7.06 13.69 7.05 13.45C7.04 13.20 7.05 12.96 7.06 12.72C7.08 12.47 7.10 12.23 7.14 11.98C7.18 11.73 7.22 11.48 7.28 11.24C7.34 10.99 7.42 10.75 7.50 10.50C7.58 10.26 7.68 10.02 7.78 9.78C7.89 9.55 8.01 9.31 8.14 9.08C8.27 8.85 8.41 8.63 8.56 8.41C8.71 8.19 8.88 7.97 9.05 7.77C9.22 7.56 9.41 7.36 9.60 7.17C9.80 6.98 10.00 6.80 10.21 6.62C10.42 6.45 10.64 6.29 10.87 6.13C11.10 5.98 11.34 5.83 11.58 5.70C11.82 5.56 12.07 5.44 12.33 5.33C12.58 5.22 12.85 5.12 13.11 5.03C13.38 4.94 13.65 4.86 13.92 4.79C14.19 4.73 14.47 4.68 14.75 4.63C15.03 4.59 15.31 4.56 15.59 4.54C15.87 4.53 16.16 4.52 16.44 4.52C16.72 4.53 17.01 4.55 17.29 4.58C17.57 4.60 17.85 4.64 18.13 4.69C18.41 4.74 18.69 4.80 18.96 4.87C19.24 4.94 19.51 5.02 19.78 5.11C20.05 5.20 20.32 5.30 20.58 5.41C20.84 5.52 21.10 5.63 21.36 5.76C21.62 5.88 21.87 6.02 22.12 6.15C22.37 6.29 22.62 6.43 22.88 6.57C23.13 6.71 23.40 6.83 23.66 6.98C23.92 7.12 24.18 7.28 24.43 7.45C24.67 7.62 24.92 7.80 25.16 7.99C25.39 8.18 25.62 8.38 25.84 8.60C26.06 8.81 26.27 9.04 26.47 9.28C26.66 9.52 26.85 9.77 27.01 10.03C27.17 10.29 27.32 10.56 27.45 10.85C27.57 11.13 27.70 11.58 27.75 11.72'/></g></svg>\n"
   },
   {
     "name": "@baraile-loader",
@@ -1785,6 +1800,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'><path d='M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z' /><path d='M20 3v4' /><path d='M22 5h-4' /><path d='M4 17v2' /><path d='M5 18H3' /></svg>"
   },
   {
+    "name": "@photocn",
+    "homepage": "https://photocn.dev",
+    "url": "https://photocn.dev/r/{name}.json",
+    "description": "The photo editor for shadcn/ui. Typed React components on a WebGL engine: adjustments, curves, filters, crop and transform, export. Add the whole editor with one command, or compose your own.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linejoin='round'><rect x='3' y='3' width='18' height='18' rx='4'/><path d='m3 16 5-5 4 4 3-3 6 6'/><circle cx='15.5' cy='8.5' r='1.6' fill='var(--foreground)' stroke='none'/></svg>"
+  },
+  {
     "name": "@phucbm",
     "homepage": "https://phucbm.com/components",
     "url": "https://phucbm.com/r/{name}.json",
@@ -2805,6 +2827,13 @@
     "url": "https://velora.colorlib.com/r/{name}.json",
     "description": "100 animated React components and 31 free section blocks for Tailwind CSS 4 — accessible, reduced-motion safe and MIT licensed.",
     "logo": "<svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z'/><path d='M20 2v4'/><path d='M22 4h-4'/><circle cx='4' cy='20' r='2'/></svg>"
+  },
+  {
+    "name": "@viberdy",
+    "homepage": "https://viberdy.dev",
+    "url": "https://viberdy.dev/r/{name}.json",
+    "description": "Animated React and Tailwind components in 14 design styles, from glassmorphism and aurora to kinetic type and dither, each with an AI prompt. 161 are free with source at github.com/viberdy-dev/ui; Pro items need an API key.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='var(--foreground)'/><path d='M9 10.5 L15.2 22.5 L16.8 22.5 L23 10.5 L19.6 10.5 L16 18.2 L12.4 10.5 Z' fill='var(--background)'/></svg>"
   },
   {
     "name": "@videocn",
