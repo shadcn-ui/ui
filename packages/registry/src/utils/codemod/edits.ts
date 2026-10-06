@@ -1,4 +1,10 @@
-import { countSyntaxErrors } from "./parse"
+import { type types as t } from "@babel/core"
+
+import { getReplacementText } from "./indentation"
+import {
+  countSyntaxErrorsExceptSkippedCommas,
+  type ParseOptions,
+} from "./parse"
 
 // Replaces code[start, end) with text. Positions are in the original code.
 export interface TextEdit {
@@ -31,14 +37,49 @@ export class SyntaxErrorInsertedError extends Error {
   }
 }
 
+// Why an editor left a file as it was: Babel could not parse it, or an edit
+// would have added a syntax error.
+export type SkipReason = "unparsable" | "syntax-error-inserted"
+
 // ts-morph's doManipulation, which throws when the edited text no longer
-// parses into the tree it expects. A new parse error stands in for that.
-export function applyManipulation(code: string, edits: TextEdit[]) {
+// parses into the tree it expects. A new syntax error stands in for that,
+// except a skipped comma (see parseModule): TypeScript's tree has no node for
+// one, so an edit can write it, as ts-morph's did. ts-morph also threw when
+// its own update of its tree failed, which is not reproduced.
+export function applyManipulation(
+  code: string,
+  edits: TextEdit[],
+  options: ParseOptions = {}
+) {
   const result = applyEdits(code, edits)
 
-  if (countSyntaxErrors(result) > countSyntaxErrors(code)) {
+  if (
+    countSyntaxErrorsExceptSkippedCommas(result, options) >
+    countSyntaxErrorsExceptSkippedCommas(code, options)
+  ) {
     throw new SyntaxErrorInsertedError()
   }
 
   return result
+}
+
+// ts-morph's Node#replaceWithText(text), for a node TypeScript attaches no
+// JSDoc comment to.
+export function replaceWithText(
+  code: string,
+  node: t.Node,
+  text: string,
+  options: ParseOptions
+) {
+  return applyManipulation(
+    code,
+    [
+      {
+        start: node.start!,
+        end: node.end!,
+        text: getReplacementText(code, node.start!, text, options),
+      },
+    ],
+    options
+  )
 }
