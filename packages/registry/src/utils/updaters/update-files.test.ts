@@ -982,6 +982,40 @@ describe("resolveFilePath with custom path", () => {
       )
     ).toBe("/foo/bar/docs/guide.md")
   })
+
+  it.each([
+    ["/foo/bar/custom/.env", "/foo/bar/custom/.env"],
+    ["/foo/bar/v1.2/custom", "/foo/bar/v1.2/custom/button.tsx"],
+    ["/foo/bar/custom/", "/foo/bar/custom/button.tsx"],
+    ["/foo/bar/custom.", "/foo/bar/custom./button.tsx"],
+    ["/foo/bar/v1.2\\custom", "/foo/bar/v1.2\\custom/button.tsx"],
+  ])(
+    "decides file or directory from the last segment of %s",
+    (customPath, expected) => {
+      expect(
+        resolveFilePath(
+          {
+            path: "hello-world/ui/button.tsx",
+            type: "registry:ui",
+          },
+          {
+            resolvedPaths: {
+              cwd: "/foo/bar",
+              components: "/foo/bar/components",
+              ui: "/foo/bar/components/ui",
+              lib: "/foo/bar/lib",
+              hooks: "/foo/bar/hooks",
+            },
+          } as Config,
+          {
+            isSrcDir: false,
+            path: customPath,
+            fileIndex: 0,
+          }
+        )
+      ).toBe(expected)
+    }
+  )
 })
 
 describe("resolveFilePath with framework", () => {
