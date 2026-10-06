@@ -6,7 +6,7 @@ import {
   type ParserPlugin,
 } from "@babel/parser"
 
-import { isLineBreak, skipTrivia } from "./trivia"
+import { getLineEnd, isLineBreak, skipTrivia } from "./trivia"
 
 // TypeScript parses any file and reports problems as diagnostics, so these
 // options accept as much as Babel can and recover from errors instead of
@@ -74,6 +74,28 @@ export function parseModule(code: string, options: ParseModuleOptions = {}) {
   }
 }
 
+// A file as the transformers parse it, or undefined when Babel cannot parse
+// it: they leave such a file as it is. TypeScript ends an unterminated string
+// at the end of its line and parses on, where Babel throws, so the string is
+// replaced with a 0 and spaces, which keeps every position, and the code is
+// parsed again. The transformers leave the string as it is.
+export function parseTransformInput(code: string) {
+  let text = code
+  for (;;) {
+    try {
+      return parseModule(text)
+    } catch (error) {
+      const pos = getErrorPos(error)
+      if (pos === undefined || getReasonCode(error) !== "UnterminatedString") {
+        return undefined
+      }
+      const lineEnd = getLineEnd(text, pos)
+      text =
+        text.slice(0, pos) + "0".padEnd(lineEnd - pos) + text.slice(lineEnd)
+    }
+  }
+}
+
 // code parsed with the comma at pos blanked out, and each comma Babel throws
 // at after that, or undefined if Babel throws at something else or one of
 // the commas is not a skipped comma.
@@ -116,6 +138,12 @@ function getErrorPos(error: unknown) {
     "pos" in error &&
     typeof error.pos === "number"
     ? error.pos
+    : undefined
+}
+
+function getReasonCode(error: unknown) {
+  return error instanceof SyntaxError && "reasonCode" in error
+    ? error.reasonCode
     : undefined
 }
 
@@ -247,6 +275,22 @@ export function addsSyntaxErrors(
   options: ParseOptions = {}
 ) {
   return countSyntaxErrors(output, options) > countSyntaxErrors(input, options)
+}
+
+// ts-morph's getDescendantsOfKind(SyntaxKind.CallExpression) on node, a kind
+// that includes optional calls: the calls under it, in source order.
+export function getCallExpressions(node: t.Node) {
+  const calls: (t.CallExpression | t.OptionalCallExpression)[] = []
+  t.traverseFast(node, (descendant) => {
+    if (
+      descendant.type === "CallExpression" ||
+      descendant.type === "OptionalCallExpression"
+    ) {
+      calls.push(descendant)
+    }
+  })
+  // traverseFast follows VISITOR_KEYS, which are not in source order.
+  return calls.sort((a, b) => a.start! - b.start!)
 }
 
 // ts-morph's Node#getText().

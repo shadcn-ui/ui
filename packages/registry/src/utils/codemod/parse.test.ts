@@ -5,7 +5,9 @@ import {
   addsSyntaxErrors,
   countSyntaxErrors,
   countSyntaxErrorsExceptSkippedCommas,
+  getText,
   parseModule,
+  parseTransformInput,
 } from "./parse"
 
 // The members below are those of TypeScript's tree for the same code.
@@ -125,5 +127,33 @@ describe("addsSyntaxErrors", () => {
     const output = "x = <Config>{ a: 1 }"
     expect(addsSyntaxErrors("x = {}", output)).toBe(true)
     expect(addsSyntaxErrors("x = {}", output, { jsx: false })).toBe(false)
+  })
+})
+
+describe("parseTransformInput", () => {
+  // TypeScript's statements start at 0, 9 and 23, and its string literals are
+  // "a", the unterminated "bc and "d".
+  it.each([
+    [`foo("a")\nconst b = "bc\nbaz("d")\n`, [0, 9, 23], [`"a"`, `"d"`]],
+    [`x = 'a\r\ny = "b"`, [0, 8], [`"b"`]],
+  ])(
+    "parses the code around an unterminated string, which TypeScript ends at the line break: %j",
+    (code, statementStarts, strings) => {
+      const file = parseTransformInput(code)!
+      const literals: string[] = []
+      t.traverseFast(file, (node) => {
+        if (node.type === "StringLiteral") {
+          literals.push(getText(code, node))
+        }
+      })
+      expect(file.program.body.map((statement) => statement.start)).toEqual(
+        statementStarts
+      )
+      expect(literals).toEqual(strings)
+    }
+  )
+
+  it("returns undefined when Babel cannot parse the code", () => {
+    expect(parseTransformInput(`@import "tailwindcss";\n`)).toBeUndefined()
   })
 })
