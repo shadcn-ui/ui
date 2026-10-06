@@ -23,7 +23,6 @@ import {
   fetchRegistryItems,
   resolveRegistryTree,
 } from "@/src/registry/resolver"
-import { isUrl } from "@/src/registry/utils"
 import {
   configJsonSchema,
   registriesIndexSchema,
@@ -33,7 +32,8 @@ import {
   registryIndexSchema,
   registryItemSchema,
   registrySchema,
-} from "@/src/schema"
+} from "@/src/registry/schema"
+import { isUrl } from "@/src/registry/utils"
 import { Config, explorer } from "@/src/utils/get-config"
 import { createJsonConfigExplorer } from "@/src/utils/json-config"
 import { z } from "zod"

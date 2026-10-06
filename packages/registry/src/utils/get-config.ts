@@ -5,7 +5,7 @@ import {
   configSchema,
   rawConfigSchema,
   workspaceConfigSchema,
-} from "@/src/schema"
+} from "@/src/registry/schema"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { createJsonConfigExplorer } from "@/src/utils/json-config"
