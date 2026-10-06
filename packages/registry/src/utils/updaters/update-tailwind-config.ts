@@ -177,7 +177,8 @@ function describeAdditions(tailwindConfig: UpdaterTailwindConfig) {
   const additions = ["darkMode"]
 
   for (const plugin of tailwindConfig.plugins ?? []) {
-    const moduleName = /require\((["'])(.+?)\1\)/.exec(plugin)?.[2]
+    // A module name has no quotes, which keeps the match linear.
+    const moduleName = /require\((["'])([^"']+)\1\)/.exec(plugin)?.[2]
     additions.push(`the ${moduleName ?? plugin} plugin`)
   }
 

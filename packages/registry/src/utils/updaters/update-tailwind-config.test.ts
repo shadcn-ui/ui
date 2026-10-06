@@ -3334,6 +3334,21 @@ module.exports = {
       )
     })
 
+    it("names a plugin in linear time", async () => {
+      await writeConfig(UNPARSABLE)
+      const plugin = 'require("' + 'require("a'.repeat(50_000)
+
+      expect(
+        await updateTailwindConfig(
+          { plugins: [plugin] },
+          configFor("tailwind.config.js"),
+          { silent: true }
+        )
+      ).toBe(
+        `Skipped tailwind.config.js: could not parse it. Add darkMode and the ${plugin} plugin to it manually.`
+      )
+    })
+
     it("fails the spinner and rethrows other errors", async () => {
       const input = `const theme = { extend: {} }
 
