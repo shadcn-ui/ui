@@ -91,6 +91,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' width='24' height='24'><rect width='24' height='24' rx='4' fill='var(--foreground)'/><g stroke='var(--background)'><path d='M14 18a2 2 0 0 0-4 0m9-7-2.11-6.657a2 2 0 0 0-2.752-1.148l-1.276.61A2 2 0 0 1 12 4H8.5a2 2 0 0 0-1.925 1.456L5 11m-3 0h20'/><circle cx='17' cy='18' r='3'/><circle cx='7' cy='18' r='3'/><path d='M15.46 7.1 13.3 9.26m1.728-4.536-4.104 4.104' stroke-width='1.575'/></g></svg>"
   },
   {
+    "name": "@agentfaces",
+    "homepage": "https://ajibadedapo.github.io/agentfaces/",
+    "url": "https://ajibadedapo.github.io/agentfaces/r/{name}.json",
+    "description": "Animated faces for AI agents that show thinking, working, needs you, done, listening and speaking, with voice lip sync.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 4.5a45.5 45.5 0 1 1 0 91a45.5 45.5 0 1 1 0-91z' fill='#2B90FF'/><g transform='translate(33.75 41.20) rotate(0.00) scale(1 1.00)'><clipPath id='afel'><path d='M -12.30 -14.30 Q 0 -14.30 12.30 -14.30 L 12.30 6.29 Q 0 -2.78 -12.30 6.29 Z'/></clipPath><g clip-path='url(#afel)'><path d='M -11.70 0 C -11.70 -7.90 -6.46 -14.30 0 -14.30 C 6.46 -14.30 11.70 -7.90 11.70 0 C 11.70 7.90 6.46 14.30 0 14.30 C -6.46 14.30 -11.70 7.90 -11.70 0 Z' fill='#FFFDF7'/><circle cx='0.00' cy='0.00' r='6.79' fill='#1C1B22' opacity='1.00'/><circle cx='2.44' cy='-2.58' r='2.17' fill='#FFFFFF' opacity='1.00'/></g></g><g transform='translate(66.25 41.20) rotate(0.00) scale(1 1.00)'><clipPath id='afer'><path d='M -12.30 -14.30 Q 0 -14.30 12.30 -14.30 L 12.30 6.29 Q 0 -2.78 -12.30 6.29 Z'/></clipPath><g clip-path='url(#afer)'><path d='M -11.70 0 C -11.70 -7.90 -6.46 -14.30 0 -14.30 C 6.46 -14.30 11.70 -7.90 11.70 0 C 11.70 7.90 6.46 14.30 0 14.30 C -6.46 14.30 -11.70 7.90 -11.70 0 Z' fill='#FFFDF7'/><circle cx='0.00' cy='0.00' r='6.79' fill='#1C1B22' opacity='1.00'/><circle cx='2.44' cy='-2.58' r='2.17' fill='#FFFFFF' opacity='1.00'/></g></g><path d='M 35.70 64.37 C 43.56 72.48 56.44 72.48 64.30 64.37 C 56.44 72.48 43.56 72.48 35.70 64.37 Z' fill='#15131B' stroke='#15131B' stroke-width='3.51' stroke-linejoin='round' stroke-linecap='round' opacity='0.62'/></svg>"
+  },
+  {
     "name": "@agents-ui",
     "homepage": "https://livekit.com/ui",
     "url": "https://livekit.com/ui/r/{name}.json",
