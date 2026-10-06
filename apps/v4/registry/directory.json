@@ -2420,6 +2420,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 256 256'><path d='M216 136c-8 24-56 72-80 80v-32a48 48 0 0 1 48-48Z' opacity='.2'/><path d='M168 32H88a56.06 56.06 0 0 0-56 56v80a56.06 56.06 0 0 0 56 56h48a8 8 0 0 0 2.53-.41c26.23-8.75 76.31-58.83 85.06-85.06A8 8 0 0 0 224 136V88a56.06 56.06 0 0 0-56-56M48 168V88a40 40 0 0 1 40-40h80a40 40 0 0 1 40 40v40h-24a56.06 56.06 0 0 0-56 56v24H88a40 40 0 0 1-40-40m96 35.14V184a40 40 0 0 1 40-40h19.14C191 163.5 163.5 191 144 203.14'/></svg>"
   },
   {
+    "name": "@swiftui-flx",
+    "homepage": "https://swiftui.flexnative.com",
+    "url": "https://swiftui.flexnative.com/r/{name}.json",
+    "description": "SwiftUI components for iPhone, iPad and Mac, the shadcn/ui way. Native controls, design tokens, themes and dark mode. Install with the shadcn CLI and own the Swift code.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='128' fill='var(--foreground)'/><svg x='96' y='96' width='320' height='320' preserveAspectRatio='xMidYMid meet' viewBox='395.17 381.07 217.75 213.93'><g transform='translate(0.000000,1024.000000) scale(0.100000,-0.100000)' fill='var(--background)' stroke='none'><path d='M5035 6237 c-160 -105 -427 -282 -595 -391 -168 -110 -317 -211 -332 -225 -55 -49 -24 -141 47 -141 25 0 285 168 1202 774 70 46 88 78 71 126 -5 17 -18 35 -28 40 -46 25 -73 11 -365 -183z'/><path d='M5970 6353 c-64 -43 -1062 -699 -1575 -1036 -192 -126 -361 -240 -374 -253 -36 -34 -34 -89 4 -121 19 -17 37 -23 54 -21 14 3 329 205 698 449 370 244 819 540 998 658 179 117 332 223 340 234 22 32 18 75 -10 102 -34 35 -71 32 -135 -12z'/><path d='M5874 5761 c-105 -70 -913 -603 -1653 -1090 -276 -181 -288 -193 -258 -256 17 -36 50 -51 89 -41 13 3 220 135 460 293 241 158 676 445 967 636 658 432 611 399 611 441 0 19 -3 42 -6 51 -7 17 -54 45 -77 45 -8 0 -68 -36 -133 -79z'/><path d='M5614 5087 c-187 -123 -483 -317 -659 -431 -176 -114 -330 -219 -342 -232 -46 -51 -11 -134 55 -134 31 0 51 13 702 440 179 117 395 259 481 316 86 56 166 113 178 125 21 22 27 62 15 94 -7 17 -54 45 -77 45 -8 0 -167 -100 -353 -223z'/></g></svg></svg>"
+  },
+  {
     "name": "@systaliko-ui",
     "homepage": "https://systaliko-ui.vercel.app",
     "url": "https://systaliko-ui.vercel.app/r/{name}.json",
