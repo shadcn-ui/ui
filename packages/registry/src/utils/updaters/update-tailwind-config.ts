@@ -22,6 +22,7 @@ import {
 } from "@/src/utils/codemod/object-literals"
 import {
   countSyntaxErrors,
+  countTreeErrors,
   findNodeAt,
   getText,
   parseModule,
@@ -115,9 +116,8 @@ export async function updateTailwindConfig(
 }
 
 // Thrown for a config Babel cannot parse the way ts-morph did: one with a
-// syntax error TypeScript, and so ts-morph, parsed through, or a JavaScript
-// config with JSX in its theme, which ts-morph parsed on its own as
-// TypeScript.
+// syntax error TypeScript, and so ts-morph, parsed through, or one whose theme
+// ts-morph parsed on its own in a way Babel cannot (see parseObjectLiteral).
 class UnparsableConfigError extends Error {
   constructor() {
     super("Could not parse the tailwind config.")
@@ -137,13 +137,20 @@ async function updateTailwindConfigFile(
     if (error instanceof UnparsableConfigError) {
       return "unparsable"
     }
-    // ts-morph wrote some edits that broke the config, like a property added
-    // after a comment that follows the last comma, which got a second comma.
-    // Such an edit throws here.
+    // An edit throws where ts-morph rejected it, or where Babel cannot parse
+    // what it wrote.
     if (error instanceof SyntaxErrorInsertedError) {
       return "syntax-error-inserted"
     }
     throw error
+  }
+
+  // ts-morph wrote some edits that broke the config, like a property added
+  // after a comment that follows the last comma, which got a second comma
+  // that TypeScript skips (see parseModule).
+  const options = getParseOptions(config)
+  if (countSyntaxErrors(output, options) > countSyntaxErrors(raw, options)) {
+    return "syntax-error-inserted"
   }
 
   await fs.writeFile(config.resolvedPaths.tailwindConfig, output, "utf8")
@@ -676,18 +683,18 @@ type ThemeValue =
   | { [key: string]: ThemeValue }
 
 // The theme as a plain object to merge into. ts-morph parsed its text on its
-// own, as TypeScript, which reads JSX in a JavaScript config as a broken type
-// assertion. Babel cannot read it that way.
+// own, as `const theme = <text>` in TypeScript, which reads JSX in a
+// JavaScript config as a broken type assertion, and ends an object at a comma
+// it skips elsewhere when the comma starts a line (see parseModule). Babel
+// cannot read either one that way.
 function parseObjectLiteral(
   objectLiteralString: string,
   options: ParseOptions
 ) {
   const code = `const theme = ${objectLiteralString}`
   const typeScriptOptions = { jsx: false }
-  if (
-    countSyntaxErrors(code, typeScriptOptions) >
-    countSyntaxErrors(code, options)
-  ) {
+  const treeErrors = countTreeErrors(code, typeScriptOptions)
+  if (treeErrors === Infinity || treeErrors > countTreeErrors(code, options)) {
     throw new UnparsableConfigError()
   }
 

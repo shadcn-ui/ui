@@ -51,33 +51,48 @@ export function getListChildren(
     item.start!
 ) {
   const children: ListChild[] = []
+  // Where the last child ends, and the next one's trivia starts.
+  let end = pos
 
-  let itemPos = pos
-  for (const item of items) {
-    const start = item ? item.start! : itemPos
-    const end = item ? item.end! : itemPos
+  // Adds the commas from end on: an item's own, and in an object literal,
+  // those TypeScript skips (see parseModule), which are children of the list
+  // too. In an array literal, Babel has a hole between two commas, so only
+  // one comma comes before a hole.
+  function addCommas(beforeHole: boolean) {
+    for (
+      let start = skipTrivia(code, end);
+      code[start] === "," && start < closeStart;
+      start = skipTrivia(code, end)
+    ) {
+      children.push({
+        kind: "comma",
+        pos: end,
+        start,
+        startWithJsDoc: start,
+        end: start + 1,
+      })
+      end = start + 1
+      if (beforeHole) {
+        return
+      }
+    }
+  }
+
+  if (items[0] !== null) {
+    addCommas(false)
+  }
+  items.forEach((item, index) => {
+    const start = item ? item.start! : end
     children.push({
       kind: "item",
-      pos: itemPos,
-      start,
-      startWithJsDoc: item ? getStartWithJsDoc(item, itemPos) : start,
-      end,
-    })
-
-    const commaStart = skipTrivia(code, end)
-    if (code[commaStart] !== "," || commaStart >= closeStart) {
-      itemPos = end
-      continue
-    }
-    children.push({
-      kind: "comma",
       pos: end,
-      start: commaStart,
-      startWithJsDoc: commaStart,
-      end: commaStart + 1,
+      start,
+      startWithJsDoc: item ? getStartWithJsDoc(item, end) : start,
+      end: item ? item.end! : end,
     })
-    itemPos = commaStart + 1
-  }
+    end = item ? item.end! : end
+    addCommas(items[index + 1] === null)
+  })
 
   return children
 }

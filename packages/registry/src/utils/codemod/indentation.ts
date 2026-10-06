@@ -1,7 +1,7 @@
 import { types as t } from "@babel/core"
 import CodeBlockWriter from "code-block-writer"
 
-import { parseModule, type ParseOptions } from "./parse"
+import { getChildNodes, parseModule, type ParseOptions } from "./parse"
 import { isLineBreak, isWhiteSpaceSingleLine } from "./trivia"
 
 // ts-morph indents with four spaces, and TypeScript counts a tab as four.
@@ -789,23 +789,6 @@ function addList(
     visibleEnd: hasDelimiters ? close : itemsEnd,
     items,
   })
-}
-
-// The Babel nodes directly under node, in no particular order.
-function getChildNodes(node: t.Node) {
-  // Babel's node types have no index signature for VISITOR_KEYS.
-  const fields = node as unknown as Record<string, unknown>
-  const children: t.Node[] = []
-  for (const key of t.VISITOR_KEYS[node.type]) {
-    const value = fields[key]
-    for (const child of Array.isArray(value) ? value : [value]) {
-      if (t.isNode(child)) {
-        children.push(child)
-      }
-    }
-  }
-
-  return children
 }
 
 // A node of kind with the TypeScript nodes for all of node's children.

@@ -222,16 +222,28 @@ describe("addPropertyAssignment", () => {
       `)
   })
 
-  it("throws after a comment node that follows a comma, where ts-morph wrote a second comma", () => {
+  it("writes a second comma after a comment node that follows a comma, as ts-morph did", () => {
     // ts-morph copies the text from the last property's end through the
-    // comment, comma included, after a new comma: `b: 2,,`.
-    expect(() => addA(`const c = {\n  b: 2,\n  // c: 3,\n}\n`)).toThrow(
-      SyntaxErrorInsertedError
-    )
+    // comment, comma included, after a new comma: `b: 2,,`. TypeScript skips
+    // the second comma, so ts-morph did not reject the edit.
+    expect(addA(`const c = {\n  b: 2,\n  // c: 3,\n}\n`))
+      .toMatchInlineSnapshot(`
+      "const c = {
+        b: 2,,
+        // c: 3,
+          a: 1
+      }
+      "
+    `)
     // A comment before the closing brace is a comment node too.
-    expect(() => addA(`const c = {\n  b: 2,\n  /* c */ }\n`)).toThrow(
-      SyntaxErrorInsertedError
-    )
+    expect(addA(`const c = {\n  b: 2,\n  /* c */ }\n`)).toMatchInlineSnapshot(`
+      "const c = {
+        b: 2,,
+        /* c */
+          a: 1
+      }
+      "
+    `)
   })
 
   it("throws after an empty /**/ comment node, as ts-morph did", () => {
@@ -336,6 +348,117 @@ describe("removeProperty", () => {
         "const c = {
           a: 1,
           // two
+        }
+        "
+      `)
+  })
+})
+
+// TypeScript skips the second comma in `b: 2,,`, and keeps it as a child of
+// the object's member list, so the property after it starts past it.
+describe("edits next to a comma TypeScript skips", () => {
+  const code = `x = {\n  b: 2,,\n  c: 3,\n}\n`
+
+  it("inserts a property before, after or between the properties around it", () => {
+    expect(insertA(code, 0)).toMatchInlineSnapshot(`
+      "x = {
+          a: 1,
+          b: 2,,
+        c: 3,
+      }
+      "
+    `)
+    expect(insertA(code, 1)).toMatchInlineSnapshot(`
+      "x = {
+        b: 2,
+          a: 1,
+          c: 3,
+      }
+      "
+    `)
+    expect(insertA(code, 2)).toMatchInlineSnapshot(`
+      "x = {
+        b: 2,,
+        c: 3,
+          a: 1
+      }
+      "
+    `)
+    expect(insertA(`x = { b: 2,, c: 3 }\n`, 1)).toMatchInlineSnapshot(`
+      "x = { b: 2,
+          a: 1,
+          c: 3 }
+      "
+    `)
+  })
+
+  it("removes the property before it with only its own comma", () => {
+    expect(remove(code, 0)).toMatchInlineSnapshot(`
+      "x = {
+        ,
+        c: 3,
+      }
+      "
+    `)
+  })
+
+  it("removes the last property with the comma right before it", () => {
+    expect(remove(code, 1)).toMatchInlineSnapshot(`
+      "x = {
+        b: 2,
+      }
+      "
+    `)
+    expect(remove(`x = {\n  b: 2,\n  // c\n  , c: 3\n}\n`, 1))
+      .toMatchInlineSnapshot(`
+        "x = {
+          b: 2,
+        }
+        "
+      `)
+  })
+
+  it("keeps one before the first property, as a child before it", () => {
+    expect(remove(`x = { ,b: 2,, c: 3 }\n`, 0)).toMatchInlineSnapshot(`
+      "x = { ,, c: 3 }
+      "
+    `)
+    expect(remove(`x = { ,b: 2,, c: 3 }\n`, 1)).toMatchInlineSnapshot(`
+      "x = { ,b: 2, }
+      "
+    `)
+  })
+
+  it("keeps a JSDoc comment after it with the property after it", () => {
+    expect(insertA(`x = {\n  b: 2,,\n  /** d */\n  c: 3,\n}\n`, 1))
+      .toMatchInlineSnapshot(`
+        "x = {
+          b: 2,
+            a: 1,
+            /** d */
+          c: 3,
+        }
+        "
+      `)
+  })
+
+  it("does not take a comment before it for a comment node", () => {
+    expect(insertA(`x = {\n  b: 2,\n  // c\n  , c: 3,\n}\n`, 1))
+      .toMatchInlineSnapshot(`
+        "x = {
+          b: 2,
+            a: 1,
+            c: 3,
+        }
+        "
+      `)
+    expect(insertA(`x = {\n  b: 2,\n  // c\n  , c: 3,\n}\n`, 2))
+      .toMatchInlineSnapshot(`
+        "x = {
+          b: 2,
+          // c
+          , c: 3,
+            a: 1
         }
         "
       `)

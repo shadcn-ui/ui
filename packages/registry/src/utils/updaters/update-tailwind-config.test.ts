@@ -1393,6 +1393,28 @@ const SHADCN_TAILWIND_CONFIG = {
   },
 }
 
+// The accordion's tailwind.config in the registry.
+const ACCORDION_TAILWIND_CONFIG = {
+  theme: {
+    extend: {
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
+    },
+  },
+}
+
 function configWithPath(tailwindConfig: string) {
   return {
     ...SHARED_CONFIG,
@@ -2506,16 +2528,40 @@ module.exports = {
     ).rejects.toThrow(SyntaxErrorInsertedError)
   })
 
-  it("should throw instead of writing a second comma after a comment after the last property", async () => {
+  it("should write the second comma ts-morph wrote after a comment after the last property", async () => {
     // ts-morph copied the text from `plugins: [...]` through the comment
     // after it, comma included, after a new comma: `plugins: [...],,`.
-    await expect(
-      transformTailwindConfig(
+    // TypeScript skips the second comma, so ts-morph did not reject the edit.
+    // updateTailwindConfig does not write the config it broke.
+    expect(
+      await transformTailwindConfig(
         COMMENT_AFTER_LAST_PROPERTY,
         SHADCN_TAILWIND_CONFIG,
         configWithPath("tailwind.config.js")
       )
-    ).rejects.toThrow(SyntaxErrorInsertedError)
+    ).toMatchInlineSnapshot(`
+      "module.exports = {
+          darkMode: ["class"],
+          content: ["./src/**/*.{ts,tsx}"],
+        plugins: [require("tailwindcss-animate")],,
+        // theme: {},
+          theme: {
+          	extend: {
+          		colors: {
+          			border: 'hsl(var(--border))',
+          			primary: {
+          				DEFAULT: 'hsl(var(--primary))',
+          				foreground: 'hsl(var(--primary-foreground))'
+          			}
+          		},
+          		borderRadius: {
+          			lg: 'var(--radius)'
+          		}
+          	}
+          }
+      }
+      "
+    `)
   })
 
   it("should throw on a spread whose ... is on another line than its argument", async () => {
@@ -2579,10 +2625,13 @@ module.exports = {
     ).rejects.toThrow(SyntaxErrorInsertedError)
   })
 
-  it.each([
-    {
-      name: "a theme",
-      input: `module.exports = {
+  // A spread's placeholder goes in at the spread's index among the
+  // properties, where ts-morph counts a comment before it too, so it goes in
+  // after the comment, and the text it copied from the property before the
+  // comment brought that property's comma: `a: "1",,`. TypeScript skips the
+  // second comma, and replacing the theme or the placeholder takes it out.
+  it("should keep spreads after a comment in a theme", async () => {
+    const input = `module.exports = {
   content: [],
   theme: {
     colors: {
@@ -2593,27 +2642,201 @@ module.exports = {
     },
   },
 }
-`,
-    },
-    {
-      name: "the config object",
-      input: `module.exports = {
+`
+    expect(
+      await transformTailwindConfig(
+        input,
+        { theme: {} },
+        configWithPath("tailwind.config.js")
+      )
+    ).toMatchInlineSnapshot(`
+      "module.exports = {
+          darkMode: ["class"],
+          content: [],
+        theme: {
+        	colors: {
+        		a: '1',
+                  ...x,
+        		b: '2'
+        	}
+        },
+      }
+      "
+    `)
+  })
+
+  it("should keep spreads after a comment in the config object", async () => {
+    const input = `module.exports = {
   // c
   content: [],
   ...base,
 }
+`
+    expect(
+      await transformTailwindConfig(
+        input,
+        { theme: {} },
+        configWithPath("tailwind.config.js")
+      )
+    ).toMatchInlineSnapshot(`
+      "module.exports = {
+          darkMode: ["class"],
+          ...base,
+          // c
+          content: [],
+          theme: {}
+      }
+      "
+    `)
+  })
+
+  it("should keep spreads after a comment when adding a component's theme", async () => {
+    const input = `const colors = require("./colors")
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./app/**/*.{ts,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        primary: "#000",
+        // Brand colors
+        brand: "#f00",
+        ...colors,
+      },
+    },
+  },
+  plugins: [],
+}
+`
+    expect(
+      await transformTailwindConfig(
+        input,
+        ACCORDION_TAILWIND_CONFIG,
+        configWithPath("tailwind.config.js")
+      )
+    ).toMatchInlineSnapshot(`
+      "const colors = require("./colors")
+
+      /** @type {import('tailwindcss').Config} */
+      module.exports = {
+          darkMode: ["class"],
+          content: ["./app/**/*.{ts,tsx}"],
+        theme: {
+        	extend: {
+        		colors: {
+        			primary: '#000',
+                      ...colors,
+        			brand: '#f00'
+        		},
+        		keyframes: {
+        			'accordion-down': {
+        				from: {
+        					height: '0'
+        				},
+        				to: {
+        					height: 'var(--radix-accordion-content-height)'
+        				}
+        			},
+        			'accordion-up': {
+        				from: {
+        					height: 'var(--radix-accordion-content-height)'
+        				},
+        				to: {
+        					height: '0'
+        				}
+        			}
+        		},
+        		animation: {
+        			'accordion-down': 'accordion-down 0.2s ease-out',
+        			'accordion-up': 'accordion-up 0.2s ease-out'
+        		}
+        	}
+        },
+        plugins: [],
+      }
+      "
+    `)
+  })
+
+  it("should keep spreads after a comment in a config declared with const", async () => {
+    const input = `const config = {
+  content: [],
+  theme: {
+    colors: {
+      a: "1",
+      // c
+      b: "2",
+      ...x,
+    },
+  },
+}
+module.exports = config
+`
+    expect(
+      await transformTailwindConfig(
+        input,
+        { theme: {} },
+        configWithPath("tailwind.config.js")
+      )
+    ).toMatchInlineSnapshot(`
+      "const config = {
+          darkMode: ["class"],
+          content: [],
+        theme: {
+        	colors: {
+        		a: '1',
+                  ...x,
+        		b: '2'
+        	}
+        },
+      }
+      module.exports = config
+      "
+    `)
+  })
+
+  it.each([
+    {
+      name: "a config declared with const, when the comma starts a line",
+      input: `const config = {
+  content: [],
+  theme: {
+    colors: {
+      a: "1" /* x */
+      ,
+      // c
+      b: "2",
+      ...x,
+    },
+  },
+}
+module.exports = config
+`,
+    },
+    {
+      name: "an object in an array",
+      input: `module.exports = {
+  content: [],
+  theme: {
+    fontSize: {
+      xs: ["0.75rem", {
+        a: "1",
+        // c
+        b: "2",
+        ...x,
+      }],
+    },
+  },
+}
 `,
     },
   ])(
-    "should throw when a spread's placeholder goes in after a comment with a second comma, in $name",
+    "should throw when the second comma ends the object, as ts-morph did, in $name",
     async ({ input }) => {
-      // The spread's placeholder goes in at the spread's index among the
-      // properties, where ts-morph counts the comment too, so it went in after
-      // the comment, and the text it copied from the property before the
-      // comment brought that property's comma: `a: "1",,`. ts-morph wrote a
-      // valid config, since TypeScript reads past the second comma and a later
-      // edit replaced it. Babel cannot read past it, so the edit throws, and
-      // updateTailwindConfig leaves the config untouched.
+      // A variable declaration list takes a comma that starts a line, and an
+      // array literal takes any comma, so TypeScript does not skip the second
+      // comma there but ends the object, and ts-morph rejected the edit.
       await expect(
         transformTailwindConfig(
           input,
@@ -2623,6 +2846,61 @@ module.exports = {
       ).rejects.toThrow(SyntaxErrorInsertedError)
     }
   )
+
+  it.each([
+    {
+      name: "a theme ts-morph moved members in",
+      // The placeholder's text copies the comma after `a: "1"`, on a line of
+      // its own, after a new one. ts-morph ended `colors` there and moved the
+      // spread and `b` up into the theme.
+      theme: `{
+    colors: {
+      a: "1" /* x */
+      ,
+      // c
+      b: "2",
+      ...x,
+    },
+  }`,
+    },
+    {
+      name: "a theme ts-morph kept the members of",
+      // Removing the spread leaves its comma, on a line of its own, after the
+      // placeholder's, so nothing comes after it.
+      theme: `{
+    ...base
+    /** d */
+    , // b
+  }`,
+    },
+  ])(
+    "should throw on $name, where a second comma starts a line",
+    async ({ theme }) => {
+      // ts-morph read the theme as `const theme = <theme>`, where TypeScript
+      // ends an object at a second comma that starts a line. Babel cannot
+      // end it there, so updateTailwindConfig leaves the config untouched.
+      await expect(
+        transformTailwindConfig(
+          `module.exports = {\n  content: [],\n  theme: ${theme},\n}\n`,
+          { theme: {} },
+          configWithPath("tailwind.config.js")
+        )
+      ).rejects.toThrow("Could not parse the tailwind config.")
+    }
+  )
+
+  it("should throw on a plugin added after a spread whose comma follows a line comment", async () => {
+    // ts-morph puts the new comma after the comment, which comments it out:
+    // `...more // c,`. TypeScript reads past the missing comma, and replacing
+    // the spread in the plugins put one back. Babel cannot read past it.
+    await expect(
+      transformTailwindConfig(
+        `module.exports = {\n  content: [],\n  plugins: [\n    ...more // c\n    ,\n  ],\n}\n`,
+        { plugins: ['require("x")'], theme: {} },
+        configWithPath("tailwind.config.js")
+      )
+    ).rejects.toThrow(SyntaxErrorInsertedError)
+  })
 
   it.each([
     `["./app/**/*.{ts,tsx}",, ...shared.content]`,
