@@ -1,11 +1,7 @@
 import { type types as t } from "@babel/core"
 
 import { applyManipulation } from "./edits"
-import {
-  getNextNonWhitespacePos,
-  getTrailingTriviaEnd,
-  skipTrivia,
-} from "./trivia"
+import { getNonWhitespaceStart, skipTrivia } from "./trivia"
 
 // ts-morph's VariableDeclaration#setInitializer(text) on a declaration that
 // has an initializer: removeInitializer() takes out the `=`, the initializer
@@ -20,11 +16,11 @@ export function setInitializer(
 
   // The `=` token's getNonWhitespaceStart(). On the same line, comments
   // between the name and the `=` are removed with it.
-  const equalsTokenStart = skipTrivia(code, nameEnd)
-  const searchStart = code.slice(nameEnd, equalsTokenStart).includes("\n")
-    ? getTrailingTriviaEnd(code, nameEnd)
-    : nameEnd
-  let removalStart = getNextNonWhitespacePos(code, searchStart)
+  let removalStart = getNonWhitespaceStart(
+    code,
+    { pos: nameEnd, start: skipTrivia(code, nameEnd) },
+    { end: nameEnd, isComment: false }
+  )
   while (code[removalStart - 1] === " " || code[removalStart - 1] === "\t") {
     removalStart--
   }

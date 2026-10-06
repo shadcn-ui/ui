@@ -9,6 +9,7 @@ import {
 import {
   replaceWithText,
   SyntaxErrorInsertedError,
+  type SkipReason,
 } from "@/src/utils/codemod/edits"
 import {
   addPropertyAssignment,
@@ -21,6 +22,7 @@ import {
 } from "@/src/utils/codemod/object-literals"
 import {
   countSyntaxErrors,
+  findNodeAt,
   getText,
   parseModule,
   type ParseOptions,
@@ -54,6 +56,9 @@ export async function updateTailwindConfig(
   options: {
     silent?: boolean
     tailwindVersion?: TailwindVersion
+    // A workspace install lists the files it changed from the workspace root,
+    // so the config is named from there too.
+    workspaceRoot?: string
   }
 ) {
   if (!tailwindConfig) {
@@ -72,7 +77,7 @@ export async function updateTailwindConfig(
   }
 
   const tailwindFileRelativePath = path.relative(
-    config.resolvedPaths.cwd,
+    options.workspaceRoot ?? config.resolvedPaths.cwd,
     config.resolvedPaths.tailwindConfig
   )
   const tailwindSpinner = spinner(
@@ -109,8 +114,15 @@ export async function updateTailwindConfig(
   }
 }
 
-// Why updateTailwindConfigFile left the config as it was.
-type SkipReason = "unparsable" | "syntax-error-inserted"
+// Thrown for a config Babel cannot parse the way ts-morph did: one with a
+// syntax error TypeScript, and so ts-morph, parsed through, or a JavaScript
+// config with JSX in its theme, which ts-morph parsed on its own as
+// TypeScript.
+class UnparsableConfigError extends Error {
+  constructor() {
+    super("Could not parse the tailwind config.")
+  }
+}
 
 async function updateTailwindConfigFile(
   tailwindConfig: UpdaterTailwindConfig,
@@ -118,16 +130,13 @@ async function updateTailwindConfigFile(
 ): Promise<SkipReason | undefined> {
   const raw = await fs.readFile(config.resolvedPaths.tailwindConfig, "utf8")
 
-  // Babel gives up on some syntax errors that TypeScript, and so ts-morph,
-  // parsed through.
-  if (countSyntaxErrors(raw, getParseOptions(config)) === Infinity) {
-    return "unparsable"
-  }
-
   let output: string
   try {
     output = await transformTailwindConfig(raw, tailwindConfig, config)
   } catch (error) {
+    if (error instanceof UnparsableConfigError) {
+      return "unparsable"
+    }
     // ts-morph wrote some edits that broke the config, like a property added
     // after a comment that follows the last comma, which got a second comma.
     // Such an edit throws here.
@@ -190,6 +199,11 @@ export async function transformTailwindConfig(
   // drops a leading byte order mark from the text.
   let code = input.charCodeAt(0) === 0xfeff ? input.slice(1) : input
 
+  // Babel gives up on some syntax errors that TypeScript parsed through.
+  if (countSyntaxErrors(code, options) === Infinity) {
+    throw new UnparsableConfigError()
+  }
+
   // Find the object with content property.
   // This is faster than traversing the default export.
   // TODO: maybe we do need to traverse the default export?
@@ -200,7 +214,6 @@ export async function transformTailwindConfig(
     return input
   }
 
-  // Every edit is inside the config object, so it keeps its start.
   const configStart = configObject.start!
   const quoteChar = getQuoteChar(code, configObject)
 
@@ -257,6 +270,9 @@ function findConfigObject(code: string, options: ParseOptions) {
 
 // The quotes of the config object's first string literal. TypeScript also has
 // a string literal for a directive, like "use strict" in a plugin function.
+// ts-morph also found those in the types of the JSDoc comments TypeScript
+// attaches to nodes, like `@type {import('tailwindcss').Config}` on a member,
+// which are left out.
 function getQuoteChar(code: string, configObject: t.ObjectExpression) {
   let firstString: t.StringLiteral | t.DirectiveLiteral | undefined
   t.traverseFast(configObject, (node) => {
@@ -391,7 +407,10 @@ function addTailwindConfigTheme(
 
   const themeInitializer = themeProperty.value
   if (themeInitializer.type === "ObjectExpression") {
-    const themeObject = parseObjectLiteral(getText(code, themeInitializer))
+    const themeObject = parseObjectLiteral(
+      getText(code, themeInitializer),
+      options
+    )
     const result = deepmerge(themeObject, theme, {
       arrayMerge: (dst, src) => src,
     })
@@ -416,9 +435,9 @@ function addTailwindConfigTheme(
   )
 }
 
-// ts-morph's asKindOrThrow names the member by its TypeScript SyntaxKind. A
-// named member that is not a PropertyAssignment is a shorthand property or a
-// method.
+// The error above keeps the message of ts-morph's asKindOrThrow, which names
+// the member by its TypeScript SyntaxKind. A named member that is not a
+// PropertyAssignment is a shorthand property or a method.
 function getSyntaxKindName(member: t.ObjectProperty | t.ObjectMethod) {
   if (member.type === "ObjectProperty") {
     return "ShorthandPropertyAssignment"
@@ -432,30 +451,13 @@ function getSyntaxKindName(member: t.ObjectProperty | t.ObjectMethod) {
   return "MethodDeclaration"
 }
 
-// Each edit reparses the config, so the object or array the next edit goes
-// into is found again by where it starts, which edits inside it never move.
+// The object or array the next edit goes into, in the current code.
 function getObjectAt(code: string, start: number, options: ParseOptions) {
-  return findNodeAt(code, start, t.isObjectExpression, options)
+  return findNodeAt(code, start, t.isObjectExpression, options)!
 }
 
 function getArrayAt(code: string, start: number, options: ParseOptions) {
-  return findNodeAt(code, start, t.isArrayExpression, options)
-}
-
-function findNodeAt<T extends t.Node>(
-  code: string,
-  start: number,
-  isType: (node: t.Node) => node is T,
-  options: ParseOptions
-) {
-  let found: T | undefined
-  t.traverseFast(parseModule(code, options), (node) => {
-    if (node.start === start && isType(node)) {
-      found = node
-    }
-  })
-
-  return found!
+  return findNodeAt(code, start, t.isArrayExpression, options)!
 }
 
 // ts-morph's getElements() keeps holes, as an empty OmittedExpression.
@@ -465,13 +467,14 @@ function getElementTexts(code: string, array: t.ArrayExpression) {
   )
 }
 
-// deepmerge and the theme reprint below would drop spreads, so they become
-// strings first: `...name` in an object becomes `"___name": "...name"`, and
-// in an array, `"...name"`. unnestSpreadProperties turns them back.
+// deepmerge and addTailwindConfigTheme's reprint would drop spreads, so they
+// become strings first: `...name` in an object becomes
+// `"___name": "...name"`, and in an array, `"...name"`.
+// unnestSpreadProperties turns them back.
 export function nestSpreadProperties(
   code: string,
   object: t.ObjectExpression,
-  options: ParseOptions = {}
+  options: ParseOptions
 ): string {
   return editEachMember(
     code,
@@ -523,7 +526,7 @@ export function nestSpreadProperties(
 export function nestSpreadElements(
   code: string,
   array: t.ArrayExpression,
-  options: ParseOptions = {}
+  options: ParseOptions
 ): string {
   return editEachMember(code, array, getArrayAt, options, (code, array, j) => {
     const element = array.elements[j]
@@ -556,7 +559,7 @@ export function nestSpreadElements(
 export function unnestSpreadProperties(
   code: string,
   object: t.ObjectExpression,
-  options: ParseOptions = {}
+  options: ParseOptions
 ): string {
   return editEachMember(
     code,
@@ -601,7 +604,7 @@ export function unnestSpreadProperties(
 export function unnestSpreadElements(
   code: string,
   array: t.ArrayExpression,
-  options: ParseOptions = {}
+  options: ParseOptions
 ): string {
   return editEachMember(code, array, getArrayAt, options, (code, array, j) => {
     const element = array.elements[j]
@@ -673,10 +676,22 @@ type ThemeValue =
   | { [key: string]: ThemeValue }
 
 // The theme as a plain object to merge into. ts-morph parsed its text on its
-// own, as TypeScript.
-function parseObjectLiteral(objectLiteralString: string) {
+// own, as TypeScript, which reads JSX in a JavaScript config as a broken type
+// assertion. Babel cannot read it that way.
+function parseObjectLiteral(
+  objectLiteralString: string,
+  options: ParseOptions
+) {
   const code = `const theme = ${objectLiteralString}`
-  const [statement] = parseModule(code, { jsx: false }).program.body
+  const typeScriptOptions = { jsx: false }
+  if (
+    countSyntaxErrors(code, typeScriptOptions) >
+    countSyntaxErrors(code, options)
+  ) {
+    throw new UnparsableConfigError()
+  }
+
+  const [statement] = parseModule(code, typeScriptOptions).program.body
   const initializer =
     statement?.type === "VariableDeclaration"
       ? statement.declarations[0]?.init

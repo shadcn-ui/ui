@@ -32,6 +32,7 @@ describe("appendCommaToText", () => {
       "`a${ {x: 1} }c`, /* d */"
     )
     expect(appendCommaToText("`${a /* } */}`")).toBe("`${a /* } */}`,")
+    expect(appendCommaToText("`${'`'}` // d")).toBe("`${'`'}`, // d")
   })
 
   it("ends an unterminated string at the line break", () => {

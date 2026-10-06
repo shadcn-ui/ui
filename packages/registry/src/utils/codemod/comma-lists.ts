@@ -1,20 +1,16 @@
-import { type types as t } from "@babel/core"
+import { types as t } from "@babel/core"
 
-import { applyManipulation } from "./edits"
-import { getIndentationLevel } from "./indentation"
+import { applyManipulation, SyntaxErrorInsertedError } from "./edits"
+import { getIndentationText } from "./indentation"
 import { type ParseOptions } from "./parse"
 import {
   getCommentEnd,
-  getNextNonWhitespacePos,
+  getNonWhitespaceStart,
   getTrailingCommentsEnd,
-  getTrailingTriviaEnd,
   isLineBreak,
   isWhiteSpaceSingleLine,
   skipTrivia,
 } from "./trivia"
-
-// ts-morph indents with four spaces.
-const INDENTATION_TEXT = "    "
 
 // A child of the SyntaxList TypeScript keeps a comma-separated list in: an
 // item, a comma, or in an object literal, one of ts-morph's comment nodes.
@@ -90,6 +86,16 @@ export function isItem(child: ListChild) {
   return child.kind === "item"
 }
 
+// ts-morph's verifyAndGetIndex for the indexes the editors pass, which are
+// never negative: an insertion at an index past the length nodes throws.
+export function verifyIndex(index: number, length: number) {
+  if (index > length) {
+    throw new Error(
+      `Invalid index: The max index is ${length}, but ${index} was specified.`
+    )
+  }
+}
+
 // ts-morph's insertIntoCommaSeparatedNodes, which inserts text at index in
 // currentNodes: the list's items, and in an object literal, the comment nodes
 // between them. The text is separated from its neighbors by commas, and by a
@@ -104,7 +110,7 @@ export function insertIntoCommaSeparatedNodes(
     useNewLines = false,
     surroundWithSpaces = false,
   }: { useNewLines?: boolean; surroundWithSpaces?: boolean },
-  options: ParseOptions = {}
+  options: ParseOptions
 ) {
   const previousNode = currentNodes[insertIndex - 1]
   const previousNonCommentNode = currentNodes
@@ -124,10 +130,12 @@ export function insertIntoCommaSeparatedNodes(
 
   function appendIndentation() {
     if (useNewLines || newText.endsWith("\n")) {
-      const level = getIndentationLevel(code, list.nodeStart, options)
-      // ts-morph repeats its indentation text here, which drops the fraction
-      // of a level that code-block-writer indents by.
-      newText += INDENTATION_TEXT.repeat(nextNode ? level + 1 : level)
+      newText += getIndentationText(
+        code,
+        list.nodeStart,
+        options,
+        nextNode ? 1 : 0
+      )
     }
   }
 
@@ -238,7 +246,7 @@ export function removeCommaSeparatedChild(
   code: string,
   list: CommaSeparatedList,
   child: ListChild,
-  options: ParseOptions = {}
+  options: ParseOptions
 ) {
   const { children } = list
   const index = children.indexOf(child)
@@ -261,7 +269,7 @@ export function removeCommaSeparatedChild(
     (children.length === childrenToRemove.length &&
       isFirstNodeOnLine(code, list, firstChild))
 
-  let start = getNonWhitespaceStart(code, list, firstChild)
+  let start = getChildNonWhitespaceStart(code, list, firstChild)
   while (
     start > 0 &&
     isRemovable(code[start - 1], removePrecedingSpaces, !isRemovingFirstChild)
@@ -280,6 +288,40 @@ export function removeCommaSeparatedChild(
   return applyManipulation(code, [{ start, end, text: "" }], options)
 }
 
+// An array element, a hole, or an object member.
+type Member = t.Node | null
+
+// ts-morph's node handler for a removal, which rejects the edit unless it
+// took out the member at index and left the others as they were. Removing a
+// member can take a hole next to it with it, or pull the rest of its line
+// onto a line comment before it.
+export function verifyRemoval(
+  members: Member[],
+  index: number,
+  editedMembers: Member[] | undefined
+) {
+  const expected = getMemberKinds(members).filter((_, i) => i !== index)
+  const actual = editedMembers ? getMemberKinds(editedMembers) : []
+  if (
+    actual.length !== expected.length ||
+    actual.some((kind, i) => kind !== expected[i])
+  ) {
+    throw new SyntaxErrorInsertedError()
+  }
+}
+
+// The kind of each member as TypeScript tells them apart: a shorthand
+// property is not a property assignment, and a hole is a member too.
+function getMemberKinds(members: Member[]) {
+  return members.map((member) =>
+    member === null
+      ? "Hole"
+      : t.isObjectProperty(member) && member.shorthand
+        ? "ShorthandProperty"
+        : member.type
+  )
+}
+
 function isRemovable(char: string, spaces: boolean, newLines: boolean) {
   return (
     (newLines && (char === "\r" || char === "\n")) ||
@@ -287,27 +329,22 @@ function isRemovable(char: string, spaces: boolean, newLines: boolean) {
   )
 }
 
-// ts-morph's Node#getNonWhitespaceStart() for a list child. The child's
-// parent is the node with the brackets, which never starts where the child's
-// trivia does.
-function getNonWhitespaceStart(
+// ts-morph's Node#getNonWhitespaceStart() for a list child, whose parent is
+// the node with the brackets.
+function getChildNonWhitespaceStart(
   code: string,
   list: CommaSeparatedList,
   child: ListChild
 ) {
   const previousSibling = list.children[list.children.indexOf(child) - 1]
-
-  let searchStart = child.pos
-  if (previousSibling?.kind === "comment") {
-    searchStart = previousSibling.end
-  } else if (
-    previousSibling &&
-    code.slice(child.pos, child.startWithJsDoc).includes("\n")
-  ) {
-    searchStart = getTrailingTriviaEnd(code, previousSibling.end)
-  }
-
-  return getNextNonWhitespacePos(code, searchStart)
+  return getNonWhitespaceStart(
+    code,
+    { pos: child.pos, start: child.startWithJsDoc },
+    previousSibling && {
+      end: previousSibling.end,
+      isComment: previousSibling.kind === "comment",
+    }
+  )
 }
 
 // ts-morph's Node#isFirstNodeOnLine().
@@ -317,7 +354,7 @@ function isFirstNodeOnLine(
   child: ListChild
 ) {
   for (
-    let pos = getNonWhitespaceStart(code, list, child) - 1;
+    let pos = getChildNonWhitespaceStart(code, list, child) - 1;
     pos >= 0;
     pos--
   ) {

@@ -25,16 +25,16 @@ function getObject(code: string) {
 }
 
 function insertA(code: string, index: number) {
-  return insertPropertyAssignment(code, getObject(code), index, "a", "1")
+  return insertPropertyAssignment(code, getObject(code), index, "a", "1", {})
 }
 
 function addA(code: string, initializer = "1") {
-  return addPropertyAssignment(code, getObject(code), "a", initializer)
+  return addPropertyAssignment(code, getObject(code), "a", initializer, {})
 }
 
 function remove(code: string, index: number) {
   const object = getObject(code)
-  return removeProperty(code, object, object.properties[index])
+  return removeProperty(code, object, object.properties[index], {})
 }
 
 describe("insertPropertyAssignment", () => {
@@ -99,6 +99,24 @@ describe("insertPropertyAssignment", () => {
         }
         "
       `)
+  })
+
+  it("keeps every JSDoc comment with the property after them", () => {
+    expect(
+      insertA(
+        `const c = {\n  b: 2,\n  /** one */\n  /** two */\n  c: 3\n}\n`,
+        1
+      )
+    ).toMatchInlineSnapshot(`
+      "const c = {
+        b: 2,
+          a: 1,
+          /** one */
+        /** two */
+        c: 3
+      }
+      "
+    `)
   })
 
   it("keeps a trailing comment with the property before it", () => {
@@ -193,6 +211,15 @@ describe("addPropertyAssignment", () => {
       }
       "
     `)
+    expect(addA(`const c = {\n  b: 2\n  /* c */ // d\n}\n`))
+      .toMatchInlineSnapshot(`
+        "const c = {
+          b: 2,
+          /* c */ // d
+            a: 1
+        }
+        "
+      `)
   })
 
   it("throws after a comment node that follows a comma, where ts-morph wrote a second comma", () => {
@@ -201,13 +228,25 @@ describe("addPropertyAssignment", () => {
     expect(() => addA(`const c = {\n  b: 2,\n  // c: 3,\n}\n`)).toThrow(
       SyntaxErrorInsertedError
     )
+    // A comment before the closing brace is a comment node too.
+    expect(() => addA(`const c = {\n  b: 2,\n  /* c */ }\n`)).toThrow(
+      SyntaxErrorInsertedError
+    )
+  })
+
+  it("throws after an empty /**/ comment node, as ts-morph did", () => {
+    // Like ts-morph, the comment node parser looks for the end of a JSDoc
+    // comment after "/**", so this one runs to the end of the code.
+    expect(() => addA(`const c = {\n  b: 2\n  /**/\n}\n`)).toThrow(
+      SyntaxErrorInsertedError
+    )
   })
 })
 
 describe("insertSpreadAssignment", () => {
   it("inserts the spread like a property", () => {
     const code = `const c = {\n  b: 2,\n}\n`
-    expect(insertSpreadAssignment(code, getObject(code), 0, "b"))
+    expect(insertSpreadAssignment(code, getObject(code), 0, "b", {}))
       .toMatchInlineSnapshot(`
         "const c = {
             ...b,
@@ -215,7 +254,7 @@ describe("insertSpreadAssignment", () => {
         }
         "
       `)
-    expect(insertSpreadAssignment(code, getObject(code), 1, "b"))
+    expect(insertSpreadAssignment(code, getObject(code), 1, "b", {}))
       .toMatchInlineSnapshot(`
         "const c = {
           b: 2,
@@ -228,6 +267,18 @@ describe("insertSpreadAssignment", () => {
 
 describe("removeProperty", () => {
   const code = `const c = {\n  a: 1,\n  b: 2,\n  c: 3,\n}\n`
+
+  it.each([
+    // b: 2 is commented out.
+    `const c = {\n  // c\n  a: 1, b: 2\n}\n`,
+    // b becomes a shorthand property.
+    `const c = {\n  // c\n  a: 1, ...\n  b\n}\n`,
+  ])(
+    "throws when the rest of the line goes onto a comment's, which ts-morph rejected: %j",
+    (code) => {
+      expect(() => remove(code, 0)).toThrow(SyntaxErrorInsertedError)
+    }
+  )
 
   it("removes the property with its comma and the line break before it", () => {
     expect(remove(code, 0)).toMatchInlineSnapshot(`

@@ -1,4 +1,4 @@
-import { type types as t } from "@babel/core"
+import { types as t } from "@babel/core"
 import CodeBlockWriter from "code-block-writer"
 
 import {
@@ -6,12 +6,14 @@ import {
   insertIntoCommaSeparatedNodes,
   isItem,
   removeCommaSeparatedChild,
+  verifyIndex,
+  verifyRemoval,
   type CommaSeparatedList,
   type ListChild,
 } from "./comma-lists"
 import { getNodesWithComments } from "./comment-nodes"
 import { getIndentationLevel } from "./indentation"
-import { getText, type ParseOptions } from "./parse"
+import { findNodeAt, getText, type ParseOptions } from "./parse"
 import { getJsDocStart, skipTrivia } from "./trivia"
 
 type ObjectMember = t.ObjectExpression["properties"][number]
@@ -119,7 +121,7 @@ export function insertPropertyAssignment(
   index: number,
   name: string,
   initializer: string,
-  options: ParseOptions = {}
+  options: ParseOptions
 ) {
   return insertMember(
     code,
@@ -137,7 +139,7 @@ export function addPropertyAssignment(
   object: t.ObjectExpression,
   name: string,
   initializer: string,
-  options: ParseOptions = {}
+  options: ParseOptions
 ) {
   const { membersWithComments } = getObjectLiteral(code, object)
   return insertPropertyAssignment(
@@ -157,7 +159,7 @@ export function insertSpreadAssignment(
   object: t.ObjectExpression,
   index: number,
   expression: string,
-  options: ParseOptions = {}
+  options: ParseOptions
 ) {
   return insertMember(
     code,
@@ -179,6 +181,7 @@ function insertMember(
   options: ParseOptions
 ) {
   const { list, membersWithComments } = getObjectLiteral(code, object)
+  verifyIndex(index, membersWithComments.length)
 
   const writer = new CodeBlockWriter()
   writer.setIndentationLevel(
@@ -202,13 +205,16 @@ export function removeProperty(
   code: string,
   object: t.ObjectExpression,
   member: ObjectMember,
-  options: ParseOptions = {}
+  options: ParseOptions
 ) {
   const { list, items } = getObjectLiteral(code, object)
-  return removeCommaSeparatedChild(
-    code,
-    list,
-    items[object.properties.indexOf(member)],
-    options
+  const index = object.properties.indexOf(member)
+  const result = removeCommaSeparatedChild(code, list, items[index], options)
+
+  verifyRemoval(
+    object.properties,
+    index,
+    findNodeAt(result, object.start!, t.isObjectExpression, options)?.properties
   )
+  return result
 }

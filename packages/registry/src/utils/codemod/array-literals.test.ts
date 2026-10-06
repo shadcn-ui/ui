@@ -2,6 +2,7 @@ import { types as t } from "@babel/core"
 import { describe, expect, it } from "vitest"
 
 import { addElement, insertElement, removeElement } from "./array-literals"
+import { SyntaxErrorInsertedError } from "./edits"
 import { parseModule } from "./parse"
 
 // The outputs below are ts-morph's for the same edits.
@@ -17,15 +18,15 @@ function getArray(code: string) {
 }
 
 function insertX(code: string, index: number) {
-  return insertElement(code, getArray(code), index, "x")
+  return insertElement(code, getArray(code), index, "x", {})
 }
 
 function addX(code: string) {
-  return addElement(code, getArray(code), "x")
+  return addElement(code, getArray(code), "x", {})
 }
 
 function remove(code: string, index: number) {
-  return removeElement(code, getArray(code), index)
+  return removeElement(code, getArray(code), index, {})
 }
 
 describe("insertElement", () => {
@@ -96,6 +97,18 @@ describe("insertElement", () => {
         ]
         "
       `)
+    // On the line of the comma, TypeScript attaches a JSDoc comment to an
+    // arrow function, which keeps it, but not to a class.
+    expect(insertX(`const c = [a, /** doc */ () => b]\n`, 1))
+      .toMatchInlineSnapshot(`
+        "const c = [a, /** doc */ x, /** doc */ () => b]
+        "
+      `)
+    expect(insertX(`const c = [a, /** doc */ class {}]\n`, 1))
+      .toMatchInlineSnapshot(`
+        "const c = [a, /** doc */ x, class {}]
+        "
+      `)
     // TypeScript attaches no JSDoc comment to an identifier, so the insertion
     // replaces it like any other comment before the element.
     expect(insertX(`const c = [\n  a,\n  /** doc */\n  b,\n]\n`, 1))
@@ -107,6 +120,12 @@ describe("insertElement", () => {
         ]
         "
       `)
+  })
+
+  it("throws on an index past the last element", () => {
+    expect(() => insertX(`const c = [a]\n`, 2)).toThrow(
+      "Invalid index: The max index is 1, but 2 was specified."
+    )
   })
 })
 
@@ -171,6 +190,19 @@ describe("addElement", () => {
 })
 
 describe("removeElement", () => {
+  it("keeps a hole after the element", () => {
+    expect(remove(`const c = [...b, , c]\n`, 0)).toMatchInlineSnapshot(`
+      "const c = [, c]
+      "
+    `)
+  })
+
+  it("throws when the hole before the last element goes with it, which ts-morph rejected", () => {
+    expect(() => remove(`const c = [a, , ...b]\n`, 2)).toThrow(
+      SyntaxErrorInsertedError
+    )
+  })
+
   it("removes the element with its comma and the spaces after it", () => {
     expect(remove(`const c = [a, b, c]\n`, 0)).toMatchInlineSnapshot(`
       "const c = [b, c]

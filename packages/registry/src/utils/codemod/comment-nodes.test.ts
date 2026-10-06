@@ -1,22 +1,25 @@
+import { types as t } from "@babel/core"
 import { describe, expect, it } from "vitest"
 
-import { getNodesWithComments } from "./comment-nodes"
+import { getNodesWithComments, type NodeOrComment } from "./comment-nodes"
 import { parseModule } from "./parse"
+import { getStatementsWithComments } from "./statements"
 
-// The source file's statements and comment nodes, as ts-morph's
-// getStatementsWithComments() lists them.
-function describeStatements(code: string) {
-  const { body } = parseModule(code).program
-  return getNodesWithComments(
-    code,
-    0,
-    body.map((node, index) => ({
-      pos: index === 0 ? 0 : body[index - 1].end!,
-      node,
-    }))
-  ).map(
+// The lists below are ts-morph's.
+
+function describeNodes(code: string, nodes: NodeOrComment<t.Node>[]) {
+  return nodes.map(
     ({ start, end, node }) =>
       `${node ? "node" : "comment"}: ${code.slice(start, end)}`
+  )
+}
+
+// The source file's statements and comment nodes, as
+// getStatementsWithComments() lists them.
+function describeStatements(code: string) {
+  return describeNodes(
+    code,
+    getStatementsWithComments(code, parseModule(code).program)
   )
 }
 
@@ -42,10 +45,50 @@ describe("getNodesWithComments", () => {
     ).toEqual(["node: const a = 1", "comment: // b", "comment: /** c */"])
   })
 
+  it("lists a directive as a statement", () => {
+    expect(describeStatements(`"use client"\n// a\nconst a = 1\n`)).toEqual([
+      `node: "use client"`,
+      "comment: // a",
+      "node: const a = 1",
+    ])
+  })
+
   it("lists the comments of a container without nodes", () => {
     expect(describeStatements(`// a\n/* b */\n`)).toEqual([
       "comment: // a",
       "comment: /* b */",
+    ])
+  })
+
+  it("keeps a comment before an object literal's closing brace", () => {
+    // As getPropertiesWithComments() lists them.
+    const code = `const a = {\n  // a\n  b: 1, // trailing\n  // c\n  /* d */ c: 2,\n  /* e */ }\n`
+    const [declaration] = parseModule(code).program.body
+    const object = (declaration as t.VariableDeclaration).declarations[0]
+      .init as t.ObjectExpression
+    const bodyPos = object.start! + 1
+
+    expect(
+      describeNodes(
+        code,
+        getNodesWithComments(
+          code,
+          bodyPos,
+          object.properties.map((node, index) => ({
+            pos:
+              index === 0
+                ? bodyPos
+                : code.indexOf(",", object.properties[index - 1].end!) + 1,
+            node,
+          }))
+        )
+      )
+    ).toEqual([
+      "comment: // a",
+      "node: b: 1",
+      "comment: // c",
+      "node: c: 2",
+      "comment: /* e */",
     ])
   })
 })

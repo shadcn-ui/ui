@@ -8,6 +8,7 @@ import {
   applyEdits,
   applyManipulation,
   SyntaxErrorInsertedError,
+  type SkipReason,
 } from "@/src/utils/codemod/edits"
 import { getReplacementText } from "@/src/utils/codemod/indentation"
 import { addNamedImport } from "@/src/utils/codemod/named-imports"
@@ -173,7 +174,7 @@ export async function updateFonts(
 // A layout updateNextFonts left as it was, and why.
 interface SkippedLayout {
   path: string
-  reason: "unparsable" | "syntax-error-inserted"
+  reason: SkipReason
 }
 
 function getSkippedLayoutWarning(

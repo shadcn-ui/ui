@@ -1623,6 +1623,48 @@ exports[`accordion > shape--define-config.ts 1`] = `
 
 exports[`accordion > shape--quoted-keys.js 1`] = `"(unchanged)"`;
 
+exports[`accordion > shape--spread-comments.js 1`] = `
+"@@ -4 +4 @@
+-   /* one */ /* two */
+-   ...shared,
++     darkMode: ["class"],
++     ...shared,
++     /* one */
+@@ -8 +9 @@
+-     ...shared.content,
++       ...shared.content,
+@@ -14 +15 @@
+-     ...shared.plugins,
++       ...shared.plugins,
+@@ -17 +18 @@
++     theme: {
++     	extend: {
++     		keyframes: {
++     			'accordion-down': {
++     				from: {
++     					height: '0'
++     				},
++     				to: {
++     					height: 'var(--radix-accordion-content-height)'
++     				}
++     			},
++     			'accordion-up': {
++     				from: {
++     					height: 'var(--radix-accordion-content-height)'
++     				},
++     				to: {
++     					height: '0'
++     				}
++     			}
++     		},
++     		animation: {
++     			'accordion-down': 'accordion-down 0.2s ease-out',
++     			'accordion-up': 'accordion-up 0.2s ease-out'
++     		}
++     	}
++     }"
+`;
+
 exports[`accordion > shape--use-strict.cjs 1`] = `
 "@@ -4 +4 @@
 -   content: ["./src/**/*.{js,ts,jsx,tsx}"],
@@ -3804,6 +3846,17 @@ exports[`index > shape--define-config.ts 1`] = `
 `;
 
 exports[`index > shape--quoted-keys.js 1`] = `"(unchanged)"`;
+
+exports[`index > shape--spread-comments.js 1`] = `
+"@@ -4 +4 @@
+-   /* one */ /* two */
++     darkMode: ["class"],
++     /* one */ /* two */
+@@ -16 +17 @@
+-   ],
++       require("tailwindcss-animate")
++ ],"
+`;
 
 exports[`index > shape--use-strict.cjs 1`] = `
 "@@ -4 +4 @@
@@ -6981,6 +7034,38 @@ exports[`sidebar > shape--define-config.ts 1`] = `
 `;
 
 exports[`sidebar > shape--quoted-keys.js 1`] = `"(unchanged)"`;
+
+exports[`sidebar > shape--spread-comments.js 1`] = `
+"@@ -4 +4 @@
+-   /* one */ /* two */
+-   ...shared,
++     darkMode: ["class"],
++     ...shared,
++     /* one */
+@@ -8 +9 @@
+-     ...shared.content,
++       ...shared.content,
+@@ -14 +15 @@
+-     ...shared.plugins,
++       ...shared.plugins,
+@@ -17 +18 @@
++     theme: {
++     	extend: {
++     		colors: {
++     			sidebar: {
++     				DEFAULT: 'hsl(var(--sidebar-background))',
++     				foreground: 'hsl(var(--sidebar-foreground))',
++     				primary: 'hsl(var(--sidebar-primary))',
++     				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
++     				accent: 'hsl(var(--sidebar-accent))',
++     				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
++     				border: 'hsl(var(--sidebar-border))',
++     				ring: 'hsl(var(--sidebar-ring))'
++     			}
++     		}
++     	}
++     }"
+`;
 
 exports[`sidebar > shape--use-strict.cjs 1`] = `
 "@@ -4 +4 @@

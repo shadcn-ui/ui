@@ -1,4 +1,4 @@
-import { type types as t } from "@babel/core"
+import { types as t } from "@babel/core"
 import { parse, type ParserOptions, type ParserPlugin } from "@babel/parser"
 
 // TypeScript parses any file and reports problems as diagnostics, so these
@@ -68,4 +68,23 @@ export function countSyntaxErrors(code: string, options: ParseOptions = {}) {
 // ts-morph's Node#getText().
 export function getText(code: string, node: t.Node) {
   return code.slice(node.start!, node.end!)
+}
+
+// The node of a type that starts at start. ts-morph's nodes outlive edits,
+// and an edit returns new code, so the editors find a node again by where it
+// starts, which edits inside it never move.
+export function findNodeAt<T extends t.Node>(
+  code: string,
+  start: number,
+  isType: (node: t.Node) => node is T,
+  options: ParseOptions
+) {
+  let found: T | undefined
+  t.traverseFast(parseModule(code, options), (node) => {
+    if (node.start === start && isType(node)) {
+      found = node
+    }
+  })
+
+  return found
 }

@@ -204,6 +204,7 @@ async function addWorkspaceComponents(
       {
         silent: true,
         tailwindVersion,
+        workspaceRoot,
       }
     )
     // A skipped config is left as it was.

@@ -997,7 +997,7 @@ describe("nestSpreadProperties", () => {
   function testTransformation(input: string, expected: string) {
     expect(
       transformConfigLiteral(input, (code) =>
-        nestSpreadProperties(code, getFirstObject(code))
+        nestSpreadProperties(code, getFirstObject(code), {})
       ).replace(/\s+/g, "")
     ).toBe(expected.replace(/\s+/g, ""))
   }
@@ -1057,7 +1057,7 @@ describe("nestSpreadElements", () => {
   function testTransformation(input: string, expected: string) {
     expect(
       transformConfigLiteral(input, (code) =>
-        nestSpreadElements(code, getFirstArray(code))
+        nestSpreadElements(code, getFirstArray(code), {})
       ).replace(/\s+/g, "")
     ).toBe(expected.replace(/\s+/g, ""))
   }
@@ -1105,7 +1105,7 @@ describe("nestSpreadElements", () => {
     // updateTailwindConfig leaves such a config untouched.
     expect(() =>
       transformConfigLiteral(`[{ foo: [...foo["bar"]] }]`, (code) =>
-        nestSpreadElements(code, getFirstArray(code))
+        nestSpreadElements(code, getFirstArray(code), {})
       )
     ).toThrow(SyntaxErrorInsertedError)
   })
@@ -1119,7 +1119,7 @@ describe("unnestSpreadProperties", () => {
   function testTransformation(input: string, expected: string) {
     expect(
       transformConfigLiteral(input, (code) =>
-        unnestSpreadProperties(code, getFirstObject(code))
+        unnestSpreadProperties(code, getFirstObject(code), {})
       ).replace(/\s+/g, "")
     ).toBe(expected.replace(/\s+/g, ""))
   }
@@ -1179,7 +1179,7 @@ describe("unnestSpreadElements", () => {
   function testTransformation(input: string, expected: string) {
     expect(
       transformConfigLiteral(input, (code) =>
-        unnestSpreadElements(code, getFirstArray(code))
+        unnestSpreadElements(code, getFirstArray(code), {})
       ).replace(/\s+/g, "")
     ).toBe(expected.replace(/\s+/g, ""))
   }
@@ -1742,6 +1742,60 @@ export default config
     `)
   })
 
+  it("should parse JSX in a JavaScript config", async () => {
+    for (const file of ["tailwind.config.js", "tailwind.config.mjs"]) {
+      const input = `const icon = <svg />
+
+export default {
+  content: ["./src/**/*.{js,jsx}"],
+}
+`
+      expect(
+        await transformTailwindConfig(
+          input,
+          { plugins: ['require("tailwindcss-animate")'] },
+          configWithPath(file)
+        )
+      ).toBe(`const icon = <svg />
+
+export default {
+    darkMode: ["class"],
+    content: ["./src/**/*.{js,jsx}"],
+    plugins: [require("tailwindcss-animate")]
+}
+`)
+    }
+  })
+
+  it("should parse a config without a resolved path as TypeScript", async () => {
+    const input = `export default <any>{
+  content: ["./src/**/*.{ts,tsx}"],
+}
+`
+    expect(await transformTailwindConfig(input, {}, {} as any))
+      .toMatchInlineSnapshot(`
+        "export default <any>{
+            darkMode: ["class"],
+            content: ["./src/**/*.{ts,tsx}"],
+        }
+        "
+      `)
+  })
+
+  it("should return a config with a byte order mark and no content property as it was", async () => {
+    const input = `\ufeffmodule.exports = {
+  plugins: [],
+}
+`
+    expect(
+      await transformTailwindConfig(
+        input,
+        SHADCN_TAILWIND_CONFIG,
+        configWithPath("tailwind.config.js")
+      )
+    ).toBe(input)
+  })
+
   it("should return the input unchanged when no object has a content property", async () => {
     const input = `module.exports = require("@acme/tailwind-config")
 `
@@ -1840,6 +1894,21 @@ module.exports = {
     expect(output).toBe(input)
   })
 
+  it("should keep a darkMode method", async () => {
+    const input = `module.exports = {
+  content: ["./app/**/*.{js,jsx}"],
+  darkMode() {},
+}
+`
+    expect(
+      await transformTailwindConfig(
+        input,
+        {},
+        configWithPath("tailwind.config.js")
+      )
+    ).toBe(input)
+  })
+
   it("should duplicate class when darkMode is already the string class", async () => {
     const input = `module.exports = {
   darkMode: "class",
@@ -1878,6 +1947,67 @@ module.exports = {
       "module.exports = {
         content: ['./app/**/*.{js,jsx}'],
         darkMode: ["media", 'class'],
+      }
+      "
+    `)
+  })
+
+  it("should use the quote kind of a directive in a plugin function", async () => {
+    const input = `module.exports = {
+  plugins: [
+    function () {
+      'use strict'
+    },
+  ],
+  content: ["./src/**/*.{js,jsx}"],
+}
+`
+    expect(
+      await transformTailwindConfig(
+        input,
+        {},
+        configWithPath("tailwind.config.js")
+      )
+    ).toMatchInlineSnapshot(`
+      "module.exports = {
+          darkMode: ['class'],
+          plugins: [
+          function () {
+            'use strict'
+          },
+        ],
+        content: ["./src/**/*.{js,jsx}"],
+      }
+      "
+    `)
+  })
+
+  it("should not use the quote kind of a string in a JSDoc type", async () => {
+    // Unlike ts-morph, whose getFirstDescendantByKind also finds the string
+    // literals in the types of the JSDoc tags TypeScript attaches to nodes,
+    // like 'tailwindcss/types/config' here, and wrote darkMode: ['class'].
+    const input = `module.exports = {
+  plugins: [
+    /** @type {import('tailwindcss/types/config').PluginCreator} */
+    ({ addBase }) => {},
+  ],
+  content: ["./src/**/*.{js,jsx}"],
+}
+`
+    expect(
+      await transformTailwindConfig(
+        input,
+        {},
+        configWithPath("tailwind.config.js")
+      )
+    ).toMatchInlineSnapshot(`
+      "module.exports = {
+          darkMode: ["class"],
+          plugins: [
+          /** @type {import('tailwindcss/types/config').PluginCreator} */
+          ({ addBase }) => {},
+        ],
+        content: ["./src/**/*.{js,jsx}"],
       }
       "
     `)
@@ -2267,6 +2397,115 @@ module.exports = {
     `)
   })
 
+  it.each([`sharedTheme`, `require("./theme")`])(
+    "should add darkMode and plugins but leave a theme that is not an object literal: %s",
+    async (theme) => {
+      const input = `module.exports = {
+  content: ["./src/**/*.{js,jsx}"],
+  theme: ${theme},
+}
+`
+      expect(
+        await transformTailwindConfig(
+          input,
+          SHADCN_TAILWIND_CONFIG,
+          configWithPath("tailwind.config.js")
+        )
+      ).toBe(`module.exports = {
+    darkMode: ["class"],
+    content: ["./src/**/*.{js,jsx}"],
+  theme: ${theme},
+    plugins: [require("tailwindcss-animate")]
+}
+`)
+    }
+  )
+
+  it("should merge into a theme with a type assertion in a .ts config", async () => {
+    const input = `export default {
+  content: ["./src/**/*.{ts,tsx}"],
+  theme: {
+    colors: <any>{ a: "b" },
+  },
+}
+`
+    expect(
+      await transformTailwindConfig(
+        input,
+        { theme: { colors: { c: "d" } } },
+        configWithPath("tailwind.config.ts")
+      )
+    ).toMatchInlineSnapshot(`
+      "export default {
+          darkMode: ["class"],
+          content: ["./src/**/*.{ts,tsx}"],
+        theme: {
+        	colors: {
+        		c: 'd'
+        	}
+        },
+      }
+      "
+    `)
+  })
+
+  it('should write a "...name" string in the theme it adds as a spread', async () => {
+    const input = `module.exports = {
+  content: ["./src/**/*.{js,jsx}"],
+  theme: {},
+}
+`
+    expect(
+      await transformTailwindConfig(
+        input,
+        {
+          theme: {
+            extend: {
+              fontFamily: { sans: ["var(--font-sans)", "...fontFamily.sans"] },
+            },
+          },
+        },
+        configWithPath("tailwind.config.js")
+      )
+    ).toMatchInlineSnapshot(`
+      "module.exports = {
+          darkMode: ["class"],
+          content: ["./src/**/*.{js,jsx}"],
+        theme: {
+        	extend: {
+        		fontFamily: {
+        			sans: [
+        				'var(--font-sans)',
+        				...fontFamily.sans
+        			]
+        		}
+        	}
+        },
+      }
+      "
+    `)
+  })
+
+  it("should throw instead of writing a hole in a theme array as a quote", async () => {
+    // ts-morph read the hole as an empty string and wrote it as a lone '.
+    const input = `module.exports = {
+  content: ["./src/**/*.{js,jsx}"],
+  theme: {
+    fontSize: {
+      xs: ["0.75rem", , "1rem"],
+    },
+  },
+}
+`
+    await expect(
+      transformTailwindConfig(
+        input,
+        SHADCN_TAILWIND_CONFIG,
+        configWithPath("tailwind.config.js")
+      )
+    ).rejects.toThrow(SyntaxErrorInsertedError)
+  })
+
   it("should throw instead of writing a second comma after a comment after the last property", async () => {
     // ts-morph copied the text from `plugins: [...]` through the comment
     // after it, comma included, after a new comma: `plugins: [...],,`.
@@ -2314,6 +2553,136 @@ module.exports = {
       )
     ).rejects.toThrow(SyntaxErrorInsertedError)
   })
+
+  it("should throw on a spread whose argument has double quotes", async () => {
+    // The spread becomes the string
+    // "...require("tailwindcss/defaultTheme").fontFamily.sans", which its own
+    // quotes break. As with a line break above, ts-morph wrote a valid config
+    // only because the merged theme replaces the array.
+    const input = `module.exports = {
+  content: ["./src/**/*.{js,jsx}"],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["Inter var", ...require("tailwindcss/defaultTheme").fontFamily.sans],
+      },
+    },
+  },
+}
+`
+    await expect(
+      transformTailwindConfig(
+        input,
+        { theme: { extend: { fontFamily: { sans: ["var(--font-sans)"] } } } },
+        configWithPath("tailwind.config.js")
+      )
+    ).rejects.toThrow(SyntaxErrorInsertedError)
+  })
+
+  it.each([
+    {
+      name: "a theme",
+      input: `module.exports = {
+  content: [],
+  theme: {
+    colors: {
+      a: "1",
+      // c
+      b: "2",
+      ...x,
+    },
+  },
+}
+`,
+    },
+    {
+      name: "the config object",
+      input: `module.exports = {
+  // c
+  content: [],
+  ...base,
+}
+`,
+    },
+  ])(
+    "should throw when a spread's placeholder goes in after a comment with a second comma, in $name",
+    async ({ input }) => {
+      // The spread's placeholder goes in at the spread's index among the
+      // properties, where ts-morph counts the comment too, so it went in after
+      // the comment, and the text it copied from the property before the
+      // comment brought that property's comma: `a: "1",,`. ts-morph wrote a
+      // valid config, since TypeScript reads past the second comma and a later
+      // edit replaced it. Babel cannot read past it, so the edit throws, and
+      // updateTailwindConfig leaves the config untouched.
+      await expect(
+        transformTailwindConfig(
+          input,
+          { theme: {} },
+          configWithPath("tailwind.config.js")
+        )
+      ).rejects.toThrow(SyntaxErrorInsertedError)
+    }
+  )
+
+  it.each([
+    `["./app/**/*.{ts,tsx}",, ...shared.content]`,
+    `[require("@tailwindcss/forms"), , ...basePlugins]`,
+  ])(
+    "should throw instead of dropping elements before a hole and a spread: %s",
+    async (array) => {
+      // Removing the spread also removes the hole before it, so ts-morph
+      // rejected the edit.
+      await expect(
+        transformTailwindConfig(
+          `module.exports = {\n  content: ${array},\n}\n`,
+          { theme: {} },
+          configWithPath("tailwind.config.js")
+        )
+      ).rejects.toThrow(SyntaxErrorInsertedError)
+    }
+  )
+
+  it.each([
+    {
+      title:
+        "should throw instead of turning the spread after a removed spread into a shorthand property",
+      theme: `{\n    // c\n    ...a, ...\n    b\n  }`,
+    },
+    {
+      title:
+        "should throw instead of commenting out the property after a removed spread",
+      theme: `{\n    // c\n    ...a, b: 1\n  }`,
+    },
+  ])("$title", async ({ theme }) => {
+    // Removing `...a,` pulls the rest of its line onto the comment's, so
+    // ts-morph rejected the edit.
+    await expect(
+      transformTailwindConfig(
+        `module.exports = {\n  content: [],\n  theme: ${theme},\n}\n`,
+        { theme: {} },
+        configWithPath("tailwind.config.js")
+      )
+    ).rejects.toThrow(SyntaxErrorInsertedError)
+  })
+
+  it.each([
+    { theme: "get theme() {\n    return {}\n  }", kind: "GetAccessor" },
+    { theme: "set theme(value) {}", kind: "SetAccessor" },
+    { theme: "theme() {\n    return {}\n  }", kind: "MethodDeclaration" },
+  ])(
+    "should throw with ts-morph's message when theme is a $kind",
+    async ({ theme, kind }) => {
+      await expect(
+        transformTailwindConfig(
+          `module.exports = {\n  content: ["./src/**/*.{js,jsx}"],\n  ${theme},\n}\n`,
+          { theme: {} },
+          configWithPath("tailwind.config.js")
+        )
+      ).rejects.toThrow(
+        `Expected the node to be of kind PropertyAssignment, but it was ${kind}.`
+      )
+    }
+  )
 
   it("should throw when theme is a shorthand property", async () => {
     const input = `const theme = { extend: {} }
@@ -2473,6 +2842,66 @@ module.exports = {
     )
   })
 
+  it("should write a .ts config with a type assertion, which it parses without JSX", async () => {
+    const input = `import type { Config } from "tailwindcss"
+
+export default <Partial<Config>>{
+  content: ["./src/**/*.{ts,tsx}"],
+  plugins: [],
+}
+`
+    await fs.writeFile(path.join(cwd, "tailwind.config.ts"), input, "utf8")
+
+    expect(
+      await updateTailwindConfig(
+        { plugins: ['require("tailwindcss-animate")'] },
+        configFor("tailwind.config.ts"),
+        { silent: true }
+      )
+    ).toBeUndefined()
+    expect(await fs.readFile(path.join(cwd, "tailwind.config.ts"), "utf8"))
+      .toMatchInlineSnapshot(`
+        "import type { Config } from "tailwindcss"
+
+        export default <Partial<Config>>{
+            darkMode: ["class"],
+            content: ["./src/**/*.{ts,tsx}"],
+          plugins: [require("tailwindcss-animate")],
+        }
+        "
+      `)
+  })
+
+  it("should write a config that already has a syntax error Babel recovers from", async () => {
+    const input = `function f(a, a) {}
+
+module.exports = {
+  content: ["./src/**/*.{js,jsx}"],
+  plugins: [],
+}
+`
+    await fs.writeFile(path.join(cwd, "tailwind.config.js"), input, "utf8")
+
+    expect(
+      await updateTailwindConfig(
+        { plugins: ['require("tailwindcss-animate")'] },
+        configFor("tailwind.config.js"),
+        { silent: true }
+      )
+    ).toBeUndefined()
+    expect(await fs.readFile(path.join(cwd, "tailwind.config.js"), "utf8"))
+      .toMatchInlineSnapshot(`
+        "function f(a, a) {}
+
+        module.exports = {
+            darkMode: ["class"],
+            content: ["./src/**/*.{js,jsx}"],
+          plugins: [require("tailwindcss-animate")],
+        }
+        "
+      `)
+  })
+
   it("should reject when the config file is missing", async () => {
     await expect(
       updateTailwindConfig(
@@ -2565,6 +2994,46 @@ module.exports = {
       expect(warn).toHaveBeenCalledWith(warning)
       expect(lastSpinner().stop).toHaveBeenCalledOnce()
       expect(lastSpinner().succeed).not.toHaveBeenCalled()
+    })
+
+    it("leaves a JavaScript config with JSX in its theme untouched and warns", async () => {
+      // ts-morph read the theme on its own, as TypeScript, where JSX is a
+      // broken type assertion, and wrote the theme it recovered.
+      const input = `module.exports = {
+  content: ["./src/**/*.{js,jsx}"],
+  theme: {
+    extend: {
+      a: <div />,
+    },
+  },
+}
+`
+      await writeConfig(input)
+
+      const warning = await updateTailwindConfig(
+        SHADCN_TAILWIND_CONFIG,
+        configFor("tailwind.config.js"),
+        {}
+      )
+
+      expect(await readConfig()).toBe(input)
+      expect(warning).toBe(
+        "Skipped tailwind.config.js: could not parse it. Add darkMode, the tailwindcss-animate plugin, theme.extend.colors and theme.extend.borderRadius to it manually."
+      )
+      expect(warn).toHaveBeenCalledWith(warning)
+    })
+
+    it("names the config from the workspace root in a workspace install", async () => {
+      await writeConfig(UNPARSABLE)
+
+      expect(
+        await updateTailwindConfig({}, configFor("tailwind.config.js"), {
+          silent: true,
+          workspaceRoot: path.dirname(cwd),
+        })
+      ).toBe(
+        `Skipped ${path.join(path.basename(cwd), "tailwind.config.js")}: could not parse it. Add darkMode to it manually.`
+      )
     })
 
     it("names what the install would have added", async () => {

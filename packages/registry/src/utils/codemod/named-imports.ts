@@ -4,6 +4,7 @@ import {
   getListChildren,
   insertIntoCommaSeparatedNodes,
   isItem,
+  type CommaSeparatedList,
 } from "./comma-lists"
 import { applyManipulation } from "./edits"
 import { skipTrivia } from "./trivia"
@@ -15,34 +16,20 @@ export function addNamedImport(
   name: string
 ) {
   const namedImports = declaration.specifiers.filter(
-    (specifier) => specifier.type === "ImportSpecifier"
+    (specifier): specifier is t.ImportSpecifier =>
+      specifier.type === "ImportSpecifier"
   )
   if (namedImports.length > 0) {
     // `{ a, b }` becomes `{ a, b, name }`.
-    const openBrace = findOpenBrace(code, declaration)!
-    const lastNamedImport = namedImports[namedImports.length - 1]
-    let closeBrace = skipTrivia(code, lastNamedImport.end!)
-    if (code[closeBrace] === ",") {
-      closeBrace = skipTrivia(code, closeBrace + 1)
-    }
-    const children = getListChildren(
-      code,
-      openBrace + 1,
-      closeBrace,
-      namedImports
-    )
+    const list = getNamedImportsList(code, declaration, namedImports)
     return insertIntoCommaSeparatedNodes(
       code,
-      {
-        nodeStart: openBrace,
-        pos: openBrace + 1,
-        closeStart: closeBrace,
-        children,
-      },
-      children.filter(isItem),
+      list,
+      list.children.filter(isItem),
       namedImports.length,
       name,
-      { surroundWithSpaces: true }
+      { surroundWithSpaces: true },
+      {}
     )
   }
 
@@ -59,12 +46,12 @@ export function addNamedImport(
   const namedImportsText = `{ ${name} }`
 
   // `import {} from "module"` or `import a, {} from "module"`.
-  const emptyBraces = findOpenBrace(code, declaration)
-  if (emptyBraces !== undefined) {
+  const openBrace = findOpenBrace(code, declaration)
+  if (openBrace !== undefined) {
     return applyManipulation(code, [
       {
-        start: emptyBraces,
-        end: skipTrivia(code, emptyBraces + 1) + 1,
+        start: openBrace,
+        end: skipTrivia(code, openBrace + 1) + 1,
         text: namedImportsText,
       },
     ])
@@ -92,6 +79,26 @@ export function addNamedImport(
       text: ` ${namedImportsText} from`,
     },
   ])
+}
+
+// The declaration's NamedImports, the list in braces after `import`.
+function getNamedImportsList(
+  code: string,
+  declaration: t.ImportDeclaration,
+  namedImports: t.ImportSpecifier[]
+): CommaSeparatedList {
+  const openBrace = findOpenBrace(code, declaration)!
+  let closeBrace = skipTrivia(code, namedImports[namedImports.length - 1].end!)
+  if (code[closeBrace] === ",") {
+    closeBrace = skipTrivia(code, closeBrace + 1)
+  }
+
+  return {
+    nodeStart: openBrace,
+    pos: openBrace + 1,
+    closeStart: closeBrace,
+    children: getListChildren(code, openBrace + 1, closeBrace, namedImports),
+  }
 }
 
 // The `{` of the declaration's named imports.

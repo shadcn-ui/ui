@@ -141,7 +141,8 @@ describe("replaceWithText", () => {
       replaceWithText(
         code,
         themeProperty.value,
-        `{\n\textend: {\n\t\tcolors: {}\n\t}\n}`
+        `{\n\textend: {\n\t\tcolors: {}\n\t}\n}`,
+        {}
       )
     ).toMatchInlineSnapshot(`
       "const a = {

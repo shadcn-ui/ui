@@ -5,15 +5,14 @@ import { getNodesWithComments, type NodeOrComment } from "./comment-nodes"
 import { applyManipulation } from "./edits"
 import { parseModule } from "./parse"
 import {
-  getNextNonWhitespacePos,
+  getNonWhitespaceStart,
   getPosAtStartOfLineOrNonWhitespace,
-  getTrailingTriviaEnd,
 } from "./trivia"
 
 // A top-level statement as ts-morph lists them in getStatementsWithComments:
 // the program's statements and directives, and comment statements, which are
 // comments on their own lines between them. A statement's pos is the previous
-// statement's end.
+// node's end, as in TypeScript, and a comment statement's is its start.
 export type Statement = NodeOrComment<t.Statement | t.Directive>
 
 // ts-morph's StatementedNode#getStatementsWithComments() on a source file.
@@ -36,7 +35,7 @@ export function getStatementsWithComments(
 }
 
 // ts-morph's Node#getNonWhitespaceStart() for a top-level statement.
-function getNonWhitespaceStart(
+function getStatementNonWhitespaceStart(
   code: string,
   statements: Statement[],
   index: number
@@ -49,17 +48,11 @@ function getNonWhitespaceStart(
     return statement.start
   }
 
-  let searchStart = statement.pos
-  if (previous && !previous.node) {
-    searchStart = previous.end
-  } else if (
-    previous &&
-    code.slice(statement.pos, statement.start).includes("\n")
-  ) {
-    searchStart = getTrailingTriviaEnd(code, previous.end)
-  }
-
-  return getNextNonWhitespacePos(code, searchStart)
+  return getNonWhitespaceStart(
+    code,
+    statement,
+    previous && { end: previous.end, isComment: !previous.node }
+  )
 }
 
 // ts-morph's insertion of a statement into a source file at index
@@ -78,7 +71,7 @@ export function insertStatement(
   const insertPos = previous ? previous.end : 0
   const endPos = getPosAtStartOfLineOrNonWhitespace(
     code,
-    next ? getNonWhitespaceStart(code, statements, index) : code.length
+    next ? getStatementNonWhitespaceStart(code, statements, index) : code.length
   )
 
   const writer = new CodeBlockWriter()

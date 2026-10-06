@@ -1,4 +1,4 @@
-import { type types as t } from "@babel/core"
+import { types as t } from "@babel/core"
 import CodeBlockWriter from "code-block-writer"
 
 import {
@@ -6,10 +6,12 @@ import {
   insertIntoCommaSeparatedNodes,
   isItem,
   removeCommaSeparatedChild,
+  verifyIndex,
+  verifyRemoval,
   type CommaSeparatedList,
 } from "./comma-lists"
 import { getIndentationLevel } from "./indentation"
-import { type ParseOptions } from "./parse"
+import { findNodeAt, type ParseOptions } from "./parse"
 import { getJsDocStart } from "./trivia"
 
 // An array literal as ts-morph sees it: the SyntaxList of its elements, and
@@ -62,9 +64,10 @@ export function insertElement(
   array: t.ArrayExpression,
   index: number,
   text: string,
-  options: ParseOptions = {}
+  options: ParseOptions
 ) {
   const { list, elements } = getArrayLiteral(code, array)
+  verifyIndex(index, elements.length)
   const useNewLines =
     elements.length > 1
       ? elements.every(
@@ -99,7 +102,7 @@ export function addElement(
   code: string,
   array: t.ArrayExpression,
   text: string,
-  options: ParseOptions = {}
+  options: ParseOptions
 ) {
   return insertElement(code, array, array.elements.length, text, options)
 }
@@ -109,10 +112,17 @@ export function removeElement(
   code: string,
   array: t.ArrayExpression,
   index: number,
-  options: ParseOptions = {}
+  options: ParseOptions
 ) {
   const { list, elements } = getArrayLiteral(code, array)
-  return removeCommaSeparatedChild(code, list, elements[index], options)
+  const result = removeCommaSeparatedChild(code, list, elements[index], options)
+
+  verifyRemoval(
+    array.elements,
+    index,
+    findNodeAt(result, array.start!, t.isArrayExpression, options)?.elements
+  )
+  return result
 }
 
 // Whether a line break lies between the two positions: ts-morph counts lines

@@ -1,16 +1,21 @@
 import { describe, expect, it } from "vitest"
 
-import { getCommentRanges, getJsDocStart } from "./trivia"
+import {
+  getJsDocStart,
+  getLeadingCommentRanges,
+  getTrailingCommentRanges,
+} from "./trivia"
 
 // The ranges below are TypeScript's.
 
 function getComments(code: string, pos: number, trailing: boolean) {
-  return getCommentRanges(code, pos, { trailing }).map((range) =>
-    code.slice(range.pos, range.end)
-  )
+  const ranges = trailing
+    ? getTrailingCommentRanges(code, pos)
+    : getLeadingCommentRanges(code, pos)
+  return ranges.map((range) => code.slice(range.pos, range.end))
 }
 
-describe("getCommentRanges", () => {
+describe("getLeadingCommentRanges and getTrailingCommentRanges", () => {
   it("finds trailing comments up to the end of the line", () => {
     expect(getComments("a /* b */ /* c */ // d\n// e", 1, true)).toEqual([
       "/* b */",
@@ -36,7 +41,7 @@ describe("getCommentRanges", () => {
   })
 
   it("goes on past a line break beyond ASCII", () => {
-    expect(getComments("a /* b */  // c\n", 1, true)).toEqual([
+    expect(getComments("a /* b */\u2028 // c\n", 1, true)).toEqual([
       "/* b */",
       "// c",
     ])

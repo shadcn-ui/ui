@@ -123,10 +123,10 @@ async function addTailwindConfigContent(
   return configObject
 }
 
-async function createSourceFile(input: string, config: Config | null) {
+async function createSourceFile(input: string, config: Config) {
   const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
   const resolvedPath =
-    config?.resolvedPaths?.tailwindConfig || "tailwind.config.ts"
+    config.resolvedPaths?.tailwindConfig || "tailwind.config.ts"
   const tempFile = path.join(dir, `shadcn-${path.basename(resolvedPath)}`)
 
   const project = new Project({

@@ -214,6 +214,21 @@ export function getIndentationLevel(
   return getIndentationAtPosition(code, position, options) / INDENT_SIZE
 }
 
+// ts-morph's Node#getIndentationText(offset) for the node starting at
+// position, and with an offset of 1, getChildIndentationText(). Repeating the
+// four spaces drops the fraction of a level that getIndentationLevel can
+// return, and code-block-writer indents by.
+export function getIndentationText(
+  code: string,
+  position: number,
+  options: ParseOptions,
+  offset = 0
+) {
+  return " "
+    .repeat(INDENT_SIZE)
+    .repeat(getIndentationLevel(code, position, options) + offset)
+}
+
 // TypeScript's SmartIndenter.getIndentation, which ts-morph calls through the
 // language service's getIndentationAtPosition. Ported for the start of a JSX
 // attribute or its initializer, and of an object or array literal, the
@@ -239,7 +254,8 @@ function getIndentationAtPosition(
 
   const root = buildSyntaxTree(source, file.program)
 
-  // An object literal's opening brace is indented like a block: to its line.
+  // TypeScript's getIndentation uses getBlockIndent for an object literal's
+  // `{`: the first non-whitespace column of its line.
   if (findNodeAt(root, position, "ObjectLiteralExpression")) {
     return getLineIndentation(source, getLineAndCharacter(source, position))
   }

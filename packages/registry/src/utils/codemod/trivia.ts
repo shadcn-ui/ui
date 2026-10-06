@@ -75,15 +75,11 @@ interface CommentRange {
   end: number
 }
 
-// TypeScript's iterateCommentRanges, behind ts.getLeadingCommentRanges and
-// ts.getTrailingCommentRanges: the comments from pos on. Trailing comments
-// stop at the end of the line, and leading ones are those after its first
-// line break. The positions here are never at a shebang, so it is left out.
-export function getCommentRanges(
-  code: string,
-  pos: number,
-  { trailing }: { trailing: boolean }
-) {
+// TypeScript's iterateCommentRanges: the comments from pos on. Trailing
+// comments stop at the end of the line, and leading ones are those after its
+// first line break. The positions here are never at a shebang, so it is left
+// out.
+function iterateCommentRanges(code: string, pos: number, trailing: boolean) {
   const ranges: CommentRange[] = []
   let collecting = trailing || pos === 0
 
@@ -119,27 +115,39 @@ export function getCommentRanges(
   return ranges
 }
 
-// The end of the last comment ts.getTrailingCommentRanges finds at pos: the
+// TypeScript's getLeadingCommentRanges.
+export function getLeadingCommentRanges(code: string, pos: number) {
+  return iterateCommentRanges(code, pos, false)
+}
+
+// TypeScript's getTrailingCommentRanges.
+export function getTrailingCommentRanges(code: string, pos: number) {
+  return iterateCommentRanges(code, pos, true)
+}
+
+// The end of the last comment getTrailingCommentRanges finds at pos: the
 // comments that follow on the same line.
 export function getTrailingCommentsEnd(code: string, pos: number) {
-  return getCommentRanges(code, pos, { trailing: true }).at(-1)?.end
+  return getTrailingCommentRanges(code, pos).at(-1)?.end
 }
 
 // Where the JSDoc comment TypeScript attaches to a node starts, for a node
 // whose leading trivia starts at pos and that ends at end: the first `/** */`
-// comment among its leading comments, and for some expressions also among
-// the trailing comments at pos (getJSDocCommentRanges). ts-morph's
-// getStart(true) starts there.
+// comment TypeScript's getJSDocCommentRanges finds, among the node's leading
+// comments, and for some expressions first among the trailing comments at
+// pos. ts-morph's getStart(true) starts there.
 export function getJsDocStart(
   code: string,
   pos: number,
   end: number,
   { includeTrailingComments }: { includeTrailingComments: boolean }
 ) {
-  const ranges = getCommentRanges(code, pos, { trailing: false })
-  if (includeTrailingComments) {
-    ranges.unshift(...getCommentRanges(code, pos, { trailing: true }))
-  }
+  const ranges = includeTrailingComments
+    ? [
+        ...getTrailingCommentRanges(code, pos),
+        ...getLeadingCommentRanges(code, pos),
+      ]
+    : getLeadingCommentRanges(code, pos)
 
   return ranges.find(
     (range) =>
@@ -165,6 +173,26 @@ export function getNextNonWhitespacePos(code: string, pos: number) {
     pos++
   }
   return pos
+}
+
+// ts-morph's Node#getNonWhitespaceStart() for a node whose parent starts
+// before it. The node's leading trivia starts at pos, and start is its
+// getStart(true). The search starts past the previous sibling when that is a
+// comment node, and past the previous sibling's trailing comments when a line
+// break comes before the node.
+export function getNonWhitespaceStart(
+  code: string,
+  { pos, start }: { pos: number; start: number },
+  previousSibling?: { end: number; isComment: boolean }
+) {
+  let searchStart = pos
+  if (previousSibling?.isComment) {
+    searchStart = previousSibling.end
+  } else if (previousSibling && code.slice(pos, start).includes("\n")) {
+    searchStart = getTrailingTriviaEnd(code, previousSibling.end)
+  }
+
+  return getNextNonWhitespacePos(code, searchStart)
 }
 
 // TypeScript's skipTrivia: past whitespace, line breaks and comments.

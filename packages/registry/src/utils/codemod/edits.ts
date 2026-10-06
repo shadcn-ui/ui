@@ -34,6 +34,10 @@ export class SyntaxErrorInsertedError extends Error {
   }
 }
 
+// Why an editor left a file as it was: Babel could not parse it, or an edit
+// would have added a syntax error.
+export type SkipReason = "unparsable" | "syntax-error-inserted"
+
 // ts-morph's doManipulation, which throws when the edited text no longer
 // parses into the tree it expects. A new parse error stands in for that.
 export function applyManipulation(
@@ -56,7 +60,7 @@ export function replaceWithText(
   code: string,
   node: t.Node,
   text: string,
-  options: ParseOptions = {}
+  options: ParseOptions
 ) {
   return applyManipulation(
     code,
