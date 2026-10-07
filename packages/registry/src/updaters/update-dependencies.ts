@@ -403,7 +403,7 @@ async function installWithExpo(
   }
 
   if (devDependencies.length) {
-    await execa("npx", ["expo", "install", "-- -D", "--", ...devDependencies], {
+    await execa("npx", ["expo", "install", "--dev", ...devDependencies], {
       cwd,
     })
   }

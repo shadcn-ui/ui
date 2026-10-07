@@ -315,6 +315,42 @@ describe("updateDependencies", () => {
     )
   })
 
+  it("installs dev dependencies for expo projects with --dev", async () => {
+    const cwd = getFixturesDir("project-expo-existing-deps")
+
+    await updateDependencies(
+      [],
+      ["tw-animate-css"],
+      { resolvedPaths: { cwd } } as any,
+      { silent: true }
+    )
+
+    expect(execa).toHaveBeenCalledWith(
+      "npx",
+      ["expo", "install", "--dev", "tw-animate-css"],
+      { cwd }
+    )
+  })
+
+  it("rejects expo dev dependencies that begin with a dash", async () => {
+    const cwd = getFixturesDir("project-expo-existing-deps")
+
+    await expect(
+      updateDependencies(
+        [],
+        ["--registry=http://malicious"],
+        { resolvedPaths: { cwd } } as any,
+        { silent: true }
+      )
+    ).rejects.toThrow(/cannot start with/)
+
+    expect(execa).not.toHaveBeenCalledWith(
+      "npx",
+      expect.arrayContaining(["--registry=http://malicious"]),
+      expect.anything()
+    )
+  })
+
   it("rejects registry dependencies that begin with a dash (flag injection)", async () => {
     const cwd = getFixturesDir("project-pnpm")
 
