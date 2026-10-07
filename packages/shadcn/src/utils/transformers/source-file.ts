@@ -38,10 +38,8 @@ function setFullText(sourceFile: SourceFile, text: string) {
   }
 }
 
-const project = new Project({
-  compilerOptions: {},
-  useInMemoryFileSystem: true,
-})
+// Created on first use, so that importing shadcn/utils does not create it.
+let project: Project | undefined
 let files = 0
 
 // Runs a SourceFile transformer in the registry's transform(), which works on
@@ -51,6 +49,10 @@ export function toTextTransformer(
   transform: SourceFileTransformer
 ): Transformer {
   return async (code, opts) => {
+    project ??= new Project({
+      compilerOptions: {},
+      useInMemoryFileSystem: true,
+    })
     // Each file in a directory of its own, as the runner's temp directories,
     // so transforms that run at the same time keep their own SourceFile.
     const sourceFile = project.createSourceFile(

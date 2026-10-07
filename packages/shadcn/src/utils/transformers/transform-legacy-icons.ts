@@ -2,84 +2,87 @@ import { LEGACY_ICON_LIBRARIES } from "@/src/utils/legacy-icon-libraries"
 import { getRegistryIcons } from "@/src/utils/registry-api"
 import { SourceFile, SyntaxKind } from "ts-morph"
 
-import { toTextTransformer } from "./source-file"
+import { toTextTransformer, type SourceFileTransformer } from "./source-file"
 
 // Lucide is the default icon library in the registry.
 const SOURCE_LIBRARY = "lucide"
 
-export const transformLegacyIcons = toTextTransformer(
-  async ({ sourceFile, config }) => {
-    // No transform if we cannot read the icon library.
-    if (!config.iconLibrary || !(config.iconLibrary in LEGACY_ICON_LIBRARIES)) {
-      return sourceFile
+const transformLegacyIconsSourceFile: SourceFileTransformer = async ({
+  sourceFile,
+  config,
+}) => {
+  // No transform if we cannot read the icon library.
+  if (!config.iconLibrary || !(config.iconLibrary in LEGACY_ICON_LIBRARIES)) {
+    return sourceFile
+  }
+
+  const registryIcons = await getRegistryIcons()
+  const sourceLibrary = SOURCE_LIBRARY
+  const targetLibrary = config.iconLibrary
+
+  if (sourceLibrary === targetLibrary) {
+    return sourceFile
+  }
+
+  let targetedIcons: string[] = []
+  for (const importDeclaration of sourceFile.getImportDeclarations() ?? []) {
+    if (
+      importDeclaration.getModuleSpecifier()?.getText() !==
+      `"${LEGACY_ICON_LIBRARIES[SOURCE_LIBRARY].import}"`
+    ) {
+      continue
     }
 
-    const registryIcons = await getRegistryIcons()
-    const sourceLibrary = SOURCE_LIBRARY
-    const targetLibrary = config.iconLibrary
+    for (const specifier of importDeclaration.getNamedImports() ?? []) {
+      const iconName = specifier.getName()
 
-    if (sourceLibrary === targetLibrary) {
-      return sourceFile
-    }
+      const targetedIcon = registryIcons[iconName]?.[targetLibrary]
 
-    let targetedIcons: string[] = []
-    for (const importDeclaration of sourceFile.getImportDeclarations() ?? []) {
-      if (
-        importDeclaration.getModuleSpecifier()?.getText() !==
-        `"${LEGACY_ICON_LIBRARIES[SOURCE_LIBRARY].import}"`
-      ) {
+      if (!targetedIcon || targetedIcons.includes(targetedIcon)) {
         continue
       }
 
-      for (const specifier of importDeclaration.getNamedImports() ?? []) {
-        const iconName = specifier.getName()
+      targetedIcons.push(targetedIcon)
 
-        const targetedIcon = registryIcons[iconName]?.[targetLibrary]
+      // Remove the named import.
+      specifier.remove()
 
-        if (!targetedIcon || targetedIcons.includes(targetedIcon)) {
-          continue
-        }
-
-        targetedIcons.push(targetedIcon)
-
-        // Remove the named import.
-        specifier.remove()
-
-        // Replace with the targeted icon.
-        sourceFile
-          .getDescendantsOfKind(SyntaxKind.JsxSelfClosingElement)
-          .filter((node) => node.getTagNameNode()?.getText() === iconName)
-          .forEach((node) =>
-            node.getTagNameNode()?.replaceWithText(targetedIcon)
-          )
-      }
-
-      // If the named import is empty, remove the import declaration.
-      if (importDeclaration.getNamedImports()?.length === 0) {
-        importDeclaration.remove()
-      }
+      // Replace with the targeted icon.
+      sourceFile
+        .getDescendantsOfKind(SyntaxKind.JsxSelfClosingElement)
+        .filter((node) => node.getTagNameNode()?.getText() === iconName)
+        .forEach((node) => node.getTagNameNode()?.replaceWithText(targetedIcon))
     }
 
-    if (targetedIcons.length > 0) {
-      const iconImportDeclaration = sourceFile.addImportDeclaration({
-        moduleSpecifier:
-          LEGACY_ICON_LIBRARIES[
-            targetLibrary as keyof typeof LEGACY_ICON_LIBRARIES
-          ]?.import,
-        namedImports: targetedIcons.map((icon) => ({
-          name: icon,
-        })),
-      })
-
-      if (!_useSemicolon(sourceFile)) {
-        iconImportDeclaration.replaceWithText(
-          iconImportDeclaration.getText().replace(";", "")
-        )
-      }
+    // If the named import is empty, remove the import declaration.
+    if (importDeclaration.getNamedImports()?.length === 0) {
+      importDeclaration.remove()
     }
-
-    return sourceFile
   }
+
+  if (targetedIcons.length > 0) {
+    const iconImportDeclaration = sourceFile.addImportDeclaration({
+      moduleSpecifier:
+        LEGACY_ICON_LIBRARIES[
+          targetLibrary as keyof typeof LEGACY_ICON_LIBRARIES
+        ]?.import,
+      namedImports: targetedIcons.map((icon) => ({
+        name: icon,
+      })),
+    })
+
+    if (!_useSemicolon(sourceFile)) {
+      iconImportDeclaration.replaceWithText(
+        iconImportDeclaration.getText().replace(";", "")
+      )
+    }
+  }
+
+  return sourceFile
+}
+
+export const transformLegacyIcons = toTextTransformer(
+  transformLegacyIconsSourceFile
 )
 
 function _useSemicolon(sourceFile: SourceFile) {

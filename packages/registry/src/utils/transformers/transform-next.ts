@@ -2,11 +2,12 @@ import { applyEdits, type TextEdit } from "@/src/utils/codemod/edits"
 import { parseModule } from "@/src/utils/codemod/parse"
 import { renameFunction, renameVariable } from "@/src/utils/codemod/rename"
 import { type Transformer } from "@/src/utils/transformers"
-import { types as t } from "@babel/core"
+import { type types as t } from "@babel/core"
 
 // Next.js 16 renamed the middleware export to proxy.
 export const transformNext: Transformer = (code) => {
-  // A file Babel cannot parse is left as it is.
+  // A file Babel cannot parse is left as it is, where ts-morph renamed in the
+  // tree TypeScript recovers.
   try {
     parseModule(code)
   } catch {
@@ -51,7 +52,8 @@ function isMiddleware(code: string, name: t.Identifier) {
 
 // The names of ts-morph's SourceFile#getFunctions(): the top-level function
 // declarations with a body. A function without one is an overload, which the
-// rename of its implementation renames too.
+// rename of its implementation renames too, or an ambient `declare function`,
+// which ts-morph also renamed and Babel binds to nothing, so it keeps its name.
 function getFunctionNames(program: t.Program) {
   return getDeclarations(program).flatMap((declaration) =>
     declaration.type === "FunctionDeclaration" && declaration.id
