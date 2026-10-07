@@ -681,6 +681,7 @@ it.each([
       lib: "@/lib",
       hooks: "@/hooks",
     },
+    expected: `import { cn } from "@/lib/utils"`,
   },
   {
     name: "monorepo aliases",
@@ -692,6 +693,7 @@ it.each([
       lib: "@workspace/ui/lib",
       hooks: "@workspace/ui/hooks",
     },
+    expected: `import { cn } from "@workspace/ui/lib/utils"`,
   },
   {
     name: "package imports aliases",
@@ -703,6 +705,7 @@ it.each([
       lib: "#lib",
       hooks: "#hooks",
     },
+    expected: `import { cn } from "#lib/utils"`,
   },
   {
     name: "remote registry",
@@ -714,10 +717,11 @@ it.each([
       lib: "@/lib",
       hooks: "@/hooks",
     },
+    expected: `import { cn } from "@/lib/utils"`,
   },
 ])(
-  "leaves the cn package import untouched: $name",
-  async ({ aliases, isRemote }) => {
+  "rewrites the cn package import to the configured utils alias: $name",
+  async ({ aliases, isRemote, expected }) => {
     const result = await transform({
       filename: "test.ts",
       raw: `import { cn } from "cn"
@@ -730,10 +734,31 @@ import { Button } from "@/registry/new-york/ui/button"
       isRemote,
     })
 
-    expect(result).toContain(`import { cn } from "cn"`)
-    expect(result).not.toContain("lib/utils")
+    expect(result).toContain(expected)
+    expect(result).not.toContain(`import { cn } from "cn"`)
   }
 )
+
+it("leaves the cn package import untouched when no utils alias is configured", async () => {
+  const result = await transform({
+    filename: "test.ts",
+    raw: `import { cn } from "cn"
+import { Button } from "@/registry/new-york/ui/button"
+`,
+    config: {
+      tsx: true,
+      aliases: {
+        components: "@/components",
+        ui: "@/components/ui",
+        lib: "@/lib",
+        hooks: "@/hooks",
+      },
+    } as Config,
+  })
+
+  expect(result).toContain(`import { cn } from "cn"`)
+  expect(result).not.toContain("lib/utils")
+})
 
 describe("transformImport characterization", () => {
   const config = {
