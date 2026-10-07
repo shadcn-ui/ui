@@ -2,8 +2,8 @@ import {
   getPackageManager,
   getPackageManagerFromUserAgent,
   getPackageRunnerCommand,
-} from "@shadcn/registry/internal/utils/get-package-manager"
-import { spinner } from "@shadcn/registry/internal/utils/spinner"
+} from "@shadcn/registry/internal/get-package-manager"
+import { spinner } from "@shadcn/registry/internal/spinner"
 import { execa } from "execa"
 import fs from "fs-extra"
 import prompts from "prompts"
@@ -23,13 +23,13 @@ import { createProject } from "./create-project"
 vi.mock("fs-extra")
 vi.mock("execa")
 vi.mock("prompts")
-vi.mock("@shadcn/registry/internal/utils/get-package-manager", () => ({
+vi.mock("@shadcn/registry/internal/get-package-manager", () => ({
   getPackageManager: vi.fn().mockResolvedValue("npm"),
   getPackageManagerFromUserAgent: vi.fn(() => "npm"),
   getPackageRunnerCommand: vi.fn(() => "npx"),
 }))
-vi.mock("@shadcn/registry/internal/utils/spinner")
-vi.mock("@shadcn/registry/internal/utils/logger", () => ({
+vi.mock("@shadcn/registry/internal/spinner")
+vi.mock("@shadcn/registry/internal/logger", () => ({
   logger: {
     break: vi.fn(),
     error: vi.fn(),

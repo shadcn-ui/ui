@@ -1,5 +1,7 @@
 import { createHash } from "crypto"
 import path from "path"
+import { Config, getTargetStyleFromConfig } from "@/src/get-config"
+import { getProjectTailwindVersionFromConfig } from "@/src/get-project-info"
 import { isGitHubItemAddress, resolveItemAddress } from "@/src/registry/address"
 import {
   getRegistryBaseColor,
@@ -31,9 +33,7 @@ import {
   isUniversalRegistryItem,
   isUrl,
 } from "@/src/registry/utils"
-import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
-import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
-import { buildTailwindThemeColorsFromCssVars } from "@/src/utils/tailwind-theme-colors"
+import { buildTailwindThemeColorsFromCssVars } from "@/src/tailwind-theme-colors"
 import deepmerge from "deepmerge"
 import { z } from "zod"
 

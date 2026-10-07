@@ -1,3 +1,6 @@
+import { Config } from "@/src/get-config"
+import { highlighter } from "@/src/highlighter"
+import { logger } from "@/src/logger"
 import {
   registryItemTypeSchema,
   registryPaginationSchema,
@@ -5,9 +8,6 @@ import {
   searchResultItemSchema,
   searchResultsSchema,
 } from "@/src/registry/schema"
-import { Config } from "@/src/utils/get-config"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
 import fuzzysort from "fuzzysort"
 import { z } from "zod"
 

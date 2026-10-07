@@ -1,3 +1,4 @@
+import { Config } from "@/src/get-config"
 import { isGitHubRegistrySource } from "@/src/registry/address"
 import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { configWithDefaults } from "@/src/registry/config"
@@ -8,7 +9,6 @@ import {
 import { extractEnvVars } from "@/src/registry/env"
 import { RegistryMissingEnvironmentVariablesError } from "@/src/registry/errors"
 import { registryConfigItemSchema } from "@/src/registry/schema"
-import { Config } from "@/src/utils/get-config"
 import { z } from "zod"
 
 export function extractEnvVarsFromRegistryConfig(

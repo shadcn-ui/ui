@@ -1,10 +1,10 @@
+import { Config } from "@/src/get-config"
+import { getProjectInfo } from "@/src/get-project-info"
 import {
   registryItemFileSchema,
   registryItemSchema,
 } from "@/src/registry/schema"
-import { Config } from "@/src/utils/get-config"
-import { getProjectInfo } from "@/src/utils/get-project-info"
-import { findCommonRoot, resolveFilePath } from "@/src/utils/resolve-file-path"
+import { findCommonRoot, resolveFilePath } from "@/src/resolve-file-path"
 import { z } from "zod"
 
 export {

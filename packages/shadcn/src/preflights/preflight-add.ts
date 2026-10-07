@@ -1,15 +1,15 @@
 import path from "path"
 import { addOptionsSchema } from "@/src/commands/add"
 import * as ERRORS from "@/src/utils/errors"
-import { SHADCN_URL } from "@shadcn/registry/internal/registry/constants"
-import { getConfig } from "@shadcn/registry/internal/utils/get-config"
+import { getConfig } from "@shadcn/registry/internal/get-config"
 import {
   formatMonorepoMessage,
   getMonorepoTargets,
   isMonorepoRoot,
-} from "@shadcn/registry/internal/utils/get-monorepo-info"
-import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
-import { logger } from "@shadcn/registry/internal/utils/logger"
+} from "@shadcn/registry/internal/get-monorepo-info"
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { logger } from "@shadcn/registry/internal/logger"
+import { SHADCN_URL } from "@shadcn/registry/internal/registry/constants"
 import fs from "fs-extra"
 import { z } from "zod"
 
