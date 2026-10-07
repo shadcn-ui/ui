@@ -1,8 +1,8 @@
 import { existsSync, promises as fs, statSync } from "fs"
-import { tmpdir } from "os"
 import path, { basename } from "path"
 import { getRegistryBaseColor } from "@/src/registry/api"
 import { RegistryItem } from "@/src/registry/schema"
+import { rewriteImportDeclarationSources } from "@/src/utils/codemod/import-declarations"
 import { isContentSame } from "@/src/utils/compare"
 import {
   findExistingEnvFile,
@@ -35,7 +35,6 @@ import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { transformRtl } from "@/src/utils/transformers/transform-rtl"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
 import prompts from "prompts"
-import { Project, ScriptKind } from "ts-morph"
 import { loadConfig, type ConfigLoaderSuccessResult } from "tsconfig-paths"
 
 export {
@@ -100,9 +99,6 @@ export async function updateFiles(
       path: options.path,
     }
   )
-  const importRewriteProject = new Project({
-    compilerOptions: {},
-  })
 
   let filesCreated: string[] = []
   let filesUpdated: string[] = []
@@ -210,7 +206,6 @@ export async function updateFiles(
         config,
         content,
         filePaths: plannedFilePaths,
-        project: importRewriteProject,
         projectInfo,
         resolvedPath: filePath,
         tsConfig,
@@ -394,9 +389,6 @@ async function resolveImports(
   config: Config,
   plannedFilePaths: string[] = filePaths
 ) {
-  const project = new Project({
-    compilerOptions: {},
-  })
   const projectInfo = await getProjectInfo(config.resolvedPaths.cwd)
   const tsConfig = loadConfig(config.resolvedPaths.cwd)
   const updatedFiles = []
@@ -415,27 +407,21 @@ async function resolveImports(
 
     const content = await fs.readFile(resolvedPath, "utf-8")
 
-    const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
-    const sourceFile = project.createSourceFile(
-      path.join(dir, basename(resolvedPath)),
-      content,
-      {
-        scriptKind: ScriptKind.TSX,
-      }
-    )
-
     // Skip if the file extension is not one of the supported extensions.
-    if (![".tsx", ".ts", ".jsx", ".js"].includes(sourceFile.getExtension())) {
+    // ts-morph's SourceFile#getExtension() is ".d.ts" for a declaration file,
+    // so those are skipped too.
+    if (
+      ![".tsx", ".ts", ".jsx", ".js"].includes(path.extname(resolvedPath)) ||
+      /\.d\.ts$/i.test(resolvedPath)
+    ) {
       continue
     }
     const rewrittenContent = await rewriteResolvedImportsInContent({
       config,
       content,
       filePaths: plannedFilePaths,
-      project,
       projectInfo,
       resolvedPath,
-      sourceFile,
       tsConfig,
     })
 
@@ -495,8 +481,6 @@ export async function rewriteResolvedImportsInContent({
   config,
   projectInfo,
   tsConfig,
-  project,
-  sourceFile,
 }: {
   content: string
   resolvedPath: string
@@ -504,8 +488,8 @@ export async function rewriteResolvedImportsInContent({
   config: Config
   projectInfo: ProjectInfo | null
   tsConfig: ReturnType<typeof loadConfig>
-  project: Project
-  sourceFile?: ReturnType<Project["createSourceFile"]>
+  /** @deprecated Ignored: imports are no longer rewritten with ts-morph. */
+  project?: unknown
 }) {
   if (!projectInfo || tsConfig.resultType === "failed") {
     return content
@@ -516,66 +500,35 @@ export async function rewriteResolvedImportsInContent({
     return content
   }
 
-  const createdSourceFile =
-    sourceFile === undefined
-      ? project.createSourceFile(
-          path.join(
-            tmpdir(),
-            `shadcn-${Math.random().toString(36).slice(2)}${ext || ".tsx"}`
-          ),
-          content,
-          {
-            scriptKind: ScriptKind.TSX,
-            overwrite: true,
-          }
-        )
-      : null
-  const workingSourceFile = sourceFile ?? createdSourceFile!
-
-  try {
-    let hasChanges = false
-
-    for (const importDeclaration of workingSourceFile.getImportDeclarations()) {
-      const moduleSpecifier = importDeclaration.getModuleSpecifierValue()
-
-      if (
-        !isLocalAliasImport(moduleSpecifier, projectInfo.aliasPrefix ?? null)
-      ) {
-        continue
-      }
-
-      const resolvedImportFilePath = await resolveImportFilePathForRewrite(
-        moduleSpecifier,
-        filePaths,
-        config,
-        tsConfig
-      )
-
-      if (!resolvedImportFilePath) {
-        continue
-      }
-
-      const newImport = toAliasedImport(
-        resolvedImportFilePath,
-        config,
-        projectInfo,
-        resolvedPath
-      )
-
-      if (!newImport || newImport === moduleSpecifier) {
-        continue
-      }
-
-      importDeclaration.setModuleSpecifier(newImport)
-      hasChanges = true
+  return rewriteImportDeclarationSources(content, async (moduleSpecifier) => {
+    if (!isLocalAliasImport(moduleSpecifier, projectInfo.aliasPrefix ?? null)) {
+      return undefined
     }
 
-    return hasChanges ? workingSourceFile.getFullText() : content
-  } finally {
-    if (createdSourceFile) {
-      project.removeSourceFile(createdSourceFile)
+    const resolvedImportFilePath = await resolveImportFilePathForRewrite(
+      moduleSpecifier,
+      filePaths,
+      config,
+      tsConfig
+    )
+
+    if (!resolvedImportFilePath) {
+      return undefined
     }
-  }
+
+    const newImport = toAliasedImport(
+      resolvedImportFilePath,
+      config,
+      projectInfo,
+      resolvedPath
+    )
+
+    if (!newImport || newImport === moduleSpecifier) {
+      return undefined
+    }
+
+    return newImport
+  })
 }
 
 async function resolveImportFilePathForRewrite(
