@@ -17,7 +17,7 @@ import { registryItemSchema } from "@/src/registry/schema"
 import { resolveRegistryUrl } from "@/src/registry/url"
 import { z } from "zod"
 
-const registryCache = new Map<string, Promise<any>>()
+const registryCache = new Map<string, Promise<unknown>>()
 
 export function clearRegistryCache() {
   registryCache.clear()
@@ -32,98 +32,88 @@ export async function fetchRegistry(
     ...options,
   }
 
-  try {
-    const results = await Promise.all(
-      paths.map(async (path) => {
-        const url = resolveRegistryUrl(path)
-        const headers = getRegistryHeadersFromContext(url)
-        const cacheKey = getRegistryCacheKey(url, headers)
+  const results = await Promise.all(
+    paths.map(async (path) => {
+      const url = resolveRegistryUrl(path)
+      const headers = getRegistryHeadersFromContext(url)
+      const cacheKey = getRegistryCacheKey(url, headers)
 
-        // Check cache first if caching is enabled
-        if (options.useCache && registryCache.has(cacheKey)) {
-          return registryCache.get(cacheKey)
+      if (options.useCache && registryCache.has(cacheKey)) {
+        return registryCache.get(cacheKey)
+      }
+
+      const fetchPromise = (async () => {
+        const requestHeaders = new Headers({
+          Accept: "application/vnd.shadcn.v1+json, application/json;q=0.9",
+          "User-Agent": "shadcn",
+        })
+
+        for (const [key, value] of Object.entries(headers)) {
+          requestHeaders.set(key, value)
         }
 
-        // Store the promise in the cache before awaiting if caching is enabled.
-        const fetchPromise = (async () => {
-          const requestHeaders = new Headers({
-            Accept: "application/vnd.shadcn.v1+json, application/json;q=0.9",
-            "User-Agent": "shadcn",
-          })
+        const response = await fetchWithProxy(url, {
+          headers: requestHeaders,
+        })
 
-          for (const [key, value] of Object.entries(headers)) {
-            requestHeaders.set(key, value)
-          }
+        if (!response.ok) {
+          let messageFromServer = undefined
 
-          const response = await fetchWithProxy(url, {
-            headers: requestHeaders,
-          })
+          if (
+            response.headers.get("content-type")?.includes("application/json")
+          ) {
+            const json = await response.json()
+            const parsed = z
+              .object({
+                // RFC 7807.
+                detail: z.string().optional(),
+                title: z.string().optional(),
+                // Standard error response.
+                message: z.string().optional(),
+                error: z.string().optional(),
+              })
+              .safeParse(json)
 
-          if (!response.ok) {
-            let messageFromServer = undefined
+            if (parsed.success) {
+              // Prefer RFC 7807 detail field, then message field.
+              messageFromServer = parsed.data.detail || parsed.data.message
 
-            if (
-              response.headers.get("content-type")?.includes("application/json")
-            ) {
-              const json = await response.json()
-              const parsed = z
-                .object({
-                  // RFC 7807.
-                  detail: z.string().optional(),
-                  title: z.string().optional(),
-                  // Standard error response.
-                  message: z.string().optional(),
-                  error: z.string().optional(),
-                })
-                .safeParse(json)
-
-              if (parsed.success) {
-                // Prefer RFC 7807 detail field, then message field.
-                messageFromServer = parsed.data.detail || parsed.data.message
-
-                if (parsed.data.error) {
-                  messageFromServer = `[${parsed.data.error}] ${messageFromServer}`
-                }
+              if (parsed.data.error) {
+                messageFromServer = `[${parsed.data.error}] ${messageFromServer}`
               }
             }
-
-            if (response.status === 401) {
-              throw new RegistryUnauthorizedError(url, messageFromServer)
-            }
-
-            if (response.status === 404) {
-              throw new RegistryNotFoundError(url, messageFromServer)
-            }
-
-            if (response.status === 410) {
-              throw new RegistryGoneError(url, messageFromServer)
-            }
-
-            if (response.status === 403) {
-              throw new RegistryForbiddenError(url, messageFromServer)
-            }
-
-            throw new RegistryFetchError(
-              url,
-              response.status,
-              messageFromServer
-            )
           }
 
-          return response.json()
-        })()
+          if (response.status === 401) {
+            throw new RegistryUnauthorizedError(url, messageFromServer)
+          }
 
-        if (options.useCache) {
-          registryCache.set(cacheKey, fetchPromise)
+          if (response.status === 404) {
+            throw new RegistryNotFoundError(url, messageFromServer)
+          }
+
+          if (response.status === 410) {
+            throw new RegistryGoneError(url, messageFromServer)
+          }
+
+          if (response.status === 403) {
+            throw new RegistryForbiddenError(url, messageFromServer)
+          }
+
+          throw new RegistryFetchError(url, response.status, messageFromServer)
         }
-        return fetchPromise
-      })
-    )
 
-    return results
-  } catch (error) {
-    throw error
-  }
+        return response.json()
+      })()
+
+      if (options.useCache) {
+        registryCache.set(cacheKey, fetchPromise)
+      }
+      return fetchPromise
+    })
+  )
+
+  return results
 }
 
 function getRegistryCacheKey(
@@ -142,7 +132,6 @@ function getRegistryCacheKey(
 
 export async function fetchRegistryLocal(filePath: string) {
   try {
-    // Handle tilde expansion for home directory
     let expandedPath = filePath
     if (filePath.startsWith("~/")) {
       expandedPath = path.join(homedir(), filePath.slice(2))
@@ -158,7 +147,6 @@ export async function fetchRegistryLocal(filePath: string) {
       throw new RegistryParseError(filePath, error)
     }
   } catch (error) {
-    // Check if this is a file not found error
     if (
       error instanceof Error &&
       (error.message.includes("ENOENT") ||
@@ -166,7 +154,6 @@ export async function fetchRegistryLocal(filePath: string) {
     ) {
       throw new RegistryLocalFileError(filePath, error)
     }
-    // Re-throw parse errors as-is
     if (error instanceof RegistryParseError) {
       throw error
     }

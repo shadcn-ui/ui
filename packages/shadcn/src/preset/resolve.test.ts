@@ -1,12 +1,12 @@
 import { promises as fs } from "fs"
 import os from "os"
 import path from "path"
+import { FRAMEWORKS } from "@shadcn/registry/internal/frameworks"
+import { createConfig } from "@shadcn/registry/internal/get-config"
 import {
   encodePreset,
   type PresetConfig,
 } from "@shadcn/registry/internal/preset/preset"
-import { FRAMEWORKS } from "@shadcn/registry/internal/utils/frameworks"
-import { createConfig } from "@shadcn/registry/internal/utils/get-config"
 import { afterEach, describe, expect, it } from "vitest"
 
 import { resolveProjectPreset } from "./resolve"

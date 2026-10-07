@@ -10,9 +10,6 @@ import { REGISTRY_URL } from "@/src/registry/constants"
  *
  * The result is the URL fetchRegistry requests, and the key registry headers
  * are stored under.
- *
- * @param pathOrUrl - Either a relative path or a full URL
- * @returns The resolved registry URL
  */
 export function resolveRegistryUrl(pathOrUrl: string) {
   let url: URL
