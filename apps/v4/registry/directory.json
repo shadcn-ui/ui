@@ -2173,6 +2173,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' version='1.0' width='300.000000pt' height='300.000000pt' viewBox='0 0 300.000000 300.000000' preserveAspectRatio='xMidYMid meet'><g transform='translate(0.000000,300.000000) scale(0.100000,-0.100000)' fill='var(--foreground)' stroke='none'> <path d='M0 1500 l0 -1500 1500 0 1500 0 0 1500 0 1500 -1500 0 -1500 0 0 -1500z m647 1060 c31 -12 1882 -1856 1914 -1908 54 -85 1 -209 -97 -228 -91 -17 -30 -71 -1057 954 -537 537 -954 962 -963 981 -56 117 76 248 203 201z m845 -3 c15 -7 263 -247 552 -534 451 -449 527 -528 536 -563 16 -58 -1 -110 -50 -154 -35 -31 -47 -36 -91 -36 -27 0 -62 6 -77 14 -15 8 -263 251 -551 540 l-525 525 -4 58 c-3 49 0 64 20 93 41 62 124 86 190 57z m856 -1 c15 -8 70 -59 123 -113 116 -118 133 -154 104 -229 -31 -80 -136 -128 -203 -91 -49 28 -212 191 -233 233 -34 72 -8 151 65 195 37 22 106 25 144 5z m-1683 -857 c17 -10 262 -251 547 -536 548 -550 539 -539 524 -618 -18 -96 -141 -155 -221 -107 -16 11 -265 252 -552 538 -465 461 -523 523 -529 557 -14 82 27 156 101 182 45 16 86 11 130 -16z m-28 -830 c32 -12 218 -191 239 -231 31 -59 9 -146 -47 -187 -35 -26 -93 -37 -136 -26 -30 7 -226 194 -249 237 -60 115 69 254 193 207z'/> </g> </svg>"
   },
   {
+    "name": "@shaderscn",
+    "homepage": "https://www.shaderscn.com",
+    "url": "https://www.shaderscn.com/r/{name}.json",
+    "description": "Copy-paste shader sections and components for shadcn/ui, built on Paper Shaders.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground, #0a0a0a)'><path d='M0 5.2c4-3 8-3 12 0s8 3 12 0v3.4c-4 3-8 3-12 0s-8-3-12 0z' fill-opacity='.35'/><path d='M0 11.4c4-3 8-3 12 0s8 3 12 0v3.4c-4 3-8 3-12 0s-8-3-12 0z' fill-opacity='.65'/><path d='M0 17.6c4-3 8-3 12 0s8 3 12 0V21c-4 3-8 3-12 0s-8-3-12 0z'/></svg>"
+  },
+  {
     "name": "@shark",
     "homepage": "https://shark.vini.one",
     "url": "https://shark.vini.one/r/{name}.json",
