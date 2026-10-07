@@ -25,7 +25,6 @@ export type TransformOpts = {
   supportedFontMarkers?: string[]
 }
 
-// Takes the file's text and returns the new text.
 export type Transformer = (
   code: string,
   opts: TransformOpts

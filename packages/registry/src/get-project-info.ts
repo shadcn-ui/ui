@@ -325,12 +325,11 @@ export async function getTsConfigAliasPrefix(cwd: string) {
       values.includes("./app/*") ||
       values.includes("./resources/js/*") // Laravel.
     ) {
-      return alias.replace(/\/\*$/, "") ?? null
+      return alias.replace(/\/\*$/, "")
     }
   }
 
-  // Use the first alias as the prefix.
-  return Object.keys(paths)?.[0].replace(/\/\*$/, "") ?? null
+  return Object.keys(paths)[0].replace(/\/\*$/, "")
 }
 
 export async function getProjectAliasInfo(cwd: string) {
@@ -526,7 +525,6 @@ export async function getProjectConfig(
   cwd: string,
   defaultProjectInfo: ProjectInfo | null = null
 ): Promise<Config | null> {
-  // Check for existing component config.
   const [existingConfig, projectInfo, aliasInfo] = await Promise.all([
     getConfig(cwd),
     !defaultProjectInfo

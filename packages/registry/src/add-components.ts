@@ -178,7 +178,6 @@ async function addWorkspaceComponents(
   tree = await massageTreeForFonts(tree, config)
   const supportedFontMarkers = getSupportedFontMarkers([tree])
 
-  // 1. Update dependencies.
   await updateDependencies(
     tree.dependencies,
     tree.devDependencies,
@@ -189,7 +188,6 @@ async function addWorkspaceComponents(
     }
   )
 
-  // 2. Update tailwind config.
   let tailwindConfigWarning: string | undefined
   if (tree.tailwind?.config) {
     tailwindConfigWarning = await updateTailwindConfig(
@@ -212,21 +210,18 @@ async function addWorkspaceComponents(
     }
   }
 
-  // 3. Update environment variables.
   if (tree.envVars) {
     await updateEnvVars(tree.envVars, mainTargetConfig, {
       silent: true,
     })
   }
 
-  // 4. Update fonts.
   // Fonts modify the app's layout file (e.g. app/layout.tsx),
   // so we use the app config, not the UI workspace config.
   const fontsWarning = await updateFonts(tree.fonts, config, {
     silent: true,
   })
 
-  // 5. Group files by their target config and update files.
   const filesByTarget = new Map<TargetAliasKey, typeof tree.files>()
   const FILE_TYPE_TO_CONFIG_KEY: Record<string, TargetAliasKey> = {
     "registry:ui": "ui",
@@ -256,7 +251,6 @@ async function addWorkspaceComponents(
     filesByTarget.get(targetKey)!.push(file)
   }
 
-  // Process each target config with its appropriate workspace config.
   for (const targetKey of Array.from(filesByTarget.keys())) {
     const targetFiles = filesByTarget.get(targetKey)!
     const targetConfig = getTargetConfigForKey(targetKey)
@@ -280,7 +274,6 @@ async function addWorkspaceComponents(
         targetConfig.resolvedPaths.cwd
       )) ?? targetConfig.resolvedPaths.cwd
 
-    // Update files for this target config.
     const files = await updateFiles(targetFiles, targetConfig, {
       overwrite: options.overwrite,
       silent: true,
@@ -310,7 +303,7 @@ async function addWorkspaceComponents(
     )
   }
 
-  // 6. Write CSS last so the file watcher triggers a rebuild
+  // Write CSS last so the file watcher triggers a rebuild
   // after all component files and dependencies are in place.
   const overwriteCssVars = await resolveOverwriteCssVars(
     tree,
@@ -333,7 +326,6 @@ async function addWorkspaceComponents(
 
   rootSpinner?.succeed()
 
-  // Deduplicate and sort files.
   const dedupedCreated = Array.from(new Set(filesCreated)).sort()
   const dedupedUpdated = Array.from(
     new Set(filesUpdated.filter((file) => !filesCreated.includes(file)))
