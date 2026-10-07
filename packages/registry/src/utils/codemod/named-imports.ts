@@ -4,10 +4,24 @@ import {
   getListChildren,
   insertIntoCommaSeparatedNodes,
   isItem,
+  removeCommaSeparatedChild,
   type CommaSeparatedList,
 } from "./comma-lists"
 import { applyManipulation } from "./edits"
+import { getText } from "./parse"
 import { skipTrivia } from "./trivia"
+
+// The ImportSpecifier#getName() of each of ts-morph's
+// ImportDeclaration#getNamedImports(): the imported name, which is the text
+// of an identifier, escapes and all.
+export function getNamedImportNames(
+  code: string,
+  declaration: t.ImportDeclaration
+) {
+  return getNamedImports(declaration).map(({ imported }) =>
+    imported.type === "StringLiteral" ? imported.value : getText(code, imported)
+  )
+}
 
 // ts-morph's ImportDeclaration#addNamedImport(name).
 export function addNamedImport(
@@ -15,10 +29,7 @@ export function addNamedImport(
   declaration: t.ImportDeclaration,
   name: string
 ) {
-  const namedImports = declaration.specifiers.filter(
-    (specifier): specifier is t.ImportSpecifier =>
-      specifier.type === "ImportSpecifier"
-  )
+  const namedImports = getNamedImports(declaration)
   if (namedImports.length > 0) {
     // `{ a, b }` becomes `{ a, b, name }`.
     const list = getNamedImportsList(code, declaration, namedImports)
@@ -79,6 +90,33 @@ export function addNamedImport(
       text: ` ${namedImportsText} from`,
     },
   ])
+}
+
+// ts-morph's ImportSpecifier#remove() for the named import at index, one of
+// several: it goes with its comma, as in any comma-separated list.
+export function removeNamedImport(
+  code: string,
+  declaration: t.ImportDeclaration,
+  index: number
+) {
+  const list = getNamedImportsList(
+    code,
+    declaration,
+    getNamedImports(declaration)
+  )
+  return removeCommaSeparatedChild(
+    code,
+    list,
+    list.children.filter(isItem)[index],
+    {}
+  )
+}
+
+function getNamedImports(declaration: t.ImportDeclaration) {
+  return declaration.specifiers.filter(
+    (specifier): specifier is t.ImportSpecifier =>
+      specifier.type === "ImportSpecifier"
+  )
 }
 
 // The declaration's NamedImports, the list in braces after `import`.
