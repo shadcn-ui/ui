@@ -11,6 +11,7 @@ import {
   type SkipReason,
 } from "@/src/utils/codemod/edits"
 import { getReplacementText } from "@/src/utils/codemod/indentation"
+import { setJsxAttributeInitializer } from "@/src/utils/codemod/jsx-attributes"
 import { addNamedImport } from "@/src/utils/codemod/named-imports"
 import {
   addsSyntaxErrors,
@@ -733,24 +734,6 @@ function addJsxAttribute(
       : element.name.end!
   return applyManipulation(code, [
     { start: insertPosition, end: insertPosition, text: ` ${attributeText}` },
-  ])
-}
-
-// ts-morph's JsxAttribute#setInitializer(text): the text is indented for the
-// attribute, then replaces the initializer like Node#replaceWithText.
-function setJsxAttributeInitializer(
-  code: string,
-  attribute: t.JSXAttribute,
-  text: string
-) {
-  const initializer = attribute.value!
-  const attributeText = getReplacementText(code, attribute.start!, text)
-  return applyManipulation(code, [
-    {
-      start: initializer.start!,
-      end: initializer.end!,
-      text: getReplacementText(code, initializer.start!, attributeText),
-    },
   ])
 }
 

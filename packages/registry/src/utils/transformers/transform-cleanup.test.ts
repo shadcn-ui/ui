@@ -536,6 +536,29 @@ export function Component() {
     `)
   })
 
+  test.each([
+    // Current behavior: ts-morph removes the attributes one at a time, so the
+    // second is then the first attribute, which keeps the comment before it.
+    [
+      `<i className="cn-a" /* between */ classNames="cn-b" />\n`,
+      `<i /* between */ />\n`,
+    ],
+    [
+      `<i\n  className="cn-a" // trailing\n  classNames="cn-b"\n/>\n`,
+      `<i // trailing\n/>\n`,
+    ],
+    // Current behavior: the outer className empties the inner string first,
+    // so the inner attribute no longer has a marker and stays.
+    [
+      `<u className={cn("cn-outer", x && <em className="cn-inner" />)} />\n`,
+      `<u className={cn("", x && <em className="" />)} />\n`,
+    ],
+    // JSX attribute strings are read as written.
+    [`<p className='cn-a &amp; b' />\n`, `<p className='&amp; b' />\n`],
+  ])("edits attributes as ts-morph does: %j", async (raw, expected) => {
+    expect(await cleanup(raw)).toBe(expected)
+  })
+
   test("keeps CRLF line endings when removing an attribute", async () => {
     expect(
       await cleanup(
@@ -631,7 +654,33 @@ export const b = 1
     expect(await cleanupMarkers(source)).toBe(source)
   })
 
+  test("drops a byte order mark and a shebang", async () => {
+    expect(
+      await cleanupMarkers(
+        `\uFEFF#!/usr/bin/env node\nconst a = <a className="cn-a b" />\n`
+      )
+    ).toBe(`const a = <a className="b" />\n`)
+  })
+
   test("returns an empty string for empty input", async () => {
     expect(await cleanupMarkers("")).toBe("")
+  })
+})
+
+describe("transformCleanup on backslashes", () => {
+  // ts-morph writes a value without escaping its backslashes, and reads the
+  // string again when mergeProps() has it: an invalid escape, or a string
+  // whose last backslash now escapes its quote.
+  test.each([
+    [
+      `const a = mergeProps(cva("cn-a b\\\\x"))\n`,
+      `const a = mergeProps(cva("b\\x"))\n`,
+    ],
+    [
+      `const a = mergeProps(cva("cn-x a\\\\"))\n`,
+      `const a = mergeProps(cva("a\\"))\n`,
+    ],
+  ])("reads the string again after %j", async (raw, expected) => {
+    expect(await cleanup(raw)).toBe(expected)
   })
 })

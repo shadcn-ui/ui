@@ -4,7 +4,11 @@ import { describe, expect, it } from "vitest"
 import { transform } from "."
 import baseColor from "../../../test/fixtures/colors/slate.json"
 import stone from "../../../test/fixtures/colors/stone.json"
-import { applyColorMapping, splitClassName } from "./transform-css-vars"
+import {
+  applyColorMapping,
+  splitClassName,
+  transformCssVars,
+} from "./transform-css-vars"
 
 describe("split className", () => {
   it.each([
@@ -175,4 +179,38 @@ export function Foo() {
       baseColor: stone,
     })
   ).toMatchSnapshot()
+})
+
+describe("transformCssVars string literals", () => {
+  const config = {
+    tsx: true,
+    tailwind: { baseColor: "stone", cssVariables: false },
+    aliases: { components: "@/components", utils: "@/lib/utils" },
+  } as Config
+
+  it.each([
+    // Every string literal: directives, import specifiers, keys and types.
+    [
+      `"bg-background"\nimport "bg-muted"\nconst a = { "bg-card": true }\ntype T = "text-primary"\n`,
+      `"bg-white dark:bg-stone-950"\nimport "bg-stone-100 dark:bg-stone-800"\nconst a = { "bg-white dark:bg-stone-950": true }\ntype T = "text-stone-900 dark:text-stone-50"\n`,
+    ],
+    // JSX attribute strings keep their quotes and entities.
+    [
+      `const a = <div className="bg-background &amp;" title='text-foreground' />\n`,
+      `const a = <div className="bg-white &amp; dark:bg-stone-950" title='text-stone-950 dark:text-stone-50' />\n`,
+    ],
+    // The mapped value is trimmed, and a line break in it is escaped.
+    [
+      `const a = " flex "\nconst b = "bg-background x\\ny"\n`,
+      `const a = "flex"\nconst b = "bg-white x\\\ny dark:bg-stone-950"\n`,
+    ],
+    // Templates are not string literals.
+    ["const a = `bg-background`\n", "const a = `bg-background`\n"],
+  ])("%j", async (raw, expected) => {
+    expect(
+      await transform({ filename: "a.tsx", raw, config, baseColor: stone }, [
+        transformCssVars,
+      ])
+    ).toBe(expected)
+  })
 })
