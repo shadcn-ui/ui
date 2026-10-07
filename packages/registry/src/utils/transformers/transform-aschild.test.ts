@@ -931,6 +931,43 @@ export function Component() {
         }"
       `)
     })
+
+    test("removes asChild without a child element between replaced siblings", async () => {
+      expect(
+        await transformAsChildIn(`export const x = (
+  <div>
+    <Tooltip asChild>
+      text
+    </Tooltip>
+    <Button
+      asChild
+      size="sm"
+    >
+      <a
+        href="/"
+        className="x"
+      >
+        Home
+      </a>
+    </Button>
+    <Label asChild>{label}</Label>
+  </div>
+)
+`)
+      ).toMatchInlineSnapshot(`
+        "export const x = (
+          <div>
+            <Tooltip>
+              text
+            </Tooltip>
+            <Button size="sm" render={<a href="/" className="x" />} nativeButton={false}>Home
+                      </Button>
+            <Label>{label}</Label>
+          </div>
+        )
+        "
+      `)
+    })
   })
 
   describe("nativeButton", () => {

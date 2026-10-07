@@ -1,5 +1,15 @@
-import { Transformer } from "@/src/utils/transformers"
-import { JsxElement, SyntaxKind } from "ts-morph"
+import { replaceWithText } from "@/src/utils/codemod/edits"
+import { removeJsxAttribute } from "@/src/utils/codemod/jsx-attributes"
+import {
+  findNodeAt,
+  getDescendants,
+  getText,
+  parseTransformInput,
+} from "@/src/utils/codemod/parse"
+import { isLineBreak, isWhiteSpaceSingleLine } from "@/src/utils/codemod/trivia"
+import { types as t } from "@babel/core"
+
+import { fromTextTransformer } from "./text-transformer"
 
 // Elements that require nativeButton={false} when used as render prop.
 // These are non-button elements that don't have native button semantics.
@@ -12,158 +22,185 @@ const ELEMENTS_REQUIRING_NATIVE_BUTTON_FALSE = [
   "Label",
 ]
 
-interface TransformInfo {
-  parentElement: JsxElement
-  parentTagName: string
-  childTagName: string
-  childProps: string
-  childChildren: string
-  needsNativeButton: boolean
-}
+// Process asChild elements iteratively, starting from leaf-level elements.
+// Each iteration transforms only elements with no asChild descendants,
+// ensuring inner transforms complete before outer ones read the tree.
+const MAX_ITERATIONS = 10
 
-export const transformAsChild: Transformer = async ({ sourceFile, config }) => {
+export const transformAsChild = fromTextTransformer((code, { config }) => {
   // Only run for base- styles.
   if (!config.style?.startsWith("base-")) {
-    return sourceFile
+    return code
   }
 
-  // Process asChild elements iteratively, starting from leaf-level elements.
-  // Each iteration transforms only elements with no asChild descendants,
-  // ensuring inner transforms complete before outer ones read the tree.
-  const MAX_ITERATIONS = 10
   for (let i = 0; i < MAX_ITERATIONS; i++) {
-    const jsxElements = sourceFile.getDescendantsOfKind(SyntaxKind.JsxElement)
-
-    // Find all JSX elements with asChild attribute.
-    const asChildElements = jsxElements.filter((el) =>
-      el.getOpeningElement().getAttribute("asChild")
-    )
-
-    if (asChildElements.length === 0) {
+    const transformed = transformLeafElements(code)
+    if (transformed === undefined) {
       break
     }
+    code = transformed
+  }
 
-    // Filter to leaf-only: elements with no asChild descendants.
-    const leafElements = asChildElements.filter((el) => {
-      const descendants = el.getDescendantsOfKind(SyntaxKind.JsxElement)
-      return !descendants.some((d) =>
-        d.getOpeningElement().getAttribute("asChild")
-      )
-    })
+  return code
+})
 
-    // Collect all transformations first, then apply them in reverse order.
-    // This prevents issues with invalidated nodes when modifying the tree.
-    const transformations: TransformInfo[] = []
+// One iteration: the elements with asChild and no asChild descendants, or
+// undefined when no element has asChild. ts-morph removes asChild from those
+// without a child element as it finds them, then replaces the others from the
+// last, so its nodes stay valid. Leaf elements never contain each other, so
+// an edit only moves the elements after it.
+function transformLeafElements(code: string) {
+  const file = parseTransformInput(code)
+  if (!file) {
+    return undefined
+  }
 
-    for (const jsxElement of leafElements) {
-      const openingElement = jsxElement.getOpeningElement()
-      const asChildAttr = openingElement.getAttribute("asChild")
+  const asChildElements = getDescendants(file, isJsxElement).filter(hasAsChild)
+  if (asChildElements.length === 0) {
+    return undefined
+  }
 
-      if (!asChildAttr) {
-        continue
-      }
+  const leafElements = asChildElements.filter(
+    (element) => !getDescendants(element, isJsxElement).some(hasAsChild)
+  )
+  const withoutChild = leafElements.filter(
+    (element) => !getChildElement(element)
+  )
+  const withChild = leafElements.filter((element) => getChildElement(element))
 
-      const parentTagName = openingElement.getTagNameNode().getText()
-      const children = jsxElement.getJsxChildren()
+  const edits = [
+    ...withoutChild.map((element) => ({
+      start: element.start!,
+      edit: removeAsChild,
+    })),
+    ...withChild.reverse().map((element) => ({
+      start: element.start!,
+      edit: replaceAsChild,
+    })),
+  ]
 
-      // Find the first JSX element child (skip whitespace/text).
-      const childElement = children.find(
-        (child) =>
-          child.getKind() === SyntaxKind.JsxElement ||
-          child.getKind() === SyntaxKind.JsxSelfClosingElement
-      )
+  const applied: { start: number; delta: number }[] = []
+  for (const { start, edit } of edits) {
+    const position = applied
+      .filter((done) => done.start < start)
+      .reduce((pos, done) => pos + done.delta, start)
+    const element = findNodeAt(code, position, isJsxElement, {})!
+    const edited = edit(code, element)
+    applied.push({ start, delta: edited.length - code.length })
+    code = edited
+  }
 
-      if (!childElement) {
-        // No child element found, just remove asChild.
-        asChildAttr.remove()
-        continue
-      }
+  return code
+}
 
-      // Get child element info.
-      let childTagName: string
-      let childProps: string
-      let childChildren: string
+// ts-morph's JsxElement: an element with a closing tag.
+function isJsxElement(node: t.Node): node is t.JSXElement {
+  return node.type === "JSXElement" && !node.openingElement.selfClosing
+}
 
-      if (childElement.getKind() === SyntaxKind.JsxSelfClosingElement) {
-        const selfClosing = childElement.asKindOrThrow(
-          SyntaxKind.JsxSelfClosingElement
-        )
-        childTagName = selfClosing.getTagNameNode().getText()
-        childProps = selfClosing
-          .getAttributes()
-          .map((attr) => attr.getText())
-          .join(" ")
-        childChildren = ""
-      } else {
-        const jsxChild = childElement.asKindOrThrow(SyntaxKind.JsxElement)
-        const openingEl = jsxChild.getOpeningElement()
-        childTagName = openingEl.getTagNameNode().getText()
-        childProps = openingEl
-          .getAttributes()
-          .map((attr) => attr.getText())
-          .join(" ")
-        // Get the children's text content.
-        childChildren = jsxChild
-          .getJsxChildren()
-          .map((c) => c.getText())
-          .join("")
-      }
+// ts-morph's JsxOpeningElement#getAttribute("asChild").
+function getAsChild(element: t.JSXElement) {
+  return element.openingElement.attributes.find(isAsChild)
+}
 
-      // Determine if we need nativeButton={false}.
-      // Only add it on Button when the child is a non-button element.
-      const needsNativeButton =
-        parentTagName === "Button" &&
-        ELEMENTS_REQUIRING_NATIVE_BUTTON_FALSE.includes(childTagName)
+function hasAsChild(element: t.JSXElement) {
+  return getAsChild(element) !== undefined
+}
 
-      transformations.push({
-        parentElement: jsxElement,
-        parentTagName,
-        childTagName,
-        childProps,
-        childChildren,
-        needsNativeButton,
-      })
-    }
+function isAsChild(
+  attribute: t.JSXAttribute | t.JSXSpreadAttribute
+): attribute is t.JSXAttribute {
+  return (
+    attribute.type === "JSXAttribute" &&
+    attribute.name.type === "JSXIdentifier" &&
+    attribute.name.name === "asChild"
+  )
+}
 
-    // Apply transformations in reverse order to preserve node validity.
-    for (const info of transformations.reverse()) {
-      const openingElement = info.parentElement.getOpeningElement()
+// The first child that is an element, with or without a closing tag.
+function getChildElement(element: t.JSXElement) {
+  return element.children.find(
+    (child): child is t.JSXElement => child.type === "JSXElement"
+  )
+}
 
-      // Get existing attributes (excluding asChild).
-      const existingAttrs = openingElement
-        .getAttributes()
-        .filter((attr) => {
-          if (attr.getKind() === SyntaxKind.JsxAttribute) {
-            const jsxAttr = attr.asKindOrThrow(SyntaxKind.JsxAttribute)
-            return jsxAttr.getNameNode().getText() !== "asChild"
-          }
-          return true
-        })
-        .map((attr) => attr.getText())
-        .join(" ")
+// No child element: asChild goes, with the whitespace before it.
+function removeAsChild(code: string, element: t.JSXElement) {
+  return removeJsxAttribute(code, {
+    attribute: getAsChild(element)!,
+    element: element.openingElement,
+  })
+}
 
-      // Build the render prop value.
-      const renderValue = info.childProps
-        ? `{<${info.childTagName} ${info.childProps} />}`
-        : `{<${info.childTagName} />}`
+// <Parent asChild><Child props>children</Child></Parent> becomes
+// <Parent render={<Child props />}>children</Parent>.
+function replaceAsChild(code: string, element: t.JSXElement) {
+  const child = getChildElement(element)!
+  const parentTagName = getText(code, element.openingElement.name)
+  const childTagName = getText(code, child.openingElement.name)
+  const childProps = getAttributesText(code, child.openingElement.attributes)
+  const childChildren = child.children
+    .map((node) => getJsxChildText(code, node))
+    .join("")
 
-      // Build new attributes.
-      let newAttrs = existingAttrs ? `${existingAttrs} ` : ""
-      newAttrs += `render=${renderValue}`
-      if (info.needsNativeButton) {
-        newAttrs += ` nativeButton={false}`
-      }
+  // Determine if we need nativeButton={false}.
+  // Only add it on Button when the child is a non-button element.
+  const needsNativeButton =
+    parentTagName === "Button" &&
+    ELEMENTS_REQUIRING_NATIVE_BUTTON_FALSE.includes(childTagName)
 
-      // Build the new element text.
-      const newChildren = info.childChildren.trim()
-        ? `${info.childChildren}`
-        : ""
+  // Get existing attributes (excluding asChild).
+  const existingAttrs = getAttributesText(
+    code,
+    element.openingElement.attributes.filter(
+      (attribute) => !isAsChild(attribute)
+    )
+  )
 
-      const newElementText = `<${info.parentTagName} ${newAttrs}>${newChildren}</${info.parentTagName}>`
+  // Build the render prop value.
+  const renderValue = childProps
+    ? `{<${childTagName} ${childProps} />}`
+    : `{<${childTagName} />}`
 
-      info.parentElement.replaceWithText(newElementText)
+  // Build new attributes.
+  let newAttrs = existingAttrs ? `${existingAttrs} ` : ""
+  newAttrs += `render=${renderValue}`
+  if (needsNativeButton) {
+    newAttrs += ` nativeButton={false}`
+  }
+
+  const newChildren = childChildren.trim() ? childChildren : ""
+
+  return replaceWithText(
+    code,
+    element,
+    `<${parentTagName} ${newAttrs}>${newChildren}</${parentTagName}>`,
+    {}
+  )
+}
+
+function getAttributesText(
+  code: string,
+  attributes: (t.JSXAttribute | t.JSXSpreadAttribute)[]
+) {
+  return attributes.map((attribute) => getText(code, attribute)).join(" ")
+}
+
+// ts-morph's getText() of a JSX child. TypeScript starts JSX text past its
+// leading whitespace and line breaks, though not past a comment.
+function getJsxChildText(
+  code: string,
+  child: t.JSXElement["children"][number]
+) {
+  let start = child.start!
+  if (child.type === "JSXText") {
+    while (
+      start < child.end! &&
+      (isWhiteSpaceSingleLine(code[start]) || isLineBreak(code[start]))
+    ) {
+      start++
     }
   }
 
-  return sourceFile
+  return code.slice(start, child.end!)
 }
