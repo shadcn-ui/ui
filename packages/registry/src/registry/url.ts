@@ -1,8 +1,8 @@
 import { REGISTRY_URL } from "@/src/registry/constants"
 
-// This module must not import other registry modules. The registry context
-// uses it to normalize header keys, and builder -> env -> context would
-// otherwise form an import cycle.
+// The registry context imports this module to normalize header keys, so it
+// must not import anything that reaches the context: builder -> env ->
+// context would otherwise form an import cycle.
 
 /**
  * Resolves a registry URL from a path or URL string.
