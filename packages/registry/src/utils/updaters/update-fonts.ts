@@ -12,7 +12,10 @@ import {
 } from "@/src/utils/codemod/edits"
 import { getReplacementText } from "@/src/utils/codemod/indentation"
 import { setJsxAttributeInitializer } from "@/src/utils/codemod/jsx-attributes"
-import { addNamedImport } from "@/src/utils/codemod/named-imports"
+import {
+  addNamedImport,
+  getNamedImportNames,
+} from "@/src/utils/codemod/named-imports"
 import {
   addsSyntaxErrors,
   countSyntaxErrors,
@@ -289,8 +292,9 @@ export async function transformLayoutFonts(
     let hasExistingImport = false
 
     if (existingImport) {
-      hasExistingImport =
-        getNamedImportNames(existingImport).includes(importName)
+      hasExistingImport = getNamedImportNames(code, existingImport).includes(
+        importName
+      )
       if (!hasExistingImport) {
         code = addNamedImport(code, existingImport, importName)
       }
@@ -451,15 +455,6 @@ function getImportDeclarations(file: t.File) {
   return file.program.body.filter(
     (statement) => statement.type === "ImportDeclaration"
   )
-}
-
-// ts-morph's ImportSpecifier#getName(): the imported name.
-function getNamedImportNames(declaration: t.ImportDeclaration) {
-  return declaration.specifiers
-    .filter((specifier) => specifier.type === "ImportSpecifier")
-    .map(({ imported }) =>
-      imported.type === "StringLiteral" ? imported.value : imported.name
-    )
 }
 
 // The declarations of the source file's variable statements, exported or not.
@@ -755,7 +750,7 @@ function replaceJsxExpression(code: string, expression: t.Node, text: string) {
 function ensureCnImport(code: string, config: Config) {
   const imports = getImportDeclarations(parseModule(code))
   const existingImport = imports.find((decl) =>
-    getNamedImportNames(decl).includes("cn")
+    getNamedImportNames(code, decl).includes("cn")
   )
 
   if (!existingImport) {
@@ -765,7 +760,7 @@ function ensureCnImport(code: string, config: Config) {
     )
 
     if (utilsImport) {
-      if (!getNamedImportNames(utilsImport).includes("cn")) {
+      if (!getNamedImportNames(code, utilsImport).includes("cn")) {
         return addNamedImport(code, utilsImport, "cn")
       }
     } else {

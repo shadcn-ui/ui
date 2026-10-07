@@ -30,10 +30,43 @@ export function applyEdits(code: string, edits: TextEdit[]) {
   return result
 }
 
+// The edit that turns code into edited: the text between what they start and
+// end with, so that edits elsewhere in code can be applied with it.
+export function getTextEdit(code: string, edited: string): TextEdit {
+  const length = Math.min(code.length, edited.length)
+  let start = 0
+  while (start < length && code[start] === edited[start]) {
+    start++
+  }
+  let suffix = 0
+  while (
+    suffix < length - start &&
+    code[code.length - 1 - suffix] === edited[edited.length - 1 - suffix]
+  ) {
+    suffix++
+  }
+
+  return {
+    start,
+    end: code.length - suffix,
+    text: edited.slice(start, edited.length - suffix),
+  }
+}
+
 // ts-morph's error for an edit it rejects, with its message.
 export class SyntaxErrorInsertedError extends Error {
   constructor() {
     super("Manipulation error: A syntax error was inserted.")
+  }
+}
+
+// ts-morph's error for a node it forgot, which an edit does to the nodes it
+// replaces.
+export class ForgottenNodeError extends Error {
+  constructor() {
+    super(
+      "Attempted to get information from a node that was removed or forgotten."
+    )
   }
 }
 

@@ -1440,6 +1440,27 @@ export function Grid() {
       `)
     })
 
+    test("throws when a replaced placeholder holds an element in a prop", async () => {
+      // Current behavior: ts-morph forgets the nested element and throws when it reaches it.
+      await expect(
+        transformIconsIn(
+          `import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
+
+export const icon = (
+  <IconPlaceholder
+    render={<span className="a" />}
+    lucide="CheckIcon"
+    tabler="IconCheck"
+  />
+)
+`,
+          "tabler"
+        )
+      ).rejects.toThrow(
+        /^Attempted to get information from a node that was removed or forgotten\./
+      )
+    })
+
     test("is a no-op for a legacy icon library", async () => {
       const raw = `import * as React from "react"
 import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
@@ -1517,6 +1538,23 @@ export function Component() {
         export function Component() {
           return <CheckIcon />
         }"
+      `)
+    })
+
+    test("edits the imports after a placeholder between them", async () => {
+      expect(
+        await transformIconsIn(
+          `import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
+export const icon = <IconPlaceholder lucide="CheckIcon" />
+import { cn } from "@/lib/utils"
+`,
+          "lucide"
+        )
+      ).toMatchInlineSnapshot(`
+        "export const icon = <CheckIcon />
+        import { cn } from "@/lib/utils"
+        import { CheckIcon } from "lucide-react"
+        "
       `)
     })
 

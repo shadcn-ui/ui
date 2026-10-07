@@ -46,7 +46,7 @@ export function removeJsxAttributes(code: string, indexes: number[]) {
 // getNonWhitespaceStart(), and the spaces, tabs and line breaks before that,
 // to its end. A comment between it and the attribute before it goes too,
 // unless the comment ends that attribute's line.
-function removeJsxAttribute(
+export function removeJsxAttribute(
   code: string,
   { attribute, element }: JsxAttribute
 ) {
