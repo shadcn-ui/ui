@@ -32,8 +32,23 @@ describe("updateDependencies", () => {
         },
       },
       expectedPackageManager: "npm",
-      expectedArgs: ["install", "--", "first", "second", "third"],
-      expectedDevArgs: ["install", "-D", "--", "fourth"],
+      expectedArgs: [
+        "install",
+        "--no-audit",
+        "--no-fund",
+        "--",
+        "first",
+        "second",
+        "third",
+      ],
+      expectedDevArgs: [
+        "install",
+        "--no-audit",
+        "--no-fund",
+        "-D",
+        "--",
+        "fourth",
+      ],
     },
     {
       description:
@@ -47,8 +62,25 @@ describe("updateDependencies", () => {
         },
       },
       expectedPackageManager: "npm",
-      expectedArgs: ["install", "--force", "--", "first", "second", "third"],
-      expectedDevArgs: ["install", "--force", "-D", "--", "fourth"],
+      expectedArgs: [
+        "install",
+        "--no-audit",
+        "--no-fund",
+        "--force",
+        "--",
+        "first",
+        "second",
+        "third",
+      ],
+      expectedDevArgs: [
+        "install",
+        "--no-audit",
+        "--no-fund",
+        "--force",
+        "-D",
+        "--",
+        "fourth",
+      ],
     },
     {
       description:
@@ -62,8 +94,25 @@ describe("updateDependencies", () => {
         },
       },
       expectedPackageManager: "npm",
-      expectedArgs: ["install", "--force", "--", "first", "second", "third"],
-      expectedDevArgs: ["install", "--force", "-D", "--", "fourth"],
+      expectedArgs: [
+        "install",
+        "--no-audit",
+        "--no-fund",
+        "--force",
+        "--",
+        "first",
+        "second",
+        "third",
+      ],
+      expectedDevArgs: [
+        "install",
+        "--no-audit",
+        "--no-fund",
+        "--force",
+        "-D",
+        "--",
+        "fourth",
+      ],
     },
     {
       description:
@@ -79,13 +128,23 @@ describe("updateDependencies", () => {
       expectedPackageManager: "npm",
       expectedArgs: [
         "install",
+        "--no-audit",
+        "--no-fund",
         "--legacy-peer-deps",
         "--",
         "first",
         "second",
         "third",
       ],
-      expectedDevArgs: ["install", "--legacy-peer-deps", "-D", "--", "fourth"],
+      expectedDevArgs: [
+        "install",
+        "--no-audit",
+        "--no-fund",
+        "--legacy-peer-deps",
+        "-D",
+        "--",
+        "fourth",
+      ],
     },
     {
       description: "deno uses npm: package prefix",
@@ -137,8 +196,15 @@ describe("updateDependencies", () => {
         },
       },
       expectedPackageManager: "npm",
-      expectedArgs: ["install", "--", "first"],
-      expectedDevArgs: ["install", "-D", "--", "second"],
+      expectedArgs: ["install", "--no-audit", "--no-fund", "--", "first"],
+      expectedDevArgs: [
+        "install",
+        "--no-audit",
+        "--no-fund",
+        "-D",
+        "--",
+        "second",
+      ],
     },
   ])(
     "$description",
@@ -310,5 +376,17 @@ describe("dependency commands", () => {
     expect(execa).toHaveBeenCalledWith("pnpm", ["remove", "--", "recharts"], {
       cwd,
     })
+  })
+
+  it("uninstalls with npm without running audit or fund", async () => {
+    const cwd = getFixturesDir("project-npm-react19")
+
+    await removeDependencies(cwd, ["react-day-picker"])
+
+    expect(execa).toHaveBeenCalledWith(
+      "npm",
+      ["uninstall", "--no-audit", "--no-fund", "--", "react-day-picker"],
+      { cwd }
+    )
   })
 })
