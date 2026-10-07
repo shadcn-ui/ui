@@ -1,5 +1,5 @@
 import type { Config } from "@/src/utils/get-config"
-import { expect, it } from "vitest"
+import { describe, expect, it } from "vitest"
 
 import { transform } from "."
 
@@ -734,3 +734,339 @@ import { Button } from "@/registry/new-york/ui/button"
     expect(result).not.toContain("lib/utils")
   }
 )
+
+describe("transformImport characterization", () => {
+  const config = {
+    tsx: true,
+    aliases: {
+      components: "~/components",
+      ui: "~/components/ui",
+      utils: "~/lib/utils",
+      lib: "~/lib",
+      hooks: "~/hooks",
+    },
+  } as Config
+
+  const raw = `import { Button } from "@/registry/new-york/ui/button"
+import { cn } from "@/lib/utils"
+`
+
+  it.each([
+    {
+      filename: "button.tsx",
+      expected: `import { Button } from "~/components/ui/button"
+import { cn } from "~/lib/utils"
+`,
+    },
+    {
+      filename: "button.ts",
+      expected: `import { Button } from "~/components/ui/button"
+import { cn } from "~/lib/utils"
+`,
+    },
+    // Current behavior: .js/.jsx pass the extension check, but ts-morph
+    // collects no import literals for them (allowJs is off), so nothing changes.
+    { filename: "button.js", expected: raw },
+    { filename: "button.jsx", expected: raw },
+    // These fail the extension check (getExtension() returns ".d.ts" for .d.ts).
+    { filename: "button.mjs", expected: raw },
+    { filename: "button.mts", expected: raw },
+    { filename: "button.d.ts", expected: raw },
+    { filename: "button.css", expected: raw },
+    { filename: "button.mdx", expected: raw },
+  ])("filename extension: $filename", async ({ filename, expected }) => {
+    expect(await transform({ filename, raw, config })).toBe(expected)
+  })
+
+  it("rewrites the imports of a .ts file with a <T> cast", async () => {
+    // TypeScript parses it as TSX and recovers before the cast; Babel cannot
+    // parse it with JSX, so it is parsed without.
+    expect(
+      await transform({
+        filename: "util.ts",
+        raw: `import { cn } from "@/lib/utils"\nconst a = <any>b\n`,
+        config,
+      })
+    ).toBe(`import { cn } from "~/lib/utils"\nconst a = <any>b\n`)
+  })
+
+  it("leaves a template literal in an import type alone", async () => {
+    const raw = "type T = typeof import(`@/lib/utils`)\n"
+    expect(await transform({ filename: "a.ts", raw, config })).toBe(raw)
+  })
+
+  it("leaves CSS @import specifiers alone", async () => {
+    const css = `@import "tailwindcss";
+@import "@/registry/new-york/styles/theme.css";
+`
+    expect(await transform({ filename: "globals.css", raw: css, config })).toBe(
+      css
+    )
+  })
+
+  it("keeps single quotes and semicolons", async () => {
+    expect(
+      await transform({
+        filename: "button.tsx",
+        raw: `import * as React from 'react';
+import { Slot } from '@radix-ui/react-slot';
+import { cn } from '@/lib/utils';
+import { Badge } from '@/registry/new-york/ui/badge';
+export { Label } from '@/components/ui/label';
+`,
+        config,
+      })
+    ).toMatchInlineSnapshot(`
+      "import * as React from 'react';
+      import { Slot } from '@radix-ui/react-slot';
+      import { cn } from '~/lib/utils';
+      import { Badge } from '~/components/ui/badge';
+      export { Label } from '~/components/ui/label';
+      "
+    `)
+  })
+
+  it("keeps CRLF line endings", async () => {
+    expect(
+      await transform({
+        filename: "button.tsx",
+        raw: `import * as React from "react"\r\nimport { Button } from "@/registry/new-york/ui/button"\r\nimport { cn } from "@/lib/utils"\r\n\r\nexport { Button, cn }\r\n`,
+        config,
+      })
+    ).toBe(
+      `import * as React from "react"\r\nimport { Button } from "~/components/ui/button"\r\nimport { cn } from "~/lib/utils"\r\n\r\nexport { Button, cn }\r\n`
+    )
+  })
+
+  it("rewrites every import literal kind ts-morph collects", async () => {
+    expect(
+      await transform({
+        filename: "kinds.tsx",
+        raw: `import Default from "@/components/foo"
+import type { Props } from "@/components/ui/button"
+import "@/styles/globals.css"
+import * as Icons from "@/registry/new-york/icons"
+import json from "@/lib/data.json" with { type: "json" }
+export * from "@/lib/helpers"
+export * as mobile from "@/hooks/use-mobile"
+export { a } from "@/hooks/use-a"
+export type { B } from "@/components/b"
+import legacy = require("@/lib/legacy")
+const lazy = import("@/components/lazy")
+const tpl = import(\`@/components/template\`)
+type Mod = typeof import("@/components/mod")
+type Named = import("@/components/named").Named
+const required = require("@/lib/required")
+const notAnImport = "@/components/string"
+declare module "@/components/augmented" {
+  import { X } from "@/components/x"
+}
+`,
+        config,
+      })
+    ).toMatchInlineSnapshot(`
+      "import Default from "~/components/foo"
+      import type { Props } from "~/components/ui/button"
+      import "~/styles/globals.css"
+      import * as Icons from "~/components/icons"
+      import json from "~/lib/data.json" with { type: "json" }
+      export * from "~/lib/helpers"
+      export * as mobile from "~/hooks/use-mobile"
+      export { a } from "~/hooks/use-a"
+      export type { B } from "~/components/b"
+      import legacy = require("~/lib/legacy")
+      const lazy = import("~/components/lazy")
+      const tpl = import(\`~/components/template\`)
+      type Mod = typeof import("~/components/mod")
+      type Named = import("~/components/named").Named
+      const required = require("@/lib/required")
+      const notAnImport = "@/components/string"
+      declare module "@/components/augmented" {
+        import { X } from "@/components/x"
+      }
+      "
+    `)
+  })
+
+  it("isRemote treats @/ imports as coming from a registry", async () => {
+    expect(
+      await transform({
+        filename: "remote.tsx",
+        raw: `import * as React from "react"
+import { Button } from "@/components/ui/button"
+import { Sidebar } from "@/components/sidebar"
+import { cn } from "@/lib/utils"
+import { formatDate } from "@/lib/format"
+import { useMobile } from "@/hooks/use-mobile"
+import { Card } from "@/registry/new-york/ui/card"
+import { helper } from "./helper"
+import { data } from "@/data/items"
+`,
+        config,
+        isRemote: true,
+      })
+    ).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { Button } from "~/components/ui/button"
+      import { Sidebar } from "~/components/sidebar"
+      import { cn } from "~/lib/utils"
+      import { formatDate } from "~/lib/format"
+      import { useMobile } from "~/hooks/use-mobile"
+      import { Card } from "~/components/ui/card"
+      import { helper } from "./helper"
+      import { data } from "~/components/data/items"
+      "
+    `)
+  })
+
+  it("registry components, lib and hooks paths", async () => {
+    expect(
+      await transform({
+        filename: "page.tsx",
+        raw: `import { LoginForm } from "@/registry/new-york/blocks/login-01/components/login-form"
+import { SiteHeader } from "@/registry/new-york/components/site-header"
+import { formatDate } from "@/registry/new-york/lib/format"
+import { cn } from "@/registry/new-york/lib/utils"
+import { useMobile } from "@/registry/new-york/hooks/use-mobile"
+import { Example } from "@/registry/new-york/examples/example"
+`,
+        config,
+      })
+    ).toMatchInlineSnapshot(`
+      "import { LoginForm } from "~/components/login-form"
+      import { SiteHeader } from "~/components/site-header"
+      import { formatDate } from "~/lib/format"
+      import { cn } from "~/lib/utils"
+      import { useMobile } from "~/hooks/use-mobile"
+      import { Example } from "~/components/examples/example"
+      "
+    `)
+  })
+
+  it("registry lib and hooks paths fall back to components without lib/hooks aliases", async () => {
+    expect(
+      await transform({
+        filename: "page.tsx",
+        raw: `import { formatDate } from "@/registry/new-york/lib/format"
+import { cn } from "@/registry/new-york/lib/utils"
+import { useMobile } from "@/registry/new-york/hooks/use-mobile"
+import { Button } from "@/registry/new-york/ui/button"
+`,
+        config: {
+          tsx: true,
+          aliases: {
+            components: "~/components",
+            utils: "~/lib/utils",
+          },
+        } as Config,
+      })
+    ).toMatchInlineSnapshot(`
+      "import { formatDate } from "~/components/lib/format"
+      import { cn } from "~/lib/utils"
+      import { useMobile } from "~/components/hooks/use-mobile"
+      import { Button } from "~/components/ui/button"
+      "
+    `)
+  })
+
+  it("registry /ui match has no segment boundary", async () => {
+    // Current behavior: "/ui" also matches the start of "/uikit".
+    expect(
+      await transform({
+        filename: "page.tsx",
+        raw: `import { Kit } from "@/registry/new-york/components/uikit"
+`,
+        config: {
+          tsx: true,
+          aliases: {
+            components: "~/components",
+            ui: "~/ui",
+            utils: "~/lib/utils",
+          },
+        } as Config,
+      })
+    ).toMatchInlineSnapshot(`
+      "import { Kit } from "~/uikit"
+      "
+    `)
+  })
+
+  it.each([
+    { name: "# alias", utils: "#utils" },
+    { name: "/lib/utils suffix", utils: "@acme/ui/lib/utils" },
+    { name: "scoped package with subpath", utils: "@acme/ui/utils" },
+    { name: "scoped alias without a name", utils: "@utils" },
+    { name: "unscoped alias with a slash", utils: "~/utils" },
+    { name: "unscoped alias without a slash", utils: "utils" },
+  ])(
+    "cn imports and the workspace alias derived from utils: $name",
+    async ({ utils }) => {
+      const result = await transform({
+        filename: "button.tsx",
+        raw: `import { cn } from "@/lib/utils"
+import { cn as cx } from "@/registry/new-york/lib/utils"
+import { cn as pkg } from "@acme/ui/lib/utils"
+import { cn as local } from "~/lib/utils"
+import { cn as bare } from "utils/lib/utils"
+import { other } from "@acme/ui/lib/utils"
+`,
+        config: {
+          tsx: true,
+          aliases: {
+            components: "~/components",
+            utils,
+          },
+        } as Config,
+      })
+      expect(result).toMatchSnapshot()
+    }
+  )
+
+  it("redirects cn imports that resolve to the literal @/lib/utils", async () => {
+    // Contrived alias set: a hooks alias of "@/lib" maps "@/hooks/utils" to
+    // "@/lib/utils", which then takes the utils alias only for cn imports.
+    expect(
+      await transform({
+        filename: "button.tsx",
+        raw: `import { cn } from "@/hooks/utils"
+import { other } from "@/hooks/utils"
+`,
+        config: {
+          tsx: true,
+          aliases: {
+            components: "@/components",
+            hooks: "@/lib",
+            utils: "~/lib/utils",
+          },
+        } as Config,
+      })
+    ).toMatchInlineSnapshot(`
+      "import { cn } from "~/lib/utils"
+      import { other } from "@/lib/utils"
+      "
+    `)
+  })
+
+  it.each([
+    // A file without imports or exports: TypeScript collects the non-relative
+    // specifiers inside a declare module block.
+    [
+      `declare module "@/registry/new-york/ui/button" {\n  import { cn } from "@/lib/utils"\n  import { Slot } from "./slot"\n  export { Root } from "@/components/ui/root"\n}\n`,
+      `declare module "@/registry/new-york/ui/button" {\n  import { cn } from "~/lib/utils"\n  import { Slot } from "./slot"\n  export { Root } from "~/components/ui/root"\n}\n`,
+    ],
+    // import.meta makes it a module, where the block is an augmentation.
+    [
+      `const url = import.meta.url\n\ndeclare module "@/registry/new-york/ui/button" {\n  import { cn } from "@/lib/utils"\n}\n`,
+      `const url = import.meta.url\n\ndeclare module "@/registry/new-york/ui/button" {\n  import { cn } from "@/lib/utils"\n}\n`,
+    ],
+    // Every specifier is written again, without its escapes.
+    [
+      `import { cn } from "@/lib/\\u0075tils"\nimport { Button } from '@/components/ui/it\\'s'\n`,
+      `import { cn } from "~/lib/utils"\nimport { Button } from '~/components/ui/it\\'s'\n`,
+    ],
+  ])("ambient modules and escapes: %j", async (raw, expected) => {
+    expect(await transform({ filename: "types.ts", raw, config })).toBe(
+      expected
+    )
+  })
+})

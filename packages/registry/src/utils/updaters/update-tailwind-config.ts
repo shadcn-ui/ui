@@ -1,27 +1,45 @@
 import { promises as fs } from "fs"
-import { tmpdir } from "os"
 import path from "path"
+import { registryItemTailwindSchema } from "@/src/registry/schema"
 import {
-  registryItemCssVarsSchema,
-  registryItemTailwindSchema,
-} from "@/src/schema"
+  addElement,
+  insertElement,
+  removeElement,
+} from "@/src/utils/codemod/array-literals"
+import {
+  replaceWithText,
+  SyntaxErrorInsertedError,
+  type SkipReason,
+} from "@/src/utils/codemod/edits"
+import {
+  addPropertyAssignment,
+  getProperty,
+  getPropertyName,
+  insertPropertyAssignment,
+  insertSpreadAssignment,
+  isPropertyAssignment,
+  removeProperty,
+} from "@/src/utils/codemod/object-literals"
+import {
+  addsSyntaxErrors,
+  countSyntaxErrors,
+  countSyntaxErrorsExceptSkippedCommas,
+  findNodeAt,
+  getText,
+  parseModule,
+  type ParseOptions,
+} from "@/src/utils/codemod/parse"
 import { Config } from "@/src/utils/get-config"
 import { TailwindVersion } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
+import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
+import { types as t } from "@babel/core"
 import deepmerge from "deepmerge"
 import objectToString from "stringify-object"
-import {
-  ArrayLiteralExpression,
-  ObjectLiteralExpression,
-  Project,
-  PropertyAssignment,
-  QuoteKind,
-  ScriptKind,
-  SyntaxKind,
-  VariableStatement,
-} from "ts-morph"
 import { z } from "zod"
+
+export { buildTailwindThemeColorsFromCssVars } from "@/src/utils/tailwind-theme-colors"
 
 // Stands in for tailwindcss's Config, which has an index signature, so the
 // published types do not depend on tailwindcss.
@@ -40,6 +58,9 @@ export async function updateTailwindConfig(
   options: {
     silent?: boolean
     tailwindVersion?: TailwindVersion
+    // A workspace install lists the files it changed from the workspace root,
+    // so the config is named from there too.
+    workspaceRoot?: string
   }
 ) {
   if (!tailwindConfig) {
@@ -58,7 +79,7 @@ export async function updateTailwindConfig(
   }
 
   const tailwindFileRelativePath = path.relative(
-    config.resolvedPaths.cwd,
+    options.workspaceRoot ?? config.resolvedPaths.cwd,
     config.resolvedPaths.tailwindConfig
   )
   const tailwindSpinner = spinner(
@@ -67,10 +88,113 @@ export async function updateTailwindConfig(
       silent: options.silent,
     }
   ).start()
+
+  try {
+    const skipReason = await updateTailwindConfigFile(tailwindConfig, config)
+    if (!skipReason) {
+      tailwindSpinner?.succeed()
+      return
+    }
+
+    // Stop without a check mark, since the config was left as it was, and
+    // return the warning so callers that pass silent can still report it.
+    tailwindSpinner?.stop()
+    const warning = getSkippedConfigWarning(
+      tailwindFileRelativePath,
+      skipReason,
+      tailwindConfig
+    )
+    if (!options.silent) {
+      logger.warn(warning)
+    }
+    return warning
+  } catch (error) {
+    tailwindSpinner?.fail(
+      `Failed to update ${highlighter.info(tailwindFileRelativePath)}.`
+    )
+    throw error
+  }
+}
+
+// Thrown for a config Babel cannot parse the way ts-morph did: one with a
+// syntax error TypeScript, and so ts-morph, parsed through, or one whose theme
+// ts-morph parsed on its own in a way Babel cannot (see parseObjectLiteral).
+class UnparsableConfigError extends Error {
+  constructor() {
+    super("Could not parse the tailwind config.")
+  }
+}
+
+async function updateTailwindConfigFile(
+  tailwindConfig: UpdaterTailwindConfig,
+  config: Config
+): Promise<SkipReason | undefined> {
   const raw = await fs.readFile(config.resolvedPaths.tailwindConfig, "utf8")
-  const output = await transformTailwindConfig(raw, tailwindConfig, config)
+
+  let output: string
+  try {
+    output = await transformTailwindConfig(raw, tailwindConfig, config)
+  } catch (error) {
+    if (error instanceof UnparsableConfigError) {
+      return "unparsable"
+    }
+    // An edit throws where ts-morph rejected it, or where Babel cannot parse
+    // what it wrote.
+    if (error instanceof SyntaxErrorInsertedError) {
+      return "syntax-error-inserted"
+    }
+    throw error
+  }
+
+  // ts-morph wrote some edits that broke the config, like a property added
+  // after a comment that follows the last comma, which got a second comma
+  // that TypeScript skips (see parseModule).
+  if (addsSyntaxErrors(raw, output, getParseOptions(config))) {
+    return "syntax-error-inserted"
+  }
+
   await fs.writeFile(config.resolvedPaths.tailwindConfig, output, "utf8")
-  tailwindSpinner?.succeed()
+}
+
+function getSkippedConfigWarning(
+  file: string,
+  skipReason: SkipReason,
+  tailwindConfig: UpdaterTailwindConfig
+) {
+  const problem =
+    skipReason === "unparsable"
+      ? "could not parse it"
+      : "updating it would leave it with a syntax error"
+
+  return `Skipped ${file}: ${problem}. Add ${describeAdditions(
+    tailwindConfig
+  )} to it manually.`
+}
+
+// What transformTailwindConfig adds: darkMode, each plugin, and each key of
+// the theme, or of theme.extend.
+function describeAdditions(tailwindConfig: UpdaterTailwindConfig) {
+  const additions = ["darkMode"]
+
+  for (const plugin of tailwindConfig.plugins ?? []) {
+    // A module name has no quotes, which keeps the match linear.
+    const moduleName = /require\((["'])([^"']+)\1\)/.exec(plugin)?.[2]
+    additions.push(`the ${moduleName ?? plugin} plugin`)
+  }
+
+  for (const [key, value] of Object.entries(tailwindConfig.theme ?? {})) {
+    if (key === "extend" && value && typeof value === "object") {
+      additions.push(
+        ...Object.keys(value).map((name) => `theme.extend.${name}`)
+      )
+    } else {
+      additions.push(`theme.${key}`)
+    }
+  }
+
+  return additions.length > 1
+    ? `${additions.slice(0, -1).join(", ")} and ${additions[additions.length - 1]}`
+    : additions[0]
 }
 
 export async function transformTailwindConfig(
@@ -78,137 +202,223 @@ export async function transformTailwindConfig(
   tailwindConfig: UpdaterTailwindConfig,
   config: Config
 ) {
-  const sourceFile = await _createSourceFile(input, config)
+  const options = getParseOptions(config)
+  // Each edit returns new code, which the next step parses again. ts-morph
+  // drops a leading byte order mark from the text.
+  let code = input.charCodeAt(0) === 0xfeff ? input.slice(1) : input
+
+  // Babel gives up on some syntax errors that TypeScript parsed through.
+  if (countSyntaxErrors(code, options) === Infinity) {
+    throw new UnparsableConfigError()
+  }
+
   // Find the object with content property.
   // This is faster than traversing the default export.
   // TODO: maybe we do need to traverse the default export?
-  const configObject = sourceFile
-    .getDescendantsOfKind(SyntaxKind.ObjectLiteralExpression)
-    .find((node) =>
-      node
-        .getProperties()
-        .some(
-          (property) =>
-            property.isKind(SyntaxKind.PropertyAssignment) &&
-            property.getName() === "content"
-        )
-    )
+  const configObject = findConfigObject(code, options)
 
   // We couldn't find the config object, so we return the input as is.
   if (!configObject) {
     return input
   }
 
-  const quoteChar = _getQuoteChar(configObject)
+  const configStart = configObject.start!
+  const quoteChar = getQuoteChar(code, configObject)
 
   // Add darkMode.
-  addTailwindConfigProperty(
-    configObject,
-    {
-      name: "darkMode",
-      value: "class",
-    },
-    { quoteChar }
-  )
+  code = addTailwindConfigDarkMode(code, configStart, quoteChar, options)
 
   // Add Tailwind config plugins.
   tailwindConfig.plugins?.forEach((plugin) => {
-    addTailwindConfigPlugin(configObject, plugin)
+    code = addTailwindConfigPlugin(code, configStart, plugin, options)
   })
 
   // Add Tailwind config theme.
   if (tailwindConfig.theme) {
-    await addTailwindConfigTheme(configObject, tailwindConfig.theme)
+    code = addTailwindConfigTheme(
+      code,
+      configStart,
+      tailwindConfig.theme,
+      options
+    )
   }
 
-  return sourceFile.getFullText()
+  return code
 }
 
-function addTailwindConfigProperty(
-  configObject: ObjectLiteralExpression,
-  property: {
-    name: string
-    value: string
-  },
-  {
-    quoteChar,
-  }: {
-    quoteChar: string
-  }
+// ts-morph parsed a .ts config as TypeScript, where `<Config>{}` is a type
+// assertion, and any other config as JavaScript, with JSX.
+function getParseOptions(config: Config): ParseOptions {
+  // Like ts-morph's _createSourceFile, a config without resolved paths is
+  // read as a .ts config.
+  const resolvedPath =
+    config.resolvedPaths?.tailwindConfig || "tailwind.config.ts"
+  return { jsx: path.extname(resolvedPath) !== ".ts" }
+}
+
+function findConfigObject(code: string, options: ParseOptions) {
+  const objects: t.ObjectExpression[] = []
+  t.traverseFast(parseModule(code, options), (node) => {
+    if (node.type === "ObjectExpression") {
+      objects.push(node)
+    }
+  })
+
+  // ts-morph's getDescendantsOfKind is in source order.
+  return objects
+    .sort((a, b) => a.start! - b.start!)
+    .find((object) =>
+      object.properties.some(
+        (property) =>
+          isPropertyAssignment(property) &&
+          getPropertyName(code, property) === "content"
+      )
+    )
+}
+
+// The quotes of the config object's first string literal. TypeScript also has
+// a string literal for a directive, like "use strict" in a plugin function.
+// ts-morph also found those in the types of the JSDoc comments TypeScript
+// attaches to nodes, like `@type {import('tailwindcss').Config}` on a member,
+// which are left out.
+function getQuoteChar(code: string, configObject: t.ObjectExpression) {
+  let firstString: t.StringLiteral | t.DirectiveLiteral | undefined
+  t.traverseFast(configObject, (node) => {
+    if (
+      (node.type === "StringLiteral" || node.type === "DirectiveLiteral") &&
+      (!firstString || node.start! < firstString.start!)
+    ) {
+      firstString = node
+    }
+  })
+
+  return firstString && code[firstString.start!] === "'" ? "'" : '"'
+}
+
+function addTailwindConfigDarkMode(
+  code: string,
+  configStart: number,
+  quoteChar: string,
+  options: ParseOptions
 ) {
-  const existingProperty = configObject.getProperty("darkMode")
+  const configObject = getObjectAt(code, configStart, options)
+  const existingProperty = getProperty(code, configObject, "darkMode")
+  const newValue = `${quoteChar}class${quoteChar}`
 
+  // We need to add darkMode as the first property.
   if (!existingProperty) {
-    const newProperty = {
-      name: property.name,
-      initializer: `[${quoteChar}${property.value}${quoteChar}]`,
-    }
-
-    // We need to add darkMode as the first property.
-    if (property.name === "darkMode") {
-      configObject.insertPropertyAssignment(0, newProperty)
-      return configObject
-    }
-
-    configObject.addPropertyAssignment(newProperty)
-
-    return configObject
+    return insertPropertyAssignment(
+      code,
+      configObject,
+      0,
+      "darkMode",
+      `[${newValue}]`,
+      options
+    )
   }
 
-  if (existingProperty.isKind(SyntaxKind.PropertyAssignment)) {
-    const initializer = existingProperty.getInitializer()
-    const newValue = `${quoteChar}${property.value}${quoteChar}`
-
-    // If property is a string, change it to an array and append.
-    if (initializer?.isKind(SyntaxKind.StringLiteral)) {
-      const initializerText = initializer.getText()
-      initializer.replaceWithText(`[${initializerText}, ${newValue}]`)
-      return configObject
-    }
-
-    // If property is an array, append.
-    if (initializer?.isKind(SyntaxKind.ArrayLiteralExpression)) {
-      // Check if the array already contains the value.
-      if (
-        initializer
-          .getElements()
-          .map((element) => element.getText())
-          .includes(newValue)
-      ) {
-        return configObject
-      }
-      initializer.addElement(newValue)
-    }
-
-    return configObject
+  if (!isPropertyAssignment(existingProperty)) {
+    return code
   }
 
-  return configObject
+  const initializer = existingProperty.value
+
+  // If property is a string, change it to an array and append.
+  if (initializer.type === "StringLiteral") {
+    return replaceWithText(
+      code,
+      initializer,
+      `[${getText(code, initializer)}, ${newValue}]`,
+      options
+    )
+  }
+
+  // If property is an array, append.
+  if (initializer.type === "ArrayExpression") {
+    // Check if the array already contains the value.
+    if (getElementTexts(code, initializer).includes(newValue)) {
+      return code
+    }
+    return addElement(code, initializer, newValue, options)
+  }
+
+  return code
 }
 
-async function addTailwindConfigTheme(
-  configObject: ObjectLiteralExpression,
-  theme: UpdaterTailwindConfig["theme"]
+function addTailwindConfigPlugin(
+  code: string,
+  configStart: number,
+  plugin: string,
+  options: ParseOptions
+) {
+  const configObject = getObjectAt(code, configStart, options)
+  const existingPlugins = getProperty(code, configObject, "plugins")
+
+  if (!existingPlugins) {
+    return addPropertyAssignment(
+      code,
+      configObject,
+      "plugins",
+      `[${plugin}]`,
+      options
+    )
+  }
+
+  if (
+    isPropertyAssignment(existingPlugins) &&
+    existingPlugins.value.type === "ArrayExpression"
+  ) {
+    if (
+      getElementTexts(code, existingPlugins.value)
+        .map((text) => text.replace(/["']/g, ""))
+        .includes(plugin.replace(/["']/g, ""))
+    ) {
+      return code
+    }
+    return addElement(code, existingPlugins.value, plugin, options)
+  }
+
+  return code
+}
+
+function addTailwindConfigTheme(
+  code: string,
+  configStart: number,
+  theme: UpdaterTailwindConfig["theme"],
+  options: ParseOptions
 ) {
   // Ensure there is a theme property.
-  if (!configObject.getProperty("theme")) {
-    configObject.addPropertyAssignment({
-      name: "theme",
-      initializer: "{}",
-    })
+  const configObject = getObjectAt(code, configStart, options)
+  if (!getProperty(code, configObject, "theme")) {
+    code = addPropertyAssignment(code, configObject, "theme", "{}", options)
   }
 
   // Nest all spread properties.
-  nestSpreadProperties(configObject)
+  code = nestSpreadProperties(
+    code,
+    getObjectAt(code, configStart, options),
+    options
+  )
 
-  const themeProperty = configObject
-    .getPropertyOrThrow("theme")
-    ?.asKindOrThrow(SyntaxKind.PropertyAssignment)
+  // The theme is there, since it was added when missing.
+  const themeProperty = getProperty(
+    code,
+    getObjectAt(code, configStart, options),
+    "theme"
+  )!
+  if (!isPropertyAssignment(themeProperty)) {
+    const kindName = getSyntaxKindName(themeProperty)
+    throw new Error(
+      `Expected the node to be of kind PropertyAssignment, but it was ${kindName}.`
+    )
+  }
 
-  const themeInitializer = themeProperty.getInitializer()
-  if (themeInitializer?.isKind(SyntaxKind.ObjectLiteralExpression)) {
-    const themeObjectString = themeInitializer.getText()
-    const themeObject = await parseObjectLiteral(themeObjectString)
+  const themeInitializer = themeProperty.value
+  if (themeInitializer.type === "ObjectExpression") {
+    const themeObject = parseObjectLiteral(
+      getText(code, themeInitializer),
+      options
+    )
     const result = deepmerge(themeObject, theme, {
       arrayMerge: (dst, src) => src,
     })
@@ -222,322 +432,333 @@ async function addTailwindConfigTheme(
       .replace(/\\\'/g, "'") // Replace \' with '
       .replace(/\\\'\'/g, "'")
       .replace(/\'\'/g, "'")
-    themeInitializer.replaceWithText(resultString)
+    code = replaceWithText(code, themeInitializer, resultString, options)
   }
 
   // Unnest all spread properties.
-  unnestSpreadProperties(configObject)
+  return unnestSpreadProperties(
+    code,
+    getObjectAt(code, configStart, options),
+    options
+  )
 }
 
-function addTailwindConfigPlugin(
-  configObject: ObjectLiteralExpression,
-  plugin: string
-) {
-  const existingPlugins = configObject.getProperty("plugins")
-
-  if (!existingPlugins) {
-    configObject.addPropertyAssignment({
-      name: "plugins",
-      initializer: `[${plugin}]`,
-    })
-
-    return configObject
+// The error above keeps the message of ts-morph's asKindOrThrow, which names
+// the member by its TypeScript SyntaxKind. A named member that is not a
+// PropertyAssignment is a shorthand property or a method.
+function getSyntaxKindName(member: t.ObjectProperty | t.ObjectMethod) {
+  if (member.type === "ObjectProperty") {
+    return "ShorthandPropertyAssignment"
   }
-
-  if (existingPlugins.isKind(SyntaxKind.PropertyAssignment)) {
-    const initializer = existingPlugins.getInitializer()
-
-    if (initializer?.isKind(SyntaxKind.ArrayLiteralExpression)) {
-      if (
-        initializer
-          .getElements()
-          .map((element) => {
-            return element.getText().replace(/["']/g, "")
-          })
-          .includes(plugin.replace(/["']/g, ""))
-      ) {
-        return configObject
-      }
-      initializer.addElement(plugin)
-    }
-
-    return configObject
+  if (member.kind === "get") {
+    return "GetAccessor"
   }
-
-  return configObject
+  if (member.kind === "set") {
+    return "SetAccessor"
+  }
+  return "MethodDeclaration"
 }
 
-export async function _createSourceFile(input: string, config: Config | null) {
-  const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
-  const resolvedPath =
-    config?.resolvedPaths?.tailwindConfig || "tailwind.config.ts"
-  const tempFile = path.join(dir, `shadcn-${path.basename(resolvedPath)}`)
-
-  const project = new Project({
-    compilerOptions: {},
-  })
-  const sourceFile = project.createSourceFile(tempFile, input, {
-    // Note: .js and .mjs can still be valid for TS projects.
-    // We can't infer TypeScript from config.tsx.
-    scriptKind:
-      path.extname(resolvedPath) === ".ts" ? ScriptKind.TS : ScriptKind.JS,
-  })
-
-  return sourceFile
+// The object or array the next edit goes into, in the current code.
+function getObjectAt(code: string, start: number, options: ParseOptions) {
+  return findNodeAt(code, start, t.isObjectExpression, options)!
 }
 
-export function _getQuoteChar(configObject: ObjectLiteralExpression) {
-  return configObject
-    .getFirstDescendantByKind(SyntaxKind.StringLiteral)
-    ?.getQuoteKind() === QuoteKind.Single
-    ? "'"
-    : '"'
+function getArrayAt(code: string, start: number, options: ParseOptions) {
+  return findNodeAt(code, start, t.isArrayExpression, options)!
 }
 
-export function nestSpreadProperties(obj: ObjectLiteralExpression) {
-  const properties = obj.getProperties()
+// ts-morph's getElements() keeps holes, as an empty OmittedExpression.
+function getElementTexts(code: string, array: t.ArrayExpression) {
+  return array.elements.map((element) =>
+    element ? getText(code, element) : ""
+  )
+}
 
-  for (let i = 0; i < properties.length; i++) {
-    const prop = properties[i]
-    if (prop.isKind(SyntaxKind.SpreadAssignment)) {
-      const spreadAssignment = prop.asKindOrThrow(SyntaxKind.SpreadAssignment)
-      const spreadText = spreadAssignment.getExpression().getText()
+// deepmerge and addTailwindConfigTheme's reprint would drop spreads, so they
+// become strings first: `...name` in an object becomes
+// `"___name": "...name"`, and in an array, `"...name"`.
+// unnestSpreadProperties turns them back.
+export function nestSpreadProperties(
+  code: string,
+  object: t.ObjectExpression,
+  options: ParseOptions
+): string {
+  return editEachMember(
+    code,
+    object,
+    getObjectAt,
+    options,
+    (code, object, i) => {
+      const property = object.properties[i]
 
-      // Replace spread with a property assignment
-      obj.insertPropertyAssignment(i, {
-        // Need to escape the name with " so that deepmerge doesn't mishandle the key
-        name: `"___${spreadText.replace(/^\.\.\./, "")}"`,
-        initializer: `"...${spreadText.replace(/^\.\.\./, "")}"`,
-      })
+      if (property.type === "SpreadElement") {
+        const spreadText = getText(code, property.argument)
 
-      // Remove the original spread assignment
-      spreadAssignment.remove()
-    } else if (prop.isKind(SyntaxKind.PropertyAssignment)) {
-      const propAssignment = prop.asKindOrThrow(SyntaxKind.PropertyAssignment)
-      const initializer = propAssignment.getInitializer()
-
-      if (
-        initializer &&
-        initializer.isKind(SyntaxKind.ObjectLiteralExpression)
-      ) {
-        // Recursively process nested object literals
-        nestSpreadProperties(
-          initializer.asKindOrThrow(SyntaxKind.ObjectLiteralExpression)
+        // Replace spread with a property assignment
+        //
+        // As in ts-morph, the index counts comment nodes, so after one, the
+        // placeholder goes in earlier, and the text it copies can bring a
+        // second comma that TypeScript skips (see getCommentNodeTexts). A
+        // later edit, like the theme's reprint, usually takes it out again.
+        code = insertPropertyAssignment(
+          code,
+          object,
+          i,
+          // Need to escape the name with " so that deepmerge doesn't mishandle the key
+          `"___${spreadText.replace(/^\.\.\./, "")}"`,
+          `"...${spreadText.replace(/^\.\.\./, "")}"`,
+          options
         )
-      } else if (
-        initializer &&
-        initializer.isKind(SyntaxKind.ArrayLiteralExpression)
-      ) {
-        nestSpreadElements(
-          initializer.asKindOrThrow(SyntaxKind.ArrayLiteralExpression)
+
+        // Remove the original spread assignment, now right after it.
+        const updatedObject = getObjectAt(code, object.start!, options)
+        return removeProperty(
+          code,
+          updatedObject,
+          updatedObject.properties[i + 1],
+          options
         )
       }
-    }
-  }
-}
 
-export function nestSpreadElements(arr: ArrayLiteralExpression) {
-  const elements = arr.getElements()
-  for (let j = 0; j < elements.length; j++) {
-    const element = elements[j]
-    if (element.isKind(SyntaxKind.ObjectLiteralExpression)) {
-      // Recursive check on objects within arrays
-      nestSpreadProperties(
-        element.asKindOrThrow(SyntaxKind.ObjectLiteralExpression)
-      )
-    } else if (element.isKind(SyntaxKind.ArrayLiteralExpression)) {
-      // Recursive check on nested arrays
-      nestSpreadElements(
-        element.asKindOrThrow(SyntaxKind.ArrayLiteralExpression)
-      )
-    } else if (element.isKind(SyntaxKind.SpreadElement)) {
-      const spreadText = element.getText()
-      // Spread element within an array
-      arr.removeElement(j)
-      arr.insertElement(j, `"${spreadText}"`)
-    }
-  }
-}
-
-export function unnestSpreadProperties(obj: ObjectLiteralExpression) {
-  const properties = obj.getProperties()
-
-  for (let i = 0; i < properties.length; i++) {
-    const prop = properties[i]
-    if (prop.isKind(SyntaxKind.PropertyAssignment)) {
-      const propAssignment = prop as PropertyAssignment
-      const initializer = propAssignment.getInitializer()
-
-      if (initializer && initializer.isKind(SyntaxKind.StringLiteral)) {
-        const value = initializer
-          .asKindOrThrow(SyntaxKind.StringLiteral)
-          .getLiteralValue()
-        if (value.startsWith("...")) {
-          obj.insertSpreadAssignment(i, { expression: value.slice(3) })
-          propAssignment.remove()
+      if (isPropertyAssignment(property)) {
+        if (property.value.type === "ObjectExpression") {
+          // Recursively process nested object literals
+          return nestSpreadProperties(code, property.value, options)
         }
-      } else if (initializer?.isKind(SyntaxKind.ObjectLiteralExpression)) {
-        unnestSpreadProperties(initializer as ObjectLiteralExpression)
-      } else if (
-        initializer &&
-        initializer.isKind(SyntaxKind.ArrayLiteralExpression)
-      ) {
-        unsetSpreadElements(
-          initializer.asKindOrThrow(SyntaxKind.ArrayLiteralExpression)
-        )
+        if (property.value.type === "ArrayExpression") {
+          return nestSpreadElements(code, property.value, options)
+        }
       }
+
+      return code
     }
-  }
+  )
 }
 
-export function unsetSpreadElements(arr: ArrayLiteralExpression) {
-  const elements = arr.getElements()
-  for (let j = 0; j < elements.length; j++) {
-    const element = elements[j]
-    if (element.isKind(SyntaxKind.ObjectLiteralExpression)) {
+export function nestSpreadElements(
+  code: string,
+  array: t.ArrayExpression,
+  options: ParseOptions
+): string {
+  return editEachMember(code, array, getArrayAt, options, (code, array, j) => {
+    const element = array.elements[j]
+
+    if (element?.type === "ObjectExpression") {
       // Recursive check on objects within arrays
-      unnestSpreadProperties(
-        element.asKindOrThrow(SyntaxKind.ObjectLiteralExpression)
-      )
-    } else if (element.isKind(SyntaxKind.ArrayLiteralExpression)) {
+      return nestSpreadProperties(code, element, options)
+    }
+    if (element?.type === "ArrayExpression") {
       // Recursive check on nested arrays
-      unsetSpreadElements(
-        element.asKindOrThrow(SyntaxKind.ArrayLiteralExpression)
+      return nestSpreadElements(code, element, options)
+    }
+    if (element?.type === "SpreadElement") {
+      const spreadText = getText(code, element)
+      // Spread element within an array
+      code = removeElement(code, array, j, options)
+      return insertElement(
+        code,
+        getArrayAt(code, array.start!, options),
+        j,
+        `"${spreadText}"`,
+        options
       )
-    } else if (element.isKind(SyntaxKind.StringLiteral)) {
-      const spreadText = element.getText()
+    }
+
+    return code
+  })
+}
+
+export function unnestSpreadProperties(
+  code: string,
+  object: t.ObjectExpression,
+  options: ParseOptions
+): string {
+  return editEachMember(
+    code,
+    object,
+    getObjectAt,
+    options,
+    (code, object, i) => {
+      const property = object.properties[i]
+      if (!isPropertyAssignment(property)) {
+        return code
+      }
+
+      const initializer = property.value
+      if (initializer.type === "StringLiteral") {
+        const value = initializer.value
+        if (!value.startsWith("...")) {
+          return code
+        }
+
+        code = insertSpreadAssignment(code, object, i, value.slice(3), options)
+        // Remove the placeholder, now right after the spread.
+        const updatedObject = getObjectAt(code, object.start!, options)
+        return removeProperty(
+          code,
+          updatedObject,
+          updatedObject.properties[i + 1],
+          options
+        )
+      }
+      if (initializer.type === "ObjectExpression") {
+        return unnestSpreadProperties(code, initializer, options)
+      }
+      if (initializer.type === "ArrayExpression") {
+        return unnestSpreadElements(code, initializer, options)
+      }
+
+      return code
+    }
+  )
+}
+
+export function unnestSpreadElements(
+  code: string,
+  array: t.ArrayExpression,
+  options: ParseOptions
+): string {
+  return editEachMember(code, array, getArrayAt, options, (code, array, j) => {
+    const element = array.elements[j]
+
+    if (element?.type === "ObjectExpression") {
+      // Recursive check on objects within arrays
+      return unnestSpreadProperties(code, element, options)
+    }
+    if (element?.type === "ArrayExpression") {
+      // Recursive check on nested arrays
+      return unnestSpreadElements(code, element, options)
+    }
+    if (element?.type === "StringLiteral") {
+      const spreadText = getText(code, element)
       // check if spread element
       const spreadTest = /(?:^['"])(\.\.\..*)(?:['"]$)/g
       if (spreadTest.test(spreadText)) {
-        arr.removeElement(j)
-        arr.insertElement(j, spreadText.replace(spreadTest, "$1"))
+        code = removeElement(code, array, j, options)
+        return insertElement(
+          code,
+          getArrayAt(code, array.start!, options),
+          j,
+          spreadText.replace(spreadTest, "$1"),
+          options
+        )
       }
     }
-  }
+
+    return code
+  })
 }
 
-async function parseObjectLiteral(objectLiteralString: string): Promise<any> {
-  const sourceFile = await _createSourceFile(
-    `const theme = ${objectLiteralString}`,
-    null
-  )
-
-  const statement = sourceFile.getStatements()[0]
-  if (statement?.getKind() === SyntaxKind.VariableStatement) {
-    const declaration = (statement as VariableStatement)
-      .getDeclarationList()
-      ?.getDeclarations()[0]
-    const initializer = declaration.getInitializer()
-    if (initializer?.isKind(SyntaxKind.ObjectLiteralExpression)) {
-      return await parseObjectLiteralExpression(initializer)
-    }
-  }
-
-  throw new Error("Invalid input: not an object literal")
-}
-
-function parseObjectLiteralExpression(node: ObjectLiteralExpression): any {
-  const result: any = {}
-  for (const property of node.getProperties()) {
-    if (property.isKind(SyntaxKind.PropertyAssignment)) {
-      const name = property.getName().replace(/\'/g, "")
-      if (
-        property.getInitializer()?.isKind(SyntaxKind.ObjectLiteralExpression)
-      ) {
-        result[name] = parseObjectLiteralExpression(
-          property.getInitializer() as ObjectLiteralExpression
-        )
-      } else if (
-        property.getInitializer()?.isKind(SyntaxKind.ArrayLiteralExpression)
-      ) {
-        result[name] = parseArrayLiteralExpression(
-          property.getInitializer() as ArrayLiteralExpression
-        )
-      } else {
-        result[name] = parseValue(property.getInitializer())
-      }
-    }
-  }
-  return result
-}
-
-function parseArrayLiteralExpression(node: ArrayLiteralExpression): any[] {
-  const result: any[] = []
-  for (const element of node.getElements()) {
-    if (element.isKind(SyntaxKind.ObjectLiteralExpression)) {
-      result.push(
-        parseObjectLiteralExpression(
-          element.asKindOrThrow(SyntaxKind.ObjectLiteralExpression)
-        )
-      )
-    } else if (element.isKind(SyntaxKind.ArrayLiteralExpression)) {
-      result.push(
-        parseArrayLiteralExpression(
-          element.asKindOrThrow(SyntaxKind.ArrayLiteralExpression)
-        )
-      )
-    } else {
-      result.push(parseValue(element))
-    }
-  }
-  return result
-}
-
-function parseValue(node: any): any {
-  switch (node.getKind()) {
-    case SyntaxKind.StringLiteral:
-      return node.getText()
-    case SyntaxKind.NumericLiteral:
-      return Number(node.getText())
-    case SyntaxKind.TrueKeyword:
-      return true
-    case SyntaxKind.FalseKeyword:
-      return false
-    case SyntaxKind.NullKeyword:
-      return null
-    case SyntaxKind.ArrayLiteralExpression:
-      return node.getElements().map(parseValue)
-    case SyntaxKind.ObjectLiteralExpression:
-      return parseObjectLiteralExpression(node)
-    default:
-      return node.getText()
-  }
-}
-
-export function buildTailwindThemeColorsFromCssVars(
-  cssVars: z.infer<typeof registryItemCssVarsSchema>
+// Calls edit with each index of the object's or array's members, and the
+// object or array in the current code. ts-morph's nodes outlive edits, and
+// its loops walk the members they listed before editing some. Replacing the
+// member at an index inserts one at or before it and removes it, so the
+// members after it keep their indexes. After an edit, the object or array is
+// found again where it starts, which edits inside it never move.
+function editEachMember<T extends t.ObjectExpression | t.ArrayExpression>(
+  code: string,
+  container: T,
+  findAt: (code: string, start: number, options: ParseOptions) => T,
+  options: ParseOptions,
+  edit: (code: string, container: T, index: number) => string
 ) {
-  const result: Record<string, any> = {}
+  const memberCount =
+    container.type === "ObjectExpression"
+      ? container.properties.length
+      : container.elements.length
 
-  for (const key of Object.keys(cssVars)) {
-    const parts = key.split("-")
-    const colorName = parts[0]
-    const subType = parts.slice(1).join("-")
-
-    if (subType === "") {
-      if (typeof result[colorName] === "object") {
-        result[colorName].DEFAULT = `hsl(var(--${key}))`
-      } else {
-        result[colorName] = `hsl(var(--${key}))`
-      }
-    } else {
-      if (typeof result[colorName] !== "object") {
-        result[colorName] = { DEFAULT: `hsl(var(--${colorName}))` }
-      }
-      result[colorName][subType] = `hsl(var(--${key}))`
+  for (let index = 0; index < memberCount; index++) {
+    const editedCode = edit(code, container, index)
+    if (editedCode !== code) {
+      code = editedCode
+      container = findAt(code, container.start!, options)
     }
   }
 
-  // Remove DEFAULT if it's not in the original cssVars
-  for (const [colorName, value] of Object.entries(result)) {
-    if (
-      typeof value === "object" &&
-      value.DEFAULT === `hsl(var(--${colorName}))` &&
-      !(colorName in cssVars)
-    ) {
-      delete value.DEFAULT
-    }
+  return code
+}
+
+// A theme value as ts-morph's parseValue read it.
+type ThemeValue =
+  | string
+  | number
+  | boolean
+  | null
+  | ThemeValue[]
+  | { [key: string]: ThemeValue }
+
+// The theme as a plain object to merge into. ts-morph parsed its text on its
+// own, as `const theme = <text>` in TypeScript, which Babel cannot always read
+// the same way.
+function parseObjectLiteral(
+  objectLiteralString: string,
+  options: ParseOptions
+) {
+  const code = `const theme = ${objectLiteralString}`
+  const typeScriptOptions = { jsx: false }
+  const typeScriptErrors = countSyntaxErrorsExceptSkippedCommas(
+    code,
+    typeScriptOptions
+  )
+  if (
+    // In a declaration, TypeScript ends an object at a comma that starts a
+    // line, which it skips elsewhere (see parseModule). Babel cannot end it
+    // there.
+    typeScriptErrors === Infinity ||
+    // TypeScript reads JSX in a JavaScript config as a broken type
+    // assertion, which Babel does not parse into the same tree.
+    typeScriptErrors > countSyntaxErrorsExceptSkippedCommas(code, options)
+  ) {
+    throw new UnparsableConfigError()
   }
 
+  const [statement] = parseModule(code, typeScriptOptions).program.body
+  const initializer =
+    statement?.type === "VariableDeclaration"
+      ? statement.declarations[0]?.init
+      : undefined
+
+  if (initializer?.type !== "ObjectExpression") {
+    throw new Error("Invalid input: not an object literal")
+  }
+
+  return parseObjectLiteralExpression(code, initializer)
+}
+
+function parseObjectLiteralExpression(code: string, node: t.ObjectExpression) {
+  const result: { [key: string]: ThemeValue } = {}
+  for (const property of node.properties) {
+    if (isPropertyAssignment(property)) {
+      const name = getPropertyName(code, property)!.replace(/\'/g, "")
+      result[name] = parseValue(code, property.value)
+    }
+  }
   return result
+}
+
+// Strings keep their quotes, and anything but a literal, an array or an
+// object is its source text.
+function parseValue(code: string, node: t.Node | null): ThemeValue {
+  // A hole is an empty OmittedExpression.
+  if (!node) {
+    return ""
+  }
+
+  switch (node.type) {
+    case "StringLiteral":
+      return getText(code, node)
+    case "NumericLiteral":
+      return Number(getText(code, node))
+    case "BooleanLiteral":
+      return node.value
+    case "NullLiteral":
+      return null
+    case "ArrayExpression":
+      return node.elements.map((element) => parseValue(code, element))
+    case "ObjectExpression":
+      return parseObjectLiteralExpression(code, node)
+    default:
+      return getText(code, node)
+  }
 }

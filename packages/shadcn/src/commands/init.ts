@@ -823,7 +823,7 @@ export async function runInit(
     }
   }
 
-  // Clear cosmiconfig cache so addComponents re-reads the updated workspace configs.
+  // Clear the config cache so addComponents re-reads the updated workspace configs.
   explorer.clearCaches()
 
   // Add components.

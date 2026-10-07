@@ -4,7 +4,7 @@ import {
   registryItemCssSchema,
   registryItemCssVarsSchema,
   registryItemTailwindSchema,
-} from "@/src/schema"
+} from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { TailwindVersion } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"

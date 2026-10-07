@@ -1,11 +1,21 @@
 import { promises as fs } from "fs"
-import { Transformer } from "@/src/utils/transformers"
 import {
-  Node,
-  NoSubstitutionTemplateLiteral,
-  StringLiteral,
-  SyntaxKind,
-} from "ts-morph"
+  getJsxAttributes,
+  removeJsxAttributes,
+} from "@/src/utils/codemod/jsx-attributes"
+import {
+  getDescendants,
+  getText,
+  isCallExpression,
+  parseTransformInput,
+} from "@/src/utils/codemod/parse"
+import {
+  StringLiterals,
+  type Literal,
+} from "@/src/utils/codemod/string-literals"
+import { type types as t } from "@babel/core"
+
+import { fromTextTransformer } from "./text-transformer"
 
 const FONT_MARKERS = [
   {
@@ -17,8 +27,6 @@ const FONT_MARKERS = [
 
 const MARKER_REGEX = /\bcn-font-heading\b/
 const supportCache = new Map<string, Promise<Set<string>>>()
-
-type StringLikeLiteral = StringLiteral | NoSubstitutionTemplateLiteral
 
 async function getSupportedFontMarkers(
   tailwindCssPath?: string,
@@ -78,97 +86,112 @@ function rewriteFontMarkers(
 }
 
 function processStringLiteral(
-  node: StringLikeLiteral,
+  literals: StringLiterals,
+  node: Literal,
   supportedMarkers: Set<string>
 ) {
-  const currentValue = node.getLiteralValue()
+  const currentValue = literals.getValue(node)
   if (!MARKER_REGEX.test(currentValue)) {
     return
   }
 
   const newValue = rewriteFontMarkers(currentValue, supportedMarkers)
   if (newValue !== currentValue) {
-    node.setLiteralValue(newValue)
+    literals.setValue(node, newValue)
   }
 }
 
-function processStringLiterals(node: Node, supportedMarkers: Set<string>) {
-  for (const stringLit of node.getDescendantsOfKind(SyntaxKind.StringLiteral)) {
-    processStringLiteral(stringLit, supportedMarkers)
+function processStringLiterals(
+  literals: StringLiterals,
+  node: t.Node,
+  supportedMarkers: Set<string>
+) {
+  for (const stringLit of literals.getStringLiterals(node)) {
+    processStringLiteral(literals, stringLit, supportedMarkers)
   }
 
-  for (const templateLit of node.getDescendantsOfKind(
-    SyntaxKind.NoSubstitutionTemplateLiteral
-  )) {
-    processStringLiteral(templateLit, supportedMarkers)
+  for (const templateLit of literals.getTemplateLiterals(node)) {
+    processStringLiteral(literals, templateLit, supportedMarkers)
   }
 }
 
-export const transformFont: Transformer = async ({
-  sourceFile,
-  config,
-  supportedFontMarkers,
-}) => {
-  const supportedMarkers = await getSupportedFontMarkers(
-    config.resolvedPaths.tailwindCss,
-    supportedFontMarkers
-  )
+// ts-morph edits the file as it goes: the attributes left empty go after the
+// className edits, and the cva() and mergeProps() calls are read after that.
+export const transformFont = fromTextTransformer(
+  async (code, { config, supportedFontMarkers }) => {
+    const supportedMarkers = await getSupportedFontMarkers(
+      config.resolvedPaths.tailwindCss,
+      supportedFontMarkers
+    )
 
-  const attributesToRemove: ReturnType<
-    typeof sourceFile.getDescendantsOfKind<typeof SyntaxKind.JsxAttribute>
-  > = []
+    const file = parseTransformInput(code)
+    if (!file) {
+      return code
+    }
 
-  for (const attr of sourceFile.getDescendantsOfKind(SyntaxKind.JsxAttribute)) {
-    const attrName = attr.getNameNode().getText()
-    if (attrName !== "className" && attrName !== "classNames") {
+    const attributesToRemove: number[] = []
+    const literals = new StringLiterals(code, file)
+
+    getJsxAttributes(file).forEach(({ attribute }, index) => {
+      const attrName = getText(code, attribute.name)
+      if (attrName !== "className" && attrName !== "classNames") {
+        return
+      }
+
+      const initializer = attribute.value
+
+      if (initializer?.type === "StringLiteral") {
+        const currentValue = literals.getValue(initializer)
+        if (MARKER_REGEX.test(currentValue)) {
+          const newValue = rewriteFontMarkers(currentValue, supportedMarkers)
+          if (newValue === "") {
+            attributesToRemove.push(index)
+          } else if (newValue !== currentValue) {
+            literals.setValue(initializer, newValue)
+          }
+        }
+      }
+
+      if (initializer?.type === "JSXExpressionContainer") {
+        processStringLiterals(literals, initializer, supportedMarkers)
+      }
+    })
+
+    return transformFontCalls(
+      removeJsxAttributes(literals.apply(), attributesToRemove),
+      supportedMarkers
+    )
+  }
+)
+
+// The cva() and mergeProps() calls of transformFont.
+function transformFontCalls(code: string, supportedMarkers: Set<string>) {
+  const file = parseTransformInput(code)
+  if (!file) {
+    return code
+  }
+
+  const literals = new StringLiterals(code, file)
+  for (const call of getDescendants(file, isCallExpression)) {
+    if (getText(code, call.callee) === "cva") {
+      for (const arg of call.arguments) {
+        if (arg.type === "StringLiteral") {
+          processStringLiteral(literals, arg, supportedMarkers)
+          continue
+        }
+        if (arg.type === "TemplateLiteral" && arg.expressions.length === 0) {
+          processStringLiteral(literals, arg, supportedMarkers)
+          continue
+        }
+        processStringLiterals(literals, arg, supportedMarkers)
+      }
       continue
     }
 
-    const initializer = attr.getInitializer()
-
-    if (initializer?.isKind(SyntaxKind.StringLiteral)) {
-      const currentValue = initializer.getLiteralValue()
-      if (MARKER_REGEX.test(currentValue)) {
-        const newValue = rewriteFontMarkers(currentValue, supportedMarkers)
-        if (newValue === "") {
-          attributesToRemove.push(attr)
-        } else if (newValue !== currentValue) {
-          initializer.setLiteralValue(newValue)
-        }
-      }
-    }
-
-    if (initializer?.isKind(SyntaxKind.JsxExpression)) {
-      processStringLiterals(initializer, supportedMarkers)
+    if (getText(code, call.callee) === "mergeProps") {
+      processStringLiterals(literals, call, supportedMarkers)
     }
   }
 
-  for (const attr of attributesToRemove) {
-    attr.remove()
-  }
-
-  for (const call of sourceFile.getDescendantsOfKind(
-    SyntaxKind.CallExpression
-  )) {
-    if (call.getExpression().getText() === "cva") {
-      for (const arg of call.getArguments()) {
-        if (arg.isKind(SyntaxKind.StringLiteral)) {
-          processStringLiteral(arg, supportedMarkers)
-          continue
-        }
-        if (arg.isKind(SyntaxKind.NoSubstitutionTemplateLiteral)) {
-          processStringLiteral(arg, supportedMarkers)
-          continue
-        }
-        processStringLiterals(arg, supportedMarkers)
-      }
-      continue
-    }
-
-    if (call.getExpression().getText() === "mergeProps") {
-      processStringLiterals(call, supportedMarkers)
-    }
-  }
-
-  return sourceFile
+  return literals.apply()
 }
