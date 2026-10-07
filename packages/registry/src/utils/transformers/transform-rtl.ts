@@ -1,8 +1,21 @@
-import { Transformer } from "@/src/utils/transformers"
-import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph"
-import type { StringLiteral } from "ts-morph"
+import { applyEdits, type TextEdit } from "@/src/utils/codemod/edits"
+import { getReplacementText } from "@/src/utils/codemod/indentation"
+import {
+  getPropertyName,
+  isPropertyAssignment,
+} from "@/src/utils/codemod/object-literals"
+import {
+  getDescendants,
+  getText,
+  isCallExpression,
+  parseTransformInput,
+} from "@/src/utils/codemod/parse"
+import { StringLiterals } from "@/src/utils/codemod/string-literals"
+import { types as t } from "@babel/core"
 
+import { fromTextTransformer, transformSourceText } from "./text-transformer"
 import { splitClassName } from "./transform-css-vars"
+import { getArgumentStrings, getClassNameStrings } from "./transform-tw-prefix"
 
 // Physical → logical Tailwind class mappings (direct replacement).
 // Order matters to avoid partial matches:
@@ -95,15 +108,9 @@ const RTL_SIDE_PROP_MAPPINGS: Record<string, string> = {
 // Positioning prefixes to skip for physical side variants.
 const POSITIONING_PREFIXES = ["-left-", "-right-", "left-", "right-"]
 
-export const transformRtl: Transformer = async ({ sourceFile, config }) => {
-  if (!config.rtl) {
-    return sourceFile
-  }
-
-  applyRtlTransformToSourceFile(sourceFile)
-
-  return sourceFile
-}
+export const transformRtl = fromTextTransformer((code, { config }) =>
+  config.rtl ? applyRtl(code) : code
+)
 
 // Standalone function to transform source code for RTL.
 // This is used by the build script.
@@ -112,28 +119,11 @@ export async function transformDirection(source: string, rtl: boolean) {
     return source
   }
 
-  const project = new Project({
-    useInMemoryFileSystem: true,
-  })
-
-  const sourceFile = project.createSourceFile("component.tsx", source, {
-    scriptKind: ScriptKind.TSX,
-    overwrite: true,
-  })
-
-  applyRtlTransformToSourceFile(sourceFile)
-
-  return sourceFile.getText()
+  return transformSourceText(source, applyRtl)
 }
 
 function stripQuotes(str: string) {
   return str.replace(/^["']|["']$/g, "")
-}
-
-// Transforms a string literal node by applying RTL mappings.
-function transformStringLiteralNode(node: StringLiteral) {
-  const text = node.getLiteralText()
-  node.setLiteralValue(applyRtlMapping(text))
 }
 
 export function applyRtlMapping(input: string) {
@@ -244,214 +234,137 @@ export function applyRtlMapping(input: string) {
     .join(" ")
 }
 
-// Core RTL transformation logic that operates on a SourceFile.
-// Extracted to be reusable by both transformRtl (CLI) and transformDirection (build script).
-function applyRtlTransformToSourceFile(sourceFile: SourceFile) {
-  // Find the cva function calls.
-  sourceFile
-    .getDescendantsOfKind(SyntaxKind.CallExpression)
-    .filter((node) => node.getExpression().getText() === "cva")
-    .forEach((node) => {
-      // cva(base, ...).
-      const firstArg = node.getArguments()[0]
-      if (firstArg?.isKind(SyntaxKind.StringLiteral)) {
-        transformStringLiteralNode(firstArg)
-      }
+// Core RTL transformation logic, shared by transformRtl (CLI) and
+// transformDirection (build script). ts-morph visits the class strings, then
+// the side props, then the side defaults. A class string visited again maps
+// the value the visit before it wrote, which applyRtlMapping() can change
+// again, as it adds rtl: classes.
+function applyRtl(code: string) {
+  const file = parseTransformInput(code)
+  if (!file) {
+    return code
+  }
 
-      // cva(..., { variants: { ... } }).
-      if (node.getArguments()[1]?.isKind(SyntaxKind.ObjectLiteralExpression)) {
-        node
-          .getArguments()[1]
-          ?.getDescendantsOfKind(SyntaxKind.PropertyAssignment)
-          .find((node) => node.getName() === "variants")
-          ?.getDescendantsOfKind(SyntaxKind.PropertyAssignment)
-          .forEach((node) => {
-            node
-              .getDescendantsOfKind(SyntaxKind.PropertyAssignment)
-              .forEach((prop) => {
-                const classNames = prop.getInitializerIfKind(
-                  SyntaxKind.StringLiteral
-                )
-                if (classNames) {
-                  transformStringLiteralNode(classNames)
-                }
-              })
-          })
-      }
-    })
+  // ts-morph's setLiteralValue() writes the value even when the mapping
+  // leaves it as it is, which rewrites the string's escapes.
+  const literals = new StringLiterals(code, file)
+  for (const literal of [
+    ...getClassNameStrings(code, file),
+    ...getMergePropsStrings(code, file),
+  ]) {
+    literals.setValue(literal, applyRtlMapping(literals.getValue(literal)))
+  }
 
-  // Find all jsx attributes with the name className.
-  sourceFile.getDescendantsOfKind(SyntaxKind.JsxAttribute).forEach((node) => {
-    if (node.getNameNode().getText() === "className") {
-      // className="...".
-      const initializer = node.getInitializer()
-      if (initializer?.isKind(SyntaxKind.StringLiteral)) {
-        transformStringLiteralNode(initializer)
-      }
+  const sideEdits = [
+    ...getSideProps(code, file),
+    ...getSideDefaults(code, file),
+  ].flatMap((literal) => getSideEdit(code, literal))
 
-      // className={...}.
-      if (node.getInitializer()?.isKind(SyntaxKind.JsxExpression)) {
-        // Check if it's a call to cn().
-        const callExpression = node
-          .getInitializer()
-          ?.getDescendantsOfKind(SyntaxKind.CallExpression)
-          .find((node) => node.getExpression().getText() === "cn")
-        if (callExpression) {
-          callExpression.getArguments().forEach((arg) => {
-            if (
-              arg.isKind(SyntaxKind.ConditionalExpression) ||
-              arg.isKind(SyntaxKind.BinaryExpression)
-            ) {
-              arg
-                .getChildrenOfKind(SyntaxKind.StringLiteral)
-                .forEach(transformStringLiteralNode)
-            }
-            if (arg.isKind(SyntaxKind.StringLiteral)) {
-              transformStringLiteralNode(arg)
-            }
-          })
-        }
-      }
+  return applyEdits(code, [...literals.getEdits(), ...sideEdits])
+}
+
+// The strings of the className property of mergeProps({ ... }), the first
+// argument: a string, or the arguments of a cn() call.
+function getMergePropsStrings(code: string, file: t.File) {
+  return getDescendants(file, isCallExpression).flatMap((call) => {
+    const [options] = call.arguments
+    if (
+      getText(code, call.callee) !== "mergeProps" ||
+      options?.type !== "ObjectExpression"
+    ) {
+      return []
     }
 
-    // classNames={...}.
-    if (node.getNameNode().getText() === "classNames") {
-      if (node.getInitializer()?.isKind(SyntaxKind.JsxExpression)) {
-        node
-          .getDescendantsOfKind(SyntaxKind.PropertyAssignment)
-          .forEach((node) => {
-            if (node.getInitializer()?.isKind(SyntaxKind.CallExpression)) {
-              const callExpression = node.getInitializerIfKind(
-                SyntaxKind.CallExpression
-              )
-              if (callExpression) {
-                callExpression.getArguments().forEach((arg) => {
-                  if (arg.isKind(SyntaxKind.ConditionalExpression)) {
-                    arg
-                      .getChildrenOfKind(SyntaxKind.StringLiteral)
-                      .forEach(transformStringLiteralNode)
-                  }
-                  if (arg.isKind(SyntaxKind.StringLiteral)) {
-                    transformStringLiteralNode(arg)
-                  }
-                })
-              }
-            }
-
-            const propInit = node.getInitializer()
-            if (propInit?.isKind(SyntaxKind.StringLiteral)) {
-              if (node.getNameNode().getText() !== "variant") {
-                transformStringLiteralNode(propInit)
-              }
-            }
-          })
-      }
-    }
-  })
-
-  // Find mergeProps calls with className property containing cn().
-  sourceFile
-    .getDescendantsOfKind(SyntaxKind.CallExpression)
-    .filter((node) => node.getExpression().getText() === "mergeProps")
-    .forEach((node) => {
-      const firstArg = node.getArguments()[0]
-      if (firstArg?.isKind(SyntaxKind.ObjectLiteralExpression)) {
-        // Find className property.
-        const classNameProp = firstArg
-          .getProperties()
-          .find(
-            (prop) =>
-              prop.isKind(SyntaxKind.PropertyAssignment) &&
-              prop.getName() === "className"
-          )
-        if (classNameProp?.isKind(SyntaxKind.PropertyAssignment)) {
-          const init = classNameProp.getInitializer()
-          // Handle cn() call.
-          if (init?.isKind(SyntaxKind.CallExpression)) {
-            if (init.getExpression().getText() === "cn") {
-              init.getArguments().forEach((arg) => {
-                if (arg.isKind(SyntaxKind.StringLiteral)) {
-                  transformStringLiteralNode(arg)
-                }
-                if (
-                  arg.isKind(SyntaxKind.ConditionalExpression) ||
-                  arg.isKind(SyntaxKind.BinaryExpression)
-                ) {
-                  arg
-                    .getChildrenOfKind(SyntaxKind.StringLiteral)
-                    .forEach(transformStringLiteralNode)
-                }
-              })
-            }
-          }
-          // Handle plain string literal.
-          if (init?.isKind(SyntaxKind.StringLiteral)) {
-            transformStringLiteralNode(init)
-          }
-        }
-      }
-    })
-
-  // Transform side prop to logical values for specific components.
-  ;[
-    ...sourceFile.getDescendantsOfKind(SyntaxKind.JsxSelfClosingElement),
-    ...sourceFile.getDescendantsOfKind(SyntaxKind.JsxOpeningElement),
-  ].forEach((element) => {
-    const tagName = element.getTagNameNode().getText()
-    if (!RTL_SIDE_PROP_COMPONENTS.includes(tagName)) {
-      return
+    const className = options.properties
+      .filter(isPropertyAssignment)
+      .find((property) => getPropertyName(code, property) === "className")
+    if (!className) {
+      return []
     }
 
-    const sideAttr = element
-      .getAttributes()
-      .find(
-        (attr) =>
-          attr.isKind(SyntaxKind.JsxAttribute) &&
-          attr.getNameNode().getText() === "side"
+    const { value } = className
+    if (value.type === "StringLiteral") {
+      return [value]
+    }
+    if (isCallExpression(value) && getText(code, value.callee) === "cn") {
+      return value.arguments.flatMap((arg) =>
+        getArgumentStrings(arg, { binary: true })
       )
-
-    if (!sideAttr?.isKind(SyntaxKind.JsxAttribute)) {
-      return
     }
-
-    const sideValue = sideAttr.getInitializer()
-    if (!sideValue?.isKind(SyntaxKind.StringLiteral)) {
-      return
-    }
-
-    const currentValue = stripQuotes(sideValue.getText() ?? "")
-    const mappedValue = RTL_SIDE_PROP_MAPPINGS[currentValue]
-    if (mappedValue) {
-      sideValue.replaceWithText(`"${mappedValue}"`)
-    }
+    return []
   })
+}
 
-  // Transform default parameter values for side prop (e.g., side = "right").
-  // Only for functions whose names are in the whitelist.
-  sourceFile.getDescendantsOfKind(SyntaxKind.BindingElement).forEach((node) => {
-    const paramName = node.getNameNode().getText()
-    if (paramName !== "side") {
-      return
+// The string of the first side attribute of each element of a component in
+// RTL_SIDE_PROP_COMPONENTS.
+function getSideProps(code: string, file: t.File) {
+  return getDescendants(file, t.isJSXOpeningElement).flatMap((element) => {
+    if (!RTL_SIDE_PROP_COMPONENTS.includes(getText(code, element.name))) {
+      return []
     }
 
-    // Check if this binding element is inside a whitelisted function.
-    const functionDecl = node.getFirstAncestorByKind(
-      SyntaxKind.FunctionDeclaration
+    const side = element.attributes.find(
+      (attribute) =>
+        attribute.type === "JSXAttribute" &&
+        getText(code, attribute.name) === "side"
     )
-    const functionName = functionDecl?.getName()
-    if (!functionName || !RTL_SIDE_PROP_COMPONENTS.includes(functionName)) {
-      return
-    }
-
-    const initializer = node.getInitializer()
-    if (!initializer?.isKind(SyntaxKind.StringLiteral)) {
-      return
-    }
-
-    const currentValue = stripQuotes(initializer.getText() ?? "")
-    const mappedValue = RTL_SIDE_PROP_MAPPINGS[currentValue]
-    if (mappedValue) {
-      initializer.replaceWithText(`"${mappedValue}"`)
-    }
+    return side?.type === "JSXAttribute" && side.value?.type === "StringLiteral"
+      ? [side.value]
+      : []
   })
+}
+
+// The string default of each side binding, as in function F({ side = "right" }),
+// whose innermost function declaration is a component in
+// RTL_SIDE_PROP_COMPONENTS. TypeScript's BindingElement is an element of a
+// Babel pattern. A destructuring assignment's pattern counts too, though
+// TypeScript parses it as an object or array literal.
+function getSideDefaults(code: string, file: t.File) {
+  const functions = getDescendants(file, t.isFunctionDeclaration)
+  const elements = getDescendants(
+    file,
+    (node): node is t.ObjectPattern | t.ArrayPattern =>
+      t.isObjectPattern(node) || t.isArrayPattern(node)
+  ).flatMap((pattern) =>
+    pattern.type === "ObjectPattern"
+      ? pattern.properties.map((property) =>
+          property.type === "ObjectProperty" ? property.value : property
+        )
+      : pattern.elements
+  )
+
+  return elements.flatMap((element) => {
+    if (
+      element?.type !== "AssignmentPattern" ||
+      getText(code, element.left) !== "side" ||
+      element.right.type !== "StringLiteral"
+    ) {
+      return []
+    }
+
+    const functionName = functions
+      .filter((fn) => fn.start! <= element.start! && element.end! <= fn.end!)
+      .at(-1)?.id?.name
+    return functionName && RTL_SIDE_PROP_COMPONENTS.includes(functionName)
+      ? [element.right]
+      : []
+  })
+}
+
+// ts-morph's replaceWithText() on a side string with its logical value, in
+// double quotes.
+function getSideEdit(code: string, literal: t.StringLiteral): TextEdit[] {
+  const mappedValue =
+    RTL_SIDE_PROP_MAPPINGS[stripQuotes(getText(code, literal))]
+  if (!mappedValue) {
+    return []
+  }
+
+  return [
+    {
+      start: literal.start!,
+      end: literal.end!,
+      text: getReplacementText(code, literal.start!, `"${mappedValue}"`),
+    },
+  ]
 }
