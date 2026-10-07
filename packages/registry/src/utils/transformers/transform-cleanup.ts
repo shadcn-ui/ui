@@ -12,9 +12,9 @@ import {
   StringLiterals,
   type Literal,
 } from "@/src/utils/codemod/string-literals"
+import { type Transformer } from "@/src/utils/transformers"
+import { transformSourceText } from "@/src/utils/transformers/source-text"
 import { type types as t } from "@babel/core"
-
-import { fromTextTransformer, transformSourceText } from "./text-transformer"
 
 // Generic cleanup should leave font markers alone until transformFont runs.
 const PRESERVED_CN_MARKERS = new Set(["cn-font-heading"])
@@ -147,7 +147,7 @@ function cleanupCalls(code: string) {
   return literals.apply()
 }
 
-export const transformCleanup = fromTextTransformer(cleanup)
+export const transformCleanup: Transformer = cleanup
 
 // Standalone function to clean up cn-* markers from source code.
 // This is used by the build script and doesn't require a config object.

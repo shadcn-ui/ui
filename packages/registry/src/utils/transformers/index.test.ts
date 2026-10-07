@@ -123,6 +123,50 @@ console.log("hello")
     `)
   })
 
+  // TypeScript skips merge conflict markers as trivia: a <<<<<<< line, and
+  // from ======= to the >>>>>>> line.
+  test("drops leading merge conflict markers", async () => {
+    expect(
+      await transform(
+        {
+          filename: "button.tsx",
+          raw: `<<<<<<< HEAD
+import { a } from "@/lib/a"
+=======
+import { b } from "@/lib/b"
+>>>>>>> branch
+
+export const c = 1
+`,
+          config,
+        },
+        []
+      )
+    ).toBe(`import { a } from "@/lib/a"
+=======
+import { b } from "@/lib/b"
+>>>>>>> branch
+
+export const c = 1
+`)
+
+    expect(
+      await transform(
+        {
+          filename: "button.tsx",
+          raw: `=======
+import { b } from "@/lib/b"
+>>>>>>> branch
+export const c = 1
+`,
+          config,
+        },
+        []
+      )
+    ).toBe(`export const c = 1
+`)
+  })
+
   test("keeps comments that follow the first token and trailing whitespace", async () => {
     expect(
       await transform(

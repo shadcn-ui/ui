@@ -2,7 +2,7 @@ import { transformFromAstSync } from "@babel/core"
 import { describe, expect, it } from "vitest"
 
 import { parseModule } from "./parse"
-import { renameVariable } from "./rename"
+import { renameFunction, renameVariable } from "./rename"
 
 function renameToInter(code: string) {
   return renameVariable(code, code.indexOf("const ") + "const ".length, "inter")
@@ -128,5 +128,51 @@ export { inter }
         configFile: false,
       })
     ).toThrow(/Duplicate declaration "cn"/)
+  })
+})
+
+// Expectations from ts-morph's FunctionDeclaration#rename().
+describe("renameFunction", () => {
+  function renameToProxy(code: string) {
+    return renameFunction(
+      code,
+      code.indexOf("function ") + "function ".length,
+      "proxy"
+    )
+  }
+
+  it("renames references, but not a parameter of the same name", () => {
+    expect(
+      renameToProxy(`export function middleware(middleware) {
+  return middleware(middleware)
+}
+export default middleware
+middleware.matcher = "/"
+`)
+    ).toMatchInlineSnapshot(`
+      "export function proxy(middleware) {
+        return middleware(middleware)
+      }
+      export default proxy
+      proxy.matcher = "/"
+      "
+    `)
+  })
+
+  it("renames overloads and a duplicate declaration, which TypeScript merges", () => {
+    const code = `function middleware(a: string): void
+function middleware(a: unknown) {}
+function middleware() {}
+middleware("a")
+`
+    const implementation = code.indexOf("middleware(a: unknown)")
+    expect(renameFunction(code, implementation, "proxy"))
+      .toMatchInlineSnapshot(`
+      "function proxy(a: string): void
+      function proxy(a: unknown) {}
+      function proxy() {}
+      proxy("a")
+      "
+    `)
   })
 })

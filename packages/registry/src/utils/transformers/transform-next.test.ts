@@ -706,3 +706,74 @@ export function middleware(request: Request) {
     })
   })
 })
+
+// Expectations from ts-morph's rename through TypeScript's language service.
+describe("transformNext renames as TypeScript does", () => {
+  test("leaves a parameter of the same name, and strings", async () => {
+    expect(
+      await transformNextIn(`export function middleware(middleware: Request) {
+  return middleware
+}
+
+middleware.displayName = "middleware"
+`)
+    ).toBe(`export function proxy(middleware: Request) {
+  return middleware
+}
+
+proxy.displayName = "middleware"
+`)
+  })
+
+  test("renames the overloads with the implementation", async () => {
+    expect(
+      await transformNextIn(`export function middleware(request: NextRequest): Response
+export function middleware(request: NextRequest) {
+  return middleware(request)
+}
+`)
+    ).toBe(`export function proxy(request: NextRequest): Response
+export function proxy(request: NextRequest) {
+  return proxy(request)
+}
+`)
+  })
+
+  test("renames a typed declaration and the types that refer to it", async () => {
+    expect(
+      await transformNextIn(`export const middleware: NextMiddleware = (request) => {
+  return NextResponse.next()
+}
+
+export type Middleware = typeof middleware
+`)
+    ).toBe(`export const proxy: NextMiddleware = (request) => {
+  return NextResponse.next()
+}
+
+export type Middleware = typeof proxy
+`)
+  })
+
+  test("renames re-exported names, but not a string alias", async () => {
+    expect(
+      await transformNextIn(`export { middleware } from "./auth"
+export { "middleware" as auth, handler as "middleware" } from "./handlers"
+`)
+    ).toBe(`export { proxy } from "./auth"
+export { proxy as auth, handler as "middleware" } from "./handlers"
+`)
+  })
+
+  test("renames a function exported as default", async () => {
+    expect(
+      await transformNextIn(`function middleware() {}
+
+export { middleware as default }
+`)
+    ).toBe(`function proxy() {}
+
+export { proxy as default }
+`)
+  })
+})
