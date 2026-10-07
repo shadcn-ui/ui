@@ -11,58 +11,56 @@ import {
   isCallExpression,
   parseTransformInput,
 } from "@/src/utils/codemod/parse"
+import { type Transformer } from "@/src/utils/transformers"
 import { types as t } from "@babel/core"
 
 import {
   getProjectTailwindVersionFromConfig,
   TailwindVersion,
 } from "../get-project-info"
-import { fromTextTransformer } from "./text-transformer"
 import { splitClassName } from "./transform-css-vars"
 
-export const transformTwPrefixes = fromTextTransformer(
-  async (code, { config }) => {
-    const prefix = config.tailwind?.prefix
-    if (!prefix) {
-      return code
-    }
-    const tailwindVersion = await getProjectTailwindVersionFromConfig(config)
+export const transformTwPrefixes: Transformer = async (code, { config }) => {
+  const prefix = config.tailwind?.prefix
+  if (!prefix) {
+    return code
+  }
+  const tailwindVersion = await getProjectTailwindVersionFromConfig(config)
 
-    const file = parseTransformInput(code)
-    if (!file) {
-      return code
-    }
+  const file = parseTransformInput(code)
+  if (!file) {
+    return code
+  }
 
-    // ts-morph's replaceWithText() on each class string: always in double
-    // quotes, and without the quotes the string's text has inside it. A string
-    // visited again reads the text the visit before it wrote.
-    const texts = new Map<t.StringLiteral, string>()
-    for (const literal of getClassNameStrings(code, file)) {
-      const text = texts.get(literal) ?? getText(code, literal)
-      const prefixed = applyPrefix(
-        text.replace(/"|'/g, ""),
-        prefix,
-        tailwindVersion
-      )
-      texts.set(
-        literal,
-        getReplacementText(code, literal.start!, `"${prefixed}"`)
-      )
-    }
-
-    // ts-morph rejects an edit that changes the tree, which stripping the
-    // quotes can do: `'\''` becomes `"tw:\"`, a string that runs on past its
-    // closing quote. ts-morph throws there, where this writes it as it is.
-    return applyEdits(
-      code,
-      Array.from(texts, ([literal, text]) => ({
-        start: literal.start!,
-        end: literal.end!,
-        text,
-      }))
+  // ts-morph's replaceWithText() on each class string: always in double
+  // quotes, and without the quotes the string's text has inside it. A string
+  // visited again reads the text the visit before it wrote.
+  const texts = new Map<t.StringLiteral, string>()
+  for (const literal of getClassNameStrings(code, file)) {
+    const text = texts.get(literal) ?? getText(code, literal)
+    const prefixed = applyPrefix(
+      text.replace(/"|'/g, ""),
+      prefix,
+      tailwindVersion
+    )
+    texts.set(
+      literal,
+      getReplacementText(code, literal.start!, `"${prefixed}"`)
     )
   }
-)
+
+  // ts-morph rejects an edit that changes the tree, which stripping the
+  // quotes can do: `'\''` becomes `"tw:\"`, a string that runs on past its
+  // closing quote. ts-morph throws there, where this writes it as it is.
+  return applyEdits(
+    code,
+    Array.from(texts, ([literal, text]) => ({
+      start: literal.start!,
+      end: literal.end!,
+      text,
+    }))
+  )
+}
 
 // The class strings the tw-prefix and rtl transformers visit, in the order
 // they visit them: the cva() calls, then the className and classNames

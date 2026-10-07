@@ -9,6 +9,7 @@ import { applyManipulation } from "./edits"
 import { parseModule } from "./parse"
 
 type Scope = NodePath["scope"]
+type Binding = NonNullable<ReturnType<Scope["getBinding"]>>
 
 // ts-morph's VariableDeclaration#rename(newName), which renames through
 // TypeScript's language service: the declaration and every reference that
@@ -19,23 +20,11 @@ export function renameVariable(
   declarationStart: number,
   newName: string
 ) {
-  const declarators: NodePath<t.VariableDeclarator>[] = []
-  const identifiers: NodePath<t.Identifier | t.JSXIdentifier>[] = []
+  const { declarations, identifiers } = collectDeclarations(code)
 
-  traverseWithoutCollisionChecks(parseModule(code), {
-    VariableDeclarator(path) {
-      declarators.push(path)
-    },
-    Identifier(path) {
-      identifiers.push(path)
-    },
-    JSXIdentifier(path) {
-      identifiers.push(path)
-    },
-  })
-
-  const declaration = declarators.find(
-    (path) => path.node.id.start === declarationStart
+  const declaration = declarations.find(
+    (path): path is NodePath<t.VariableDeclarator> =>
+      path.isVariableDeclarator() && path.node.id.start === declarationStart
   )!
   const { id } = declaration.node
   if (id.type !== "Identifier") {
@@ -48,30 +37,91 @@ export function renameVariable(
   }
 
   const binding = declaration.scope.getBinding(id.name)!
+  return renameBinding(code, binding, identifiers, newName)
+}
+
+// ts-morph's FunctionDeclaration#rename(newName), the same rename for the
+// function declaration whose name starts at declarationStart.
+export function renameFunction(
+  code: string,
+  declarationStart: number,
+  newName: string
+) {
+  const { declarations, identifiers } = collectDeclarations(code)
+
+  const declaration = declarations.find(
+    (path): path is NodePath<t.FunctionDeclaration> =>
+      path.isFunctionDeclaration() && path.node.id?.start === declarationStart
+  )!
+  // A function's own scope is the one of its parameters and body. Its name is
+  // bound in the scope around it.
+  const binding = declaration.parentPath.scope.getBinding(
+    declaration.node.id!.name
+  )!
+  return renameBinding(code, binding, identifiers, newName)
+}
+
+function collectDeclarations(code: string) {
+  const declarations: NodePath<t.VariableDeclarator | t.FunctionDeclaration>[] =
+    []
+  const identifiers: NodePath<t.Identifier | t.JSXIdentifier>[] = []
+
+  traverseWithoutCollisionChecks(parseModule(code), {
+    VariableDeclarator(path) {
+      declarations.push(path)
+    },
+    FunctionDeclaration(path) {
+      declarations.push(path)
+    },
+    Identifier(path) {
+      identifiers.push(path)
+    },
+    JSXIdentifier(path) {
+      identifiers.push(path)
+    },
+  })
+
+  return { declarations, identifiers }
+}
+
+function renameBinding(
+  code: string,
+  binding: Binding,
+  identifiers: NodePath<t.Identifier | t.JSXIdentifier>[],
+  newName: string
+) {
+  const { name } = binding.identifier
   // TypeScript gives a redeclaration a symbol of its own, so it keeps its
   // name. Babel records it like an assignment to the first declaration.
+  // Function declarations are the exception: TypeScript merges them into one
+  // symbol, as it does overloads, which Babel records as references.
   const redeclarations = new Set<t.Node>(
     binding.constantViolations
       .filter(
         (violation) =>
-          violation.isVariableDeclarator() || violation.isDeclaration()
+          (violation.isVariableDeclarator() || violation.isDeclaration()) &&
+          !(
+            binding.path.isFunctionDeclaration() &&
+            violation.isFunctionDeclaration()
+          )
       )
-      .flatMap(
-        (violation) => violation.getBindingIdentifiers(true)[id.name] ?? []
-      )
+      .flatMap((violation) => violation.getBindingIdentifiers(true)[name] ?? [])
   )
   const edits = identifiers
     .filter(
       (path) =>
-        path.node.name === id.name &&
-        isReference(path) &&
-        path.scope.getBinding(id.name) === binding &&
-        !redeclarations.has(path.node)
+        // A function's name is in the scope of its parameters, where one of
+        // them can have the same name.
+        path.node === binding.identifier ||
+        (path.node.name === name &&
+          isReference(path) &&
+          path.scope.getBinding(name) === binding &&
+          !redeclarations.has(path.node))
     )
     .map((path) => ({
       start: path.node.start!,
       // An identifier's range includes its type annotation.
-      end: path.node.start! + id.name.length,
+      end: path.node.start! + name.length,
       text: newName,
     }))
 

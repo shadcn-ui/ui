@@ -1,14 +1,14 @@
-import { promises as fs } from "fs"
-import { tmpdir } from "os"
-import path from "path"
 import { registryBaseColorSchema } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
+import {
+  getTextFromFirstToken,
+  stripByteOrderMark,
+} from "@/src/utils/transformers/source-text"
 import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
 import { transformIcons } from "@/src/utils/transformers/transform-icons"
 import { transformImport } from "@/src/utils/transformers/transform-import"
 import { transformJsx } from "@/src/utils/transformers/transform-jsx"
 import { transformRsc } from "@/src/utils/transformers/transform-rsc"
-import { Project, ScriptKind, type SourceFile } from "ts-morph"
 import { z } from "zod"
 
 import { transformCleanup } from "./transform-cleanup"
@@ -25,21 +25,15 @@ export type TransformOpts = {
   supportedFontMarkers?: string[]
 }
 
-export type Transformer<Output = SourceFile> = (
-  opts: TransformOpts & {
-    sourceFile: SourceFile
-  }
-) => Promise<Output>
+// Takes the file's text and returns the new text.
+export type Transformer = (
+  code: string,
+  opts: TransformOpts
+) => string | Promise<string>
 
-const project = new Project({
-  compilerOptions: {},
-})
-
-async function createTempSourceFile(filename: string) {
-  const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
-  return path.join(dir, filename)
-}
-
+// Runs the transformers on raw, one after the other, as the ts-morph runner
+// did on a SourceFile, and returns what it returned: the text from the first
+// token, or transformJsx's output.
 export async function transform(
   opts: TransformOpts,
   transformers: Transformer[] = [
@@ -52,21 +46,14 @@ export async function transform(
     transformCleanup,
   ]
 ) {
-  const tempFile = await createTempSourceFile(opts.filename)
-  const sourceFile = project.createSourceFile(tempFile, opts.raw, {
-    scriptKind: ScriptKind.TSX,
-  })
-
+  let code = stripByteOrderMark(opts.raw)
   for (const transformer of transformers) {
-    await transformer({ sourceFile, ...opts })
+    code = await transformer(code, opts)
   }
 
   if (opts.transformJsx) {
-    return await transformJsx({
-      sourceFile,
-      ...opts,
-    })
+    return await transformJsx(code, opts)
   }
 
-  return sourceFile.getText()
+  return getTextFromFirstToken(code)
 }

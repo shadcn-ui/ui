@@ -11,9 +11,10 @@ import {
   parseTransformInput,
 } from "@/src/utils/codemod/parse"
 import { StringLiterals } from "@/src/utils/codemod/string-literals"
+import { type Transformer } from "@/src/utils/transformers"
+import { transformSourceText } from "@/src/utils/transformers/source-text"
 import { types as t } from "@babel/core"
 
-import { fromTextTransformer, transformSourceText } from "./text-transformer"
 import { splitClassName } from "./transform-css-vars"
 import { getArgumentStrings, getClassNameStrings } from "./transform-tw-prefix"
 
@@ -108,9 +109,8 @@ const RTL_SIDE_PROP_MAPPINGS: Record<string, string> = {
 // Positioning prefixes to skip for physical side variants.
 const POSITIONING_PREFIXES = ["-left-", "-right-", "left-", "right-"]
 
-export const transformRtl = fromTextTransformer((code, { config }) =>
+export const transformRtl: Transformer = (code, { config }) =>
   config.rtl ? applyRtl(code) : code
-)
 
 // Standalone function to transform source code for RTL.
 // This is used by the build script.

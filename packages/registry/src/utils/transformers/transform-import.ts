@@ -4,67 +4,67 @@ import {
   type Literal,
 } from "@/src/utils/codemod/string-literals"
 import { Config } from "@/src/utils/get-config"
+import { type Transformer } from "@/src/utils/transformers"
 import { types as t } from "@babel/core"
 
-import { fromTextTransformer } from "./text-transformer"
+export const transformImport: Transformer = (
+  code,
+  { config, isRemote, filename }
+) => {
+  const utilsAlias = config.aliases?.utils
+  const workspaceAlias =
+    typeof utilsAlias === "string"
+      ? getWorkspaceAliasFromUtilsAlias(utilsAlias)
+      : "@"
+  const utilsImport = workspaceAlias
+    ? `${workspaceAlias}/lib/utils`
+    : "@/lib/utils"
 
-export const transformImport = fromTextTransformer(
-  (code, { config, isRemote, filename }) => {
-    const utilsAlias = config.aliases?.utils
-    const workspaceAlias =
-      typeof utilsAlias === "string"
-        ? getWorkspaceAliasFromUtilsAlias(utilsAlias)
-        : "@"
-    const utilsImport = workspaceAlias
-      ? `${workspaceAlias}/lib/utils`
-      : "@/lib/utils"
-
-    if (!hasImportStringLiterals(filename)) {
-      return code
-    }
-
-    const file = parseTransformInput(code)
-    if (!file) {
-      return code
-    }
-
-    // ts-morph's setLiteralValue() writes each specifier again, even
-    // unchanged, which drops the escapes in it.
-    const literals = new StringLiterals(code, file)
-    for (const { specifier, importDeclaration } of getImportStringLiterals(
-      file.program
-    )) {
-      const updated = updateImportAliases(
-        literals.getValue(specifier),
-        config,
-        isRemote
-      )
-      literals.setValue(specifier, updated)
-
-      // Replace `import { cn } from "@/lib/utils"`
-      if (utilsImport === updated || updated === "@/lib/utils") {
-        const isCnImport = importDeclaration?.specifiers.some(
-          (namedImport) =>
-            namedImport.type === "ImportSpecifier" &&
-            getImportedName(code, namedImport) === "cn"
-        )
-
-        if (!isCnImport || !config.aliases.utils) {
-          continue
-        }
-
-        literals.setValue(
-          specifier,
-          utilsImport === updated
-            ? updated.replace(utilsImport, config.aliases.utils)
-            : config.aliases.utils
-        )
-      }
-    }
-
-    return literals.apply()
+  if (!hasImportStringLiterals(filename)) {
+    return code
   }
-)
+
+  const file = parseTransformInput(code)
+  if (!file) {
+    return code
+  }
+
+  // ts-morph's setLiteralValue() writes each specifier again, even
+  // unchanged, which drops the escapes in it.
+  const literals = new StringLiterals(code, file)
+  for (const { specifier, importDeclaration } of getImportStringLiterals(
+    file.program
+  )) {
+    const updated = updateImportAliases(
+      literals.getValue(specifier),
+      config,
+      isRemote
+    )
+    literals.setValue(specifier, updated)
+
+    // Replace `import { cn } from "@/lib/utils"`
+    if (utilsImport === updated || updated === "@/lib/utils") {
+      const isCnImport = importDeclaration?.specifiers.some(
+        (namedImport) =>
+          namedImport.type === "ImportSpecifier" &&
+          getImportedName(code, namedImport) === "cn"
+      )
+
+      if (!isCnImport || !config.aliases.utils) {
+        continue
+      }
+
+      literals.setValue(
+        specifier,
+        utilsImport === updated
+          ? updated.replace(utilsImport, config.aliases.utils)
+          : config.aliases.utils
+      )
+    }
+  }
+
+  return literals.apply()
+}
 
 // Whether TypeScript collects the file's imports: ts-morph's getExtension()
 // is ".tsx" or ".ts", which it is not for a .d.ts file. The extension check

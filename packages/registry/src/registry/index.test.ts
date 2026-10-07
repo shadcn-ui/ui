@@ -4,16 +4,13 @@ import { expect, it } from "vitest"
 
 import * as registry from "./index"
 
-// Only addRegistryItems needs the transformers. Everything else must bundle
-// without ts-morph, or the TypeScript copy that comes with it (about 6 MB).
-it("bundles the read-only API without ts-morph or typescript", async () => {
-  const readOnly = Object.keys(registry).filter(
-    (name) => name !== "addRegistryItems"
-  )
-
+// The whole API, addRegistryItems and the transformers it runs included, must
+// bundle without ts-morph, or the TypeScript copy that comes with it (about
+// 6 MB).
+it("bundles the API without ts-morph or typescript", async () => {
   const result = await build({
     stdin: {
-      contents: `export { ${readOnly.join(", ")} } from "./index"`,
+      contents: `export { ${Object.keys(registry).join(", ")} } from "./index"`,
       resolveDir: __dirname,
       loader: "ts",
     },

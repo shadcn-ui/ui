@@ -30,11 +30,10 @@ import {
   getStatementsWithComments,
   removeStatement,
 } from "@/src/utils/codemod/statements"
+import { type Transformer } from "@/src/utils/transformers"
 import { types as t } from "@babel/core"
 
-import { fromTextTransformer } from "./text-transformer"
-
-export const transformIcons = fromTextTransformer((code, { config }) => {
+export const transformIcons: Transformer = (code, { config }) => {
   const iconLibrary = config.iconLibrary
 
   // Fail silently if the icon library is not supported.
@@ -121,7 +120,7 @@ export const transformIcons = fromTextTransformer((code, { config }) => {
     jsxCode,
     transformImports(jsxCode, transformedIcons, libraryConfig)
   )
-})
+}
 
 // The placeholder's new text with the library's icon, or undefined when the
 // placeholder has no icon for the library. isTagName tells whether the icon

@@ -1,37 +1,34 @@
 import { registryBaseColorSchema } from "@/src/registry/schema"
 import { parseTransformInput } from "@/src/utils/codemod/parse"
 import { StringLiterals } from "@/src/utils/codemod/string-literals"
+import { type Transformer } from "@/src/utils/transformers"
 import { z } from "zod"
 
-import { fromTextTransformer } from "./text-transformer"
-
-export const transformCssVars = fromTextTransformer(
-  (code, { config, baseColor }) => {
-    // No transform if using css variables.
-    if (config.tailwind?.cssVariables || !baseColor?.inlineColors) {
-      return code
-    }
-
-    const file = parseTransformInput(code)
-    if (!file) {
-      return code
-    }
-
-    // Every string literal of the file, directives and import specifiers
-    // included. A mapped value is trimmed, so a string with spaces around it
-    // changes even without colors.
-    const literals = new StringLiterals(code, file)
-    for (const literal of literals.getStringLiterals()) {
-      const raw = literals.getValue(literal)
-      const mapped = applyColorMapping(raw, baseColor.inlineColors).trim()
-      if (mapped !== raw) {
-        literals.setValue(literal, mapped)
-      }
-    }
-
-    return literals.apply()
+export const transformCssVars: Transformer = (code, { config, baseColor }) => {
+  // No transform if using css variables.
+  if (config.tailwind?.cssVariables || !baseColor?.inlineColors) {
+    return code
   }
-)
+
+  const file = parseTransformInput(code)
+  if (!file) {
+    return code
+  }
+
+  // Every string literal of the file, directives and import specifiers
+  // included. A mapped value is trimmed, so a string with spaces around it
+  // changes even without colors.
+  const literals = new StringLiterals(code, file)
+  for (const literal of literals.getStringLiterals()) {
+    const raw = literals.getValue(literal)
+    const mapped = applyColorMapping(raw, baseColor.inlineColors).trim()
+    if (mapped !== raw) {
+      literals.setValue(literal, mapped)
+    }
+  }
+
+  return literals.apply()
+}
 
 // export default function transformer(file: FileInfo, api: API) {
 //   const j = api.jscodeshift.withParser("tsx")
