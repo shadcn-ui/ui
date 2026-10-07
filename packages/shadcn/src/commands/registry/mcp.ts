@@ -1,5 +1,5 @@
-import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
-import { logger } from "@shadcn/registry/internal/utils/logger"
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { logger } from "@shadcn/registry/internal/logger"
 import { Command } from "commander"
 
 export const mcp = new Command()

@@ -1,9 +1,9 @@
 import * as fs from "fs/promises"
 import { tmpdir } from "os"
 import * as path from "path"
+import { logger } from "@shadcn/registry/internal/logger"
 import { validateGitHubRegistrySource } from "@shadcn/registry/internal/registry/github"
-import { logger } from "@shadcn/registry/internal/utils/logger"
-import { spinner } from "@shadcn/registry/internal/utils/spinner"
+import { spinner } from "@shadcn/registry/internal/spinner"
 import { beforeEach, describe, expect, it, vi } from "vitest"
 
 import { validate } from "./validate"
@@ -14,7 +14,7 @@ vi.mock("@/src/utils/handle-error", () => ({
   }),
 }))
 
-vi.mock("@shadcn/registry/internal/utils/highlighter", () => ({
+vi.mock("@shadcn/registry/internal/highlighter", () => ({
   highlighter: {
     error: (value: string) => value,
     info: (value: string) => value,
@@ -22,7 +22,7 @@ vi.mock("@shadcn/registry/internal/utils/highlighter", () => ({
   },
 }))
 
-vi.mock("@shadcn/registry/internal/utils/logger", () => ({
+vi.mock("@shadcn/registry/internal/logger", () => ({
   logger: {
     break: vi.fn(),
     error: vi.fn(),
@@ -30,7 +30,7 @@ vi.mock("@shadcn/registry/internal/utils/logger", () => ({
   },
 }))
 
-vi.mock("@shadcn/registry/internal/utils/spinner", () => ({
+vi.mock("@shadcn/registry/internal/spinner", () => ({
   spinner: vi.fn(() => ({
     fail: vi.fn(),
     start: vi.fn().mockReturnThis(),

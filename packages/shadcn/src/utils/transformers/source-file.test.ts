@@ -1,6 +1,6 @@
-import { type Config } from "@shadcn/registry/internal/utils/get-config"
-import { transform } from "@shadcn/registry/internal/utils/transformers/index"
-import { transformIcons } from "@shadcn/registry/internal/utils/transformers/transform-icons"
+import { type Config } from "@shadcn/registry/internal/get-config"
+import { transform } from "@shadcn/registry/internal/transformers/index"
+import { transformIcons } from "@shadcn/registry/internal/transformers/transform-icons"
 import { Project, ScriptKind, type SourceFile } from "ts-morph"
 import { describe, expect, it } from "vitest"
 
