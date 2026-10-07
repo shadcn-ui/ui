@@ -1228,6 +1228,50 @@ function DropdownMenuSubContent({ side = DEFAULT_SIDE, ...props }) {
 `)
   })
 
+  it("maps a cva base again inside a classNames call", async () => {
+    // Current behavior: the cva() pass and the classNames pass both visit it.
+    expect(
+      await transformWithRtl(
+        `const a = <div classNames={{ root: cva("translate-x-2") }} />
+`
+      )
+    ).toBe(
+      `const a = <div classNames={{ root: cva("translate-x-2 rtl:-translate-x-2 rtl:-translate-x-2") }} />
+`
+    )
+  })
+
+  it("rewrites the escapes of class strings only", async () => {
+    expect(
+      await transformWithRtl(
+        `const a = cn("a\\x41", 'it\\'s')
+const b = <div className={cn("pl-2\\u0020ml-2")} />
+`
+      )
+    ).toBe(`const a = cn("a\\x41", 'it\\'s')
+const b = <div className={cn("ps-2 ms-2")} />
+`)
+  })
+
+  it("maps side defaults by their innermost function declaration", async () => {
+    expect(
+      await transformWithRtl(
+        `export function DropdownMenuSubContent({ align: side = "left" }) {
+  const f = ({ side = "right" }) => side
+  function Inner({ side = "right" }) {}
+  return f
+}
+`
+      )
+    )
+      .toBe(`export function DropdownMenuSubContent({ align: side = "inline-start" }) {
+  const f = ({ side = "inline-end" }) => side
+  function Inner({ side = "right" }) {}
+  return f
+}
+`)
+  })
+
   it("preserves CRLF line endings", async () => {
     const result = await transformWithRtl(
       'function ContextMenuSubContent({\r\n  side = "right",\r\n}) {\r\n  return <ContextMenuContent side="left" className={cn(\r\n    "ml-2",\r\n    "pr-4"\r\n  )} />\r\n}\r\n'
