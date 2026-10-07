@@ -2,7 +2,7 @@ import { type types as t } from "@babel/core"
 import CodeBlockWriter from "code-block-writer"
 
 import { getNodesWithComments, type NodeOrComment } from "./comment-nodes"
-import { applyManipulation } from "./edits"
+import { applyManipulation, type TextEdit } from "./edits"
 import { parseModule } from "./parse"
 import {
   getNonWhitespaceStart,
@@ -70,6 +70,24 @@ export function insertStatement(
   statementText: string,
   isSameKind: (statement: Statement) => boolean
 ) {
+  const { edit, end } = getStatementInsertion(
+    code,
+    statements,
+    index,
+    statementText,
+    isSameKind
+  )
+  return { code: applyManipulation(code, [edit]), end }
+}
+
+// insertStatement's edit, and where the inserted statement ends after it.
+function getStatementInsertion(
+  code: string,
+  statements: Statement[],
+  index: number,
+  statementText: string,
+  isSameKind: (statement: Statement) => boolean
+) {
   const previous = statements[index - 1]
   const next = statements[index]
   const insertPos = previous ? previous.end : 0
@@ -92,12 +110,12 @@ export function insertStatement(
     writer.newLineIfLastNot()
   }
 
-  return {
-    code: applyManipulation(code, [
-      { start: insertPos, end: endPos, text: writer.toString() },
-    ]),
-    end: statementEnd,
+  const edit: TextEdit = {
+    start: insertPos,
+    end: endPos,
+    text: writer.toString(),
   }
+  return { edit, end: statementEnd }
 }
 
 // ts-morph's Statement#remove() for a statement of the source file
@@ -176,13 +194,24 @@ function hasBody({ node }: Statement) {
 }
 
 // ts-morph's SourceFile#addImportDeclaration({ moduleSpecifier, namedImports:
-// [name] }): after the last import, or after the leading block comments when
-// there are no imports.
+// [name] }).
 export function addImportDeclaration(
   code: string,
   moduleSpecifier: string,
   name: string
 ) {
+  return applyManipulation(code, [
+    getImportDeclarationInsertion(
+      code,
+      `import { ${name} } from "${moduleSpecifier}";`
+    ),
+  ])
+}
+
+// The edit with which ts-morph's SourceFile#addImportDeclaration() writes the
+// text of an import declaration: after the last import, or after the leading
+// block comments when there are no imports.
+export function getImportDeclarationInsertion(code: string, text: string) {
   const statements = getStatementsWithComments(code, parseModule(code).program)
 
   let index = 0
@@ -198,13 +227,13 @@ export function addImportDeclaration(
     }
   }
 
-  return insertStatement(
+  return getStatementInsertion(
     code,
     statements,
     index,
-    `import { ${name} } from "${moduleSpecifier}";`,
+    text,
     isImportDeclaration
-  ).code
+  ).edit
 }
 
 export function isImportDeclaration(statement: Statement) {

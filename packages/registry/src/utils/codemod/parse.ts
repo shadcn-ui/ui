@@ -6,7 +6,7 @@ import {
   type ParserPlugin,
 } from "@babel/parser"
 
-import { getLineEnd, isLineBreak, skipTrivia } from "./trivia"
+import { getLineEnd, getLineStart, isLineBreak, skipTrivia } from "./trivia"
 
 // TypeScript parses any file and reports problems as diagnostics, so these
 // options accept as much as Babel can and recover from errors instead of
@@ -96,6 +96,53 @@ export function parseTransformInput(code: string) {
         text.slice(0, pos) + "0".padEnd(lineEnd - pos) + text.slice(lineEnd)
     }
   }
+}
+
+// A file that is not code, such as an MDX file, with the tree ts-morph finds
+// its JSX blocks in: TypeScript parses them among the statements it recovers
+// from the rest. Babel throws at a line it cannot parse, such as a Markdown
+// heading, so the line is replaced with `{}` and spaces, an empty block that
+// starts where TypeScript starts a statement, and the code is parsed again.
+// Returns the code as parsed, which keeps every position, or undefined when
+// Babel throws at a line it cannot replace. Babel recovers from some lines,
+// such as Markdown list items, differently, which can hide a JSX block.
+export function parseMaskingLines(code: string) {
+  let text = code
+  for (;;) {
+    try {
+      return { code: text, file: parseModule(text) }
+    } catch (error) {
+      const pos = getErrorPos(error)
+      const masked = pos === undefined ? undefined : maskLine(text, pos)
+      if (!masked) {
+        return undefined
+      }
+      text = masked
+    }
+  }
+}
+
+// text with the line at pos replaced, or when that line is blank or replaced,
+// the line before it, where the statement that runs into it starts. Babel can
+// take a `;` on a later line as the end of the statement before it, so only a
+// line of one character gets one.
+function maskLine(text: string, pos: number) {
+  let lineStart = getLineStart(text, pos)
+  while (/^(\{\}|;)?\s*$/.test(text.slice(lineStart, getLineEnd(text, pos)))) {
+    if (lineStart === 0) {
+      return undefined
+    }
+    pos = lineStart - 1
+    lineStart = getLineStart(text, pos)
+  }
+
+  const lineEnd = getLineEnd(text, pos)
+  const mask = lineEnd - lineStart > 1 ? "{}" : ";"
+  return (
+    text.slice(0, lineStart) +
+    mask.padEnd(lineEnd - lineStart) +
+    text.slice(lineEnd)
+  )
 }
 
 function parseWithoutJsx(code: string) {
