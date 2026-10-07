@@ -666,3 +666,21 @@ export const b = 1
     expect(await cleanupMarkers("")).toBe("")
   })
 })
+
+describe("transformCleanup on backslashes", () => {
+  // ts-morph writes a value without escaping its backslashes, and reads the
+  // string again when mergeProps() has it: an invalid escape, or a string
+  // whose last backslash now escapes its quote.
+  test.each([
+    [
+      `const a = mergeProps(cva("cn-a b\\\\x"))\n`,
+      `const a = mergeProps(cva("b\\x"))\n`,
+    ],
+    [
+      `const a = mergeProps(cva("cn-x a\\\\"))\n`,
+      `const a = mergeProps(cva("a\\"))\n`,
+    ],
+  ])("reads the string again after %j", async (raw, expected) => {
+    expect(await cleanup(raw)).toBe(expected)
+  })
+})

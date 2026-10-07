@@ -131,8 +131,9 @@ describe("addsSyntaxErrors", () => {
 })
 
 describe("parseTransformInput", () => {
-  // TypeScript's statements start at 0, 9 and 23, and its string literals are
-  // "a", the unterminated "bc and "d".
+  // TypeScript's statements start at 0, 9 and 23, as these do. Its string
+  // literals are "a", the unterminated "bc and "d"; this tree has a 0 for the
+  // unterminated one, which the transformers leave alone.
   it.each([
     [`foo("a")\nconst b = "bc\nbaz("d")\n`, [0, 9, 23], [`"a"`, `"d"`]],
     [`x = 'a\r\ny = "b"`, [0, 8], [`"b"`]],

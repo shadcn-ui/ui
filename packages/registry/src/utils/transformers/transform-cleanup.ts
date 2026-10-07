@@ -3,8 +3,9 @@ import {
   removeJsxAttributes,
 } from "@/src/utils/codemod/jsx-attributes"
 import {
-  getCallExpressions,
+  getDescendants,
   getText,
+  isCallExpression,
   parseTransformInput,
 } from "@/src/utils/codemod/parse"
 import {
@@ -12,10 +13,9 @@ import {
   type Literal,
 } from "@/src/utils/codemod/string-literals"
 import { getLineEnd, skipTrivia } from "@/src/utils/codemod/trivia"
-import { types as t } from "@babel/core"
-import { type SourceFile } from "ts-morph"
+import { type types as t } from "@babel/core"
 
-import { fromTextTransformer, setFullText } from "./text-transformer"
+import { fromTextTransformer } from "./text-transformer"
 
 // Generic cleanup should leave font markers alone until transformFont runs.
 const PRESERVED_CN_MARKERS = new Set(["cn-font-heading"])
@@ -114,7 +114,7 @@ function cleanupCalls(code: string) {
   }
 
   const literals = new StringLiterals(code, file)
-  const calls = getCallExpressions(file)
+  const calls = getDescendants(file, isCallExpression)
 
   // Process cva() calls.
   for (const call of calls) {
@@ -146,11 +146,6 @@ function cleanupCalls(code: string) {
   }
 
   return literals.apply()
-}
-
-// Apply cleanup to a SourceFile directly.
-export function applyCleanup(sourceFile: SourceFile) {
-  setFullText(sourceFile, cleanup(sourceFile.getFullText()))
 }
 
 export const transformCleanup = fromTextTransformer(cleanup)

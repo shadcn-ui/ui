@@ -100,7 +100,10 @@ function getImportStringLiterals(program: t.Program): ImportStringLiteral[] {
       ) {
         dynamicImports.push(argument)
       }
-    } else if (node.type === "TSImportType") {
+    } else if (
+      node.type === "TSImportType" &&
+      node.argument.type === "StringLiteral"
+    ) {
       dynamicImports.push(node.argument)
     } else if (node.type === "MetaProperty" && node.meta.name === "import") {
       usesImportMeta = true

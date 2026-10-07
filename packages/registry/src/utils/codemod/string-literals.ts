@@ -2,11 +2,11 @@ import { types as t } from "@babel/core"
 import { parseExpression } from "@babel/parser"
 
 import { applyEdits, type TextEdit } from "./edits"
-import { getText } from "./parse"
+import { getDescendants, getText } from "./parse"
 
 // The nodes TypeScript parses as a StringLiteral: Babel's string literals and
 // directives.
-export type StringLiteral = t.StringLiteral | t.DirectiveLiteral
+type StringLiteral = t.StringLiteral | t.DirectiveLiteral
 
 // A TypeScript StringLiteral or NoSubstitutionTemplateLiteral, which is a
 // template literal without substitutions.
@@ -18,35 +18,32 @@ export type Literal = StringLiteral | t.TemplateLiteral
 // visited again reads its new value. TypeScript's JSDoc type expressions have
 // string literals too, which are left out.
 export class StringLiterals {
-  private readonly strings: StringLiteral[] = []
-  private readonly templates: t.TemplateLiteral[] = []
+  private readonly strings: StringLiteral[]
+  private readonly templates: t.TemplateLiteral[]
   // TypeScript keeps a JSX attribute string as written, where Babel decodes
   // its HTML entities.
-  private readonly jsxAttributeValues = new Set<t.Node>()
+  private readonly jsxAttributeValues: Set<Literal>
   private readonly edits = new Map<Literal, TextEdit>()
 
   constructor(
     private readonly code: string,
     file: t.File
   ) {
-    t.traverseFast(file, (node) => {
-      if (node.type === "StringLiteral" || node.type === "DirectiveLiteral") {
-        this.strings.push(node)
-      } else if (
-        node.type === "TemplateLiteral" &&
-        node.expressions.length === 0
-      ) {
-        this.templates.push(node)
-      } else if (
-        node.type === "JSXAttribute" &&
-        node.value?.type === "StringLiteral"
-      ) {
-        this.jsxAttributeValues.add(node.value)
-      }
-    })
-    // traverseFast follows VISITOR_KEYS, which are not in source order.
-    this.strings.sort((a, b) => a.start! - b.start!)
-    this.templates.sort((a, b) => a.start! - b.start!)
+    this.strings = getDescendants(
+      file,
+      (node): node is StringLiteral =>
+        t.isStringLiteral(node) || t.isDirectiveLiteral(node)
+    )
+    this.templates = getDescendants(
+      file,
+      (node): node is t.TemplateLiteral =>
+        t.isTemplateLiteral(node) && node.expressions.length === 0
+    )
+    this.jsxAttributeValues = new Set(
+      getDescendants(file, t.isJSXAttribute).flatMap(({ value }) =>
+        value?.type === "StringLiteral" ? [value] : []
+      )
+    )
   }
 
   // ts-morph's getDescendantsOfKind(SyntaxKind.StringLiteral) on the file, or
@@ -124,15 +121,25 @@ function isWithin(node: t.Node, container: t.Node) {
 }
 
 // What TypeScript reads from a string or template literal, given as source.
+// TypeScript's scanner never throws. Babel recovers from an invalid escape,
+// but not from a string whose last backslash escapes its closing quote, which
+// setValue() writes for a value that ends in one; its text stands in.
 function readLiteral(source: string) {
-  const literal = parseExpression(source) as t.StringLiteral | t.TemplateLiteral
-  return literal.type === "StringLiteral"
-    ? literal.value
-    : getCookedValue(literal)
+  try {
+    const literal = parseExpression(source, { errorRecovery: true }) as
+      | t.StringLiteral
+      | t.TemplateLiteral
+    return literal.type === "StringLiteral"
+      ? literal.value
+      : getCookedValue(literal)
+  } catch {
+    return source.slice(1, -1)
+  }
 }
 
-// A template's value. TypeScript reads an invalid escape as written, where
-// Babel has no cooked value, so the raw one stands in.
+// A template's value. Babel has no cooked value for a template with an
+// invalid escape, which TypeScript keeps as written, so the whole raw text
+// stands in, other escapes and all.
 function getCookedValue(literal: t.TemplateLiteral) {
   const { cooked, raw } = literal.quasis[0].value
   return cooked ?? raw

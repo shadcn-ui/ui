@@ -78,7 +78,9 @@ export function parseModule(code: string, options: ParseModuleOptions = {}) {
 // it: they leave such a file as it is. TypeScript ends an unterminated string
 // at the end of its line and parses on, where Babel throws, so the string is
 // replaced with a 0 and spaces, which keeps every position, and the code is
-// parsed again. The transformers leave the string as it is.
+// parsed again. The transformers leave the string as it is. A .ts file with
+// a `<T>x` cast, which JSX cannot parse, is parsed without JSX, so its imports
+// are still found.
 export function parseTransformInput(code: string) {
   let text = code
   for (;;) {
@@ -87,12 +89,20 @@ export function parseTransformInput(code: string) {
     } catch (error) {
       const pos = getErrorPos(error)
       if (pos === undefined || getReasonCode(error) !== "UnterminatedString") {
-        return undefined
+        return parseWithoutJsx(text)
       }
       const lineEnd = getLineEnd(text, pos)
       text =
         text.slice(0, pos) + "0".padEnd(lineEnd - pos) + text.slice(lineEnd)
     }
+  }
+}
+
+function parseWithoutJsx(code: string) {
+  try {
+    return parseModule(code, { jsx: false })
+  } catch {
+    return undefined
   }
 }
 
@@ -277,20 +287,30 @@ export function addsSyntaxErrors(
   return countSyntaxErrors(output, options) > countSyntaxErrors(input, options)
 }
 
-// ts-morph's getDescendantsOfKind(SyntaxKind.CallExpression) on node, a kind
-// that includes optional calls: the calls under it, in source order.
-export function getCallExpressions(node: t.Node) {
-  const calls: (t.CallExpression | t.OptionalCallExpression)[] = []
+// ts-morph's Node#getDescendantsOfKind(): the nodes of a type under node, in
+// source order. traverseFast also visits node itself, and follows
+// VISITOR_KEYS, which are not in source order.
+export function getDescendants<T extends t.Node>(
+  node: t.Node,
+  isType: (node: t.Node) => node is T
+) {
+  const descendants: T[] = []
   t.traverseFast(node, (descendant) => {
-    if (
-      descendant.type === "CallExpression" ||
-      descendant.type === "OptionalCallExpression"
-    ) {
-      calls.push(descendant)
+    if (descendant !== node && isType(descendant)) {
+      descendants.push(descendant)
     }
   })
-  // traverseFast follows VISITOR_KEYS, which are not in source order.
-  return calls.sort((a, b) => a.start! - b.start!)
+
+  return descendants.sort((a, b) => a.start! - b.start!)
+}
+
+// TypeScript's CallExpression, which optional calls are too.
+export function isCallExpression(
+  node: t.Node
+): node is t.CallExpression | t.OptionalCallExpression {
+  return (
+    node.type === "CallExpression" || node.type === "OptionalCallExpression"
+  )
 }
 
 // ts-morph's Node#getText().

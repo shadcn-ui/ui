@@ -778,6 +778,23 @@ import { cn } from "~/lib/utils"
     expect(await transform({ filename, raw, config })).toBe(expected)
   })
 
+  it("rewrites the imports of a .ts file with a <T> cast", async () => {
+    // TypeScript parses it as TSX and recovers before the cast; Babel cannot
+    // parse it with JSX, so it is parsed without.
+    expect(
+      await transform({
+        filename: "util.ts",
+        raw: `import { cn } from "@/lib/utils"\nconst a = <any>b\n`,
+        config,
+      })
+    ).toBe(`import { cn } from "~/lib/utils"\nconst a = <any>b\n`)
+  })
+
+  it("leaves a template literal in an import type alone", async () => {
+    const raw = "type T = typeof import(`@/lib/utils`)\n"
+    expect(await transform({ filename: "a.ts", raw, config })).toBe(raw)
+  })
+
   it("leaves CSS @import specifiers alone", async () => {
     const css = `@import "tailwindcss";
 @import "@/registry/new-york/styles/theme.css";

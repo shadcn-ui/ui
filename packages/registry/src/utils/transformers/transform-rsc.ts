@@ -17,35 +17,41 @@ import { fromTextTransformer } from "./text-transformer"
 // until that is fixed (see transform-rsc.test.ts).
 const directiveRegex = /^["']use client["']$/g
 
-export const transformRsc = fromTextTransformer((code, { config }) => {
-  if (config.rsc) {
+export const transformRsc = fromTextTransformer(
+  (code, { config, filename }) => {
+    if (config.rsc) {
+      return code
+    }
+
+    // ts-morph tests the first expression statement of the tree TypeScript
+    // recovers from a file Babel cannot parse. A CSS or Markdown file has one,
+    // which fails the test and so resets the regex. A JSON object is a block,
+    // and a broken script starts with imports and declarations, which leave it.
+    const file = parseTransformInput(code)
+    if (!file) {
+      if (!/\.([cm]?[jt]sx?|json)$/.test(filename)) {
+        directiveRegex.lastIndex = 0
+      }
+      return code
+    }
+
+    // Remove "use client" from the top of the file. TypeScript parses a
+    // directive as an expression statement.
+    const statements = getStatementsWithComments(code, file.program)
+    const index = statements.findIndex(
+      ({ node }) =>
+        node?.type === "ExpressionStatement" || node?.type === "Directive"
+    )
+    if (
+      index !== -1 &&
+      directiveRegex.test(getText(code, statements[index].node!))
+    ) {
+      return removeStatement(code, statements, index)
+    }
+
     return code
   }
-
-  // ts-morph tests the first expression statement of the tree TypeScript
-  // recovers from a file Babel cannot parse, such as a CSS file, which resets
-  // the regex. This leaves the regex as it is.
-  const file = parseTransformInput(code)
-  if (!file) {
-    return code
-  }
-
-  // Remove "use client" from the top of the file. TypeScript parses a
-  // directive as an expression statement.
-  const statements = getStatementsWithComments(code, file.program)
-  const index = statements.findIndex(
-    ({ node }) =>
-      node?.type === "ExpressionStatement" || node?.type === "Directive"
-  )
-  if (
-    index !== -1 &&
-    directiveRegex.test(getText(code, statements[index].node!))
-  ) {
-    return removeStatement(code, statements, index)
-  }
-
-  return code
-})
+)
 
 // ts-morph's Statement#remove() for a statement of the source file
 // (removeStatementedNodeChild): from the end of the statement or comment

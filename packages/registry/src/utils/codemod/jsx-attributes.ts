@@ -2,7 +2,7 @@ import { types as t } from "@babel/core"
 
 import { applyManipulation } from "./edits"
 import { getReplacementText } from "./indentation"
-import { parseTransformInput } from "./parse"
+import { getDescendants, parseTransformInput } from "./parse"
 import { getNonWhitespaceStart } from "./trivia"
 
 export interface JsxAttribute {
@@ -14,27 +14,31 @@ export interface JsxAttribute {
 // ts-morph's getDescendantsOfKind(SyntaxKind.JsxAttribute) on the file: the
 // attributes in source order, without spread attributes.
 export function getJsxAttributes(file: t.File) {
-  const attributes: JsxAttribute[] = []
-  t.traverseFast(file, (node) => {
-    if (node.type === "JSXOpeningElement") {
-      for (const attribute of node.attributes) {
-        if (attribute.type === "JSXAttribute") {
-          attributes.push({ attribute, element: node })
-        }
-      }
-    }
-  })
-  return attributes.sort((a, b) => a.attribute.start! - b.attribute.start!)
+  return getDescendants(file, t.isJSXOpeningElement)
+    .flatMap((element) =>
+      element.attributes
+        .filter((attribute) => attribute.type === "JSXAttribute")
+        .map((attribute): JsxAttribute => ({ attribute, element }))
+    )
+    .sort((a, b) => a.attribute.start! - b.attribute.start!)
 }
 
 // ts-morph's JsxAttribute#remove() on the attributes at indexes in
-// getJsxAttributes(), one after the other. Each removal parses the code again,
-// where the index of a later attribute has moved by one.
+// getJsxAttributes(), which ascend, one after the other. Each removal parses
+// the code again, where the index of a later attribute has moved by one. An
+// earlier edit can leave a string that ends in a backslash and takes in the
+// code after it; the removals stop there, where ts-morph lost those nodes.
 export function removeJsxAttributes(code: string, indexes: number[]) {
-  indexes.forEach((index, removed) => {
-    const file = parseTransformInput(code)!
-    code = removeJsxAttribute(code, getJsxAttributes(file)[index - removed])
-  })
+  for (let removed = 0; removed < indexes.length; removed++) {
+    const file = parseTransformInput(code)
+    if (!file) {
+      break
+    }
+    code = removeJsxAttribute(
+      code,
+      getJsxAttributes(file)[indexes[removed] - removed]
+    )
+  }
   return code
 }
 

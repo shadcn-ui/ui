@@ -4,15 +4,16 @@ import {
   removeJsxAttributes,
 } from "@/src/utils/codemod/jsx-attributes"
 import {
-  getCallExpressions,
+  getDescendants,
   getText,
+  isCallExpression,
   parseTransformInput,
 } from "@/src/utils/codemod/parse"
 import {
   StringLiterals,
   type Literal,
 } from "@/src/utils/codemod/string-literals"
-import { types as t } from "@babel/core"
+import { type types as t } from "@babel/core"
 
 import { fromTextTransformer } from "./text-transformer"
 
@@ -171,7 +172,7 @@ function transformFontCalls(code: string, supportedMarkers: Set<string>) {
   }
 
   const literals = new StringLiterals(code, file)
-  for (const call of getCallExpressions(file)) {
+  for (const call of getDescendants(file, isCallExpression)) {
     if (getText(code, call.callee) === "cva") {
       for (const arg of call.arguments) {
         if (arg.type === "StringLiteral") {

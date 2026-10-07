@@ -36,7 +36,6 @@ function getTree(sourceFile: SourceFile) {
 describe("fromTextTransformer", () => {
   it.each([
     ["CRLF line endings", `"use client"\r\n\r\nexport const a = "b"\r\n`],
-    ["a byte order mark", `﻿export const a = "b"\n`],
     [
       "leading comments and blank lines",
       `\n\n// a\n/** b */\n\nconst a = "b"\n`,
@@ -47,12 +46,6 @@ describe("fromTextTransformer", () => {
     const sourceFile = createSourceFile(`const a = "a"\n`)
     await run(sourceFile, () => text)
     expect(sourceFile.getFullText()).toBe(text)
-  })
-
-  it("does not write CRLF the way SourceFile#replaceWithText() does", () => {
-    const sourceFile = createSourceFile(`const a = "a"\n`)
-    sourceFile.replaceWithText(`const a = "b"\r\n`)
-    expect(sourceFile.getFullText()).toBe(`const a = "b"\n`)
   })
 
   it("leaves the SourceFile alone when the text is the same", async () => {

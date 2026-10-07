@@ -146,6 +146,25 @@ describe("transformRsc", () => {
   beforeEach(resetDirectiveRegex)
   afterEach(resetDirectiveRegex)
 
+  it("resets the regex on a CSS file, which ts-morph tested and failed", async () => {
+    const raw = `"use client"
+
+import * as React from "react"
+`
+    expect(await rsc(raw)).toBe(`import * as React from "react"
+`)
+    await transform(
+      {
+        filename: "globals.css",
+        raw: `@import "tailwindcss";\n`,
+        config: { tsx: true, rsc: false } as Config,
+      },
+      [transformRsc]
+    )
+    expect(await rsc(raw)).toBe(`import * as React from "react"
+`)
+  })
+
   it("consecutive removals alternate because the regex is global", async () => {
     // Current behavior: every other "use client" file keeps the directive.
     const raw = `"use client"
