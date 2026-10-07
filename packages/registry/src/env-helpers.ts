@@ -6,10 +6,7 @@ export function isEnvFile(filePath: string) {
   return /^\.env(\.|$)/.test(fileName)
 }
 
-/**
- * Finds a file variant in the project.
- * TODO: abstract this to a more generic function.
- */
+// TODO: abstract this to a more generic function.
 export function findExistingEnvFile(targetDir: string) {
   const variants = [
     ".env.local",
@@ -28,9 +25,6 @@ export function findExistingEnvFile(targetDir: string) {
   return null
 }
 
-/**
- * Parse .env content into key-value pairs.
- */
 export function parseEnvContent(content: string) {
   const lines = content.split("\n")
   const env: Record<string, string> = {}
@@ -59,9 +53,6 @@ export function parseEnvContent(content: string) {
   return env
 }
 
-/**
- * Get the list of new keys that would be added when merging env content.
- */
 export function getNewEnvKeys(existingContent: string, newContent: string) {
   const existingEnv = parseEnvContent(existingContent)
   const newEnv = parseEnvContent(newContent)
@@ -101,11 +92,6 @@ export function mergeEnvContent(existingContent: string, newContent: string) {
       result += "\n"
     }
     result += newKeys.join("\n")
-    return result + "\n"
-  }
-
-  // Ensure existing content ends with newline.
-  if (result && !result.endsWith("\n")) {
     return result + "\n"
   }
 

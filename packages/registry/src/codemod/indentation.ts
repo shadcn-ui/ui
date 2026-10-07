@@ -756,7 +756,6 @@ function addChild(parent: SyntaxNode, child: SyntaxNode) {
   return child
 }
 
-// Converts the nodes and adds them to the parent. Returns the converted nodes.
 function addChildren(
   source: Source,
   parent: SyntaxNode,

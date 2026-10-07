@@ -16,7 +16,6 @@ export function resolveFilePath(
     fileIndex?: number
   }
 ) {
-  // Handle custom path if provided.
   if (options.path) {
     const resolvedPath = path.isAbsolute(options.path)
       ? options.path
@@ -134,61 +133,50 @@ function resolveFileTargetDirectory(
 }
 
 export function findCommonRoot(paths: string[], needle: string): string {
-  // Remove leading slashes for consistent handling
   const normalizedPaths = paths.map((p) => p.replace(/^\//, ""))
   const normalizedNeedle = needle.replace(/^\//, "")
 
-  // Get the directory path of the needle by removing the file name
   const needleDir = normalizedNeedle.split("/").slice(0, -1).join("/")
 
-  // If needle is at root level, return empty string
   if (!needleDir) {
     return ""
   }
 
-  // Split the needle directory into segments
   const needleSegments = needleDir.split("/")
 
-  // Start from the full path and work backwards
+  // Walk up from the deepest directory to the first one shared with another path.
   for (let i = needleSegments.length; i > 0; i--) {
     const testPath = needleSegments.slice(0, i).join("/")
-    // Check if this is a common root by verifying if any other paths start with it
     const hasRelatedPaths = normalizedPaths.some(
       (path) => path !== normalizedNeedle && path.startsWith(testPath + "/")
     )
     if (hasRelatedPaths) {
-      return "/" + testPath // Add leading slash back for the result
+      return "/" + testPath
     }
   }
 
-  // If no common root found with other files, return the parent directory of the needle
-  return "/" + needleDir // Add leading slash back for the result
+  return "/" + needleDir
 }
 
 export function resolveNestedFilePath(
   filePath: string,
   targetDir: string
 ): string {
-  // Normalize paths by removing leading/trailing slashes
   const normalizedFilePath = filePath.replace(/^\/|\/$/g, "")
   const normalizedTargetDir = targetDir.replace(/^\/|\/$/g, "")
 
-  // Split paths into segments
   const fileSegments = normalizedFilePath.split("/")
   const targetSegments = normalizedTargetDir.split("/")
 
-  // Find the last matching segment from targetDir in filePath
   const lastTargetSegment = targetSegments[targetSegments.length - 1]
   const commonDirIndex = fileSegments.findIndex(
     (segment) => segment === lastTargetSegment
   )
 
   if (commonDirIndex === -1) {
-    // Return just the filename if no common directory is found
     return fileSegments[fileSegments.length - 1]
   }
 
-  // Return everything after the common directory
   return fileSegments.slice(commonDirIndex + 1).join("/")
 }
 
