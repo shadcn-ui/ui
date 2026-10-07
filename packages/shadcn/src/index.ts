@@ -13,6 +13,7 @@ import { preset } from "@/src/commands/preset"
 import { registry } from "@/src/commands/registry"
 import { search } from "@/src/commands/search"
 import { view } from "@/src/commands/view"
+import { enableGitHubAuthNotices } from "@shadcn/registry/internal/registry/github-auth"
 import { Command } from "commander"
 
 import packageJson from "../package.json"
@@ -21,6 +22,10 @@ process.on("SIGINT", () => process.exit(0))
 process.on("SIGTERM", () => process.exit(0))
 
 async function main() {
+  // The CLI owns the terminal, so it prints the GitHub credentials notice that
+  // library calls keep silent.
+  enableGitHubAuthNotices()
+
   const program = new Command()
     .name("shadcn")
     .description("build your component library")
