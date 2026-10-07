@@ -8,10 +8,16 @@ import {
   applyEdits,
   applyManipulation,
   SyntaxErrorInsertedError,
+  type SkipReason,
 } from "@/src/utils/codemod/edits"
 import { getReplacementText } from "@/src/utils/codemod/indentation"
-import { addNamedImport } from "@/src/utils/codemod/named-imports"
+import { setJsxAttributeInitializer } from "@/src/utils/codemod/jsx-attributes"
 import {
+  addNamedImport,
+  getNamedImportNames,
+} from "@/src/utils/codemod/named-imports"
+import {
+  addsSyntaxErrors,
   countSyntaxErrors,
   getText,
   parseModule,
@@ -173,7 +179,7 @@ export async function updateFonts(
 // A layout updateNextFonts left as it was, and why.
 interface SkippedLayout {
   path: string
-  reason: "unparsable" | "syntax-error-inserted"
+  reason: SkipReason
 }
 
 function getSkippedLayoutWarning(
@@ -224,7 +230,7 @@ async function updateNextFonts(
   // ts-morph writes some edits that break a layout the editor does not
   // expect, like a cn() className with only font arguments, which becomes
   // `cn(, ...)`.
-  if (countSyntaxErrors(updatedContent) > countSyntaxErrors(layoutContent)) {
+  if (addsSyntaxErrors(layoutContent, updatedContent)) {
     return { path: layoutPath, reason: "syntax-error-inserted" }
   }
 
@@ -286,8 +292,9 @@ export async function transformLayoutFonts(
     let hasExistingImport = false
 
     if (existingImport) {
-      hasExistingImport =
-        getNamedImportNames(existingImport).includes(importName)
+      hasExistingImport = getNamedImportNames(code, existingImport).includes(
+        importName
+      )
       if (!hasExistingImport) {
         code = addNamedImport(code, existingImport, importName)
       }
@@ -448,15 +455,6 @@ function getImportDeclarations(file: t.File) {
   return file.program.body.filter(
     (statement) => statement.type === "ImportDeclaration"
   )
-}
-
-// ts-morph's ImportSpecifier#getName(): the imported name.
-function getNamedImportNames(declaration: t.ImportDeclaration) {
-  return declaration.specifiers
-    .filter((specifier) => specifier.type === "ImportSpecifier")
-    .map(({ imported }) =>
-      imported.type === "StringLiteral" ? imported.value : imported.name
-    )
 }
 
 // The declarations of the source file's variable statements, exported or not.
@@ -734,27 +732,11 @@ function addJsxAttribute(
   ])
 }
 
-// ts-morph's JsxAttribute#setInitializer(text): the text is indented for the
-// attribute, then replaces the initializer like Node#replaceWithText.
-function setJsxAttributeInitializer(
-  code: string,
-  attribute: t.JSXAttribute,
-  text: string
-) {
-  const initializer = attribute.value!
-  const attributeText = getReplacementText(code, attribute.start!, text)
-  return applyManipulation(code, [
-    {
-      start: initializer.start!,
-      end: initializer.end!,
-      text: getReplacementText(code, initializer.start!, attributeText),
-    },
-  ])
-}
-
 // ts-morph's Node#replaceWithText(text) on the className expression, without
 // the syntax check: the string helpers below can break the expression, as in
-// `cn(, ...)`, and updateNextFonts does not write such a layout.
+// `cn(, ...)`, and updateNextFonts does not write such a layout. TypeScript
+// skips that comma, so ts-morph took the edit, but Babel recovers from it
+// with an error, which applyManipulation would reject the edit for.
 function replaceJsxExpression(code: string, expression: t.Node, text: string) {
   return applyEdits(code, [
     {
@@ -768,7 +750,7 @@ function replaceJsxExpression(code: string, expression: t.Node, text: string) {
 function ensureCnImport(code: string, config: Config) {
   const imports = getImportDeclarations(parseModule(code))
   const existingImport = imports.find((decl) =>
-    getNamedImportNames(decl).includes("cn")
+    getNamedImportNames(code, decl).includes("cn")
   )
 
   if (!existingImport) {
@@ -778,7 +760,7 @@ function ensureCnImport(code: string, config: Config) {
     )
 
     if (utilsImport) {
-      if (!getNamedImportNames(utilsImport).includes("cn")) {
+      if (!getNamedImportNames(code, utilsImport).includes("cn")) {
         return addNamedImport(code, utilsImport, "cn")
       }
     } else {

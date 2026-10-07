@@ -1,148 +1,45 @@
 import { type types as t } from "@babel/core"
 import CodeBlockWriter from "code-block-writer"
 
-import { applyManipulation } from "./edits"
+import { getNodesWithComments, type NodeOrComment } from "./comment-nodes"
+import { applyManipulation, type TextEdit } from "./edits"
 import { parseModule } from "./parse"
 import {
-  getLineEnd,
-  getLineStart,
-  getNextNonWhitespacePos,
+  getNonWhitespaceStart,
+  getPosAtEndOfPreviousLine,
+  getPosAtNextNonBlankLine,
   getPosAtStartOfLineOrNonWhitespace,
   getTrailingTriviaEnd,
-  isWhitespace,
+  isNewLineAtPos,
 } from "./trivia"
 
 // A top-level statement as ts-morph lists them in getStatementsWithComments:
 // the program's statements and directives, and comment statements, which are
-// comments on their own lines between them.
-export interface Statement {
-  // Where the leading trivia starts: the previous statement's end.
-  pos: number
-  start: number
-  end: number
-  // Undefined for a comment statement.
-  node?: t.Statement | t.Directive
-}
-
-type CommentKind = "line" | "block" | "jsdoc"
+// comments on their own lines between them. A statement's pos is the previous
+// node's end, as in TypeScript, and a comment statement's is its start.
+export type Statement = NodeOrComment<t.Statement | t.Directive>
 
 // ts-morph's StatementedNode#getStatementsWithComments() on a source file.
-export function getStatementsWithComments(code: string, program: t.Program) {
+export function getStatementsWithComments(
+  code: string,
+  program: t.Program
+): Statement[] {
   const nodes = [...program.directives, ...program.body].sort(
     (a, b) => a.start! - b.start!
   )
 
-  if (nodes.length === 0) {
-    return getCommentStatements(code, 0, false)
-  }
-
-  const statements: Statement[] = []
-  let previousEnd = 0
-  for (const node of nodes) {
-    statements.push(...getCommentStatements(code, previousEnd, true))
-    statements.push({
-      pos: previousEnd,
-      start: node.start!,
-      end: node.end!,
+  return getNodesWithComments(
+    code,
+    0,
+    nodes.map((node, index) => ({
+      pos: index === 0 ? 0 : nodes[index - 1].end!,
       node,
-    })
-    previousEnd = node.end!
-  }
-  statements.push(...getCommentStatements(code, previousEnd, false))
-
-  return statements
-}
-
-// ts-morph's CommentNodeParser: the comments after fullStart that are on their
-// own lines, before the next statement. A JSDoc comment before a statement
-// belongs to it, so it stops there unless no statement follows.
-function getCommentStatements(
-  code: string,
-  fullStart: number,
-  stopAtJsDoc: boolean
-) {
-  let pos = fullStart
-  const comments: Statement[] = []
-
-  // Skips what is left of the line pos is on: the trailing comments of what
-  // precedes it.
-  function skipTrailingLine() {
-    if (pos === 0) {
-      return
-    }
-
-    let lineEnd = getLineEnd(code, pos)
-    while (pos < lineEnd) {
-      const kind = getCommentKind(code, pos)
-      if (kind) {
-        pos = skipComment(code, pos, kind)
-        if (kind === "line") {
-          return
-        }
-        lineEnd = getLineEnd(code, pos)
-      } else if (!isWhitespace(code[pos]) && code[pos] !== ",") {
-        return
-      } else {
-        pos++
-      }
-    }
-
-    while (code[pos] === "\n") {
-      pos++
-    }
-  }
-
-  skipTrailingLine()
-
-  while (pos < code.length) {
-    const kind = getCommentKind(code, pos)
-    if (kind) {
-      if (kind === "jsdoc" && stopAtJsDoc) {
-        break
-      }
-      const start = pos
-      pos = skipComment(code, pos, kind)
-      comments.push({ pos: fullStart, start, end: pos })
-      skipTrailingLine()
-    } else if (!isWhitespace(code[pos])) {
-      break
-    } else {
-      pos++
-    }
-  }
-
-  // A comment on the same line as the next statement is not its own statement.
-  const maxEnd =
-    pos === code.length || code[pos] === "}" ? pos : getLineStart(code, pos)
-
-  return comments.filter((comment) => comment.end <= maxEnd)
-}
-
-function getCommentKind(code: string, pos: number): CommentKind | undefined {
-  if (code[pos] !== "/") {
-    return undefined
-  }
-  if (code[pos + 1] === "/") {
-    return "line"
-  }
-  if (code[pos + 1] !== "*") {
-    return undefined
-  }
-  return code[pos + 2] === "*" ? "jsdoc" : "block"
-}
-
-function skipComment(code: string, pos: number, kind: CommentKind) {
-  if (kind === "line") {
-    return getLineEnd(code, pos + 2)
-  }
-
-  // Like ts-morph, look for the end after "/**", so "/**/" does not end there.
-  const close = code.indexOf("*/", pos + (kind === "jsdoc" ? 3 : 2))
-  return close === -1 ? code.length : close + 2
+    }))
+  )
 }
 
 // ts-morph's Node#getNonWhitespaceStart() for a top-level statement.
-function getNonWhitespaceStart(
+function getStatementNonWhitespaceStart(
   code: string,
   statements: Statement[],
   index: number
@@ -155,17 +52,11 @@ function getNonWhitespaceStart(
     return statement.start
   }
 
-  let searchStart = statement.pos
-  if (previous && !previous.node) {
-    searchStart = previous.end
-  } else if (
-    previous &&
-    code.slice(statement.pos, statement.start).includes("\n")
-  ) {
-    searchStart = getTrailingTriviaEnd(code, previous.end)
-  }
-
-  return getNextNonWhitespacePos(code, searchStart)
+  return getNonWhitespaceStart(
+    code,
+    statement,
+    previous && { end: previous.end, isComment: !previous.node }
+  )
 }
 
 // ts-morph's insertion of a statement into a source file at index
@@ -179,12 +70,30 @@ export function insertStatement(
   statementText: string,
   isSameKind: (statement: Statement) => boolean
 ) {
+  const { edit, end } = getStatementInsertion(
+    code,
+    statements,
+    index,
+    statementText,
+    isSameKind
+  )
+  return { code: applyManipulation(code, [edit]), end }
+}
+
+// insertStatement's edit, and where the inserted statement ends after it.
+function getStatementInsertion(
+  code: string,
+  statements: Statement[],
+  index: number,
+  statementText: string,
+  isSameKind: (statement: Statement) => boolean
+) {
   const previous = statements[index - 1]
   const next = statements[index]
   const insertPos = previous ? previous.end : 0
   const endPos = getPosAtStartOfLineOrNonWhitespace(
     code,
-    next ? getNonWhitespaceStart(code, statements, index) : code.length
+    next ? getStatementNonWhitespaceStart(code, statements, index) : code.length
   )
 
   const writer = new CodeBlockWriter()
@@ -201,22 +110,108 @@ export function insertStatement(
     writer.newLineIfLastNot()
   }
 
-  return {
-    code: applyManipulation(code, [
-      { start: insertPos, end: endPos, text: writer.toString() },
-    ]),
-    end: statementEnd,
+  const edit: TextEdit = {
+    start: insertPos,
+    end: endPos,
+    text: writer.toString(),
+  }
+  return { edit, end: statementEnd }
+}
+
+// ts-morph's Statement#remove() for a statement of the source file
+// (removeStatementedNodeChild): from the end of the statement or comment
+// before it, through its trailing comments and the blank lines after it. The
+// statements around it are then separated by a blank line if either has a
+// body, and by a line break otherwise.
+export function removeStatement(
+  code: string,
+  statements: Statement[],
+  index: number
+) {
+  const statement = statements[index]
+  const previous = statements[index - 1]
+  const next = statements[index + 1]
+
+  // RemoveChildrenWithFormattingTextManipulator's getRemovalPos and
+  // getRemovalEnd. A statement without a previous one starts at the source
+  // file's pos, 0.
+  let start: number
+  if (previous) {
+    const previousTriviaEnd = getTrailingTriviaEnd(code, previous.end)
+    start = isNewLineAtPos(code, previousTriviaEnd)
+      ? previousTriviaEnd
+      : previous.end
+  } else {
+    start = getStatementNonWhitespaceStart(code, statements, index)
+  }
+
+  const triviaEnd = getTrailingTriviaEnd(code, statement.end)
+  let end: number
+  if (previous && next) {
+    end = getPosAtStartOfLineOrNonWhitespace(
+      code,
+      getStatementNonWhitespaceStart(code, statements, index + 1)
+    )
+  } else if (statement.end === code.length) {
+    // The statement ends where the source file does.
+    end = statement.end
+  } else if (isNewLineAtPos(code, triviaEnd)) {
+    const nextLineStart = getPosAtNextNonBlankLine(code, triviaEnd)
+    end = previous
+      ? getPosAtEndOfPreviousLine(code, nextLineStart)
+      : nextLineStart
+  } else {
+    end = previous ? statement.end : triviaEnd
+  }
+
+  let spacing = ""
+  if (previous && next) {
+    spacing = hasBody(previous) || hasBody(next) ? "\n\n" : "\n"
+  }
+
+  return applyManipulation(code, [{ start, end, text: spacing }])
+}
+
+// ts-morph's hasBody() for a statement: a function or module declaration with
+// a body, a class, an interface or an enum.
+function hasBody({ node }: Statement) {
+  const declaration =
+    node?.type === "ExportNamedDeclaration" ||
+    node?.type === "ExportDefaultDeclaration"
+      ? node.declaration
+      : node
+  switch (declaration?.type) {
+    case "FunctionDeclaration":
+    case "ClassDeclaration":
+    case "TSInterfaceDeclaration":
+    case "TSEnumDeclaration":
+      return true
+    case "TSModuleDeclaration":
+      return declaration.body !== undefined
+    default:
+      return false
   }
 }
 
 // ts-morph's SourceFile#addImportDeclaration({ moduleSpecifier, namedImports:
-// [name] }): after the last import, or after the leading block comments when
-// there are no imports.
+// [name] }).
 export function addImportDeclaration(
   code: string,
   moduleSpecifier: string,
   name: string
 ) {
+  return applyManipulation(code, [
+    getImportDeclarationInsertion(
+      code,
+      `import { ${name} } from "${moduleSpecifier}";`
+    ),
+  ])
+}
+
+// The edit with which ts-morph's SourceFile#addImportDeclaration() writes the
+// text of an import declaration: after the last import, or after the leading
+// block comments when there are no imports.
+export function getImportDeclarationInsertion(code: string, text: string) {
   const statements = getStatementsWithComments(code, parseModule(code).program)
 
   let index = 0
@@ -232,13 +227,13 @@ export function addImportDeclaration(
     }
   }
 
-  return insertStatement(
+  return getStatementInsertion(
     code,
     statements,
     index,
-    `import { ${name} } from "${moduleSpecifier}";`,
+    text,
     isImportDeclaration
-  ).code
+  ).edit
 }
 
 export function isImportDeclaration(statement: Statement) {

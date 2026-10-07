@@ -1,45 +1,37 @@
 import { registryBaseColorSchema } from "@/src/registry/schema"
-import { Transformer } from "@/src/utils/transformers"
-import { ScriptKind, SyntaxKind } from "ts-morph"
+import { parseTransformInput } from "@/src/utils/codemod/parse"
+import { StringLiterals } from "@/src/utils/codemod/string-literals"
 import { z } from "zod"
 
-export const transformCssVars: Transformer = async ({
-  sourceFile,
-  config,
-  baseColor,
-}) => {
-  // No transform if using css variables.
-  if (config.tailwind?.cssVariables || !baseColor?.inlineColors) {
-    return sourceFile
-  }
+import { fromTextTransformer } from "./text-transformer"
 
-  // Find jsx attributes with the name className.
-  // const openingElements = sourceFile.getDescendantsOfKind(SyntaxKind.JsxElement)
-  // console.log(openingElements)
-  // const jsxAttributes = sourceFile
-  //   .getDescendantsOfKind(SyntaxKind.JsxAttribute)
-  //   .filter((node) => node.getName() === "className")
-
-  // for (const jsxAttribute of jsxAttributes) {
-  //   const value = jsxAttribute.getInitializer()?.getText()
-  //   if (value) {
-  //     const valueWithColorMapping = applyColorMapping(
-  //       value.replace(/"/g, ""),
-  //       baseColor.inlineColors
-  //     )
-  //     jsxAttribute.setInitializer(`"${valueWithColorMapping}"`)
-  //   }
-  // }
-  sourceFile.getDescendantsOfKind(SyntaxKind.StringLiteral).forEach((node) => {
-    const raw = node.getLiteralText()
-    const mapped = applyColorMapping(raw, baseColor.inlineColors).trim()
-    if (mapped !== raw) {
-      node.setLiteralValue(mapped)
+export const transformCssVars = fromTextTransformer(
+  (code, { config, baseColor }) => {
+    // No transform if using css variables.
+    if (config.tailwind?.cssVariables || !baseColor?.inlineColors) {
+      return code
     }
-  })
 
-  return sourceFile
-}
+    const file = parseTransformInput(code)
+    if (!file) {
+      return code
+    }
+
+    // Every string literal of the file, directives and import specifiers
+    // included. A mapped value is trimmed, so a string with spaces around it
+    // changes even without colors.
+    const literals = new StringLiterals(code, file)
+    for (const literal of literals.getStringLiterals()) {
+      const raw = literals.getValue(literal)
+      const mapped = applyColorMapping(raw, baseColor.inlineColors).trim()
+      if (mapped !== raw) {
+        literals.setValue(literal, mapped)
+      }
+    }
+
+    return literals.apply()
+  }
+)
 
 // export default function transformer(file: FileInfo, api: API) {
 //   const j = api.jscodeshift.withParser("tsx")

@@ -1,6 +1,11 @@
-import { Transformer } from "@/src/utils/transformers"
+import {
+  getJsxAttributes,
+  setJsxAttributeInitializer,
+} from "@/src/utils/codemod/jsx-attributes"
+import { getText, parseTransformInput } from "@/src/utils/codemod/parse"
 import { twMerge } from "cn"
-import { SyntaxKind } from "ts-morph"
+
+import { fromTextTransformer } from "./text-transformer"
 
 // Hardcoded translucent classes inlined at install time.
 const TRANSLUCENT_CLASSES =
@@ -11,23 +16,32 @@ const TRANSLUCENT_CLASSES =
 // If menuColor is "default-translucent", removes cn-menu-target and inlines cn-menu-translucent styles.
 // If menuColor is "inverted-translucent", replaces cn-menu-target with "dark" and inlines cn-menu-translucent styles.
 // Otherwise, removes both cn-menu-target and cn-menu-translucent.
-export const transformMenu: Transformer = async ({ sourceFile, config }) => {
+export const transformMenu = fromTextTransformer((code, { config }) => {
   const menuColor = config.menuColor
   const isTranslucent =
     menuColor === "default-translucent" || menuColor === "inverted-translucent"
 
-  for (const attr of sourceFile.getDescendantsOfKind(SyntaxKind.JsxAttribute)) {
-    const attrName = attr.getNameNode().getText()
+  const file = parseTransformInput(code)
+  if (!file) {
+    return code
+  }
+
+  // Each edit parses the code again, and finds the attributes by index, which
+  // the edits do not change.
+  let attributes = getJsxAttributes(file)
+  for (let index = 0; index < attributes.length; index++) {
+    const { attribute } = attributes[index]
+    const attrName = getText(code, attribute.name)
     if (attrName !== "className") {
       continue
     }
 
-    const initializer = attr.getInitializer()
+    const initializer = attribute.value
     if (!initializer) {
       continue
     }
 
-    const text = initializer.getText()
+    const text = getText(code, initializer)
     if (
       !text.includes("cn-menu-target") &&
       !text.includes("cn-menu-translucent")
@@ -75,8 +89,19 @@ export const transformMenu: Transformer = async ({ sourceFile, config }) => {
       newText = newText.replace(/,\s*""\s*\)/g, ")")
     }
 
-    attr.setInitializer(newText)
+    code = setJsxAttributeInitializer(code, attribute, newText)
+
+    // ts-morph forgets the nodes in the initializer it replaced, and throws
+    // when the loop gets to an attribute that was in there.
+    const next = attributes[index + 1]
+    if (next && next.attribute.start! < initializer.end!) {
+      throw new Error(
+        "Attempted to get information from a node that was removed or forgotten."
+      )
+    }
+
+    attributes = getJsxAttributes(parseTransformInput(code)!)
   }
 
-  return sourceFile
-}
+  return code
+})
