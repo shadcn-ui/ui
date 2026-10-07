@@ -2,7 +2,7 @@ import path from "path"
 import {
   type Transformer,
   type TransformOpts,
-} from "@shadcn/registry/internal/utils/transformers/index"
+} from "@shadcn/registry/internal/transformers/index"
 import { Project, ScriptKind, type SourceFile } from "ts-morph"
 
 // A transformer that edits a ts-morph SourceFile in place: the signature the

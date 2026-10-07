@@ -12,7 +12,7 @@ import {
   vi,
 } from "vitest"
 
-import { logger } from "../utils/logger"
+import { logger } from "../logger"
 import { withRegistryContext } from "./context"
 import { RegistrySourceFileError, RegistryValidationError } from "./errors"
 import { fetchGitHubRegistryItem, validateGitHubRegistrySource } from "./github"

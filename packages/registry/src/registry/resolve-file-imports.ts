@@ -1,12 +1,12 @@
 import * as fs from "fs/promises"
 import * as path from "path"
+import { getImportDeclarationSources } from "@/src/codemod/import-declarations"
+import { ProjectInfo } from "@/src/get-project-info"
 import { configSchema, registryItemSchema } from "@/src/registry/schema"
-import { getImportDeclarationSources } from "@/src/utils/codemod/import-declarations"
-import { ProjectInfo } from "@/src/utils/get-project-info"
 import {
   isLocalAliasImport,
   resolveImportWithMetadata,
-} from "@/src/utils/resolve-import"
+} from "@/src/resolve-import"
 import postcss from "postcss"
 import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"

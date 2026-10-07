@@ -4,8 +4,8 @@ import * as path from "path"
 import { afterEach, beforeEach, describe, expect, it, test, vi } from "vitest"
 import { z } from "zod"
 
-import { Config } from "../utils/get-config"
-import { ProjectInfo } from "../utils/get-project-info"
+import { Config } from "../get-config"
+import { ProjectInfo } from "../get-project-info"
 import { registryItemFileSchema } from "./schema"
 import {
   canDeduplicateFiles,
@@ -406,14 +406,14 @@ describe("isUniversalRegistryItem", () => {
   })
 })
 
-vi.mock("../utils/get-project-info", () => ({
+vi.mock("../get-project-info", () => ({
   getProjectInfo: vi.fn().mockResolvedValue({
     isSrcDir: false,
     framework: { name: "next-app" },
   }),
 }))
 
-vi.mock("../utils/resolve-file-path", () => ({
+vi.mock("../resolve-file-path", () => ({
   findCommonRoot: vi.fn().mockImplementation(() => ""),
   resolveFilePath: vi.fn().mockImplementation((file) => {
     const typeMap: Record<string, string> = {
