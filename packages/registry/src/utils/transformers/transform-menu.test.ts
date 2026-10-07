@@ -947,6 +947,31 @@ export function Component() {
     })
   })
 
+  describe("ts-morph errors", () => {
+    test("throws at an attribute inside a className it rewrote", async () => {
+      // Current behavior: ts-morph forgets the nodes of the initializer it
+      // replaced, and fails at the next attribute, which was one of them.
+      await expect(
+        menu(
+          `<a className={cn("x", y && <b className="cn-menu-target" />)} />\n`,
+          "inverted"
+        )
+      ).rejects.toThrow(
+        "Attempted to get information from a node that was removed or forgotten."
+      )
+    })
+
+    test("throws when a collapsed className ends in a line comment", async () => {
+      // Current behavior: collapsing the whitespace puts the rest of the
+      // className in the comment.
+      await expect(
+        menu(
+          `<a\n  className={cn(\n    // the target\n    "cn-menu-target z-50",\n    className\n  )}\n/>\n`
+        )
+      ).rejects.toThrow("Manipulation error: A syntax error was inserted.")
+    })
+  })
+
   describe("CRLF input", () => {
     const CRLF =
       'export function Content({ className }) {\r\n  return (\r\n    <Content\r\n      className={cn(\r\n        "cn-menu-target cn-menu-translucent z-50",\r\n        className\r\n      )}\r\n    />\r\n  )\r\n}\r\n'

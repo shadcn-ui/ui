@@ -778,6 +778,23 @@ import { cn } from "~/lib/utils"
     expect(await transform({ filename, raw, config })).toBe(expected)
   })
 
+  it("rewrites the imports of a .ts file with a <T> cast", async () => {
+    // TypeScript parses it as TSX and recovers before the cast; Babel cannot
+    // parse it with JSX, so it is parsed without.
+    expect(
+      await transform({
+        filename: "util.ts",
+        raw: `import { cn } from "@/lib/utils"\nconst a = <any>b\n`,
+        config,
+      })
+    ).toBe(`import { cn } from "~/lib/utils"\nconst a = <any>b\n`)
+  })
+
+  it("leaves a template literal in an import type alone", async () => {
+    const raw = "type T = typeof import(`@/lib/utils`)\n"
+    expect(await transform({ filename: "a.ts", raw, config })).toBe(raw)
+  })
+
   it("leaves CSS @import specifiers alone", async () => {
     const css = `@import "tailwindcss";
 @import "@/registry/new-york/styles/theme.css";
@@ -1028,5 +1045,28 @@ import { other } from "@/hooks/utils"
       import { other } from "@/lib/utils"
       "
     `)
+  })
+
+  it.each([
+    // A file without imports or exports: TypeScript collects the non-relative
+    // specifiers inside a declare module block.
+    [
+      `declare module "@/registry/new-york/ui/button" {\n  import { cn } from "@/lib/utils"\n  import { Slot } from "./slot"\n  export { Root } from "@/components/ui/root"\n}\n`,
+      `declare module "@/registry/new-york/ui/button" {\n  import { cn } from "~/lib/utils"\n  import { Slot } from "./slot"\n  export { Root } from "~/components/ui/root"\n}\n`,
+    ],
+    // import.meta makes it a module, where the block is an augmentation.
+    [
+      `const url = import.meta.url\n\ndeclare module "@/registry/new-york/ui/button" {\n  import { cn } from "@/lib/utils"\n}\n`,
+      `const url = import.meta.url\n\ndeclare module "@/registry/new-york/ui/button" {\n  import { cn } from "@/lib/utils"\n}\n`,
+    ],
+    // Every specifier is written again, without its escapes.
+    [
+      `import { cn } from "@/lib/\\u0075tils"\nimport { Button } from '@/components/ui/it\\'s'\n`,
+      `import { cn } from "~/lib/utils"\nimport { Button } from '~/components/ui/it\\'s'\n`,
+    ],
+  ])("ambient modules and escapes: %j", async (raw, expected) => {
+    expect(await transform({ filename: "types.ts", raw, config })).toBe(
+      expected
+    )
   })
 })
