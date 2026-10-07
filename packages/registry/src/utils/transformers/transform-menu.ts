@@ -3,9 +3,8 @@ import {
   setJsxAttributeInitializer,
 } from "@/src/utils/codemod/jsx-attributes"
 import { getText, parseTransformInput } from "@/src/utils/codemod/parse"
+import { type Transformer } from "@/src/utils/transformers"
 import { twMerge } from "cn"
-
-import { fromTextTransformer } from "./text-transformer"
 
 // Hardcoded translucent classes inlined at install time.
 const TRANSLUCENT_CLASSES =
@@ -16,7 +15,7 @@ const TRANSLUCENT_CLASSES =
 // If menuColor is "default-translucent", removes cn-menu-target and inlines cn-menu-translucent styles.
 // If menuColor is "inverted-translucent", replaces cn-menu-target with "dark" and inlines cn-menu-translucent styles.
 // Otherwise, removes both cn-menu-target and cn-menu-translucent.
-export const transformMenu = fromTextTransformer((code, { config }) => {
+export const transformMenu: Transformer = (code, { config }) => {
   const menuColor = config.menuColor
   const isTranslucent =
     menuColor === "default-translucent" || menuColor === "inverted-translucent"
@@ -104,4 +103,4 @@ export const transformMenu = fromTextTransformer((code, { config }) => {
   }
 
   return code
-})
+}

@@ -630,9 +630,7 @@ export function Button() {
       transformRtl,
       transformCleanup,
     ]) {
-      vi.mocked(transformer).mockImplementationOnce(async ({ sourceFile }) => {
-        return sourceFile
-      })
+      vi.mocked(transformer).mockImplementationOnce(async (code) => code)
     }
 
     const config = await getConfig(cwd)

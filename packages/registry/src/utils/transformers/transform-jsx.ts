@@ -5,10 +5,6 @@ import { parse, ParserOptions } from "@babel/parser"
 import transformTypescript from "@babel/plugin-transform-typescript"
 import * as recast from "recast"
 
-// TODO.
-// I'm using recast for the AST here.
-// Figure out if ts-morph AST is compatible with Babel.
-
 // This is a copy of the babel options from recast/parser.
 // The goal here is to tolerate as much syntax as possible.
 // We want to be able to parse any valid tsx code.
@@ -61,12 +57,7 @@ const PARSE_OPTIONS: ParserOptions = {
   ],
 }
 
-export const transformJsx: Transformer<string> = async ({
-  sourceFile,
-  config,
-}) => {
-  const output = sourceFile.getFullText()
-
+export const transformJsx: Transformer = (output, { config }) => {
   if (config.tsx) {
     return output
   }

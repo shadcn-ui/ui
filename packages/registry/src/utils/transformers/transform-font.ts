@@ -13,9 +13,8 @@ import {
   StringLiterals,
   type Literal,
 } from "@/src/utils/codemod/string-literals"
+import { type Transformer } from "@/src/utils/transformers"
 import { type types as t } from "@babel/core"
-
-import { fromTextTransformer } from "./text-transformer"
 
 const FONT_MARKERS = [
   {
@@ -117,52 +116,53 @@ function processStringLiterals(
 
 // ts-morph edits the file as it goes: the attributes left empty go after the
 // className edits, and the cva() and mergeProps() calls are read after that.
-export const transformFont = fromTextTransformer(
-  async (code, { config, supportedFontMarkers }) => {
-    const supportedMarkers = await getSupportedFontMarkers(
-      config.resolvedPaths.tailwindCss,
-      supportedFontMarkers
-    )
+export const transformFont: Transformer = async (
+  code,
+  { config, supportedFontMarkers }
+) => {
+  const supportedMarkers = await getSupportedFontMarkers(
+    config.resolvedPaths.tailwindCss,
+    supportedFontMarkers
+  )
 
-    const file = parseTransformInput(code)
-    if (!file) {
-      return code
+  const file = parseTransformInput(code)
+  if (!file) {
+    return code
+  }
+
+  const attributesToRemove: number[] = []
+  const literals = new StringLiterals(code, file)
+
+  getJsxAttributes(file).forEach(({ attribute }, index) => {
+    const attrName = getText(code, attribute.name)
+    if (attrName !== "className" && attrName !== "classNames") {
+      return
     }
 
-    const attributesToRemove: number[] = []
-    const literals = new StringLiterals(code, file)
+    const initializer = attribute.value
 
-    getJsxAttributes(file).forEach(({ attribute }, index) => {
-      const attrName = getText(code, attribute.name)
-      if (attrName !== "className" && attrName !== "classNames") {
-        return
-      }
-
-      const initializer = attribute.value
-
-      if (initializer?.type === "StringLiteral") {
-        const currentValue = literals.getValue(initializer)
-        if (MARKER_REGEX.test(currentValue)) {
-          const newValue = rewriteFontMarkers(currentValue, supportedMarkers)
-          if (newValue === "") {
-            attributesToRemove.push(index)
-          } else if (newValue !== currentValue) {
-            literals.setValue(initializer, newValue)
-          }
+    if (initializer?.type === "StringLiteral") {
+      const currentValue = literals.getValue(initializer)
+      if (MARKER_REGEX.test(currentValue)) {
+        const newValue = rewriteFontMarkers(currentValue, supportedMarkers)
+        if (newValue === "") {
+          attributesToRemove.push(index)
+        } else if (newValue !== currentValue) {
+          literals.setValue(initializer, newValue)
         }
       }
+    }
 
-      if (initializer?.type === "JSXExpressionContainer") {
-        processStringLiterals(literals, initializer, supportedMarkers)
-      }
-    })
+    if (initializer?.type === "JSXExpressionContainer") {
+      processStringLiterals(literals, initializer, supportedMarkers)
+    }
+  })
 
-    return transformFontCalls(
-      removeJsxAttributes(literals.apply(), attributesToRemove),
-      supportedMarkers
-    )
-  }
-)
+  return transformFontCalls(
+    removeJsxAttributes(literals.apply(), attributesToRemove),
+    supportedMarkers
+  )
+}
 
 // The cva() and mergeProps() calls of transformFont.
 function transformFontCalls(code: string, supportedMarkers: Set<string>) {

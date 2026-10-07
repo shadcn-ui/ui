@@ -7,9 +7,8 @@ import {
   parseTransformInput,
 } from "@/src/utils/codemod/parse"
 import { isLineBreak, isWhiteSpaceSingleLine } from "@/src/utils/codemod/trivia"
+import { type Transformer } from "@/src/utils/transformers"
 import { types as t } from "@babel/core"
-
-import { fromTextTransformer } from "./text-transformer"
 
 // Elements that require nativeButton={false} when used as render prop.
 // These are non-button elements that don't have native button semantics.
@@ -27,7 +26,7 @@ const ELEMENTS_REQUIRING_NATIVE_BUTTON_FALSE = [
 // ensuring inner transforms complete before outer ones read the tree.
 const MAX_ITERATIONS = 10
 
-export const transformAsChild = fromTextTransformer((code, { config }) => {
+export const transformAsChild: Transformer = (code, { config }) => {
   // Only run for base- styles.
   if (!config.style?.startsWith("base-")) {
     return code
@@ -42,7 +41,7 @@ export const transformAsChild = fromTextTransformer((code, { config }) => {
   }
 
   return code
-})
+}
 
 // One iteration: the elements with asChild and no asChild descendants, or
 // undefined when no element has asChild. ts-morph removes asChild from those
