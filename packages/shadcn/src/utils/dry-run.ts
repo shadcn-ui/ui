@@ -29,7 +29,6 @@ import {
 } from "@shadcn/registry/internal/utils/updaters/update-files"
 import { massageTreeForFonts } from "@shadcn/registry/internal/utils/updaters/update-fonts"
 import { registryResolvedItemsTreeSchema } from "@shadcn/registry/schema"
-import { Project } from "ts-morph"
 import { loadConfig } from "tsconfig-paths"
 import type { z } from "zod"
 
@@ -154,9 +153,6 @@ async function processFiles(
   } catch {
     tsConfig = { resultType: "failed" } as ReturnType<typeof loadConfig>
   }
-  const project = new Project({
-    compilerOptions: {},
-  })
   const plannedFilePaths = getPlannedFilePaths(files, config, {
     isSrcDir: projectInfo?.isSrcDir,
     framework: projectInfo?.framework.name,
@@ -227,7 +223,6 @@ async function processFiles(
             config,
             content,
             filePaths: plannedFilePaths,
-            project,
             projectInfo,
             resolvedPath: filePath,
             tsConfig,

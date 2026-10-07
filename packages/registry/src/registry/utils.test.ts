@@ -1134,6 +1134,33 @@ export { Lazy, required, fsExtra }
     `)
   })
 
+  it("reads the imports around a line it cannot parse", async () => {
+    await writeFiles({
+      "components/broken.tsx": `import { Slot } from "@radix-ui/react-slot"\n# Not code\nimport { helper } from "./helper"\n`,
+      "components/helper.ts": `export const helper = 1\n`,
+    })
+
+    expect(await crawl("components/broken.tsx")).toMatchInlineSnapshot(`
+      {
+        "dependencies": [
+          "@radix-ui/react-slot",
+        ],
+        "files": [
+          {
+            "path": "components/broken.tsx",
+            "target": "",
+            "type": "registry:component",
+          },
+          {
+            "path": "components/helper.ts",
+            "target": "",
+            "type": "registry:component",
+          },
+        ],
+      }
+    `)
+  })
+
   it("handles import cycles and self imports", async () => {
     await writeFiles({
       "components/cycle-a.tsx": `import { B } from "./cycle-b"\nimport { A } from "./cycle-a"\nimport "a-dependency"\n`,

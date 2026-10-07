@@ -83,19 +83,9 @@ export class StringLiterals {
     }
   }
 
-  // ts-morph's setLiteralValue(value), which replaces the text between the
-  // quotes. A string keeps its quotes, and escapes them and line breaks in
-  // value, but not backslashes. A template takes value as written.
+  // ts-morph's setLiteralValue(value): see getSetLiteralValueEdit.
   setValue(literal: Literal, value: string) {
-    const quote = this.code[literal.start!] === "'" ? "'" : '"'
-    this.edits.set(literal, {
-      start: literal.start! + 1,
-      end: literal.end! - 1,
-      text:
-        literal.type === "TemplateLiteral"
-          ? value
-          : escapeForWithinString(value, quote),
-    })
+    this.edits.set(literal, getSetLiteralValueEdit(this.code, literal, value))
   }
 
   // The edits that set the values, to apply with others.
@@ -106,6 +96,25 @@ export class StringLiterals {
   // The code with the values set.
   apply() {
     return applyEdits(this.code, this.getEdits())
+  }
+}
+
+// The edit of ts-morph's setLiteralValue(value), which replaces the text
+// between the quotes. A string keeps its quotes, and escapes them and line
+// breaks in value, but not backslashes. A template takes value as written.
+export function getSetLiteralValueEdit(
+  code: string,
+  literal: Literal,
+  value: string
+): TextEdit {
+  const quote = code[literal.start!] === "'" ? "'" : '"'
+  return {
+    start: literal.start! + 1,
+    end: literal.end! - 1,
+    text:
+      literal.type === "TemplateLiteral"
+        ? value
+        : escapeForWithinString(value, quote),
   }
 }
 
