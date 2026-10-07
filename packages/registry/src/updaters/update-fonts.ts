@@ -109,7 +109,6 @@ export async function massageTreeForFonts(
     for (const [selector, classes] of Array.from(groups.entries())) {
       const fontClasses = classes.join(" ")
       tree.css["@layer base"][selector] ??= {}
-      // Find existing @apply key and merge, or create new.
       const existingApplyKey = Object.keys(
         tree.css["@layer base"][selector]
       ).find((key) => key.startsWith("@apply "))
@@ -202,7 +201,6 @@ async function updateNextFonts(
   config: Config,
   projectInfo: ProjectInfo
 ): Promise<SkippedLayout | undefined> {
-  // Find layout file.
   const layoutPath = await findLayoutFile(config, projectInfo)
 
   if (!layoutPath) {
@@ -274,18 +272,15 @@ export async function transformLayoutFonts(
   // Only process Google fonts for now.
   const googleFonts = fonts.filter((f) => f.font.provider === "google")
 
-  // Track which font variables and utility classes we're adding.
   const fontVariableNames: string[] = []
   const fontUtilityClasses: string[] = []
 
-  // Process Google fonts.
   for (const font of googleFonts) {
     const importName = font.font.import
     if (!importName) {
       continue
     }
 
-    // Check if import already exists.
     const existingImport = getImportDeclarations(parseModule(code)).find(
       (decl) => decl.source.value === "next/font/google"
     )
@@ -299,16 +294,13 @@ export async function transformLayoutFonts(
         code = addNamedImport(code, existingImport, importName)
       }
     } else {
-      // Add new import.
       code = addImportDeclaration(code, "next/font/google", importName)
     }
 
     const varName = getFontVariableName(importName, font.font.variable)
 
-    // Build font options.
     const fontOptions = buildFontOptions(font)
 
-    // Check if variable declaration already exists with same variable CSS property.
     const file = parseModule(code)
     const existingVarDecl = findFontVariableDeclaration(
       code,
@@ -328,24 +320,20 @@ export async function transformLayoutFonts(
 
     if (existingVarDecl) {
       const { id } = existingVarDecl
-      // Replace the initializer of the existing declaration.
       code = setInitializer(
         code,
         existingVarDecl,
         `${importName}(${fontOptions})`
       )
-      // Update the variable name if different. The name comes before the
-      // initializer, so it has not moved.
+      // The name comes before the initializer, so it has not moved.
       if (id.type !== "Identifier" || id.name !== varName) {
         code = renameVariable(code, id.start!, varName)
       }
       resolvedVarName = varName
     } else {
-      // Find the last import or existing font declaration to insert after.
       const statements = getStatementsWithComments(code, file.program)
       const insertPosition = findInsertPosition(statements)
 
-      // Add variable declaration.
       const inserted = insertStatement(
         code,
         statements,
@@ -354,7 +342,6 @@ export async function transformLayoutFonts(
         isVariableStatement
       )
 
-      // Add a blank line after the declaration.
       code = applyEdits(inserted.code, [
         { start: inserted.end, end: inserted.end, text: "\n" },
       ])
@@ -379,7 +366,6 @@ export async function transformLayoutFonts(
     filteredUtilityClasses.unshift(lastFontFamilyClass)
   }
 
-  // Update html className to include font variables and utility classes.
   if (fontVariableNames.length > 0) {
     code = updateHtmlClassName(
       code,
@@ -492,18 +478,14 @@ function findFontVariableDeclaration(
   file: t.File,
   variable: string
 ) {
-  // Find variable declarations that call a font function with matching variable.
   for (const declaration of getVariableDeclarations(file)) {
     const initializer = declaration.init
 
-    // Check if it's a call expression.
     if (!isCallExpression(initializer)) continue
 
-    // Get the arguments.
     const args = initializer.arguments
     if (args.length === 0) continue
 
-    // Check if any argument contains our variable.
     const argText = getText(code, args[0])
     if (argText.includes(`variable:`) && argText.includes(variable)) {
       return declaration
@@ -589,11 +571,9 @@ function updateHtmlClassName(
   fontUtilityClasses: string[],
   config: Config
 ) {
-  // Find the <html> JSX elements.
   const elementCount = getHtmlOpeningElements(parseModule(code)).length
 
   for (let index = 0; index < elementCount; index++) {
-    // Build the new expressions: utility classes as strings, then .variable expressions.
     const newUtilityClasses = fontUtilityClasses.map((cls) => `"${cls}"`)
     const newVarExpressions = fontVariableNames.map(
       (name) => `${name}.variable`
@@ -604,7 +584,6 @@ function updateHtmlClassName(
       getHtmlOpeningElement(code, index)
     )
     if (!classNameAttr) {
-      // Add className attribute with font utility classes and variables.
       code = ensureCnImport(code, config)
       return addJsxAttribute(
         code,
@@ -613,7 +592,6 @@ function updateHtmlClassName(
       )
     }
 
-    // Handle existing className.
     const initializer = classNameAttr.value
 
     if (!initializer) return code
@@ -628,15 +606,12 @@ function updateHtmlClassName(
         `{cn("${currentValue}", ${allNewArgs.join(", ")})}`
       )
     } else if (initializer.type === "JSXExpressionContainer") {
-      // className={...} - need to analyze the expression.
       const expr = initializer.expression
       if (expr.type === "JSXEmptyExpression") return code
 
       const exprText = getText(code, expr)
 
-      // Check if it's already using cn().
       if (exprText.startsWith("cn(")) {
-        // Check if cn() already has all our font variables and utility classes.
         const hasAllFontVars = newVarExpressions.every((v) =>
           exprText.includes(v)
         )
@@ -648,11 +623,9 @@ function updateHtmlClassName(
           .filter((cls) => !fontUtilityClasses.includes(cls))
           .some((cls) => exprText.includes(`"${cls}"`))
         if (hasAllFontVars && hasAllUtilityClasses && !staleFontFamilyClasses) {
-          // Already has everything, skip.
           continue
         }
 
-        // Remove existing font variables and font-family classes, then add new ones.
         let cleanedExpr = removeFontVariablesFromCn(exprText, newVarExpressions)
         cleanedExpr = removeFontFamilyClassesFromCn(cleanedExpr)
         const newExpr = insertFontVariablesIntoCn(cleanedExpr, allNewArgs)
@@ -663,14 +636,12 @@ function updateHtmlClassName(
         )
       } else if (/^\w+\.variable$/.test(exprText)) {
         // Single font variable like {inter.variable}.
-        // Check if it's already one of our font variables.
         if (
           newVarExpressions.includes(exprText) &&
           fontUtilityClasses.length === 0
         ) {
           continue
         }
-        // Replace with cn() including utility classes and font variables.
         code = ensureCnImport(code, config)
         const existingName = exprText.split(".")[0] ?? ""
         const shouldPreserveExisting =
@@ -687,7 +658,6 @@ function updateHtmlClassName(
         // Template literal - parse and convert to cn() arguments.
         const cnArgs = parseTemplateLiteralToCnArgs(exprText)
         code = ensureCnImport(code, config)
-        // Deduplicate cnArgs against allNewArgs.
         const allNewArgsSet = new Set(allNewArgs)
         const fontFamilyLiterals = new Set(
           ["font-sans", "font-serif", "font-mono"].map((c) => `"${c}"`)
@@ -754,7 +724,6 @@ function ensureCnImport(code: string, config: Config) {
   )
 
   if (!existingImport) {
-    // Try to find the lib/utils import pattern.
     const utilsImport = imports.find((decl) =>
       decl.source.value.includes("/lib/utils")
     )
@@ -764,7 +733,6 @@ function ensureCnImport(code: string, config: Config) {
         return addNamedImport(code, utilsImport, "cn")
       }
     } else {
-      // Add a new import for cn.
       return addImportDeclaration(code, config.aliases.utils, "cn")
     }
   }
@@ -779,10 +747,8 @@ function parseTemplateLiteralToCnArgs(templateLiteral: string) {
   const staticArgs: string[] = []
   const variableArgs: string[] = []
 
-  // Remove the backticks.
   const content = templateLiteral.slice(1, -1)
 
-  // Split by ${...} expressions and static parts.
   const parts = content.split(/(\$\{[^}]+\})/)
 
   for (const part of parts) {
@@ -795,7 +761,6 @@ function parseTemplateLiteralToCnArgs(templateLiteral: string) {
         variableArgs.push(expr)
       }
     } else {
-      // Static string - split by whitespace and add non-empty parts as quoted strings.
       const staticParts = part.trim().split(/\s+/).filter(Boolean)
       for (const staticPart of staticParts) {
         staticArgs.push(`"${staticPart}"`)
@@ -803,7 +768,6 @@ function parseTemplateLiteralToCnArgs(templateLiteral: string) {
     }
   }
 
-  // Return static strings first, then variables.
   return [...staticArgs, ...variableArgs]
 }
 
@@ -811,7 +775,6 @@ function removeFontVariablesFromCn(
   cnExpr: string,
   variablesToRemove: string[]
 ) {
-  // Remove specific font variable expressions from cn() call.
   let result = cnExpr
   for (const varExpr of variablesToRemove) {
     result = result
@@ -822,7 +785,6 @@ function removeFontVariablesFromCn(
 }
 
 function removeFontFamilyClassesFromCn(cnExpr: string) {
-  // Remove font-family class strings (font-sans, font-serif, font-mono) from cn() call.
   // Does not remove other font classes like font-bold, font-semibold, etc.
   let result = cnExpr
   for (const cls of ["font-sans", "font-serif", "font-mono"]) {
@@ -834,7 +796,6 @@ function removeFontFamilyClassesFromCn(cnExpr: string) {
 }
 
 function insertFontVariablesIntoCn(cnExpr: string, fontVars: string[]) {
-  // Insert font variables at the end of cn() arguments.
   const varsStr = fontVars.join(", ")
   return cnExpr.replace(/\)$/, `, ${varsStr})`)
 }
