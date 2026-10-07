@@ -1,18 +1,19 @@
 import * as fs from "fs/promises"
-import { tmpdir } from "os"
 import * as path from "path"
 import { configSchema, registryItemSchema } from "@/src/registry/schema"
+import { getImportDeclarationSources } from "@/src/utils/codemod/import-declarations"
 import { ProjectInfo } from "@/src/utils/get-project-info"
 import {
   isLocalAliasImport,
   resolveImportWithMetadata,
 } from "@/src/utils/resolve-import"
-import { Project, ScriptKind } from "ts-morph"
+import postcss from "postcss"
 import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"
 
 // The `shadcn build` crawler. It lives apart from registry/utils, which the
-// read-only API imports, so that importing those helpers does not load ts-morph.
+// read-only API imports, so that a bundle of those helpers leaves out Babel
+// and postcss.
 
 const FILE_EXTENSIONS_FOR_LOOKUP = [".tsx", ".ts", ".jsx", ".js", ".css"]
 const FILE_PATH_SKIP_LIST = ["lib/utils.ts"]
@@ -20,10 +21,6 @@ const DEPENDENCY_SKIP_LIST = [
   /^(react|react-dom|next)(\/.*)?$/, // Matches react, react-dom, next and their submodules
   /^(node|jsr|npm):.*$/, // Matches node:, jsr:, and npm: prefixed modules
 ]
-
-const project = new Project({
-  compilerOptions: {},
-})
 
 // This returns the dependency from the module specifier.
 // Here dependency means an npm package.
@@ -89,10 +86,6 @@ export async function recursivelyResolveFileImports(
   }
 
   const content = await fs.readFile(resolvedFilePath, "utf-8")
-  const tempFile = await createTempSourceFile(path.basename(resolvedFilePath))
-  const sourceFile = project.createSourceFile(tempFile, content, {
-    scriptKind: ScriptKind.TSX,
-  })
   const tsConfig = await loadConfig(config.resolvedPaths.cwd)
   if (tsConfig.resultType === "failed") {
     return { dependencies: [], files: [] }
@@ -111,10 +104,11 @@ export async function recursivelyResolveFileImports(
   files.push(originalFile)
 
   // 1. Find all import statements in the file.
-  const importStatements = sourceFile.getImportDeclarations()
-  for (const importStatement of importStatements) {
-    const moduleSpecifier = importStatement.getModuleSpecifierValue()
-
+  const moduleSpecifiers =
+    fileExtension === ".css"
+      ? getCssImportSpecifiers(content)
+      : getImportDeclarationSources(content).map((source) => source.value)
+  for (const moduleSpecifier of moduleSpecifiers) {
     const isRelativeImport = moduleSpecifier.startsWith(".")
     const isAliasImport = isLocalAliasImport(
       moduleSpecifier,
@@ -225,9 +219,25 @@ export async function recursivelyResolveFileImports(
   }
 }
 
-async function createTempSourceFile(filename: string) {
-  const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
-  return path.join(dir, filename)
+// The imports ts-morph found in a CSS file, which it parsed as TSX: each
+// top-level `@import "x"` or `@import 'x'` is an import declaration of x
+// there, whatever follows the string, and `@import url(x)` is not. CSS that
+// postcss cannot parse has none.
+function getCssImportSpecifiers(content: string) {
+  let root: postcss.Root
+  try {
+    root = postcss.parse(content)
+  } catch {
+    return []
+  }
+
+  return root.nodes.flatMap((node) => {
+    const specifier =
+      node.type === "atrule" && node.name === "import"
+        ? /^(["'])(.*?)\1/.exec(node.params)?.[2]
+        : undefined
+    return specifier === undefined ? [] : [specifier]
+  })
 }
 
 // This is a bit tricky to accurately determine.
