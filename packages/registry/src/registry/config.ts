@@ -1,5 +1,5 @@
 import { BUILTIN_REGISTRIES, FALLBACK_STYLE } from "@/src/registry/constants"
-import { configSchema } from "@/src/schema"
+import { configSchema } from "@/src/registry/schema"
 import { Config, createConfig, DeepPartial } from "@/src/utils/get-config"
 import deepmerge from "deepmerge"
 

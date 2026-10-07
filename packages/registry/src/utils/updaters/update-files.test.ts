@@ -1,13 +1,19 @@
 import { existsSync, promises as fs } from "fs"
+import { tmpdir } from "os"
 import path from "path"
+import { stripVTControlCharacters } from "util"
 import { getFixturesDir } from "@/src/test-helpers"
 import { getConfig, type Config } from "@/src/utils/get-config"
+import { type ProjectInfo } from "@/src/utils/get-project-info"
+import { logger } from "@/src/utils/logger"
 import prompts from "prompts"
 import { Project } from "ts-morph"
+import { loadConfig, type ConfigLoaderSuccessResult } from "tsconfig-paths"
 import { afterAll, afterEach, describe, expect, it, vi } from "vitest"
 
 import {
   findCommonRoot,
+  getPlannedFilePaths,
   resolveFilePath,
   resolveModuleByProbablePath,
   resolveNestedFilePath,
@@ -57,6 +63,57 @@ afterEach(async () => {
 afterAll(() => {
   vi.resetAllMocks()
 })
+
+// Creates a throwaway project under the OS temp dir (outside any workspace)
+// using the real fs, since `fs.promises.writeFile` is mocked in this file.
+async function createTempProject(files: Record<string, string>) {
+  const fsActual = (await vi.importActual(
+    "fs/promises"
+  )) as typeof import("fs/promises")
+  const dir = await fsActual.mkdtemp(
+    path.join(tmpdir(), "shadcn-update-files-")
+  )
+
+  for (const [filePath, content] of Object.entries(files)) {
+    const absolutePath = path.join(dir, filePath)
+    await fsActual.mkdir(path.dirname(absolutePath), { recursive: true })
+    await fsActual.writeFile(absolutePath, content, "utf-8")
+  }
+
+  return dir
+}
+
+async function removeTempProject(dir: string) {
+  const fsActual = (await vi.importActual(
+    "fs/promises"
+  )) as typeof import("fs/promises")
+  await fsActual.rm(dir, { recursive: true, force: true }).catch(() => {})
+}
+
+async function readActualFile(filePath: string) {
+  const fsActual = (await vi.importActual(
+    "fs/promises"
+  )) as typeof import("fs/promises")
+  return fsActual.readFile(filePath, "utf-8")
+}
+
+async function withRealWrites<T>(callback: () => Promise<T>) {
+  const fsModuleActual = (await vi.importActual("fs")) as typeof import("fs")
+  const writeFileMock = fs.writeFile as any
+
+  writeFileMock.mockImplementation(fsModuleActual.promises.writeFile as any)
+  try {
+    return await callback()
+  } finally {
+    writeFileMock.mockResolvedValue(undefined)
+  }
+}
+
+function getWrittenContent(filePath: string) {
+  return (fs.writeFile as any).mock.calls.find(
+    (call: any) => call[0] === filePath
+  )?.[1]
+}
 
 describe("resolveFilePath", () => {
   it.each([
@@ -634,6 +691,45 @@ describe("resolveFilePath", () => {
       )
     ).toBe("/foo/bar/components/ui/button.tsx")
   })
+
+  it.each([
+    {
+      type: "registry:example",
+      path: "registry/new-york/examples/button-demo.tsx",
+      resolvedPath: "/foo/bar/components/button-demo.tsx",
+    },
+    {
+      type: "registry:page",
+      path: "registry/new-york/blocks/login/page.tsx",
+      resolvedPath: "/foo/bar/components/page.tsx",
+    },
+    {
+      type: "registry:file",
+      path: "registry/new-york/components/data/config.json",
+      resolvedPath: "/foo/bar/components/data/config.json",
+    },
+  ])(
+    "should fall back to the components directory for $type without a target",
+    ({ type, path: filePath, resolvedPath }) => {
+      expect(
+        resolveFilePath(
+          { path: filePath, type } as any,
+          {
+            resolvedPaths: {
+              cwd: "/foo/bar",
+              components: "/foo/bar/components",
+              ui: "/foo/bar/components/ui",
+              lib: "/foo/bar/lib",
+              hooks: "/foo/bar/hooks",
+            },
+          } as Config,
+          {
+            isSrcDir: false,
+          }
+        )
+      ).toBe(resolvedPath)
+    }
+  )
 })
 
 describe("resolveFilePath with custom path", () => {
@@ -886,6 +982,40 @@ describe("resolveFilePath with custom path", () => {
       )
     ).toBe("/foo/bar/docs/guide.md")
   })
+
+  it.each([
+    ["/foo/bar/custom/.env", "/foo/bar/custom/.env"],
+    ["/foo/bar/v1.2/custom", "/foo/bar/v1.2/custom/button.tsx"],
+    ["/foo/bar/custom/", "/foo/bar/custom/button.tsx"],
+    ["/foo/bar/custom.", "/foo/bar/custom./button.tsx"],
+    ["/foo/bar/v1.2\\custom", "/foo/bar/v1.2\\custom/button.tsx"],
+  ])(
+    "decides file or directory from the last segment of %s",
+    (customPath, expected) => {
+      expect(
+        resolveFilePath(
+          {
+            path: "hello-world/ui/button.tsx",
+            type: "registry:ui",
+          },
+          {
+            resolvedPaths: {
+              cwd: "/foo/bar",
+              components: "/foo/bar/components",
+              ui: "/foo/bar/components/ui",
+              lib: "/foo/bar/lib",
+              hooks: "/foo/bar/hooks",
+            },
+          } as Config,
+          {
+            isSrcDir: false,
+            path: customPath,
+            fileIndex: 0,
+          }
+        )
+      ).toBe(expected)
+    }
+  )
 })
 
 describe("resolveFilePath with framework", () => {
@@ -1643,6 +1773,46 @@ export function Button() {
     expect(project.getSourceFiles()).toHaveLength(0)
   })
 
+  it("should return each call's own content when reusing one project", async () => {
+    // Same scenario as above, pinned through output only: repeated calls on a
+    // shared project must not see each other's content.
+    const project = new Project({
+      compilerOptions: {},
+    })
+    const options = {
+      resolvedPath: "/tmp/example.ts",
+      filePaths: [],
+      config: {
+        aliases: {},
+        resolvedPaths: {
+          cwd: "/tmp",
+        },
+      } as any,
+      projectInfo: {
+        aliasPrefix: "#",
+      } as any,
+      tsConfig: {
+        resultType: "success",
+        absoluteBaseUrl: "/tmp",
+        paths: {},
+      } as any,
+      project,
+    }
+    const first = "export const value = 1\n"
+    const second =
+      'import { value } from "./value"\n\nexport const other = value\n'
+
+    await expect(
+      rewriteResolvedImportsInContent({ ...options, content: first })
+    ).resolves.toBe(first)
+    await expect(
+      rewriteResolvedImportsInContent({ ...options, content: second })
+    ).resolves.toBe(second)
+    await expect(
+      rewriteResolvedImportsInContent({ ...options, content: first })
+    ).resolves.toBe(first)
+  })
+
   it("should mark .env file as created when it doesn't exist", async () => {
     const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
 
@@ -2214,6 +2384,888 @@ export function RegularComponent() {
     // The 'use client' should be removed by the RSC transformer
     expect(writtenContent).not.toContain('"use client"')
   })
+
+  it("should return empty results when there are no files", async () => {
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
+    const empty = { filesCreated: [], filesUpdated: [], filesSkipped: [] }
+
+    expect(await updateFiles([], config, { silent: true })).toEqual(empty)
+    expect(await updateFiles(undefined, config, { silent: true })).toEqual(
+      empty
+    )
+  })
+
+  it("should ignore files without content", async () => {
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
+
+    expect(
+      await updateFiles(
+        [
+          {
+            path: "registry/default/ui/empty.tsx",
+            type: "registry:ui",
+          },
+          {
+            path: "registry/default/ui/blank.tsx",
+            type: "registry:ui",
+            content: "",
+          },
+        ],
+        config,
+        { overwrite: true, silent: true }
+      )
+    ).toEqual({ filesCreated: [], filesUpdated: [], filesSkipped: [] })
+    expect(fs.writeFile).not.toHaveBeenCalled()
+  })
+
+  it("should silently drop pages for frameworks without page support", async () => {
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
+
+    expect(
+      await updateFiles(
+        [
+          {
+            path: "registry/new-york/blocks/login/page.tsx",
+            type: "registry:page",
+            target: "app/login/page.tsx",
+            content: `export default function Page() {
+  return null
+}
+`,
+          },
+          {
+            path: "registry/new-york/blocks/login/components/login-form.tsx",
+            type: "registry:component",
+            content: `export function LoginForm() {
+  return null
+}
+`,
+          },
+        ],
+        config,
+        { overwrite: true, silent: true }
+      )
+    ).toEqual({
+      filesCreated: ["src/components/login-form.tsx"],
+      filesUpdated: [],
+      filesSkipped: [],
+    })
+  })
+
+  it("should write .jsx and .js files when tsx is disabled", async () => {
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
+    const cwd = config.resolvedPaths.cwd
+
+    expect(
+      await updateFiles(
+        [
+          {
+            path: "registry/default/ui/toggle.tsx",
+            type: "registry:ui",
+            content: `export function Toggle() {
+  return <button>Toggle</button>
+}
+`,
+          },
+          {
+            path: "registry/default/lib/format.ts",
+            type: "registry:lib",
+            content: `export function format(value: string) {
+  return value
+}
+`,
+          },
+        ],
+        { ...config, tsx: false },
+        { overwrite: true, silent: true }
+      )
+    ).toEqual({
+      filesCreated: ["src/components/ui/toggle.jsx", "src/lib/format.js"],
+      filesUpdated: [],
+      filesSkipped: [],
+    })
+    expect(
+      (fs.writeFile as any).mock.calls.map((call: any) =>
+        path.relative(cwd, call[0])
+      )
+    ).toEqual(["src/components/ui/toggle.jsx", "src/lib/format.js"])
+  })
+
+  it("should throw when the target path is an existing directory", async () => {
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
+    const directoryPath = path.join(
+      config.resolvedPaths.cwd,
+      "src",
+      "components"
+    )
+
+    await expect(
+      updateFiles(
+        [
+          {
+            path: "components",
+            type: "registry:file",
+            target: "~/src/components",
+            content: "export {}\n",
+          },
+        ],
+        config,
+        { overwrite: true, silent: true }
+      )
+    ).rejects.toThrow(
+      new Error(
+        `Cannot write to ${directoryPath}: path exists and is a directory. Please provide a file path instead.`
+      )
+    )
+  })
+
+  it("should skip existing files when the overwrite prompt is declined", async () => {
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
+    const rootSpinner = { stop: vi.fn(), start: vi.fn() }
+    vi.mocked(prompts).mockResolvedValueOnce({ overwrite: false })
+
+    const result = await updateFiles(
+      [
+        {
+          path: "registry/default/ui/button.tsx",
+          type: "registry:ui",
+          content: `export function Button() {
+  return <button>Prompted</button>
+}
+`,
+        },
+      ],
+      config,
+      { silent: true, rootSpinner: rootSpinner as any }
+    )
+
+    expect(result).toEqual({
+      filesCreated: [],
+      filesUpdated: [],
+      filesSkipped: ["src/components/ui/button.tsx"],
+    })
+    expect(prompts).toHaveBeenCalledTimes(1)
+    expect(rootSpinner.stop).toHaveBeenCalledTimes(1)
+    expect(rootSpinner.start).toHaveBeenCalledTimes(1)
+    expect(fs.writeFile).not.toHaveBeenCalled()
+  })
+
+  it("should overwrite existing files when the overwrite prompt is accepted", async () => {
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
+    const rootSpinner = { stop: vi.fn(), start: vi.fn() }
+    const content = `export function Button() {
+  return <button>Prompted</button>
+}
+`
+    vi.mocked(prompts).mockResolvedValueOnce({ overwrite: true })
+
+    const result = await updateFiles(
+      [
+        {
+          path: "registry/default/ui/button.tsx",
+          type: "registry:ui",
+          content,
+        },
+      ],
+      config,
+      { silent: true, rootSpinner: rootSpinner as any }
+    )
+
+    expect(result).toEqual({
+      filesCreated: [],
+      filesUpdated: ["src/components/ui/button.tsx"],
+      filesSkipped: [],
+    })
+    expect(rootSpinner.stop).toHaveBeenCalledTimes(1)
+    expect(rootSpinner.start).toHaveBeenCalledTimes(1)
+    expect(
+      getWrittenContent(
+        path.join(config.resolvedPaths.cwd, "src/components/ui/button.tsx")
+      )
+    ).toBe(content)
+  })
+
+  it("should prompt without a root spinner", async () => {
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
+    vi.mocked(prompts).mockResolvedValueOnce({ overwrite: false })
+
+    expect(
+      await updateFiles(
+        [
+          {
+            path: "registry/default/ui/button.tsx",
+            type: "registry:ui",
+            content: `export function Button() {
+  return <button>Prompted</button>
+}
+`,
+          },
+        ],
+        config,
+        { silent: true }
+      )
+    ).toEqual({
+      filesCreated: [],
+      filesUpdated: [],
+      filesSkipped: ["src/components/ui/button.tsx"],
+    })
+    expect(prompts).toHaveBeenCalledTimes(1)
+  })
+
+  it("should log created, updated, skipped files and added env vars when not silent", async () => {
+    const config = (await getConfig(getFixturesDir("vite-with-tailwind")))!
+    const logSpy = vi.spyOn(logger, "log").mockImplementation(() => {})
+
+    try {
+      const result = await updateFiles(
+        [
+          {
+            path: "src/components/hello.tsx",
+            type: "registry:component",
+            content: `export function Hello() {
+  return <div>Hello</div>
+}
+`,
+          },
+          {
+            path: "registry/default/ui/button.tsx",
+            type: "registry:ui",
+            content: `export function Button() {
+  return <button>Click me</button>
+}`,
+          },
+          {
+            path: "App.tsx",
+            type: "registry:file",
+            target: "~/src/App.tsx",
+            content: `export default function App() {
+  return <div>Hello World</div>
+}
+`,
+          },
+          {
+            path: "registry/default/lib/utils.ts",
+            type: "registry:lib",
+            content: `export function cn() {}
+`,
+          },
+          {
+            path: "main.tsx",
+            type: "registry:file",
+            target: "~/src/main.tsx",
+            content: `export {}
+`,
+          },
+          {
+            path: ".env",
+            type: "registry:file",
+            target: "~/.env",
+            content: `NEW_API_KEY=value
+OTHER_KEY=value`,
+          },
+        ],
+        config,
+        { overwrite: true, silent: false }
+      )
+
+      expect(result).toEqual({
+        filesCreated: ["src/components/hello.tsx", ".env"],
+        filesUpdated: ["src/lib/utils.ts", "src/main.tsx"],
+        filesSkipped: ["src/components/ui/button.tsx", "src/App.tsx"],
+      })
+      expect(
+        logSpy.mock.calls.map((call) =>
+          stripVTControlCharacters(call.join(" "))
+        )
+      ).toEqual([
+        "  - src/components/hello.tsx",
+        "  - .env",
+        "  - src/lib/utils.ts",
+        "  - src/main.tsx",
+        "  - src/components/ui/button.tsx",
+        "  - src/App.tsx",
+        "  + NEW_API_KEY",
+        "  + OTHER_KEY",
+      ])
+    } finally {
+      logSpy.mockRestore()
+    }
+  })
+
+  it("should skip existing .env files when no new keys are added", async () => {
+    const tempDir = await createTempProject({
+      "package.json": JSON.stringify({ name: "env-no-new-keys" }),
+      "tsconfig.json": JSON.stringify({
+        compilerOptions: { baseUrl: ".", paths: { "@/*": ["./*"] } },
+      }),
+      "components.json": JSON.stringify({
+        style: "new-york",
+        tsx: true,
+        rsc: false,
+        tailwind: { config: "", css: "app/globals.css", baseColor: "neutral" },
+        aliases: { components: "@/components", utils: "@/lib/utils" },
+      }),
+      ".env": "EXISTING_KEY=existing_value\n",
+    })
+
+    try {
+      const config = (await getConfig(tempDir))!
+
+      expect(
+        await updateFiles(
+          [
+            {
+              path: ".env",
+              type: "registry:file",
+              target: "~/.env",
+              content: "EXISTING_KEY=should_not_override\n",
+            },
+          ],
+          config,
+          { overwrite: true, silent: true }
+        )
+      ).toEqual({ filesCreated: [], filesUpdated: [], filesSkipped: [".env"] })
+      expect(fs.writeFile).not.toHaveBeenCalled()
+      expect(await readActualFile(path.join(tempDir, ".env"))).toBe(
+        "EXISTING_KEY=existing_value\n"
+      )
+    } finally {
+      await removeTempProject(tempDir)
+    }
+  })
+
+  it("should skip an existing lib/utils.ts in laravel projects", async () => {
+    const existingUtils = `export function cn(...inputs: string[]) {
+  return inputs.join(" ")
+}
+`
+    const tempDir = await createTempProject({
+      "composer.json": "{}\n",
+      "package.json": JSON.stringify({ name: "laravel-app" }),
+      "tsconfig.json": JSON.stringify({
+        compilerOptions: {
+          baseUrl: ".",
+          paths: { "@/*": ["./resources/js/*"] },
+        },
+      }),
+      "components.json": JSON.stringify({
+        style: "new-york",
+        tsx: true,
+        rsc: false,
+        tailwind: {
+          config: "",
+          css: "resources/css/app.css",
+          baseColor: "neutral",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+          ui: "@/components/ui",
+          lib: "@/lib",
+          hooks: "@/hooks",
+        },
+      }),
+      "resources/css/app.css": '@import "tailwindcss";\n',
+      "resources/js/lib/utils.ts": existingUtils,
+    })
+
+    try {
+      const config = (await getConfig(tempDir))!
+
+      expect(
+        await withRealWrites(() =>
+          updateFiles(
+            [
+              {
+                path: "registry/new-york/lib/utils.ts",
+                type: "registry:lib",
+                content: `export function cn() {}
+`,
+              },
+            ],
+            config,
+            { overwrite: true, silent: true }
+          )
+        )
+      ).toEqual({
+        filesCreated: [],
+        filesUpdated: [],
+        filesSkipped: ["resources/js/lib/utils.ts"],
+      })
+      expect(
+        await readActualFile(path.join(tempDir, "resources/js/lib/utils.ts"))
+      ).toBe(existingUtils)
+    } finally {
+      await removeTempProject(tempDir)
+    }
+  })
+
+  it.each([
+    {
+      nextVersion: "^16.0.0",
+      fileName: "proxy.ts",
+      content: `import { NextResponse } from "next/server"
+
+export function proxy() {
+  return NextResponse.next()
+}
+
+export const config = {
+  matcher: ["/dashboard/:path*"],
+}
+`,
+    },
+    {
+      nextVersion: "15.2.0",
+      fileName: "middleware.ts",
+      content: `import { NextResponse } from "next/server"
+
+export function middleware() {
+  return NextResponse.next()
+}
+
+export const config = {
+  matcher: ["/dashboard/:path*"],
+}
+`,
+    },
+  ])(
+    "should write root middleware as $fileName for next $nextVersion",
+    async ({ nextVersion, fileName, content }) => {
+      const tempDir = await createTempProject({
+        "package.json": JSON.stringify({
+          name: "next-middleware",
+          dependencies: { next: nextVersion },
+        }),
+        "next.config.mjs": "export default {}\n",
+        "tsconfig.json": JSON.stringify({
+          compilerOptions: { baseUrl: ".", paths: { "@/*": ["./*"] } },
+        }),
+        "components.json": JSON.stringify({
+          style: "new-york",
+          tsx: true,
+          rsc: true,
+          tailwind: {
+            config: "",
+            css: "app/globals.css",
+            baseColor: "neutral",
+          },
+          aliases: {
+            components: "@/components",
+            utils: "@/lib/utils",
+            ui: "@/components/ui",
+            lib: "@/lib",
+            hooks: "@/hooks",
+          },
+        }),
+        "app/globals.css": '@import "tailwindcss";\n',
+      })
+
+      try {
+        const config = (await getConfig(tempDir))!
+
+        expect(
+          await withRealWrites(() =>
+            updateFiles(
+              [
+                {
+                  path: "registry/new-york/lib/middleware.ts",
+                  type: "registry:lib",
+                  target: "~/middleware.ts",
+                  content: `import { NextResponse } from "next/server"
+
+export function middleware() {
+  return NextResponse.next()
+}
+
+export const config = {
+  matcher: ["/dashboard/:path*"],
+}
+`,
+                },
+              ],
+              config,
+              { overwrite: true, silent: true }
+            )
+          )
+        ).toEqual({
+          filesCreated: [fileName],
+          filesUpdated: [],
+          filesSkipped: [],
+        })
+        expect(await readActualFile(path.join(tempDir, fileName))).toBe(content)
+      } finally {
+        await removeTempProject(tempDir)
+      }
+    }
+  )
+
+  it("should rewrite written files on disk and skip .d.ts files", async () => {
+    const tempDir = await createTempProject({
+      "package.json": JSON.stringify({
+        name: "rewrite-written-files",
+        type: "module",
+        imports: {
+          "#components/*": "./src/components/*",
+          "#hooks": "./src/hooks/index.ts",
+          "#utils": "./src/lib/utils.ts",
+        },
+      }),
+      "tsconfig.json": JSON.stringify({
+        compilerOptions: {
+          module: "esnext",
+          moduleResolution: "bundler",
+          resolvePackageJsonImports: true,
+        },
+      }),
+      "components.json": JSON.stringify({
+        style: "new-york",
+        rsc: true,
+        tsx: true,
+        tailwind: {
+          config: "",
+          css: "src/app/globals.css",
+          baseColor: "zinc",
+          cssVariables: true,
+        },
+        aliases: {
+          components: "#components",
+          hooks: "#hooks",
+          utils: "#utils",
+        },
+      }),
+      "src/app/globals.css": '@import "tailwindcss";\n',
+      "src/hooks/index.ts": 'export * from "./use-thing"\n',
+      "src/lib/utils.ts": "export function cn() {}\n",
+    })
+
+    try {
+      const config = (await getConfig(tempDir))!
+      const typesContent = `import type { useThing } from "#hooks/use-thing"
+
+export type Thing = ReturnType<typeof useThing>
+`
+
+      const result = await withRealWrites(() =>
+        updateFiles(
+          [
+            {
+              path: "components/example-card.tsx",
+              type: "registry:component",
+              content: [
+                `"use client"`,
+                ``,
+                `import { useThing } from '@/hooks/use-thing'`,
+                `import { cn } from "@/lib/utils"`,
+                ``,
+                `export function ExampleCard() {`,
+                `  useThing()`,
+                `  return <div className={cn("card")} />`,
+                `}`,
+                ``,
+              ].join("\r\n"),
+            },
+            {
+              path: "hooks/use-thing.ts",
+              type: "registry:hook",
+              content: `export function useThing() {
+  return true
+}
+`,
+            },
+            {
+              path: "lib/legacy.js",
+              type: "registry:lib",
+              content: `import { useThing } from "#hooks/use-thing"
+
+export const legacy = useThing
+`,
+            },
+            {
+              path: "lib/legacy-alias.js",
+              type: "registry:lib",
+              content: `import { useThing } from "@/hooks/use-thing"
+
+export const legacy = useThing
+`,
+            },
+            {
+              path: "lib/types.ts",
+              type: "registry:lib",
+              content: typesContent,
+            },
+            {
+              path: "lib/types.d.ts",
+              type: "registry:lib",
+              content: typesContent,
+            },
+          ],
+          config,
+          { overwrite: true, silent: true }
+        )
+      )
+
+      expect(result).toEqual({
+        filesCreated: [
+          "src/components/example-card.tsx",
+          "src/hooks/use-thing.ts",
+          "src/lib/legacy.js",
+          "src/lib/legacy-alias.js",
+          "src/lib/types.ts",
+          "src/lib/types.d.ts",
+        ],
+        filesUpdated: [],
+        filesSkipped: [],
+      })
+      expect(
+        await readActualFile(
+          path.join(tempDir, "src/components/example-card.tsx")
+        )
+      ).toBe(
+        [
+          `"use client"`,
+          ``,
+          `import { useThing } from '../hooks/use-thing'`,
+          `import { cn } from "#utils"`,
+          ``,
+          `export function ExampleCard() {`,
+          `  useThing()`,
+          `  return <div className={cn("card")} />`,
+          `}`,
+          ``,
+        ].join("\r\n")
+      )
+      expect(await readActualFile(path.join(tempDir, "src/lib/legacy.js")))
+        .toBe(`import { useThing } from "../hooks/use-thing"
+
+export const legacy = useThing
+`)
+      // Current behavior: transformImport does not see imports in `.js` files,
+      // so `@/hooks` is never mapped to `#hooks` and is left as is.
+      expect(
+        await readActualFile(path.join(tempDir, "src/lib/legacy-alias.js"))
+      ).toBe(`import { useThing } from "@/hooks/use-thing"
+
+export const legacy = useThing
+`)
+      expect(await readActualFile(path.join(tempDir, "src/lib/types.ts")))
+        .toBe(`import type { useThing } from "../hooks/use-thing"
+
+export type Thing = ReturnType<typeof useThing>
+`)
+      // `.d.ts` files are not read back and rewritten after writing.
+      expect(
+        await readActualFile(path.join(tempDir, "src/lib/types.d.ts"))
+      ).toBe(typesContent)
+    } finally {
+      await removeTempProject(tempDir)
+    }
+  })
+
+  it("should write the exact relative import for exact package-import subpaths", async () => {
+    const tempDir = await createTempProject({
+      "package.json": JSON.stringify({
+        name: "exact-package-import",
+        type: "module",
+        imports: {
+          "#components/*": "./src/components/*",
+          "#hooks": "./src/hooks/index.ts",
+          "#utils": "./src/lib/utils.ts",
+        },
+      }),
+      "tsconfig.json": JSON.stringify({
+        compilerOptions: {
+          module: "esnext",
+          moduleResolution: "bundler",
+          resolvePackageJsonImports: true,
+        },
+      }),
+      "components.json": JSON.stringify({
+        style: "new-york",
+        rsc: true,
+        tsx: true,
+        tailwind: {
+          config: "",
+          css: "src/app/globals.css",
+          baseColor: "zinc",
+          cssVariables: true,
+        },
+        aliases: {
+          components: "#components",
+          hooks: "#hooks",
+          utils: "#utils",
+        },
+      }),
+      "src/app/globals.css": '@import "tailwindcss";\n',
+      "src/hooks/index.ts": 'export * from "./use-thing"\n',
+      "src/lib/utils.ts": "export function cn() {}\n",
+    })
+
+    try {
+      const config = (await getConfig(tempDir))!
+
+      await withRealWrites(() =>
+        updateFiles(
+          [
+            {
+              path: "components/example-card.tsx",
+              type: "registry:component",
+              content: `import { useThing } from "@/hooks/use-thing"
+
+export function ExampleCard() {
+  useThing()
+  return null
+}
+`,
+            },
+            {
+              path: "hooks/use-thing.ts",
+              type: "registry:hook",
+              content: `export function useThing() {
+  return true
+}
+`,
+            },
+          ],
+          config,
+          { overwrite: true, silent: true }
+        )
+      )
+
+      expect(
+        await readActualFile(
+          path.join(tempDir, "src/components/example-card.tsx")
+        )
+      ).toBe(`import { useThing } from "../hooks/use-thing"
+
+export function ExampleCard() {
+  useThing()
+  return null
+}
+`)
+    } finally {
+      await removeTempProject(tempDir)
+    }
+  })
+
+  it("should not rewrite written files when tsconfig cannot be loaded", async () => {
+    const tempDir = await createTempProject({
+      "package.json": JSON.stringify({ name: "no-tsconfig" }),
+    })
+
+    try {
+      const config = {
+        style: "new-york",
+        rsc: false,
+        tsx: true,
+        tailwind: {
+          config: "",
+          css: "app/globals.css",
+          baseColor: "",
+          cssVariables: true,
+        },
+        aliases: {
+          components: "@/components",
+          ui: "@/components/ui",
+          lib: "@/lib",
+          hooks: "@/hooks",
+          utils: "@/lib/utils",
+        },
+        resolvedPaths: {
+          cwd: tempDir,
+          tailwindConfig: "",
+          tailwindCss: path.join(tempDir, "app/globals.css"),
+          components: path.join(tempDir, "components"),
+          ui: path.join(tempDir, "components/ui"),
+          lib: path.join(tempDir, "lib"),
+          hooks: path.join(tempDir, "hooks"),
+          utils: path.join(tempDir, "lib/utils"),
+        },
+      } as Config
+      const content = `import { Button } from "@/components/button"
+
+export function LoginForm() {
+  return <Button />
+}
+`
+
+      expect(
+        await withRealWrites(() =>
+          updateFiles(
+            [
+              {
+                path: "registry/new-york/blocks/login/components/login-form.tsx",
+                type: "registry:component",
+                content,
+              },
+              {
+                path: "registry/new-york/ui/button.tsx",
+                type: "registry:ui",
+                content: `export function Button() {
+  return <button />
+}
+`,
+              },
+            ],
+            config,
+            { overwrite: true, silent: true }
+          )
+        )
+      ).toEqual({
+        filesCreated: ["components/login-form.tsx", "components/ui/button.tsx"],
+        filesUpdated: [],
+        filesSkipped: [],
+      })
+      expect(
+        await readActualFile(path.join(tempDir, "components/login-form.tsx"))
+      ).toBe(content)
+    } finally {
+      await removeTempProject(tempDir)
+    }
+  })
+
+  it("should write the exact workspace utils import in monorepos without tsconfig paths", async () => {
+    const config = await getConfig(
+      getFixturesDir("frameworks/vite-monorepo-imports/apps/web")
+    )
+
+    if (!config) {
+      throw new Error("Failed to get monorepo app config")
+    }
+
+    await updateFiles(
+      [
+        {
+          path: "registry/components/login-form.tsx",
+          type: "registry:component",
+          content: `import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+
+export function LoginForm() {
+  return <Button className={cn("login")} />
+}
+`,
+        },
+      ],
+      config,
+      {
+        overwrite: true,
+        silent: true,
+      }
+    )
+
+    expect(
+      getWrittenContent(
+        path.join(config.resolvedPaths.cwd, "src/components/login-form.tsx")
+      )
+    ).toBe(`import { cn } from "@workspace/ui/lib/utils"
+import { Button } from "@workspace/ui/components/button"
+
+export function LoginForm() {
+  return <Button className={cn("login")} />
+}
+`)
+  })
 })
 
 describe("resolveModuleByProbablePath", () => {
@@ -2315,6 +3367,57 @@ describe("resolveModuleByProbablePath", () => {
         config
       )
     ).toBe("components/button.css")
+  })
+
+  it("should prefer the candidate under the probable path when extensions tie", () => {
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+      },
+    } as Config
+    expect(
+      resolveModuleByProbablePath(
+        "/foo/bar/components/button",
+        ["components/ui/button.tsx", "components/button.tsx"],
+        config
+      )
+    ).toBe("components/button.tsx")
+
+    // Both candidates come from the basename scan here.
+    expect(
+      resolveModuleByProbablePath(
+        "/foo/bar/components/button",
+        ["components/ui/button.tsx", "components/button/button.tsx"],
+        config
+      )
+    ).toBe("components/button/button.tsx")
+  })
+
+  it("should keep candidate order when the probable path is the cwd", () => {
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+      },
+    } as Config
+    expect(
+      resolveModuleByProbablePath(
+        "/foo/bar",
+        ["src/bar.tsx", "index.tsx"],
+        config
+      )
+    ).toBe("index.tsx")
+  })
+})
+
+describe("getPlannedFilePaths", () => {
+  it("should return no paths without files", () => {
+    expect(
+      getPlannedFilePaths(
+        undefined,
+        { resolvedPaths: { cwd: "/foo/bar" } } as Config,
+        {}
+      )
+    ).toEqual([])
   })
 })
 
@@ -2630,5 +3733,446 @@ describe("toAliasedImport", () => {
     } as any
 
     expect(toAliasedImport(filePath, config, projectInfo)).toBe("#utils")
+  })
+
+  it("should match a non-package alias root exactly", () => {
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        lib: "/foo/bar/lib",
+        utils: "/foo/bar/lib/utils",
+      },
+      aliases: {
+        lib: "@/lib",
+        utils: "@/lib/utils",
+      },
+    } as Config
+
+    expect(
+      toAliasedImport("lib/utils", config, { aliasPrefix: "@" } as any)
+    ).toBe("@/lib/utils")
+  })
+
+  it("should return null when the file is outside every alias root", () => {
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        components: "/foo/bar/components",
+      },
+      aliases: {
+        components: "@/components",
+      },
+    } as Config
+
+    expect(
+      toAliasedImport("../shared/button.tsx", config, {
+        aliasPrefix: "@",
+      } as any)
+    ).toBeNull()
+  })
+
+  it("should return null when the matching alias is not configured", () => {
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+        hooks: "/foo/bar/hooks",
+      },
+      aliases: {},
+    } as Config
+
+    expect(
+      toAliasedImport("hooks/use-mobile.ts", config, {
+        aliasPrefix: "@",
+      } as any)
+    ).toBeNull()
+    expect(
+      toAliasedImport("app/page.tsx", config, { aliasPrefix: null } as any)
+    ).toBeNull()
+  })
+
+  it.each([
+    {
+      importerPath: "src/components/example-card.tsx",
+      filePath: "src/hooks/use-thing.ts",
+      expected: "../hooks/use-thing",
+    },
+    {
+      importerPath: "src/hooks/use-other.ts",
+      filePath: "src/hooks/use-thing.ts",
+      expected: "./use-thing",
+    },
+    {
+      importerPath: "src/components/example-card.tsx",
+      filePath: "src/hooks/nested/index.ts",
+      expected: "../hooks/nested",
+    },
+    {
+      importerPath: "src/components/example-card.tsx",
+      filePath: "src/hooks/data.json",
+      expected: "../hooks/data.json",
+    },
+  ])(
+    "should fall back to $expected for exact package-import subpaths",
+    ({ importerPath, filePath, expected }) => {
+      const cwd = getFixturesDir("config-imports")
+      const config = {
+        resolvedPaths: {
+          cwd,
+          hooks: path.join(cwd, "src/hooks"),
+        },
+        aliases: {
+          hooks: "#hooks",
+        },
+      } as Config
+
+      expect(
+        toAliasedImport(
+          filePath,
+          config,
+          { aliasPrefix: "#" } as any,
+          path.join(cwd, importerPath)
+        )
+      ).toBe(expected)
+      // Without an importer there is nothing to be relative to.
+      expect(
+        toAliasedImport(filePath, config, { aliasPrefix: "#" } as any)
+      ).toBeNull()
+    }
+  )
+
+  it("should return the bare root wildcard alias for the project root", () => {
+    const cwd = getFixturesDir("frameworks/vite-monorepo-imports/apps/web")
+    const config = {
+      resolvedPaths: {
+        cwd,
+      },
+      aliases: {},
+    } as unknown as Config
+
+    expect(toAliasedImport("", config, { aliasPrefix: "#" } as any)).toBe("#")
+  })
+})
+
+describe("rewriteResolvedImportsInContent", () => {
+  // A cwd that does not exist on disk, so only `filePaths` can match.
+  const cwd = "/virtual/app"
+  const config = {
+    aliases: {
+      components: "@/components",
+      ui: "@/components/ui",
+      lib: "@/lib",
+      hooks: "@/hooks",
+      utils: "@/lib/utils",
+    },
+    resolvedPaths: {
+      cwd,
+      tailwindConfig: "",
+      tailwindCss: `${cwd}/app/globals.css`,
+      components: `${cwd}/components`,
+      ui: `${cwd}/components/ui`,
+      lib: `${cwd}/lib`,
+      hooks: `${cwd}/hooks`,
+      utils: `${cwd}/lib/utils`,
+    },
+  } as Config
+  const tsConfig = {
+    resultType: "success",
+    configFileAbsolutePath: `${cwd}/tsconfig.json`,
+    baseUrl: ".",
+    absoluteBaseUrl: cwd,
+    paths: { "@/*": ["./*"] },
+  } as ConfigLoaderSuccessResult
+  // Planned files live under `ui/` and `hooks/`, so `@/components/<name>`
+  // imports are relocated by basename.
+  const filePaths = [
+    "components/login-form.tsx",
+    "components/ui/button.tsx",
+    "components/ui/card.tsx",
+    "components/ui/data.json",
+    "components/ui/it's-fine.tsx",
+    "hooks/use-mobile.ts",
+    "lib/utils.ts",
+  ]
+
+  function rewrite(
+    content: string,
+    overrides: Partial<
+      Parameters<typeof rewriteResolvedImportsInContent>[0]
+    > = {}
+  ) {
+    return rewriteResolvedImportsInContent({
+      content,
+      resolvedPath: `${cwd}/components/login-form.tsx`,
+      filePaths,
+      config,
+      projectInfo: { aliasPrefix: "@" } as ProjectInfo,
+      tsConfig,
+      // The current signature requires a ts-morph project.
+      project: new Project({ compilerOptions: {} }),
+      ...overrides,
+    })
+  }
+
+  it("rewrites a relocated alias import and keeps double quotes", async () => {
+    expect(
+      await rewrite(`import { Button } from "@/components/button"
+
+export function LoginForm() {
+  return <Button />
+}
+`)
+    ).toBe(`import { Button } from "@/components/ui/button"
+
+export function LoginForm() {
+  return <Button />
+}
+`)
+  })
+
+  it("keeps single quotes", async () => {
+    expect(
+      await rewrite(`import { Button } from '@/components/button'
+import { useMobile } from '@/components/use-mobile'
+`)
+    ).toBe(`import { Button } from '@/components/ui/button'
+import { useMobile } from '@/hooks/use-mobile'
+`)
+  })
+
+  it("keeps CRLF line endings", async () => {
+    const input = [
+      `"use client"`,
+      ``,
+      `import { Button } from "@/components/button"`,
+      `import { useMobile } from '@/components/use-mobile'`,
+      ``,
+      `export function LoginForm() {`,
+      `  return <Button />`,
+      `}`,
+      ``,
+    ].join("\r\n")
+
+    expect(await rewrite(input)).toBe(
+      [
+        `"use client"`,
+        ``,
+        `import { Button } from "@/components/ui/button"`,
+        `import { useMobile } from '@/hooks/use-mobile'`,
+        ``,
+        `export function LoginForm() {`,
+        `  return <Button />`,
+        `}`,
+        ``,
+      ].join("\r\n")
+    )
+  })
+
+  it("rewrites every matching import and leaves everything else untouched", async () => {
+    expect(
+      await rewrite(`"use client";
+
+// Leading comment stays.
+import * as React from "react";
+import { Button } from "@/components/button"; // trailing comment
+import type { CardProps } from "@/components/card";
+import { type ButtonProps, buttonVariants } from '@/components/button';
+/* block comment */ import "@/components/side-effect";
+import data from "@/components/data.json" with { type: "json" };
+import { cn } from "@/lib/utils";
+import { helper } from "./helper";
+import { Missing } from "@/components/missing";
+
+export function LoginForm(props: CardProps & ButtonProps) {
+  return <Button className={cn(buttonVariants(), helper)} data={data} />;
+}
+`)
+    ).toBe(`"use client";
+
+// Leading comment stays.
+import * as React from "react";
+import { Button } from "@/components/ui/button"; // trailing comment
+import type { CardProps } from "@/components/ui/card";
+import { type ButtonProps, buttonVariants } from '@/components/ui/button';
+/* block comment */ import "@/components/side-effect";
+import data from "@/components/ui/data.json" with { type: "json" };
+import { cn } from "@/lib/utils";
+import { helper } from "./helper";
+import { Missing } from "@/components/missing";
+
+export function LoginForm(props: CardProps & ButtonProps) {
+  return <Button className={cn(buttonVariants(), helper)} data={data} />;
+}
+`)
+  })
+
+  it("does not rewrite export-from, dynamic import() or require()", async () => {
+    expect(
+      await rewrite(`import * as React from "react"
+import { Button } from "@/components/button"
+
+export { Card } from "@/components/card"
+export * from "@/components/button"
+
+const LazyCard = React.lazy(() => import("@/components/card"))
+const legacy = require("@/components/button")
+`)
+    ).toBe(`import * as React from "react"
+import { Button } from "@/components/ui/button"
+
+export { Card } from "@/components/card"
+export * from "@/components/button"
+
+const LazyCard = React.lazy(() => import("@/components/card"))
+const legacy = require("@/components/button")
+`)
+  })
+
+  it("escapes the literal's own quote character in rewritten specifiers", async () => {
+    expect(
+      await rewrite(`import ItsFine from '@/components/it\\'s-fine'
+import AlsoFine from "@/components/it's-fine"
+`)
+    ).toBe(`import ItsFine from '@/components/ui/it\\'s-fine'
+import AlsoFine from "@/components/ui/it's-fine"
+`)
+  })
+
+  it("rewrites .d.ts files", async () => {
+    expect(
+      await rewrite(
+        `import type { ButtonProps } from "@/components/button"
+
+export type Props = ButtonProps
+`,
+        { resolvedPath: `${cwd}/types/button.d.ts` }
+      )
+    ).toBe(`import type { ButtonProps } from "@/components/ui/button"
+
+export type Props = ButtonProps
+`)
+  })
+
+  it("returns the content unchanged when nothing can be rewritten", async () => {
+    const content = `import { Button } from "@/components/button"\n`
+
+    expect(
+      await rewrite(content, { resolvedPath: `${cwd}/app/globals.css` })
+    ).toBe(content)
+    expect(await rewrite(content, { projectInfo: null })).toBe(content)
+    // Without an alias prefix only `#` imports count as local aliases.
+    expect(
+      await rewrite(content, {
+        projectInfo: { aliasPrefix: null } as unknown as ProjectInfo,
+      })
+    ).toBe(content)
+    expect(
+      await rewrite(content, {
+        tsConfig: { resultType: "failed", message: "Missing tsconfig" },
+      })
+    ).toBe(content)
+
+    const unchanged = `import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+`
+    expect(await rewrite(unchanged)).toBe(unchanged)
+  })
+
+  it("rewrites package-import aliases", async () => {
+    const importsCwd = getFixturesDir("config-imports")
+    const importsConfig = (await getConfig(importsCwd))!
+
+    expect(
+      await rewrite(
+        `import { Button } from "#components/button"
+import { useThing } from "#hooks/use-thing"
+import { useHooks } from '#hooks'
+import { cn } from "#utils"
+import { format } from "#lib/format"
+`,
+        {
+          resolvedPath: path.join(
+            importsCwd,
+            "src/components/example-card.tsx"
+          ),
+          filePaths: [
+            "src/components/example-card.tsx",
+            "src/components/ui/button.tsx",
+            "src/hooks/index.ts",
+            "src/hooks/use-thing.ts",
+            "src/lib/format.ts",
+            "src/lib/utils.ts",
+          ],
+          config: importsConfig,
+          projectInfo: { aliasPrefix: "#" } as ProjectInfo,
+          tsConfig: loadConfig(importsCwd),
+        }
+      )
+    ).toMatchInlineSnapshot(`
+      "import { Button } from "#components/ui/button.tsx"
+      import { useThing } from "../hooks/use-thing"
+      import { useHooks } from '#hooks'
+      import { cn } from "#utils"
+      import { format } from "#lib/format.ts"
+      "
+    `)
+  })
+
+  it("falls back to configured aliases that tsconfig paths cannot resolve", async () => {
+    const acmeConfig = {
+      aliases: {
+        components: "@acme/components",
+        ui: "@acme/ui",
+        lib: "@acme/lib",
+        hooks: "@acme/hooks",
+        utils: "@acme/utils",
+      },
+      resolvedPaths: {
+        cwd,
+        tailwindConfig: "",
+        tailwindCss: `${cwd}/src/app/globals.css`,
+        components: `${cwd}/src/components`,
+        ui: `${cwd}/src/components/ui`,
+        lib: `${cwd}/src/lib`,
+        hooks: `${cwd}/src/hooks`,
+        utils: `${cwd}/src/lib/utils`,
+      },
+    } as Config
+
+    // Current behavior: the bare `@acme/ui` barrel resolves to
+    // `ui/index.tsx` and is rewritten to `@acme/ui/index`, and `@acme/utils`
+    // becomes `@acme/lib/utils` because the extensionless utils root never
+    // matches a planned file in toAliasedImport.
+    expect(
+      await rewrite(
+        `import { Button } from "@acme/ui/button"
+import { useMobile } from "@acme/components/use-mobile"
+import { Card } from "@acme/ui"
+import { cn } from "@acme/utils"
+import { cnLib } from "@acme/lib/utils"
+import { thing } from "@acme/unknown/thing"
+import { Slot } from "@radix-ui/react-slot"
+`,
+        {
+          resolvedPath: `${cwd}/src/components/login-form.tsx`,
+          filePaths: [
+            "src/components/login-form.tsx",
+            "src/components/ui/button.tsx",
+            "src/components/ui/index.tsx",
+            "src/hooks/use-mobile.ts",
+            "src/lib/utils.ts",
+          ],
+          config: acmeConfig,
+          projectInfo: { aliasPrefix: "@acme" } as ProjectInfo,
+          tsConfig: { ...tsConfig, paths: {} },
+        }
+      )
+    ).toBe(`import { Button } from "@acme/ui/button"
+import { useMobile } from "@acme/hooks/use-mobile"
+import { Card } from "@acme/ui/index"
+import { cn } from "@acme/lib/utils"
+import { cnLib } from "@acme/lib/utils"
+import { thing } from "@acme/unknown/thing"
+import { Slot } from "@radix-ui/react-slot"
+`)
   })
 })

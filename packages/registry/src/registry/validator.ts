@@ -7,7 +7,7 @@ import {
 } from "@/src/registry/context"
 import { extractEnvVars } from "@/src/registry/env"
 import { RegistryMissingEnvironmentVariablesError } from "@/src/registry/errors"
-import { registryConfigItemSchema } from "@/src/schema"
+import { registryConfigItemSchema } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { z } from "zod"
 

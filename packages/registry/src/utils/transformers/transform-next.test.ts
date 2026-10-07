@@ -422,3 +422,287 @@ export function middleware(request: Request) {
     })
   })
 })
+
+async function transformNextIn(raw: string) {
+  return transform(
+    {
+      filename: "middleware.ts",
+      raw,
+      config: testConfig,
+    },
+    [transformNext]
+  )
+}
+
+describe("transformNext characterization", () => {
+  describe("declarations", () => {
+    test("renames a default exported function", async () => {
+      expect(
+        await transformNextIn(`import { NextResponse, type NextRequest } from "next/server"
+
+export default function middleware(request: NextRequest) {
+  return NextResponse.next()
+}`)
+      ).toMatchInlineSnapshot(`
+        "import { NextResponse, type NextRequest } from "next/server"
+
+        export default function proxy(request: NextRequest) {
+          return NextResponse.next()
+        }"
+      `)
+    })
+
+    test("renames a const and its default export (next-intl)", async () => {
+      expect(
+        await transformNextIn(`import createMiddleware from "next-intl/middleware"
+
+import { routing } from "./i18n/routing"
+
+const middleware = createMiddleware(routing)
+
+export default middleware
+
+export const config = {
+  matcher: ["/((?!api|_next|.*\\\\..*).*)"],
+}`)
+      ).toMatchInlineSnapshot(`
+        "import createMiddleware from "next-intl/middleware"
+
+        import { routing } from "./i18n/routing"
+
+        const proxy = createMiddleware(routing)
+
+        export default proxy
+
+        export const config = {
+          matcher: ["/((?!api|_next|.*\\\\..*).*)"],
+        }"
+      `)
+    })
+
+    test("does not rename a destructured binding (next-auth)", async () => {
+      // Current behavior: destructured declarations are not renamed.
+      const raw = `import NextAuth from "next-auth"
+
+import { authConfig } from "./auth.config"
+
+export const { auth: middleware } = NextAuth(authConfig)`
+      expect(await transformNextIn(raw)).toBe(raw)
+    })
+
+    test("leaves a file without middleware untouched", async () => {
+      const raw = `export function proxy() {}
+
+export const config = { matcher: "/" }`
+      expect(await transformNextIn(raw)).toBe(raw)
+    })
+  })
+
+  describe("export specifiers", () => {
+    test("renames a local function exported with export { middleware }", async () => {
+      expect(
+        await transformNextIn(`import { NextResponse } from "next/server"
+
+function middleware() {
+  return NextResponse.next()
+}
+
+export { middleware }`)
+      ).toMatchInlineSnapshot(`
+        "import { NextResponse } from "next/server"
+
+        function proxy() {
+          return NextResponse.next()
+        }
+
+        export { proxy }"
+      `)
+    })
+
+    test("renames a local const exported as default", async () => {
+      expect(
+        await transformNextIn(`import { NextResponse } from "next/server"
+
+const middleware = () => NextResponse.next()
+
+export { middleware as default }`)
+      ).toMatchInlineSnapshot(`
+        "import { NextResponse } from "next/server"
+
+        const proxy = () => NextResponse.next()
+
+        export { proxy as default }"
+      `)
+    })
+
+    test("renames an aliased re-export (next-auth v5)", async () => {
+      expect(
+        await transformNextIn(`export { auth as middleware } from "@/auth"`)
+      ).toMatchInlineSnapshot(`"export { auth as proxy } from "@/auth""`)
+    })
+
+    test("renames a default re-export alias", async () => {
+      expect(
+        await transformNextIn(`export { default as middleware } from "next-auth/middleware"
+
+export const config = { matcher: ["/dashboard"] }`)
+      ).toMatchInlineSnapshot(`
+        "export { default as proxy } from "next-auth/middleware"
+
+        export const config = { matcher: ["/dashboard"] }"
+      `)
+    })
+
+    test("renames the exported name of a plain re-export", async () => {
+      // Current behavior: the re-exported name changes, so it no longer matches the source module.
+      expect(
+        await transformNextIn(`export { middleware } from "./lib/middleware"`)
+      ).toMatchInlineSnapshot(`"export { proxy } from "./lib/middleware""`)
+    })
+
+    test("renames the export of an imported binding but not the import", async () => {
+      // Current behavior: the export refers to an undeclared proxy.
+      expect(
+        await transformNextIn(`import { middleware } from "./lib/middleware"
+
+export { middleware }`)
+      ).toMatchInlineSnapshot(`
+        "import { middleware } from "./lib/middleware"
+
+        export { proxy }"
+      `)
+    })
+  })
+
+  describe("references", () => {
+    test("renames references, typeof and nested uses but not strings or comments", async () => {
+      expect(
+        await transformNextIn(`import { NextResponse, type NextRequest } from "next/server"
+
+// middleware runs before every request.
+export function middleware(request: NextRequest) {
+  console.log("middleware", middleware.name)
+  return NextResponse.next()
+}
+
+export type Middleware = typeof middleware
+
+export function withLogging(handler: Middleware = middleware) {
+  return (request: NextRequest) => middleware(request) ?? handler(request)
+}`)
+      ).toMatchInlineSnapshot(`
+        "import { NextResponse, type NextRequest } from "next/server"
+
+        // middleware runs before every request.
+        export function proxy(request: NextRequest) {
+          console.log("middleware", proxy.name)
+          return NextResponse.next()
+        }
+
+        export type Middleware = typeof proxy
+
+        export function withLogging(handler: Middleware = proxy) {
+          return (request: NextRequest) => proxy(request) ?? handler(request)
+        }"
+      `)
+    })
+
+    test("does not rename a shadowed local middleware", async () => {
+      expect(
+        await transformNextIn(`import { NextResponse, type NextRequest } from "next/server"
+
+export const middleware = (request: NextRequest) => NextResponse.next()
+
+function compose() {
+  const middleware = (request: NextRequest) => request
+  function inner(middleware: unknown) {
+    return middleware
+  }
+  return inner(middleware)
+}
+
+export { compose }`)
+      ).toMatchInlineSnapshot(`
+        "import { NextResponse, type NextRequest } from "next/server"
+
+        export const proxy = (request: NextRequest) => NextResponse.next()
+
+        function compose() {
+          const middleware = (request: NextRequest) => request
+          function inner(middleware: unknown) {
+            return middleware
+          }
+          return inner(middleware)
+        }
+
+        export { compose }"
+      `)
+    })
+
+    test("renames into a local name that already exists", async () => {
+      // Current behavior: no conflict check, so two declarations named proxy result.
+      expect(
+        await transformNextIn(`import { createProxy } from "./proxy-client"
+
+const proxy = createProxy()
+
+export function middleware(request: Request) {
+  return proxy(request)
+}`)
+      ).toMatchInlineSnapshot(`
+        "import { createProxy } from "./proxy-client"
+
+        const proxy = createProxy()
+
+        export function proxy(request: Request) {
+          return proxy(request)
+        }"
+      `)
+    })
+
+    test("renames next to an existing exported proxy", async () => {
+      // Current behavior: no conflict check, so two exported proxy functions result.
+      expect(
+        await transformNextIn(`export function proxy(request: Request) {
+  return request
+}
+
+export function middleware(request: Request) {
+  return proxy(request)
+}`)
+      ).toMatchInlineSnapshot(`
+        "export function proxy(request: Request) {
+          return request
+        }
+
+        export function proxy(request: Request) {
+          return proxy(request)
+        }"
+      `)
+    })
+  })
+
+  describe("line endings", () => {
+    test("keeps CRLF line endings", async () => {
+      expect(
+        await transformNextIn(
+          [
+            `import { NextResponse } from "next/server"`,
+            ``,
+            `export function middleware() {`,
+            `  return NextResponse.next()`,
+            `}`,
+          ].join("\r\n")
+        )
+      ).toBe(
+        [
+          `import { NextResponse } from "next/server"`,
+          ``,
+          `export function proxy() {`,
+          `  return NextResponse.next()`,
+          `}`,
+        ].join("\r\n")
+      )
+    })
+  })
+})

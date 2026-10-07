@@ -4,7 +4,7 @@ import {
   searchResultErrorSchema,
   searchResultItemSchema,
   searchResultsSchema,
-} from "@/src/schema"
+} from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
