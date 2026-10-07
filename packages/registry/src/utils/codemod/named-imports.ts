@@ -7,7 +7,24 @@ import {
   type CommaSeparatedList,
 } from "./comma-lists"
 import { applyManipulation } from "./edits"
+import { getText } from "./parse"
 import { skipTrivia } from "./trivia"
+
+// The ImportSpecifier#getName() of each of ts-morph's
+// ImportDeclaration#getNamedImports(): the imported name, which is the text
+// of an identifier, escapes and all.
+export function getNamedImportNames(
+  code: string,
+  declaration: t.ImportDeclaration
+) {
+  return declaration.specifiers
+    .filter((specifier) => specifier.type === "ImportSpecifier")
+    .map(({ imported }) =>
+      imported.type === "StringLiteral"
+        ? imported.value
+        : getText(code, imported)
+    )
+}
 
 // ts-morph's ImportDeclaration#addNamedImport(name).
 export function addNamedImport(

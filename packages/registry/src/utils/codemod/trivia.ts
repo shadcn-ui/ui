@@ -51,6 +51,40 @@ export function getPosAtStartOfLineOrNonWhitespace(code: string, pos: number) {
   return pos
 }
 
+// ts-morph's isNewLineAtPos.
+export function isNewLineAtPos(code: string, pos: number) {
+  return code[pos] === "\n" || (code[pos] === "\r" && code[pos + 1] === "\n")
+}
+
+// ts-morph's getPosAtNextNonBlankLine: past the blank lines from pos, to the
+// start of the first line with something on it.
+export function getPosAtNextNonBlankLine(code: string, pos: number) {
+  let lineStart = pos
+  for (let i = pos; i < code.length; i++) {
+    if (code[i] === " " || code[i] === "\t") {
+      continue
+    }
+    if (isNewLineAtPos(code, i)) {
+      i += code[i] === "\r" ? 1 : 0
+      lineStart = i + 1
+      continue
+    }
+    break
+  }
+  return lineStart
+}
+
+// ts-morph's getPosAtEndOfPreviousLine: the line break before pos.
+export function getPosAtEndOfPreviousLine(code: string, pos: number) {
+  while (pos > 0) {
+    pos--
+    if (code[pos] === "\n") {
+      return code[pos - 1] === "\r" ? pos - 1 : pos
+    }
+  }
+  return pos
+}
+
 // Where the comment starting at pos ends, or undefined if none starts there.
 // TypeScript ends a line comment at any of its line breaks.
 export function getCommentEnd(code: string, pos: number) {
