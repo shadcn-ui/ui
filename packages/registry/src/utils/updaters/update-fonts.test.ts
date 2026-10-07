@@ -2,8 +2,17 @@ import { promises as fs } from "fs"
 import os from "os"
 import path from "path"
 import { getProjectInfo, ProjectInfo } from "@/src/utils/get-project-info"
+import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  vi,
+  type MockInstance,
+} from "vitest"
 
 import {
   findLayoutFile,
@@ -1341,6 +1350,7 @@ vi.mock("@/src/utils/spinner", () => ({
   spinner: vi.fn(() => ({
     start: vi.fn().mockReturnThis(),
     succeed: vi.fn(),
+    stop: vi.fn(),
     fail: vi.fn(),
   })),
 }))
@@ -2979,6 +2989,138 @@ export default function RootLayout({
     `)
     expect(secondRun).toBe(firstRun)
   })
+
+  it("updates a declaration that calls the font optionally", async () => {
+    const input = `import { Inter } from "next/font/google"
+
+const sans = Inter?.({ subsets: ["latin"], variable: "--font-sans" })
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className={sans.variable}>
+      <body>{children}</body>
+    </html>
+  )
+}
+`
+    const result = await transformLayoutFonts(input, [interSans], mockConfig)
+
+    expect(result).toMatchInlineSnapshot(`
+      "import { Inter } from "next/font/google"
+      import { cn } from "@/lib/utils";
+
+      const inter = Inter({subsets:['latin'],variable:'--font-sans'})
+
+      export default function RootLayout({ children }) {
+        return (
+          <html lang="en" className={cn("font-sans", inter.variable)}>
+            <body>{children}</body>
+          </html>
+        )
+      }
+      "
+    `)
+  })
+
+  it("reads a string import name as the imported name, like ts-morph", async () => {
+    const input = `import { "Inter" as Sans } from "next/font/google"
+
+const inter = Sans({ subsets: ["latin"], variable: "--font-sans" })
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className={inter.variable}>
+      <body>{children}</body>
+    </html>
+  )
+}
+`
+    const result = await transformLayoutFonts(input, [interSans], mockConfig)
+
+    expect(result).toMatchInlineSnapshot(`
+      "import { "Inter" as Sans } from "next/font/google"
+      import { cn } from "@/lib/utils";
+
+      const inter = Inter({subsets:['latin'],variable:'--font-sans'})
+
+      export default function RootLayout({ children }) {
+        return (
+          <html lang="en" className={cn("font-sans", inter.variable)}>
+            <body>{children}</body>
+          </html>
+        )
+      }
+      "
+    `)
+  })
+
+  it("parses accessor class fields", async () => {
+    const input = `class Store {
+  accessor theme = "dark"
+}
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+`
+    const result = await transformLayoutFonts(input, [interSans], mockConfig)
+
+    expect(result).toMatchInlineSnapshot(`
+      "import { Inter } from "next/font/google";
+      import { cn } from "@/lib/utils";
+
+      const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+
+
+      class Store {
+        accessor theme = "dark"
+      }
+
+      export default function RootLayout({ children }) {
+        return (
+          <html lang="en" className={cn("font-sans", inter.variable)}>
+            <body>{children}</body>
+          </html>
+        )
+      }
+      "
+    `)
+  })
+
+  // cn() holds only the heading font, so adding the body font leaves
+  // `cn(, ...)`. TypeScript skips the empty argument's comma, unless a list
+  // around the call takes it, and then ts-morph rejects the edit.
+  function withOnlyTheHeadingFontInCn(page: string) {
+    return `import { Playfair_Display } from "next/font/google"
+import { cn } from "@/lib/utils"
+
+const playfairDisplayHeading = Playfair_Display({ subsets: ["latin"], variable: "--font-heading" })
+
+${page}`
+  }
+
+  it("writes `cn(, ...)` like ts-morph where TypeScript skips the empty argument", async () => {
+    const input =
+      withOnlyTheHeadingFontInCn(`const RootLayout = ({ children }) => (
+  <html lang="en" className={cn(playfairDisplayHeading.variable)}>
+    <body>{children}</body>
+  </html>
+)
+`)
+    const result = await transformLayoutFonts(
+      input,
+      [interSans, playfairHeading],
+      mockConfig
+    )
+
+    expect(result).toContain(
+      `className={cn(, "font-sans", inter.variable, playfairDisplayHeading.variable)}`
+    )
+  })
 })
 
 const VITE_PROJECT_INFO = {
@@ -3115,6 +3257,7 @@ describe("findLayoutFile", () => {
 
 describe("updateFonts", () => {
   let cwd: string
+  let warn: MockInstance<typeof logger.warn>
 
   function configFor(dir: string) {
     return {
@@ -3152,11 +3295,13 @@ describe("updateFonts", () => {
     vi.mocked(getProjectInfo).mockReset()
     vi.mocked(getProjectInfo).mockImplementation(actual.getProjectInfo)
     vi.mocked(spinner).mockClear()
+    warn = vi.spyOn(logger, "warn").mockImplementation(() => {})
   })
 
   afterEach(async () => {
     vi.mocked(getProjectInfo).mockReset()
     vi.mocked(getProjectInfo).mockResolvedValue(VITE_PROJECT_INFO as any)
+    warn.mockRestore()
     await fs.rm(cwd, { recursive: true, force: true })
   })
 
@@ -3318,6 +3463,146 @@ export default function App({ Component, pageProps }: AppProps) {
 
     expect(await fs.readFile(layoutPath, "utf8")).toBe(layout)
     expect((await fs.stat(layoutPath)).mtime.getTime()).toBe(past.getTime())
+  })
+
+  // cn() holds only the heading font, which the edit removes before adding
+  // both fonts back, leaving `cn(, ...)`.
+  async function writeLayoutWithOnlyTheHeadingFontInCn(base = LAYOUT) {
+    const layout = await transformLayoutFonts(
+      base,
+      [playfairHeading],
+      mockConfig
+    )
+    await writeProjectFile(cwd, "app/layout.tsx", layout)
+    return layout
+  }
+
+  it("leaves a layout the edit would break untouched and warns", async () => {
+    await writeNextProject({ typescript: true })
+    const layout = await writeLayoutWithOnlyTheHeadingFontInCn()
+
+    await updateFonts([interSans, playfairHeading], configFor(cwd), {
+      silent: false,
+    })
+
+    expect(await fs.readFile(path.join(cwd, "app/layout.tsx"), "utf8")).toBe(
+      layout
+    )
+    expect(warn).toHaveBeenCalledOnce()
+    expect(warn).toHaveBeenCalledWith(
+      "Skipped app/layout.tsx: adding font-inter, font-playfair-display would leave it with a syntax error. Add the fonts to it manually."
+    )
+    expect(lastSpinner().stop).toHaveBeenCalledOnce()
+    expect(lastSpinner().succeed).not.toHaveBeenCalled()
+  })
+
+  it("returns the warning instead of printing it when silent", async () => {
+    await writeNextProject({ typescript: true })
+    const layout = await writeLayoutWithOnlyTheHeadingFontInCn()
+
+    const warning = await updateFonts(
+      [interSans, playfairHeading],
+      configFor(cwd),
+      { silent: true }
+    )
+
+    expect(await fs.readFile(path.join(cwd, "app/layout.tsx"), "utf8")).toBe(
+      layout
+    )
+    expect(warning).toBe(
+      "Skipped app/layout.tsx: adding font-inter, font-playfair-display would leave it with a syntax error. Add the fonts to it manually."
+    )
+    expect(warn).not.toHaveBeenCalled()
+  })
+
+  it("leaves a layout untouched and warns when ts-morph would reject the edit", async () => {
+    await writeNextProject({ typescript: true })
+    // Inside JSX children, ts-morph rejects the `cn(, ...)` it writes above.
+    const layout = await writeLayoutWithOnlyTheHeadingFontInCn(
+      LAYOUT.replace(
+        /    <html[\s\S]*<\/html>\n/,
+        (html) => `    <>\n${html}    </>\n`
+      )
+    )
+
+    await updateFonts([interSans, playfairHeading], configFor(cwd), {
+      silent: false,
+    })
+
+    expect(await fs.readFile(path.join(cwd, "app/layout.tsx"), "utf8")).toBe(
+      layout
+    )
+    expect(warn).toHaveBeenCalledOnce()
+    expect(warn).toHaveBeenCalledWith(
+      "Skipped app/layout.tsx: adding font-inter, font-playfair-display would leave it with a syntax error. Add the fonts to it manually."
+    )
+    expect(lastSpinner().stop).toHaveBeenCalledOnce()
+    expect(lastSpinner().succeed).not.toHaveBeenCalled()
+  })
+
+  it("leaves a layout untouched and warns when ts-morph would reject the import", async () => {
+    await writeNextProject({ typescript: true })
+    // The new name would land in the comment after the trailing comma.
+    const layout = `import {\n  Roboto, // body\n} from "next/font/google"\n${LAYOUT}`
+    await writeProjectFile(cwd, "app/layout.tsx", layout)
+
+    await updateFonts([interSans], configFor(cwd), { silent: false })
+
+    expect(await fs.readFile(path.join(cwd, "app/layout.tsx"), "utf8")).toBe(
+      layout
+    )
+    expect(warn).toHaveBeenCalledOnce()
+    expect(warn).toHaveBeenCalledWith(
+      "Skipped app/layout.tsx: adding font-inter would leave it with a syntax error. Add the fonts to it manually."
+    )
+    expect(lastSpinner().stop).toHaveBeenCalledOnce()
+    expect(lastSpinner().succeed).not.toHaveBeenCalled()
+  })
+
+  it("leaves a layout Babel cannot parse untouched and warns", async () => {
+    await writeNextProject({ typescript: true })
+    const layout = LAYOUT.replace(/\}\n$/, "")
+    await writeProjectFile(cwd, "app/layout.tsx", layout)
+
+    await updateFonts([interSans], configFor(cwd), { silent: false })
+
+    expect(await fs.readFile(path.join(cwd, "app/layout.tsx"), "utf8")).toBe(
+      layout
+    )
+    expect(warn).toHaveBeenCalledOnce()
+    expect(warn).toHaveBeenCalledWith(
+      "Skipped app/layout.tsx: could not parse it to add font-inter. Add the fonts to it manually."
+    )
+    expect(lastSpinner().stop).toHaveBeenCalledOnce()
+    expect(lastSpinner().succeed).not.toHaveBeenCalled()
+  })
+
+  it("fails the spinner and rethrows when the font import cannot be added", async () => {
+    await writeNextProject({ typescript: true })
+    const layout = `import * as fonts from "next/font/google"\n${LAYOUT}`
+    await writeProjectFile(cwd, "app/layout.tsx", layout)
+
+    await expect(
+      updateFonts([interSans], configFor(cwd), { silent: true })
+    ).rejects.toThrow(
+      "Cannot add a named import to an import declaration that has a namespace import."
+    )
+    expect(await fs.readFile(path.join(cwd, "app/layout.tsx"), "utf8")).toBe(
+      layout
+    )
+    expect(lastSpinner().fail).toHaveBeenCalledWith("Failed to update fonts.")
+  })
+
+  it("updates a layout that already had a parse error", async () => {
+    await writeNextProject({ typescript: true })
+    const layout = `${LAYOUT}\nconst missingInitializer\n`
+    await writeProjectFile(cwd, "app/layout.tsx", layout)
+
+    await updateFonts([interSans], configFor(cwd), { silent: true })
+
+    expect(await fs.readFile(path.join(cwd, "app/layout.tsx"), "utf8")).toBe(
+      await transformLayoutFonts(layout, [interSans], mockConfig)
+    )
   })
 
   it("skips projects that are not Next.js", async () => {

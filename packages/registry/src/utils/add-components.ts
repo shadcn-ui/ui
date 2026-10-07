@@ -196,17 +196,26 @@ async function addWorkspaceComponents(
   )
 
   // 2. Update tailwind config.
+  let tailwindConfigWarning: string | undefined
   if (tree.tailwind?.config) {
-    await updateTailwindConfig(tree.tailwind?.config, mainTargetConfig, {
-      silent: true,
-      tailwindVersion,
-    })
-    filesUpdated.push(
-      path.relative(
+    tailwindConfigWarning = await updateTailwindConfig(
+      tree.tailwind?.config,
+      mainTargetConfig,
+      {
+        silent: true,
+        tailwindVersion,
         workspaceRoot,
-        mainTargetConfig.resolvedPaths.tailwindConfig
-      )
+      }
     )
+    // A skipped config is left as it was.
+    if (!tailwindConfigWarning) {
+      filesUpdated.push(
+        path.relative(
+          workspaceRoot,
+          mainTargetConfig.resolvedPaths.tailwindConfig
+        )
+      )
+    }
   }
 
   // 3. Update environment variables.
@@ -219,7 +228,7 @@ async function addWorkspaceComponents(
   // 4. Update fonts.
   // Fonts modify the app's layout file (e.g. app/layout.tsx),
   // so we use the app config, not the UI workspace config.
-  await updateFonts(tree.fonts, config, {
+  const fontsWarning = await updateFonts(tree.fonts, config, {
     silent: true,
   })
 
@@ -386,6 +395,14 @@ async function addWorkspaceComponents(
     }
   }
 
+  if (tailwindConfigWarning && !options.silent) {
+    logger.warn(tailwindConfigWarning)
+  }
+
+  if (fontsWarning && !options.silent) {
+    logger.warn(fontsWarning)
+  }
+
   if (tree.docs) {
     logger.info(tree.docs)
   }
@@ -455,7 +472,7 @@ export function validateFilesTarget(
 ) {
   for (const file of files) {
     // `target` decides the write location when present; otherwise the path is
-    // derived from `file.path` (see resolveFilePath in update-files.ts). Both
+    // derived from `file.path` (see resolveFilePath in resolve-file-path.ts). Both
     // are registry-controlled, so validate whichever one is used.
     const locationField = file?.target ?? file?.path
     if (!locationField) {

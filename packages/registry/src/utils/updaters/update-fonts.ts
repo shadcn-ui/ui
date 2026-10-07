@@ -4,16 +4,34 @@ import {
   RegistryFontItem,
   registryResolvedItemsTreeSchema,
 } from "@/src/registry/schema"
+import {
+  applyEdits,
+  applyManipulation,
+  SyntaxErrorInsertedError,
+  type SkipReason,
+} from "@/src/utils/codemod/edits"
+import { getReplacementText } from "@/src/utils/codemod/indentation"
+import { addNamedImport } from "@/src/utils/codemod/named-imports"
+import {
+  addsSyntaxErrors,
+  countSyntaxErrors,
+  getText,
+  parseModule,
+} from "@/src/utils/codemod/parse"
+import { renameVariable } from "@/src/utils/codemod/rename"
+import {
+  addImportDeclaration,
+  getStatementsWithComments,
+  insertStatement,
+  isImportDeclaration,
+  type Statement,
+} from "@/src/utils/codemod/statements"
+import { setInitializer } from "@/src/utils/codemod/variables"
 import { Config } from "@/src/utils/get-config"
 import { getProjectInfo, ProjectInfo } from "@/src/utils/get-project-info"
+import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
-import {
-  CallExpression,
-  Project,
-  ScriptKind,
-  SyntaxKind,
-  VariableDeclarationKind,
-} from "ts-morph"
+import { types as t } from "@babel/core"
 import z from "zod"
 
 const ROOT_FONT_VARIABLES = new Set([
@@ -134,19 +152,52 @@ export async function updateFonts(
   })?.start()
 
   try {
-    await updateNextFonts(fonts, config, projectInfo)
-    fontsSpinner?.succeed("Updating fonts.")
+    const skippedLayout = await updateNextFonts(fonts, config, projectInfo)
+    if (!skippedLayout) {
+      fontsSpinner?.succeed("Updating fonts.")
+      return
+    }
+
+    // Stop without a check mark, since the layout was left as it was, and
+    // return the warning so callers that pass silent can still report it.
+    fontsSpinner?.stop()
+    const warning = getSkippedLayoutWarning(skippedLayout, fonts, config)
+    if (!options.silent) {
+      logger.warn(warning)
+    }
+    return warning
   } catch (error) {
     fontsSpinner?.fail(`Failed to update fonts.`)
     throw error
   }
 }
 
+// A layout updateNextFonts left as it was, and why.
+interface SkippedLayout {
+  path: string
+  reason: SkipReason
+}
+
+function getSkippedLayoutWarning(
+  skippedLayout: SkippedLayout,
+  fonts: RegistryFontItem[],
+  config: Config
+) {
+  const layout = path.relative(config.resolvedPaths.cwd, skippedLayout.path)
+  const fontNames = fonts.map((font) => font.name).join(", ")
+  const problem =
+    skippedLayout.reason === "unparsable"
+      ? `could not parse it to add ${fontNames}`
+      : `adding ${fontNames} would leave it with a syntax error`
+
+  return `Skipped ${layout}: ${problem}. Add the fonts to it manually.`
+}
+
 async function updateNextFonts(
   fonts: RegistryFontItem[],
   config: Config,
   projectInfo: ProjectInfo
-) {
+): Promise<SkippedLayout | undefined> {
   // Find layout file.
   const layoutPath = await findLayoutFile(config, projectInfo)
 
@@ -155,11 +206,29 @@ async function updateNextFonts(
   }
 
   const layoutContent = await fs.readFile(layoutPath, "utf-8")
-  const updatedContent = await transformLayoutFonts(
-    layoutContent,
-    fonts,
-    config
-  )
+
+  // Babel gives up on some syntax errors that TypeScript, and so ts-morph,
+  // parsed through.
+  if (countSyntaxErrors(layoutContent) === Infinity) {
+    return { path: layoutPath, reason: "unparsable" }
+  }
+
+  let updatedContent: string
+  try {
+    updatedContent = await transformLayoutFonts(layoutContent, fonts, config)
+  } catch (error) {
+    if (error instanceof SyntaxErrorInsertedError) {
+      return { path: layoutPath, reason: "syntax-error-inserted" }
+    }
+    throw error
+  }
+
+  // ts-morph writes some edits that break a layout the editor does not
+  // expect, like a cn() className with only font arguments, which becomes
+  // `cn(, ...)`.
+  if (addsSyntaxErrors(layoutContent, updatedContent)) {
+    return { path: layoutPath, reason: "syntax-error-inserted" }
+  }
 
   if (updatedContent !== layoutContent) {
     await fs.writeFile(layoutPath, updatedContent, "utf-8")
@@ -194,13 +263,9 @@ export async function transformLayoutFonts(
   fonts: RegistryFontItem[],
   config: Config
 ) {
-  const project = new Project({
-    compilerOptions: {},
-  })
-
-  const sourceFile = project.createSourceFile("layout.tsx", input, {
-    scriptKind: ScriptKind.TSX,
-  })
+  // Each edit returns new code, which the next step parses again. ts-morph
+  // drops a leading byte order mark from the text.
+  let code = input.charCodeAt(0) === 0xfeff ? input.slice(1) : input
 
   // Only process Google fonts for now.
   const googleFonts = fonts.filter((f) => f.font.provider === "google")
@@ -217,26 +282,20 @@ export async function transformLayoutFonts(
     }
 
     // Check if import already exists.
-    const existingImport = sourceFile.getImportDeclaration((decl) => {
-      const moduleSpecifier = decl.getModuleSpecifierValue()
-      return moduleSpecifier === "next/font/google"
-    })
+    const existingImport = getImportDeclarations(parseModule(code)).find(
+      (decl) => decl.source.value === "next/font/google"
+    )
     let hasExistingImport = false
 
     if (existingImport) {
-      const namedImports = existingImport.getNamedImports()
-      hasExistingImport = namedImports.some(
-        (imp) => imp.getName() === importName
-      )
+      hasExistingImport =
+        getNamedImportNames(existingImport).includes(importName)
       if (!hasExistingImport) {
-        existingImport.addNamedImport(importName)
+        code = addNamedImport(code, existingImport, importName)
       }
     } else {
       // Add new import.
-      sourceFile.addImportDeclaration({
-        moduleSpecifier: "next/font/google",
-        namedImports: [importName],
-      })
+      code = addImportDeclaration(code, "next/font/google", importName)
     }
 
     const varName = getFontVariableName(importName, font.font.variable)
@@ -245,8 +304,10 @@ export async function transformLayoutFonts(
     const fontOptions = buildFontOptions(font)
 
     // Check if variable declaration already exists with same variable CSS property.
+    const file = parseModule(code)
     const existingVarDecl = findFontVariableDeclaration(
-      sourceFile,
+      code,
+      file,
       font.font.variable
     )
     let resolvedVarName = varName
@@ -255,36 +316,43 @@ export async function transformLayoutFonts(
       hasExistingImport &&
       !existingVarDecl &&
       isRootFontVariable(font.font.variable) &&
-      !hasHeadingFontDeclaration(sourceFile, importName)
+      !hasHeadingFontDeclaration(code, file, importName)
     ) {
       continue
     }
 
     if (existingVarDecl) {
+      const { id } = existingVarDecl
       // Replace the initializer of the existing declaration.
-      existingVarDecl.setInitializer(`${importName}(${fontOptions})`)
-      // Update the variable name if different.
-      if (existingVarDecl.getName() !== varName) {
-        existingVarDecl.rename(varName)
+      code = setInitializer(
+        code,
+        existingVarDecl,
+        `${importName}(${fontOptions})`
+      )
+      // Update the variable name if different. The name comes before the
+      // initializer, so it has not moved.
+      if (id.type !== "Identifier" || id.name !== varName) {
+        code = renameVariable(code, id.start!, varName)
       }
       resolvedVarName = varName
     } else {
       // Find the last import or existing font declaration to insert after.
-      const insertPosition = findInsertPosition(sourceFile)
+      const statements = getStatementsWithComments(code, file.program)
+      const insertPosition = findInsertPosition(statements)
 
       // Add variable declaration.
-      const statement = sourceFile.insertVariableStatement(insertPosition, {
-        declarationKind: VariableDeclarationKind.Const,
-        declarations: [
-          {
-            name: varName,
-            initializer: `${importName}(${fontOptions})`,
-          },
-        ],
-      })
+      const inserted = insertStatement(
+        code,
+        statements,
+        insertPosition,
+        `const ${varName} = ${importName}(${fontOptions});`,
+        isVariableStatement
+      )
 
       // Add a blank line after the declaration.
-      statement.appendWhitespace("\n")
+      code = applyEdits(inserted.code, [
+        { start: inserted.end, end: inserted.end, text: "\n" },
+      ])
     }
 
     fontVariableNames.push(resolvedVarName)
@@ -308,15 +376,15 @@ export async function transformLayoutFonts(
 
   // Update html className to include font variables and utility classes.
   if (fontVariableNames.length > 0) {
-    updateHtmlClassName(
-      sourceFile,
+    code = updateHtmlClassName(
+      code,
       fontVariableNames,
       filteredUtilityClasses,
       config
     )
   }
 
-  return sourceFile.getFullText()
+  return code
 }
 
 function buildFontOptions(font: RegistryFontItem) {
@@ -378,32 +446,71 @@ function toPascalCase(str: string) {
     .join("")
 }
 
+function getImportDeclarations(file: t.File) {
+  return file.program.body.filter(
+    (statement) => statement.type === "ImportDeclaration"
+  )
+}
+
+// ts-morph's ImportSpecifier#getName(): the imported name.
+function getNamedImportNames(declaration: t.ImportDeclaration) {
+  return declaration.specifiers
+    .filter((specifier) => specifier.type === "ImportSpecifier")
+    .map(({ imported }) =>
+      imported.type === "StringLiteral" ? imported.value : imported.name
+    )
+}
+
+// The declarations of the source file's variable statements, exported or not.
+function getVariableDeclarations(file: t.File) {
+  return file.program.body.flatMap((statement) => {
+    const declaration =
+      statement.type === "ExportNamedDeclaration"
+        ? statement.declaration
+        : statement
+    return declaration?.type === "VariableDeclaration"
+      ? declaration.declarations
+      : []
+  })
+}
+
+function isVariableStatement({ node }: Statement) {
+  return (
+    node?.type === "VariableDeclaration" ||
+    (node?.type === "ExportNamedDeclaration" &&
+      node.declaration?.type === "VariableDeclaration")
+  )
+}
+
+// ts-morph's CallExpression kind includes optional calls.
+function isCallExpression(
+  node: t.Node | null | undefined
+): node is t.CallExpression | t.OptionalCallExpression {
+  return (
+    node?.type === "CallExpression" || node?.type === "OptionalCallExpression"
+  )
+}
+
 function findFontVariableDeclaration(
-  sourceFile: ReturnType<Project["createSourceFile"]>,
+  code: string,
+  file: t.File,
   variable: string
 ) {
   // Find variable declarations that call a font function with matching variable.
-  const variableStatements = sourceFile.getVariableStatements()
+  for (const declaration of getVariableDeclarations(file)) {
+    const initializer = declaration.init
 
-  for (const statement of variableStatements) {
-    for (const declaration of statement.getDeclarations()) {
-      const initializer = declaration.getInitializer()
-      if (!initializer) continue
+    // Check if it's a call expression.
+    if (!isCallExpression(initializer)) continue
 
-      // Check if it's a call expression.
-      if (initializer.getKind() !== SyntaxKind.CallExpression) continue
+    // Get the arguments.
+    const args = initializer.arguments
+    if (args.length === 0) continue
 
-      const callExpr = initializer as CallExpression
-
-      // Get the arguments.
-      const args = callExpr.getArguments()
-      if (args.length === 0) continue
-
-      // Check if any argument contains our variable.
-      const argText = args[0].getText()
-      if (argText.includes(`variable:`) && argText.includes(variable)) {
-        return declaration
-      }
+    // Check if any argument contains our variable.
+    const argText = getText(code, args[0])
+    if (argText.includes(`variable:`) && argText.includes(variable)) {
+      return declaration
     }
   }
 
@@ -411,60 +518,85 @@ function findFontVariableDeclaration(
 }
 
 function hasHeadingFontDeclaration(
-  sourceFile: ReturnType<Project["createSourceFile"]>,
+  code: string,
+  file: t.File,
   importName: string
 ) {
-  const variableStatements = sourceFile.getVariableStatements()
+  for (const declaration of getVariableDeclarations(file)) {
+    const initializer = declaration.init
 
-  for (const statement of variableStatements) {
-    for (const declaration of statement.getDeclarations()) {
-      const initializer = declaration.getInitializer()
-      if (!initializer) continue
+    if (!isCallExpression(initializer)) continue
 
-      if (initializer.getKind() !== SyntaxKind.CallExpression) continue
+    if (getText(code, initializer.callee) !== importName) continue
 
-      const callExpr = initializer as CallExpression
-      if (callExpr.getExpression().getText() !== importName) continue
+    const args = initializer.arguments
+    if (!args.length) continue
 
-      const args = callExpr.getArguments()
-      if (!args.length) continue
-
-      const argText = args[0].getText()
-      if (argText.includes(`variable:`) && argText.includes("--font-heading")) {
-        return true
-      }
+    const argText = getText(code, args[0])
+    if (argText.includes(`variable:`) && argText.includes("--font-heading")) {
+      return true
     }
   }
 
   return false
 }
 
-function findInsertPosition(
-  sourceFile: ReturnType<Project["createSourceFile"]>
-) {
-  const imports = sourceFile.getImportDeclarations()
-  if (imports.length > 0) {
-    const lastImport = imports[imports.length - 1]
-    return lastImport.getChildIndex() + 1
+function findInsertPosition(statements: Statement[]) {
+  let lastImportIndex = -1
+  for (let i = 0; i < statements.length; i++) {
+    if (isImportDeclaration(statements[i])) {
+      lastImportIndex = i
+    }
   }
-  return 0
+  return lastImportIndex + 1
+}
+
+function getHtmlOpeningElements(file: t.File) {
+  const elements: t.JSXOpeningElement[] = []
+  t.traverseFast(file, (node) => {
+    if (
+      node.type === "JSXOpeningElement" &&
+      !node.selfClosing &&
+      node.name.type === "JSXIdentifier" &&
+      node.name.name === "html"
+    ) {
+      elements.push(node)
+    }
+  })
+  // traverseFast follows VISITOR_KEYS, and ts-morph's getDescendantsOfKind
+  // is in source order.
+  return elements.sort((a, b) => a.start! - b.start!)
+}
+
+// Each edit reparses the code, and no edit adds or removes an <html>
+// element, so it is found again by index.
+function getHtmlOpeningElement(code: string, index: number) {
+  return getHtmlOpeningElements(parseModule(code))[index]
+}
+
+function getClassNameAttribute(element: t.JSXOpeningElement) {
+  return element.attributes.find(
+    (attribute): attribute is t.JSXAttribute =>
+      attribute.type === "JSXAttribute" &&
+      attribute.name.type === "JSXIdentifier" &&
+      attribute.name.name === "className"
+  )
+}
+
+function getClassNameInitializer(code: string, index: number) {
+  return getClassNameAttribute(getHtmlOpeningElement(code, index))!.value!
 }
 
 function updateHtmlClassName(
-  sourceFile: ReturnType<Project["createSourceFile"]>,
+  code: string,
   fontVariableNames: string[],
   fontUtilityClasses: string[],
   config: Config
 ) {
-  // Find the <html> JSX element.
-  const jsxElements = sourceFile.getDescendantsOfKind(
-    SyntaxKind.JsxOpeningElement
-  )
+  // Find the <html> JSX elements.
+  const elementCount = getHtmlOpeningElements(parseModule(code)).length
 
-  for (const element of jsxElements) {
-    const tagName = element.getTagNameNode().getText()
-    if (tagName !== "html") continue
-
+  for (let index = 0; index < elementCount; index++) {
     // Build the new expressions: utility classes as strings, then .variable expressions.
     const newUtilityClasses = fontUtilityClasses.map((cls) => `"${cls}"`)
     const newVarExpressions = fontVariableNames.map(
@@ -472,41 +604,39 @@ function updateHtmlClassName(
     )
     const allNewArgs = [...newUtilityClasses, ...newVarExpressions]
 
-    const classNameAttr = element.getAttribute("className")
+    const classNameAttr = getClassNameAttribute(
+      getHtmlOpeningElement(code, index)
+    )
     if (!classNameAttr) {
       // Add className attribute with font utility classes and variables.
-      ensureCnImport(sourceFile, config)
-      element.addAttribute({
-        name: "className",
-        initializer: `{cn(${allNewArgs.join(", ")})}`,
-      })
-      return
+      code = ensureCnImport(code, config)
+      return addJsxAttribute(
+        code,
+        getHtmlOpeningElement(code, index),
+        `className={cn(${allNewArgs.join(", ")})}`
+      )
     }
 
     // Handle existing className.
-    if (classNameAttr.getKind() !== SyntaxKind.JsxAttribute) {
-      return
-    }
+    const initializer = classNameAttr.value
 
-    const jsxAttr = classNameAttr.asKindOrThrow(SyntaxKind.JsxAttribute)
-    const initializer = jsxAttr.getInitializer()
+    if (!initializer) return code
 
-    if (!initializer) return
-
-    if (initializer.getKind() === SyntaxKind.StringLiteral) {
+    if (initializer.type === "StringLiteral") {
       // className="some-class" -> className={cn("some-class", "font-serif", font.variable)}
-      const currentValue = initializer.getText().slice(1, -1) // Remove quotes.
-      ensureCnImport(sourceFile, config)
-      jsxAttr.setInitializer(
+      const currentValue = getText(code, initializer).slice(1, -1) // Remove quotes.
+      code = ensureCnImport(code, config)
+      code = setJsxAttributeInitializer(
+        code,
+        getClassNameAttribute(getHtmlOpeningElement(code, index))!,
         `{cn("${currentValue}", ${allNewArgs.join(", ")})}`
       )
-    } else if (initializer.getKind() === SyntaxKind.JsxExpression) {
+    } else if (initializer.type === "JSXExpressionContainer") {
       // className={...} - need to analyze the expression.
-      const jsxExpr = initializer.asKindOrThrow(SyntaxKind.JsxExpression)
-      const expr = jsxExpr.getExpression()
-      if (!expr) return
+      const expr = initializer.expression
+      if (expr.type === "JSXEmptyExpression") return code
 
-      const exprText = expr.getText()
+      const exprText = getText(code, expr)
 
       // Check if it's already using cn().
       if (exprText.startsWith("cn(")) {
@@ -530,7 +660,11 @@ function updateHtmlClassName(
         let cleanedExpr = removeFontVariablesFromCn(exprText, newVarExpressions)
         cleanedExpr = removeFontFamilyClassesFromCn(cleanedExpr)
         const newExpr = insertFontVariablesIntoCn(cleanedExpr, allNewArgs)
-        jsxExpr.replaceWithText(`{${newExpr}}`)
+        code = replaceJsxExpression(
+          code,
+          getClassNameInitializer(code, index),
+          `{${newExpr}}`
+        )
       } else if (/^\w+\.variable$/.test(exprText)) {
         // Single font variable like {inter.variable}.
         // Check if it's already one of our font variables.
@@ -541,12 +675,14 @@ function updateHtmlClassName(
           continue
         }
         // Replace with cn() including utility classes and font variables.
-        ensureCnImport(sourceFile, config)
+        code = ensureCnImport(code, config)
         const existingName = exprText.split(".")[0] ?? ""
         const shouldPreserveExisting =
           existingName.toLowerCase().includes("heading") ||
           fontUtilityClasses.length === 0
-        jsxExpr.replaceWithText(
+        code = replaceJsxExpression(
+          code,
+          getClassNameInitializer(code, index),
           shouldPreserveExisting
             ? `{cn(${exprText}, ${allNewArgs.join(", ")})}`
             : `{cn(${allNewArgs.join(", ")})}`
@@ -554,7 +690,7 @@ function updateHtmlClassName(
       } else if (exprText.startsWith("`") && exprText.endsWith("`")) {
         // Template literal - parse and convert to cn() arguments.
         const cnArgs = parseTemplateLiteralToCnArgs(exprText)
-        ensureCnImport(sourceFile, config)
+        code = ensureCnImport(code, config)
         // Deduplicate cnArgs against allNewArgs.
         const allNewArgsSet = new Set(allNewArgs)
         const fontFamilyLiterals = new Set(
@@ -563,47 +699,99 @@ function updateHtmlClassName(
         const cleanedCnArgs = cnArgs.filter(
           (arg) => !allNewArgsSet.has(arg) && !fontFamilyLiterals.has(arg)
         )
-        jsxExpr.replaceWithText(
+        code = replaceJsxExpression(
+          code,
+          getClassNameInitializer(code, index),
           `{cn(${[...cleanedCnArgs, ...allNewArgs].join(", ")})}`
         )
       } else {
         // Some other expression (variable, etc.), wrap with cn().
-        ensureCnImport(sourceFile, config)
-        jsxExpr.replaceWithText(`{cn(${exprText}, ${allNewArgs.join(", ")})}`)
+        code = ensureCnImport(code, config)
+        code = replaceJsxExpression(
+          code,
+          getClassNameInitializer(code, index),
+          `{cn(${exprText}, ${allNewArgs.join(", ")})}`
+        )
       }
     }
   }
+
+  return code
 }
 
-function ensureCnImport(
-  sourceFile: ReturnType<Project["createSourceFile"]>,
-  config: Config
+// ts-morph's JsxOpeningElement#addAttribute(): after the last attribute, or
+// after the tag name.
+function addJsxAttribute(
+  code: string,
+  element: t.JSXOpeningElement,
+  attributeText: string
 ) {
-  const existingImport = sourceFile.getImportDeclaration((decl) => {
-    const namedImports = decl.getNamedImports()
-    return namedImports.some((imp) => imp.getName() === "cn")
-  })
+  const { attributes } = element
+  const insertPosition =
+    attributes.length > 0
+      ? attributes[attributes.length - 1].end!
+      : element.name.end!
+  return applyManipulation(code, [
+    { start: insertPosition, end: insertPosition, text: ` ${attributeText}` },
+  ])
+}
+
+// ts-morph's JsxAttribute#setInitializer(text): the text is indented for the
+// attribute, then replaces the initializer like Node#replaceWithText.
+function setJsxAttributeInitializer(
+  code: string,
+  attribute: t.JSXAttribute,
+  text: string
+) {
+  const initializer = attribute.value!
+  const attributeText = getReplacementText(code, attribute.start!, text)
+  return applyManipulation(code, [
+    {
+      start: initializer.start!,
+      end: initializer.end!,
+      text: getReplacementText(code, initializer.start!, attributeText),
+    },
+  ])
+}
+
+// ts-morph's Node#replaceWithText(text) on the className expression, without
+// the syntax check: the string helpers below can break the expression, as in
+// `cn(, ...)`, and updateNextFonts does not write such a layout. TypeScript
+// skips that comma, so ts-morph took the edit, but Babel recovers from it
+// with an error, which applyManipulation would reject the edit for.
+function replaceJsxExpression(code: string, expression: t.Node, text: string) {
+  return applyEdits(code, [
+    {
+      start: expression.start!,
+      end: expression.end!,
+      text: getReplacementText(code, expression.start!, text),
+    },
+  ])
+}
+
+function ensureCnImport(code: string, config: Config) {
+  const imports = getImportDeclarations(parseModule(code))
+  const existingImport = imports.find((decl) =>
+    getNamedImportNames(decl).includes("cn")
+  )
 
   if (!existingImport) {
     // Try to find the lib/utils import pattern.
-    const utilsImport = sourceFile.getImportDeclaration((decl) => {
-      const moduleSpecifier = decl.getModuleSpecifierValue()
-      return moduleSpecifier.includes("/lib/utils")
-    })
+    const utilsImport = imports.find((decl) =>
+      decl.source.value.includes("/lib/utils")
+    )
 
     if (utilsImport) {
-      const namedImports = utilsImport.getNamedImports()
-      if (!namedImports.some((imp) => imp.getName() === "cn")) {
-        utilsImport.addNamedImport("cn")
+      if (!getNamedImportNames(utilsImport).includes("cn")) {
+        return addNamedImport(code, utilsImport, "cn")
       }
     } else {
       // Add a new import for cn.
-      sourceFile.addImportDeclaration({
-        moduleSpecifier: config.aliases.utils,
-        namedImports: ["cn"],
-      })
+      return addImportDeclaration(code, config.aliases.utils, "cn")
     }
   }
+
+  return code
 }
 
 function parseTemplateLiteralToCnArgs(templateLiteral: string) {

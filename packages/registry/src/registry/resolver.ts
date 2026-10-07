@@ -31,7 +31,7 @@ import {
 } from "@/src/registry/utils"
 import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
 import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
-import { buildTailwindThemeColorsFromCssVars } from "@/src/utils/updaters/update-tailwind-config"
+import { buildTailwindThemeColorsFromCssVars } from "@/src/utils/tailwind-theme-colors"
 import deepmerge from "deepmerge"
 import { z } from "zod"
 

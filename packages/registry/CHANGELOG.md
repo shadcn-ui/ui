@@ -1,5 +1,11 @@
 # @shadcn/registry
 
+## 0.1.2
+
+### Patch Changes
+
+- [#12148](https://github.com/shadcn-ui/ui/pull/12148) [`596be8dda8f94927281184b8c4575150531f85ea`](https://github.com/shadcn-ui/ui/commit/596be8dda8f94927281184b8c4575150531f85ea) Thanks [@shadcn](https://github.com/shadcn)! - Fix `ERR_REQUIRE_CYCLE_MODULE` when running the CLI with `pnpm dlx` on Windows.
+
 ## 0.1.1
 
 ### Patch Changes

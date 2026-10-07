@@ -413,7 +413,7 @@ vi.mock("../utils/get-project-info", () => ({
   }),
 }))
 
-vi.mock("../utils/updaters/update-files", () => ({
+vi.mock("../utils/resolve-file-path", () => ({
   findCommonRoot: vi.fn().mockImplementation(() => ""),
   resolveFilePath: vi.fn().mockImplementation((file) => {
     const typeMap: Record<string, string> = {
