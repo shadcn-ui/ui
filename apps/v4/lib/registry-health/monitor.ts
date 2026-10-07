@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto"
 import { registryItemSchema, registrySchema } from "shadcn/schema"
 
 import {
@@ -5,10 +6,12 @@ import {
   type RegistryDirectoryEntry,
 } from "../registry-directory"
 import { fetchRegistryJson, type RegistryJsonResult } from "./network"
+import { calculateRegistryRanking } from "./rank"
 import {
   REGISTRY_DRY_RUN_VERSION,
   REGISTRY_HEALTH_SCHEMA_VERSION,
   REGISTRY_HEALTH_SCORE_VERSION,
+  REGISTRY_ITEM_VALIDATION_VERSION,
   registryHealthSnapshotSchema,
   registryMonitorRunSchema,
   registryMonitorStateSchema,
@@ -93,6 +96,34 @@ function discardInvalidDryRunHistory(
   delete state.lastWeeklyRunAt
 
   return { state, discardedDryRuns }
+}
+
+function discardInvalidItemHistory(
+  state: RegistryMonitorState | null | undefined
+) {
+  if (
+    !state ||
+    state.itemValidationVersion === REGISTRY_ITEM_VALIDATION_VERSION
+  ) {
+    return 0
+  }
+
+  let discarded = 0
+  for (const entry of Object.values(state.registries)) {
+    if (!entry.itemNames.some((item) => item.includes("/"))) {
+      continue
+    }
+    for (const bucket of entry.daily) {
+      discarded += bucket.itemObservations
+      bucket.itemObservations = 0
+      bucket.itemSuccesses = 0
+    }
+  }
+  state.itemValidationVersion = REGISTRY_ITEM_VALIDATION_VERSION
+  if (discarded > 0) {
+    delete state.lastDailyRunAt
+  }
+  return discarded
 }
 
 function getDailyBucket(state: RegistryMonitorEntryState, now: Date) {
@@ -298,15 +329,32 @@ function recordItemObservation(
   bucket.itemSuccesses += observation.success ? 1 : 0
 }
 
-function getNextDryRunItem(state: RegistryMonitorEntryState) {
-  if (state.itemNames.length === 0) return null
+function getNextDryRunItem(
+  state: RegistryMonitorEntryState,
+  namespace: string,
+  now: Date
+) {
+  const items = [...new Set(state.itemNames)]
+  const checked = new Set(
+    state.recentDryRuns.map((observation) => observation.item)
+  )
+  const unchecked = items.filter((item) => !checked.has(item))
+  const candidates = unchecked.length
+    ? unchecked
+    : items.filter((item) => item !== state.recentDryRuns.at(-1)?.item)
+  const pool = candidates.length ? candidates : items
+  const seed = namespace + ":" + now.toISOString().slice(0, 10) + ":"
 
-  const previousItem = state.recentDryRuns.at(-1)?.item
-  const previousIndex = previousItem
-    ? state.itemNames.indexOf(previousItem)
-    : -1
-
-  return state.itemNames[(previousIndex + 1) % state.itemNames.length]
+  return (
+    pool
+      .map((item) => ({
+        item,
+        hash: createHash("sha256")
+          .update(seed + item)
+          .digest("hex"),
+      }))
+      .toSorted((a, b) => a.hash.localeCompare(b.hash))[0]?.item ?? null
+  )
 }
 
 function recordDryRunObservation(
@@ -449,11 +497,13 @@ export async function runRegistryMonitor({
   const startedAt = now.toISOString()
   const { state: repairedPreviousState, discardedDryRuns } =
     discardInvalidDryRunHistory(previousState)
+  const discardedItems = discardInvalidItemHistory(repairedPreviousState)
   const checks = getChecks(mode, now, repairedPreviousState)
   const state: RegistryMonitorState = {
     schemaVersion: REGISTRY_HEALTH_SCHEMA_VERSION,
     scoreVersion: REGISTRY_HEALTH_SCORE_VERSION,
     dryRunVersion: REGISTRY_DRY_RUN_VERSION,
+    itemValidationVersion: REGISTRY_ITEM_VALIDATION_VERSION,
     updatedAt: now.toISOString(),
     ...(repairedPreviousState?.lastDailyRunAt
       ? { lastDailyRunAt: repairedPreviousState.lastDailyRunAt }
@@ -514,7 +564,10 @@ export async function runRegistryMonitor({
             const parsed = itemResult.ok
               ? registryItemSchema.safeParse(itemResult.json)
               : null
-            const success = !!(parsed?.success && parsed.data.name === item)
+            const success = !!(
+              parsed?.success &&
+              (item.includes("/") || parsed.data.name === item)
+            )
             const observation: RegistryItemObservation = {
               checkedAt: now.toISOString(),
               item,
@@ -537,7 +590,9 @@ export async function runRegistryMonitor({
           }
         }
 
-        const dryRunItem = checks.dryRun ? getNextDryRunItem(entryState) : null
+        const dryRunItem = checks.dryRun
+          ? getNextDryRunItem(entryState, entry.name, now)
+          : null
         if (dryRunItem) {
           const dryRunResult = await limitDryRun(() =>
             runDryRun({
@@ -572,12 +627,14 @@ export async function runRegistryMonitor({
     directory.map((entry) => [entry.name, entry.url])
   )
   const globalMeans = calculateGlobalMeans(state, registryUrls, now)
+  const rankings: NonNullable<RegistryHealthSnapshot["rankings"]> = {}
   const snapshot: RegistryHealthSnapshot = {
     schemaVersion: REGISTRY_HEALTH_SCHEMA_VERSION,
     scoreVersion: REGISTRY_HEALTH_SCORE_VERSION,
     generatedAt: now.toISOString(),
     globalMeans,
     registries: {},
+    rankings,
   }
 
   for (const entry of directory) {
@@ -590,6 +647,12 @@ export async function runRegistryMonitor({
     })
     entryState.status = health.status
     snapshot.registries[entry.name] = health
+    if (entryState.lastSuccessfulCheck) {
+      rankings[entry.name] = calculateRegistryRanking(
+        health.score,
+        new Set(entryState.itemNames).size
+      )
+    }
   }
 
   const run: RegistryMonitorRun = {
@@ -599,12 +662,18 @@ export async function runRegistryMonitor({
     mode,
     totals,
     results: runResults,
-    diagnostics:
-      discardedDryRuns > 0
+    diagnostics: [
+      ...(discardedDryRuns > 0
         ? [
             `Discarded ${discardedDryRuns} invalid CLI dry-run observations from the pre-tsconfig scaffold.`,
           ]
-        : [],
+        : []),
+      ...(discardedItems > 0
+        ? [
+            `Discarded ${discardedItems} item observations for path-based catalogs.`,
+          ]
+        : []),
+    ],
   }
 
   return {

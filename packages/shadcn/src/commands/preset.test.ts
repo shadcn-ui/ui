@@ -1,14 +1,14 @@
 import { existsSync } from "fs"
 import path from "path"
 import { resolveProjectPreset } from "@/src/preset/resolve"
-import { getConfig } from "@/src/utils/get-config"
+import { getConfig } from "@shadcn/registry/internal/get-config"
 import {
   formatMonorepoMessage,
   getMonorepoTargets,
   isMonorepoRoot,
-} from "@/src/utils/get-monorepo-info"
-import { getProjectInfo } from "@/src/utils/get-project-info"
-import { logger } from "@/src/utils/logger"
+} from "@shadcn/registry/internal/get-monorepo-info"
+import { getProjectInfo } from "@shadcn/registry/internal/get-project-info"
+import { logger } from "@shadcn/registry/internal/logger"
 import open from "open"
 import { beforeEach, describe, expect, it, vi } from "vitest"
 
@@ -38,18 +38,18 @@ vi.mock("@/src/preset/resolve", () => ({
   resolveProjectPreset: vi.fn(),
 }))
 
-vi.mock("@/src/utils/get-config", () => ({
+vi.mock("@shadcn/registry/internal/get-config", () => ({
   getBase: vi.fn(() => "radix"),
   getConfig: vi.fn(),
 }))
 
-vi.mock("@/src/utils/get-monorepo-info", () => ({
+vi.mock("@shadcn/registry/internal/get-monorepo-info", () => ({
   formatMonorepoMessage: vi.fn(),
   getMonorepoTargets: vi.fn(),
   isMonorepoRoot: vi.fn(),
 }))
 
-vi.mock("@/src/utils/get-project-info", () => ({
+vi.mock("@shadcn/registry/internal/get-project-info", () => ({
   getProjectComponents: vi.fn(),
   getProjectInfo: vi.fn(),
 }))
@@ -60,13 +60,13 @@ vi.mock("@/src/utils/handle-error", () => ({
   }),
 }))
 
-vi.mock("@/src/utils/highlighter", () => ({
+vi.mock("@shadcn/registry/internal/highlighter", () => ({
   highlighter: {
     info: (value: string) => value,
   },
 }))
 
-vi.mock("@/src/utils/logger", () => ({
+vi.mock("@shadcn/registry/internal/logger", () => ({
   logger: {
     break: vi.fn(),
     error: vi.fn(),
