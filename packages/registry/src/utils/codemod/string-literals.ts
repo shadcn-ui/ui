@@ -98,9 +98,14 @@ export class StringLiterals {
     })
   }
 
+  // The edits that set the values, to apply with others.
+  getEdits() {
+    return Array.from(this.edits.values())
+  }
+
   // The code with the values set.
   apply() {
-    return applyEdits(this.code, Array.from(this.edits.values()))
+    return applyEdits(this.code, this.getEdits())
   }
 }
 

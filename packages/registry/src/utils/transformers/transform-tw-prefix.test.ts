@@ -772,6 +772,31 @@ function Card({ className, isActive, size, ...props }: React.ComponentProps<"div
     `)
   })
 
+  test("prefixes a cva base again inside a classNames call", async () => {
+    // Current behavior: the cva() pass and the classNames pass both visit it.
+    expect(
+      await prefix(
+        `const a = <div classNames={{ root: cva("flex") }} />
+`,
+        v3Config
+      )
+    ).toBe(`const a = <div classNames={{ root: cva("tw-tw-flex") }} />
+`)
+  })
+
+  test("skips a quoted variants key and reads an optional cn call", async () => {
+    expect(
+      await prefix(
+        `const b = cva("flex", { "variants": { size: { sm: "h-8" } } })
+const c = <div className={cn?.("px-2", a ? "py-1" : "py-2")} />
+`,
+        v3Config
+      )
+    ).toBe(`const b = cva("tw-flex", { "variants": { size: { sm: "h-8" } } })
+const c = <div className={cn?.("tw-px-2", a ? "tw-py-1" : "tw-py-2")} />
+`)
+  })
+
   test("adds the prefix again to already-prefixed classes in v3", async () => {
     // Current behavior: v3 has no already-prefixed check, so tw-flex becomes
     // tw-tw-flex.

@@ -12,10 +12,9 @@ import {
   StringLiterals,
   type Literal,
 } from "@/src/utils/codemod/string-literals"
-import { getLineEnd, skipTrivia } from "@/src/utils/codemod/trivia"
 import { type types as t } from "@babel/core"
 
-import { fromTextTransformer } from "./text-transformer"
+import { fromTextTransformer, transformSourceText } from "./text-transformer"
 
 // Generic cleanup should leave font markers alone until transformFont runs.
 const PRESERVED_CN_MARKERS = new Set(["cn-font-heading"])
@@ -153,14 +152,5 @@ export const transformCleanup = fromTextTransformer(cleanup)
 // Standalone function to clean up cn-* markers from source code.
 // This is used by the build script and doesn't require a config object.
 export async function cleanupMarkers(source: string) {
-  // ts-morph's createSourceFile() drops a leading byte order mark.
-  const code = source.charCodeAt(0) === 0xfeff ? source.slice(1) : source
-  return getSourceFileText(cleanup(code))
-}
-
-// ts-morph's SourceFile#getText(), which starts at TypeScript's first token:
-// past the shebang, and the leading whitespace and comments.
-function getSourceFileText(code: string) {
-  const shebangEnd = code.startsWith("#!") ? getLineEnd(code, 0) : 0
-  return code.slice(skipTrivia(code, shebangEnd))
+  return transformSourceText(source, cleanup)
 }
