@@ -1,3 +1,4 @@
+import { logger } from "@/src/utils/logger"
 import { beforeEach, describe, expect, it, vi } from "vitest"
 
 import { addComponents, validateFilesTarget } from "./add-components"
@@ -177,6 +178,32 @@ describe("addComponents", () => {
       expect.any(Object),
       expect.objectContaining({ interactive: false })
     )
+  })
+
+  it("leaves the warning for a skipped tailwind config to updateTailwindConfig", async () => {
+    mockResolveRegistryTree.mockResolvedValue({
+      dependencies: [],
+      devDependencies: [],
+      files: [],
+      tailwind: { config: { theme: { extend: { colors: {} } } } },
+    })
+    mockUpdateTailwindConfig.mockResolvedValue(
+      "Skipped tailwind.config.ts: could not parse it. Add darkMode and theme.extend.colors to it manually."
+    )
+
+    await addComponents(
+      ["sidebar"],
+      { resolvedPaths: { cwd: "/test/project" } } as any,
+      { silent: false }
+    )
+
+    // It warns unless silent, so a project install reports the warning once.
+    expect(mockUpdateTailwindConfig).toHaveBeenCalledWith(
+      { theme: { extend: { colors: {} } } },
+      expect.any(Object),
+      expect.objectContaining({ silent: false })
+    )
+    expect(logger.warn).not.toHaveBeenCalled()
   })
 
   it("reuses a pre-resolved registry tree", async () => {

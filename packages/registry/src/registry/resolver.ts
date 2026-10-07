@@ -18,22 +18,22 @@ import { fetchRegistry, fetchRegistryLocal } from "@/src/registry/fetcher"
 import { fetchGitHubRegistryItem } from "@/src/registry/github"
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
 import {
-  deduplicateFilesByTarget,
-  isLocalFile,
-  isUniversalRegistryItem,
-  isUrl,
-} from "@/src/registry/utils"
-import {
   RegistryFontItem,
   registryItemCommonSchema,
   registryItemFontSchema,
   registryItemSchema,
   registryItemTypeSchema,
   registryResolvedItemsTreeSchema,
-} from "@/src/schema"
+} from "@/src/registry/schema"
+import {
+  deduplicateFilesByTarget,
+  isLocalFile,
+  isUniversalRegistryItem,
+  isUrl,
+} from "@/src/registry/utils"
 import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
 import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
-import { buildTailwindThemeColorsFromCssVars } from "@/src/utils/updaters/update-tailwind-config"
+import { buildTailwindThemeColorsFromCssVars } from "@/src/utils/tailwind-theme-colors"
 import deepmerge from "deepmerge"
 import { z } from "zod"
 

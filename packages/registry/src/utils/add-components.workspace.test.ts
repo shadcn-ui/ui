@@ -4,8 +4,10 @@ import { resolveRegistryTree } from "@/src/registry/resolver"
 import { addComponents } from "@/src/utils/add-components"
 import type { Config } from "@/src/utils/get-config"
 import { findPackageRoot, getWorkspaceConfig } from "@/src/utils/get-config"
+import { logger } from "@/src/utils/logger"
 import { updateFiles } from "@/src/utils/updaters/update-files"
 import { updateFonts } from "@/src/utils/updaters/update-fonts"
+import { updateTailwindConfig } from "@/src/utils/updaters/update-tailwind-config"
 import fs from "fs-extra"
 import { afterEach, describe, expect, it, vi } from "vitest"
 
@@ -950,4 +952,110 @@ export function ExampleCard() {
       expect.anything()
     )
   })
+
+  it.each([
+    { silent: false, reported: true },
+    { silent: true, reported: false },
+  ])(
+    "reports a layout updateFonts skipped, unless silent ($silent)",
+    async ({ silent, reported }) => {
+      const warning =
+        "Skipped app/layout.tsx: adding font-inter would leave it with a syntax error. Add the fonts to it manually."
+      vi.mocked(updateFonts).mockResolvedValueOnce(warning)
+      vi.mocked(getWorkspaceConfig).mockResolvedValue({
+        ui: createMockConfig({
+          resolvedPaths: {
+            cwd: "/packages/ui",
+            tailwindConfig: "/packages/ui/tailwind.config.ts",
+            tailwindCss: "/packages/ui/src/globals.css",
+            utils: "/packages/ui/src/lib/utils",
+            components: "/packages/ui/src/components",
+            lib: "/packages/ui/src/lib",
+            hooks: "/packages/ui/src/hooks",
+            ui: "/packages/ui/src/components/ui",
+          },
+        }),
+      })
+      vi.mocked(resolveRegistryTree).mockResolvedValue({
+        files: [],
+        dependencies: [],
+        devDependencies: [],
+      })
+      vi.mocked(findPackageRoot).mockResolvedValue("/packages/ui")
+
+      await addComponents(["font-inter"], createMockConfig(), { silent })
+
+      if (reported) {
+        expect(logger.warn).toHaveBeenCalledWith(warning)
+      } else {
+        expect(logger.warn).not.toHaveBeenCalled()
+      }
+    }
+  )
+
+  it.each([
+    { skipped: false, silent: false },
+    { skipped: true, silent: false },
+    { skipped: true, silent: true },
+  ])(
+    "reports a tailwind config updateTailwindConfig skipped, unless silent, and does not list it as updated (skipped: $skipped, silent: $silent)",
+    async ({ skipped, silent }) => {
+      const warning =
+        "Skipped packages/ui/tailwind.config.ts: updating it would leave it with a syntax error. Add darkMode and theme.extend.colors to it manually."
+      vi.mocked(updateTailwindConfig).mockResolvedValueOnce(
+        skipped ? warning : undefined
+      )
+      vi.mocked(getWorkspaceConfig).mockResolvedValue({
+        ui: createMockConfig({
+          resolvedPaths: {
+            cwd: "/repo/packages/ui",
+            tailwindConfig: "/repo/packages/ui/tailwind.config.ts",
+            tailwindCss: "/repo/packages/ui/src/globals.css",
+            utils: "/repo/packages/ui/src/lib/utils",
+            components: "/repo/packages/ui/src/components",
+            lib: "/repo/packages/ui/src/lib",
+            hooks: "/repo/packages/ui/src/hooks",
+            ui: "/repo/packages/ui/src/components/ui",
+          },
+        }),
+      })
+      vi.mocked(resolveRegistryTree).mockResolvedValue({
+        files: [],
+        dependencies: [],
+        devDependencies: [],
+        tailwind: { config: { theme: { extend: { colors: {} } } } },
+      })
+      vi.mocked(findPackageRoot).mockResolvedValue("/repo/packages/ui")
+
+      await addComponents(
+        ["sidebar"],
+        createMockConfig({
+          resolvedPaths: {
+            ...createMockConfig().resolvedPaths,
+            cwd: "/repo/apps/web",
+          },
+        }),
+        { silent }
+      )
+
+      // The warning is left to the end, and names the config from the
+      // workspace root, as the list of updated files does.
+      expect(updateTailwindConfig).toHaveBeenCalledWith(
+        { theme: { extend: { colors: {} } } },
+        expect.anything(),
+        expect.objectContaining({ silent: true, workspaceRoot: "/repo" })
+      )
+      if (skipped && !silent) {
+        expect(logger.warn).toHaveBeenCalledWith(warning)
+      } else {
+        expect(logger.warn).not.toHaveBeenCalled()
+      }
+      const listedAsUpdated = vi
+        .mocked(logger.log)
+        .mock.calls.some(
+          ([line]) => line === "  - packages/ui/tailwind.config.ts"
+        )
+      expect(listedAsUpdated).toBe(!skipped)
+    }
+  )
 })
