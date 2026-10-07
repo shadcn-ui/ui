@@ -1,3 +1,4 @@
+import { getLineEnd, skipTrivia } from "@/src/utils/codemod/trivia"
 import { type Transformer, type TransformOpts } from "@/src/utils/transformers"
 import { type SourceFile } from "ts-morph"
 
@@ -29,4 +30,19 @@ export function setFullText(sourceFile: SourceFile, text: string) {
       { span: { start: 0, length: fullText.length }, newText: text },
     ])
   }
+}
+
+// transform on a ts-morph SourceFile created from source, which is then read
+// with getText(). createSourceFile() drops a leading byte order mark, and
+// getText() starts at TypeScript's first token: past the shebang, and the
+// leading whitespace and comments.
+export function transformSourceText(
+  source: string,
+  transform: (code: string) => string
+) {
+  const code = transform(
+    source.charCodeAt(0) === 0xfeff ? source.slice(1) : source
+  )
+  const shebangEnd = code.startsWith("#!") ? getLineEnd(code, 0) : 0
+  return code.slice(skipTrivia(code, shebangEnd))
 }
