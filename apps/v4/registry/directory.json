@@ -2400,7 +2400,7 @@
   },
   {
     "name": "@sui",
-    "homepage": "https://github.com/draco-china/sui",
+    "homepage": "https://sui.draco.dev",
     "url": "https://raw.githubusercontent.com/draco-china/sui/main/registry/r/{name}.json",
     "description": "Open-source React components and business blocks built with Base UI and Tailwind CSS v4, with shared themes, optional glass materials, and bilingual documentation.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72' fill='none'><circle cx='36' cy='36' r='30' fill='var(--foreground)'/><path d='M36 6a30 30 0 0 1 0 60a15 15 0 0 0 0-30a15 15 0 0 1 0-30Z' fill='var(--background)'/><circle cx='36' cy='21' r='3.5' fill='var(--foreground)'/><circle cx='36' cy='51' r='3.5' fill='var(--background)'/><circle cx='36' cy='36' r='30' stroke='var(--foreground)' stroke-width='1.8'/></svg>"
