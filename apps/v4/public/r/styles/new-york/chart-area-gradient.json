@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chart-area-gradient",
+  "type": "registry:block",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "card",
+    "chart"
+  ],
+  "files": [
+    {
+      "path": "charts/chart-area-gradient.tsx",
+      "content": "\"use client\"\n\nimport { TrendingUp } from \"lucide-react\"\nimport { Area, AreaChart, CartesianGrid, XAxis } from \"recharts\"\n\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/new-york/ui/card\"\nimport {\n  ChartConfig,\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n} from \"@/registry/new-york/ui/chart\"\nconst chartData = [\n  { month: \"January\", desktop: 186, mobile: 80 },\n  { month: \"February\", desktop: 305, mobile: 200 },\n  { month: \"March\", desktop: 237, mobile: 120 },\n  { month: \"April\", desktop: 73, mobile: 190 },\n  { month: \"May\", desktop: 209, mobile: 130 },\n  { month: \"June\", desktop: 214, mobile: 140 },\n]\n\nconst chartConfig = {\n  desktop: {\n    label: \"Desktop\",\n    color: \"hsl(var(--chart-1))\",\n  },\n  mobile: {\n    label: \"Mobile\",\n    color: \"hsl(var(--chart-2))\",\n  },\n} satisfies ChartConfig\n\nexport default function Component() {\n  return (\n    <Card>\n      <CardHeader>\n        <CardTitle>Area Chart - Gradient</CardTitle>\n        <CardDescription>\n          Showing total visitors for the last 6 months\n        </CardDescription>\n      </CardHeader>\n      <CardContent>\n        <ChartContainer config={chartConfig}>\n          <AreaChart\n            accessibilityLayer\n            data={chartData}\n            margin={{\n              left: 12,\n              right: 12,\n            }}\n          >\n            <CartesianGrid vertical={false} />\n            <XAxis\n              dataKey=\"month\"\n              tickLine={false}\n              axisLine={false}\n              tickMargin={8}\n              tickFormatter={(value) => value.slice(0, 3)}\n            />\n            <ChartTooltip cursor={false} content={<ChartTooltipContent />} />\n            <defs>\n              <linearGradient id=\"fillDesktop\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n                <stop\n                  offset=\"5%\"\n                  stopColor=\"var(--color-desktop)\"\n                  stopOpacity={0.8}\n                />\n                <stop\n                  offset=\"95%\"\n                  stopColor=\"var(--color-desktop)\"\n                  stopOpacity={0.1}\n                />\n              </linearGradient>\n              <linearGradient id=\"fillMobile\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n                <stop\n                  offset=\"5%\"\n                  stopColor=\"var(--color-mobile)\"\n                  stopOpacity={0.8}\n                />\n                <stop\n                  offset=\"95%\"\n                  stopColor=\"var(--color-mobile)\"\n                  stopOpacity={0.1}\n                />\n              </linearGradient>\n            </defs>\n            <Area\n              dataKey=\"mobile\"\n              type=\"natural\"\n              fill=\"url(#fillMobile)\"\n              fillOpacity={0.4}\n              stroke=\"var(--color-mobile)\"\n              stackId=\"a\"\n            />\n            <Area\n              dataKey=\"desktop\"\n              type=\"natural\"\n              fill=\"url(#fillDesktop)\"\n              fillOpacity={0.4}\n              stroke=\"var(--color-desktop)\"\n              stackId=\"a\"\n            />\n          </AreaChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter>\n        <div className=\"flex w-full items-start gap-2 text-sm\">\n          <div className=\"grid gap-2\">\n            <div className=\"flex items-center gap-2 font-medium leading-none\">\n              Trending up by 5.2% this month <TrendingUp className=\"h-4 w-4\" />\n            </div>\n            <div className=\"flex items-center gap-2 leading-none text-muted-foreground\">\n              January - June 2024\n            </div>\n          </div>\n        </div>\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:block",
+      "target": ""
+    }
+  ],
+  "categories": [
+    "charts",
+    "charts-area"
+  ]
+}

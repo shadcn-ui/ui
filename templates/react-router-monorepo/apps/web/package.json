@@ -1,0 +1,32 @@
+{
+  "name": "web",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "react-router dev",
+    "build": "react-router build",
+    "start": "react-router-serve ./build/server/index.js",
+    "format": "prettier --write \"**/*.{ts,tsx}\"",
+    "typecheck": "react-router typegen && tsc"
+  },
+  "dependencies": {
+    "@react-router/node": "8.4.0",
+    "@react-router/serve": "8.4.0",
+    "@workspace/ui": "workspace:*",
+    "isbot": "^5",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router": "8.4.0"
+  },
+  "devDependencies": {
+    "@react-router/dev": "8.4.0",
+    "@tailwindcss/vite": "^4",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "tailwindcss": "^4",
+    "typescript": "^6.0.2",
+    "vite": "^8"
+  }
+}

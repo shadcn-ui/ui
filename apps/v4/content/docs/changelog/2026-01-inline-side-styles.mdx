@@ -1,0 +1,69 @@
+---
+title: January 2026 - Inline Start and End Styles
+description: We've updated the styles for Base UI components to support inline-start and inline-end side values.
+date: 2026-01-23
+---
+
+We've updated the styles for Base UI components to support `inline-start` and `inline-end` side values. The following components now support these values:
+
+- Tooltip
+- Popover
+- Combobox
+- Context Menu
+- Dropdown Menu
+- Hover Card
+- Menubar
+- Select
+
+### What Changed
+
+We added new Tailwind classes to handle the logical side values:
+
+```diff
+<PopoverPrimitive.Popup
+  className={cn(
+    "... data-[side=bottom]:slide-in-from-top-2
+    data-[side=left]:slide-in-from-right-2
+    data-[side=right]:slide-in-from-left-2
+    data-[side=top]:slide-in-from-bottom-2
++   data-[side=inline-start]:slide-in-from-right-2
++   data-[side=inline-end]:slide-in-from-left-2 ...",
+    className
+  )}
+/>
+```
+
+### Usage
+
+```tsx
+<Popover>
+  <PopoverTrigger>Open</PopoverTrigger>
+  <PopoverContent side="inline-start">
+    {/* Opens on the left in LTR, right in RTL */}
+  </PopoverContent>
+</Popover>
+```
+
+### LLM Prompt
+
+Ask your LLM to update your components by running the following prompt:
+
+```txt showLineNumbers
+Add inline-start and inline-end support to my shadcn/ui components. Add the following Tailwind classes to each component:
+
+| File | Component | Add Classes |
+|------|-----------|-------------|
+| tooltip.tsx | TooltipContent | `data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2` |
+| tooltip.tsx | TooltipArrow | `data-[side=inline-start]:top-1/2! data-[side=inline-start]:-right-1 data-[side=inline-start]:-translate-y-1/2
+data-[side=inline-end]:top-1/2! data-[side=inline-end]:-left-1 data-[side=inline-end]:-translate-y-1/2` |
+| popover.tsx | PopoverContent | `data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2` |
+| hover-card.tsx | HoverCardContent | `data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2` |
+| select.tsx | SelectContent | `data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2
+data-[align-trigger=true]:animate-none` and add `data-align-trigger={alignItemWithTrigger}` attribute |
+| combobox.tsx | ComboboxContent | `data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2` |
+| dropdown-menu.tsx | DropdownMenuContent | `data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2` |
+| context-menu.tsx | ContextMenuContent | `data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2` |
+| menubar.tsx | MenubarContent | `data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2` |
+
+Add these classes next to the existing `data-[side=top]`, `data-[side=bottom]`, `data-[side=left]`, `data-[side=right]` classes.
+```

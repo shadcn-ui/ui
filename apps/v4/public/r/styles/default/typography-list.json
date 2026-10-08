@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-list",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "files": [
+    {
+      "path": "examples/typography-list.tsx",
+      "content": "export default function TypographyList() {\n  return (\n    <ul className=\"my-6 ml-6 list-disc [&>li]:mt-2\">\n      <li>1st level of puns: 5 gold coins</li>\n      <li>2nd level of jokes: 10 gold coins</li>\n      <li>3rd level of one-liners : 20 gold coins</li>\n    </ul>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

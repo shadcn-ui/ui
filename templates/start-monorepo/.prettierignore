@@ -1,0 +1,10 @@
+dist/
+node_modules/
+.turbo/
+.output/
+.nitro/
+.tanstack/
+.vinxi/
+coverage/
+pnpm-lock.yaml
+.pnpm-store/

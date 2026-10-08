@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dialog-demo",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "dialog"
+  ],
+  "files": [
+    {
+      "path": "examples/dialog-demo.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\"\nimport {\n  Dialog,\n  DialogContent,\n  DialogDescription,\n  DialogFooter,\n  DialogHeader,\n  DialogTitle,\n  DialogTrigger,\n} from \"@/registry/default/ui/dialog\"\nimport { Input } from \"@/registry/default/ui/input\"\nimport { Label } from \"@/registry/default/ui/label\"\n\nexport default function DialogDemo() {\n  return (\n    <Dialog>\n      <DialogTrigger asChild>\n        <Button variant=\"outline\">Edit Profile</Button>\n      </DialogTrigger>\n      <DialogContent className=\"sm:max-w-[425px]\">\n        <DialogHeader>\n          <DialogTitle>Edit profile</DialogTitle>\n          <DialogDescription>\n            Make changes to your profile here. Click save when you're done.\n          </DialogDescription>\n        </DialogHeader>\n        <div className=\"grid gap-4 py-4\">\n          <div className=\"grid grid-cols-4 items-center gap-4\">\n            <Label htmlFor=\"name\" className=\"text-right\">\n              Name\n            </Label>\n            <Input\n              id=\"name\"\n              defaultValue=\"Pedro Duarte\"\n              className=\"col-span-3\"\n            />\n          </div>\n          <div className=\"grid grid-cols-4 items-center gap-4\">\n            <Label htmlFor=\"username\" className=\"text-right\">\n              Username\n            </Label>\n            <Input\n              id=\"username\"\n              defaultValue=\"@peduarte\"\n              className=\"col-span-3\"\n            />\n          </div>\n        </div>\n        <DialogFooter>\n          <Button type=\"submit\">Save changes</Button>\n        </DialogFooter>\n      </DialogContent>\n    </Dialog>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

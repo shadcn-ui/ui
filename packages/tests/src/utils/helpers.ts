@@ -1,0 +1,130 @@
+import { randomUUID } from "crypto"
+import path from "path"
+import { fileURLToPath } from "url"
+import { execa } from "execa"
+import fs from "fs-extra"
+
+import { TEMP_DIR } from "./setup"
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const FIXTURES_DIR = path.join(__dirname, "../../fixtures")
+const SHADCN_CLI_PATH = path.join(__dirname, "../../../shadcn/dist/index.js")
+const TEMPLATES_DIR = path.join(__dirname, "../../../../templates")
+
+export function getRegistryUrl() {
+  return process.env.REGISTRY_URL || "http://localhost:4000/r"
+}
+
+export async function createFixtureTestDirectory(fixtureName: string) {
+  const fixturePath = path.join(FIXTURES_DIR, fixtureName)
+
+  const uniqueId = `${process.pid}-${randomUUID().substring(0, 8)}`
+  let testDir = path.join(TEMP_DIR, `test-${uniqueId}-${fixtureName}`)
+
+  await fs.ensureDir(testDir)
+  await fs.copy(fixturePath, testDir)
+
+  return testDir
+}
+
+export async function runCommand(
+  cwd: string,
+  args: string[],
+  options?: {
+    env?: Record<string, string>
+    input?: string
+    timeout?: number
+  }
+) {
+  const timeout = options?.timeout ?? 60000
+
+  try {
+    const childProcess = execa("node", [SHADCN_CLI_PATH, ...args], {
+      cwd,
+      env: {
+        ...process.env,
+        FORCE_COLOR: "0",
+        CI: "true",
+        ...options?.env,
+      },
+      input: options?.input,
+      reject: false,
+      timeout,
+    })
+
+    const result = await childProcess
+
+    // A command killed by the timeout has no exit code. Report it as a
+    // failure, with the reason, instead of letting it pass as exit 0.
+    if (result.timedOut) {
+      return {
+        stdout: result.stdout || "",
+        stderr: [`Command timed out after ${timeout}ms.`, result.stderr]
+          .filter(Boolean)
+          .join("\n"),
+        exitCode: 1,
+      }
+    }
+
+    return {
+      stdout: result.stdout || "",
+      stderr: result.stderr || "",
+      // No exit code means the process was killed, e.g. by a signal.
+      exitCode: result.exitCode ?? 1,
+    }
+  } catch (error: any) {
+    return {
+      stdout: error.stdout || "",
+      stderr: error.stderr || error.message || "",
+      exitCode: error.exitCode ?? 1,
+    }
+  }
+}
+
+export async function npxShadcn(
+  cwd: string,
+  args: string[],
+  {
+    debug = false,
+    input,
+    timeout,
+  }: {
+    debug?: boolean
+    input?: string
+    timeout?: number
+  } = {}
+) {
+  const result = await runCommand(cwd, args, {
+    env: {
+      REGISTRY_URL: getRegistryUrl(),
+      SHADCN_TEMPLATE_DIR: TEMPLATES_DIR,
+    },
+    input,
+    timeout,
+  })
+
+  if (debug) {
+    console.log(result)
+  }
+
+  return result
+}
+
+export function cssHasProperties(
+  cssContent: string,
+  checks: Array<{
+    selector: string
+    properties: Record<string, string>
+  }>
+) {
+  return checks.every(({ selector, properties }) => {
+    const escapedSelector = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+    const regex = new RegExp(`${escapedSelector}\\s*{([^}]+)}`, "s")
+    const match = cssContent.match(regex)
+    const block = match ? match[1] : ""
+
+    return Object.entries(properties).every(([property, value]) =>
+      block.includes(`${property}: ${value};`)
+    )
+  })
+}

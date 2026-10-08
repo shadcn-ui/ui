@@ -1,0 +1,25 @@
+{
+  "name": "button-01",
+  "type": "registry:block",
+  "description": "A simple button.",
+  "files": [
+    {
+      "path": "blocks/button-01/page.tsx",
+      "content": "import { AmazingButton } from \"@/registry/new-york/blocks/button-01/components/amazing-button\"\n\nexport default function Page() {\n  return (\n    <div className=\"h-svh flex items-center justify-center\">\n      <AmazingButton />\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/page.tsx"
+    },
+    {
+      "path": "blocks/button-01/components/amazing-button.tsx",
+      "content": "import { Button } from \"@/registry/new-york/ui/button\"\n\nexport function AmazingButton() {\n  return (\n    <Button className=\"bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white\">\n      Amazing Button\n    </Button>\n  )\n}\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "meta": {
+    "iframeHeight": "300px"
+  },
+  "categories": [
+    "misc"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "projectName": "start-app",
+  "mode": "file-router",
+  "typescript": true,
+  "packageManager": "pnpm",
+  "git": true,
+  "install": true,
+  "intent": false,
+  "includeExamples": false,
+  "tailwind": true,
+  "addOnOptions": {},
+  "projectPreset": "default",
+  "routerOnly": false,
+  "version": 1,
+  "framework": "react",
+  "chosenAddOns": ["eslint"]
+}
