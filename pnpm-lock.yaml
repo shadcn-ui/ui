@@ -410,8 +410,8 @@ importers:
         specifier: ^8.46.2
         version: 8.46.2(eslint@9.26.0(hono@4.12.23)(jiti@2.7.0))(typescript@5.9.2)
       undici:
-        specifier: ^7.29.0
-        version: 7.29.0
+        specifier: ^7.29.1
+        version: 7.29.1
       unist-builder:
         specifier: 3.0.0
         version: 3.0.0
@@ -555,7 +555,7 @@ importers:
         specifier: ^4.41.0
         version: 4.41.0
       undici:
-        specifier: ^7.29.0
+        specifier: ^7.29.1
         version: 7.29.1
       zod:
         specifier: ^3.24.1
@@ -685,8 +685,8 @@ importers:
         specifier: ^4.2.0
         version: 4.2.0
       undici:
-        specifier: ^7.29.0
-        version: 7.29.0
+        specifier: ^7.29.1
+        version: 7.29.1
       validate-npm-package-name:
         specifier: ^7.0.1
         version: 7.0.1
@@ -9410,10 +9410,6 @@ packages:
   undici@6.28.1:
     resolution: {integrity: sha512-zWpdTVD54H48CIybL0rWQ3ukpb9d23wM7eH5RtfdmeP70cWHNjtfo7P4vZX+5CoDcO53J4Pu5uXp7lNfjc6DRA==}
     engines: {node: '>=18.17'}
-
-  undici@7.29.0:
-    resolution: {integrity: sha512-IDxfleLmmbSskfWSUATiN1nfn2rDuvnMOqb5CWR92iIfojA0Ud+ulOAAEQ57LPr9rWmsreUyf5lwyao+7GNNVw==}
-    engines: {node: '>=20.18.1'}
 
   undici@7.29.1:
     resolution: {integrity: sha512-RYONW2MeafgYlkVOKYKkA/Ag7BmXqgIWCa8t1m0JcxrQg9pI9lEqRhAOruOBCbAohOa/gkCF+iPi9hrgvTzu6Q==}
@@ -19497,8 +19493,6 @@ snapshots:
   undici-types@6.21.0: {}
 
   undici@6.28.1: {}
-
-  undici@7.29.0: {}
 
   undici@7.29.1: {}
 
