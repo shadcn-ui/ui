@@ -50,7 +50,7 @@
   "packageManager": "pnpm@10.33.4",
   "dependencies": {
     "@babel/core": "^7.22.1",
-    "@changesets/changelog-github": "^0.4.8",
+    "@changesets/changelog-github": "^1.0.1",
     "@changesets/cli": "^2.31.1",
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^17.6.3",
@@ -77,7 +77,7 @@
     "turbo": "^2.9.18",
     "vite": "^7.3.2",
     "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^3.2.6"
+    "vitest": "^3.2.7"
   },
   "devDependencies": {
     "@types/hast": "^3.0.4",
