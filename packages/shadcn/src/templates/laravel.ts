@@ -1,6 +1,6 @@
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { logger } from "@shadcn/registry/internal/logger"
 import { SHADCN_URL } from "@shadcn/registry/internal/registry/constants"
-import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
-import { logger } from "@shadcn/registry/internal/utils/logger"
 
 import { createTemplate } from "./create-template"
 

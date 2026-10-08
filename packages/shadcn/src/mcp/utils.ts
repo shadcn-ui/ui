@@ -1,9 +1,9 @@
+import { getPackageRunner } from "@shadcn/registry/internal/get-package-manager"
 import { getRegistriesConfig } from "@shadcn/registry/internal/registry/api"
 import {
   findUnknownSearchTypes,
   SEARCHABLE_TYPES,
 } from "@shadcn/registry/internal/registry/search"
-import { getPackageRunner } from "@shadcn/registry/internal/utils/get-package-manager"
 import {
   registryItemSchema,
   searchResultsSchema,

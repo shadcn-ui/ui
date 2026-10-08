@@ -1,5 +1,5 @@
+import { createConfig } from "@/src/get-config"
 import { BUILTIN_REGISTRIES, FALLBACK_STYLE } from "@/src/registry/constants"
-import { createConfig } from "@/src/utils/get-config"
 import { describe, expect, it } from "vitest"
 
 import { configWithDefaults } from "./config"
