@@ -177,6 +177,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128' fill='none' stroke='var(--foreground)' stroke-linecap='round'><path d='M38.4 102.9a43.5 43.5 0 1 1 51.2 0' stroke-width='8.6'/><path d='m63.3 70 20.5-23.8' stroke-width='8'/></svg>"
   },
   {
+    "name": "@audiocn-solid",
+    "homepage": "https://audiocn-solid.jhonra121.workers.dev",
+    "url": "https://audiocn-solid.jhonra121.workers.dev/r/solid1/{name}.json",
+    "description": "Audio components for Solid, distributed as source through shadcn.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128' fill='none' stroke='var(--foreground)' stroke-linecap='round'><path d='M38.4 102.9a43.5 43.5 0 1 1 51.2 0' stroke-width='8.6'/><path d='m63.3 70 20.5-23.8' stroke-width='8'/></svg>"
+  },
+  {
     "name": "@designali",
     "homepage": "https://designali.com",
     "url": "https://designali.com/r/{name}.json",
