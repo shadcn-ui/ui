@@ -1,3 +1,4 @@
+import { Config } from "@/src/get-config"
 import { isGitHubRegistrySource } from "@/src/registry/address"
 import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { configWithDefaults } from "@/src/registry/config"
@@ -7,8 +8,7 @@ import {
 } from "@/src/registry/context"
 import { extractEnvVars } from "@/src/registry/env"
 import { RegistryMissingEnvironmentVariablesError } from "@/src/registry/errors"
-import { registryConfigItemSchema } from "@/src/schema"
-import { Config } from "@/src/utils/get-config"
+import { registryConfigItemSchema } from "@/src/registry/schema"
 import { z } from "zod"
 
 export function extractEnvVarsFromRegistryConfig(
@@ -61,6 +61,5 @@ export function validateRegistryConfigForItems(
     buildUrlAndHeadersForRegistryItem(item, configWithDefaults(config))
   }
 
-  // Clear the registry context after validation.
   clearRegistryContext()
 }

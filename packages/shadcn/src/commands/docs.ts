@@ -1,5 +1,8 @@
 import path from "path"
 import { handleError } from "@/src/utils/handle-error"
+import { getBase, getConfig } from "@shadcn/registry/internal/get-config"
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { logger } from "@shadcn/registry/internal/logger"
 import {
   isPresetBase,
   PRESET_BASES,
@@ -7,9 +10,6 @@ import {
 } from "@shadcn/registry/internal/preset/preset"
 import { getShadcnRegistryIndex } from "@shadcn/registry/internal/registry/api"
 import { SHADCN_URL } from "@shadcn/registry/internal/registry/constants"
-import { getBase, getConfig } from "@shadcn/registry/internal/utils/get-config"
-import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
-import { logger } from "@shadcn/registry/internal/utils/logger"
 import { Command } from "commander"
 
 const SHADCN_BASE_URL = "https://ui.shadcn.com"

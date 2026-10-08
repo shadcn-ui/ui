@@ -1,19 +1,19 @@
 import { promises as fs } from "fs"
 import path from "path"
-import { getRegistryBaseColor } from "@shadcn/registry/internal/registry/api"
-import { BASE_COLORS } from "@shadcn/registry/internal/registry/constants"
-import { Config } from "@shadcn/registry/internal/utils/get-config"
+import { Config } from "@shadcn/registry/internal/get-config"
 import {
   getProjectInfo,
   TailwindVersion,
-} from "@shadcn/registry/internal/utils/get-project-info"
-import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
-import { logger } from "@shadcn/registry/internal/utils/logger"
-import { spinner } from "@shadcn/registry/internal/utils/spinner"
+} from "@shadcn/registry/internal/get-project-info"
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { logger } from "@shadcn/registry/internal/logger"
+import { getRegistryBaseColor } from "@shadcn/registry/internal/registry/api"
+import { BASE_COLORS } from "@shadcn/registry/internal/registry/constants"
+import { spinner } from "@shadcn/registry/internal/spinner"
 import {
   isLocalHSLValue,
   updateCssVars,
-} from "@shadcn/registry/internal/utils/updaters/update-css-vars"
+} from "@shadcn/registry/internal/updaters/update-css-vars"
 import {
   registryBaseColorSchema,
   registryItemCssVarsSchema,
