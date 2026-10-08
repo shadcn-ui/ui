@@ -678,6 +678,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' width='24' height='24'><circle cx='62' cy='38' r='28' fill='#e10000'/><rect x='12' y='32' width='56' height='56' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@docscn",
+    "homepage": "https://docscn.dev",
+    "url": "https://docscn.dev/r/{name}.json",
+    "description": "Documentation components built on Fumadocs Core: docs layouts, sidebars, tables of contents, search and MDX components. A drop-in replacement for Fumadocs UI.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)'><path d='M16 0H24V8H16V0Z'/><path d='M8 8H16V16H8V8Z'/><path d='M0 16H8V24H0V16Z'/><path d='M16 16H24V24H16V16Z'/></svg>"
+  },
+  {
     "name": "@dominik-ui",
     "homepage": "https://dominikkoch.dev/ui",
     "url": "https://dominikkoch.dev/r/{name}.json",
