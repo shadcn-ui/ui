@@ -247,6 +247,13 @@
     "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" fill=\"var(--foreground)\" /><g transform=\"translate(4,4)\" fill=\"var(--foreground)\" stroke=\"var(--background)\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2z\" /><path d=\"M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1\" /></g></svg>"
   },
   {
+  "name": "@audiocn-solid",
+  "homepage": "https://audiocn-solid.jhonra121.workers.dev",
+  "url": "https://audiocn-solid.jhonra121.workers.dev/r/solid1/{name}.json",
+  "description": "Audio components for Solid, distributed as source through shadcn.",
+  "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128' fill='none' stroke='var(--foreground)' stroke-linecap='round'><path d='M38.4 102.9a43.5 43.5 0 1 1 51.2 0' stroke-width='8.6'/><path d='m63.3 70 20.5-23.8' stroke-width='8'/></svg>"
+},
+  {
     "name": "@auth0",
     "homepage": "https://auth0.com",
     "url": "https://ui.auth0.com/r/{name}.json",
