@@ -18,7 +18,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-only-warn": "^1.2.1",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-turbo": "^2.11.5",
-    "globals": "^17.12.0"
+    "eslint-plugin-turbo": "^2.11.7",
+    "globals": "^17.13.0"
   }
 }
