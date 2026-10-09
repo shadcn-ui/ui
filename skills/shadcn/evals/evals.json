@@ -72,6 +72,55 @@
         "Uses Message + Bubble + BubbleContent for the conversation rows instead of hand-rolled bubble divs",
         "Uses semantic color tokens and gap-* spacing; includes \"use client\" (isRSC)"
       ]
+    },
+    {
+      "id": 6,
+      "prompt": "Build me a design system using preset b0. Use the DESIGN.md in this folder (a productivity-app spec: white canvas, #0075DE primary, 8px buttons, 12px cards, multi-layer soft shadows, 2px blue focus outline with 2px offset).",
+      "expected_output": "A new Vite app created with init --preset b0 --template vite, every component installed, a design system page that renders all of them, and the DESIGN.md tokens mapped onto the shadcn theme.",
+      "files": [],
+      "expectations": [
+        "Creates the app with init --preset b0 --template vite --name <app> and passes the preset code through without decoding it",
+        "Installs every component with add --all and reports the component count from disk",
+        "Reads the DESIGN.md Do's and Don'ts and Known Gaps before editing the theme",
+        "Maps DESIGN.md colors onto shadcn variables in the existing tailwindCssFile and registers extra tokens in @theme inline instead of creating a new CSS file",
+        "Pins the radius scale in @theme inline and overrides the shadow scale with the documented multi-layer shadows",
+        "Implements the 2px outline focus with an offset instead of keeping the default ring",
+        "Changes field control heights together with the button height",
+        "Renders every installed component on the design system page and runs the coverage check",
+        "Verifies in a browser: typecheck, no console errors, page loads at the top, no horizontal overflow",
+        "Shows color roles as surface/foreground pairs with measured contrast ratios",
+        "Shows a variant × state matrix for Button with hover, focus, active and disabled pinned via data-preview",
+        "Renders do/don't pairs for rules from the DESIGN.md"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Create a Next.js design system app called editorial from preset b0 and apply this DESIGN.md: cream canvas #faf9f5, coral primary #cc785c that darkens only on press, licensed serif display (substitute Cormorant Garamond), Inter body, dark #181715 product surfaces, 40px buttons and inputs.",
+      "expected_output": "A Next.js app with all components, serif display type utilities, coral primary with an active-only darker state, dark bands scoped with the dark class, and a showcase page covering every component.",
+      "files": [],
+      "expectations": [
+        "Uses --template next with --preset b0 and --name editorial",
+        "Installs the documented font substitutes from Fontsource instead of linking licensed fonts",
+        "Defines type-* utilities for the display scale with serif family, weight 400-500 and negative tracking, instead of --text-* theme keys",
+        "Uses active: rather than hover: for the primary darker state, per the DESIGN.md",
+        "Raises button and input heights to 40px across button, input, input-group, select and related controls",
+        "Uses className=\"dark\" on sections or cards to render dark product surfaces with the same components",
+        "Avoids the cmdk mount scroll jump on the inline Command example",
+        "Reports deliberate deviations from the DESIGN.md (font substitutes, kept hover, derived values)"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Create a new design system using shadcn and the following DESIGN.md. <DESIGN.md: editorial cream canvas, coral primary, 40px controls, 12px cards, 16px hero container, pill badges, shadows rare, generous 32px card padding>",
+      "expected_output": "A new app scaffolded without a preset code by picking a style that matches the DESIGN.md geometry, then themed, with a full design system page.",
+      "files": [],
+      "expectations": [
+        "Does not ask for or invent a preset code; passes --base base --preset <style> so init doesn't stop at an interactive prompt",
+        "Picks a style matching the DESIGN.md geometry (e.g. maia for generous spacing and 12px+ cards, or sera for editorial serif type) and states the reason in one line",
+        "Passes --no-monorepo and --template vite (or next when asked)",
+        "Installs all components and builds the design system page per design-system-page.md",
+        "Reports contrast pairs below 4.5:1, including the DESIGN.md's own primary/on-primary pair if it fails"
+      ]
     }
   ]
 }
