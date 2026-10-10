@@ -6,6 +6,7 @@ import {
   getBodyFont,
   getHeadingFont,
   getInheritedHeadingFontValue,
+  rtlDocsUrl,
   type DesignSystemConfig,
 } from "@/registry/config"
 
@@ -271,9 +272,6 @@ function buildAvailableComponentsSection(config: DesignSystemConfig) {
 }
 
 function buildRtlSection(config: DesignSystemConfig) {
-  const template =
-    config.template === "next-monorepo" ? "next" : (config.template ?? "next")
-
   return dedent`
     ## RTL Support
 
@@ -283,6 +281,6 @@ function buildRtlSection(config: DesignSystemConfig) {
     <html dir="rtl">
     \`\`\`
 
-    For full RTL setup including the \`DirectionProvider\`, see the [RTL documentation](https://ui.shadcn.com/docs/rtl/${template}).
+    For full RTL setup including the \`DirectionProvider\`, see the [RTL documentation](${rtlDocsUrl(config.template)}).
   `
 }
