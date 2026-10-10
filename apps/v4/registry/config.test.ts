@@ -17,6 +17,24 @@ import {
 const legacyPublicSchemaStyles = ["default", "new-york"] as const
 
 describe("buildRegistryBase", () => {
+  it("links to correct RTL docs route or index fallback based on template", () => {
+    const nextResult = buildRegistryBase({
+      ...DEFAULT_CONFIG,
+      rtl: true,
+      template: "next",
+    })
+    expect(nextResult.docs).toContain("https://ui.shadcn.com/docs/rtl/next")
+
+    const astroResult = buildRegistryBase({
+      ...DEFAULT_CONFIG,
+      rtl: true,
+      template: "astro",
+    })
+    expect(astroResult.docs).toBe(
+      "To learn how to set up the RTL provider and fonts for your app, see https://ui.shadcn.com/docs/rtl"
+    )
+  })
+
   it("seeds a font-heading fallback when heading inherits the body font", () => {
     const result = buildRegistryBase(DEFAULT_CONFIG)
 
