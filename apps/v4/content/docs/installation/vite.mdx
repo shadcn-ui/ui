@@ -213,7 +213,7 @@ Replace everything in `src/index.css` with the following:
 
 If your project already has the `@/*` alias configured, skip this step.
 
-Vite splits TypeScript configuration across multiple files. Add the `baseUrl` and `paths` properties to the `compilerOptions` section of `tsconfig.json` and `tsconfig.app.json`:
+Vite splits TypeScript configuration across multiple files. Add the `paths` property to the `compilerOptions` section of `tsconfig.json` and `tsconfig.app.json`:
 
 ```ts title="tsconfig.json" {11-16} showLineNumbers
 {
@@ -227,7 +227,6 @@ Vite splits TypeScript configuration across multiple files. Add the `baseUrl` an
     }
   ],
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
@@ -243,7 +242,6 @@ Add the same alias to `tsconfig.app.json` so your editor can resolve imports:
 {
   "compilerOptions": {
     // ...
-    "baseUrl": ".",
     "paths": {
       "@/*": [
         "./src/*"
