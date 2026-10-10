@@ -1906,6 +1906,71 @@ export const Index: Record<string, Record<string, any>> = {
       categories: ["authentication", "signup"],
       meta: undefined,
     },
+    "onboarding-01": {
+      name: "onboarding-01",
+      title: "undefined",
+      description:
+        "A multi-step onboarding wizard with per-step validation and a review step.",
+      type: "registry:block",
+      registryDependencies: [
+        "button",
+        "card",
+        "empty",
+        "field",
+        "input",
+        "input-group",
+        "item",
+        "progress",
+        "radio-group",
+        "select",
+        "spinner",
+        "switch",
+      ],
+      files: [
+        {
+          path: "registry/new-york-v4/blocks/onboarding-01/page.tsx",
+          type: "registry:page",
+          target: "app/onboarding/page.tsx",
+        },
+        {
+          path: "registry/new-york-v4/blocks/onboarding-01/components/onboarding-wizard.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/new-york-v4/blocks/onboarding-01/components/onboarding-stepper.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/new-york-v4/blocks/onboarding-01/components/onboarding-schema.ts",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/new-york-v4/blocks/onboarding-01/components/step-account.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/new-york-v4/blocks/onboarding-01/components/step-workspace.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/new-york-v4/blocks/onboarding-01/components/step-preferences.tsx",
+          type: "registry:component",
+          target: "",
+        },
+        {
+          path: "registry/new-york-v4/blocks/onboarding-01/components/step-review.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["onboarding"],
+      meta: undefined,
+    },
     "chart-area-axes": {
       name: "chart-area-axes",
       title: "undefined",
