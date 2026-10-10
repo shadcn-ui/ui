@@ -909,7 +909,13 @@ export const examples: Registry["items"] = [
     name: "attachment-example",
     title: "Attachment",
     type: "registry:example",
-    registryDependencies: ["attachment"],
+    registryDependencies: [
+      "attachment",
+      "button",
+      "dialog",
+      "example",
+      "spinner",
+    ],
     files: [
       {
         path: "examples/attachment-example.tsx",
@@ -921,7 +927,14 @@ export const examples: Registry["items"] = [
     name: "bubble-example",
     title: "Bubble",
     type: "registry:example",
-    registryDependencies: ["bubble", "button", "collapsible", "example"],
+    registryDependencies: [
+      "bubble",
+      "button",
+      "collapsible",
+      "example",
+      "marker",
+      "sonner",
+    ],
     files: [
       {
         path: "examples/bubble-example.tsx",
@@ -948,6 +961,25 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/message-scroller-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "questionnaire-example",
+    title: "Questionnaire",
+    type: "registry:example",
+    registryDependencies: [
+      "button",
+      "card",
+      "dialog",
+      "example",
+      "questionnaire",
+      "sonner",
+    ],
+    files: [
+      {
+        path: "examples/questionnaire-example.tsx",
         type: "registry:example",
       },
     ],

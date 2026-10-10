@@ -1,20 +1,20 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
-import { resolveRegistryTree } from "@/src/registry/resolver"
 import { getFixturesDir } from "@/src/test-helpers"
-import type { Config } from "@/src/utils/get-config"
-import { getConfig } from "@/src/utils/get-config"
-import { getProjectInfo } from "@/src/utils/get-project-info"
-import { transform } from "@/src/utils/transformers"
-import { transformAsChild } from "@/src/utils/transformers/transform-aschild"
-import { transformCleanup } from "@/src/utils/transformers/transform-cleanup"
-import { transformCssVars as transformCssVarsTransformer } from "@/src/utils/transformers/transform-css-vars"
-import { transformIcons } from "@/src/utils/transformers/transform-icons"
-import { transformImport } from "@/src/utils/transformers/transform-import"
-import { transformMenu } from "@/src/utils/transformers/transform-menu"
-import { transformRsc } from "@/src/utils/transformers/transform-rsc"
-import { transformRtl } from "@/src/utils/transformers/transform-rtl"
-import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
+import type { Config } from "@shadcn/registry/internal/get-config"
+import { getConfig } from "@shadcn/registry/internal/get-config"
+import { getProjectInfo } from "@shadcn/registry/internal/get-project-info"
+import { resolveRegistryTree } from "@shadcn/registry/internal/registry/resolver"
+import { transform } from "@shadcn/registry/internal/transformers/index"
+import { transformAsChild } from "@shadcn/registry/internal/transformers/transform-aschild"
+import { transformCleanup } from "@shadcn/registry/internal/transformers/transform-cleanup"
+import { transformCssVars as transformCssVarsTransformer } from "@shadcn/registry/internal/transformers/transform-css-vars"
+import { transformIcons } from "@shadcn/registry/internal/transformers/transform-icons"
+import { transformImport } from "@shadcn/registry/internal/transformers/transform-import"
+import { transformMenu } from "@shadcn/registry/internal/transformers/transform-menu"
+import { transformRsc } from "@shadcn/registry/internal/transformers/transform-rsc"
+import { transformRtl } from "@shadcn/registry/internal/transformers/transform-rtl"
+import { transformTwPrefixes } from "@shadcn/registry/internal/transformers/transform-tw-prefix"
 import { afterEach, describe, expect, it, vi } from "vitest"
 
 import { dryRunComponents } from "./dry-run"
@@ -22,15 +22,15 @@ import type { DryRunResult } from "./dry-run"
 import { formatDryRunResult, resolveFilterPath } from "./dry-run-formatter"
 
 // Mock external dependencies.
-vi.mock("@/src/registry/resolver", () => ({
+vi.mock("@shadcn/registry/internal/registry/resolver", () => ({
   resolveRegistryTree: vi.fn(),
 }))
 
-vi.mock("@/src/registry/api", () => ({
+vi.mock("@shadcn/registry/internal/registry/api", () => ({
   getRegistryBaseColor: vi.fn().mockResolvedValue(undefined),
 }))
 
-vi.mock("@/src/utils/get-project-info", () => ({
+vi.mock("@shadcn/registry/internal/get-project-info", () => ({
   getProjectInfo: vi.fn().mockResolvedValue({
     framework: { name: "next-app" },
     isSrcDir: false,
@@ -44,45 +44,45 @@ vi.mock("@/src/utils/get-project-info", () => ({
   }),
 }))
 
-vi.mock("@/src/utils/transformers", () => ({
+vi.mock("@shadcn/registry/internal/transformers/index", () => ({
   transform: vi.fn().mockImplementation((opts) => opts.raw),
 }))
 
-vi.mock("@/src/utils/transformers/transform-import", () => ({
+vi.mock("@shadcn/registry/internal/transformers/transform-import", () => ({
   transformImport: vi.fn(),
 }))
-vi.mock("@/src/utils/transformers/transform-rsc", () => ({
+vi.mock("@shadcn/registry/internal/transformers/transform-rsc", () => ({
   transformRsc: vi.fn(),
 }))
-vi.mock("@/src/utils/transformers/transform-css-vars", () => ({
+vi.mock("@shadcn/registry/internal/transformers/transform-css-vars", () => ({
   transformCssVars: vi.fn(),
 }))
-vi.mock("@/src/utils/transformers/transform-tw-prefix", () => ({
+vi.mock("@shadcn/registry/internal/transformers/transform-tw-prefix", () => ({
   transformTwPrefixes: vi.fn(),
 }))
-vi.mock("@/src/utils/transformers/transform-icons", () => ({
+vi.mock("@shadcn/registry/internal/transformers/transform-icons", () => ({
   transformIcons: vi.fn(),
 }))
-vi.mock("@/src/utils/transformers/transform-menu", () => ({
+vi.mock("@shadcn/registry/internal/transformers/transform-menu", () => ({
   transformMenu: vi.fn(),
 }))
-vi.mock("@/src/utils/transformers/transform-aschild", () => ({
+vi.mock("@shadcn/registry/internal/transformers/transform-aschild", () => ({
   transformAsChild: vi.fn(),
 }))
-vi.mock("@/src/utils/transformers/transform-rtl", () => ({
+vi.mock("@shadcn/registry/internal/transformers/transform-rtl", () => ({
   transformRtl: vi.fn(),
 }))
-vi.mock("@/src/utils/transformers/transform-cleanup", () => ({
+vi.mock("@shadcn/registry/internal/transformers/transform-cleanup", () => ({
   transformCleanup: vi.fn(),
 }))
 
-vi.mock("@/src/utils/updaters/update-css", () => ({
+vi.mock("@shadcn/registry/internal/updaters/update-css", () => ({
   transformCss: vi
     .fn()
     .mockImplementation((input, _css) => `${input}\n/* css added */`),
 }))
 
-vi.mock("@/src/utils/updaters/update-css-vars", () => ({
+vi.mock("@shadcn/registry/internal/updaters/update-css-vars", () => ({
   transformCssVars: vi
     .fn()
     .mockImplementation(
@@ -90,7 +90,7 @@ vi.mock("@/src/utils/updaters/update-css-vars", () => ({
     ),
 }))
 
-vi.mock("@/src/utils/updaters/update-fonts", () => ({
+vi.mock("@shadcn/registry/internal/updaters/update-fonts", () => ({
   massageTreeForFonts: vi.fn().mockImplementation((tree) => tree),
 }))
 
@@ -573,11 +573,11 @@ export function Button() {
   it("should rewrite app-local files to workspace utils aliases in monorepo dry-runs", async () => {
     const actualFs = (await vi.importActual("fs")) as typeof import("fs")
     const actualTransformModule = (await vi.importActual(
-      "@/src/utils/transformers"
-    )) as typeof import("@/src/utils/transformers")
+      "@shadcn/registry/internal/transformers/index"
+    )) as typeof import("@shadcn/registry/internal/transformers/index")
     const actualTransformImportModule = (await vi.importActual(
-      "@/src/utils/transformers/transform-import"
-    )) as typeof import("@/src/utils/transformers/transform-import")
+      "@shadcn/registry/internal/transformers/transform-import"
+    )) as typeof import("@shadcn/registry/internal/transformers/transform-import")
     const cwd = getFixturesDir(
       "frameworks",
       "vite-monorepo-imports",
@@ -615,9 +615,7 @@ export function Button() {
       transformRtl,
       transformCleanup,
     ]) {
-      vi.mocked(transformer).mockImplementationOnce(async ({ sourceFile }) => {
-        return sourceFile
-      })
+      vi.mocked(transformer).mockImplementationOnce(async (code) => code)
     }
 
     const config = await getConfig(cwd)

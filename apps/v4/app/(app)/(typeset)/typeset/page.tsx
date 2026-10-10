@@ -1,6 +1,6 @@
 import { type Metadata } from "next"
+import { cn } from "cn"
 
-import { cn } from "@/lib/utils"
 import { TypesetCustomizer } from "@/app/(app)/(typeset)/components/customizer"
 import { TypesetDocsPanel } from "@/app/(app)/(typeset)/components/docs-panel"
 import { TypesetPreview } from "@/app/(app)/(typeset)/components/preview"

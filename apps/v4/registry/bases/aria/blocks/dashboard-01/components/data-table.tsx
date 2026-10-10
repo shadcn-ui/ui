@@ -2,18 +2,20 @@
 
 import * as React from "react"
 import {
-  flexRender,
-  getCoreRowModel,
-  getFacetedRowModel,
-  getFacetedUniqueValues,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-  type ColumnDef,
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  createColumnHelper,
+  createFilteredRowModel,
+  createPaginatedRowModel,
+  createSortedRowModel,
+  rowPaginationFeature,
+  rowSelectionFeature,
+  rowSortingFeature,
+  tableFeatures,
+  useTable,
   type ColumnFiltersState,
+  type ColumnVisibilityState,
   type SortingState,
-  type VisibilityState,
 } from "@tanstack/react-table"
 import {
   DropIndicator,
@@ -77,6 +79,24 @@ import {
 } from "@/registry/bases/aria/ui/tabs"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
+// New in v9: declare the features this table uses — anything you don't
+// register is tree-shaken out of the bundle.
+const features = tableFeatures({
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  rowPaginationFeature,
+  rowSelectionFeature,
+  rowSortingFeature,
+  filteredRowModel: createFilteredRowModel(),
+  paginatedRowModel: createPaginatedRowModel(),
+  sortedRowModel: createSortedRowModel(),
+})
+
+const columnHelper = createColumnHelper<
+  typeof features,
+  z.infer<typeof schema>
+>()
+
 export const schema = z.object({
   id: z.number(),
   header: z.string(),
@@ -107,13 +127,13 @@ function DragHandle() {
     </Button>
   )
 }
-const columns: ColumnDef<z.infer<typeof schema>>[] = [
-  {
+const columns = columnHelper.columns([
+  columnHelper.display({
     id: "drag",
     header: () => null,
     cell: ({ row }) => <DragHandle />,
-  },
-  {
+  }),
+  columnHelper.display({
     id: "select",
     header: () => (
       <div className="flex items-center justify-center">
@@ -127,17 +147,15 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     ),
     enableSorting: false,
     enableHiding: false,
-  },
-  {
-    accessorKey: "header",
+  }),
+  columnHelper.accessor("header", {
     header: "Header",
     cell: ({ row }) => {
       return <TableCellViewer item={row.original} />
     },
     enableHiding: false,
-  },
-  {
-    accessorKey: "type",
+  }),
+  columnHelper.accessor("type", {
     header: "Section Type",
     cell: ({ row }) => (
       <div className="w-32">
@@ -146,9 +164,8 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         </Badge>
       </div>
     ),
-  },
-  {
-    accessorKey: "status",
+  }),
+  columnHelper.accessor("status", {
     header: "Status",
     cell: ({ row }) => (
       <Badge variant="outline" className="px-1.5 text-muted-foreground">
@@ -173,9 +190,8 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         {row.original.status}
       </Badge>
     ),
-  },
-  {
-    accessorKey: "target",
+  }),
+  columnHelper.accessor("target", {
     header: () => <div className="w-full text-right">Target</div>,
     cell: ({ row }) => (
       <form
@@ -198,9 +214,8 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         />
       </form>
     ),
-  },
-  {
-    accessorKey: "limit",
+  }),
+  columnHelper.accessor("limit", {
     header: () => <div className="w-full text-right">Limit</div>,
     cell: ({ row }) => (
       <form
@@ -223,9 +238,8 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         />
       </form>
     ),
-  },
-  {
-    accessorKey: "reviewer",
+  }),
+  columnHelper.accessor("reviewer", {
     header: "Reviewer",
     cell: ({ row }) => {
       const isAssigned = row.original.reviewer !== "Assign reviewer"
@@ -257,8 +271,8 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         </>
       )
     },
-  },
-  {
+  }),
+  columnHelper.display({
     id: "actions",
     cell: () => (
       <DropdownMenuTrigger>
@@ -285,8 +299,8 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         </DropdownMenu>
       </DropdownMenuTrigger>
     ),
-  },
-]
+  }),
+])
 
 export function DataTable({
   data: initialData,
@@ -300,7 +314,7 @@ export function DataTable({
   const data = list.items
   const [rowSelection, setRowSelection] = React.useState({})
   const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
+    React.useState<ColumnVisibilityState>({})
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   )
@@ -309,7 +323,8 @@ export function DataTable({
     pageIndex: 0,
     pageSize: 10,
   })
-  const table = useReactTable({
+  const table = useTable({
+    features,
     data,
     columns,
     state: {
@@ -326,12 +341,6 @@ export function DataTable({
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
     onPaginationChange: setPagination,
-    getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFacetedRowModel: getFacetedRowModel(),
-    getFacetedUniqueValues: getFacetedUniqueValues(),
   })
   const { dragAndDropHooks } = useDragAndDrop({
     getItems: (keys, items: z.infer<typeof schema>[]) =>
@@ -511,12 +520,9 @@ export function DataTable({
                   isRowHeader={header.index === 1}
                   allowsSorting={header.column.getCanSort()}
                 >
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
+                  {header.isPlaceholder ? null : (
+                    <table.FlexRender header={header} />
+                  )}
                 </TableHead>
               ))}
             </TableHeader>
@@ -533,10 +539,7 @@ export function DataTable({
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
+                      <table.FlexRender cell={cell} />
                     </TableCell>
                   ))}
                 </TableRow>
@@ -556,8 +559,8 @@ export function DataTable({
               </Label>
               <Select
                 aria-label="Rows per page"
-                placeholder={`${table.getState().pagination.pageSize}`}
-                value={`${table.getState().pagination.pageSize}`}
+                placeholder={`${table.state.pagination.pageSize}`}
+                value={`${table.state.pagination.pageSize}`}
                 onChange={(value) => {
                   table.setPageSize(Number(value))
                 }}
@@ -577,7 +580,7 @@ export function DataTable({
               </Select>
             </div>
             <div className="flex w-fit items-center justify-center text-sm font-medium">
-              Page {table.getState().pagination.pageIndex + 1} of{" "}
+              Page {table.state.pagination.pageIndex + 1} of{" "}
               {table.getPageCount()}
             </div>
             <div className="ml-auto flex items-center gap-2 lg:ml-0">

@@ -1,12 +1,12 @@
 "use client"
 
+import { cn } from "cn"
 import {
   Checkbox as CheckboxPrimitive,
   composeRenderProps,
   type CheckboxProps,
 } from "react-aria-components"
 
-import { cn } from "@/registry/bases/aria/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Checkbox({ className, children, ...props }: CheckboxProps) {

@@ -31,20 +31,23 @@ export function ComponentPreview({
 }) {
   if (type === "block") {
     const content = (
-      <div className="relative mt-6 aspect-[4/2.5] w-full overflow-hidden rounded-2xl border md:-mx-1">
+      <div
+        data-not-typeset
+        className="relative mt-6 aspect-[4/2.5] w-full overflow-hidden rounded-2xl border md:-mx-1"
+      >
         <Image
-          src={`/r/styles/new-york-v4/${name}-light.png`}
+          src={`/r/styles/new-york/${name}-light.png`}
           alt={name}
           width={1440}
           height={900}
-          className="absolute top-0 left-0 z-20 w-[970px] max-w-none bg-background sm:w-[1280px] md:hidden dark:hidden md:dark:hidden"
+          className="absolute top-0 left-0 z-20 h-full w-[1600px] max-w-none bg-background object-cover object-left-top md:hidden dark:hidden md:dark:hidden"
         />
         <Image
-          src={`/r/styles/new-york-v4/${name}-dark.png`}
+          src={`/r/styles/new-york/${name}-dark.png`}
           alt={name}
           width={1440}
           height={900}
-          className="absolute top-0 left-0 z-20 hidden w-[970px] max-w-none bg-background sm:w-[1280px] md:hidden dark:block md:dark:hidden"
+          className="absolute top-0 left-0 z-20 hidden h-full w-[1600px] max-w-none bg-background object-cover object-left-top md:hidden dark:block md:dark:hidden"
         />
         <div className="absolute inset-0 hidden w-[1600px] bg-background md:block">
           <iframe src={`/view/${styleName}/${name}`} className="size-full" />

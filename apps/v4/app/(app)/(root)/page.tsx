@@ -1,8 +1,8 @@
 import { type Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import { IconArrowRight } from "@tabler/icons-react"
 
+import { siteConfig } from "@/lib/config"
 import { Announcement } from "@/components/announcement"
 import {
   PageActions,
@@ -10,21 +10,43 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { Button } from "@/styles/radix-nova/ui/button"
+import { Button } from "@/styles/radix-luma/ui/button"
 
 import { CardsDemo } from "./cards"
 
 const title = "The Foundation for your Design System"
-const description =
-  "A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Source. Open Code."
+const metadataTitle = `${siteConfig.name} - ${title}`
+const description = siteConfig.description
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteConfig.url}/#website`,
+  url: siteConfig.url,
+  name: siteConfig.name,
+  alternateName: ["shadcn", "ui.shadcn.com"],
+  description: siteConfig.description,
+  inLanguage: "en-US",
+  sameAs: [siteConfig.links.github, siteConfig.links.twitter],
+}
 
 export const dynamic = "force-static"
 export const revalidate = false
 
 export const metadata: Metadata = {
-  title,
+  title: {
+    absolute: metadataTitle,
+  },
   description,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
+    type: "website",
+    url: siteConfig.url,
+    title: metadataTitle,
+    description,
+    siteName: siteConfig.name,
     images: [
       {
         url: `/og?title=${encodeURIComponent(
@@ -35,6 +57,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    title: metadataTitle,
+    description,
     images: [
       {
         url: `/og?title=${encodeURIComponent(
@@ -48,15 +72,22 @@ export const metadata: Metadata = {
 export default function IndexPage() {
   return (
     <div className="flex flex-1 flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(websiteJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <PageHeader className="md:**:[.container]:pb-8 lg:**:[.container]:pb-12">
         <Announcement />
         <PageHeaderHeading className="max-w-4xl">{title}</PageHeaderHeading>
         <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
-          <Button asChild className="h-[31px] rounded-lg">
-            <Link href="/create?preset=b27GcrRo">
-              Build Your Own <IconArrowRight data-icon="inline-end" />
-            </Link>
+          <Button asChild className="h-[35px]">
+            <Link href="/docs/installation">Get Started</Link>
+          </Button>
+          <Button asChild variant="secondary">
+            <Link href="/docs/components">View Components</Link>
           </Button>
         </PageActions>
       </PageHeader>

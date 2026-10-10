@@ -10,6 +10,7 @@ describe("createChatIds", () => {
     expect(ids.nextMessageId()).toBe("msg-2")
     expect(ids.nextToolCallId()).toBe("call-1")
     expect(ids.nextSourceId()).toBe("source-1")
+    expect(ids.nextApprovalId()).toBe("approval-1")
   })
 
   it("supports custom prefixes", () => {
@@ -30,9 +31,11 @@ describe("createChatIds", () => {
     ids.reserveMessageId("msg-2")
     ids.reserveToolCallId("call-4")
     ids.reserveSourceId("source-3")
+    ids.reserveApprovalId("approval-2")
 
     expect(ids.nextMessageId()).toBe("msg-3")
     expect(ids.nextToolCallId()).toBe("call-5")
     expect(ids.nextSourceId()).toBe("source-4")
+    expect(ids.nextApprovalId()).toBe("approval-3")
   })
 })

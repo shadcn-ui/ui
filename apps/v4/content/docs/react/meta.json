@@ -1,4 +1,4 @@
 {
   "title": "@shadcn/react",
-  "pages": ["message-scroller"]
+  "pages": ["message-scroller", "questionnaire"]
 }

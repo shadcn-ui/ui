@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "cn"
 import {
   Dialog as AlertDialogPrimitive,
   DialogTrigger as AlertDialogTriggerPrimitive,
@@ -12,7 +13,6 @@ import {
   type ModalOverlayProps as ModalOverlayPrimitiveProps,
 } from "react-aria-components"
 
-import { cn } from "@/registry/bases/aria/lib/utils"
 import { Button } from "@/registry/bases/aria/ui/button"
 
 function AlertDialogTrigger({ ...props }: AlertDialogTriggerPrimitiveProps) {

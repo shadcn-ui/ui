@@ -6,7 +6,7 @@ import fs from "fs-extra"
 // test file lives. getFixturesDir("config-full") or
 // getFixturesDir("frameworks", "next-app").
 export function getFixturesDir(...segments: string[]) {
-  return path.resolve(__dirname, "../../test/fixtures", ...segments)
+  return path.resolve(__dirname, "../../../registry/test/fixtures", ...segments)
 }
 
 // Temp dir with guaranteed cleanup. Returns the callback's result.

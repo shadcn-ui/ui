@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import Script from "next/script"
+import { cn } from "cn"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/styles/base-nova/ui/button"
 import { useThemeToggle } from "@/app/(app)/(create)/hooks/use-theme-toggle"
 

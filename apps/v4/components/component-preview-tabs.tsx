@@ -3,9 +3,9 @@
 import * as React from "react"
 import Link from "next/link"
 import { IconAlertCircle } from "@tabler/icons-react"
+import { cn } from "cn"
 import { I18nProvider } from "react-aria-components"
 
-import { cn } from "@/lib/utils"
 import {
   LanguageProvider,
   LanguageSelector,
@@ -235,7 +235,7 @@ function PreviewWrapper({
         data-align={align}
         data-chromeless={chromeLessOnMobile}
         className={cn(
-          "preview relative flex h-72 w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start data-[chromeless=true]:h-auto data-[chromeless=true]:p-0",
+          "preview relative flex h-72 w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-start data-[align=start]:items-start data-[chromeless=true]:h-auto data-[chromeless=true]:p-0 sm:data-[align=end]:items-end",
           previewClassName
         )}
       >

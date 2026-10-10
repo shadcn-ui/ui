@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { type SourceDocumentUIPart, type SourceUrlUIPart } from "ai"
+import { cn } from "cn"
 
-import { cn } from "@/registry/bases/radix/lib/utils"
 import { Badge } from "@/registry/bases/radix/ui/badge"
 import { IconPlaceholder } from "@/app/(app)/create/components/icon-placeholder"
 

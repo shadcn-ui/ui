@@ -1,5 +1,127 @@
 # shadcn
 
+## 4.21.4
+
+### Patch Changes
+
+- [#12189](https://github.com/shadcn-ui/ui/pull/12189) [`76fd499595ba7cc01f49d159bd7ac82d7aca8e63`](https://github.com/shadcn-ui/ui/commit/76fd499595ba7cc01f49d159bd7ac82d7aca8e63) Thanks [@shadcn](https://github.com/shadcn)! - Drop the ts-morph dependency from @shadcn/registry.
+
+- [#12184](https://github.com/shadcn-ui/ui/pull/12184) [`995c2cfff44c373bd210d451089726ec097ab917`](https://github.com/shadcn-ui/ui/commit/995c2cfff44c373bd210d451089726ec097ab917) Thanks [@shadcn](https://github.com/shadcn)! - Run the icons and asChild transformers without ts-morph.
+
+- [#12160](https://github.com/shadcn-ui/ui/pull/12160) [`6efecd8fe9aa167886fe2cc0c05c5623a5bb5670`](https://github.com/shadcn-ui/ui/commit/6efecd8fe9aa167886fe2cc0c05c5623a5bb5670) Thanks [@shadcn](https://github.com/shadcn)! - Edit the Next.js layout for font items without ts-morph, and skip it with a warning instead of writing a broken layout.
+
+- [#12188](https://github.com/shadcn-ui/ui/pull/12188) [`efa11781f756c86debb0392fbea4fe468250b41b`](https://github.com/shadcn-ui/ui/commit/efa11781f756c86debb0392fbea4fe468250b41b) Thanks [@shadcn](https://github.com/shadcn)! - Rewrite imports and crawl file imports without ts-morph.
+
+- [#12177](https://github.com/shadcn-ui/ui/pull/12177) [`e8c3143b1cd191280befcd6c9538284bb43399a8`](https://github.com/shadcn-ui/ui/commit/e8c3143b1cd191280befcd6c9538284bb43399a8) Thanks [@shadcn](https://github.com/shadcn)! - Edit tailwind.config without ts-morph, and skip it with a warning instead of writing a broken config.
+
+- [#12183](https://github.com/shadcn-ui/ui/pull/12183) [`f56bbd7282f0116a925a601cb6d7e0c3fede448b`](https://github.com/shadcn-ui/ui/commit/f56bbd7282f0116a925a601cb6d7e0c3fede448b) Thanks [@shadcn](https://github.com/shadcn)! - Run the rsc, import, CSS variable, cleanup, font and menu transformers without ts-morph.
+
+- [#12185](https://github.com/shadcn-ui/ui/pull/12185) [`4a90344c42dc9ae47494179065219377ff5f2a8f`](https://github.com/shadcn-ui/ui/commit/4a90344c42dc9ae47494179065219377ff5f2a8f) Thanks [@shadcn](https://github.com/shadcn)! - Run the Tailwind prefix and RTL transformers without ts-morph.
+
+- Updated dependencies [[`76fd499595ba7cc01f49d159bd7ac82d7aca8e63`](https://github.com/shadcn-ui/ui/commit/76fd499595ba7cc01f49d159bd7ac82d7aca8e63), [`995c2cfff44c373bd210d451089726ec097ab917`](https://github.com/shadcn-ui/ui/commit/995c2cfff44c373bd210d451089726ec097ab917), [`6efecd8fe9aa167886fe2cc0c05c5623a5bb5670`](https://github.com/shadcn-ui/ui/commit/6efecd8fe9aa167886fe2cc0c05c5623a5bb5670), [`232d7e2c128d94d37a6dae74e3b0e1a8f08ff6e4`](https://github.com/shadcn-ui/ui/commit/232d7e2c128d94d37a6dae74e3b0e1a8f08ff6e4), [`efa11781f756c86debb0392fbea4fe468250b41b`](https://github.com/shadcn-ui/ui/commit/efa11781f756c86debb0392fbea4fe468250b41b), [`e8c3143b1cd191280befcd6c9538284bb43399a8`](https://github.com/shadcn-ui/ui/commit/e8c3143b1cd191280befcd6c9538284bb43399a8), [`f56bbd7282f0116a925a601cb6d7e0c3fede448b`](https://github.com/shadcn-ui/ui/commit/f56bbd7282f0116a925a601cb6d7e0c3fede448b), [`4a90344c42dc9ae47494179065219377ff5f2a8f`](https://github.com/shadcn-ui/ui/commit/4a90344c42dc9ae47494179065219377ff5f2a8f)]:
+  - @shadcn/registry@0.1.3
+
+## 4.21.3
+
+### Patch Changes
+
+- [#12148](https://github.com/shadcn-ui/ui/pull/12148) [`596be8dda8f94927281184b8c4575150531f85ea`](https://github.com/shadcn-ui/ui/commit/596be8dda8f94927281184b8c4575150531f85ea) Thanks [@shadcn](https://github.com/shadcn)! - Fix `ERR_REQUIRE_CYCLE_MODULE` when running the CLI with `pnpm dlx` on Windows.
+
+- Updated dependencies [[`596be8dda8f94927281184b8c4575150531f85ea`](https://github.com/shadcn-ui/ui/commit/596be8dda8f94927281184b8c4575150531f85ea)]:
+  - @shadcn/registry@0.1.2
+
+## 4.21.2
+
+### Patch Changes
+
+- [#12143](https://github.com/shadcn-ui/ui/pull/12143) [`8c2bf3882cb856ac10abbb162bdc0b8383ebd432`](https://github.com/shadcn-ui/ui/commit/8c2bf3882cb856ac10abbb162bdc0b8383ebd432) Thanks [@shadcn](https://github.com/shadcn)! - Accept `components.json` and `package.json` files that start with a UTF-8 byte order mark.
+
+- [#12142](https://github.com/shadcn-ui/ui/pull/12142) [`95efb5cd8d7f13adba70b58b1119211e8980683f`](https://github.com/shadcn-ui/ui/commit/95efb5cd8d7f13adba70b58b1119211e8980683f) Thanks [@shadcn](https://github.com/shadcn)! - replace cosmiconfig with a smaller custom reader.
+
+- [#12140](https://github.com/shadcn-ui/ui/pull/12140) [`3b1ae6e43f082dd82d0e5710b813cfad929abdb4`](https://github.com/shadcn-ui/ui/commit/3b1ae6e43f082dd82d0e5710b813cfad929abdb4) Thanks [@shadcn](https://github.com/shadcn)! - Skip `npm audit` and the funding check when installing or removing dependencies, or creating a project, with npm.
+
+- Updated dependencies [[`8c2bf3882cb856ac10abbb162bdc0b8383ebd432`](https://github.com/shadcn-ui/ui/commit/8c2bf3882cb856ac10abbb162bdc0b8383ebd432), [`95efb5cd8d7f13adba70b58b1119211e8980683f`](https://github.com/shadcn-ui/ui/commit/95efb5cd8d7f13adba70b58b1119211e8980683f), [`3b1ae6e43f082dd82d0e5710b813cfad929abdb4`](https://github.com/shadcn-ui/ui/commit/3b1ae6e43f082dd82d0e5710b813cfad929abdb4)]:
+  - @shadcn/registry@0.1.1
+
+## 4.21.1
+
+### Patch Changes
+
+- [#12087](https://github.com/shadcn-ui/ui/pull/12087) [`bf6646b449684e687f28531305eca4e4768c2782`](https://github.com/shadcn-ui/ui/commit/bf6646b449684e687f28531305eca4e4768c2782) Thanks [@shadcn](https://github.com/shadcn)! - Add `@shadcn/registry`, the registry engine behind the CLI. `shadcn` now depends on it, and `shadcn/registry` and `shadcn/schema` re-export it, so there are no changes for existing users.
+
+- [#12061](https://github.com/shadcn-ui/ui/pull/12061) [`a9c1da49ec4eab488dc99c69ae20a7ffaa4897d4`](https://github.com/shadcn-ui/ui/commit/a9c1da49ec4eab488dc99c69ae20a7ffaa4897d4) Thanks [@shadcn](https://github.com/shadcn)! - fix shimmer reduced motion handling when used with a variant
+
+- [#12087](https://github.com/shadcn-ui/ui/pull/12087) [`bf6646b449684e687f28531305eca4e4768c2782`](https://github.com/shadcn-ui/ui/commit/bf6646b449684e687f28531305eca4e4768c2782) Thanks [@shadcn](https://github.com/shadcn)! - `shadcn docs` only rewrites links on the ui.shadcn.com host.
+
+- Updated dependencies [[`bf6646b449684e687f28531305eca4e4768c2782`](https://github.com/shadcn-ui/ui/commit/bf6646b449684e687f28531305eca4e4768c2782)]:
+  - @shadcn/registry@0.1.0
+
+## 4.21.0
+
+### Minor Changes
+
+- [#11758](https://github.com/shadcn-ui/ui/pull/11758) [`c257f688cf4de7ec10cc1be84cad29cd4631182c`](https://github.com/shadcn-ui/ui/commit/c257f688cf4de7ec10cc1be84cad29cd4631182c) Thanks [@shadcn](https://github.com/shadcn)! - install `cn` and generate `export { cn } from "cn"` for `lib/utils` on init. Registry components now import `cn` from the `cn` package.
+
+### Patch Changes
+
+- [`8720dec73f5aebed9f649ea58636f54599fdedf1`](https://github.com/shadcn-ui/ui/commit/8720dec73f5aebed9f649ea58636f54599fdedf1) Thanks [@shadcn](https://github.com/shadcn)! - use `twMerge` from `cn` instead of `tailwind-merge` internally.
+
+## 4.20.1
+
+### Patch Changes
+
+- [#11742](https://github.com/shadcn-ui/ui/pull/11742) [`04bb134c52af23af7d77673618ef4e3862b7c310`](https://github.com/shadcn-ui/ui/commit/04bb134c52af23af7d77673618ef4e3862b7c310) Thanks [@shadcn](https://github.com/shadcn)! - preserve leading comments when running `shadcn migrate cn`.
+
+## 4.20.0
+
+### Minor Changes
+
+- [#11728](https://github.com/shadcn-ui/ui/pull/11728) [`51f3e12203b0026ea106cafb4f770bda9abead87`](https://github.com/shadcn-ui/ui/commit/51f3e12203b0026ea106cafb4f770bda9abead87) Thanks [@shadcn](https://github.com/shadcn)! - add `npx shadcn migrate cn` to replace `clsx`, `tailwind-merge` and `cnfast` in Tailwind CSS v4 projects.
+
+## 4.19.1
+
+### Patch Changes
+
+- [#11713](https://github.com/shadcn-ui/ui/pull/11713) [`f9ea1e600ea5dd7b1b79769b7b25cafa400cee6f`](https://github.com/shadcn-ui/ui/commit/f9ea1e600ea5dd7b1b79769b7b25cafa400cee6f) Thanks [@shadcn](https://github.com/shadcn)! - Add the official shadcn/ui website to the package metadata.
+
+## 4.19.0
+
+### Minor Changes
+
+- [#11582](https://github.com/shadcn-ui/ui/pull/11582) [`33c81f991f1013653444d6819107b2b356563f57`](https://github.com/shadcn-ui/ui/commit/33c81f991f1013653444d6819107b2b356563f57) Thanks [@shadcn](https://github.com/shadcn)! - add private repository support to GitHub registries via GitHub CLI credentials or GH_TOKEN.
+
+- [#11248](https://github.com/shadcn-ui/ui/pull/11248) [`b4f2023b1d5c733db67d4e90eb9485a95c5ed480`](https://github.com/shadcn-ui/ui/commit/b4f2023b1d5c733db67d4e90eb9485a95c5ed480) Thanks [@rbadillap](https://github.com/rbadillap)! - add `npx shadcn migrate base-color` to switch a project's base color.
+
+## 4.18.0
+
+### Minor Changes
+
+- [#11501](https://github.com/shadcn-ui/ui/pull/11501) [`aef1cdca54e8da689351cdddf959342909e45e76`](https://github.com/shadcn-ui/ui/commit/aef1cdca54e8da689351cdddf959342909e45e76) Thanks [@shadcn](https://github.com/shadcn)! - merge registries from package.json and components.json, and support adding registries to package.json when components.json is not present
+
+### Patch Changes
+
+- [#11500](https://github.com/shadcn-ui/ui/pull/11500) [`e66b99b14dd9c54afc434dbf5a702f170b1153b0`](https://github.com/shadcn-ui/ui/commit/e66b99b14dd9c54afc434dbf5a702f170b1153b0) Thanks [@shadcn](https://github.com/shadcn)! - Skip unreadable directories during file scans instead of failing with `EACCES`.
+
+- [#11504](https://github.com/shadcn-ui/ui/pull/11504) [`9f4e3ff26025d16a243ea03cc891c734c4cf0b59`](https://github.com/shadcn-ui/ui/commit/9f4e3ff26025d16a243ea03cc891c734c4cf0b59) Thanks [@shadcn](https://github.com/shadcn)! - Skip unreadable directories when resolving monorepo targets.
+
+- [#11502](https://github.com/shadcn-ui/ui/pull/11502) [`87d71b3629c34f3c38a353a211ec8591c1ff1721`](https://github.com/shadcn-ui/ui/commit/87d71b3629c34f3c38a353a211ec8591c1ff1721) Thanks [@shadcn](https://github.com/shadcn)! - resolve registries declared in package.json when adding components. `shadcn add`, `search`, `view` and `init` now resolve registries from package.json in memory without persisting them to components.json
+
+- [#9248](https://github.com/shadcn-ui/ui/pull/9248) [`03c45b822e60195796dfd3d2fcf7c223ff4ece86`](https://github.com/shadcn-ui/ui/commit/03c45b822e60195796dfd3d2fcf7c223ff4ece86) Thanks [@Grafikart](https://github.com/Grafikart)! - Fix shadcn for projects with unreadable permission files
+
+## 4.17.0
+
+### Minor Changes
+
+- [#10453](https://github.com/shadcn-ui/ui/pull/10453) [`deda4df80fb350230b2fce2b575e769a90cae076`](https://github.com/shadcn-ui/ui/commit/deda4df80fb350230b2fce2b575e769a90cae076) Thanks [@nbouvrette](https://github.com/nbouvrette)! - Add SOCKS4/SOCKS5 proxy support to the registry HTTP stack via `ALL_PROXY=socks5://...` (the curl convention), backed by the `socks` package.
+
+  Proxy selection now goes through a `createProxyDispatcher(env)` factory that checks `ALL_PROXY` / `all_proxy` for a `socks*://` URL before falling back to the existing HTTP/HTTPS handling. `ALL_PROXY` with a non-SOCKS scheme is ignored here — `HTTP_PROXY` / `HTTPS_PROXY` remain the way to configure those. Existing `HTTPS_PROXY` / `HTTP_PROXY` / `NO_PROXY` handling via `undici.EnvHttpProxyAgent` is unchanged.
+
+## 4.16.2
+
+### Patch Changes
+
+- [#11348](https://github.com/shadcn-ui/ui/pull/11348) [`df664e1bba86c6712bc5e08c8626590dca736089`](https://github.com/shadcn-ui/ui/commit/df664e1bba86c6712bc5e08c8626590dca736089) Thanks [@OwenKephart](https://github.com/OwenKephart)! - Include registry item titles in `searchRegistries` results and fuzzy matching.
+
 ## 4.16.1
 
 ### Patch Changes

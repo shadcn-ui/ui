@@ -1,4 +1,4 @@
-import type { PresetConfig } from "./preset"
+import type { PresetConfig } from "@shadcn/registry/internal/preset/preset"
 
 export const DEFAULT_PRESETS = {
   nova: {

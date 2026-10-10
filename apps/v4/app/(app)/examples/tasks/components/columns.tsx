@@ -1,6 +1,6 @@
 "use client"
 
-import { type ColumnDef } from "@tanstack/react-table"
+import { createColumnHelper } from "@tanstack/react-table"
 
 import { Badge } from "@/registry/new-york-v4/ui/badge"
 import { Checkbox } from "@/registry/new-york-v4/ui/checkbox"
@@ -8,10 +8,14 @@ import { Checkbox } from "@/registry/new-york-v4/ui/checkbox"
 import { labels, priorities, statuses } from "../data/data"
 import { type Task } from "../data/schema"
 import { DataTableColumnHeader } from "./data-table-column-header"
+import { type TasksTableFeatures } from "./data-table-features"
 import { DataTableRowActions } from "./data-table-row-actions"
 
-export const columns: ColumnDef<Task>[] = [
-  {
+// Use `accessor` for data columns and `display` for columns without one.
+const columnHelper = createColumnHelper<TasksTableFeatures, Task>()
+
+export const columns = columnHelper.columns([
+  columnHelper.display({
     id: "select",
     header: ({ table }) => (
       <Checkbox
@@ -34,18 +38,16 @@ export const columns: ColumnDef<Task>[] = [
     ),
     enableSorting: false,
     enableHiding: false,
-  },
-  {
-    accessorKey: "id",
+  }),
+  columnHelper.accessor("id", {
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Task" />
     ),
     cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
     enableSorting: false,
     enableHiding: false,
-  },
-  {
-    accessorKey: "title",
+  }),
+  columnHelper.accessor("title", {
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Title" />
     ),
@@ -61,9 +63,8 @@ export const columns: ColumnDef<Task>[] = [
         </div>
       )
     },
-  },
-  {
-    accessorKey: "status",
+  }),
+  columnHelper.accessor("status", {
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Status" />
     ),
@@ -88,9 +89,8 @@ export const columns: ColumnDef<Task>[] = [
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id))
     },
-  },
-  {
-    accessorKey: "priority",
+  }),
+  columnHelper.accessor("priority", {
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Priority" />
     ),
@@ -115,9 +115,9 @@ export const columns: ColumnDef<Task>[] = [
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id))
     },
-  },
-  {
+  }),
+  columnHelper.display({
     id: "actions",
     cell: ({ row }) => <DataTableRowActions row={row} />,
-  },
-]
+  }),
+])

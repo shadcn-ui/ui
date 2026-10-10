@@ -1,8 +1,7 @@
-import { type Config } from "@/src/utils/get-config"
 import { transformRender } from "@/src/utils/transformers/transform-render"
+import { type Config } from "@shadcn/registry/internal/get-config"
+import { transform } from "@shadcn/registry/internal/transformers/index"
 import { describe, expect, test } from "vitest"
-
-import { transform } from "."
 
 const testConfig: Config = {
   style: "base-default",

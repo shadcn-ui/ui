@@ -1,7 +1,7 @@
 import Link from "next/link"
+import { cn } from "cn"
 
 import { source } from "@/lib/source"
-import { cn } from "@/lib/utils"
 import { BASES } from "@/registry/bases"
 
 export function DocsBaseSwitcher({
