@@ -774,6 +774,30 @@ describe("getWorkspaceConfig", () => {
         },
       },
     })
+  })  it("get workspace config resolves wildcard exports under dot-directories", async () => {
+    const fixtureRoot = getFixturesDir("frameworks/vite-monorepo-imports")
+    const dotFolderRoot = path.join(os.tmpdir(), ".claude", "worktrees")
+    await fs.ensureDir(dotFolderRoot)
+
+    const tempDir = await fs.mkdtemp(
+      path.join(dotFolderRoot, "shadcn-workspace-config-")
+    )
+    tempDirs.push(tempDir)
+
+    await fs.copy(fixtureRoot, tempDir)
+
+    const config = await getConfig(path.resolve(tempDir, "apps/web"))
+    if (!config) {
+      throw new Error("Failed to load monorepo app config")
+    }
+
+    expect(await getWorkspaceConfig(config)).toMatchObject({
+      ui: {
+        resolvedPaths: {
+          cwd: path.resolve(tempDir, "packages/ui"),
+        },
+      },
+    })
   })
 
   it("get workspace config shows an actionable error when a workspace package is missing imports", async () => {
