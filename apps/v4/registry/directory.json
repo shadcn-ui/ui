@@ -2629,7 +2629,7 @@
     "url": "https://uiarc.dev/r/{name}.json",
     "description": "React components and blocks with motion built in. Source you own, with Markdown docs and llms.txt so AI tools install them correctly.",
     "author": "Elia Kuratli",
-    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='var(--foreground)' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'><path d='M9 48V29C9 15 19 7 32 7s23 8 23 22v19'/><path d='M20 48V31c0-8 5-13 12-13s12 5 12 13v17'/><path d='M32 38v10'/></svg>"
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='var(--foreground)' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'><path fill='none' d='M9 48V29C9 15 19 7 32 7s23 8 23 22v19'/><path fill='none' d='M20 48V31c0-8 5-13 12-13s12 5 12 13v17'/><path fill='none' d='M32 38v10'/></svg>"
   },
   {
     "name": "@uicapsule",
