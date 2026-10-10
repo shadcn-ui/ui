@@ -190,7 +190,7 @@ export function OpenPresetScript() {
                     window.parent.postMessage({
                       type: '${OPEN_PRESET_FORWARD_TYPE}',
                       key: e.key
-                    }, '*');
+                    }, window.location.origin);
                   }
                 }
               });

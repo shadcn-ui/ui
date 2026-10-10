@@ -35,6 +35,10 @@ export function useIframeMessageListener<
     }
 
     const handleMessage = (event: MessageEvent) => {
+      if (event.origin !== window.location.origin) {
+        return
+      }
+
       if (event.data.type === messageType) {
         onMessageRef.current(event.data.data)
       }
@@ -64,6 +68,6 @@ export function sendToIframe<
       type: messageType,
       data,
     },
-    "*"
+    window.location.origin
   )
 }
