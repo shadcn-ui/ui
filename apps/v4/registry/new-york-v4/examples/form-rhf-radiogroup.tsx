@@ -86,8 +86,8 @@ export default function FormRhfRadioGroup() {
           See pricing and features for each plan.
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <form id="form-rhf-radiogroup" onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
+        <CardContent>
           <FieldGroup>
             <Controller
               name="plan"
@@ -135,18 +135,18 @@ export default function FormRhfRadioGroup() {
               )}
             />
           </FieldGroup>
-        </form>
-      </CardContent>
-      <CardFooter>
-        <Field orientation="horizontal">
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
-            Reset
-          </Button>
-          <Button type="submit" form="form-rhf-radiogroup">
-            Save
-          </Button>
-        </Field>
-      </CardFooter>
+        </CardContent>
+        <CardFooter>
+          <Field orientation="horizontal">
+            <Button type="button" variant="outline" onClick={() => form.reset()}>
+              Reset
+            </Button>
+            <Button type="submit">
+              Save
+            </Button>
+          </Field>
+        </CardFooter>
+      </form>
     </Card>
   )
 }
