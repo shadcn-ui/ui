@@ -2762,6 +2762,14 @@ export const Components: Record<string, any> = {
       ) || "questionnaire-animated"
     return { default: mod.default || mod[exportName] }
   }),
+  "questionnaire-auto-submit": React.lazy(async () => {
+    const mod = await import("@/examples/aria/questionnaire-auto-submit")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "questionnaire-auto-submit"
+    return { default: mod.default || mod[exportName] }
+  }),
   "questionnaire-card": React.lazy(async () => {
     const mod = await import("@/examples/aria/questionnaire-card")
     const exportName =
