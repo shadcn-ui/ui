@@ -216,6 +216,51 @@ To trigger the sidebar, you use the `cmd+b` keyboard shortcut on Mac and `ctrl+b
 const SIDEBAR_KEYBOARD_SHORTCUT = "b"
 ```
 
+### Persisted State
+
+The `SidebarProvider` supports persisting the sidebar state across page reloads and server-side rendering. It uses cookies to store the current state of the sidebar. When the sidebar state changes, a default cookie named `sidebar_state` is set with the current open/closed state. This cookie is then read on subsequent page loads to restore the sidebar state.
+
+To persist sidebar state in Next.js, set up your `SidebarProvider` in `app/layout.tsx` like this:
+
+```tsx showLineNumbers title="app/layout.tsx"
+import { cookies } from "next/headers"
+
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { AppSidebar } from "@/components/app-sidebar"
+
+export async function Layout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies()
+  const defaultOpen = cookieStore.get("sidebar_state")?.value === "true"
+
+  return (
+    <SidebarProvider defaultOpen={defaultOpen}>
+      <AppSidebar />
+      <main>
+        <SidebarTrigger />
+        {children}
+      </main>
+    </SidebarProvider>
+  )
+}
+```
+
+You can change the name of the cookie by updating the `SIDEBAR_COOKIE_NAME` variable in `sidebar.tsx`.
+
+```tsx showLineNumbers title="components/ui/sidebar.tsx"
+const SIDEBAR_COOKIE_NAME = "sidebar_state"
+```
+
+<Callout>
+  **Cache Components:** with `cacheComponents` enabled (the default for new
+  apps since `create-next-app` 16.4), reading `cookies()` makes the layout
+  dynamic, and Next.js requires a `<Suspense>` boundary around it, which here
+  means the whole page. To keep the layout static, persist the state on the
+  client instead and apply it before first paint with an inline script that
+  sets an attribute on `<html>`.
+  [next-sidebars](https://npmx.dev/package/next-sidebars) implements this
+  approach.
+</Callout>
+
 ## Sidebar
 
 The main `Sidebar` component used to render a collapsible sidebar.
