@@ -68,6 +68,20 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 </ScrollArea>
 ```
 
+## Max Height
+
+Use `max-h-*` to let the scroll area grow with its content until it reaches the specified maximum height, then scroll the overflowing content.
+
+```tsx showLineNumbers
+<ScrollArea className="max-h-60 w-[350px] rounded-md border p-4">
+  <div className="space-y-2">
+    {Array.from({ length: 20 }, (_, index) => (
+      <div key={index}>Item {index + 1}</div>
+    ))}
+  </div>
+</ScrollArea>
+```
+
 ## Composition
 
 Use the following composition to build a `ScrollArea`:
