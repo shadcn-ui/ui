@@ -59,6 +59,7 @@ function Thread({
   autoScroll,
   defaultScrollPosition,
   items,
+  lead,
   scrollPreviousItemPeek,
   showButton = false,
   showJumpButton = false,
@@ -69,6 +70,9 @@ function Thread({
     typeof MessageScrollerProvider
   >["defaultScrollPosition"]
   items: TestItem[]
+  // A row above the messages that is not a message: a plain element (a "load
+  // earlier" button) or an item without a messageId.
+  lead?: "plain" | "item"
   scrollPreviousItemPeek?: number
   showButton?: boolean
   showJumpButton?: boolean
@@ -88,6 +92,16 @@ function Thread({
           <MessageScrollerContent
             style={{ display: "flex", flexDirection: "column" }}
           >
+            {lead === "plain" ? (
+              <button type="button" style={{ height: 40, flex: "none" }}>
+                Load earlier
+              </button>
+            ) : null}
+            {lead === "item" ? (
+              <MessageScrollerItem style={{ height: 40, flex: "none" }}>
+                Load earlier
+              </MessageScrollerItem>
+            ) : null}
             {items.map((item) => (
               <MessageScrollerItem
                 key={item.id}
@@ -251,6 +265,106 @@ test("keeps the visible message in place when older messages are prepended", asy
   // The tracked message must not move within the viewport. With the old
   // content-relative restore it jumps up by the prepended height (~240px).
   expect(Math.abs(offsetAfter - offsetBefore)).toBeLessThanOrEqual(1)
+})
+
+// Turns alternate with replies, as in a chat: every user turn is an anchor.
+function createTurns(prefix: string, count: number) {
+  return Array.from({ length: count }, (_, index) => ({
+    id: `${prefix}${index}`,
+    scrollAnchor: index % 2 === 0,
+  }))
+}
+
+// The reader scrolls up with the wheel, releasing follow-output, once the
+// opening scroll to the end has finished.
+async function scrollIntoHistory(viewport: HTMLElement, top: number) {
+  await new Promise((resolve) => setTimeout(resolve, 250))
+  viewport.dispatchEvent(
+    new WheelEvent("wheel", { bubbles: true, deltaY: -top })
+  )
+  viewport.scrollTop = top
+  await settle()
+}
+
+test("keeps the visible turn in place when older turns load under a load-earlier row", async () => {
+  // The control stays the first child, so the first child alone cannot tell a
+  // prepend from an append: older turns must not be read as new ones.
+  const initial = createTurns("m", 8)
+
+  await renderThread({ autoScroll: true, items: initial, lead: "plain" })
+
+  const viewport = getViewport()
+
+  await scrollIntoHistory(viewport, 40 + 3 * ITEM_HEIGHT)
+
+  const offsetBefore = viewportOffsetOf("m3", viewport)
+  const older = createTurns("o", 4)
+
+  flushSync(() => {
+    root!.render(
+      <Thread autoScroll items={[...older, ...initial]} lead="plain" />
+    )
+  })
+  await settle()
+
+  expect(
+    Math.abs(viewportOffsetOf("m3", viewport) - offsetBefore)
+  ).toBeLessThanOrEqual(1)
+})
+
+test("keeps the visible turn in place when the last page lands as the load-earlier row goes away", async () => {
+  // One older turn arrives in the same commit that removes the control: the
+  // count is unchanged, and the new turn is an anchor that was never handled.
+  const initial = createTurns("m", 8)
+
+  await renderThread({ autoScroll: true, items: initial, lead: "plain" })
+
+  const viewport = getViewport()
+
+  await scrollIntoHistory(viewport, 40 + 3 * ITEM_HEIGHT)
+
+  const offsetBefore = viewportOffsetOf("m3", viewport)
+
+  flushSync(() => {
+    root!.render(
+      <Thread
+        autoScroll
+        items={[{ id: "o0", scrollAnchor: true }, ...initial]}
+      />
+    )
+  })
+  await settle()
+
+  expect(
+    Math.abs(viewportOffsetOf("m3", viewport) - offsetBefore)
+  ).toBeLessThanOrEqual(1)
+})
+
+test("keeps the visible turn in place when older turns are inserted after a lead item", async () => {
+  const initial = createTurns("m", 8)
+
+  await renderThread({ autoScroll: true, items: initial, lead: "item" })
+
+  const viewport = getViewport()
+
+  await scrollIntoHistory(viewport, 40 + 3 * ITEM_HEIGHT)
+
+  const offsetBefore = viewportOffsetOf("m3", viewport)
+
+  flushSync(() => {
+    root!.render(
+      <Thread
+        autoScroll
+        items={[...createTurns("o", 2), ...initial]}
+        lead="item"
+      />
+    )
+  })
+  await settle()
+
+  expect(
+    Math.abs(viewportOffsetOf("m3", viewport) - offsetBefore)
+  ).toBeLessThanOrEqual(1)
 })
 
 test("opens at the bottom by default", async () => {

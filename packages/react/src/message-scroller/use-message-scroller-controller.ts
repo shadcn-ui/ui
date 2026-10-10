@@ -10,6 +10,8 @@ import {
   getMessageScrollerItems,
   getMessageScrollerScrollable,
   getMessageScrollerVisibilityState,
+  getFirstMessageItem,
+  getMessageIndex,
   getNewScrollAnchor,
   getUnanchoredScrollAnchor,
   hasMultipleNewScrollAnchors,
@@ -76,7 +78,7 @@ function useMessageScrollerController({
     autoscrollingTimeoutRef,
     contentRef,
     defaultScrollPositionAppliedRef,
-    firstItemRef,
+    firstMessageItemRef,
     itemCountRef,
     lastScrollTopRef,
     messageElementsRef,
@@ -389,10 +391,10 @@ function useMessageScrollerController({
 
     const items = getMessageScrollerItems(content, spacerRef.current)
     const previousItemCount = itemCountRef.current
-    const previousFirstItem = firstItemRef.current
+    const previousFirstMessageItem = firstMessageItemRef.current
 
     itemCountRef.current = items.length
-    firstItemRef.current = items[0] ?? null
+    firstMessageItemRef.current = getFirstMessageItem(items)
 
     // Reconcile the scroll position with the new content. Every path re-captures
     // the prepend anchor afterward, so each branch just returns.
@@ -421,11 +423,14 @@ function useMessageScrollerController({
         return
       }
 
-      const previousFirstItemIndex = previousFirstItem
-        ? items.indexOf(previousFirstItem)
+      // The previous first message was at message index 0; messages inserted
+      // before it move it down. Non-message rows (a load-earlier control, a
+      // lead-in) appearing or going away do not count either way.
+      const previousFirstMessageIndex = previousFirstMessageItem
+        ? getMessageIndex(items, previousFirstMessageItem)
         : -1
       const didPrepend =
-        preserveScrollOnPrependRef.current && previousFirstItemIndex > 0
+        preserveScrollOnPrependRef.current && previousFirstMessageIndex > 0
 
       if (didPrepend) {
         // Prepended rows are not new appends. Restore the prior scroll position.
