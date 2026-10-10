@@ -51,6 +51,10 @@ const TOP_LEVEL_SECTIONS = [
     href: "/docs/registry",
   },
   {
+    name: "Forms",
+    href: "/docs/forms",
+  },
+  {
     name: "Changelog",
     href: "/docs/changelog",
   },
