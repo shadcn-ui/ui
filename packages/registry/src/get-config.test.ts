@@ -774,7 +774,10 @@ describe("getWorkspaceConfig", () => {
         },
       },
     })
-  })  it("get workspace config resolves wildcard exports under dot-directories", async () => {
+  })  
+
+
+  it("get workspace config resolves wildcard exports under dot-directories", async () => {
     const fixtureRoot = getFixturesDir("frameworks/vite-monorepo-imports")
     const dotFolderRoot = path.join(os.tmpdir(), ".claude", "worktrees")
     await fs.ensureDir(dotFolderRoot)
