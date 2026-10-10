@@ -14,7 +14,7 @@ import {
   formatSkippedRegistries,
 } from "./utils"
 
-vi.mock("@shadcn/registry/internal/utils/get-package-manager", () => ({
+vi.mock("@shadcn/registry/internal/get-package-manager", () => ({
   getPackageRunner: vi.fn().mockResolvedValue("npx"),
 }))
 

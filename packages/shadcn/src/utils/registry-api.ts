@@ -1,6 +1,6 @@
 import { handleError } from "@/src/utils/handle-error"
+import { logger } from "@shadcn/registry/internal/logger"
 import { fetchRegistry } from "@shadcn/registry/internal/registry/fetcher"
-import { logger } from "@shadcn/registry/internal/utils/logger"
 import {
   iconsSchema,
   registryIndexSchema,

@@ -16,7 +16,7 @@
   "devDependencies": {
     "@eslint/js": "^10",
     "@tailwindcss/vite": "^4",
-    "@turbo/gen": "^2.11.5",
+    "@turbo/gen": "^2.11.7",
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",

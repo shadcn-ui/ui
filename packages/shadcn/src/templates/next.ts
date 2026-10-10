@@ -1,16 +1,16 @@
 import path from "path"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
+import { addComponents } from "@shadcn/registry/internal/add-components"
+import { resolveConfigPaths } from "@shadcn/registry/internal/get-config"
 import {
   iconLibraries,
   type IconLibraryName,
 } from "@shadcn/registry/internal/icons/libraries"
 import { configWithDefaults } from "@shadcn/registry/internal/registry/config"
 import { resolveRegistryTree } from "@shadcn/registry/internal/registry/resolver"
-import { addComponents } from "@shadcn/registry/internal/utils/add-components"
-import { resolveConfigPaths } from "@shadcn/registry/internal/utils/get-config"
-import { updateCssVars } from "@shadcn/registry/internal/utils/updaters/update-css-vars"
-import { updateDependencies } from "@shadcn/registry/internal/utils/updaters/update-dependencies"
-import { updateFonts } from "@shadcn/registry/internal/utils/updaters/update-fonts"
+import { updateCssVars } from "@shadcn/registry/internal/updaters/update-css-vars"
+import { updateDependencies } from "@shadcn/registry/internal/updaters/update-dependencies"
+import { updateFonts } from "@shadcn/registry/internal/updaters/update-fonts"
 import { rawConfigSchema } from "@shadcn/registry/schema"
 import dedent from "dedent"
 import deepmerge from "deepmerge"

@@ -1,11 +1,11 @@
 import * as fs from "fs/promises"
 import * as path from "path"
-import { isUrl } from "@/src/registry/utils"
 import {
   registryItemSchema,
   registryItemTypeSchema,
   type RegistryItem,
-} from "@/src/schema"
+} from "@/src/registry/schema"
+import { isUrl } from "@/src/registry/utils"
 import { z } from "zod"
 
 type RegistryChunk = {

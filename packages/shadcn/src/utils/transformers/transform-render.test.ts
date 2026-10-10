@@ -1,6 +1,6 @@
 import { transformRender } from "@/src/utils/transformers/transform-render"
-import { type Config } from "@shadcn/registry/internal/utils/get-config"
-import { transform } from "@shadcn/registry/internal/utils/transformers/index"
+import { type Config } from "@shadcn/registry/internal/get-config"
+import { transform } from "@shadcn/registry/internal/transformers/index"
 import { describe, expect, test } from "vitest"
 
 const testConfig: Config = {

@@ -1,5 +1,7 @@
 import { createHash } from "crypto"
 import path from "path"
+import { Config, getTargetStyleFromConfig } from "@/src/get-config"
+import { getProjectTailwindVersionFromConfig } from "@/src/get-project-info"
 import { isGitHubItemAddress, resolveItemAddress } from "@/src/registry/address"
 import {
   getRegistryBaseColor,
@@ -18,22 +20,20 @@ import { fetchRegistry, fetchRegistryLocal } from "@/src/registry/fetcher"
 import { fetchGitHubRegistryItem } from "@/src/registry/github"
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
 import {
-  deduplicateFilesByTarget,
-  isLocalFile,
-  isUniversalRegistryItem,
-  isUrl,
-} from "@/src/registry/utils"
-import {
   RegistryFontItem,
   registryItemCommonSchema,
   registryItemFontSchema,
   registryItemSchema,
   registryItemTypeSchema,
   registryResolvedItemsTreeSchema,
-} from "@/src/schema"
-import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
-import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
-import { buildTailwindThemeColorsFromCssVars } from "@/src/utils/updaters/update-tailwind-config"
+} from "@/src/registry/schema"
+import {
+  deduplicateFilesByTarget,
+  isLocalFile,
+  isUniversalRegistryItem,
+  isUrl,
+} from "@/src/registry/utils"
+import { buildTailwindThemeColorsFromCssVars } from "@/src/tailwind-theme-colors"
 import deepmerge from "deepmerge"
 import { z } from "zod"
 
@@ -132,7 +132,6 @@ export async function fetchRegistryItems(
   return results
 }
 
-// Helper schema for items with source tracking.
 const registryItemWithSourceSchema = registryItemCommonSchema
   .extend({
     type: registryItemTypeSchema,
@@ -172,7 +171,6 @@ export async function resolveRegistryTree(
   }
 
   for (const [sourceName, item] of Array.from(resultMap.entries())) {
-    // Add source tracking
     const itemWithSource: z.infer<typeof registryItemWithSourceSchema> = {
       ...item,
       _source: sourceName,
@@ -180,10 +178,8 @@ export async function resolveRegistryTree(
     payload.push(itemWithSource)
 
     if (item.registryDependencies) {
-      // Resolve namespace syntax and set headers for dependencies
       let resolvedDependencies = item.registryDependencies
 
-      // Check for namespaced dependencies when no registries are configured
       if (!config?.registries) {
         const namespacedDeps = item.registryDependencies.filter((dep: string) =>
           dep.startsWith("@")
@@ -214,10 +210,8 @@ export async function resolveRegistryTree(
 
   // Handle any remaining registry names that need index resolution
   if (allDependencyRegistryNames.length > 0) {
-    // Remove duplicates from registry names
     const uniqueRegistryNames = Array.from(new Set(allDependencyRegistryNames))
 
-    // Separate namespaced and non-namespaced items
     const nonNamespacedItems = uniqueRegistryNames.filter(
       (name) => !name.startsWith("@")
     )
@@ -225,9 +219,7 @@ export async function resolveRegistryTree(
       name.startsWith("@")
     )
 
-    // Handle namespaced dependency items
     if (namespacedDepItems.length > 0) {
-      // This will now throw specific errors on failure
       const depResults = await fetchRegistryItems(
         namespacedDepItems,
         config,
@@ -257,8 +249,6 @@ export async function resolveRegistryTree(
           nonNamespacedItems.unshift("index")
         }
 
-        // Resolve non-namespaced items through the existing flow
-        // Get URLs for all registry items including their dependencies
         const registryUrls: string[] = []
         for (const name of nonNamespacedItems) {
           const itemDependencies = await resolveRegistryDependencies(
@@ -269,9 +259,8 @@ export async function resolveRegistryTree(
           registryUrls.push(...itemDependencies)
         }
 
-        // Deduplicate URLs
         const uniqueUrls = Array.from(new Set(registryUrls))
-        let result = await fetchRegistry(uniqueUrls, options)
+        const result = await fetchRegistry(uniqueUrls, options)
         const registryPayload = z.array(registryItemSchema).parse(result)
         payload.push(...registryPayload)
       }
@@ -309,18 +298,15 @@ export async function resolveRegistryTree(
     }
   }
 
-  // Build source map for topological sort.
   const sourceMap = new Map<
     z.infer<typeof registryItemWithSourceSchema>,
     string
   >()
   payload.forEach((item) => {
-    // Use the _source property if it was added, otherwise use the name.
     const source = item._source || item.name
     sourceMap.set(item, source)
   })
 
-  // Apply topological sort to ensure dependencies come before dependents.
   payload = topologicalSortRegistryItems(payload, sourceMap)
 
   // Sort the payload so that registry:theme items come first,
@@ -362,13 +348,11 @@ export async function resolveRegistryTree(
     envVars = deepmerge(envVars, item.envVars ?? {})
   })
 
-  // Deduplicate files based on resolved target paths.
   const deduplicatedFiles = await deduplicateFilesByTarget(
     payload.map((item) => item.files ?? []),
     config
   )
 
-  // Collect font items.
   const fonts: RegistryFontItem[] = payload
     .filter((item) => item.type === "registry:font" && item.font)
     .map((item) => ({
@@ -414,7 +398,6 @@ async function resolveDependenciesRecursively(
 
     const resolvedAddress = resolveItemAddress(dep)
 
-    // Handle URLs and local files directly.
     if (resolvedAddress.scheme === "github") {
       const [item] = await fetchRegistryItems([dep], config, options)
       if (item) {
@@ -471,7 +454,6 @@ async function resolveDependenciesRecursively(
     }
     // Handle namespaced items (e.g., @one/foo, @two/bar).
     else if (dep.startsWith("@") && config?.registries) {
-      // Check if the registry exists.
       const { registry } = parseRegistryAndItemFromString(dep)
       if (registry && !(registry in config.registries)) {
         throw new RegistryNotConfiguredError(registry)
@@ -750,8 +732,7 @@ function topologicalSortRegistryItems(
         if (exactMatches.length === 1) {
           depHash = exactMatches[0]
         } else if (exactMatches.length > 1) {
-          // Multiple matches - try to disambiguate.
-          // For now, just use the first one and warn.
+          // Multiple matches: use the first one.
           depHash = exactMatches[0]
         } else {
           const { name } = extractItemIdentifierFromDependency(dep)
@@ -795,7 +776,6 @@ function topologicalSortRegistryItems(
   }
 
   if (sorted.length !== items.length) {
-    // console.warn("Circular dependency detected in registry items")
     // Return all items even if there are circular dependencies
     // Items not in sorted are part of circular dependencies
     const sortedHashes = new Set(

@@ -1,13 +1,13 @@
+import { Config } from "@/src/get-config"
+import { highlighter } from "@/src/highlighter"
+import { logger } from "@/src/logger"
 import {
   registryItemTypeSchema,
   registryPaginationSchema,
   searchResultErrorSchema,
   searchResultItemSchema,
   searchResultsSchema,
-} from "@/src/schema"
-import { Config } from "@/src/utils/get-config"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
+} from "@/src/registry/schema"
 import fuzzysort from "fuzzysort"
 import { z } from "zod"
 
@@ -277,7 +277,7 @@ function searchItems<
     type?: string
     description?: string
     addCommandArgument?: string
-    [key: string]: any
+    [key: string]: unknown
   } = SearchableItem,
 >(
   items: T[],
@@ -324,7 +324,6 @@ export function buildRegistryItemNameFromRegistry(
     return githubSource.ref ? `${itemAddress}#${githubSource.ref}` : itemAddress
   }
 
-  // If registry is not a URL, return namespace format.
   if (!isUrl(registry)) {
     return `${registry}/${name}`
   }
@@ -348,7 +347,6 @@ export function buildRegistryItemNameFromRegistry(
     return registry
   }
 
-  // Split at host boundary.
   const hostPart = registry.substring(0, hostEnd)
   const pathAndQuery = registry.substring(hostEnd)
 

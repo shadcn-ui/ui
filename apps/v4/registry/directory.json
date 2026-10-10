@@ -91,6 +91,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' width='24' height='24'><rect width='24' height='24' rx='4' fill='var(--foreground)'/><g stroke='var(--background)'><path d='M14 18a2 2 0 0 0-4 0m9-7-2.11-6.657a2 2 0 0 0-2.752-1.148l-1.276.61A2 2 0 0 1 12 4H8.5a2 2 0 0 0-1.925 1.456L5 11m-3 0h20'/><circle cx='17' cy='18' r='3'/><circle cx='7' cy='18' r='3'/><path d='M15.46 7.1 13.3 9.26m1.728-4.536-4.104 4.104' stroke-width='1.575'/></g></svg>"
   },
   {
+    "name": "@agentfaces",
+    "homepage": "https://ajibadedapo.github.io/agentfaces/",
+    "url": "https://ajibadedapo.github.io/agentfaces/r/{name}.json",
+    "description": "Animated faces for AI agents that show thinking, working, needs you, done, listening and speaking, with voice lip sync.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 4.5a45.5 45.5 0 1 1 0 91a45.5 45.5 0 1 1 0-91z' fill='#2B90FF'/><g transform='translate(33.75 41.20) rotate(0.00) scale(1 1.00)'><clipPath id='afel'><path d='M -12.30 -14.30 Q 0 -14.30 12.30 -14.30 L 12.30 6.29 Q 0 -2.78 -12.30 6.29 Z'/></clipPath><g clip-path='url(#afel)'><path d='M -11.70 0 C -11.70 -7.90 -6.46 -14.30 0 -14.30 C 6.46 -14.30 11.70 -7.90 11.70 0 C 11.70 7.90 6.46 14.30 0 14.30 C -6.46 14.30 -11.70 7.90 -11.70 0 Z' fill='#FFFDF7'/><circle cx='0.00' cy='0.00' r='6.79' fill='#1C1B22' opacity='1.00'/><circle cx='2.44' cy='-2.58' r='2.17' fill='#FFFFFF' opacity='1.00'/></g></g><g transform='translate(66.25 41.20) rotate(0.00) scale(1 1.00)'><clipPath id='afer'><path d='M -12.30 -14.30 Q 0 -14.30 12.30 -14.30 L 12.30 6.29 Q 0 -2.78 -12.30 6.29 Z'/></clipPath><g clip-path='url(#afer)'><path d='M -11.70 0 C -11.70 -7.90 -6.46 -14.30 0 -14.30 C 6.46 -14.30 11.70 -7.90 11.70 0 C 11.70 7.90 6.46 14.30 0 14.30 C -6.46 14.30 -11.70 7.90 -11.70 0 Z' fill='#FFFDF7'/><circle cx='0.00' cy='0.00' r='6.79' fill='#1C1B22' opacity='1.00'/><circle cx='2.44' cy='-2.58' r='2.17' fill='#FFFFFF' opacity='1.00'/></g></g><path d='M 35.70 64.37 C 43.56 72.48 56.44 72.48 64.30 64.37 C 56.44 72.48 43.56 72.48 35.70 64.37 Z' fill='#15131B' stroke='#15131B' stroke-width='3.51' stroke-linejoin='round' stroke-linecap='round' opacity='0.62'/></svg>"
+  },
+  {
     "name": "@agents-ui",
     "homepage": "https://livekit.com/ui",
     "url": "https://livekit.com/ui/r/{name}.json",
@@ -273,6 +280,14 @@
     "url": "https://ui.balick.me/r/{name}.json",
     "description": "Blocks for shadcn/ui designed to fit together: compose a page, then install it with one command.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect x='2' y='2' width='13' height='13' rx='3' fill='var(--foreground)'/><rect x='9.75' y='9.75' width='12.25' height='12.25' rx='3' fill='none' stroke='var(--foreground)' stroke-width='1.5'/></svg>"
+  },
+  {
+    "name": "@ballmac",
+    "homepage": "https://ui.ballmac.com",
+    "url": "https://ui.ballmac.com/r/{name}.json",
+    "description": "Accessible React and Tailwind v4 components, blocks and templates with native-app motion, built-in keyboard, RTL and translation support, and an MCP server for AI agents.",
+    "author": "Ballmac",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><g fill='none' stroke='var(--foreground)' stroke-width='2.25' stroke-linecap='round'><circle cx='16' cy='16' r='12.5'/><path d='M16.00 21.68C15.93 21.67 15.72 21.66 15.58 21.65C15.44 21.63 15.30 21.62 15.17 21.60C15.03 21.58 14.89 21.56 14.75 21.53C14.61 21.51 14.48 21.48 14.34 21.45C14.20 21.43 14.06 21.39 13.92 21.36C13.78 21.33 13.64 21.29 13.50 21.25C13.37 21.21 13.22 21.17 13.08 21.12C12.94 21.07 12.80 21.03 12.66 20.97C12.52 20.92 12.37 20.86 12.23 20.80C12.09 20.74 11.94 20.68 11.80 20.61C11.65 20.54 11.51 20.46 11.36 20.38C11.22 20.30 11.07 20.22 10.93 20.13C10.79 20.04 10.64 19.94 10.50 19.84C10.36 19.74 10.21 19.63 10.07 19.52C9.93 19.40 9.79 19.28 9.65 19.16C9.52 19.03 9.38 18.90 9.25 18.76C9.12 18.62 8.99 18.47 8.86 18.31C8.74 18.16 8.61 18.00 8.50 17.83C8.38 17.67 8.27 17.49 8.16 17.31C8.06 17.13 7.95 16.94 7.86 16.75C7.77 16.55 7.68 16.35 7.60 16.15C7.52 15.94 7.45 15.73 7.38 15.52C7.32 15.30 7.26 15.08 7.21 14.85C7.17 14.62 7.13 14.39 7.10 14.16C7.08 13.92 7.06 13.69 7.05 13.45C7.04 13.20 7.05 12.96 7.06 12.72C7.08 12.47 7.10 12.23 7.14 11.98C7.18 11.73 7.22 11.48 7.28 11.24C7.34 10.99 7.42 10.75 7.50 10.50C7.58 10.26 7.68 10.02 7.78 9.78C7.89 9.55 8.01 9.31 8.14 9.08C8.27 8.85 8.41 8.63 8.56 8.41C8.71 8.19 8.88 7.97 9.05 7.77C9.22 7.56 9.41 7.36 9.60 7.17C9.80 6.98 10.00 6.80 10.21 6.62C10.42 6.45 10.64 6.29 10.87 6.13C11.10 5.98 11.34 5.83 11.58 5.70C11.82 5.56 12.07 5.44 12.33 5.33C12.58 5.22 12.85 5.12 13.11 5.03C13.38 4.94 13.65 4.86 13.92 4.79C14.19 4.73 14.47 4.68 14.75 4.63C15.03 4.59 15.31 4.56 15.59 4.54C15.87 4.53 16.16 4.52 16.44 4.52C16.72 4.53 17.01 4.55 17.29 4.58C17.57 4.60 17.85 4.64 18.13 4.69C18.41 4.74 18.69 4.80 18.96 4.87C19.24 4.94 19.51 5.02 19.78 5.11C20.05 5.20 20.32 5.30 20.58 5.41C20.84 5.52 21.10 5.63 21.36 5.76C21.62 5.88 21.87 6.02 22.12 6.15C22.37 6.29 22.62 6.43 22.88 6.57C23.13 6.71 23.40 6.83 23.66 6.98C23.92 7.12 24.18 7.28 24.43 7.45C24.67 7.62 24.92 7.80 25.16 7.99C25.39 8.18 25.62 8.38 25.84 8.60C26.06 8.81 26.27 9.04 26.47 9.28C26.66 9.52 26.85 9.77 27.01 10.03C27.17 10.29 27.32 10.56 27.45 10.85C27.57 11.13 27.70 11.58 27.75 11.72'/></g></svg>\n"
   },
   {
     "name": "@baraile-loader",
@@ -661,6 +676,13 @@
     "url": "https://diklein.com/r/{name}.json",
     "description": "A growing collection of design-forward React components by Dave Klein, extracted from the components powering diklein.com.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' width='24' height='24'><circle cx='62' cy='38' r='28' fill='#e10000'/><rect x='12' y='32' width='56' height='56' fill='var(--foreground)'/></svg>"
+  },
+  {
+    "name": "@docscn",
+    "homepage": "https://docscn.dev",
+    "url": "https://docscn.dev/r/{name}.json",
+    "description": "Documentation components built on Fumadocs Core: docs layouts, sidebars, tables of contents, search and MDX components. A drop-in replacement for Fumadocs UI.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)'><path d='M16 0H24V8H16V0Z'/><path d='M8 8H16V16H8V8Z'/><path d='M0 16H8V24H0V16Z'/><path d='M16 16H24V24H16V16Z'/></svg>"
   },
   {
     "name": "@dominik-ui",
@@ -1220,6 +1242,14 @@
     "url": "https://kapwa-two.vercel.app/r/{name}.json",
     "description": "Cleanly designed components purposely built for open-source government portals.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1080 1080'><defs><style>.cls-1{fill:#fff;}</style></defs><path class='cls-1' d='M156,730.46a14.41,14.41,0,0,0,6.12-4.75,13.65,13.65,0,0,0,2.56-6.55,14.35,14.35,0,0,0-.92-6.94l.53-.24a14.68,14.68,0,0,0,7.34,5.61,12.19,12.19,0,0,0,9.09-.58,13.46,13.46,0,0,0,8-9.16q1.76-6.42-2.32-15.67l-10.09-22.91-54.93,24.18,10.85,24.65a26.54,26.54,0,0,0,6.56,9.48,16.62,16.62,0,0,0,8.34,4.1A15.43,15.43,0,0,0,156,730.46Zm15.6-43.27,3.32,7.56a8.92,8.92,0,0,1,.74,6,6.38,6.38,0,0,1-8.9,3.75,9.3,9.3,0,0,1-4-4.65l-3.24-7.35Zm-30.08,23-3.61-8.2L151,696.25l3.72,8.45a9.83,9.83,0,0,1,.77,6.82,6.87,6.87,0,0,1-4.06,4.4,6,6,0,0,1-5.47,0Q143.46,714.55,141.55,710.22Z'/><polygon class='cls-1' points='174.59 747.42 187.76 768.91 197.83 762.73 184.65 741.25 195.14 734.81 209.44 758.12 219.49 751.96 197.6 716.29 146.44 747.67 168.32 783.34 178.37 777.18 164.07 753.88 174.59 747.42'/><polygon class='cls-1' points='244.62 802.01 253.72 794.53 221.51 755.34 212.41 762.82 223.98 776.9 186.72 807.53 195.8 818.58 233.06 787.95 244.62 802.01'/><polygon class='cls-1' points='284.54 838.67 292.47 829.95 254.94 795.82 247.01 804.53 260.5 816.8 228.04 852.49 238.62 862.11 271.08 826.42 284.54 838.67'/><polygon class='cls-1' points='308.28 884.17 314.94 874.42 294.13 860.21 301.07 850.05 323.65 865.47 330.3 855.74 295.73 832.14 261.89 881.7 296.45 905.3 303.09 895.57 280.51 880.15 287.47 869.96 308.28 884.17'/><path class='cls-1' d='M366.82,877.27a26.06,26.06,0,0,0-9.33-7.38L335.3,858.81l-26.81,53.7,13,6.48,9.17-18.38,6.67,3.33.62,23.27,14.16,7.07-.93-26A17,17,0,0,0,361,905.8a19.54,19.54,0,0,0,7.17-8.25,20.41,20.41,0,0,0,2.37-10.72A17.81,17.81,0,0,0,366.82,877.27Zm-12.13,13.56q-1.86,3.74-5,4.33t-7.53-1.58l-6.4-3.19,7.31-14.64,6.4,3.2Q358.4,883.42,354.69,890.83Z'/><path class='cls-1' d='M419,895.76a31.1,31.1,0,0,0-26.07-7.39,26.45,26.45,0,0,0-13.1,6.84q-5.79,5.38-8.82,14.73a34.66,34.66,0,0,0-1.6,16.7,26,26,0,0,0,6.36,13.24,29.9,29.9,0,0,0,13.2,8.21,29.6,29.6,0,0,0,14,1.33,22.64,22.64,0,0,0,11.65-5.5,26.71,26.71,0,0,0,7.5-12.09l2.45-7.55-24.61-8-3.27,10.06L408,930a9.88,9.88,0,0,1-5.48,6.16c-2.6,1.11-5.77,1.07-9.51-.15-4.27-1.38-7.1-4-8.47-7.77s-1.18-8.44.6-13.92,4.36-9.27,7.75-11.47a12.66,12.66,0,0,1,11.31-1.29,12.25,12.25,0,0,1,6.25,4.16,9.78,9.78,0,0,1,1.88,6.59l14,4.53a21.37,21.37,0,0,0-.79-11.4A24.21,24.21,0,0,0,419,895.76Z'/><path class='cls-1' d='M479.26,908.55a31.51,31.51,0,0,0-28.82-4.3,25.84,25.84,0,0,0-11.7,8.82q-4.74,6.24-6.22,16.06t1.27,17.14a25.87,25.87,0,0,0,8.61,11.88,31.4,31.4,0,0,0,28.81,4.31,26,26,0,0,0,11.73-8.82q4.79-6.25,6.25-16t-1.29-17.18A26,26,0,0,0,479.26,908.55Zm-4.74,26.85q-1.31,8.73-5.61,12.78a13.44,13.44,0,0,1-20.1-3q-3-5.14-1.65-13.86t5.63-12.78a13.45,13.45,0,0,1,20.1,3Q475.83,926.67,474.52,935.4Z'/><polygon class='cls-1' points='524.26 951.55 523.77 951.56 509.75 907.78 493.52 908 514.58 967.74 533.89 967.48 553.33 907.2 537.09 907.42 524.26 951.55'/><path class='cls-1' d='M568,952.59a7.61,7.61,0,0,0-10.65,1.15,7.07,7.07,0,0,0-1.62,5.54,7.23,7.23,0,0,0,2.77,5.13,7.55,7.55,0,0,0,10.65-1.16,7.32,7.32,0,0,0,1.72-5.61A7.21,7.21,0,0,0,568,952.59Z'/><path class='cls-1' d='M617.43,904.85a18.72,18.72,0,0,0-8.93-5.56,24.44,24.44,0,0,0-11.94-.14l-24.25,5.16L584.81,963,599,960l-3.88-18.23,9.64-2a25.88,25.88,0,0,0,11.09-5,18.48,18.48,0,0,0,6-8.65,21.08,21.08,0,0,0,.41-11.18A21.52,21.52,0,0,0,617.43,904.85ZM606.49,925.1q-2,3-6.76,4l-7,1.49-3.8-17.86,7-1.49c3.2-.68,5.79-.4,7.8.85a8.76,8.76,0,0,1,3.87,6A8.93,8.93,0,0,1,606.49,925.1Z'/><polygon class='cls-1' points='657.28 880.34 665.72 902.9 643.56 911.19 635.13 888.62 621.54 893.7 642.56 949.92 656.15 944.84 647.7 922.25 669.85 913.96 678.3 936.55 691.86 931.48 670.84 875.27 657.28 880.34'/><path class='cls-1' d='M207.86,432.72c6.24-.63,12.83-1.42,19.93-2.41,3.23-.45,6.63-.95,10.22-1.5L135.5,340.06l.86,38.09Z'/><path class='cls-1' d='M276.65,422.47c5.49-.92,11-1.86,16.47-2.72,5.11-.82,10-1.54,14.59-2.2L172.61,261.49l-38.87-.86.87,38.87Z'/><path class='cls-1' d='M736.62,669.29c1.46,2.5,2.84,5.05,4.22,7.59l172.67,23.19,27.54-26.33-211.11-15.2C732.21,662.07,734.47,665.61,736.62,669.29Z'/><path class='cls-1' d='M345.66,413.56c6.66-.42,13.23-.64,19.47-.64h.39L251.26,263.25l-38.09-.84,131,151.27Z'/><path class='cls-1' d='M970.36,591.93,727.05,609.44a232.32,232.32,0,0,0-3-29.93l217-15.63-27.54-26.34-192.8,25.9a233.39,233.39,0,0,0-27.87-67.25l154.64-118,.85-38.09L683.84,482.45a238.53,238.53,0,0,0-19-23.31L849.24,299.5l.86-38.87-38.87.86L651.59,445.89a238.32,238.32,0,0,0-23.33-19L770.67,262.41l-38.09.84-118,154.64A234.17,234.17,0,0,0,547.29,390l25.9-192.78-26.34-27.53-15.65,217a235.24,235.24,0,0,0-29.91-3.07L518.8,140.37l-26.89-28.11L465,140.37l17.51,243.29a236.12,236.12,0,0,0-29.93,3.07L437,169.69l-26.33,27.53L436.55,390a233.75,233.75,0,0,0-59.31,23.25c.6,0,1.25,0,1.86,0,64.7,3.91,137.9,43.5,146,121.24l.18,1.75-.13,1.75c-.42,5.8-.52,9.69-.49,12.31l2.34,0c2.36,0,5-.05,7.79-.1,2.3,0,4.75-.09,7.37-.12,73.29.67,138.72,37.23,182.79,101,1-7.55,1.82-15.17,2.11-22.93l243.31,17.51,28.09-26.89Z'/><path class='cls-1' d='M525.86,602.05c-25.65,3.34-49.76,6-73.52-6.63-9.51-5-16.59-14.59-25.06-21.51a189.14,189.14,0,0,0-30.83-20.38c-19.43-10.21-40.55-14.19-61.52-19.92,40.5-1.25,78.21,5.08,112.38,28.34,3.34,2.29,7.42,4.78,11.11,3.14a8.27,8.27,0,0,0,3.18-2.69c10.37-13.6-.59-40.85-7.32-54-8.12-15.69-22.46-33.77-39.45-40.45-30.24-11.9-63-11.7-96.34-7.62-12.25,1.5-24.61,3.54-37,5.73-38.71,6.87-78.33,15.93-117.84,10.73-16.27-2.14-32.93-5.55-47.53-13.29a99,99,0,0,1-19.94-13.94c-3.91-3.52-13.7-11.29-14.67-16.68a176.1,176.1,0,0,0,20.68,57.5c18.14,32,60.52,86.62,103.83,74.59,13.44-3.73,23.28-13.95,34.48-21.59,14-9.5,26.35-10.91,43-9.27,67.1,4.93,195.22,45.08,172.75,132.8C450.7,688,393.16,772,438.54,777.54c20.77.45,49.27-12.55,55.74-33.37,1.05,50.86-59.38,85.08-102.41,58-3.29,13.4,6.87,24.11,17.68,30.49,50.46,29.78,110.63,11.9,164.53,5,28.5-3.64,57.29-6.83,86-5.28a209,209,0,0,1,42.64,6.42c5.08,1.35,36.86,9.67,37.41,15.4C728,728.38,679.79,586.06,525.86,602.05Z'/><path class='cls-1' d='M354.68,581.93c-16.94-6.44-89.92-15-51.33,23.56,8.52,8.52,15.84,22.06,26.3,27.79,18.33,6.93,53.7,13.85,66.8-4.18-1.58,2.18.17,13.38-1,17.08a35.31,35.31,0,0,1-10.06,15.16c-10.88,10-26.7,14.18-40.88,16.65q-6,1-11.95,1.79c-27.82,3.51-57.87,4.42-85.2-1.59-15.45-3.41-29.46-5.67-65.55-25.53,21,29.6,52.43,42.4,59.22,44.29a232,232,0,0,0,46.66,8.12q8,.54,16,.7c15.28.31,31.15-1.88,46.28-4.12,14.94-2.22,30.28-5.88,42.58-15.1C455.83,646.51,399,598.78,354.68,581.93Z'/></svg>"
+  },
+  {
+    "name": "@keyframery",
+    "homepage": "https://keyframery.com",
+    "url": "https://keyframery.com/r/{name}.json",
+    "description": "An open-source motion layer for shadcn/ui. One <Cuts /> line animates your dialogs, sheets, tabs and toasts; four helpers animate lists, numbers, skeletons and cards.",
+    "author": "Briyan Hingrajiya",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><polygon points='9.3,11.7 20.3,22.7 14.8,28.2 3.8,17.2' fill='var(--foreground)' stroke='var(--foreground)' stroke-width='1.3' stroke-linejoin='round'/><polygon points='17.2,3.8 28.2,14.8 22.7,20.3 11.7,9.3' fill='#2447f5' stroke='#2447f5' stroke-width='1.3' stroke-linejoin='round'/></svg>"
   },
   {
     "name": "@keyline",
@@ -1785,6 +1815,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'><path d='M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z' /><path d='M20 3v4' /><path d='M22 5h-4' /><path d='M4 17v2' /><path d='M5 18H3' /></svg>"
   },
   {
+    "name": "@photocn",
+    "homepage": "https://photocn.dev",
+    "url": "https://photocn.dev/r/{name}.json",
+    "description": "The photo editor for shadcn/ui. Typed React components on a WebGL engine: adjustments, curves, filters, crop and transform, export. Add the whole editor with one command, or compose your own.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linejoin='round'><rect x='3' y='3' width='18' height='18' rx='4'/><path d='m3 16 5-5 4 4 3-3 6 6'/><circle cx='15.5' cy='8.5' r='1.6' fill='var(--foreground)' stroke='none'/></svg>"
+  },
+  {
     "name": "@phucbm",
     "homepage": "https://phucbm.com/components",
     "url": "https://phucbm.com/r/{name}.json",
@@ -2151,6 +2188,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' version='1.0' width='300.000000pt' height='300.000000pt' viewBox='0 0 300.000000 300.000000' preserveAspectRatio='xMidYMid meet'><g transform='translate(0.000000,300.000000) scale(0.100000,-0.100000)' fill='var(--foreground)' stroke='none'> <path d='M0 1500 l0 -1500 1500 0 1500 0 0 1500 0 1500 -1500 0 -1500 0 0 -1500z m647 1060 c31 -12 1882 -1856 1914 -1908 54 -85 1 -209 -97 -228 -91 -17 -30 -71 -1057 954 -537 537 -954 962 -963 981 -56 117 76 248 203 201z m845 -3 c15 -7 263 -247 552 -534 451 -449 527 -528 536 -563 16 -58 -1 -110 -50 -154 -35 -31 -47 -36 -91 -36 -27 0 -62 6 -77 14 -15 8 -263 251 -551 540 l-525 525 -4 58 c-3 49 0 64 20 93 41 62 124 86 190 57z m856 -1 c15 -8 70 -59 123 -113 116 -118 133 -154 104 -229 -31 -80 -136 -128 -203 -91 -49 28 -212 191 -233 233 -34 72 -8 151 65 195 37 22 106 25 144 5z m-1683 -857 c17 -10 262 -251 547 -536 548 -550 539 -539 524 -618 -18 -96 -141 -155 -221 -107 -16 11 -265 252 -552 538 -465 461 -523 523 -529 557 -14 82 27 156 101 182 45 16 86 11 130 -16z m-28 -830 c32 -12 218 -191 239 -231 31 -59 9 -146 -47 -187 -35 -26 -93 -37 -136 -26 -30 7 -226 194 -249 237 -60 115 69 254 193 207z'/> </g> </svg>"
   },
   {
+    "name": "@shaderscn",
+    "homepage": "https://www.shaderscn.com",
+    "url": "https://www.shaderscn.com/r/{name}.json",
+    "description": "Copy-paste shader sections and components for shadcn/ui, built on Paper Shaders.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground, #0a0a0a)'><path d='M0 5.2c4-3 8-3 12 0s8 3 12 0v3.4c-4 3-8 3-12 0s-8-3-12 0z' fill-opacity='.35'/><path d='M0 11.4c4-3 8-3 12 0s8 3 12 0v3.4c-4 3-8 3-12 0s-8-3-12 0z' fill-opacity='.65'/><path d='M0 17.6c4-3 8-3 12 0s8 3 12 0V21c-4 3-8 3-12 0s-8-3-12 0z'/></svg>"
+  },
+  {
     "name": "@shark",
     "homepage": "https://shark.vini.one",
     "url": "https://shark.vini.one/r/{name}.json",
@@ -2396,6 +2440,13 @@
     "homepage": "https://svgl.app",
     "url": "https://svgl.app/r/{name}.json",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 256 256'><path d='M216 136c-8 24-56 72-80 80v-32a48 48 0 0 1 48-48Z' opacity='.2'/><path d='M168 32H88a56.06 56.06 0 0 0-56 56v80a56.06 56.06 0 0 0 56 56h48a8 8 0 0 0 2.53-.41c26.23-8.75 76.31-58.83 85.06-85.06A8 8 0 0 0 224 136V88a56.06 56.06 0 0 0-56-56M48 168V88a40 40 0 0 1 40-40h80a40 40 0 0 1 40 40v40h-24a56.06 56.06 0 0 0-56 56v24H88a40 40 0 0 1-40-40m96 35.14V184a40 40 0 0 1 40-40h19.14C191 163.5 163.5 191 144 203.14'/></svg>"
+  },
+  {
+    "name": "@swiftui-flx",
+    "homepage": "https://swiftui.flexnative.com",
+    "url": "https://swiftui.flexnative.com/r/{name}.json",
+    "description": "SwiftUI components for iPhone, iPad and Mac, the shadcn/ui way. Native controls, design tokens, themes and dark mode. Install with the shadcn CLI and own the Swift code.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='128' fill='var(--foreground)'/><svg x='96' y='96' width='320' height='320' preserveAspectRatio='xMidYMid meet' viewBox='395.17 381.07 217.75 213.93'><g transform='translate(0.000000,1024.000000) scale(0.100000,-0.100000)' fill='var(--background)' stroke='none'><path d='M5035 6237 c-160 -105 -427 -282 -595 -391 -168 -110 -317 -211 -332 -225 -55 -49 -24 -141 47 -141 25 0 285 168 1202 774 70 46 88 78 71 126 -5 17 -18 35 -28 40 -46 25 -73 11 -365 -183z'/><path d='M5970 6353 c-64 -43 -1062 -699 -1575 -1036 -192 -126 -361 -240 -374 -253 -36 -34 -34 -89 4 -121 19 -17 37 -23 54 -21 14 3 329 205 698 449 370 244 819 540 998 658 179 117 332 223 340 234 22 32 18 75 -10 102 -34 35 -71 32 -135 -12z'/><path d='M5874 5761 c-105 -70 -913 -603 -1653 -1090 -276 -181 -288 -193 -258 -256 17 -36 50 -51 89 -41 13 3 220 135 460 293 241 158 676 445 967 636 658 432 611 399 611 441 0 19 -3 42 -6 51 -7 17 -54 45 -77 45 -8 0 -68 -36 -133 -79z'/><path d='M5614 5087 c-187 -123 -483 -317 -659 -431 -176 -114 -330 -219 -342 -232 -46 -51 -11 -134 55 -134 31 0 51 13 702 440 179 117 395 259 481 316 86 56 166 113 178 125 21 22 27 62 15 94 -7 17 -54 45 -77 45 -8 0 -167 -100 -353 -223z'/></g></svg></svg>"
   },
   {
     "name": "@systaliko-ui",
@@ -2807,6 +2858,13 @@
     "logo": "<svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z'/><path d='M20 2v4'/><path d='M22 4h-4'/><circle cx='4' cy='20' r='2'/></svg>"
   },
   {
+    "name": "@viberdy",
+    "homepage": "https://viberdy.dev",
+    "url": "https://viberdy.dev/r/{name}.json",
+    "description": "Animated React and Tailwind components in 14 design styles, from glassmorphism and aurora to kinetic type and dither, each with an AI prompt. 161 are free with source at github.com/viberdy-dev/ui; Pro items need an API key.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='var(--foreground)'/><path d='M9 10.5 L15.2 22.5 L16.8 22.5 L23 10.5 L19.6 10.5 L16 18.2 L12.4 10.5 Z' fill='var(--background)'/></svg>"
+  },
+  {
     "name": "@videocn",
     "homepage": "https://videocn.dev",
     "url": "https://videocn.dev/r/{name}.json",
@@ -2973,6 +3031,14 @@
     "url": "https://afterglow.thebuilder.dk/r/{name}.json",
     "description": "A complete terminal UI system for shadcn with Base UI components, terminal-specific building blocks, and eight phosphor color themes.",
     "logo": "<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg' fill='currentColor'><path d='M6.45 5.9L18.23 16L6.45 26.1L3 22.07L10.09 16L3 9.93Z'/><path d='M18.4 20.24H29V24.48H18.4Z'/></svg>"
+  },
+  {
+    "name": "@agent-ui-kit",
+    "homepage": "https://agent-ui-kit-demo.vercel.app",
+    "url": "https://agent-ui-kit-demo.vercel.app/r/{name}.json",
+    "description": "Accessible React components for agent runs: tool call timeline, human-in-the-loop approvals, per-hunk diff review and run telemetry, typed against AI SDK message parts.",
+    "author": "Diogo Esteves",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='var(--foreground)'><rect x='10' y='9' width='2' height='14' opacity='.35'/><circle cx='11' cy='9' r='3'/><circle cx='11' cy='16' r='3'/><circle cx='11' cy='23' r='3'/><rect x='17' y='8' width='9' height='2' rx='1' opacity='.6'/><rect x='17' y='15' width='6' height='2' rx='1' opacity='.6'/><rect x='17' y='22' width='9' height='2' rx='1' opacity='.6'/></svg>"
   },
   {
     "name": "@agentblog",
