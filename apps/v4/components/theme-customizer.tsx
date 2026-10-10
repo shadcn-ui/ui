@@ -236,9 +236,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 <span data-line className="line text-code-foreground">
                   &nbsp;:root &#123;
                 </span>
-                <span data-line className="line text-code-foreground">
-                  &nbsp;&nbsp;&nbsp;--radius: 0.65rem;
-                </span>
+                
                 {Object.entries(activeThemeOKLCH?.light).map(([key, value]) => (
                   <span
                     data-line
@@ -316,9 +314,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 <span data-line className="line text-code-foreground">
                   &nbsp;:root &#123;
                 </span>
-                <span data-line className="line text-code-foreground">
-                  &nbsp;&nbsp;&nbsp;--radius: 0.65rem;
-                </span>
+                
                 {Object.entries(activeTheme?.cssVars.light || {}).map(
                   ([key, value]) => (
                     <span
