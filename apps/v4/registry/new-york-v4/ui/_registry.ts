@@ -758,4 +758,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       },
     ],
   },
+  {
+    name: "questionnaire",
+    type: "registry:ui",
+    dependencies: ["@shadcn/react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/questionnaire.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]
