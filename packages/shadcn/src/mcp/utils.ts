@@ -27,7 +27,7 @@ export async function getMcpConfig(cwd = process.cwd()) {
   }
 }
 
-export function formatSearchResultsWithPagination(
+export async function formatSearchResultsWithPagination(
   results: z.infer<typeof searchResultsSchema>,
   options?: {
     query?: string
@@ -35,6 +35,7 @@ export function formatSearchResultsWithPagination(
   }
 ) {
   const { query, registries } = options || {}
+  const packageRunner = await getPackageRunner(process.cwd())
 
   const formattedItems = results.items.map((item) => {
     const parts: string[] = [`- ${item.name}`]
@@ -52,7 +53,7 @@ export function formatSearchResultsWithPagination(
     }
 
     parts.push(
-      `\n  Add command: \`${npxShadcn(`add ${item.addCommandArgument}`)}\``
+      `\n  Add command: \`${packageRunner} ${SHADCN_CLI_COMMAND} add ${item.addCommandArgument}\``
     )
 
     return parts.join(" ")
