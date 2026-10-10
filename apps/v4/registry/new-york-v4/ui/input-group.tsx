@@ -148,8 +148,18 @@ function InputGroupTextarea({
   className,
   ...props
 }: React.ComponentProps<"textarea">) {
+  const textareafRef=React.useRef<HTMLTextAreaElement>(null);
+  const handleInput=()=>{
+    const curr=textareafRef.current;
+    if(curr){
+      curr.style.height="auto";
+      curr.style.height=`${curr.scrollHeight}px`
+    }
+  }
   return (
     <Textarea
+      ref={textareafRef}
+      onInput={handleInput}
       data-slot="input-group-control"
       className={cn(
         "flex-1 resize-none rounded-none border-0 bg-transparent py-3 shadow-none focus-visible:ring-0 dark:bg-transparent",
