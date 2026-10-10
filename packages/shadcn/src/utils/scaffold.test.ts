@@ -98,7 +98,7 @@ describe("defaultScaffold", () => {
     ])
   })
 
-  it("should move template directory to project path", async () => {
+  it("should copy template directory to project path", async () => {
     const template = createTestTemplate()
 
     await template.scaffold({
@@ -107,7 +107,7 @@ describe("defaultScaffold", () => {
       cwd: "/test",
     })
 
-    expect(vi.mocked(fs.move)).toHaveBeenCalledWith(
+    expect(vi.mocked(fs.copy)).toHaveBeenCalledWith(
       expect.stringContaining(path.join("templates", "next-app")),
       "/test/my-app"
     )
