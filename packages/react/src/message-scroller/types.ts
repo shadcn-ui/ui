@@ -184,7 +184,7 @@ type MessageScrollerContextValue = {
   stateStore: MessageScrollerStore<MessageScrollerScrollable>
   syncAfterScroll: () => void
   unobserveVisibility: () => void
-  userScrollIntent: () => void
+  userScrollIntent: (direction?: "up" | "down") => void
   viewportRef: React.RefObject<HTMLDivElement | null>
   visibilityStore: MessageScrollerVisibilityStore
 }
@@ -195,7 +195,9 @@ const EMPTY_MESSAGE_SCROLLER_SCROLLABLE: MessageScrollerScrollable = {
   start: false,
   end: false,
 }
-
+// Keyboard keys treated as moving toward the start, so userScrollIntent can
+// mark movedAwayFromEndRef before the scroll animation's first frame lands.
+const UPWARD_SCROLL_KEYS = new Set(["ArrowUp", "Home", "PageUp"])
 // Shared empty array so empty visibility snapshots stay referentially stable.
 const EMPTY_VISIBLE_MESSAGE_IDS: string[] = []
 
@@ -216,6 +218,7 @@ export {
   EMPTY_VISIBLE_MESSAGE_IDS,
   SCROLL_POSITION_EPSILON,
   USER_SCROLL_KEYS,
+  UPWARD_SCROLL_KEYS
 }
 
 export type {
