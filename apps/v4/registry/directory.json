@@ -1060,6 +1060,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='4' width='7' height='16' rx='1.5'/><rect x='15' y='4' width='7' height='16' rx='1.5'/><path d='m11 8.5 2 1.5-2 1.5'/><path d='m13 12.5-2 1.5 2 1.5'/></svg>"
   },
   {
+    "name": "@hazeglow",
+    "homepage": "https://hazeglow.dev",
+    "url": "https://hazeglow.dev/r/{name}.json",
+    "description": "Animated, grainy gradient blocks for React: a hero, a call to action and a card, themed by your CSS variables. WebGL2, zero dependencies.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='hazeglow-glow' x1='0.62' y1='0.12' x2='0.4' y2='0.9'><stop offset='0' stop-color='#4fc4f0'/><stop offset='0.2' stop-color='#a8e0f0'/><stop offset='0.4' stop-color='#f0d9a0'/><stop offset='0.58' stop-color='#f2a13a'/><stop offset='0.82' stop-color='#f0603c'/><stop offset='1' stop-color='#e83fd0' stop-opacity='0.7'/></linearGradient><filter id='hazeglow-blur' x='-30%' y='-30%' width='160%' height='160%'><feGaussianBlur stdDeviation='3.2'/></filter><clipPath id='hazeglow-tile'><rect width='64' height='64' rx='14'/></clipPath></defs><rect width='64' height='64' rx='14' fill='#000'/><g clip-path='url(#hazeglow-tile)'><path d='M16 22C22 17 32 19 42 26C50 31 57 38 57 44C57 50 50 52 42 49C33 46 22 39 17 33C14 29 13 25 16 22Z' fill='url(#hazeglow-glow)' filter='url(#hazeglow-blur)'/></g></svg>"
+  },
+  {
     "name": "@headcodecms",
     "homepage": "https://headcodecms.com",
     "url": "https://headcodecms.com/r/{name}.json",
