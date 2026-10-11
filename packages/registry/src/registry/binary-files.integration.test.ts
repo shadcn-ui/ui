@@ -164,6 +164,68 @@ describe("binary registry file round trips", () => {
     expect(item.files![1]).not.toHaveProperty("encoding")
   })
 
+  describe.each([false, true])(
+    "reloading file metadata (nested=%s)",
+    (nested) => {
+      it.each([
+        ["text", Buffer.from("hello café 世界"), false],
+        ["empty text", Buffer.alloc(0), false],
+        ["binary", font, true],
+      ])(
+        "preserves replacement %s through installation",
+        async (_, bytes, binary) => {
+          const entry = {
+            name: "note",
+            type: "registry:item",
+            files: [binaryFile("note.txt", Buffer.from([0, 0xff, 0x80]))],
+          }
+          const cwd = await fixture({
+            "registry.json": JSON.stringify({
+              name: "replacement",
+              homepage: "https://example.com",
+              ...(nested
+                ? { include: ["nested/registry.json"] }
+                : { items: [entry] }),
+            }),
+            ...(nested
+              ? { "nested/registry.json": JSON.stringify({ items: [entry] }) }
+              : {}),
+            [nested ? "nested/note.txt" : "note.txt"]: bytes,
+          })
+          const item = registryItemSchema.parse(
+            JSON.parse(JSON.stringify(await loadRegistryItem("note", { cwd })))
+          )
+          const target = await app()
+          const result = await updateFiles(item.files!, target.config, {
+            silent: true,
+            overwrite: true,
+          })
+
+          if (bytes.length) {
+            expect(result.filesCreated).toEqual(["note.txt"])
+            expect(
+              await fs.readFile(path.join(target.cwd, "note.txt"))
+            ).toEqual(bytes)
+          } else {
+            expect(result).toEqual({
+              filesCreated: [],
+              filesUpdated: [],
+              filesSkipped: [],
+            })
+            await expect(
+              fs.readFile(path.join(target.cwd, "note.txt"))
+            ).rejects.toThrow("ENOENT")
+          }
+          if (binary) {
+            expect(item.files![0]).toMatchObject({ encoding: "base64" })
+          } else {
+            expect(item.files![0]).not.toHaveProperty("encoding")
+          }
+        }
+      )
+    }
+  )
+
   it.each(["asset.woff2", "asset.ts", ".env"])(
     "creates, skips and replaces %s byte-for-byte",
     async (target) => {

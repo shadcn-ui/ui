@@ -171,6 +171,8 @@ export async function createRegistryItem(
         result.itemSourcesByItem,
         fallbackDir
       )
+      // Encoding describes the newly read bytes, not previous inline content.
+      delete file.encoding
       Object.assign(
         file,
         await readRegistryItemFileContent(

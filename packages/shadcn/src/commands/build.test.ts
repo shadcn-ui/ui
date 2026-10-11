@@ -125,6 +125,53 @@ describe("build command", () => {
     })
   })
 
+  it.each(["hello café 世界", ""])(
+    "replaces stale encoding when building text %j",
+    async (content) => {
+      const cwd = await createFixture({
+        "registry.json": JSON.stringify({
+          name: "example",
+          homepage: "https://example.com",
+          items: [
+            {
+              name: "note",
+              type: "registry:item",
+              files: [
+                {
+                  path: "note.txt",
+                  type: "registry:file",
+                  target: "public/note.txt",
+                  content: "AP+A",
+                  encoding: "base64",
+                },
+              ],
+            },
+          ],
+        }),
+        "note.txt": content,
+      })
+
+      await build.parseAsync(
+        [
+          "node",
+          "shadcn",
+          "registry.json",
+          "--cwd",
+          cwd,
+          "--output",
+          "public/r",
+        ],
+        { from: "node" }
+      )
+
+      const item = JSON.parse(
+        await fs.readFile(path.join(cwd, "public/r/note.json"), "utf-8")
+      )
+      expect(item.files[0].content).toBe(content)
+      expect(item.files[0]).not.toHaveProperty("encoding")
+    }
+  )
+
   it("creates nested output directories for item names with path segments", async () => {
     const cwd = await createFixture({
       "registry.json": JSON.stringify({
