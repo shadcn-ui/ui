@@ -2,8 +2,7 @@
 
 import * as React from "react"
 import { Drawer as DrawerPrimitive } from "@base-ui/react/drawer"
-
-import { cn } from "@/registry/bases/aria/lib/utils"
+import { cn } from "cn"
 
 type DrawerContextProps = {
   hasSnapPoints: boolean

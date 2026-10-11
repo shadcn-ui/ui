@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "cn"
 import {
   Cell as CellPrimitive,
   Column as ColumnPrimitive,
@@ -17,8 +18,6 @@ import {
   type TableHeaderProps,
   type TableProps,
 } from "react-aria-components"
-
-import { cn } from "@/registry/bases/aria/lib/utils"
 
 function Table({ className, ...props }: TableProps) {
   return (

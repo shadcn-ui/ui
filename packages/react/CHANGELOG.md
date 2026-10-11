@@ -1,5 +1,11 @@
 # @shadcn/react
 
+## 0.3.1
+
+### Patch Changes
+
+- [#11720](https://github.com/shadcn-ui/ui/pull/11720) [`503a3a57aec9a3817e37f90aa0817b1fabd284d0`](https://github.com/shadcn-ui/ui/commit/503a3a57aec9a3817e37f90aa0817b1fabd284d0) Thanks [@shadcn](https://github.com/shadcn)! - Set `data-pending-scroll` on the MessageScroller root and viewport until `defaultScrollPosition` (`"end"` or `"last-anchor"`) is applied, so the viewport can be hidden and a server-rendered transcript does not flash the top of the thread on reload.
+
 ## 0.3.0
 
 ### Minor Changes

@@ -1,7 +1,6 @@
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
-
-import { cn } from "@/registry/bases/radix/lib/utils"
+import { cn } from "cn"
 
 const alertVariants = cva("cn-alert group/alert relative w-full", {
   variants: {

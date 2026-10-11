@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { type FileUIPart } from "ai"
+import { cn } from "cn"
 
-import { cn } from "@/registry/bases/radix/lib/utils"
 import {
   Attachment,
   AttachmentAction,

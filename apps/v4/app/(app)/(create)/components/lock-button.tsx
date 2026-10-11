@@ -5,8 +5,8 @@ import {
   SquareUnlock01Icon,
 } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
+import { cn } from "cn"
 
-import { cn } from "@/lib/utils"
 import {
   useLocks,
   type LockableParam,

@@ -3,6 +3,7 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { cn } from "cn"
 import {
   Check,
   ChevronRight,
@@ -28,7 +29,6 @@ import {
   type createFileTreeForRegistryItemFiles,
   type FileTree,
 } from "@/lib/registry"
-import { cn } from "@/lib/utils"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { getIconForLanguageExtension } from "@/components/icons"
 import { OpenInV0Button } from "@/components/open-in-v0-button"
@@ -305,7 +305,7 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
       ) : (
         <div className="overflow-hidden rounded-xl border">
           <Image
-            src={`/r/styles/new-york-v4/${item.name}-light.png`}
+            src={`/r/styles/new-york/${item.name}-light.png`}
             alt={item.name}
             data-block={item.name}
             width={1440}
@@ -313,7 +313,7 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
             className="object-cover dark:hidden"
           />
           <Image
-            src={`/r/styles/new-york-v4/${item.name}-dark.png`}
+            src={`/r/styles/new-york/${item.name}-dark.png`}
             alt={item.name}
             data-block={item.name}
             width={1440}

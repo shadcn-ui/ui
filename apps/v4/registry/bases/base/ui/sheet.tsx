@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { Dialog as SheetPrimitive } from "@base-ui/react/dialog"
+import { cn } from "cn"
 
-import { cn } from "@/registry/bases/base/lib/utils"
 import { Button } from "@/registry/bases/base/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
