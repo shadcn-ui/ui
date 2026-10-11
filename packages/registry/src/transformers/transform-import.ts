@@ -32,31 +32,27 @@ export const transformImport: Transformer = (
   for (const { specifier, importDeclaration } of getImportStringLiterals(
     file.program
   )) {
-    const updated = updateImportAliases(
-      literals.getValue(specifier),
-      config,
-      isRemote
-    )
+    const original = literals.getValue(specifier)
+    const updated = updateImportAliases(original, config, isRemote)
     literals.setValue(specifier, updated)
 
-    // Replace `import { cn } from "@/lib/utils"`
-    if (utilsImport === updated || updated === "@/lib/utils") {
-      const isCnImport = importDeclaration?.specifiers.some(
-        (namedImport) =>
-          namedImport.type === "ImportSpecifier" &&
-          getImportedName(code, namedImport) === "cn"
-      )
+    // Utils imports in registry files can use either the standard or a
+    // registry-specific source. Match the source before alias transformations
+    // so custom aliases are used directly instead of deriving `/lib/utils`
+    // from the components alias.
+    const isUtilsImport =
+      original === "@/lib/utils" ||
+      /^@\/registry\/[^/]+\/lib\/utils$/.test(original) ||
+      updated === "@/lib/utils" ||
+      updated === utilsImport
+    const isCnImport = importDeclaration?.specifiers.some(
+      (namedImport) =>
+        namedImport.type === "ImportSpecifier" &&
+        getImportedName(code, namedImport) === "cn"
+    )
 
-      if (!isCnImport || !config.aliases.utils) {
-        continue
-      }
-
-      literals.setValue(
-        specifier,
-        utilsImport === updated
-          ? updated.replace(utilsImport, config.aliases.utils)
-          : config.aliases.utils
-      )
+    if (isUtilsImport && isCnImport && config.aliases.utils) {
+      literals.setValue(specifier, config.aliases.utils)
     }
   }
 

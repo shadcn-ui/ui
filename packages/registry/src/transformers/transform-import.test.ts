@@ -493,6 +493,43 @@ import { Button } from "@/registry/new-york-v4/ui/button"
   ).toContain(`import { cn } from "@workspace/ui/lib/utils"`)
 })
 
+it("uses absolute utils aliases without deriving them from components", async () => {
+  const result = await transform({
+    filename: "button.tsx",
+    raw: `import { cn } from "@/lib/utils"
+import { Button } from "@/registry/new-york-v4/ui/button"
+`,
+    config: {
+      tsx: true,
+      aliases: {
+        components: "/app/components",
+        ui: "/app/components/ui",
+        utils: "/app/function/lib/utils",
+      },
+    } as Config,
+  })
+
+  expect(result).toContain(`import { cn } from "/app/function/lib/utils"`)
+  expect(result).not.toContain("/app/components/lib/utils")
+})
+
+it("uses absolute utils aliases for registry lib utils imports", async () => {
+  const result = await transform({
+    filename: "sidebar.tsx",
+    raw: `import { cn } from "@/registry/new-york-v4/lib/utils"
+`,
+    config: {
+      tsx: true,
+      aliases: {
+        components: "/app/components",
+        utils: "/app/function/lib/utils",
+      },
+    } as Config,
+  })
+
+  expect(result).toBe(`import { cn } from "/app/function/lib/utils"\n`)
+})
+
 it("transform async/dynamic imports", async () => {
   expect(
     await transform({
