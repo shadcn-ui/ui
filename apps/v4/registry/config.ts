@@ -32,6 +32,16 @@ export type RegistryBasePart = (typeof REGISTRY_BASE_PARTS)[number]
 export const POINTER_CURSOR_SELECTOR =
   'button:not(:disabled), [role="button"]:not(:disabled)'
 
+// Templates with a dedicated RTL docs page. Templates without one (e.g.
+// "astro", "laravel", "react-router") fall back to the main RTL docs page
+// so the CLI never prints a link to a 404.
+const RTL_DOCS_TEMPLATES = new Set(["next", "start", "vite"])
+
+export function getRtlDocsPath(template?: string) {
+  const name = template === "next-monorepo" ? "next" : (template ?? "next")
+  return RTL_DOCS_TEMPLATES.has(name) ? `/docs/rtl/${name}` : "/docs/rtl"
+}
+
 // Derive font values from registry fonts (e.g., "font-inter" -> "inter").
 const fontValues = bodyFonts.map((f) => f.name.replace("font-", "")) as [
   string,
@@ -856,7 +866,7 @@ export function buildRegistryBase(config: DesignSystemConfig) {
       },
     },
     ...(config.rtl && {
-      docs: `To learn how to set up the RTL provider and fonts for your app, see https://ui.shadcn.com/docs/rtl/${config.template === "next-monorepo" ? "next" : (config.template ?? "next")}`,
+      docs: `To learn how to set up the RTL provider and fonts for your app, see https://ui.shadcn.com${getRtlDocsPath(config.template)}`,
     }),
   }
 }
