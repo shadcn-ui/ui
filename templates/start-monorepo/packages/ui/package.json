@@ -16,7 +16,7 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4",
     "@tanstack/eslint-config": "latest",
-    "@turbo/gen": "^2.11.5",
+    "@turbo/gen": "^2.11.7",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
