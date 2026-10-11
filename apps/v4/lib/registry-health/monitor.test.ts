@@ -2,7 +2,14 @@ import { describe, expect, it, vi } from "vitest"
 
 import type { RegistryDirectoryEntry } from "../registry-directory"
 import { runRegistryMonitor } from "./monitor"
-import type { RegistryMonitorEntryState, RegistryMonitorState } from "./schema"
+import { calculateRegistryRanking } from "./rank"
+import {
+  REGISTRY_DRY_RUN_VERSION,
+  REGISTRY_ITEM_VALIDATION_VERSION,
+  type RegistryHealthDailyBucket,
+  type RegistryMonitorEntryState,
+  type RegistryMonitorState,
+} from "./schema"
 
 const NOW = new Date("2026-08-24T12:00:00.000Z")
 const DIRECTORY: RegistryDirectoryEntry[] = [
@@ -40,6 +47,8 @@ function createState(entry = createEntryState()) {
   return {
     schemaVersion: 1,
     scoreVersion: 1,
+    dryRunVersion: REGISTRY_DRY_RUN_VERSION,
+    itemValidationVersion: REGISTRY_ITEM_VALIDATION_VERSION,
     updatedAt: "2026-08-24T10:00:00.000Z",
     registries: { "@acme": entry },
   } satisfies RegistryMonitorState
@@ -66,7 +75,281 @@ function createSuccessfulFetch(itemCount = 1) {
   }
 }
 
+function createBucket(overrides: Partial<RegistryHealthDailyBucket> = {}) {
+  return {
+    date: "2026-08-24",
+    availabilitySuccesses: 24,
+    availabilityObservations: 24,
+    challengeObservations: 0,
+    schemaSuccesses: 24,
+    schemaObservations: 24,
+    itemSuccesses: 8,
+    itemObservations: 10,
+    dryRunSuccesses: 1,
+    dryRunObservations: 1,
+    ...overrides,
+  } satisfies RegistryHealthDailyBucket
+}
+
 describe("runRegistryMonitor", () => {
+  it("publishes separate ranking metadata using unique catalog names", async () => {
+    const index = createSuccessfulFetch(2)
+    index.json.items.push(index.json.items[0])
+    const result = await runRegistryMonitor({
+      directory: DIRECTORY,
+      mode: "hourly",
+      now: NOW,
+      fetchJson: vi.fn(async () => index),
+      runDryRun: vi.fn(),
+    })
+    const health = result.snapshot.registries["@acme"]
+    expect(result.snapshot.rankings?.["@acme"]).toEqual(
+      calculateRegistryRanking(health.score, 2)
+    )
+    expect(result.state.registries["@acme"].itemNames).toHaveLength(3)
+    expect(health.scoreVersion).toBe(1)
+  })
+
+  it("does not publish a catalog size before a valid index has been observed", async () => {
+    const index = createSuccessfulFetch()
+    const result = await runRegistryMonitor({
+      directory: DIRECTORY,
+      mode: "hourly",
+      now: NOW,
+      fetchJson: vi.fn(async () => ({ ...index, json: { invalid: true } })),
+      runDryRun: vi.fn(),
+    })
+    expect(result.snapshot.rankings).toEqual({})
+  })
+
+  it("distinguishes a valid empty catalog from missing catalog data", async () => {
+    const result = await runRegistryMonitor({
+      directory: DIRECTORY,
+      mode: "hourly",
+      now: NOW,
+      fetchJson: vi.fn(async () => createSuccessfulFetch(0)),
+      runDryRun: vi.fn(),
+    })
+    expect(result.snapshot.rankings?.["@acme"]?.itemCount).toBe(0)
+  })
+
+  it("retains the last valid catalog count when the latest index is invalid", async () => {
+    const result = await runRegistryMonitor({
+      directory: DIRECTORY,
+      previousState: createState(
+        createEntryState({ itemNames: ["button", "dialog"] })
+      ),
+      mode: "hourly",
+      now: NOW,
+      fetchJson: vi.fn(async () => ({ ...createSuccessfulFetch(), json: {} })),
+      runDryRun: vi.fn(),
+    })
+    expect(result.snapshot.rankings?.["@acme"]?.itemCount).toBe(2)
+  })
+
+  it.each([
+    ["docs/expert", "expert"],
+    ["c-aspect-ratio/base-nova", "c-aspect-ratio"],
+    ["button", "button"],
+  ])(
+    "accepts schema-valid path item %s with payload name %s",
+    async (item, name) => {
+      const result = await runRegistryMonitor({
+        directory: DIRECTORY,
+        previousState: createState(createEntryState({ itemNames: [item] })),
+        mode: "daily",
+        now: NOW,
+        fetchJson: vi.fn(async () => ({
+          ...createSuccessfulFetch(),
+          json: { name, type: "registry:ui", files: [] },
+        })),
+        runDryRun: vi.fn(),
+      })
+      expect(result.run.results["@acme"].items).toMatchObject([
+        { item, success: true },
+      ])
+      expect(result.state.registries["@acme"].daily[0].itemSuccesses).toBe(1)
+    }
+  )
+
+  it("still fails a flat catalog item whose payload name does not match", async () => {
+    const result = await runRegistryMonitor({
+      directory: DIRECTORY,
+      previousState: createState(createEntryState({ itemNames: ["button"] })),
+      mode: "daily",
+      now: NOW,
+      fetchJson: vi.fn(async () => ({
+        ...createSuccessfulFetch(),
+        json: { name: "dialog", type: "registry:ui", files: [] },
+      })),
+      runDryRun: vi.fn(),
+    })
+    expect(result.run.results["@acme"].items).toMatchObject([
+      { success: false, failureCode: "name_mismatch" },
+    ])
+  })
+
+  it("still validates the schema of path-based items", async () => {
+    const result = await runRegistryMonitor({
+      directory: DIRECTORY,
+      previousState: createState(
+        createEntryState({ itemNames: ["docs/expert"] })
+      ),
+      mode: "daily",
+      now: NOW,
+      fetchJson: vi.fn(async () => ({ ...createSuccessfulFetch(), json: {} })),
+      runDryRun: vi.fn(),
+    })
+    expect(result.run.results["@acme"].items).toMatchObject([
+      { success: false, failureCode: "invalid_schema" },
+    ])
+  })
+
+  it("repairs legacy path-item history once while preserving other signals", async () => {
+    const previousState: RegistryMonitorState = {
+      ...createState(
+        createEntryState({
+          itemNames: ["docs/expert"],
+          daily: [createBucket()],
+          recentDryRuns: [
+            {
+              checkedAt: NOW.toISOString(),
+              item: "docs/expert",
+              success: true,
+              durationMs: 250,
+            },
+          ],
+        })
+      ),
+      itemValidationVersion: undefined,
+      lastDailyRunAt: "2026-08-24T11:00:00.000Z",
+      lastWeeklyRunAt: "2026-08-24T11:00:00.000Z",
+    }
+    previousState.registries["@flat"] = createEntryState({
+      itemNames: ["button"],
+      daily: [createBucket()],
+    })
+    const directory = [...DIRECTORY, { ...DIRECTORY[0], name: "@flat" }]
+    const fetchJson = vi.fn(async (url: string) => ({
+      ...createSuccessfulFetch(),
+      json: url.endsWith("/registry.json")
+        ? {
+            ...createSuccessfulFetch().json,
+            items: [{ name: "docs/expert", type: "registry:ui", files: [] }],
+          }
+        : { name: "expert", type: "registry:ui", files: [] },
+    }))
+    const result = await runRegistryMonitor({
+      directory,
+      previousState,
+      mode: "auto",
+      now: NOW,
+      fetchJson,
+      runDryRun: vi.fn(),
+    })
+    expect(previousState.registries["@acme"].daily[0].itemObservations).toBe(10)
+    expect(result.state.itemValidationVersion).toBe(
+      REGISTRY_ITEM_VALIDATION_VERSION
+    )
+    expect(result.state.registries["@acme"].daily[0]).toMatchObject({
+      availabilityObservations: 25,
+      schemaObservations: 25,
+      itemSuccesses: 1,
+      itemObservations: 1,
+      dryRunSuccesses: 1,
+      dryRunObservations: 1,
+    })
+    expect(result.state.registries["@acme"].recentDryRuns).toEqual(
+      previousState.registries["@acme"].recentDryRuns
+    )
+    expect(result.state.registries["@flat"].daily[0].itemObservations).toBe(11)
+    expect(result.run.totals.itemChecks).toBe(2)
+    expect(result.run.diagnostics).toEqual([
+      "Discarded 10 item observations for path-based catalogs.",
+    ])
+    const next = await runRegistryMonitor({
+      directory,
+      previousState: result.state,
+      mode: "auto",
+      now: new Date("2026-08-24T13:00:00.000Z"),
+      fetchJson,
+      runDryRun: vi.fn(),
+    })
+    expect(next.run.diagnostics).toEqual([])
+    expect(next.run.totals.itemChecks).toBe(0)
+    expect(next.state.registries["@acme"].daily[0].itemObservations).toBe(1)
+  })
+
+  it("selects the same shuffled CLI sample regardless of catalog order", async () => {
+    const selected = []
+    for (const itemNames of [
+      ["button", "dialog", "tooltip"],
+      ["tooltip", "dialog", "button"],
+      ["button", "dialog", "tooltip", "button"],
+    ]) {
+      const runDryRun = vi.fn(async () => ({ success: true, durationMs: 250 }))
+      await runRegistryMonitor({
+        directory: DIRECTORY,
+        previousState: createState(createEntryState({ itemNames })),
+        mode: "weekly",
+        now: NOW,
+        fetchJson: vi.fn(),
+        runDryRun,
+      })
+      expect(runDryRun).toHaveBeenCalledOnce()
+      selected.push(runDryRun.mock.calls[0])
+    }
+    expect(selected[1]).toEqual(selected[0])
+    expect(selected[2]).toEqual(selected[0])
+  })
+
+  it("allows another CLI check after every catalog item has been sampled", async () => {
+    const result = await runRegistryMonitor({
+      directory: DIRECTORY,
+      previousState: createState(
+        createEntryState({
+          itemNames: ["button"],
+          recentDryRuns: [
+            {
+              checkedAt: "2026-08-17T12:00:00.000Z",
+              item: "button",
+              success: false,
+              durationMs: 250,
+            },
+          ],
+        })
+      ),
+      mode: "weekly",
+      now: NOW,
+      fetchJson: vi.fn(),
+      runDryRun: vi.fn(async () => ({ success: true, durationMs: 250 })),
+    })
+    expect(result.run.totals.dryRuns).toBe(1)
+    expect(result.run.results["@acme"].dryRun?.item).toBe("button")
+  })
+
+  it("does not repeat the last CLI item when a small catalog has been fully sampled", async () => {
+    const result = await runRegistryMonitor({
+      directory: DIRECTORY,
+      previousState: createState(
+        createEntryState({
+          itemNames: ["button", "dialog"],
+          recentDryRuns: ["dialog", "button"].map((item) => ({
+            checkedAt: "2026-08-17T12:00:00.000Z",
+            item,
+            success: true,
+            durationMs: 250,
+          })),
+        })
+      ),
+      mode: "weekly",
+      now: NOW,
+      fetchJson: vi.fn(),
+      runDryRun: vi.fn(async () => ({ success: true, durationMs: 250 })),
+    })
+    expect(result.run.totals.dryRuns).toBe(1)
+    expect(result.run.results["@acme"].dryRun?.item).toBe("dialog")
+  })
   it("records completion separately from the observation time", async () => {
     vi.useFakeTimers()
     vi.setSystemTime(new Date("2026-08-24T12:05:00.000Z"))
@@ -422,6 +705,113 @@ describe("runRegistryMonitor", () => {
     expect(result.state.lastWeeklyRunAt).toBe(NOW.toISOString())
   })
 
+  it("discards invalid pre-tsconfig dry runs and reruns the weekly check", async () => {
+    const now = new Date("2026-09-02T12:00:00.000Z")
+    const recentIndex = Array.from({ length: 24 }, (_, index) => ({
+      checkedAt: new Date(
+        now.getTime() - (24 - index) * 60 * 60 * 1000
+      ).toISOString(),
+      outcome: "reachable" as const,
+      status: 200,
+      durationMs: 100,
+      redirectCount: 0,
+      schemaValid: true,
+    }))
+    const previousState = {
+      ...createState(
+        createEntryState({
+          itemNames: ["button"],
+          recentIndex,
+          recentDryRuns: [
+            {
+              checkedAt: "2026-08-25T12:04:27.443Z",
+              item: "button",
+              success: false,
+              failureCode: "exit_1",
+              durationMs: 1500,
+            },
+            {
+              checkedAt: "2026-08-31T12:38:36.084Z",
+              item: "dialog",
+              success: false,
+              failureCode: "exit_1",
+              durationMs: 1700,
+            },
+          ],
+          daily: [
+            {
+              date: "2026-08-25",
+              availabilitySuccesses: 0,
+              availabilityObservations: 0,
+              challengeObservations: 0,
+              schemaSuccesses: 0,
+              schemaObservations: 0,
+              itemSuccesses: 0,
+              itemObservations: 0,
+              dryRunSuccesses: 0,
+              dryRunObservations: 1,
+            },
+            {
+              date: "2026-08-31",
+              availabilitySuccesses: 0,
+              availabilityObservations: 0,
+              challengeObservations: 0,
+              schemaSuccesses: 0,
+              schemaObservations: 0,
+              itemSuccesses: 0,
+              itemObservations: 0,
+              dryRunSuccesses: 0,
+              dryRunObservations: 1,
+            },
+          ],
+          latestHygiene: {
+            contentTypeJson: true,
+            noDuplicateNames: true,
+            nameMatches: true,
+          },
+        })
+      ),
+      dryRunVersion: 0,
+      lastDailyRunAt: "2026-09-02T11:00:00.000Z",
+      lastWeeklyRunAt: "2026-08-31T12:38:36.084Z",
+    }
+    const runDryRun = vi.fn(async () => ({
+      success: true,
+      durationMs: 250,
+    }))
+
+    const result = await runRegistryMonitor({
+      directory: DIRECTORY,
+      previousState,
+      mode: "auto",
+      now,
+      fetchJson: vi.fn(async () => createSuccessfulFetch()),
+      runDryRun,
+    })
+
+    expect(runDryRun).toHaveBeenCalledOnce()
+    expect(result.state.registries["@acme"].recentDryRuns).toEqual([
+      {
+        checkedAt: now.toISOString(),
+        item: "item-0",
+        success: true,
+        durationMs: 250,
+      },
+    ])
+    expect(result.state.registries["@acme"].daily.slice(0, 2)).toMatchObject([
+      { date: "2026-08-25", dryRunSuccesses: 0, dryRunObservations: 0 },
+      { date: "2026-08-31", dryRunSuccesses: 0, dryRunObservations: 0 },
+    ])
+    expect(result.state.lastWeeklyRunAt).toBe(now.toISOString())
+    expect(result.run.diagnostics).toEqual([
+      "Discarded 2 invalid CLI dry-run observations from the pre-tsconfig scaffold.",
+    ])
+    expect(result.snapshot.registries["@acme"]).toMatchObject({
+      status: "healthy",
+      breakdown: { installability: 18.5 },
+    })
+  })
+
   it("continues weekly rotation after dry-run history is trimmed", async () => {
     const runDryRun = vi.fn(async () => ({
       success: true,
@@ -609,5 +999,26 @@ describe("runRegistryMonitor", () => {
 
     expect(result.run.totals.dryRuns).toBe(6)
     expect(maximumActive).toBe(4)
+  })
+
+  it("resolves {style} urls with the default style", async () => {
+    const fetchJson = vi.fn(async () => createSuccessfulFetch())
+    await runRegistryMonitor({
+      directory: [
+        {
+          ...DIRECTORY[0],
+          url: "https://acme.example.com/r/{style}/{name}.json",
+        },
+      ],
+      mode: "daily",
+      now: NOW,
+      previousState: createState(createEntryState({ itemNames: ["button"] })),
+      fetchJson,
+      runDryRun: vi.fn(),
+    })
+
+    expect(fetchJson).toHaveBeenCalledWith(
+      "https://acme.example.com/r/radix-vega/button.json"
+    )
   })
 })

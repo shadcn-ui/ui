@@ -1,4 +1,5 @@
-import { cn } from "@/registry/bases/aria/lib/utils"
+import { cn } from "cn"
+
 import { Button } from "@/registry/bases/aria/ui/button"
 import { Card, CardContent } from "@/registry/bases/aria/ui/card"
 import {

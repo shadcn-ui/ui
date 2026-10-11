@@ -111,11 +111,26 @@ function MessageScrollerProvider({
   )
 }
 
+function usePendingDefaultScroll() {
+  const { pendingDefaultScrollStore } = useMessageScrollerContext()
+
+  return React.useSyncExternalStore(
+    pendingDefaultScrollStore.subscribe,
+    pendingDefaultScrollStore.getSnapshot,
+    pendingDefaultScrollStore.getSnapshot
+  )
+}
+
 function MessageScroller({ children, ...props }: MessageScrollerProps) {
   const { setRootElement } = useMessageScrollerContext()
+  const pendingDefaultScroll = usePendingDefaultScroll()
 
   return (
-    <div ref={setRootElement} {...props}>
+    <div
+      ref={setRootElement}
+      {...props}
+      {...(pendingDefaultScroll ? { "data-pending-scroll": "" } : null)}
+    >
       {children}
     </div>
   )
@@ -142,6 +157,7 @@ function MessageScrollerViewport({
     userScrollIntent,
     viewportRef,
   } = useMessageScrollerContext()
+  const pendingDefaultScroll = usePendingDefaultScroll()
 
   preserveScrollOnPrependRef.current = preserveScrollOnPrepend
 
@@ -212,6 +228,7 @@ function MessageScrollerViewport({
       onTouchMove={handleTouchMove}
       onWheel={handleWheel}
       {...props}
+      {...(pendingDefaultScroll ? { "data-pending-scroll": "" } : null)}
     >
       {children}
     </div>

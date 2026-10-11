@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "cn"
 import {
   DisclosurePanel as AccordionContentPrimitive,
   Heading as AccordionHeaderPrimitive,
@@ -13,7 +14,6 @@ import {
   type DisclosureProps,
 } from "react-aria-components"
 
-import { cn } from "@/registry/bases/aria/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Accordion({ className, ...props }: DisclosureGroupProps) {

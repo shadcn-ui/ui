@@ -48,6 +48,33 @@ describe("shadcn add", () => {
     ).toBe(true)
   })
 
+  it("should install cn for a pre-existing project that never had it", async () => {
+    // next-app-init models a project initialized before the `cn` package
+    // existed: it has a components.json, clsx/tailwind-merge, but no cn
+    // dependency and no cn import anywhere. Adding a component today must
+    // still install cn, since the component now imports it directly.
+    const fixturePath = await createFixtureTestDirectory("next-app-init")
+
+    const packageJsonBefore = await fs.readJson(
+      path.join(fixturePath, "package.json")
+    )
+    expect(packageJsonBefore.dependencies).not.toHaveProperty("cn")
+
+    const result = await npxShadcn(fixturePath, ["add", "button", "--yes"])
+    expectCommandSuccess(result)
+
+    const buttonPath = path.join(fixturePath, "components/ui/button.tsx")
+    expect(await fs.pathExists(buttonPath)).toBe(true)
+    expect(await fs.readFile(buttonPath, "utf-8")).toContain(
+      'import { cn } from "cn"'
+    )
+
+    const packageJsonAfter = await fs.readJson(
+      path.join(fixturePath, "package.json")
+    )
+    expect(packageJsonAfter.dependencies).toHaveProperty("cn")
+  })
+
   it("should add item from url", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     await npxShadcn(fixturePath, ["init", "--defaults"])
@@ -378,9 +405,7 @@ describe("shadcn add", () => {
       path.join(fixturePath, "apps/web/src/components/login-form.tsx"),
       "utf-8"
     )
-    expect(loginFormContent).toContain(
-      'import { cn } from "@workspace/ui/lib/utils"'
-    )
+    expect(loginFormContent).toContain('import { cn } from "cn"')
     expect(loginFormContent).toContain(
       'import { Button } from "@workspace/ui/components/button"'
     )
@@ -389,7 +414,7 @@ describe("shadcn add", () => {
       path.join(fixturePath, "packages/ui/src/components/button.tsx"),
       "utf-8"
     )
-    expect(buttonContent).toContain('import { cn } from "#lib/utils.ts"')
+    expect(buttonContent).toContain('import { cn } from "cn"')
   }, 300000)
 
   it("should add monorepo item with registry target aliases and package imports", async () => {
@@ -651,7 +676,7 @@ describe("shadcn add", () => {
     expect(await fs.pathExists(buttonPath)).toBe(true)
 
     const buttonContent = await fs.readFile(buttonPath, "utf-8")
-    expect(buttonContent).toContain('import { cn } from "#utils"')
+    expect(buttonContent).toContain('import { cn } from "cn"')
     expect(buttonContent).not.toContain("@/lib/utils")
     expect(buttonContent).not.toContain("@/registry/")
   })
@@ -672,7 +697,7 @@ describe("shadcn add", () => {
     expect(await fs.pathExists(buttonPath)).toBe(true)
 
     const loginFormContent = await fs.readFile(loginFormPath, "utf-8")
-    expect(loginFormContent).toContain('import { cn } from "#utils"')
+    expect(loginFormContent).toContain('import { cn } from "cn"')
     expect(loginFormContent).toContain(
       'import { Button } from "#components/ui/button"'
     )
