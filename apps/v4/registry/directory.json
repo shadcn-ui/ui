@@ -2533,6 +2533,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'><mask id='t-cutout'><rect width='24' height='24' fill='white'/><text x='12' y='18' text-anchor='middle' fill='black' font-size='18' font-weight='600' font-family='system-ui, sans-serif'>t</text></mask><circle cx='12' cy='12' r='11' fill='var(--foreground)' mask='url(#t-cutout)'/></svg>"
   },
   {
+    "name": "@tessli",
+    "homepage": "https://tessli.vercel.app/library",
+    "url": "https://tessli.vercel.app/r/{name}.json",
+    "description": "Sections, pages and components on shadcn/ui primitives, each with notes on when to use it, when not to, the UI rules it follows and the generic default it replaces. Also installs a compact rules file, TESSLI.md.",
+    "author": "Online Scope",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='var(--foreground)' d='M7 7h18v5.2h-1.1c-.4-2-1.3-2.9-3.4-2.9h-2.6v13.3c0 1.3.6 1.8 2.3 1.9v1h-8.4v-1c1.7-.1 2.3-.6 2.3-1.9V9.3h-2.6c-2.1 0-3 .9-3.4 2.9H7z'/><circle cx='25' cy='23.9' r='2.1' fill='#f05217'/></svg>"
+  },
+  {
     "name": "@tetra-ui",
     "homepage": "https://tetra-ui.com",
     "url": "https://tetra-ui.com/r/{name}.json",
