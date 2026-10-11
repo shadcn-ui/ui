@@ -1,21 +1,21 @@
 import { existsSync } from "fs"
 import path from "path"
 import { resolveProjectPreset } from "@/src/preset/resolve"
-import { SHADCN_URL } from "@/src/registry/constants"
-import { getBase, getConfig } from "@/src/utils/get-config"
+import { handleError } from "@/src/utils/handle-error"
+import { getBase, getConfig } from "@shadcn/registry/internal/get-config"
 import {
   formatMonorepoMessage,
   getMonorepoTargets,
   isMonorepoRoot,
-} from "@/src/utils/get-monorepo-info"
+} from "@shadcn/registry/internal/get-monorepo-info"
 import {
   getProjectComponents,
   getProjectInfo,
   type ProjectInfo,
-} from "@/src/utils/get-project-info"
-import { handleError } from "@/src/utils/handle-error"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
+} from "@shadcn/registry/internal/get-project-info"
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { logger } from "@shadcn/registry/internal/logger"
+import { SHADCN_URL } from "@shadcn/registry/internal/registry/constants"
 import { Command } from "commander"
 
 const CODE_BASE = `${SHADCN_URL}/code/apps/v4/registry/bases`

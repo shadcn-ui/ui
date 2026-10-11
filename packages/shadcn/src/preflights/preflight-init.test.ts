@@ -23,27 +23,27 @@ vi.mock("@/src/commands/init", () => ({
   }),
 }))
 
-vi.mock("@/src/utils/get-project-info", () => ({
+vi.mock("@shadcn/registry/internal/get-project-info", () => ({
   getProjectInfo: mockedGetProjectInfo,
 }))
 
-vi.mock("@/src/utils/get-monorepo-info", () => ({
+vi.mock("@shadcn/registry/internal/get-monorepo-info", () => ({
   formatMonorepoMessage: vi.fn(),
   getMonorepoTargets: vi.fn().mockResolvedValue([]),
   isMonorepoRoot: vi.fn().mockResolvedValue(false),
 }))
 
-vi.mock("@/src/utils/highlighter", () => ({
+vi.mock("@shadcn/registry/internal/highlighter", () => ({
   highlighter: {
     info: (value: string) => value,
   },
 }))
 
-vi.mock("@/src/utils/logger", () => ({
+vi.mock("@shadcn/registry/internal/logger", () => ({
   logger: mockedLogger,
 }))
 
-vi.mock("@/src/utils/spinner", () => ({
+vi.mock("@shadcn/registry/internal/spinner", () => ({
   spinner: vi.fn().mockReturnValue({
     start: vi.fn().mockReturnValue({
       succeed: vi.fn(),

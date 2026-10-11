@@ -11,7 +11,7 @@ import {
 } from "@/components/page-header"
 import { PageNav } from "@/components/page-nav"
 import { ThemeSelector } from "@/components/theme-selector"
-import { Button } from "@/registry/new-york-v4/ui/button"
+import { Button } from "@/styles/radix-luma/ui/button"
 
 export const dynamic = "force-static"
 export const revalidate = false
@@ -56,10 +56,10 @@ export default function ExamplesLayout({
         <PageHeaderHeading className="max-w-4xl">{title}</PageHeaderHeading>
         <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
-          <Button asChild size="sm">
+          <Button asChild className="h-[35px]">
             <Link href="/docs/installation">Get Started</Link>
           </Button>
-          <Button asChild size="sm" variant="ghost">
+          <Button asChild variant="secondary">
             <Link href="/docs/components">View Components</Link>
           </Button>
         </PageActions>

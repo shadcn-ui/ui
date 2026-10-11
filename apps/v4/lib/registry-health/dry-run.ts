@@ -2,8 +2,19 @@ import { spawn, type ChildProcess } from "node:child_process"
 import { promises as fs } from "node:fs"
 import os from "node:os"
 import path from "node:path"
+import { stripVTControlCharacters } from "node:util"
 
-import type { RegistryDryRunResult } from "./monitor"
+import { DEFAULT_STYLE, type RegistryDryRunResult } from "./monitor"
+import { REGISTRY_DRY_RUN_FAILURE_MESSAGE_MAX_LENGTH } from "./schema"
+
+const MAX_CAPTURED_OUTPUT_LENGTH = 4000
+
+function getFailureMessage(output: string) {
+  const message = stripVTControlCharacters(output).replace(/\s+/g, " ").trim()
+  return message
+    ? message.slice(-REGISTRY_DRY_RUN_FAILURE_MESSAGE_MAX_LENGTH)
+    : undefined
+}
 
 async function runLocalCliDryRun({
   namespace,
@@ -33,7 +44,7 @@ async function runLocalCliDryRun({
         JSON.stringify(
           {
             $schema: "https://ui.shadcn.com/schema.json",
-            style: "new-york",
+            style: DEFAULT_STYLE,
             rsc: true,
             tsx: true,
             tailwind: {
@@ -64,6 +75,22 @@ async function runLocalCliDryRun({
         path.join(temporaryDirectory, "package.json"),
         JSON.stringify({ private: true })
       ),
+      fs.writeFile(
+        path.join(temporaryDirectory, "tsconfig.json"),
+        JSON.stringify(
+          {
+            compilerOptions: {
+              baseUrl: ".",
+              paths: {
+                "@/*": ["./*"],
+              },
+              jsx: "preserve",
+            },
+          },
+          null,
+          2
+        )
+      ),
     ])
 
     return await new Promise<RegistryDryRunResult>((resolve) => {
@@ -81,12 +108,17 @@ async function runLocalCliDryRun({
         {
           cwd: temporaryDirectory,
           env: getDryRunEnvironment(temporaryDirectory),
-          stdio: "ignore",
+          stdio: ["ignore", "pipe", "pipe"],
         }
       )
       let completed = false
       let timedOut = false
+      let output = ""
       let forceKillTimeout: NodeJS.Timeout | undefined
+      const captureOutput = (chunk: Buffer | string) => {
+        const value = typeof chunk === "string" ? chunk : chunk.toString("utf8")
+        output = `${output}${value}`.slice(-MAX_CAPTURED_OUTPUT_LENGTH)
+      }
       const finish = (result: RegistryDryRunResult) => {
         if (completed) return
         completed = true
@@ -102,14 +134,19 @@ async function runLocalCliDryRun({
         }, killGraceMs)
       }, timeoutMs)
 
-      child.on("error", () =>
+      child.stdout?.on("data", captureOutput)
+      child.stderr?.on("data", captureOutput)
+      child.on("error", (error) => {
+        captureOutput(error.message)
+        const failureMessage = getFailureMessage(output)
         finish({
           success: false,
           failureCode: timedOut ? "timeout" : "spawn_error",
+          ...(failureMessage ? { failureMessage } : {}),
           durationMs: Date.now() - startedAt,
         })
-      )
-      child.on("exit", (code, signal) => {
+      })
+      child.on("close", (code, signal) => {
         const failureCode = timedOut
           ? "timeout"
           : code === 0
@@ -117,10 +154,13 @@ async function runLocalCliDryRun({
             : signal
               ? "terminated"
               : `exit_${code}`
+        const failureMessage =
+          code === 0 ? undefined : getFailureMessage(output)
 
         finish({
           success: !timedOut && code === 0,
           failureCode,
+          ...(failureMessage ? { failureMessage } : {}),
           durationMs: Date.now() - startedAt,
         })
       })
