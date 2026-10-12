@@ -1266,6 +1266,13 @@
     "logo": "<svg fill='none' viewBox='0 0 116 116' xmlns='http://www.w3.org/2000/svg'><title>Kibo UI</title><g fill='currentColor'><path clip-rule='evenodd' d='m29.3378 0h87.0002v87l-29.0002 29v-87h-87.000031zm-29.000031 95.7389v-37.7389h37.738831zm58.000031 20.2611h-37.249l37.249-37.2488z' fill-rule='evenodd'></path></g></svg>"
   },
   {
+    "name": "@kind-ui",
+    "homepage": "https://kindui.dev/charts/",
+    "url": "https://kindui.dev/r/{name}.json",
+    "description": "Editable React chart compositions backed by Kind UI Core, with explicit data, accessible interactions, and consumer-controlled animation.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 18V6m0 12h16M8 14l4-6 4 3 4-7'/></svg>"
+  },
+  {
     "name": "@kinetic",
     "homepage": "https://kinetic.itsjay.in",
     "url": "https://kinetic.itsjay.in/r/{name}.json",
