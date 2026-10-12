@@ -38,13 +38,14 @@ Add the **`release: beta`** or **`release: rc`** label to a PR. The `prerelease`
 1. Verifies the branch has changesets (a label on the version PR is a no-op, since it consumed them).
 2. Runs `changeset version --snapshot <channel>` — stamps a unique `0.0.0-<channel>-<timestamp>` on each changeset'd package.
 3. Builds and runs `changeset publish --tag <channel> --no-git-tag`.
-4. Uploads the published package list; `prerelease-comment.yml` posts a `pnpm dlx` install line per package and removes the label.
+4. Uploads the published package list; `prerelease-comment.yml` posts an install line per package (`pnpm dlx` for packages with a `bin`, `pnpm add` for libraries) and removes the label.
 
 The label selects the **dist-tag/channel**; the **changesets on the branch** select which packages publish. Snapshots are timestamped, so they never touch `latest` and never collide.
 
 ```sh
 # Install a snapshot from the PR comment, e.g.:
-pnpm dlx @shadcn/react@0.0.0-beta-20260624120000
+pnpm dlx shadcn@0.0.0-beta-20260624120000          # CLI (has a bin)
+pnpm add @shadcn/react@0.0.0-beta-20260624120000   # library
 ```
 
 ## 4. Prerelease trains (sustained `-beta.N` / `-rc.N`)

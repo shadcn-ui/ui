@@ -1,9 +1,9 @@
 import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
-import { Config } from "@shadcn/registry/internal/utils/get-config"
-import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
-import { spinner } from "@shadcn/registry/internal/utils/spinner"
+import { Config } from "@shadcn/registry/internal/get-config"
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { spinner } from "@shadcn/registry/internal/spinner"
 import {
   ObjectLiteralExpression,
   Project,

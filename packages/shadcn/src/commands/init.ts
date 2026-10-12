@@ -25,6 +25,33 @@ import {
 import { handleError } from "@/src/utils/handle-error"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { getRegistryStyles } from "@/src/utils/registry-api"
+import { addComponents } from "@shadcn/registry/internal/add-components"
+import { loadEnvFiles } from "@shadcn/registry/internal/env-loader"
+import {
+  DEFAULT_COMPONENTS,
+  DEFAULT_TAILWIND_CONFIG,
+  DEFAULT_TAILWIND_CSS,
+  DEFAULT_UTILS,
+  explorer,
+  getBase,
+  getConfig,
+  getWorkspaceConfig,
+  resolveConfigPaths,
+  type Config,
+} from "@shadcn/registry/internal/get-config"
+import {
+  formatMonorepoMessage,
+  getMonorepoTargets,
+  isMonorepoRoot,
+} from "@shadcn/registry/internal/get-monorepo-info"
+import {
+  getProjectComponents,
+  getProjectConfig,
+  getProjectInfo,
+  getProjectTailwindVersionFromConfig,
+} from "@shadcn/registry/internal/get-project-info"
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { logger } from "@shadcn/registry/internal/logger"
 import {
   decodePreset,
   isPresetBase,
@@ -40,34 +67,7 @@ import {
 import { clearRegistryContext } from "@shadcn/registry/internal/registry/context"
 import { registryConfigSchema } from "@shadcn/registry/internal/registry/schema"
 import { isUrl } from "@shadcn/registry/internal/registry/utils"
-import { addComponents } from "@shadcn/registry/internal/utils/add-components"
-import { loadEnvFiles } from "@shadcn/registry/internal/utils/env-loader"
-import {
-  DEFAULT_COMPONENTS,
-  DEFAULT_TAILWIND_CONFIG,
-  DEFAULT_TAILWIND_CSS,
-  DEFAULT_UTILS,
-  explorer,
-  getBase,
-  getConfig,
-  getWorkspaceConfig,
-  resolveConfigPaths,
-  type Config,
-} from "@shadcn/registry/internal/utils/get-config"
-import {
-  formatMonorepoMessage,
-  getMonorepoTargets,
-  isMonorepoRoot,
-} from "@shadcn/registry/internal/utils/get-monorepo-info"
-import {
-  getProjectComponents,
-  getProjectConfig,
-  getProjectInfo,
-  getProjectTailwindVersionFromConfig,
-} from "@shadcn/registry/internal/utils/get-project-info"
-import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
-import { logger } from "@shadcn/registry/internal/utils/logger"
-import { spinner } from "@shadcn/registry/internal/utils/spinner"
+import { spinner } from "@shadcn/registry/internal/spinner"
 import { rawConfigSchema } from "@shadcn/registry/schema"
 import { Command } from "commander"
 import deepmerge from "deepmerge"

@@ -142,7 +142,6 @@ export const registryItemCssSchema = z.record(z.string(), cssValueSchema)
 
 export const registryItemEnvVarsSchema = z.record(z.string(), z.string())
 
-// Font metadata schema for registry:font items.
 export const registryItemFontSchema = z.object({
   family: z.string(),
   provider: z.literal("google"),
@@ -154,7 +153,6 @@ export const registryItemFontSchema = z.object({
   dependency: z.string().optional(),
 })
 
-// Common fields shared by all registry items.
 export const registryItemCommonSchema = z.object({
   $schema: z.string().optional(),
   extends: z.string().optional(),
@@ -192,10 +190,8 @@ export const registryItemSchema = z.discriminatedUnion("type", [
 
 export type RegistryItem = z.infer<typeof registryItemSchema>
 
-// Helper type for registry:base items specifically.
 export type RegistryBaseItem = Extract<RegistryItem, { type: "registry:base" }>
 
-// Helper type for registry:font items specifically.
 export type RegistryFontItem = Extract<RegistryItem, { type: "registry:font" }>
 
 // Pagination metadata returned by registries that implement dynamic search.

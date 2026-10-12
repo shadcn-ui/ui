@@ -18,6 +18,18 @@ import {
   withFileBackup,
 } from "@/src/utils/file-helper"
 import { handleError } from "@/src/utils/handle-error"
+import { loadEnvFiles } from "@shadcn/registry/internal/env-loader"
+import {
+  getBase,
+  getWorkspaceConfig,
+  type Config,
+} from "@shadcn/registry/internal/get-config"
+import {
+  getProjectComponents,
+  getProjectInfo,
+} from "@shadcn/registry/internal/get-project-info"
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { logger } from "@shadcn/registry/internal/logger"
 import {
   decodePreset,
   isPresetCode,
@@ -27,18 +39,6 @@ import { SHADCN_URL } from "@shadcn/registry/internal/registry/constants"
 import { clearRegistryContext } from "@shadcn/registry/internal/registry/context"
 import { registryConfigSchema } from "@shadcn/registry/internal/registry/schema"
 import { isUrl } from "@shadcn/registry/internal/registry/utils"
-import { loadEnvFiles } from "@shadcn/registry/internal/utils/env-loader"
-import {
-  getBase,
-  getWorkspaceConfig,
-  type Config,
-} from "@shadcn/registry/internal/utils/get-config"
-import {
-  getProjectComponents,
-  getProjectInfo,
-} from "@shadcn/registry/internal/utils/get-project-info"
-import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
-import { logger } from "@shadcn/registry/internal/utils/logger"
 import { Command } from "commander"
 import fs from "fs-extra"
 import prompts from "prompts"

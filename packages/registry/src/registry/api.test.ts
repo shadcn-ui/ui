@@ -1,6 +1,7 @@
 import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
+import { getConfig } from "@/src/get-config"
 import { BUILTIN_REGISTRIES, REGISTRY_URL } from "@/src/registry/constants"
 import {
   ConfigParseError,
@@ -16,7 +17,6 @@ import {
   RegistryValidationError,
 } from "@/src/registry/errors"
 import { getFixturesDir, withTempDir, writeFiles } from "@/src/test-helpers"
-import { getConfig } from "@/src/utils/get-config"
 import { http, HttpResponse } from "msw"
 import { setupServer } from "msw/node"
 import {
@@ -45,7 +45,7 @@ import {
 import { RegistriesIndexParseError } from "./errors"
 import { registryItemSchema } from "./schema"
 
-vi.mock("@/src/utils/logger", () => ({
+vi.mock("@/src/logger", () => ({
   logger: {
     error: vi.fn(),
     break: vi.fn(),

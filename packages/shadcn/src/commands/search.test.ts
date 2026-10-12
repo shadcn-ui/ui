@@ -1,6 +1,6 @@
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
+import { getConfig } from "@shadcn/registry/internal/get-config"
 import { searchRegistries } from "@shadcn/registry/internal/registry/search"
-import { getConfig } from "@shadcn/registry/internal/utils/get-config"
 import fsExtra from "fs-extra"
 import { beforeEach, describe, expect, it, vi } from "vitest"
 
@@ -69,11 +69,11 @@ vi.mock("fs-extra", () => ({
   },
 }))
 
-vi.mock("@shadcn/registry/internal/utils/env-loader", () => ({
+vi.mock("@shadcn/registry/internal/env-loader", () => ({
   loadEnvFiles: vi.fn(),
 }))
 
-vi.mock("@shadcn/registry/internal/utils/get-config", () => ({
+vi.mock("@shadcn/registry/internal/get-config", () => ({
   createConfig: vi.fn(() => baseConfig),
   getConfig: vi.fn(() => null),
 }))

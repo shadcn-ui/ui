@@ -4,8 +4,8 @@ import * as path from "path"
 import { afterEach, beforeEach, describe, expect, it, test, vi } from "vitest"
 import { z } from "zod"
 
-import { Config } from "../utils/get-config"
-import { ProjectInfo } from "../utils/get-project-info"
+import { Config } from "../get-config"
+import { ProjectInfo } from "../get-project-info"
 import { registryItemFileSchema } from "./schema"
 import {
   canDeduplicateFiles,
@@ -406,14 +406,14 @@ describe("isUniversalRegistryItem", () => {
   })
 })
 
-vi.mock("../utils/get-project-info", () => ({
+vi.mock("../get-project-info", () => ({
   getProjectInfo: vi.fn().mockResolvedValue({
     isSrcDir: false,
     framework: { name: "next-app" },
   }),
 }))
 
-vi.mock("../utils/resolve-file-path", () => ({
+vi.mock("../resolve-file-path", () => ({
   findCommonRoot: vi.fn().mockImplementation(() => ""),
   resolveFilePath: vi.fn().mockImplementation((file) => {
     const typeMap: Record<string, string> = {
@@ -1126,6 +1126,33 @@ export { Lazy, required, fsExtra }
         "files": [
           {
             "path": "components/barrel.tsx",
+            "target": "",
+            "type": "registry:component",
+          },
+        ],
+      }
+    `)
+  })
+
+  it("reads the imports around a line it cannot parse", async () => {
+    await writeFiles({
+      "components/broken.tsx": `import { Slot } from "@radix-ui/react-slot"\n# Not code\nimport { helper } from "./helper"\n`,
+      "components/helper.ts": `export const helper = 1\n`,
+    })
+
+    expect(await crawl("components/broken.tsx")).toMatchInlineSnapshot(`
+      {
+        "dependencies": [
+          "@radix-ui/react-slot",
+        ],
+        "files": [
+          {
+            "path": "components/broken.tsx",
+            "target": "",
+            "type": "registry:component",
+          },
+          {
+            "path": "components/helper.ts",
             "target": "",
             "type": "registry:component",
           },

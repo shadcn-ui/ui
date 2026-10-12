@@ -11,8 +11,8 @@ on:
       - "packages/shadcn/src/commands/init.ts"
       - "packages/shadcn/src/templates/**"
       - "packages/shadcn/src/utils/create-project.ts"
-      - "packages/registry/src/utils/get-monorepo-info.ts"
-      - "packages/registry/src/utils/get-package-manager.ts"
+      - "packages/registry/src/get-monorepo-info.ts"
+      - "packages/registry/src/get-package-manager.ts"
       - "pnpm-lock.yaml"
       - "templates/**"
 

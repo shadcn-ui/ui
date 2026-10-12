@@ -2,7 +2,7 @@
 import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
-import { createConfig } from "@/src/utils/get-config"
+import { createConfig } from "@/src/get-config"
 import { http, HttpResponse } from "msw"
 import { setupServer } from "msw/node"
 import {
@@ -31,7 +31,7 @@ vi.mock("./context", () => ({
   withRegistryContext: vi.fn((callback: () => unknown) => callback()),
 }))
 
-vi.mock("@/src/utils/logger", () => ({
+vi.mock("@/src/logger", () => ({
   logger: {
     error: vi.fn(),
     break: vi.fn(),

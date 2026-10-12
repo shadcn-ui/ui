@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
     "tailwindcss": "^4"
   },
   "devDependencies": {

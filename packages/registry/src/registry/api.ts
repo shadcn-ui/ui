@@ -1,5 +1,7 @@
 import { existsSync } from "fs"
 import path from "path"
+import { Config, explorer } from "@/src/get-config"
+import { createJsonConfigExplorer } from "@/src/json-config"
 import { resolveGitHubRegistrySource } from "@/src/registry/address"
 import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { configWithDefaults } from "@/src/registry/config"
@@ -34,8 +36,6 @@ import {
   registrySchema,
 } from "@/src/registry/schema"
 import { isUrl } from "@/src/registry/utils"
-import { Config, explorer } from "@/src/utils/get-config"
-import { createJsonConfigExplorer } from "@/src/utils/json-config"
 import { z } from "zod"
 
 const packageRegistriesExplorer = createJsonConfigExplorer({

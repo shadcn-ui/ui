@@ -1,18 +1,19 @@
 import * as fs from "fs/promises"
-import { tmpdir } from "os"
 import * as path from "path"
+import { getImportDeclarationSources } from "@/src/codemod/import-declarations"
+import { ProjectInfo } from "@/src/get-project-info"
 import { configSchema, registryItemSchema } from "@/src/registry/schema"
-import { ProjectInfo } from "@/src/utils/get-project-info"
 import {
   isLocalAliasImport,
   resolveImportWithMetadata,
-} from "@/src/utils/resolve-import"
-import { Project, ScriptKind } from "ts-morph"
+} from "@/src/resolve-import"
+import postcss from "postcss"
 import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"
 
 // The `shadcn build` crawler. It lives apart from registry/utils, which the
-// read-only API imports, so that importing those helpers does not load ts-morph.
+// read-only API imports, so that a bundle of those helpers leaves out Babel
+// and postcss.
 
 const FILE_EXTENSIONS_FOR_LOOKUP = [".tsx", ".ts", ".jsx", ".js", ".css"]
 const FILE_PATH_SKIP_LIST = ["lib/utils.ts"]
@@ -21,16 +22,11 @@ const DEPENDENCY_SKIP_LIST = [
   /^(node|jsr|npm):.*$/, // Matches node:, jsr:, and npm: prefixed modules
 ]
 
-const project = new Project({
-  compilerOptions: {},
-})
-
 // This returns the dependency from the module specifier.
 // Here dependency means an npm package.
 export function getDependencyFromModuleSpecifier(
   moduleSpecifier: string
 ): string | null {
-  // Skip if the dependency matches any pattern in the skip list
   if (DEPENDENCY_SKIP_LIST.some((pattern) => pattern.test(moduleSpecifier))) {
     return null
   }
@@ -65,12 +61,10 @@ export async function recursivelyResolveFileImports(
     resolvedFilePath
   )
 
-  // Skip if the file is in the skip list
   if (FILE_PATH_SKIP_LIST.includes(relativeRegistryFilePath)) {
     return { dependencies: [], files: [] }
   }
 
-  // Skip if the file extension is not one of the supported extensions
   const fileExtension = path.extname(filePath)
   if (!FILE_EXTENSIONS_FOR_LOOKUP.includes(fileExtension)) {
     return { dependencies: [], files: [] }
@@ -84,15 +78,10 @@ export async function recursivelyResolveFileImports(
 
   const stat = await fs.stat(resolvedFilePath)
   if (!stat.isFile()) {
-    // Optionally log or handle this case
     return { dependencies: [], files: [] }
   }
 
   const content = await fs.readFile(resolvedFilePath, "utf-8")
-  const tempFile = await createTempSourceFile(path.basename(resolvedFilePath))
-  const sourceFile = project.createSourceFile(tempFile, content, {
-    scriptKind: ScriptKind.TSX,
-  })
   const tsConfig = await loadConfig(config.resolvedPaths.cwd)
   if (tsConfig.resultType === "failed") {
     return { dependencies: [], files: [] }
@@ -101,7 +90,6 @@ export async function recursivelyResolveFileImports(
   const files: z.infer<typeof registryItemSchema>["files"] = []
   const dependencies = new Set<string>()
 
-  // Add the original file first
   const fileType = determineFileType(filePath)
   const originalFile = {
     path: relativeRegistryFilePath,
@@ -110,18 +98,17 @@ export async function recursivelyResolveFileImports(
   }
   files.push(originalFile)
 
-  // 1. Find all import statements in the file.
-  const importStatements = sourceFile.getImportDeclarations()
-  for (const importStatement of importStatements) {
-    const moduleSpecifier = importStatement.getModuleSpecifierValue()
-
+  const moduleSpecifiers =
+    fileExtension === ".css"
+      ? getCssImportSpecifiers(content)
+      : getImportDeclarationSources(content).map((source) => source.value)
+  for (const moduleSpecifier of moduleSpecifiers) {
     const isRelativeImport = moduleSpecifier.startsWith(".")
     const isAliasImport = isLocalAliasImport(
       moduleSpecifier,
       projectInfo.aliasPrefix
     )
 
-    // If not a local import, add to the dependencies array.
     if (!isAliasImport && !isRelativeImport) {
       const dependency = getDependencyFromModuleSpecifier(moduleSpecifier)
       if (dependency) {
@@ -148,8 +135,6 @@ export async function recursivelyResolveFileImports(
       continue
     }
 
-    // Check if the probable import path has a file extension.
-    // Try each extension until we find a file that exists.
     const hasExtension = path.extname(probableImportFilePath)
     if (!hasExtension) {
       for (const ext of FILE_EXTENSIONS_FOR_LOOKUP) {
@@ -169,7 +154,6 @@ export async function recursivelyResolveFileImports(
       probableImportFilePath
     )
 
-    // Skip if we've already processed this file or if it's in the skip list
     if (
       processedFiles.has(nestedRelativeRegistryFilePath) ||
       FILE_PATH_SKIP_LIST.includes(nestedRelativeRegistryFilePath)
@@ -191,7 +175,6 @@ export async function recursivelyResolveFileImports(
 
     files.push(file)
 
-    // Recursively process the imported file, passing the shared processedFiles set
     const nestedResults = await recursivelyResolveFileImports(
       nestedRelativeRegistryFilePath,
       config,
@@ -200,7 +183,6 @@ export async function recursivelyResolveFileImports(
     )
 
     if (nestedResults.files) {
-      // Only add files that haven't been processed yet
       for (const file of nestedResults.files) {
         if (!processedFiles.has(file.path)) {
           processedFiles.add(file.path)
@@ -214,7 +196,6 @@ export async function recursivelyResolveFileImports(
     }
   }
 
-  // Deduplicate files by path
   const uniqueFiles = Array.from(
     new Map(files.map((file) => [file.path, file])).values()
   )
@@ -225,9 +206,25 @@ export async function recursivelyResolveFileImports(
   }
 }
 
-async function createTempSourceFile(filename: string) {
-  const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
-  return path.join(dir, filename)
+// The imports ts-morph found in a CSS file, which it parsed as TSX: each
+// top-level `@import "x"` or `@import 'x'` is an import declaration of x
+// there, whatever follows the string, and `@import url(x)` is not. CSS that
+// postcss cannot parse has none.
+function getCssImportSpecifiers(content: string) {
+  let root: postcss.Root
+  try {
+    root = postcss.parse(content)
+  } catch {
+    return []
+  }
+
+  return root.nodes.flatMap((node) => {
+    const specifier =
+      node.type === "atrule" && node.name === "import"
+        ? /^(["'])(.*?)\1/.exec(node.params)?.[2]
+        : undefined
+    return specifier === undefined ? [] : [specifier]
+  })
 }
 
 // This is a bit tricky to accurately determine.
@@ -253,5 +250,3 @@ function determineFileType(
 
   return "registry:component"
 }
-
-// Additional utility functions for local file support
