@@ -1,0 +1,141 @@
+---
+title: Sources
+description: Displays the sources the assistant used as a list of links.
+base: radix
+component: true
+---
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="sources-demo"
+  previewClassName="h-auto"
+/>
+
+Use Sources to list the links an answer used. The row says how many sources there are, and each source inside it is a link.
+
+It is the shadcn/ui version of Sources from [AI Elements](https://ai-sdk.dev/elements/overview). Instead of a component of its own, it is a composition of [Trace](/docs/components/radix/trace), so it looks and behaves like every other row in the conversation.
+
+## Installation
+
+Sources is built with the [Trace](/docs/components/radix/trace) component.
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add trace
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the required shadcn/ui dependencies:</Step>
+
+```bash
+npx shadcn@latest add collapsible
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="trace"
+  title="components/ui/trace.tsx"
+  styleName="radix-rhea"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Trace,
+  TraceCollapsible,
+  TraceCollapsibleContent,
+  TraceCollapsibleTrigger,
+  TraceIcon,
+  TraceLine,
+  TraceTitle,
+} from "@/components/ui/trace"
+```
+
+```tsx showLineNumbers
+<Trace>
+  <TraceCollapsible>
+    <TraceCollapsibleTrigger>
+      <TraceLine>
+        <TraceIcon>
+          <GlobeIcon />
+        </TraceIcon>
+        <TraceTitle>Used {sources.length} sources</TraceTitle>
+      </TraceLine>
+    </TraceCollapsibleTrigger>
+    <TraceCollapsibleContent>
+      <Trace>
+        {sources.map((source) => (
+          <a
+            key={source.url}
+            href={source.url}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <TraceLine>
+              <TraceIcon>
+                <GlobeIcon />
+              </TraceIcon>
+              <TraceTitle>
+                {source.title ?? new URL(source.url).hostname}
+                <span className="sr-only"> (opens in a new tab)</span>
+              </TraceTitle>
+              <TraceIcon>
+                <ArrowUpRightIcon />
+              </TraceIcon>
+            </TraceLine>
+          </a>
+        ))}
+      </Trace>
+    </TraceCollapsibleContent>
+  </TraceCollapsible>
+</Trace>
+```
+
+## Basic
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="sources-basic"
+  previewClassName="h-auto"
+/>
+
+## AI SDK
+
+Collect the `source-url` parts of a message, dedupe them by `url`, and render them after the text.
+
+```tsx showLineNumbers
+const sources = message.parts
+  .filter((part) => part.type === "source-url")
+  .filter(
+    (part, index, all) =>
+      all.findIndex((other) => other.url === part.url) === index
+  )
+```
+
+`title` is optional on a `source-url` part. Fall back to the URL's hostname.
+
+## API Reference
+
+See [Trace](/docs/components/radix/trace#api-reference).

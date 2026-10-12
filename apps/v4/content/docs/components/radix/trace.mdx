@@ -1,0 +1,418 @@
+---
+title: Trace
+description: Displays one thing the assistant did or is doing as a quiet row, with optional detail the reader can expand, follow or open.
+base: radix
+component: true
+---
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="trace-demo"
+  previewClassName="h-auto"
+/>
+
+An assistant does more than write text. It thinks, searches, reads files, runs commands and calls tools, and each of those needs a place in the conversation. Most chat UIs build a component for each one: a reasoning panel, a tool card, a sources list, a task list. Each ends up with its own shape, its own chevron and its own idea of what "running" looks like.
+
+To fix this, we created `Trace`. Each of those is one line: an icon, a sentence that says what happened, and an optional status. When there is more to see, the line expands, links out or opens a sheet. Reasoning, tool calls, sources and plans are all compositions of the same few parts.
+
+Use `Trace` for what the assistant did. Use [Message](/docs/components/radix/message) for what it said, and [Marker](/docs/components/radix/marker) for notes and dividers between turns.
+
+## Built with Trace
+
+These components are compositions of Trace. Each page shows the code to copy.
+
+| Component                                                   | Shows                                                 |
+| ----------------------------------------------------------- | ----------------------------------------------------- |
+| [Agent](/docs/components/radix/agent)                       | A sub-agent run with its own tool calls.              |
+| [Chain of Thought](/docs/components/radix/chain-of-thought) | A summary that expands into the steps behind it.      |
+| [Commit](/docs/components/radix/commit)                     | A commit and its changed files.                       |
+| [Plan](/docs/components/radix/plan)                         | A plan with done, current and pending steps.          |
+| [Queue](/docs/components/radix/queue)                       | A todo list the agent works through.                  |
+| [Reasoning](/docs/components/radix/reasoning)               | The model's thinking while it streams.                |
+| [Sources](/docs/components/radix/sources)                   | The links an answer used.                             |
+| [Stack Trace](/docs/components/radix/stack-trace)           | An error that expands to its frames.                  |
+| [Task](/docs/components/radix/task)                         | A task and the files it touched.                      |
+| [Terminal](/docs/components/radix/terminal)                 | A command and its output.                             |
+| [Test Results](/docs/components/radix/test-results)         | A test run, its suites and failures.                  |
+| [Tool](/docs/components/radix/tool)                         | An AI SDK tool call with its state, input and output. |
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add trace
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the required shadcn/ui dependencies:</Step>
+
+```bash
+npx shadcn@latest add collapsible
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="trace"
+  title="components/ui/trace.tsx"
+  styleName="radix-rhea"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Trace,
+  TraceCollapsible,
+  TraceCollapsibleContent,
+  TraceCollapsibleTrigger,
+  TraceIcon,
+  TraceLine,
+  TraceTitle,
+} from "@/components/ui/trace"
+```
+
+```tsx showLineNumbers
+<Trace>
+  <TraceLine>
+    <TraceIcon>
+      <SearchIcon />
+    </TraceIcon>
+    <TraceTitle>Searched for minimumReleaseAge</TraceTitle>
+  </TraceLine>
+  <TraceCollapsible>
+    <TraceCollapsibleTrigger>
+      <TraceLine>
+        <TraceIcon>
+          <TerminalIcon />
+        </TraceIcon>
+        <TraceTitle>Ran node --version</TraceTitle>
+      </TraceLine>
+    </TraceCollapsibleTrigger>
+    <TraceCollapsibleContent>v24.18.0</TraceCollapsibleContent>
+  </TraceCollapsible>
+</Trace>
+```
+
+## Composition
+
+```text
+Trace
+├── TraceLine
+│   ├── TraceIcon
+│   ├── TraceTitle
+│   ├── TraceDescription
+│   └── TraceIcon
+├── TraceCollapsible
+│   ├── TraceCollapsibleTrigger
+│   │   └── TraceLine
+│   └── TraceCollapsibleContent
+└── A link, Sheet or Dialog
+    └── The anchor or trigger
+        └── TraceLine
+```
+
+`TraceLine` is always the line. To make a line do something, wrap it in that thing's trigger.
+
+## Features
+
+- **It reads as one sentence.** A `TraceLine` is an icon and a title on one line. The title truncates. A `TraceDescription` holds a count or a duration and does not.
+- **It stays quiet.** Rows are muted text with no border or background, so they sit between paragraphs without competing with the answer.
+- **It leaves behavior to the wrapper.** Wrap the line in a collapsible trigger, a link, or the trigger of a Dialog, Sheet, Drawer or Popover. The trigger stays a real button or anchor.
+- **It shows status without extra UI.** `"running"` shimmers the title, `"error"` turns the row destructive and `"pending"` fades it.
+- **It nests.** A collapsible row can hold another `Trace`, so a summary expands into steps and a step expands into its output.
+- **It maps to the AI SDK.** Reasoning, tool and source parts each render as a row. See [Thinking](#thinking) and [Tool Calls](#tool-calls).
+
+## Static
+
+A row with nothing to show is a `TraceLine`. It is not a button and not a tab stop.
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="trace-static"
+  previewClassName="h-auto"
+/>
+
+## Status
+
+Set `status` on `TraceLine`. Omit it when the work is done.
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="trace-status"
+  previewClassName="h-auto"
+/>
+
+| Status      | Use for                                                                       |
+| ----------- | ----------------------------------------------------------------------------- |
+| none        | Work that is done: "Ran pnpm install".                                        |
+| `"error"`   | Work that failed. Say so in the title: "Failed to run pnpm lint".             |
+| `"running"` | Work in progress. Write the title in the present tense: "Running pnpm build". |
+| `"pending"` | Work that has not started, such as a plan step: "Run pnpm test".              |
+
+## Description
+
+Put secondary text such as a diff stat, a duration or a count in a `TraceDescription` after the `TraceTitle`. It does not truncate.
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="trace-description"
+  previewClassName="h-auto"
+/>
+
+## Expand
+
+`TraceCollapsibleTrigger` opens and closes `TraceCollapsibleContent`. Put the `TraceLine` inside the trigger.
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="trace-expand"
+  previewClassName="h-auto"
+/>
+
+## Open State
+
+Rows start closed. Use `defaultOpen` on `TraceCollapsible` to start open, or `open` with `onOpenChange` to control a row.
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="trace-open"
+  previewClassName="h-auto"
+/>
+
+To open a row while it streams and let the reader's click win, pass `open ?? running`.
+
+```tsx showLineNumbers
+const [open, setOpen] = React.useState<boolean>()
+
+<TraceCollapsible
+  open={open ?? running}
+  onOpenChange={setOpen}
+>
+  <TraceCollapsibleTrigger>
+    <TraceLine status={running ? "running" : undefined}>…</TraceLine>
+  </TraceCollapsibleTrigger>
+  <TraceCollapsibleContent>{text}</TraceCollapsibleContent>
+</TraceCollapsible>
+```
+
+## Link
+
+Wrap the `TraceLine` in an anchor. For a new tab, use an arrow-up-right icon and sr-only "(opens in a new tab)".
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="trace-link"
+  previewClassName="h-auto"
+/>
+
+```tsx showLineNumbers
+<a href="https://docs.astro.build" target="_blank" rel="noreferrer">
+  <TraceLine>
+    <TraceTitle>
+      Install Astro
+      <span className="sr-only"> (opens in a new tab)</span>
+    </TraceTitle>
+    <TraceIcon>
+      <ArrowUpRightIcon />
+    </TraceIcon>
+  </TraceLine>
+</a>
+```
+
+## Dialog
+
+Wrap the `TraceLine` in the dialog's trigger. The dialog owns its open state, Escape and focus return.
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="trace-dialog"
+  previewClassName="h-auto"
+/>
+
+```tsx showLineNumbers
+<Dialog>
+  <DialogTrigger>
+    <TraceLine>
+      <TraceTitle>Searched the web for cache keys</TraceTitle>
+      <TraceIcon>
+        <ChevronRightIcon />
+      </TraceIcon>
+    </TraceLine>
+  </DialogTrigger>
+  <DialogContent>…</DialogContent>
+</Dialog>
+```
+
+**Note:** `<DialogTrigger asChild><TraceLine /></DialogTrigger>` renders the trigger as a span, which is not a button.
+
+## Sheet
+
+The same shape as the dialog. Drawer and Popover work the same way.
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="trace-sheet"
+  previewClassName="h-auto"
+/>
+
+## Group
+
+Put rows that sit next to each other in a `Trace`. It also styles any trigger or link that wraps a `TraceLine`.
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="trace-group"
+  previewClassName="h-auto"
+/>
+
+## Sources
+
+A collapsible row whose detail is a `Trace` of link rows.
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="trace-sources"
+  previewClassName="h-auto"
+/>
+
+## Steps
+
+Chain of thought and tasks are a collapsible row with step rows inside. Set the parent's status and title from its children.
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="trace-steps"
+  previewClassName="h-auto"
+/>
+
+## Whole Turn
+
+Three levels: the turn, a summary, and the rows. Text between steps sits between two `Trace` lists.
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="trace-turn"
+  previewClassName="h-auto"
+/>
+
+## Thinking
+
+Render a `reasoning` part from the AI SDK. The row is a `TraceLine` until the first text arrives. See [Open State](#open-state).
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="trace-thinking"
+  previewClassName="h-auto"
+/>
+
+## Tool Calls
+
+Render tool parts from the AI SDK. Map the tool part as in [Tool](/docs/components/radix/tool#states).
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="trace-tool-calls"
+  previewClassName="h-auto"
+/>
+
+## Accessibility
+
+`Trace` adds no roles of its own. Each row gets its semantics from the element that wraps its `TraceLine`.
+
+- A `TraceLine` on its own is a `span`. It is read as text and is not a tab stop.
+- A collapsible row's `TraceCollapsibleTrigger` is a button with `aria-expanded`. A link row is the anchor, and an overlay row is the button that opens the overlay, so keyboard and focus behavior come from that element.
+- `TraceIcon` is hidden from assistive tech, so the `TraceTitle` is the accessible name. Write it as a full sentence. For a link that opens a new tab, add sr-only "(opens in a new tab)" to the title.
+- `Trace` carries no list roles. Inside a [Message Scroller](/docs/components/radix/message-scroller), each row is announced once when it is added.
+- The shimmer on a running title stops when the reader prefers reduced motion. The tense of the title, such as "Running pnpm build", still says the row is running.
+- `TraceCollapsibleContent` mutes its text. Give a block with a muted background inside it `text-foreground` so it keeps its contrast. `CodeBlock` sets its own text color.
+
+## API Reference
+
+### Trace
+
+A list of rows. It also styles any trigger or link that wraps a `TraceLine`.
+
+| Prop        | Type     | Default | Description                              |
+| ----------- | -------- | ------- | ---------------------------------------- |
+| `className` | `string` | -       | Additional classes to apply to the list. |
+
+### TraceLine
+
+One line: an icon and a title. It is a span, so it is not a button or a tab stop. Wrap it in a trigger or a link to make it do something.
+
+| Prop        | Type                                | Default | Description                                                            |
+| ----------- | ----------------------------------- | ------- | ---------------------------------------------------------------------- |
+| `status`    | `"running" \| "error" \| "pending"` | -       | The state of the work the line reports. Omit it when the work is done. |
+| `className` | `string`                            | -       | Additional classes to apply to the line.                               |
+
+### TraceIcon
+
+A decorative icon slot, hidden from assistive tech. Before the title it names the action; after it, it is the indicator.
+
+| Prop        | Type     | Default | Description                                   |
+| ----------- | -------- | ------- | --------------------------------------------- |
+| `className` | `string` | -       | Additional classes to apply to the icon slot. |
+
+### TraceTitle
+
+One sentence on one line. It truncates and shimmers while the line is running.
+
+| Prop        | Type     | Default | Description                               |
+| ----------- | -------- | ------- | ----------------------------------------- |
+| `className` | `string` | -       | Additional classes to apply to the title. |
+
+### TraceDescription
+
+Secondary text after the title, such as a count or a duration. It does not truncate.
+
+| Prop        | Type     | Default | Description                                     |
+| ----------- | -------- | ------- | ----------------------------------------------- |
+| `className` | `string` | -       | Additional classes to apply to the description. |
+
+### TraceCollapsible
+
+A row that expands. It accepts the props of [`Collapsible`](/docs/components/radix/collapsible) except `asChild`.
+
+| Prop           | Type                      | Default | Description                                             |
+| -------------- | ------------------------- | ------- | ------------------------------------------------------- |
+| `open`         | `boolean`                 | -       | The controlled open state. Pass it with `onOpenChange`. |
+| `defaultOpen`  | `boolean`                 | `false` | Whether the row starts open.                            |
+| `onOpenChange` | `(open: boolean) => void` | -       | Called when the open state changes.                     |
+| `className`    | `string`                  | -       | Additional classes to apply to the row.                 |
+
+### TraceCollapsibleTrigger
+
+The button that opens and closes the row. Put a `TraceLine` inside it. It adds a chevron after the line.
+
+| Prop        | Type     | Default | Description                                 |
+| ----------- | -------- | ------- | ------------------------------------------- |
+| `className` | `string` | -       | Additional classes to apply to the trigger. |
+
+### TraceCollapsibleContent
+
+The detail of a row that expands.
+
+| Prop        | Type     | Default | Description                                 |
+| ----------- | -------- | ------- | ------------------------------------------- |
+| `className` | `string` | -       | Additional classes to apply to the content. |

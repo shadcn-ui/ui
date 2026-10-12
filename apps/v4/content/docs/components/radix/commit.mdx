@@ -1,0 +1,139 @@
+---
+title: Commit
+description: Displays a commit the assistant made, with the files it changed.
+base: radix
+component: true
+---
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="commit-demo"
+  previewClassName="h-auto"
+/>
+
+Use Commit to show a commit the assistant made. The commit message is the row. Open it for the changed files and their diffs.
+
+It is the shadcn/ui version of Commit from [AI Elements](https://ai-sdk.dev/elements/overview). Instead of a component of its own, it is a composition of [Trace](/docs/components/radix/trace), so it looks and behaves like every other row in the conversation.
+
+## Installation
+
+Commit is built with the [Trace](/docs/components/radix/trace) component.
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add trace code-block
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the required shadcn/ui dependencies:</Step>
+
+```bash
+npx shadcn@latest add collapsible code-block
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="trace"
+  title="components/ui/trace.tsx"
+  styleName="radix-rhea"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Trace,
+  TraceCollapsible,
+  TraceCollapsibleContent,
+  TraceCollapsibleTrigger,
+  TraceDescription,
+  TraceIcon,
+  TraceLine,
+  TraceTitle,
+} from "@/components/ui/trace"
+```
+
+```tsx showLineNumbers
+<Trace>
+  <TraceCollapsible>
+    <TraceCollapsibleTrigger>
+      <TraceLine>
+        <TraceIcon>
+          <GitCommitHorizontalIcon />
+        </TraceIcon>
+        <TraceTitle>Committed a1b2c3: Fix the login redirect</TraceTitle>
+      </TraceLine>
+    </TraceCollapsibleTrigger>
+    <TraceCollapsibleContent>
+      <Trace>
+        <TraceLine>
+          <TraceIcon>
+            <FilePenIcon />
+          </TraceIcon>
+          <TraceTitle>Edited app/login/page.tsx</TraceTitle>
+          <TraceDescription className="font-mono">+12 −3</TraceDescription>
+        </TraceLine>
+      </Trace>
+    </TraceCollapsibleContent>
+  </TraceCollapsible>
+</Trace>
+```
+
+## Basic
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="commit-basic"
+  previewClassName="h-auto"
+/>
+
+## Files
+
+Each changed file is a `TraceLine`. Say what changed in the title and pick the icon to match.
+
+| Change  | Title     | Icon            |
+| ------- | --------- | --------------- |
+| Added   | Added …   | `FilePlusIcon`  |
+| Edited  | Edited …  | `FilePenIcon`   |
+| Deleted | Deleted … | `FileMinusIcon` |
+
+## Diff
+
+Wrap a file line in a `SheetTrigger` to open its diff. Add a chevron-right `TraceIcon` at the end of the line.
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="commit-diff"
+  previewClassName="h-auto"
+/>
+
+See [Trace](/docs/components/radix/trace#dialog).
+
+## AI SDK
+
+Render a commit tool part. Map the tool part as in [Tool](/docs/components/radix/tool#states), with the verbs Committing, Committed and Failed to commit.
+
+## API Reference
+
+See [Trace](/docs/components/radix/trace#api-reference).

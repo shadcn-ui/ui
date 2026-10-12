@@ -62,6 +62,30 @@ export const Components: Record<string, any> = {
       ) || "accordion-rtl"
     return { default: mod.default || mod[exportName] }
   }),
+  "agent-basic": React.lazy(async () => {
+    const mod = await import("@/examples/base/agent-basic")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "agent-basic"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "agent-demo": React.lazy(async () => {
+    const mod = await import("@/examples/base/agent-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "agent-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "agent-running": React.lazy(async () => {
+    const mod = await import("@/examples/base/agent-running")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "agent-running"
+    return { default: mod.default || mod[exportName] }
+  }),
   "ai-sdk-helper-demo": React.lazy(async () => {
     const mod = await import("@/examples/base/ai-sdk-helper-demo")
     const exportName =
@@ -942,6 +966,22 @@ export const Components: Record<string, any> = {
       ) || "carousel-spacing"
     return { default: mod.default || mod[exportName] }
   }),
+  "chain-of-thought-basic": React.lazy(async () => {
+    const mod = await import("@/examples/base/chain-of-thought-basic")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "chain-of-thought-basic"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "chain-of-thought-demo": React.lazy(async () => {
+    const mod = await import("@/examples/base/chain-of-thought-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "chain-of-thought-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
   "chart-demo": React.lazy(async () => {
     const mod = await import("@/examples/base/chart-demo")
     const exportName =
@@ -1068,6 +1108,206 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "checkbox-table"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-actions": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-actions")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-actions"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-ansi": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-ansi")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-ansi"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-basic": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-basic")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-basic"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-chat": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-chat")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-chat"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-demo": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-destructive": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-destructive")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-destructive"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-diff": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-diff")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-diff"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-floating-actions": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-floating-actions")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-floating-actions"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-header": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-header")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-header"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-height": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-height")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-height"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-highlighted-lines": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-highlighted-lines")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-highlighted-lines"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-highlighting": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-highlighting")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-highlighting"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-languages": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-languages")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-languages"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-line-numbers": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-line-numbers")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-line-numbers"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-markdown": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-markdown")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-markdown"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-rtl": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-rtl")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-rtl"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-show-more-scroll": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-show-more-scroll")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-show-more-scroll"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-show-more": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-show-more")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-show-more"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-size": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-size")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-size"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-start-line": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-start-line")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-start-line"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-streaming": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-streaming")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-streaming"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-tabs": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-tabs")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-tabs"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-trace": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-trace")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-trace"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-typeset": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-typeset")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-typeset"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-wrap": React.lazy(async () => {
+    const mod = await import("@/examples/base/code-block-wrap")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-wrap"
     return { default: mod.default || mod[exportName] }
   }),
   "collapsible-basic": React.lazy(async () => {
@@ -1260,6 +1500,30 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "command-shortcuts"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "commit-basic": React.lazy(async () => {
+    const mod = await import("@/examples/base/commit-basic")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "commit-basic"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "commit-demo": React.lazy(async () => {
+    const mod = await import("@/examples/base/commit-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "commit-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "commit-diff": React.lazy(async () => {
+    const mod = await import("@/examples/base/commit-diff")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "commit-diff"
     return { default: mod.default || mod[exportName] }
   }),
   "context-menu-basic": React.lazy(async () => {
@@ -2778,6 +3042,30 @@ export const Components: Record<string, any> = {
       ) || "pagination-simple"
     return { default: mod.default || mod[exportName] }
   }),
+  "plan-basic": React.lazy(async () => {
+    const mod = await import("@/examples/base/plan-basic")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "plan-basic"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "plan-demo": React.lazy(async () => {
+    const mod = await import("@/examples/base/plan-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "plan-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "plan-description": React.lazy(async () => {
+    const mod = await import("@/examples/base/plan-description")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "plan-description"
+    return { default: mod.default || mod[exportName] }
+  }),
   "popover-alignments": React.lazy(async () => {
     const mod = await import("@/examples/base/popover-alignments")
     const exportName =
@@ -2962,6 +3250,30 @@ export const Components: Record<string, any> = {
       ) || "questionnaire-validation"
     return { default: mod.default || mod[exportName] }
   }),
+  "queue-basic": React.lazy(async () => {
+    const mod = await import("@/examples/base/queue-basic")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "queue-basic"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "queue-demo": React.lazy(async () => {
+    const mod = await import("@/examples/base/queue-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "queue-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "queue-descriptions": React.lazy(async () => {
+    const mod = await import("@/examples/base/queue-descriptions")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "queue-descriptions"
+    return { default: mod.default || mod[exportName] }
+  }),
   "radio-fields": React.lazy(async () => {
     const mod = await import("@/examples/base/radio-fields")
     const exportName =
@@ -3024,6 +3336,30 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "radio-group-rtl"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "reasoning-basic": React.lazy(async () => {
+    const mod = await import("@/examples/base/reasoning-basic")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "reasoning-basic"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "reasoning-demo": React.lazy(async () => {
+    const mod = await import("@/examples/base/reasoning-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "reasoning-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "reasoning-duration": React.lazy(async () => {
+    const mod = await import("@/examples/base/reasoning-duration")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "reasoning-duration"
     return { default: mod.default || mod[exportName] }
   }),
   "resizable-demo": React.lazy(async () => {
@@ -3562,6 +3898,22 @@ export const Components: Record<string, any> = {
       ) || "slider-vertical"
     return { default: mod.default || mod[exportName] }
   }),
+  "sources-basic": React.lazy(async () => {
+    const mod = await import("@/examples/base/sources-basic")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "sources-basic"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "sources-demo": React.lazy(async () => {
+    const mod = await import("@/examples/base/sources-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "sources-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
   "spinner-badge": React.lazy(async () => {
     const mod = await import("@/examples/base/spinner-badge")
     const exportName =
@@ -3624,6 +3976,30 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "spinner-size"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "stack-trace-basic": React.lazy(async () => {
+    const mod = await import("@/examples/base/stack-trace-basic")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "stack-trace-basic"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "stack-trace-demo": React.lazy(async () => {
+    const mod = await import("@/examples/base/stack-trace-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "stack-trace-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "stack-trace-frames": React.lazy(async () => {
+    const mod = await import("@/examples/base/stack-trace-frames")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "stack-trace-frames"
     return { default: mod.default || mod[exportName] }
   }),
   "switch-choice-card": React.lazy(async () => {
@@ -3768,6 +4144,70 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "tanstack-ai-helper-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "task-basic": React.lazy(async () => {
+    const mod = await import("@/examples/base/task-basic")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "task-basic"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "task-demo": React.lazy(async () => {
+    const mod = await import("@/examples/base/task-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "task-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "terminal-basic": React.lazy(async () => {
+    const mod = await import("@/examples/base/terminal-basic")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "terminal-basic"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "terminal-demo": React.lazy(async () => {
+    const mod = await import("@/examples/base/terminal-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "terminal-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "terminal-error": React.lazy(async () => {
+    const mod = await import("@/examples/base/terminal-error")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "terminal-error"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "test-results-basic": React.lazy(async () => {
+    const mod = await import("@/examples/base/test-results-basic")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "test-results-basic"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "test-results-demo": React.lazy(async () => {
+    const mod = await import("@/examples/base/test-results-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "test-results-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "test-results-suites": React.lazy(async () => {
+    const mod = await import("@/examples/base/test-results-suites")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "test-results-suites"
     return { default: mod.default || mod[exportName] }
   }),
   "textarea-button": React.lazy(async () => {
@@ -3956,6 +4396,46 @@ export const Components: Record<string, any> = {
       ) || "toggle-text"
     return { default: mod.default || mod[exportName] }
   }),
+  "tool-approval": React.lazy(async () => {
+    const mod = await import("@/examples/base/tool-approval")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "tool-approval"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "tool-basic": React.lazy(async () => {
+    const mod = await import("@/examples/base/tool-basic")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "tool-basic"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "tool-demo": React.lazy(async () => {
+    const mod = await import("@/examples/base/tool-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "tool-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "tool-sheet": React.lazy(async () => {
+    const mod = await import("@/examples/base/tool-sheet")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "tool-sheet"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "tool-states": React.lazy(async () => {
+    const mod = await import("@/examples/base/tool-states")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "tool-states"
+    return { default: mod.default || mod[exportName] }
+  }),
   "tooltip-demo": React.lazy(async () => {
     const mod = await import("@/examples/base/tooltip-demo")
     const exportName =
@@ -3994,6 +4474,126 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "tooltip-sides"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "trace-demo": React.lazy(async () => {
+    const mod = await import("@/examples/base/trace-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "trace-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "trace-description": React.lazy(async () => {
+    const mod = await import("@/examples/base/trace-description")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "trace-description"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "trace-dialog": React.lazy(async () => {
+    const mod = await import("@/examples/base/trace-dialog")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "trace-dialog"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "trace-expand": React.lazy(async () => {
+    const mod = await import("@/examples/base/trace-expand")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "trace-expand"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "trace-group": React.lazy(async () => {
+    const mod = await import("@/examples/base/trace-group")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "trace-group"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "trace-link": React.lazy(async () => {
+    const mod = await import("@/examples/base/trace-link")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "trace-link"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "trace-open": React.lazy(async () => {
+    const mod = await import("@/examples/base/trace-open")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "trace-open"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "trace-sheet": React.lazy(async () => {
+    const mod = await import("@/examples/base/trace-sheet")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "trace-sheet"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "trace-sources": React.lazy(async () => {
+    const mod = await import("@/examples/base/trace-sources")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "trace-sources"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "trace-static": React.lazy(async () => {
+    const mod = await import("@/examples/base/trace-static")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "trace-static"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "trace-status": React.lazy(async () => {
+    const mod = await import("@/examples/base/trace-status")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "trace-status"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "trace-steps": React.lazy(async () => {
+    const mod = await import("@/examples/base/trace-steps")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "trace-steps"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "trace-thinking": React.lazy(async () => {
+    const mod = await import("@/examples/base/trace-thinking")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "trace-thinking"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "trace-tool-calls": React.lazy(async () => {
+    const mod = await import("@/examples/base/trace-tool-calls")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "trace-tool-calls"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "trace-turn": React.lazy(async () => {
+    const mod = await import("@/examples/base/trace-turn")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "trace-turn"
     return { default: mod.default || mod[exportName] }
   }),
   "typography-blockquote": React.lazy(async () => {

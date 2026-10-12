@@ -1,0 +1,258 @@
+---
+title: Tool
+description: Displays an AI SDK tool call with its state, input and output.
+base: base
+component: true
+---
+
+<ComponentPreview
+  styleName="base-rhea"
+  name="tool-demo"
+  previewClassName="h-auto"
+/>
+
+Use Tool to render a tool call from the AI SDK. The row follows the call from input to output, including errors and calls that wait for approval.
+
+It is the shadcn/ui version of Tool from [AI Elements](https://ai-sdk.dev/elements/overview). Instead of a component of its own, it is a composition of [Trace](/docs/components/base/trace), so it looks and behaves like every other row in the conversation.
+
+## Installation
+
+Tool is built with the [Trace](/docs/components/base/trace) component.
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add trace code-block
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the required shadcn/ui dependencies:</Step>
+
+```bash
+npx shadcn@latest add collapsible code-block
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="trace"
+  title="components/ui/trace.tsx"
+  styleName="base-rhea"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { CodeBlock, CodeBlockContent } from "@/components/ui/code-block"
+import {
+  Trace,
+  TraceCollapsible,
+  TraceCollapsibleContent,
+  TraceCollapsibleTrigger,
+  TraceIcon,
+  TraceLine,
+  TraceTitle,
+} from "@/components/ui/trace"
+```
+
+```tsx showLineNumbers
+<Trace>
+  <TraceCollapsible>
+    <TraceCollapsibleTrigger>
+      <TraceLine>
+        <TraceIcon>
+          <TerminalIcon />
+        </TraceIcon>
+        <TraceTitle>Ran git status --short</TraceTitle>
+      </TraceLine>
+    </TraceCollapsibleTrigger>
+    <TraceCollapsibleContent>
+      <CodeBlock size="sm">
+        <CodeBlockContent wrap className="max-h-64">
+          {output}
+        </CodeBlockContent>
+      </CodeBlock>
+    </TraceCollapsibleContent>
+  </TraceCollapsible>
+</Trace>
+```
+
+## Basic
+
+<ComponentPreview
+  styleName="base-rhea"
+  name="tool-basic"
+  previewClassName="h-auto"
+/>
+
+## States
+
+Map the tool part's `state` to the row yourself.
+
+<ComponentPreview
+  styleName="base-rhea"
+  name="tool-states"
+  previewClassName="h-auto"
+/>
+
+| Tool part state                                           | `status`                             | Title                                                               |
+| --------------------------------------------------------- | ------------------------------------ | ------------------------------------------------------------------- |
+| `input-streaming`, `input-available`                      | `"running"` while the chat streams   | Running …                                                           |
+| `input-streaming`, `input-available` after the chat stops | `"error"`                            | Failed to run …                                                     |
+| `approval-requested`                                      | -                                    | Not a row. An `Item` outside `Trace` with Approve and Deny buttons. |
+| `approval-responded`                                      | `"running"` if approved, none if not | Running … if approved, Denied … if not                              |
+| `output-available`                                        | none                                 | Ran …                                                               |
+| `output-error`                                            | `"error"`                            | Failed to run …                                                     |
+| `output-denied`                                           | none                                 | Denied …                                                            |
+
+A tool row is a `TraceLine` while the tool runs, then a `TraceCollapsible` once its output arrives.
+
+```tsx showLineNumbers
+function ToolRow({ part, streaming }: { part: ToolPart; streaming: boolean }) {
+  const command = part.input?.command
+
+  if (
+    part.state === "output-denied" ||
+    (part.state === "approval-responded" && !part.approval.approved)
+  ) {
+    return (
+      <TraceLine>
+        <TraceIcon>
+          <TerminalIcon />
+        </TraceIcon>
+        <TraceTitle>Denied {command}</TraceTitle>
+      </TraceLine>
+    )
+  }
+
+  if (part.state === "output-available" || part.state === "output-error") {
+    const failed = part.state === "output-error"
+
+    return (
+      <TraceCollapsible>
+        <TraceCollapsibleTrigger>
+          <TraceLine status={failed ? "error" : undefined}>
+            <TraceIcon>
+              <TerminalIcon />
+            </TraceIcon>
+            <TraceTitle>
+              {failed ? "Failed to run" : "Ran"} {command}
+            </TraceTitle>
+          </TraceLine>
+        </TraceCollapsibleTrigger>
+        <TraceCollapsibleContent>
+          <CodeBlock size="sm">
+            <CodeBlockContent wrap className="max-h-64">
+              {failed ? part.errorText : part.output.stdout}
+            </CodeBlockContent>
+          </CodeBlock>
+        </TraceCollapsibleContent>
+      </TraceCollapsible>
+    )
+  }
+
+  return (
+    <TraceLine status={streaming ? "running" : "error"}>
+      <TraceIcon>
+        <TerminalIcon />
+      </TraceIcon>
+      <TraceTitle>
+        {streaming ? "Running" : "Failed to run"} {command}
+      </TraceTitle>
+    </TraceLine>
+  )
+}
+```
+
+```tsx showLineNumbers
+<Trace>
+  {message.parts
+    .filter((part) => part.type === "tool-runCommand")
+    .map((part) => (
+      <ToolRow key={part.toolCallId} part={part} streaming={streaming} />
+    ))}
+</Trace>
+```
+
+A tool that runs on the client stays `input-available` after the chat stops until you call `addToolOutput`. Treat it as waiting, not failed.
+
+## Output in a Sheet
+
+For long output, wrap the `TraceLine` in a `SheetTrigger` and show the output in the sheet.
+
+<ComponentPreview
+  styleName="base-rhea"
+  name="tool-sheet"
+  previewClassName="h-auto"
+/>
+
+See [Trace](/docs/components/base/trace#dialog).
+
+## Approval
+
+A pending approval is a prompt, not activity, so it sits outside `Trace` as an `Item`. Once the user answers, the tool goes back to being a row.
+
+<ComponentPreview
+  styleName="base-rhea"
+  name="tool-approval"
+  previewClassName="h-auto"
+/>
+
+```tsx showLineNumbers
+if (part.state === "approval-requested") {
+  return (
+    <Item variant="outline" size="sm">
+      <ItemMedia variant="icon">
+        <TerminalIcon />
+      </ItemMedia>
+      <ItemContent>
+        <ItemTitle>Run {part.input.command}?</ItemTitle>
+      </ItemContent>
+      <ItemActions>
+        <Button
+          size="sm"
+          variant="outline"
+          onClick={() =>
+            addToolApprovalResponse({ id: part.approval.id, approved: false })
+          }
+        >
+          Deny
+        </Button>
+        <Button
+          size="sm"
+          onClick={() =>
+            addToolApprovalResponse({ id: part.approval.id, approved: true })
+          }
+        >
+          Approve
+        </Button>
+      </ItemActions>
+    </Item>
+  )
+}
+```
+
+Pass `sendAutomaticallyWhen: lastAssistantMessageIsCompleteWithApprovalResponses` to `useChat` so the chat continues once every approval has an answer.
+
+## API Reference
+
+See [Trace](/docs/components/base/trace#api-reference).

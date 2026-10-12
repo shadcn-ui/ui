@@ -991,6 +991,53 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "trace-example",
+    title: "Trace",
+    type: "registry:example",
+    registryDependencies: [
+      "trace",
+      "code-block",
+      "badge",
+      "bubble",
+      "button",
+      "dialog",
+      "item",
+      "message",
+      "sheet",
+      "example",
+    ],
+    files: [
+      {
+        path: "examples/trace-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "code-block-example",
+    title: "Code Block",
+    type: "registry:example",
+    registryDependencies: [
+      "code-block",
+      "use-highlighted-code",
+      "bubble",
+      "button",
+      "card",
+      "dialog",
+      "message",
+      "tabs",
+      "trace",
+      "example",
+    ],
+    dependencies: ["streamdown"],
+    files: [
+      {
+        path: "examples/code-block-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "message-example",
     title: "Message",
     type: "registry:example",

@@ -1,0 +1,148 @@
+---
+title: Stack Trace
+description: Displays an error as a line that expands to its stack frames.
+base: radix
+component: true
+---
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="stack-trace-demo"
+  previewClassName="h-auto"
+/>
+
+Use Stack Trace to show an error the assistant ran into. The error is the row. Open it for the stack frames, which can link to the file and line.
+
+It is the shadcn/ui version of Stack Trace from [AI Elements](https://ai-sdk.dev/elements/overview). Instead of a component of its own, it is a composition of [Trace](/docs/components/radix/trace), so it looks and behaves like every other row in the conversation.
+
+## Installation
+
+Stack Trace is built with the [Trace](/docs/components/radix/trace) component.
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add trace code-block
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the required shadcn/ui dependencies:</Step>
+
+```bash
+npx shadcn@latest add collapsible code-block
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="trace"
+  title="components/ui/trace.tsx"
+  styleName="radix-rhea"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Trace,
+  TraceCollapsible,
+  TraceCollapsibleContent,
+  TraceCollapsibleTrigger,
+  TraceIcon,
+  TraceLine,
+  TraceTitle,
+} from "@/components/ui/trace"
+```
+
+```tsx showLineNumbers
+const [error, ...frames] = stack.split("\n").map((line) => line.trim())
+
+<Trace>
+  <TraceCollapsible>
+    <TraceCollapsibleTrigger>
+      <TraceLine status="error">
+        <TraceIcon>
+          <CircleXIcon />
+        </TraceIcon>
+        <TraceTitle>Failed: {error}</TraceTitle>
+      </TraceLine>
+    </TraceCollapsibleTrigger>
+    <TraceCollapsibleContent>
+      <div className="flex flex-col gap-2 rounded-md bg-muted p-3 font-mono text-xs">
+        <p className="text-destructive">{error}</p>
+        <ol>
+          {frames.map((frame, index) => (
+            <li
+              key={index}
+              className={
+                frame.includes("node_modules") ? undefined : "text-foreground"
+              }
+            >
+              {frame}
+            </li>
+          ))}
+        </ol>
+      </div>
+    </TraceCollapsibleContent>
+  </TraceCollapsible>
+</Trace>
+```
+
+The title truncates, so repeat the full error at the top of the content. Frames from `node_modules` keep the muted color of the content.
+
+## Basic
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="stack-trace-basic"
+  previewClassName="h-auto"
+/>
+
+## Frame Links
+
+Make your own frames link rows that open the file, and fold framework frames into a collapsible row.
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="stack-trace-frames"
+  previewClassName="h-auto"
+/>
+
+## AI SDK
+
+When a tool throws, its part is `output-error`. By default `errorText` is only `error.toString()`, so return `error.stack` from `onError` in `toUIMessageStreamResponse` to get the frames.
+
+```tsx showLineNumbers
+if (part.state === "output-error") {
+  const [error, ...frames] = part.errorText
+    .split("\n")
+    .map((line) => line.trim())
+
+  return <TraceCollapsible>…</TraceCollapsible>
+}
+```
+
+Map the tool part as in [Tool](/docs/components/radix/tool#states).
+
+## API Reference
+
+See [Trace](/docs/components/radix/trace#api-reference).

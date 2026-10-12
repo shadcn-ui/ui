@@ -1,0 +1,161 @@
+---
+title: Plan
+description: Displays a plan the assistant is working through, with the state of each step.
+base: radix
+component: true
+---
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="plan-demo"
+  previewClassName="h-auto"
+/>
+
+Use Plan to show the steps the assistant intends to take and how far it has got. Done, current and pending steps each carry their own status.
+
+It is the shadcn/ui version of Plan from [AI Elements](https://ai-sdk.dev/elements/overview). Instead of a component of its own, it is a composition of [Trace](/docs/components/radix/trace), so it looks and behaves like every other row in the conversation.
+
+## Installation
+
+Plan is built with the [Trace](/docs/components/radix/trace) component.
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add trace
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the required shadcn/ui dependencies:</Step>
+
+```bash
+npx shadcn@latest add collapsible
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="trace"
+  title="components/ui/trace.tsx"
+  styleName="radix-rhea"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Trace,
+  TraceCollapsible,
+  TraceCollapsibleContent,
+  TraceCollapsibleTrigger,
+  TraceDescription,
+  TraceIcon,
+  TraceLine,
+  TraceTitle,
+} from "@/components/ui/trace"
+```
+
+```tsx showLineNumbers
+<Trace>
+  <TraceCollapsible defaultOpen>
+    <TraceCollapsibleTrigger>
+      <TraceLine status="running">
+        <TraceIcon>
+          <ListChecksIcon />
+        </TraceIcon>
+        <TraceTitle>Plan: migrate to Base UI</TraceTitle>
+        <TraceDescription>2 of 5 done</TraceDescription>
+      </TraceLine>
+    </TraceCollapsibleTrigger>
+    <TraceCollapsibleContent>
+      <Trace>
+        <TraceLine>
+          <TraceIcon>
+            <CircleCheckIcon />
+          </TraceIcon>
+          <TraceTitle>Replace the Radix imports</TraceTitle>
+        </TraceLine>
+        <TraceLine status="running">
+          <TraceIcon>
+            <CircleDotIcon />
+          </TraceIcon>
+          <TraceTitle>Rename asChild to render</TraceTitle>
+        </TraceLine>
+        <TraceLine status="pending">
+          <TraceIcon>
+            <CircleIcon />
+          </TraceIcon>
+          <TraceTitle>Run the type checker</TraceTitle>
+        </TraceLine>
+      </Trace>
+    </TraceCollapsibleContent>
+  </TraceCollapsible>
+</Trace>
+```
+
+## Basic
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="plan-basic"
+  previewClassName="h-auto"
+/>
+
+## Steps
+
+Each step is a `TraceLine`. Set the plan line's status and count from its steps yourself.
+
+| Step    | Icon              | `status`    |
+| ------- | ----------------- | ----------- |
+| Done    | `CircleCheckIcon` | none        |
+| Current | `CircleDotIcon`   | `"running"` |
+| Pending | `CircleIcon`      | `"pending"` |
+
+## Details
+
+Put a description above the steps, inside `TraceCollapsibleContent`.
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="plan-description"
+  previewClassName="h-auto"
+/>
+
+## AI SDK
+
+Stream the plan as a data part with a fixed `id`. The AI SDK replaces a data part with the same `id`, so it updates in place.
+
+```ts showLineNumbers title="app/api/chat/route.ts"
+const stream = createUIMessageStream({
+  execute: async ({ writer }) => {
+    writer.write({ type: "data-plan", id: "plan", data: { title, steps } })
+  },
+})
+```
+
+```tsx showLineNumbers
+const plan = message.parts.find((part) => part.type === "data-plan")
+```
+
+## API Reference
+
+See [Trace](/docs/components/radix/trace#api-reference).

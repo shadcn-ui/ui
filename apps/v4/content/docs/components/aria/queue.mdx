@@ -1,0 +1,180 @@
+---
+title: Queue
+description: Displays the assistant's todo list in sections, with the state of each todo.
+base: aria
+component: true
+---
+
+<ComponentPreview
+  styleName="aria-rhea"
+  name="queue-demo"
+  previewClassName="h-auto"
+/>
+
+Use Queue for the assistant's todo list. Todos sit in sections, and each todo carries its own status.
+
+It is the shadcn/ui version of Queue from [AI Elements](https://ai-sdk.dev/elements/overview). Instead of a component of its own, it is a composition of [Trace](/docs/components/aria/trace), so it looks and behaves like every other row in the conversation.
+
+## Installation
+
+Queue is built with the [Trace](/docs/components/aria/trace) component.
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add trace
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the required shadcn/ui dependencies:</Step>
+
+```bash
+npx shadcn@latest add collapsible
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="trace"
+  title="components/ui/trace.tsx"
+  styleName="aria-rhea"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Trace,
+  TraceCollapsible,
+  TraceCollapsibleContent,
+  TraceCollapsibleTrigger,
+  TraceIcon,
+  TraceLine,
+  TraceTitle,
+} from "@/components/ui/trace"
+```
+
+```tsx showLineNumbers
+<Trace>
+  <TraceCollapsible defaultExpanded>
+    <TraceCollapsibleTrigger>
+      <TraceLine>
+        <TraceIcon>
+          <ListTodoIcon />
+        </TraceIcon>
+        <TraceTitle>2 to do</TraceTitle>
+      </TraceLine>
+    </TraceCollapsibleTrigger>
+    <TraceCollapsibleContent>
+      <Trace>
+        <TraceLine>
+          <TraceIcon>
+            <CircleIcon />
+          </TraceIcon>
+          <TraceTitle>Update the registry snapshots</TraceTitle>
+        </TraceLine>
+        <TraceLine>
+          <TraceIcon>
+            <CircleIcon />
+          </TraceIcon>
+          <TraceTitle>Add tests for the combobox</TraceTitle>
+        </TraceLine>
+      </Trace>
+    </TraceCollapsibleContent>
+  </TraceCollapsible>
+  <TraceCollapsible>
+    <TraceCollapsibleTrigger>
+      <TraceLine>
+        <TraceIcon>
+          <ListChecksIcon />
+        </TraceIcon>
+        <TraceTitle>1 completed</TraceTitle>
+      </TraceLine>
+    </TraceCollapsibleTrigger>
+    <TraceCollapsibleContent>
+      <Trace>
+        <TraceLine>
+          <TraceIcon>
+            <CircleCheckIcon />
+          </TraceIcon>
+          <TraceTitle>Add a changeset</TraceTitle>
+        </TraceLine>
+      </Trace>
+    </TraceCollapsibleContent>
+  </TraceCollapsible>
+</Trace>
+```
+
+## Basic
+
+<ComponentPreview
+  styleName="aria-rhea"
+  name="queue-basic"
+  previewClassName="h-auto"
+/>
+
+## Descriptions
+
+A todo with a description is a `TraceCollapsible` that opens to show it. A todo without one is a `TraceLine`.
+
+<ComponentPreview
+  styleName="aria-rhea"
+  name="queue-descriptions"
+  previewClassName="h-auto"
+/>
+
+```tsx showLineNumbers
+<TraceCollapsible>
+  <TraceCollapsibleTrigger>
+    <TraceLine>
+      <TraceIcon>
+        <CircleIcon />
+      </TraceIcon>
+      <TraceTitle>Fix the focus ring on the select trigger</TraceTitle>
+    </TraceLine>
+  </TraceCollapsibleTrigger>
+  <TraceCollapsibleContent>
+    It is clipped by overflow-hidden on the field.
+  </TraceCollapsibleContent>
+</TraceCollapsible>
+```
+
+## AI SDK
+
+Render the list from the latest call to a todo tool. Each call sends the whole list, so the sections follow the last one.
+
+```tsx showLineNumbers
+const todos = message.parts
+  .filter((part) => part.type === "tool-writeTodos")
+  .filter((part) => part.state !== "input-streaming")
+  .at(-1)?.input?.todos
+```
+
+| Todo status   | Section   | Icon              | `status`                           |
+| ------------- | --------- | ----------------- | ---------------------------------- |
+| `pending`     | To do     | `CircleIcon`      | none                               |
+| `in_progress` | To do     | `CircleDotIcon`   | `"running"` while the chat streams |
+| `completed`   | Completed | `CircleCheckIcon` | none                               |
+
+## API Reference
+
+See [Trace](/docs/components/aria/trace#api-reference).

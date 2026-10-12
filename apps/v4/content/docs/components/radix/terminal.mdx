@@ -1,0 +1,157 @@
+---
+title: Terminal
+description: Displays a command the assistant ran and its terminal output, streaming while it runs.
+base: radix
+component: true
+---
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="terminal-demo"
+  previewClassName="h-auto"
+/>
+
+Use Terminal to show a command the assistant ran. The command is the row, and its output streams in while it runs.
+
+It is the shadcn/ui version of Terminal from [AI Elements](https://ai-sdk.dev/elements/overview). Instead of a component of its own, it is a composition of [Trace](/docs/components/radix/trace), so it looks and behaves like every other row in the conversation.
+
+## Installation
+
+Terminal is built with the [Trace](/docs/components/radix/trace) component.
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add trace code-block
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the required shadcn/ui dependencies:</Step>
+
+```bash
+npx shadcn@latest add collapsible code-block
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="trace"
+  title="components/ui/trace.tsx"
+  styleName="radix-rhea"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { CodeBlock, CodeBlockContent } from "@/components/ui/code-block"
+import {
+  Trace,
+  TraceCollapsible,
+  TraceCollapsibleContent,
+  TraceCollapsibleTrigger,
+  TraceIcon,
+  TraceLine,
+  TraceTitle,
+} from "@/components/ui/trace"
+```
+
+```tsx showLineNumbers
+<Trace>
+  <TraceCollapsible>
+    <TraceCollapsibleTrigger>
+      <TraceLine>
+        <TraceIcon>
+          <TerminalIcon />
+        </TraceIcon>
+        <TraceTitle>Ran pnpm build</TraceTitle>
+      </TraceLine>
+    </TraceCollapsibleTrigger>
+    <TraceCollapsibleContent>
+      <CodeBlock size="sm">
+        <CodeBlockContent wrap className="max-h-64">
+          {output}
+        </CodeBlockContent>
+      </CodeBlock>
+    </TraceCollapsibleContent>
+  </TraceCollapsible>
+</Trace>
+```
+
+## Basic
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="terminal-basic"
+  previewClassName="h-auto"
+/>
+
+## Exit Code
+
+A command that exits with a non-zero code gets `status="error"`. Put the exit code in the title.
+
+<ComponentPreview
+  styleName="radix-rhea"
+  name="terminal-error"
+  previewClassName="h-auto"
+/>
+
+| Command                  | `status`    | Title                        |
+| ------------------------ | ----------- | ---------------------------- |
+| Running                  | `"running"` | Running pnpm build           |
+| Exited with `0`          | none        | Ran pnpm build               |
+| Exited with another code | `"error"`   | pnpm lint exited with code 1 |
+
+Map the tool part as in [Tool](/docs/components/radix/tool#states).
+
+## Open While Running
+
+Open the row while the command runs, once output arrives, as in [Trace](/docs/components/radix/trace#open-state).
+
+## AI SDK
+
+To stream a command's output while it runs, write it from the tool as a data part with the tool call's id. The AI SDK replaces a data part that has the same id, so the output grows in place.
+
+```ts showLineNumbers
+writer.write({
+  type: "data-terminal",
+  id: toolCallId,
+  data: { output },
+})
+```
+
+On the client, find the data part for each tool part.
+
+```tsx showLineNumbers
+function getOutput(message: ChatMessage, toolCallId: string) {
+  for (const part of message.parts) {
+    if (part.type === "data-terminal" && part.id === toolCallId) {
+      return part.data.output
+    }
+  }
+
+  return ""
+}
+```
+
+## API Reference
+
+See [Trace](/docs/components/radix/trace#api-reference).
