@@ -12,6 +12,8 @@ import {
   getConfig,
   getRawConfig,
   getWorkspaceConfig,
+  isIndexFile,
+  stripFileExtension,
 } from "./get-config"
 
 const tempDirs: string[] = []
@@ -833,6 +835,46 @@ describe("getWorkspaceConfig", () => {
     } finally {
       await fs.remove(tempDir)
     }
+  })
+})
+
+describe("stripFileExtension", () => {
+  it("should strip the extension from the last segment", () => {
+    expect(stripFileExtension("/repo/packages/ui/src/components/ui.tsx")).toBe(
+      "/repo/packages/ui/src/components/ui"
+    )
+    expect(
+      stripFileExtension("C:\\repo\\packages\\ui\\src\\components\\ui.tsx")
+    ).toBe("C:\\repo\\packages\\ui\\src\\components\\ui")
+  })
+
+  it("should keep dots in parent directories", () => {
+    expect(
+      stripFileExtension("/repo.worktrees/app/packages/ui/src/components")
+    ).toBe("/repo.worktrees/app/packages/ui/src/components")
+    expect(
+      stripFileExtension(
+        "C:\\Users\\john.doe\\repo.worktrees\\app\\packages\\ui\\src\\components"
+      )
+    ).toBe(
+      "C:\\Users\\john.doe\\repo.worktrees\\app\\packages\\ui\\src\\components"
+    )
+  })
+})
+
+describe("isIndexFile", () => {
+  it("should match index files with either separator", () => {
+    expect(isIndexFile("/repo/packages/ui/src/hooks/index.ts")).toBe(true)
+    expect(isIndexFile("C:\\repo\\packages\\ui\\src\\hooks\\index.ts")).toBe(
+      true
+    )
+  })
+
+  it("should not match other files or directories", () => {
+    expect(isIndexFile("/repo/packages/ui/src/hooks/use-index.ts")).toBe(false)
+    expect(isIndexFile("C:\\repo\\index.worktrees\\app\\src\\hooks")).toBe(
+      false
+    )
   })
 })
 
