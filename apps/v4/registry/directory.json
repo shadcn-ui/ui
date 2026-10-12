@@ -311,6 +311,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 24 24'><path fill='var(--foreground)' d='M12 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2M6 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m12 12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2Z'/></svg>"
   },
   {
+    "name": "@beadkit",
+    "homepage": "https://beadkit.dev",
+    "url": "https://beadkit.dev/r/{name}.json",
+    "description": "Learning primitives for AI-native interfaces: inline quizzes, flashcards, sequences, and mastery meters with streaming support and xAPI telemetry.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='var(--foreground)'><circle cx='8' cy='10' r='5'/><circle cx='24' cy='10' r='5'/><circle cx='16' cy='24' r='5'/></svg>"
+  },
+  {
     "name": "@benday",
     "homepage": "https://benday.kacemmathlouthi.dev",
     "url": "https://benday.kacemmathlouthi.dev/r/{name}.json",
@@ -1060,6 +1067,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='4' width='7' height='16' rx='1.5'/><rect x='15' y='4' width='7' height='16' rx='1.5'/><path d='m11 8.5 2 1.5-2 1.5'/><path d='m13 12.5-2 1.5 2 1.5'/></svg>"
   },
   {
+    "name": "@hazeglow",
+    "homepage": "https://hazeglow.dev",
+    "url": "https://hazeglow.dev/r/{name}.json",
+    "description": "Animated, grainy gradient blocks for React: a hero, a call to action and a card, themed by your CSS variables. WebGL2, zero dependencies.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='hazeglow-glow' x1='0.62' y1='0.12' x2='0.4' y2='0.9'><stop offset='0' stop-color='#4fc4f0'/><stop offset='0.2' stop-color='#a8e0f0'/><stop offset='0.4' stop-color='#f0d9a0'/><stop offset='0.58' stop-color='#f2a13a'/><stop offset='0.82' stop-color='#f0603c'/><stop offset='1' stop-color='#e83fd0' stop-opacity='0.7'/></linearGradient><filter id='hazeglow-blur' x='-30%' y='-30%' width='160%' height='160%'><feGaussianBlur stdDeviation='3.2'/></filter><clipPath id='hazeglow-tile'><rect width='64' height='64' rx='14'/></clipPath></defs><rect width='64' height='64' rx='14' fill='#000'/><g clip-path='url(#hazeglow-tile)'><path d='M16 22C22 17 32 19 42 26C50 31 57 38 57 44C57 50 50 52 42 49C33 46 22 39 17 33C14 29 13 25 16 22Z' fill='url(#hazeglow-glow)' filter='url(#hazeglow-blur)'/></g></svg>"
+  },
+  {
     "name": "@headcodecms",
     "homepage": "https://headcodecms.com",
     "url": "https://headcodecms.com/r/{name}.json",
@@ -1142,6 +1156,13 @@
     "url": "https://icons.lndev.me/r/{name}.json",
     "description": "An open-source library of meticulously animated icons (Tabler, Phosphor, and more) for your projects, inspired by lucide-animated.com",
     "logo": "<svg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M16 3C16 3 7 8 7 16C7 24 12 29 16 29C20 29 25 24 25 16C25 8 16 3 16 3Z' fill='var(--foreground)'/><circle cx='12' cy='14' r='2' fill='var(--background)'/><circle cx='20' cy='14' r='2' fill='var(--background)'/><path d='M11 20C11 20 13 22 16 22C19 22 21 20 21 20' stroke='var(--background)' stroke-width='1.5' stroke-linecap='round'/><path d='M16 3V10' stroke='var(--background)' stroke-width='1.5' stroke-linecap='round' opacity='0.6'/></svg>"
+  },
+  {
+    "name": "@ikas",
+    "homepage": "https://builders.ikas.com/docs/app-development/ui-kit",
+    "url": "https://builders.ikas.com/r/{name}.json",
+    "description": "UI components and screen patterns for building apps on ikas.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect width='32' height='32' rx='7.25' fill='var(--foreground)'/><g fill='var(--background)' transform='translate(4.8 6.43) scale(0.03930)'><path d='M205 50V212H425L220 447V285H0Z'/><path d='M227 50H432A65 65 0 0 1 480 158L452.09 190H227Z'/><path d='M458.55 207H450A120 120 0 0 1 450 447H249.19Z'/></g></svg>"
   },
   {
     "name": "@ilinxa",
@@ -1250,6 +1271,13 @@
     "description": "An open-source motion layer for shadcn/ui. One <Cuts /> line animates your dialogs, sheets, tabs and toasts; four helpers animate lists, numbers, skeletons and cards.",
     "author": "Briyan Hingrajiya",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><polygon points='9.3,11.7 20.3,22.7 14.8,28.2 3.8,17.2' fill='var(--foreground)' stroke='var(--foreground)' stroke-width='1.3' stroke-linejoin='round'/><polygon points='17.2,3.8 28.2,14.8 22.7,20.3 11.7,9.3' fill='#2447f5' stroke='#2447f5' stroke-width='1.3' stroke-linejoin='round'/></svg>"
+  },
+  {
+    "name": "@keyframeui",
+    "homepage": "https://keyframeui.com",
+    "url": "https://keyframeui.com/r/{name}.json",
+    "description": "Animated React components built with Tailwind CSS, Motion and GSAP, installable with the shadcn CLI.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 232 232' fill='none'><rect width='232' height='232' fill='var(--foreground)'/><g transform='translate(16 14)'><polygon points='4,146 4,72 84,2 176,2' fill='var(--background)'/><polygon points='4,172 87,102 88,172 56,203 4,203' fill='var(--background)' fill-opacity='0.45'/><polygon points='87,102 196,203 128,203 88,172' fill='var(--background)' fill-opacity='0.6'/></g></svg>"
   },
   {
     "name": "@keyline",
@@ -2603,6 +2631,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' version='1.0' width='597.000000pt' height='525.000000pt' viewBox='0 0 597.000000 525.000000' preserveAspectRatio='xMidYMid meet'><g transform='translate(0.000000,525.000000) scale(0.100000,-0.100000)' fill='var(--foreground, currentColor)' stroke='none'><path d='M1816 5223 l-1809 -3 6 -108 c24 -383 241 -748 579 -969 113 -74 205   -118 338 -162 178 -58 237 -64 678 -70 l404 -6 14 33 c56 136 213 367 364 538   283 320 747 605 1163 716 48 12 87 26 87 30 0 5 -3 7 -7 6 -5 -2 -822 -4   -1817 -5z'/><path d='M4630 5209 c-983 -101 -1863 -612 -2297 -1334 -249 -414 -394 -925   -462 -1625 -28 -287 -29 -310 -19 -304 4 3 8 12 8 20 0 19 87 192 163 324 413   718 1068 1274 1797 1522 228 78 466 118 703 118 506 0 811 110 1079 389 135   139 217 274 283 462 43 123 60 208 70 342 l7 97 -623 -1 c-343 -1 -662 -6   -709 -10z'/><path d='M3876 3584 c-339 -138 -733 -410 -1041 -719 -347 -347 -596 -694   -840 -1170 -188 -367 -356 -851 -435 -1250 -31 -157 -60 -344 -60 -389 l0 -39   183 7 c224 8 336 20 497 52 676 135 1179 580 1326 1174 19 74 56 257 83 405   94 515 222 1211 256 1390 50 268 97 545 93 555 -2 4 -29 -2 -62 -16z'/></g></svg>"
   },
   {
+    "name": "@turn",
+    "homepage": "https://turnui.xyz",
+    "url": "https://turnui.xyz/r/{name}.json",
+    "description": "Minimal, accessible components for AI apps: chat, agents and tool use. Streaming-first, built on Base UI and Tailwind.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='1.8'><rect x='1.5' y='1.5' width='21' height='21' rx='4.5'/></svg>"
+  },
+  {
     "name": "@tween-ui",
     "homepage": "https://tween-ui.vercel.app",
     "url": "https://tween-ui.vercel.app/r/{name}.json",
@@ -2686,6 +2721,21 @@
     "url": "https://ui.untldlabs.com/r/{name}.json",
     "description": "A set of beautifully designed components for modern web applications.",
     "logo": "<svg width='258' height='65' viewBox='0 0 258 65' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='2.5' y='2.5' width='135' height='60' stroke='#008CFF'/><path d='M40.2188 22.5V55H35.0625V49.7188H34.9375C33 53.4688 29.625 55.5625 24.625 55.5625C17.5312 55.5625 13.375 50.9688 13.375 43.5938V22.5H18.8125V42.625C18.8125 47.9062 21.2812 50.75 26.3125 50.75C31.5938 50.75 34.7812 47.125 34.7812 41.5938V22.5H40.2188Z' fill='white'/></svg>"
+  },
+  {
+    "name": "@upfork",
+    "homepage": "https://upfork.dev",
+    "url": "https://upfork.dev/r/{name}.json",
+    "description": "React + Tailwind CSS components and landing pages. The free ones install with no setup; the rest with an UpFork token.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='var(--foreground)' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'><path d='M7 6.5v5.5a7 7 0 0 0 14 0V4M17 8l4-4 4 4M14 19v9'/></svg>"
+  },
+  {
+    "name": "@uploadcn",
+    "homepage": "https://uploadcn.dev",
+    "url": "https://uploadcn.dev/r/{style}/{name}.json",
+    "description": "Production-ready file uploads: dropzones, queues, resumable S3 and R2 uploads, and 58 blocks for every style.",
+    "author": "Hanzala",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6.5' fill='var(--foreground)'/><g fill='none' stroke='var(--background)' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' transform='translate(-0.75 0)'><path d='M7 9v4a5 5 0 0 0 10 0V6'/><path d='m14 9 3-3 3 3'/></g></svg>"
   },
   {
     "name": "@uselayouts",
@@ -2884,6 +2934,14 @@
     "url": "https://videocn.dev/r/{name}.json",
     "description": "A complete video player for shadcn/ui: HLS, DASH and live streams, quality switching, keyboard shortcuts, and your theme out of the box.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><clipPath id='videocn-logo'><rect width='32' height='32' rx='7'/></clipPath><rect width='32' height='32' rx='7' fill='var(--foreground)'/><path clip-path='url(#videocn-logo)' d='M12 -2V34M-2 0.83 34 21.83M-2 31.17 34 10.17' stroke='var(--background)' stroke-width='1.6'/></svg>"
+  },
+  {
+    "name": "@visited-map",
+    "homepage": "https://visitedmap.vercel.app",
+    "url": "https://visitedmap.vercel.app/r/{name}.json",
+    "description": "An SVG world map that highlights the countries you've visited, lived in or want to see, with city pins, stats and optional zoom. No tiles or API keys. Works in Server Components.",
+    "author": "Diego Gennaro",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m11 19-1.106-.552a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0l4.212 2.106a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619V12'/><path d='M15 5.764V12'/><path d='M9 3.236v15'/><path d='m15 19 2 2 4-4'/></svg>"
   },
   {
     "name": "@vue-bits",
