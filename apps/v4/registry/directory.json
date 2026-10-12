@@ -1095,6 +1095,14 @@
     "logo": "<svg fill='none' viewBox='0 0 156 166' xmlns='http://www.w3.org/2000/svg'><path clipRule='evenodd' d='m78.091 0 5.967 5.676c15.038 14.306 35.323 23.067 57.663 23.067.356 0 .711-.002 1.065-.006l6.363-.08 1.988 6.072a102.026 102.026 0 0 1 5.045 31.782c0 47.391-32.269 87.19-75.928 98.477l-2.163.559-2.163-.559C32.27 153.701 0 113.902 0 66.511c0-11.085 1.769-21.772 5.045-31.782l1.988-6.072 6.363.08c.354.004.71.006 1.065.006 22.34 0 42.625-8.761 57.664-23.067L78.09 0Z' fill='#8b5cf6' fillRule='evenodd'/><circle cx='58' cy='78' fill='white' r='14'/><circle cx='98' cy='78' fill='white' r='14'/><circle cx='61' cy='82' fill='black' r='5.5'/><circle cx='95' cy='82' fill='black' r='5.5'/></svg>"
   },
   {
+  "name": "@heyompatil",
+  "homepage": "https://heyompatil.me/components",
+  "url": "https://heyompatil.me/r/{name}.json",
+  "description": "Crafted UI components, micro-interactions, and visual effects for React and Next.js.",
+  "author": "Om Patil",
+  "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 702 702' fill='var(--foreground)'><g transform='translate(0, 191.6)'><path fill='currentColor' d='M 255.05 255.04 L 255.05 318.8 L 63.77 318.8 L 63.77 255.04 Z M 0 255.04 L 0 63.77 L 63.77 63.77 L 63.77 255.04 Z M 63.77 63.77 L 63.77 0 L 255.05 0 L 255.05 63.77 Z M 255.05 255.04 L 255.05 63.77 L 318.8 63.77 L 318.8 255.04 Z'/><path fill='currentColor' d='M 382.55 318.8 L 382.55 0 L 637.6 0 L 637.6 63.77 L 446.32 63.77 L 446.32 127.52 L 637.6 127.52 L 637.6 191.29 L 446.32 191.29 L 446.32 318.8 Z M 637.6 127.52 L 637.6 63.77 L 701.35 63.77 L 701.35 127.52 Z'/></g></svg>"
+  },
+  {
     "name": "@hextaui",
     "homepage": "https://hextaui.com",
     "url": "https://hextaui.com/r/{name}.json",
