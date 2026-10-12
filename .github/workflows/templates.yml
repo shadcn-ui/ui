@@ -17,7 +17,37 @@ on:
       - "templates/**"
 
 jobs:
+  scope:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      templates: ${{ steps.pick.outputs.templates }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          filter: blob:none
+          sparse-checkout: .github
+          persist-credentials: false
+
+      - id: pick
+        run: |
+          all='["next","vite","astro","start","react-router"]'
+          files=$(git diff --name-only --no-renames HEAD^1 HEAD) || files=ALL
+          picked=$(awk -F/ '
+            BEGIN { split("next vite astro start react-router", k, " "); for (i in k) known[k[i]] = 1 }
+            $1 == "templates" && $2 ~ /-(app|monorepo)$/ { t = $2; sub(/-(app|monorepo)$/, "", t); if (t in known) { print t; next } }
+            { print "ALL" }
+          ' <<<"$files" | sort -u)
+          if [ -z "$picked" ] || grep -qx ALL <<<"$picked"; then
+            echo "templates=$all" >> "$GITHUB_OUTPUT"
+          else
+            echo "templates=$(jq -Rnc '[inputs]' <<<"$picked")" >> "$GITHUB_OUTPUT"
+          fi
+
   validate:
+    needs: scope
     runs-on: ubuntu-latest
     name: ${{ matrix.package-manager == 'pnpm' && format('pnpm {0}', matrix.pnpm-version) || matrix.package-manager }} ${{ matrix.template }}
     permissions:
@@ -26,7 +56,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        template: [next, vite, astro, start, react-router]
+        template: ${{ fromJSON(needs.scope.outputs.templates) }}
         package-manager: [pnpm, bun, npm, yarn]
         pnpm-version: [10.33.4, 11]
         exclude:
