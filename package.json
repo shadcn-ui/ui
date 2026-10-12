@@ -76,7 +76,7 @@
     "tsx": "^4.1.4",
     "turbo": "^2.9.18",
     "vite": "^7.3.2",
-    "vite-tsconfig-paths": "^4.2.0",
+    "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^3.2.7"
   },
   "devDependencies": {
