@@ -1,0 +1,52 @@
+---
+title: Inline Edit
+description: An inline edit displays a custom input component that switches between reading and editing on the same page.
+component: true
+---
+
+<ComponentPreview
+  name="inline-edit-demo"
+  description="An inline edit component."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add inline-edit
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="inline-edit" title="components/ui/inline-edit.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { InlineEdit } from "@/components/ui/inline-edit"
+```
+
+```tsx
+<InlineEdit defaultValue="Click to edit" />
+```
