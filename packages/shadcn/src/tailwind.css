@@ -580,6 +580,19 @@
     );
   }
 
+  &:empty {
+    --_spread: var(--shimmer-spread, 40px);
+    --_base: var(--shimmer-base, oklch(from var(--color-background) l c h / 0));
+    --_highlight: var(
+      --shimmer-color,
+      oklch(from var(--color-background) l c h / 0.4)
+    );
+
+    background-clip: border-box;
+    -webkit-background-clip: border-box;
+    -webkit-text-fill-color: currentColor;
+  }
+
   &:where([dir="rtl"], [dir="rtl"] *) {
     animation-direction: reverse;
   }
