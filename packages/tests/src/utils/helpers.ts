@@ -8,7 +8,10 @@ import { TEMP_DIR } from "./setup"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const FIXTURES_DIR = path.join(__dirname, "../../fixtures")
-const SHADCN_CLI_PATH = path.join(__dirname, "../../../shadcn/dist/index.js")
+export const SHADCN_CLI_PATH = path.join(
+  __dirname,
+  "../../../shadcn/dist/index.js"
+)
 const TEMPLATES_DIR = path.join(__dirname, "../../../../templates")
 
 export function getRegistryUrl() {

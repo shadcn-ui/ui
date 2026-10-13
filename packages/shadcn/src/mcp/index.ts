@@ -1,4 +1,8 @@
-import { McpServer, type CallToolResult } from "@modelcontextprotocol/server"
+import {
+  McpServer,
+  type CallToolResult,
+  type ServerContext,
+} from "@modelcontextprotocol/server"
 import { getRegistryItems, searchRegistries } from "@shadcn/registry"
 import { withRegistryContext } from "@shadcn/registry/internal/registry/context"
 import { RegistryError } from "@shadcn/registry/internal/registry/errors"
@@ -37,17 +41,16 @@ export const server = new McpServer(
   }
 )
 
-// GitHub authentication notices must reach the MCP client before the first
-// authenticated request. Stdout carries the protocol, so the console is not a
-// usable surface here.
-async function onGitHubAuthNotice(message: string) {
+// GitHub authentication notices must reach the user before the first
+// authenticated request. Stdout carries the protocol, so send the notice as an
+// MCP log message, which honours the client's log level. The 2026-07-28
+// protocol deprecates MCP logging in favour of stderr, so write it there too.
+async function sendGitHubAuthNotice(ctx: ServerContext, message: string) {
+  console.error(message)
   try {
-    await server.sendLoggingMessage({
-      level: "info",
-      data: message,
-    })
+    await ctx.mcpReq.log("info", message)
   } catch {
-    console.error(message)
+    // Already on stderr.
   }
 }
 
@@ -55,19 +58,21 @@ async function onGitHubAuthNotice(message: string) {
  * Run a tool callback inside the registry context, so GitHub auth notices
  * reach the client, and turn any thrown error into an `isError` tool result.
  */
-function registryTool<Args extends unknown[]>(
-  callback: (...args: Args) => Promise<CallToolResult>
-): (...args: Args) => Promise<CallToolResult> {
-  return (...args) =>
+function registryTool<Args>(
+  callback: (args: Args) => Promise<CallToolResult>
+): (args: Args, ctx: ServerContext) => Promise<CallToolResult> {
+  return (args, ctx) =>
     withRegistryContext(
       async () => {
         try {
-          return await callback(...args)
+          return await callback(args)
         } catch (error) {
           return formatToolError(error)
         }
       },
-      { onGitHubAuthNotice }
+      {
+        onGitHubAuthNotice: (message) => sendGitHubAuthNotice(ctx, message),
+      }
     )
 }
 
