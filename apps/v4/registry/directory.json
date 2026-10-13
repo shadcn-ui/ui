@@ -311,6 +311,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 24 24'><path fill='var(--foreground)' d='M12 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2M6 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m12 12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2Z'/></svg>"
   },
   {
+    "name": "@beadkit",
+    "homepage": "https://beadkit.dev",
+    "url": "https://beadkit.dev/r/{name}.json",
+    "description": "Learning primitives for AI-native interfaces: inline quizzes, flashcards, sequences, and mastery meters with streaming support and xAPI telemetry.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='var(--foreground)'><circle cx='8' cy='10' r='5'/><circle cx='24' cy='10' r='5'/><circle cx='16' cy='24' r='5'/></svg>"
+  },
+  {
     "name": "@benday",
     "homepage": "https://benday.kacemmathlouthi.dev",
     "url": "https://benday.kacemmathlouthi.dev/r/{name}.json",
@@ -1060,6 +1067,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='4' width='7' height='16' rx='1.5'/><rect x='15' y='4' width='7' height='16' rx='1.5'/><path d='m11 8.5 2 1.5-2 1.5'/><path d='m13 12.5-2 1.5 2 1.5'/></svg>"
   },
   {
+    "name": "@hazeglow",
+    "homepage": "https://hazeglow.dev",
+    "url": "https://hazeglow.dev/r/{name}.json",
+    "description": "Animated, grainy gradient blocks for React: a hero, a call to action and a card, themed by your CSS variables. WebGL2, zero dependencies.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='hazeglow-glow' x1='0.62' y1='0.12' x2='0.4' y2='0.9'><stop offset='0' stop-color='#4fc4f0'/><stop offset='0.2' stop-color='#a8e0f0'/><stop offset='0.4' stop-color='#f0d9a0'/><stop offset='0.58' stop-color='#f2a13a'/><stop offset='0.82' stop-color='#f0603c'/><stop offset='1' stop-color='#e83fd0' stop-opacity='0.7'/></linearGradient><filter id='hazeglow-blur' x='-30%' y='-30%' width='160%' height='160%'><feGaussianBlur stdDeviation='3.2'/></filter><clipPath id='hazeglow-tile'><rect width='64' height='64' rx='14'/></clipPath></defs><rect width='64' height='64' rx='14' fill='#000'/><g clip-path='url(#hazeglow-tile)'><path d='M16 22C22 17 32 19 42 26C50 31 57 38 57 44C57 50 50 52 42 49C33 46 22 39 17 33C14 29 13 25 16 22Z' fill='url(#hazeglow-glow)' filter='url(#hazeglow-blur)'/></g></svg>"
+  },
+  {
     "name": "@headcodecms",
     "homepage": "https://headcodecms.com",
     "url": "https://headcodecms.com/r/{name}.json",
@@ -1084,7 +1098,7 @@
     "name": "@hextaui",
     "homepage": "https://hextaui.com",
     "url": "https://hextaui.com/r/{name}.json",
-    "description": "Ready-to-use foundation components/blocks built on top of shadcn/ui.",
+    "description": "shadcn/ui components, hooks and AI blocks built on Base UI, with loading, error, empty and other hard states handled.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='1082' height='1082' fill='none' viewBox='0 0 1082 1082' class='dark:brightness-200'><g filter='url(#a)'><g clip-path='url(#b)'><rect width='1066' height='1066' x='7.703' y='7.699' fill='var(--background)' rx='533'/><mask id='c' width='1067' height='1067' x='7' y='7' maskUnits='userSpaceOnUse' style='mask-type:luminance'><path fill='#fff' d='M1018.68 7.7H62.723c-30.387 0-55.02 24.632-55.02 55.019v955.961c0 30.39 24.633 55.02 55.02 55.02h955.957c30.39 0 55.02-24.63 55.02-55.02V62.719c0-30.387-24.63-55.02-55.02-55.02'/></mask><g mask='url(#c)'><mask id='d' width='1040' height='1039' x='21' y='21' maskUnits='userSpaceOnUse' style='mask-type:alpha'><path fill='#d9d9d9' stroke='#f36006' d='M540.732 1059.48c286.518 0 518.788-232.265 518.788-518.783S827.25 21.91 540.732 21.91 21.945 254.18 21.945 540.697s232.269 518.783 518.787 518.783Z'/></mask><g mask='url(#d)'><path fill='url(#e)' d='m1071.67 501.544 104.72 94.295c14.96 13.47 16.17 36.518 2.7 51.478s-36.52 16.169-51.48 2.698l-56.56-50.93a.86.86 0 0 0-1.43.545 529.6 529.6 0 0 1-13.46 73.806c-.08.31.02.639.26.853l27.25 24.536c14.96 13.47 16.16 36.518 2.69 51.478s-36.51 16.168-51.47 2.697l-3.49-3.137a.854.854 0 0 0-1.36.3 532 532 0 0 1-29.82 59.078.86.86 0 0 0 .16 1.073c9.75 8.773 10.53 23.784 1.76 33.528l-23.671 26.29c-5.094 5.658-13.81 6.114-19.468 1.02a.86.86 0 0 0-1.248.105 536 536 0 0 1-42.612 47.559.86.86 0 0 0 .029 1.25c5.593 5.036 6.044 13.653 1.008 19.247l-24.144 26.814c-8.57 9.518-23.232 10.286-32.75 1.716a.86.86 0 0 0-1.088-.05 532 532 0 0 1-55.339 36.097.863.863 0 0 0-.152 1.39l2.776 2.5c14.961 13.47 16.169 36.52 2.698 51.48s-36.518 16.17-51.478 2.7l-26.097-23.5a.86.86 0 0 0-.88-.17 526 526 0 0 1-71.518 21.53c-.681.16-.906 1.02-.387 1.48l54.934 49.46c14.961 13.48 16.169 36.52 2.698 51.48s-36.518 16.17-51.478 2.7l-102.461-92.26a.85.85 0 0 0-.608-.22c-6.701.25-13.435.38-20.197.38-27.801 0-55.101-2.13-81.749-6.24-.844-.13-1.341.92-.707 1.49l161.774 145.66c14.961 13.47 16.169 36.52 2.698 51.48s-36.518 16.17-51.479 2.7l-294.108-264.82h-.001a1 1 0 0 0-.147-.11c-66.38-37.947-123.801-89.781-168.305-151.542a1 1 0 0 0-.122-.135l-292.176-263.078c-14.961-13.47-16.168-36.518-2.698-51.478s36.517-16.168 51.477-2.697L24.75 677.762c.635.572 1.625-.033 1.407-.859-8.57-32.462-14.15-66.139-16.427-100.717a.86.86 0 0 0-.282-.583l-100.335-90.342c-14.961-13.47-16.168-36.518-2.698-51.478s36.517-16.168 51.477-2.698l52.88 47.614a.86.86 0 0 0 1.43-.54 530 530 0 0 1 13.89-73.42.86.86 0 0 0-.256-.858L1.84 382.275c-14.96-13.47-16.167-36.518-2.697-51.478S35.66 314.63 50.62 328.1l.63.568a.86.86 0 0 0 1.364-.296 530 530 0 0 1 30.114-58.814.86.86 0 0 0-.165-1.078c-8.33-7.5-9.002-20.332-1.502-28.661l27.997-31.094c3.978-4.418 10.785-4.775 15.203-.797a.86.86 0 0 0 1.246-.1 535 535 0 0 1 42.875-47.324.86.86 0 0 0-.026-1.253c-4.499-4.051-4.863-10.983-.811-15.482l27.428-30.462c7.741-8.597 20.986-9.291 29.584-1.55a.86.86 0 0 0 1.085.054 533 533 0 0 1 55.631-35.837.86.86 0 0 0 .157-1.39l-1.404-1.263c-14.96-13.47-16.168-36.518-2.698-51.478s36.518-16.168 51.478-2.698l25.124 22.621a.86.86 0 0 0 .875.167 528 528 0 0 1 71.948-21.145.86.86 0 0 0 .392-1.479l-54.391-48.973c-14.961-13.47-16.169-36.518-2.698-51.479s36.518-16.167 51.478-2.697L524.168 8.573a.86.86 0 0 0 .6.22 542 542 0 0 1 15.939-.234c29.669 0 58.771 2.428 87.116 7.096.847.14 1.353-.913.715-1.487L465.481-132.65c-14.96-13.471-16.168-36.518-2.698-51.478s36.517-16.168 51.477-2.698L817.131 85.879a1 1 0 0 0 .126.095h.001c56.696 34.555 106.423 79.416 146.577 131.979l.001.002q.048.062.107.115l305.177 274.785c14.96 13.47 16.17 36.517 2.7 51.478s-36.52 16.167-51.48 2.697l-165.1-148.654c-.63-.575-1.63.039-1.4.866a530.5 530.5 0 0 1 17.55 101.726c.01.22.11.428.28.576M909.91 267.54l-.001-.002a1 1 0 0 0-.114-.126L773.753 144.92a1 1 0 0 0-.138-.101C725.348 116.36 671.42 96.477 613.929 87.265c-.846-.135-1.349.915-.712 1.488L982.66 421.401c.637.574 1.63-.035 1.406-.863-15.13-55.958-40.57-107.678-74.156-152.998M498.593 83.642a.86.86 0 0 0-.655-.217 457.6 457.6 0 0 0-79.632 14.526.86.86 0 0 0-.348 1.468L992.36 616.613a.86.86 0 0 0 1.424-.5 462.5 462.5 0 0 0 6.131-80.705.86.86 0 0 0-.283-.629zm473.878 613.883a.86.86 0 0 0-.232-.932L340.575 127.841a.86.86 0 0 0-.95-.134 459 459 0 0 0-58.156 33.865.86.86 0 0 0-.089 1.348l662.177 596.228a.86.86 0 0 0 1.33-.23 457 457 0 0 0 27.584-61.393M223.936 209.296a.86.86 0 0 0-1.169.019 462 462 0 0 0-43.046 47.468.86.86 0 0 0 .1 1.171l679.79 612.087a.86.86 0 0 0 1.174-.024 462 462 0 0 0 42.74-47.745.86.86 0 0 0-.105-1.165zm578.518 708.798a.86.86 0 0 0 .085-1.345l-663.226-597.17a.86.86 0 0 0-1.328.224 457 457 0 0 0-27.942 61.07.86.86 0 0 0 .23.938l633.426 570.338c.261.236.64.289.956.132a459 459 0 0 0 57.799-34.187M89.637 461.328a.86.86 0 0 0-1.422.492c-4.436 25.628-6.749 51.985-6.749 78.879l.002 1.274a.86.86 0 0 0 .285.636L586.816 997.37c.18.162.421.24.662.216a457 457 0 0 0 79.011-15.085.86.86 0 0 0 .341-1.467zm383.196 533.63c.842.124 1.335-.92.702-1.489L97.372 654.771c-.633-.57-1.62.028-1.408.853 13.747 53.353 36.841 102.951 67.432 146.945a1 1 0 0 0 .13.147l156.169 140.616q.075.067.162.115a456.1 456.1 0 0 0 152.976 51.511'/></g></g></g></g><defs><linearGradient id='e' x1='-211.917' x2='1297.42' y1='-132.296' y2='1213.4' gradientUnits='userSpaceOnUse'><stop offset='.202' stop-color='#fff' stop-opacity='0'/><stop offset='.635' stop-color='#0015ff'/></linearGradient><clipPath id='b'><rect width='1066' height='1066' x='7.703' y='7.699' fill='#fff' rx='533'/></clipPath><filter id='a' width='1081.4' height='1081.4' x='.003' y='-.001' color-interpolation-filters='sRGB' filterUnits='userSpaceOnUse'><feFlood flood-opacity='0' result='BackgroundImageFix'/><feBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'/><feColorMatrix in='noise' result='alphaNoise' type='luminanceToAlpha'/><feComponentTransfer in='alphaNoise' result='coloredNoise1'><feFuncA tableValues='1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0' type='discrete'/></feComponentTransfer><feComposite in='coloredNoise1' in2='effect1_foregroundBlur_132_25' operator='in' result='noise1Clipped'/><feFlood flood-color='#fff' flood-opacity='.17' result='color1Flood'/><feComposite in='color1Flood' in2='noise1Clipped' operator='in' result='color1'/><feMerge result='effect2_noise_132_25'><feMergeNode in='effect1_foregroundBlur_132_25'/><feMergeNode in='color1'/></feMerge></filter></defs></svg>"
   },
   {
@@ -1142,6 +1156,13 @@
     "url": "https://icons.lndev.me/r/{name}.json",
     "description": "An open-source library of meticulously animated icons (Tabler, Phosphor, and more) for your projects, inspired by lucide-animated.com",
     "logo": "<svg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M16 3C16 3 7 8 7 16C7 24 12 29 16 29C20 29 25 24 25 16C25 8 16 3 16 3Z' fill='var(--foreground)'/><circle cx='12' cy='14' r='2' fill='var(--background)'/><circle cx='20' cy='14' r='2' fill='var(--background)'/><path d='M11 20C11 20 13 22 16 22C19 22 21 20 21 20' stroke='var(--background)' stroke-width='1.5' stroke-linecap='round'/><path d='M16 3V10' stroke='var(--background)' stroke-width='1.5' stroke-linecap='round' opacity='0.6'/></svg>"
+  },
+  {
+    "name": "@ikas",
+    "homepage": "https://builders.ikas.com/docs/app-development/ui-kit",
+    "url": "https://builders.ikas.com/r/{name}.json",
+    "description": "UI components and screen patterns for building apps on ikas.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect width='32' height='32' rx='7.25' fill='var(--foreground)'/><g fill='var(--background)' transform='translate(4.8 6.43) scale(0.03930)'><path d='M205 50V212H425L220 447V285H0Z'/><path d='M227 50H432A65 65 0 0 1 480 158L452.09 190H227Z'/><path d='M458.55 207H450A120 120 0 0 1 450 447H249.19Z'/></g></svg>"
   },
   {
     "name": "@ilinxa",
@@ -1250,6 +1271,13 @@
     "description": "An open-source motion layer for shadcn/ui. One <Cuts /> line animates your dialogs, sheets, tabs and toasts; four helpers animate lists, numbers, skeletons and cards.",
     "author": "Briyan Hingrajiya",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><polygon points='9.3,11.7 20.3,22.7 14.8,28.2 3.8,17.2' fill='var(--foreground)' stroke='var(--foreground)' stroke-width='1.3' stroke-linejoin='round'/><polygon points='17.2,3.8 28.2,14.8 22.7,20.3 11.7,9.3' fill='#2447f5' stroke='#2447f5' stroke-width='1.3' stroke-linejoin='round'/></svg>"
+  },
+  {
+    "name": "@keyframeui",
+    "homepage": "https://keyframeui.com",
+    "url": "https://keyframeui.com/r/{name}.json",
+    "description": "Animated React components built with Tailwind CSS, Motion and GSAP, installable with the shadcn CLI.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 232 232' fill='none'><rect width='232' height='232' fill='var(--foreground)'/><g transform='translate(16 14)'><polygon points='4,146 4,72 84,2 176,2' fill='var(--background)'/><polygon points='4,172 87,102 88,172 56,203 4,203' fill='var(--background)' fill-opacity='0.45'/><polygon points='87,102 196,203 128,203 88,172' fill='var(--background)' fill-opacity='0.6'/></g></svg>"
   },
   {
     "name": "@keyline",
@@ -1862,6 +1890,13 @@
     "description": "Source-first React visualization components for Recharts, D3.js, and Google Charts",
     "url": "https://plotcn.vercel.app/r/{name}.json",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='24' height='24' fill='none'><path fill='currentColor' d='M3 19V10C3 6.13 6.13 3 10 3H19C24.52 3 29 7.48 29 13C29 18.32 24.85 22.67 19.6 22.98V17.5C22.71 17.81 25 15.73 25 12.8C25 9.93 23.05 8 20.5 8C19.26 8 18.25 8.44 17.1 9.2L6.2 16.4C4.75 17.36 3.65 18.09 3 19Z'/><path fill='currentColor' d='M3 24.2C3 21.98 4.14 20.06 6 18.85L7.5 17.88C8.58 17.18 9.5 17.8 9.5 19V29H6.5C4.57 29 3 27.43 3 25.5V24.2ZM11.5 17.13C11.5 16.43 11.78 16.02 12.37 15.63L14.9 13.98C16.12 13.18 17.5 13.88 17.5 15.3V28C17.5 28.55 17.05 29 16.5 29H12.5C11.95 29 11.5 28.55 11.5 28V17.13Z'/><path fill='currentColor' d='M23 12.8A2 2 0 1 1 19 12.8A2 2 0 1 1 23 12.8Z'/></svg>"
+  },
+  {
+    "name": "@pmndrs",
+    "homepage": "https://pmndrs.github.io/design-system",
+    "url": "https://pmndrs.github.io/design-system/r/{name}.json",
+    "description": "The Poimandres design system: Material Design 3 colours, fonts, a shadcn preset, logos, Figma tokens and brand guidelines for pmndrs apps.",
+    "logo": "<svg viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg' width='600' height='600'> <rect height='600' width='600' fill='#000000' /> <rect height='238' width='238' x='181' y='181' fill='#FFFFFF' /> <rect height='222' width='222' x='189' y='189' fill='#000000' /> <rect height='206' width='206' x='197' y='197' fill='#FFFFFF' /> <rect height='190' width='190' x='205' y='205' fill='#000000' /> </svg>"
   },
   {
     "name": "@preskok",
@@ -2589,6 +2624,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' version='1.0' width='597.000000pt' height='525.000000pt' viewBox='0 0 597.000000 525.000000' preserveAspectRatio='xMidYMid meet'><g transform='translate(0.000000,525.000000) scale(0.100000,-0.100000)' fill='var(--foreground, currentColor)' stroke='none'><path d='M1816 5223 l-1809 -3 6 -108 c24 -383 241 -748 579 -969 113 -74 205   -118 338 -162 178 -58 237 -64 678 -70 l404 -6 14 33 c56 136 213 367 364 538   283 320 747 605 1163 716 48 12 87 26 87 30 0 5 -3 7 -7 6 -5 -2 -822 -4   -1817 -5z'/><path d='M4630 5209 c-983 -101 -1863 -612 -2297 -1334 -249 -414 -394 -925   -462 -1625 -28 -287 -29 -310 -19 -304 4 3 8 12 8 20 0 19 87 192 163 324 413   718 1068 1274 1797 1522 228 78 466 118 703 118 506 0 811 110 1079 389 135   139 217 274 283 462 43 123 60 208 70 342 l7 97 -623 -1 c-343 -1 -662 -6   -709 -10z'/><path d='M3876 3584 c-339 -138 -733 -410 -1041 -719 -347 -347 -596 -694   -840 -1170 -188 -367 -356 -851 -435 -1250 -31 -157 -60 -344 -60 -389 l0 -39   183 7 c224 8 336 20 497 52 676 135 1179 580 1326 1174 19 74 56 257 83 405   94 515 222 1211 256 1390 50 268 97 545 93 555 -2 4 -29 -2 -62 -16z'/></g></svg>"
   },
   {
+    "name": "@turn",
+    "homepage": "https://turnui.xyz",
+    "url": "https://turnui.xyz/r/{name}.json",
+    "description": "Minimal, accessible components for AI apps: chat, agents and tool use. Streaming-first, built on Base UI and Tailwind.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='1.8'><rect x='1.5' y='1.5' width='21' height='21' rx='4.5'/></svg>"
+  },
+  {
     "name": "@tween-ui",
     "homepage": "https://tween-ui.vercel.app",
     "url": "https://tween-ui.vercel.app/r/{name}.json",
@@ -2672,6 +2714,21 @@
     "url": "https://ui.untldlabs.com/r/{name}.json",
     "description": "A set of beautifully designed components for modern web applications.",
     "logo": "<svg width='258' height='65' viewBox='0 0 258 65' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='2.5' y='2.5' width='135' height='60' stroke='#008CFF'/><path d='M40.2188 22.5V55H35.0625V49.7188H34.9375C33 53.4688 29.625 55.5625 24.625 55.5625C17.5312 55.5625 13.375 50.9688 13.375 43.5938V22.5H18.8125V42.625C18.8125 47.9062 21.2812 50.75 26.3125 50.75C31.5938 50.75 34.7812 47.125 34.7812 41.5938V22.5H40.2188Z' fill='white'/></svg>"
+  },
+  {
+    "name": "@upfork",
+    "homepage": "https://upfork.dev",
+    "url": "https://upfork.dev/r/{name}.json",
+    "description": "React + Tailwind CSS components and landing pages. The free ones install with no setup; the rest with an UpFork token.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='var(--foreground)' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'><path d='M7 6.5v5.5a7 7 0 0 0 14 0V4M17 8l4-4 4 4M14 19v9'/></svg>"
+  },
+  {
+    "name": "@uploadcn",
+    "homepage": "https://uploadcn.dev",
+    "url": "https://uploadcn.dev/r/{style}/{name}.json",
+    "description": "Production-ready file uploads: dropzones, queues, resumable S3 and R2 uploads, and 58 blocks for every style.",
+    "author": "Hanzala",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6.5' fill='var(--foreground)'/><g fill='none' stroke='var(--background)' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' transform='translate(-0.75 0)'><path d='M7 9v4a5 5 0 0 0 10 0V6'/><path d='m14 9 3-3 3 3'/></g></svg>"
   },
   {
     "name": "@uselayouts",
@@ -2870,6 +2927,14 @@
     "url": "https://videocn.dev/r/{name}.json",
     "description": "A complete video player for shadcn/ui: HLS, DASH and live streams, quality switching, keyboard shortcuts, and your theme out of the box.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><clipPath id='videocn-logo'><rect width='32' height='32' rx='7'/></clipPath><rect width='32' height='32' rx='7' fill='var(--foreground)'/><path clip-path='url(#videocn-logo)' d='M12 -2V34M-2 0.83 34 21.83M-2 31.17 34 10.17' stroke='var(--background)' stroke-width='1.6'/></svg>"
+  },
+  {
+    "name": "@visited-map",
+    "homepage": "https://visitedmap.vercel.app",
+    "url": "https://visitedmap.vercel.app/r/{name}.json",
+    "description": "An SVG world map that highlights the countries you've visited, lived in or want to see, with city pins, stats and optional zoom. No tiles or API keys. Works in Server Components.",
+    "author": "Diego Gennaro",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m11 19-1.106-.552a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0l4.212 2.106a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619V12'/><path d='M15 5.764V12'/><path d='M9 3.236v15'/><path d='m15 19 2 2 4-4'/></svg>"
   },
   {
     "name": "@vue-bits",
