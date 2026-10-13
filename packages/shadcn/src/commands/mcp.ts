@@ -2,7 +2,7 @@ import { promises as fs } from "fs"
 import path from "path"
 import { server } from "@/src/mcp"
 import { handleError } from "@/src/utils/handle-error"
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
+import { serveStdio } from "@modelcontextprotocol/server/stdio"
 import { loadEnvFiles } from "@shadcn/registry/internal/env-loader"
 import { getConfig } from "@shadcn/registry/internal/get-config"
 import { getPackageManager } from "@shadcn/registry/internal/get-package-manager"
@@ -98,8 +98,9 @@ export const mcp = new Command()
   .action(async (options) => {
     try {
       await loadEnvFiles(options.cwd)
-      const transport = new StdioServerTransport()
-      await server.connect(transport)
+      // Serves both the 2026-07-28 protocol and the 2025 `initialize`
+      // handshake. The client's first message picks the version.
+      serveStdio(() => server)
     } catch (error) {
       logger.break()
       handleError(error)
