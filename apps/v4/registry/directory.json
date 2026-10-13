@@ -177,6 +177,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128' fill='none' stroke='var(--foreground)' stroke-linecap='round'><path d='M38.4 102.9a43.5 43.5 0 1 1 51.2 0' stroke-width='8.6'/><path d='m63.3 70 20.5-23.8' stroke-width='8'/></svg>"
   },
   {
+    "name": "@blockdex",
+    "homepage": "https://blockdex.dev",
+    "url": "https://blockdex.dev/shadcn/{name}.json",
+    "description": "Discover a verified open-source cohort from Magic UI and EvilCharts through BlockDex; installs resolve to the original publishers.",
+    "author": "Compound Labs",
+    "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\" width=\"32\" height=\"32\"> <g transform=\"translate(2.5 4.188) scale(0.84375)\"><rect x=\"1.5\" y=\"1\" width=\"13\" height=\"11.5\" rx=\"2\" fill=\"#00ddef\" fill-opacity=\"0.34\"></rect><rect x=\"17.5\" y=\"1\" width=\"13\" height=\"11.5\" rx=\"2\" fill=\"#00ddef\" fill-opacity=\"0.62\"></rect><rect x=\"1.5\" y=\"15.5\" width=\"13\" height=\"11.5\" rx=\"2\" fill=\"#00ddef\" fill-opacity=\"0.34\"></rect><rect x=\"17.5\" y=\"15.5\" width=\"13\" height=\"11.5\" rx=\"2\" fill=\"#00ddef\" fill-opacity=\"1\"></rect></g> </svg>"
+  },
+  {
     "name": "@designali",
     "homepage": "https://designali.com",
     "url": "https://designali.com/r/{name}.json",
