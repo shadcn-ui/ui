@@ -2,10 +2,10 @@
 
 import * as React from "react"
 import { IconCheck, IconCopy } from "@tabler/icons-react"
+import { cn } from "cn"
 import template from "lodash/template"
 
 import { THEMES } from "@/lib/themes"
-import { cn } from "@/lib/utils"
 import { useThemeConfig } from "@/components/active-theme"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Icons } from "@/components/icons"

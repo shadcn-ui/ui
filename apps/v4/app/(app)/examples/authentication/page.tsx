@@ -1,8 +1,8 @@
 import { type Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+import { cn } from "cn"
 
-import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/registry/new-york-v4/ui/button"
 import { FieldDescription } from "@/registry/new-york-v4/ui/field"
 import { UserAuthForm } from "@/app/(app)/examples/authentication/components/user-auth-form"

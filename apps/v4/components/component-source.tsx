@@ -1,10 +1,10 @@
 import * as React from "react"
+import { cn } from "cn"
 
 import { formatCode } from "@/lib/format-code"
 import { highlightCode } from "@/lib/highlight-code"
 import { readFileFromRoot } from "@/lib/read-file"
 import { getDemoItem, getRegistryItem } from "@/lib/registry"
-import { cn } from "@/lib/utils"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { CopyButton } from "@/components/copy-button"
 import { getIconForLanguageExtension } from "@/components/icons"
