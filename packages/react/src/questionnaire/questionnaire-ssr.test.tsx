@@ -592,6 +592,42 @@ describe("Questionnaire hydration", () => {
 
     expect(consoleWarn).toHaveBeenCalledTimes(2)
   })
+
+  it("hydrates choices beside an input in a transition", async () => {
+    const onUncaughtError = vi.fn()
+    const questionnaire = (
+      <React.StrictMode>
+        <React.Suspense>
+          <Questionnaire.Root
+            items={[
+              {
+                choices: [{ value: "focused" }, { value: "complete" }],
+                name: "answer",
+                required: true,
+              },
+            ]}
+          >
+            <Questionnaire.Item name="answer" required>
+              <Questionnaire.Title>Answer</Questionnaire.Title>
+              <TestChoice value="focused" />
+              <TestChoice value="complete" />
+              <Questionnaire.Input aria-label="Another answer" />
+            </Questionnaire.Item>
+          </Questionnaire.Root>
+        </React.Suspense>
+      </React.StrictMode>
+    )
+
+    renderMarkup(questionnaire)
+
+    await act(async () => {
+      React.startTransition(() => {
+        root = hydrateRoot(container, questionnaire, { onUncaughtError })
+      })
+    })
+
+    expect(onUncaughtError).not.toHaveBeenCalled()
+  })
 })
 
 function TestQuestionnaire({
