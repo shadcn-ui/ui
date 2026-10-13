@@ -177,6 +177,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128' fill='none' stroke='var(--foreground)' stroke-linecap='round'><path d='M38.4 102.9a43.5 43.5 0 1 1 51.2 0' stroke-width='8.6'/><path d='m63.3 70 20.5-23.8' stroke-width='8'/></svg>"
   },
   {
+    "name": "@beamline",
+    "homepage": "https://beamline.io",
+    "url": "https://beamline.io/registry/{name}.json",
+    "description": "Beamline UI: React UI components by Danylo Pravda, in nine looks with dark and light. Free MIT sample and a paid Complete System ($49 launch price, lifetime updates). Install through the shadcn registry or a coding agent. beamline.io",
+    "author": "Danylo Pravda",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' id='beamline-favicon' viewBox='0 0 100 100' aria-hidden='true'><style>#beamline-favicon .lb polygon,#beamline-favicon .rb polygon{fill:#17181c}@media (prefers-color-scheme:dark){#beamline-favicon .lb polygon,#beamline-favicon .rb polygon{fill:#f4f4f6}}</style><defs><linearGradient id='fv-g1' x1='42.5' y1='84' x2='57.5' y2='16' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='#0065c1'/><stop offset='0.5' stop-color='#009eb9'/><stop offset='1' stop-color='#e6581b'/></linearGradient></defs><g class='lb'><polygon points='25.41,19.76 -2.51,50 25.41,80.24 34.59,71.76 12.31,50 34.59,28.24' fill='#0f0f11'/></g><g class='rb'><polygon points='65.41,28.24 87.69,50 65.41,71.76 74.59,80.24 102.51,50 74.59,19.76' fill='#0f0f11'/></g><line class='bm' x1='42.5' y1='84' x2='57.5' y2='16' stroke='url(#fv-g1)' stroke-width='9.4' pathLength='1'/></svg>"
+  },
+  {
     "name": "@designali",
     "homepage": "https://designali.com",
     "url": "https://designali.com/r/{name}.json",
