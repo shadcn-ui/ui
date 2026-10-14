@@ -1,0 +1,138 @@
+"use client"
+
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/registry/bases/ark/ui/avatar"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/registry/bases/ark/ui/dropdown-menu"
+import {
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  useSidebar,
+} from "@/registry/bases/ark/ui/sidebar"
+import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
+
+export function NavUser({
+  user,
+}: {
+  user: {
+    name: string
+    email: string
+    avatar: string
+  }
+}) {
+  const { isMobile } = useSidebar()
+
+  return (
+    <SidebarMenu>
+      <SidebarMenuItem>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <SidebarMenuButton
+              size="lg"
+              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground md:h-8 md:p-0"
+            >
+              <Avatar className="h-8 w-8 rounded-lg">
+                <AvatarImage src={user.avatar} alt={user.name} />
+                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+              </Avatar>
+              <div className="grid flex-1 text-left text-sm leading-tight">
+                <span className="truncate font-medium">{user.name}</span>
+                <span className="truncate text-xs">{user.email}</span>
+              </div>
+              <IconPlaceholder
+                lucide="ChevronsUpDownIcon"
+                tabler="IconSelector"
+                hugeicons="UnfoldMoreIcon"
+                phosphor="CaretUpDownIcon"
+                remixicon="RiArrowUpDownLine"
+                className="ml-auto size-4"
+              />
+            </SidebarMenuButton>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-(--reference-width) min-w-56 rounded-lg">
+            <DropdownMenuLabel className="p-0 font-normal">
+              <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+                <Avatar className="h-8 w-8 rounded-lg">
+                  <AvatarImage src={user.avatar} alt={user.name} />
+                  <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                </Avatar>
+                <div className="grid flex-1 text-left text-sm leading-tight">
+                  <span className="truncate font-medium">{user.name}</span>
+                  <span className="truncate text-xs">{user.email}</span>
+                </div>
+              </div>
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuItem value="upgrade">
+                <IconPlaceholder
+                  lucide="SparklesIcon"
+                  tabler="IconSparkles"
+                  hugeicons="SparklesIcon"
+                  phosphor="SparkleIcon"
+                  remixicon="RiSparklingLine"
+                />
+                Upgrade to Pro
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuItem value="account">
+                <IconPlaceholder
+                  lucide="BadgeCheckIcon"
+                  tabler="IconRosetteDiscountCheck"
+                  hugeicons="CheckmarkBadgeIcon"
+                  phosphor="CheckCircleIcon"
+                  remixicon="RiCheckboxCircleLine"
+                />
+                Account
+              </DropdownMenuItem>
+              <DropdownMenuItem value="billing">
+                <IconPlaceholder
+                  lucide="CreditCardIcon"
+                  tabler="IconCreditCard"
+                  hugeicons="CreditCardIcon"
+                  phosphor="CreditCardIcon"
+                  remixicon="RiBankCardLine"
+                />
+                Billing
+              </DropdownMenuItem>
+              <DropdownMenuItem value="notifications">
+                <IconPlaceholder
+                  lucide="BellIcon"
+                  tabler="IconBell"
+                  hugeicons="NotificationIcon"
+                  phosphor="BellIcon"
+                  remixicon="RiNotificationLine"
+                />
+                Notifications
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem value="logout">
+              <IconPlaceholder
+                lucide="LogOutIcon"
+                tabler="IconLogout"
+                hugeicons="LogoutIcon"
+                phosphor="SignOutIcon"
+                remixicon="RiLogoutBoxLine"
+              />
+              Log out
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </SidebarMenuItem>
+    </SidebarMenu>
+  )
+}

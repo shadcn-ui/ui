@@ -1,0 +1,25 @@
+import { Button } from "@/styles/ark-nova/ui/button"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/styles/ark-nova/ui/tooltip"
+
+export function TooltipSides() {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {(["left", "top", "bottom", "right"] as const).map((side) => (
+        <Tooltip key={side} positioning={{ placement: side }}>
+          <TooltipTrigger asChild>
+            <Button variant="outline" className="w-fit capitalize">
+              {side}
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Add to library</p>
+          </TooltipContent>
+        </Tooltip>
+      ))}
+    </div>
+  )
+}
