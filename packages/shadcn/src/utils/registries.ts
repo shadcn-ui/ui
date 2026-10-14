@@ -1,12 +1,12 @@
 import path from "path"
+import { Config } from "@shadcn/registry/internal/get-config"
 import {
   getPackageJsonRegistries,
   getRegistriesIndex,
-} from "@/src/registry/api"
-import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
-import { resolveRegistryNamespaces } from "@/src/registry/namespaces"
-import { Config } from "@/src/utils/get-config"
-import { spinner } from "@/src/utils/spinner"
+} from "@shadcn/registry/internal/registry/api"
+import { BUILTIN_REGISTRIES } from "@shadcn/registry/internal/registry/constants"
+import { resolveRegistryNamespaces } from "@shadcn/registry/internal/registry/namespaces"
+import { spinner } from "@shadcn/registry/internal/spinner"
 import fs from "fs-extra"
 
 export async function ensureRegistriesInConfig(
