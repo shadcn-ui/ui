@@ -1,5 +1,6 @@
-import { Transformer } from "@/src/utils/transformers"
 import { SyntaxKind } from "ts-morph"
+
+import { toTextTransformer, type SourceFileTransformer } from "./source-file"
 
 interface TransformInfo {
   elementStart: number
@@ -7,7 +8,11 @@ interface TransformInfo {
   newText: string
 }
 
-export const transformRender: Transformer = async ({ sourceFile, config }) => {
+// shadcn/utils exports this one as transformRender.
+export const transformRenderSourceFile: SourceFileTransformer = async ({
+  sourceFile,
+  config,
+}) => {
   // Only run for base- styles.
   if (!config.style?.startsWith("base-")) {
     return sourceFile
@@ -127,3 +132,6 @@ export const transformRender: Transformer = async ({ sourceFile, config }) => {
 
   return sourceFile
 }
+
+// The same transformer, for the registry's transform().
+export const transformRender = toTextTransformer(transformRenderSourceFile)
