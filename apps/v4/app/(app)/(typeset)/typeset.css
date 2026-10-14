@@ -452,7 +452,15 @@
 
   /* Components (anything with data-slot) keep their own styles. A component
      placed directly in the flow gets the same space above as a paragraph. */
-  .typeset > :where([data-slot]) {
+  .typeset
+    > :where([data-slot]):not(
+      :where(
+        .not-typeset,
+        [data-not-typeset],
+        .not-typeset *,
+        [data-not-typeset] *
+      )
+    ) {
     margin-block-start: var(--typeset-flow);
   }
 
