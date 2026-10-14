@@ -4,8 +4,10 @@ import { useChat } from "@ai-sdk/react"
 import type { UIMessage } from "ai"
 import { ArrowUpRightIcon, GlobeIcon } from "lucide-react"
 
-import { createChat } from "@/lib/ai"
+import { createChat, getMessageText } from "@/lib/ai"
+import { Bubble, BubbleContent } from "@/styles/base-rhea/ui/bubble"
 import { Button } from "@/styles/base-rhea/ui/button"
+import { Message, MessageContent } from "@/styles/base-rhea/ui/message"
 import {
   Trace,
   TraceCollapsible,
@@ -68,9 +70,6 @@ function Sources({ sources }: { sources: SourcePart[] }) {
                 rel="noreferrer"
               >
                 <TraceLine>
-                  <TraceIcon>
-                    <GlobeIcon />
-                  </TraceIcon>
                   <TraceTitle>
                     {source.title ?? new URL(source.url).hostname}
                     <span className="sr-only"> (opens in a new tab)</span>
@@ -98,41 +97,48 @@ export function SourcesDemo() {
   return (
     <div className="flex min-h-72 w-full max-w-sm flex-col gap-4 py-6 text-sm">
       {messages.map((message) => {
+        if (message.role === "user") {
+          return (
+            <Message key={message.id} align="end">
+              <MessageContent>
+                <Bubble align="end" variant="muted">
+                  <BubbleContent>{getMessageText(message)}</BubbleContent>
+                </Bubble>
+              </MessageContent>
+            </Message>
+          )
+        }
+
         const sources = message.parts
           .filter((part) => part.type === "source-url")
           .filter(
             (part, index, all) =>
               all.findIndex((other) => other.url === part.url) === index
           )
-        const text = message.parts
-          .map((part) => (part.type === "text" ? part.text : ""))
-          .join("")
+        const text = getMessageText(message)
 
         return (
-          <div key={message.id} className="flex flex-col gap-4">
-            {text && (
-              <p
-                className={message.role === "user" ? "font-medium" : undefined}
-              >
-                {text}
-              </p>
-            )}
-            {sources.length > 0 && <Sources sources={sources} />}
-          </div>
+          <Message key={message.id}>
+            <MessageContent className="gap-4">
+              {text && <p>{text}</p>}
+              {sources.length > 0 && <Sources sources={sources} />}
+            </MessageContent>
+          </Message>
         )
       })}
-      <Button
-        variant="outline"
-        size="sm"
-        className="mt-auto self-start"
-        disabled={busy}
-        onClick={() => {
-          setMessages([])
-          sendMessage(question)
-        }}
-      >
-        Replay
-      </Button>
+      {!busy && (
+        <Button
+          variant="outline"
+          size="sm"
+          className="mt-auto self-start"
+          onClick={() => {
+            setMessages([])
+            sendMessage(question)
+          }}
+        >
+          Replay
+        </Button>
+      )}
     </div>
   )
 }

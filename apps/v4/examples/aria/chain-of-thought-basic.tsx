@@ -1,4 +1,4 @@
-import { FileTextIcon, GlobeIcon, SearchIcon } from "lucide-react"
+import { CircleCheckIcon } from "lucide-react"
 
 import {
   Trace,
@@ -16,6 +16,9 @@ export function ChainOfThoughtBasic() {
       <TraceCollapsible defaultExpanded>
         <TraceCollapsibleTrigger>
           <TraceLine>
+            <TraceIcon>
+              <CircleCheckIcon />
+            </TraceIcon>
             <TraceTitle>Researched in 3 steps</TraceTitle>
           </TraceLine>
         </TraceCollapsibleTrigger>
@@ -23,13 +26,13 @@ export function ChainOfThoughtBasic() {
           <Trace>
             <TraceLine>
               <TraceIcon>
-                <FileTextIcon />
+                <CircleCheckIcon />
               </TraceIcon>
               <TraceTitle>Read the build log for dpl_8Kx2</TraceTitle>
             </TraceLine>
             <TraceLine>
               <TraceIcon>
-                <GlobeIcon />
+                <CircleCheckIcon />
               </TraceIcon>
               <TraceTitle>
                 Searched the web for next.js image cache key
@@ -37,7 +40,7 @@ export function ChainOfThoughtBasic() {
             </TraceLine>
             <TraceLine>
               <TraceIcon>
-                <SearchIcon />
+                <CircleCheckIcon />
               </TraceIcon>
               <TraceTitle>Searched the code for cacheKey</TraceTitle>
             </TraceLine>

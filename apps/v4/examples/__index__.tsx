@@ -33,18 +33,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "accordion-rtl",
       filePath: "examples/base/accordion-rtl.tsx",
     },
-    "agent-basic": {
-      name: "agent-basic",
-      filePath: "examples/base/agent-basic.tsx",
-    },
-    "agent-demo": {
-      name: "agent-demo",
-      filePath: "examples/base/agent-demo.tsx",
-    },
-    "agent-running": {
-      name: "agent-running",
-      filePath: "examples/base/agent-running.tsx",
-    },
     "ai-sdk-helper-demo": {
       name: "ai-sdk-helper-demo",
       filePath: "examples/base/ai-sdk-helper-demo.tsx",
@@ -525,6 +513,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "chart-tooltip",
       filePath: "examples/base/chart-tooltip.tsx",
     },
+    "chat-demo": {
+      name: "chat-demo",
+      filePath: "examples/base/chat-demo.tsx",
+    },
     "checkbox-basic": {
       name: "checkbox-basic",
       filePath: "examples/base/checkbox-basic.tsx",
@@ -556,6 +548,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "checkbox-table": {
       name: "checkbox-table",
       filePath: "examples/base/checkbox-table.tsx",
+    },
+    "checkpoint-demo": {
+      name: "checkpoint-demo",
+      filePath: "examples/base/checkpoint-demo.tsx",
     },
     "code-block-actions": {
       name: "code-block-actions",
@@ -753,17 +749,13 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "command-shortcuts",
       filePath: "examples/base/command-shortcuts.tsx",
     },
-    "commit-basic": {
-      name: "commit-basic",
-      filePath: "examples/base/commit-basic.tsx",
+    "confirmation-demo": {
+      name: "confirmation-demo",
+      filePath: "examples/base/confirmation-demo.tsx",
     },
-    "commit-demo": {
-      name: "commit-demo",
-      filePath: "examples/base/commit-demo.tsx",
-    },
-    "commit-diff": {
-      name: "commit-diff",
-      filePath: "examples/base/commit-diff.tsx",
+    "context-demo": {
+      name: "context-demo",
+      filePath: "examples/base/context-demo.tsx",
     },
     "context-menu-basic": {
       name: "context-menu-basic",
@@ -1045,6 +1037,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "field-textarea",
       filePath: "examples/base/field-textarea.tsx",
     },
+    "file-tree-demo": {
+      name: "file-tree-demo",
+      filePath: "examples/base/file-tree-demo.tsx",
+    },
     "file-upload-list": {
       name: "file-upload-list",
       filePath: "examples/base/file-upload-list.tsx",
@@ -1060,6 +1056,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "hover-card-sides": {
       name: "hover-card-sides",
       filePath: "examples/base/hover-card-sides.tsx",
+    },
+    "inline-citation-demo": {
+      name: "inline-citation-demo",
+      filePath: "examples/base/inline-citation-demo.tsx",
     },
     "input-badge": {
       name: "input-badge",
@@ -1421,6 +1421,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "message-markdown",
       filePath: "examples/base/message-markdown.tsx",
     },
+    "message-pattern": {
+      name: "message-pattern",
+      filePath: "examples/base/message-pattern.tsx",
+    },
     "message-scroller-anchoring": {
       name: "message-scroller-anchoring",
       filePath: "examples/base/message-scroller-anchoring.tsx",
@@ -1468,6 +1472,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "message-scroller-visibility": {
       name: "message-scroller-visibility",
       filePath: "examples/base/message-scroller-visibility.tsx",
+    },
+    "model-selector-demo": {
+      name: "model-selector-demo",
+      filePath: "examples/base/model-selector-demo.tsx",
     },
     "muted-item-group": {
       name: "muted-item-group",
@@ -1568,6 +1576,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "progress-rtl": {
       name: "progress-rtl",
       filePath: "examples/base/progress-rtl.tsx",
+    },
+    "prompt-input-demo": {
+      name: "prompt-input-demo",
+      filePath: "examples/base/prompt-input-demo.tsx",
     },
     "questionnaire-animated": {
       name: "questionnaire-animated",
@@ -2001,6 +2013,26 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "stack-trace-frames",
       filePath: "examples/base/stack-trace-frames.tsx",
     },
+    "subagent-basic": {
+      name: "subagent-basic",
+      filePath: "examples/base/subagent-basic.tsx",
+    },
+    "subagent-demo": {
+      name: "subagent-demo",
+      filePath: "examples/base/subagent-demo.tsx",
+    },
+    "subagent-details": {
+      name: "subagent-details",
+      filePath: "examples/base/subagent-details.tsx",
+    },
+    "subagent-running": {
+      name: "subagent-running",
+      filePath: "examples/base/subagent-running.tsx",
+    },
+    "suggestion-demo": {
+      name: "suggestion-demo",
+      filePath: "examples/base/suggestion-demo.tsx",
+    },
     "switch-choice-card": {
       name: "switch-choice-card",
       filePath: "examples/base/switch-choice-card.tsx",
@@ -2237,6 +2269,14 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "tooltip-sides",
       filePath: "examples/base/tooltip-sides.tsx",
     },
+    "trace-collapsible": {
+      name: "trace-collapsible",
+      filePath: "examples/base/trace-collapsible.tsx",
+    },
+    "trace-commit": {
+      name: "trace-commit",
+      filePath: "examples/base/trace-commit.tsx",
+    },
     "trace-demo": {
       name: "trace-demo",
       filePath: "examples/base/trace-demo.tsx",
@@ -2248,10 +2288,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "trace-dialog": {
       name: "trace-dialog",
       filePath: "examples/base/trace-dialog.tsx",
-    },
-    "trace-expand": {
-      name: "trace-expand",
-      filePath: "examples/base/trace-expand.tsx",
     },
     "trace-group": {
       name: "trace-group",
@@ -2386,18 +2422,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "accordion-rtl": {
       name: "accordion-rtl",
       filePath: "examples/aria/accordion-rtl.tsx",
-    },
-    "agent-basic": {
-      name: "agent-basic",
-      filePath: "examples/aria/agent-basic.tsx",
-    },
-    "agent-demo": {
-      name: "agent-demo",
-      filePath: "examples/aria/agent-demo.tsx",
-    },
-    "agent-running": {
-      name: "agent-running",
-      filePath: "examples/aria/agent-running.tsx",
     },
     "alert-action": {
       name: "alert-action",
@@ -2871,6 +2895,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "chart-tooltip",
       filePath: "examples/aria/chart-tooltip.tsx",
     },
+    "chat-demo": {
+      name: "chat-demo",
+      filePath: "examples/aria/chat-demo.tsx",
+    },
     "checkbox-basic": {
       name: "checkbox-basic",
       filePath: "examples/aria/checkbox-basic.tsx",
@@ -2902,6 +2930,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "checkbox-table": {
       name: "checkbox-table",
       filePath: "examples/aria/checkbox-table.tsx",
+    },
+    "checkpoint-demo": {
+      name: "checkpoint-demo",
+      filePath: "examples/aria/checkpoint-demo.tsx",
     },
     "code-block-actions": {
       name: "code-block-actions",
@@ -3091,17 +3123,13 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "command-shortcuts",
       filePath: "examples/aria/command-shortcuts.tsx",
     },
-    "commit-basic": {
-      name: "commit-basic",
-      filePath: "examples/aria/commit-basic.tsx",
+    "confirmation-demo": {
+      name: "confirmation-demo",
+      filePath: "examples/aria/confirmation-demo.tsx",
     },
-    "commit-demo": {
-      name: "commit-demo",
-      filePath: "examples/aria/commit-demo.tsx",
-    },
-    "commit-diff": {
-      name: "commit-diff",
-      filePath: "examples/aria/commit-diff.tsx",
+    "context-demo": {
+      name: "context-demo",
+      filePath: "examples/aria/context-demo.tsx",
     },
     "context-menu-basic": {
       name: "context-menu-basic",
@@ -3383,6 +3411,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "field-textarea",
       filePath: "examples/aria/field-textarea.tsx",
     },
+    "file-tree-demo": {
+      name: "file-tree-demo",
+      filePath: "examples/aria/file-tree-demo.tsx",
+    },
     "file-upload-list": {
       name: "file-upload-list",
       filePath: "examples/aria/file-upload-list.tsx",
@@ -3398,6 +3430,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "hover-card-sides": {
       name: "hover-card-sides",
       filePath: "examples/aria/hover-card-sides.tsx",
+    },
+    "inline-citation-demo": {
+      name: "inline-citation-demo",
+      filePath: "examples/aria/inline-citation-demo.tsx",
     },
     "input-badge": {
       name: "input-badge",
@@ -3735,6 +3771,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "message-markdown",
       filePath: "examples/aria/message-markdown.tsx",
     },
+    "message-pattern": {
+      name: "message-pattern",
+      filePath: "examples/aria/message-pattern.tsx",
+    },
     "message-scroller-anchoring": {
       name: "message-scroller-anchoring",
       filePath: "examples/aria/message-scroller-anchoring.tsx",
@@ -3782,6 +3822,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "message-scroller-visibility": {
       name: "message-scroller-visibility",
       filePath: "examples/aria/message-scroller-visibility.tsx",
+    },
+    "model-selector-demo": {
+      name: "model-selector-demo",
+      filePath: "examples/aria/model-selector-demo.tsx",
     },
     "muted-item-group": {
       name: "muted-item-group",
@@ -3874,6 +3918,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "progress-rtl": {
       name: "progress-rtl",
       filePath: "examples/aria/progress-rtl.tsx",
+    },
+    "prompt-input-demo": {
+      name: "prompt-input-demo",
+      filePath: "examples/aria/prompt-input-demo.tsx",
     },
     "questionnaire-animated": {
       name: "questionnaire-animated",
@@ -4323,6 +4371,26 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "stack-trace-frames",
       filePath: "examples/aria/stack-trace-frames.tsx",
     },
+    "subagent-basic": {
+      name: "subagent-basic",
+      filePath: "examples/aria/subagent-basic.tsx",
+    },
+    "subagent-demo": {
+      name: "subagent-demo",
+      filePath: "examples/aria/subagent-demo.tsx",
+    },
+    "subagent-details": {
+      name: "subagent-details",
+      filePath: "examples/aria/subagent-details.tsx",
+    },
+    "subagent-running": {
+      name: "subagent-running",
+      filePath: "examples/aria/subagent-running.tsx",
+    },
+    "suggestion-demo": {
+      name: "suggestion-demo",
+      filePath: "examples/aria/suggestion-demo.tsx",
+    },
     "switch-choice-card": {
       name: "switch-choice-card",
       filePath: "examples/aria/switch-choice-card.tsx",
@@ -4543,6 +4611,14 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "tooltip-sides",
       filePath: "examples/aria/tooltip-sides.tsx",
     },
+    "trace-collapsible": {
+      name: "trace-collapsible",
+      filePath: "examples/aria/trace-collapsible.tsx",
+    },
+    "trace-commit": {
+      name: "trace-commit",
+      filePath: "examples/aria/trace-commit.tsx",
+    },
     "trace-demo": {
       name: "trace-demo",
       filePath: "examples/aria/trace-demo.tsx",
@@ -4554,10 +4630,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "trace-dialog": {
       name: "trace-dialog",
       filePath: "examples/aria/trace-dialog.tsx",
-    },
-    "trace-expand": {
-      name: "trace-expand",
-      filePath: "examples/aria/trace-expand.tsx",
     },
     "trace-group": {
       name: "trace-group",
@@ -4692,18 +4764,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "accordion-rtl": {
       name: "accordion-rtl",
       filePath: "examples/radix/accordion-rtl.tsx",
-    },
-    "agent-basic": {
-      name: "agent-basic",
-      filePath: "examples/radix/agent-basic.tsx",
-    },
-    "agent-demo": {
-      name: "agent-demo",
-      filePath: "examples/radix/agent-demo.tsx",
-    },
-    "agent-running": {
-      name: "agent-running",
-      filePath: "examples/radix/agent-running.tsx",
     },
     "alert-action": {
       name: "alert-action",
@@ -5141,10 +5201,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "carousel-spacing",
       filePath: "examples/radix/carousel-spacing.tsx",
     },
-    "chain-of-thought-basic": {
-      name: "chain-of-thought-basic",
-      filePath: "examples/radix/chain-of-thought-basic.tsx",
-    },
     "chain-of-thought-demo": {
       name: "chain-of-thought-demo",
       filePath: "examples/radix/chain-of-thought-demo.tsx",
@@ -5181,6 +5237,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "chart-tooltip",
       filePath: "examples/radix/chart-tooltip.tsx",
     },
+    "chat-demo": {
+      name: "chat-demo",
+      filePath: "examples/radix/chat-demo.tsx",
+    },
     "checkbox-basic": {
       name: "checkbox-basic",
       filePath: "examples/radix/checkbox-basic.tsx",
@@ -5212,6 +5272,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "checkbox-table": {
       name: "checkbox-table",
       filePath: "examples/radix/checkbox-table.tsx",
+    },
+    "checkpoint-demo": {
+      name: "checkpoint-demo",
+      filePath: "examples/radix/checkpoint-demo.tsx",
     },
     "code-block-actions": {
       name: "code-block-actions",
@@ -5409,17 +5473,13 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "command-shortcuts",
       filePath: "examples/radix/command-shortcuts.tsx",
     },
-    "commit-basic": {
-      name: "commit-basic",
-      filePath: "examples/radix/commit-basic.tsx",
+    "confirmation-demo": {
+      name: "confirmation-demo",
+      filePath: "examples/radix/confirmation-demo.tsx",
     },
-    "commit-demo": {
-      name: "commit-demo",
-      filePath: "examples/radix/commit-demo.tsx",
-    },
-    "commit-diff": {
-      name: "commit-diff",
-      filePath: "examples/radix/commit-diff.tsx",
+    "context-demo": {
+      name: "context-demo",
+      filePath: "examples/radix/context-demo.tsx",
     },
     "context-menu-basic": {
       name: "context-menu-basic",
@@ -5689,6 +5749,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "field-textarea",
       filePath: "examples/radix/field-textarea.tsx",
     },
+    "file-tree-demo": {
+      name: "file-tree-demo",
+      filePath: "examples/radix/file-tree-demo.tsx",
+    },
     "file-upload-list": {
       name: "file-upload-list",
       filePath: "examples/radix/file-upload-list.tsx",
@@ -5704,6 +5768,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "hover-card-sides": {
       name: "hover-card-sides",
       filePath: "examples/radix/hover-card-sides.tsx",
+    },
+    "inline-citation-demo": {
+      name: "inline-citation-demo",
+      filePath: "examples/radix/inline-citation-demo.tsx",
     },
     "input-badge": {
       name: "input-badge",
@@ -6065,6 +6133,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "message-markdown",
       filePath: "examples/radix/message-markdown.tsx",
     },
+    "message-pattern": {
+      name: "message-pattern",
+      filePath: "examples/radix/message-pattern.tsx",
+    },
     "message-scroller-anchoring": {
       name: "message-scroller-anchoring",
       filePath: "examples/radix/message-scroller-anchoring.tsx",
@@ -6108,6 +6180,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "message-scroller-visibility": {
       name: "message-scroller-visibility",
       filePath: "examples/radix/message-scroller-visibility.tsx",
+    },
+    "model-selector-demo": {
+      name: "model-selector-demo",
+      filePath: "examples/radix/model-selector-demo.tsx",
     },
     "muted-item-group": {
       name: "muted-item-group",
@@ -6161,10 +6237,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "pagination-simple",
       filePath: "examples/radix/pagination-simple.tsx",
     },
-    "plan-basic": {
-      name: "plan-basic",
-      filePath: "examples/radix/plan-basic.tsx",
-    },
     "plan-demo": {
       name: "plan-demo",
       filePath: "examples/radix/plan-demo.tsx",
@@ -6208,6 +6280,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "progress-rtl": {
       name: "progress-rtl",
       filePath: "examples/radix/progress-rtl.tsx",
+    },
+    "prompt-input-demo": {
+      name: "prompt-input-demo",
+      filePath: "examples/radix/prompt-input-demo.tsx",
     },
     "questionnaire-animated": {
       name: "questionnaire-animated",
@@ -6265,10 +6341,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "questionnaire-validation",
       filePath: "examples/radix/questionnaire-validation.tsx",
     },
-    "queue-basic": {
-      name: "queue-basic",
-      filePath: "examples/radix/queue-basic.tsx",
-    },
     "queue-demo": {
       name: "queue-demo",
       filePath: "examples/radix/queue-demo.tsx",
@@ -6308,10 +6380,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "radio-group-rtl": {
       name: "radio-group-rtl",
       filePath: "examples/radix/radio-group-rtl.tsx",
-    },
-    "reasoning-basic": {
-      name: "reasoning-basic",
-      filePath: "examples/radix/reasoning-basic.tsx",
     },
     "reasoning-demo": {
       name: "reasoning-demo",
@@ -6645,10 +6713,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "spinner-size",
       filePath: "examples/radix/spinner-size.tsx",
     },
-    "stack-trace-basic": {
-      name: "stack-trace-basic",
-      filePath: "examples/radix/stack-trace-basic.tsx",
-    },
     "stack-trace-demo": {
       name: "stack-trace-demo",
       filePath: "examples/radix/stack-trace-demo.tsx",
@@ -6656,6 +6720,22 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "stack-trace-frames": {
       name: "stack-trace-frames",
       filePath: "examples/radix/stack-trace-frames.tsx",
+    },
+    "subagent-demo": {
+      name: "subagent-demo",
+      filePath: "examples/radix/subagent-demo.tsx",
+    },
+    "subagent-details": {
+      name: "subagent-details",
+      filePath: "examples/radix/subagent-details.tsx",
+    },
+    "subagent-running": {
+      name: "subagent-running",
+      filePath: "examples/radix/subagent-running.tsx",
+    },
+    "suggestion-demo": {
+      name: "suggestion-demo",
+      filePath: "examples/radix/suggestion-demo.tsx",
     },
     "switch-choice-card": {
       name: "switch-choice-card",
@@ -6725,17 +6805,9 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "tabs-vertical",
       filePath: "examples/radix/tabs-vertical.tsx",
     },
-    "task-basic": {
-      name: "task-basic",
-      filePath: "examples/radix/task-basic.tsx",
-    },
     "task-demo": {
       name: "task-demo",
       filePath: "examples/radix/task-demo.tsx",
-    },
-    "terminal-basic": {
-      name: "terminal-basic",
-      filePath: "examples/radix/terminal-basic.tsx",
     },
     "terminal-demo": {
       name: "terminal-demo",
@@ -6744,10 +6816,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "terminal-error": {
       name: "terminal-error",
       filePath: "examples/radix/terminal-error.tsx",
-    },
-    "test-results-basic": {
-      name: "test-results-basic",
-      filePath: "examples/radix/test-results-basic.tsx",
     },
     "test-results-demo": {
       name: "test-results-demo",
@@ -6841,10 +6909,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "tool-approval",
       filePath: "examples/radix/tool-approval.tsx",
     },
-    "tool-basic": {
-      name: "tool-basic",
-      filePath: "examples/radix/tool-basic.tsx",
-    },
     "tool-demo": {
       name: "tool-demo",
       filePath: "examples/radix/tool-demo.tsx",
@@ -6877,6 +6941,14 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "tooltip-sides",
       filePath: "examples/radix/tooltip-sides.tsx",
     },
+    "trace-collapsible": {
+      name: "trace-collapsible",
+      filePath: "examples/radix/trace-collapsible.tsx",
+    },
+    "trace-commit": {
+      name: "trace-commit",
+      filePath: "examples/radix/trace-commit.tsx",
+    },
     "trace-demo": {
       name: "trace-demo",
       filePath: "examples/radix/trace-demo.tsx",
@@ -6888,10 +6960,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "trace-dialog": {
       name: "trace-dialog",
       filePath: "examples/radix/trace-dialog.tsx",
-    },
-    "trace-expand": {
-      name: "trace-expand",
-      filePath: "examples/radix/trace-expand.tsx",
     },
     "trace-group": {
       name: "trace-group",

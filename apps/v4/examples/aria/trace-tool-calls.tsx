@@ -5,9 +5,11 @@ import { useChat } from "@ai-sdk/react"
 import type { DynamicToolUIPart, UIMessage } from "ai"
 import { TerminalIcon } from "lucide-react"
 
-import { createChat } from "@/lib/ai"
+import { createChat, getMessageText } from "@/lib/ai"
+import { Bubble, BubbleContent } from "@/styles/aria-rhea/ui/bubble"
 import { Button } from "@/styles/aria-rhea/ui/button"
 import { CodeBlock, CodeBlockContent } from "@/styles/aria-rhea/ui/code-block"
+import { Message, MessageContent } from "@/styles/aria-rhea/ui/message"
 import {
   Trace,
   TraceCollapsible,
@@ -135,44 +137,62 @@ export function TraceToolCalls() {
   return (
     <div className="flex min-h-72 w-full max-w-sm flex-col gap-4 py-6 text-sm">
       {messages.map((message) => {
+        if (message.role === "user") {
+          return (
+            <Message key={message.id} align="end">
+              <MessageContent>
+                <Bubble align="end" variant="muted">
+                  <BubbleContent>{getMessageText(message)}</BubbleContent>
+                </Bubble>
+              </MessageContent>
+            </Message>
+          )
+        }
+
         const live = status === "streaming" && message === messages.at(-1)
 
-        return groupParts(message.parts).map((run, runIndex) =>
-          run.trace ? (
-            <Trace key={`${message.id}-${runIndex}`}>
-              {run.parts.map((part) =>
-                part.type === "dynamic-tool" ? (
-                  <ToolTrace key={part.toolCallId} part={part} live={live} />
-                ) : null
+        return (
+          <Message key={message.id}>
+            <MessageContent className="gap-4">
+              {groupParts(message.parts).map((run, runIndex) =>
+                run.trace ? (
+                  <Trace key={runIndex}>
+                    {run.parts.map((part) =>
+                      part.type === "dynamic-tool" ? (
+                        <ToolTrace
+                          key={part.toolCallId}
+                          part={part}
+                          live={live}
+                        />
+                      ) : null
+                    )}
+                  </Trace>
+                ) : (
+                  run.parts.map((part, index) =>
+                    part.type === "text" ? (
+                      <p key={`${runIndex}-${index}`}>{part.text}</p>
+                    ) : null
+                  )
+                )
               )}
-            </Trace>
-          ) : (
-            run.parts.map((part, index) =>
-              part.type === "text" ? (
-                <p
-                  key={`${message.id}-${runIndex}-${index}`}
-                  className={
-                    message.role === "user" ? "font-medium" : undefined
-                  }
-                >
-                  {part.text}
-                </p>
-              ) : null
-            )
-          )
+            </MessageContent>
+          </Message>
         )
       })}
-      <Button
-        variant="outline"
-        size="sm"
-        className="mt-auto self-start"
-        isDisabled={busy}
-        onPress={() =>
-          nextMessage ? sendMessage(nextMessage) : setMessages(initialMessages)
-        }
-      >
-        {nextMessage ? "Send message" : "Reset"}
-      </Button>
+      {!busy && (
+        <Button
+          variant="outline"
+          size="sm"
+          className="mt-auto self-start"
+          onPress={() =>
+            nextMessage
+              ? sendMessage(nextMessage)
+              : setMessages(initialMessages)
+          }
+        >
+          {nextMessage ? "Send message" : "Reset"}
+        </Button>
+      )}
     </div>
   )
 }

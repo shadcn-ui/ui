@@ -10,9 +10,11 @@ import {
   XIcon,
 } from "lucide-react"
 
-import { createChat } from "@/lib/ai"
+import { createChat, getMessageText } from "@/lib/ai"
+import { Bubble, BubbleContent } from "@/styles/base-rhea/ui/bubble"
 import { Button } from "@/styles/base-rhea/ui/button"
 import { CodeBlock, CodeBlockContent } from "@/styles/base-rhea/ui/code-block"
+import { Message, MessageContent } from "@/styles/base-rhea/ui/message"
 import {
   Trace,
   TraceCollapsible,
@@ -222,49 +224,56 @@ export function TestResultsDemo() {
   return (
     <div className="flex min-h-72 w-full max-w-sm flex-col gap-4 py-6 text-sm">
       {messages.map((message) => {
+        if (message.role === "user") {
+          return (
+            <Message key={message.id} align="end">
+              <MessageContent>
+                <Bubble align="end" variant="muted">
+                  <BubbleContent>{getMessageText(message)}</BubbleContent>
+                </Bubble>
+              </MessageContent>
+            </Message>
+          )
+        }
+
         const streaming = busy && message === messages.at(-1)
         const tools = message.parts.filter(
           (part) => part.type === "tool-runTests"
         )
-        const text = message.parts
-          .map((part) => (part.type === "text" ? part.text : ""))
-          .join("")
+        const text = getMessageText(message)
 
         return (
-          <div key={message.id} className="flex flex-col gap-4">
-            {tools.length > 0 && (
-              <Trace>
-                {tools.map((part) => (
-                  <TestResultsRow
-                    key={part.toolCallId}
-                    part={part}
-                    streaming={streaming}
-                  />
-                ))}
-              </Trace>
-            )}
-            {text && (
-              <p
-                className={message.role === "user" ? "font-medium" : undefined}
-              >
-                {text}
-              </p>
-            )}
-          </div>
+          <Message key={message.id}>
+            <MessageContent className="gap-4">
+              {tools.length > 0 && (
+                <Trace>
+                  {tools.map((part) => (
+                    <TestResultsRow
+                      key={part.toolCallId}
+                      part={part}
+                      streaming={streaming}
+                    />
+                  ))}
+                </Trace>
+              )}
+              {text && <p>{text}</p>}
+            </MessageContent>
+          </Message>
         )
       })}
-      <Button
-        variant="outline"
-        size="sm"
-        className="mt-auto self-start"
-        disabled={busy}
-        onClick={() => {
-          setMessages([])
-          sendMessage(question)
-        }}
-      >
-        Replay
-      </Button>
+      {!busy && (
+        <Button
+          variant="outline"
+          size="sm"
+          className="mt-auto self-start"
+          onClick={() => {
+            setMessages([])
+            sendMessage(question)
+          }}
+        >
+          Replay
+        </Button>
+      )}
     </div>
   )
 }

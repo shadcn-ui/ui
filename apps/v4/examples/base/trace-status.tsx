@@ -1,4 +1,9 @@
-import { TerminalIcon } from "lucide-react"
+import {
+  CircleAlertIcon,
+  CircleCheckIcon,
+  CircleIcon,
+  LoaderCircleIcon,
+} from "lucide-react"
 
 import {
   Trace,
@@ -12,25 +17,25 @@ export function TraceStatus() {
     <Trace className="max-w-sm">
       <TraceLine>
         <TraceIcon>
-          <TerminalIcon />
+          <CircleCheckIcon />
         </TraceIcon>
         <TraceTitle>Ran pnpm install</TraceTitle>
       </TraceLine>
       <TraceLine status="error">
         <TraceIcon>
-          <TerminalIcon />
+          <CircleAlertIcon />
         </TraceIcon>
         <TraceTitle>Failed to run pnpm lint</TraceTitle>
       </TraceLine>
       <TraceLine status="running">
         <TraceIcon>
-          <TerminalIcon />
+          <LoaderCircleIcon className="animate-spin" />
         </TraceIcon>
         <TraceTitle>Running pnpm build</TraceTitle>
       </TraceLine>
       <TraceLine status="pending">
         <TraceIcon>
-          <TerminalIcon />
+          <CircleIcon />
         </TraceIcon>
         <TraceTitle>Run pnpm test</TraceTitle>
       </TraceLine>

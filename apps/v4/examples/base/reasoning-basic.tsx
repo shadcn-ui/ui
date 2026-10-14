@@ -1,4 +1,4 @@
-import { BrainIcon } from "lucide-react"
+import { CircleCheckIcon } from "lucide-react"
 
 import {
   Trace,
@@ -17,7 +17,7 @@ export function ReasoningBasic() {
         <TraceCollapsibleTrigger>
           <TraceLine>
             <TraceIcon>
-              <BrainIcon />
+              <CircleCheckIcon />
             </TraceIcon>
             <TraceTitle>Thought</TraceTitle>
           </TraceLine>

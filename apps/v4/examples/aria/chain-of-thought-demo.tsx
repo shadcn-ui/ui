@@ -5,15 +5,18 @@ import { useChat } from "@ai-sdk/react"
 import type { UIDataTypes, UIMessage } from "ai"
 import {
   ArrowUpRightIcon,
-  FileTextIcon,
+  CircleAlertIcon,
+  CircleCheckIcon,
   GlobeIcon,
-  SearchIcon,
+  LoaderCircleIcon,
 } from "lucide-react"
 
-import { createChat } from "@/lib/ai"
+import { createChat, getMessageText } from "@/lib/ai"
 import { Badge } from "@/styles/aria-rhea/ui/badge"
+import { Bubble, BubbleContent } from "@/styles/aria-rhea/ui/bubble"
 import { Button } from "@/styles/aria-rhea/ui/button"
 import { CodeBlock, CodeBlockContent } from "@/styles/aria-rhea/ui/code-block"
+import { Message, MessageContent } from "@/styles/aria-rhea/ui/message"
 import {
   Trace,
   TraceCollapsible,
@@ -85,14 +88,20 @@ const transcript = chat.get()
 const [question] = chat.get(1)
 const transport = chat.transport({ delayMs: 20 })
 
+function StatusIcon({ status }: { status?: "running" | "error" }) {
+  if (status === "running") {
+    return <LoaderCircleIcon className="animate-spin" />
+  }
+
+  return status === "error" ? <CircleAlertIcon /> : <CircleCheckIcon />
+}
+
 function Step({
-  icon,
   title,
   status,
   defaultExpanded,
   children,
 }: {
-  icon: React.ReactNode
   title: string
   status?: "running" | "error"
   defaultExpanded?: boolean
@@ -100,7 +109,9 @@ function Step({
 }) {
   const line = (
     <TraceLine status={status}>
-      <TraceIcon>{icon}</TraceIcon>
+      <TraceIcon>
+        <StatusIcon status={status} />
+      </TraceIcon>
       <TraceTitle>{title}</TraceTitle>
     </TraceLine>
   )
@@ -137,7 +148,6 @@ function StepRow({ part, streaming }: { part: StepPart; streaming: boolean }) {
   if (part.type === "tool-searchWeb") {
     return (
       <Step
-        icon={<GlobeIcon />}
         status={status}
         title={`${verb("Searching", "Searched", "Failed to search")} the web for ${part.input?.query}`}
       >
@@ -174,7 +184,6 @@ function StepRow({ part, streaming }: { part: StepPart; streaming: boolean }) {
   if (part.type === "tool-readBuildLog") {
     return (
       <Step
-        icon={<FileTextIcon />}
         status={status}
         defaultExpanded
         title={`${verb("Reading", "Read", "Failed to read")} the build log for ${part.input?.deployment}`}
@@ -193,7 +202,6 @@ function StepRow({ part, streaming }: { part: StepPart; streaming: boolean }) {
 
   return (
     <Step
-      icon={<SearchIcon />}
       status={status}
       title={`${verb("Searching", "Searched", "Failed to search")} the code for ${part.input?.query}`}
     >
@@ -220,20 +228,19 @@ function ChainOfThought({
   streaming: boolean
   answering: boolean
 }) {
-  // A finished turn starts open so the steps show on first paint.
-  const [open, setOpen] = React.useState<boolean | undefined>(
-    streaming ? undefined : true
-  )
+  const [open, setOpen] = React.useState<boolean>()
   const running = streaming && !answering
   const failed = steps.filter((part) => part.state === "output-error").length
+  const status = running ? "running" : failed > 0 ? "error" : undefined
 
   return (
     <Trace>
       <TraceCollapsible isExpanded={open ?? running} onExpandedChange={setOpen}>
         <TraceCollapsibleTrigger>
-          <TraceLine
-            status={running ? "running" : failed > 0 ? "error" : undefined}
-          >
+          <TraceLine status={status}>
+            <TraceIcon>
+              <StatusIcon status={status} />
+            </TraceIcon>
             <TraceTitle>
               {running
                 ? "Researching"
@@ -267,6 +274,18 @@ export function ChainOfThoughtDemo() {
   return (
     <div className="flex min-h-72 w-full max-w-sm flex-col gap-4 py-6 text-sm">
       {messages.map((message) => {
+        if (message.role === "user") {
+          return (
+            <Message key={message.id} align="end">
+              <MessageContent>
+                <Bubble align="end" variant="muted">
+                  <BubbleContent>{getMessageText(message)}</BubbleContent>
+                </Bubble>
+              </MessageContent>
+            </Message>
+          )
+        }
+
         const streaming = busy && message === messages.at(-1)
         const steps = message.parts.filter(
           (part) =>
@@ -274,41 +293,36 @@ export function ChainOfThoughtDemo() {
             part.type === "tool-readBuildLog" ||
             part.type === "tool-searchCode"
         )
-        const text = message.parts
-          .map((part) => (part.type === "text" ? part.text : ""))
-          .join("")
+        const text = getMessageText(message)
 
         return (
-          <div key={message.id} className="flex flex-col gap-4">
-            {steps.length > 0 && (
-              <ChainOfThought
-                steps={steps}
-                streaming={streaming}
-                answering={text.length > 0}
-              />
-            )}
-            {text && (
-              <p
-                className={message.role === "user" ? "font-medium" : undefined}
-              >
-                {text}
-              </p>
-            )}
-          </div>
+          <Message key={message.id}>
+            <MessageContent className="gap-4">
+              {steps.length > 0 && (
+                <ChainOfThought
+                  steps={steps}
+                  streaming={streaming}
+                  answering={text.length > 0}
+                />
+              )}
+              {text && <p>{text}</p>}
+            </MessageContent>
+          </Message>
         )
       })}
-      <Button
-        variant="outline"
-        size="sm"
-        className="mt-auto self-start"
-        isDisabled={busy}
-        onPress={() => {
-          setMessages([])
-          sendMessage(question)
-        }}
-      >
-        Replay
-      </Button>
+      {!busy && (
+        <Button
+          variant="outline"
+          size="sm"
+          className="mt-auto self-start"
+          onPress={() => {
+            setMessages([])
+            sendMessage(question)
+          }}
+        >
+          Replay
+        </Button>
+      )}
     </div>
   )
 }

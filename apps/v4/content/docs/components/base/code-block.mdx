@@ -11,7 +11,7 @@ component: true
   previewClassName="h-auto"
 />
 
-The `CodeBlock` component displays code, terminal output, logs and diffs. It covers what a chat needs: a header with a title and actions, line numbers, wrapping, diff and highlighted lines, and a small size for tool output in a [Trace](/docs/components/base/trace).
+`CodeBlock` displays code, terminal output, logs and diffs. It has a header with a title and actions, line numbers, wrapping, diff and highlighted lines, and a small size for tool output in a [Trace](/docs/components/base/trace).
 
 Syntax highlighting is optional and lives in a separate hook, so a block that only shows plain output stays small.
 
@@ -75,7 +75,7 @@ npx shadcn@latest add button
 
 </CodeTabs>
 
-`code-block` also installs `useHighlightedCode` for [syntax highlighting](#syntax-highlighting). Only the hook imports Shiki, so a block without highlighting adds nothing to the bundle.
+`code-block` also installs `useHighlightedCode` for [syntax highlighting](#syntax-highlighting).
 
 ## Usage
 
@@ -126,7 +126,7 @@ CodeBlock
 - **It copies cleanly.** Line numbers and diff markers are left out of a selection, and blank lines survive the copy.
 - **It reads left to right.** The content is always `dir="ltr"`. The header follows the page direction.
 - **It highlights without WASM.** `useHighlightedCode` uses Shiki's JavaScript engine, loads each language on first use and renders ANSI colors in terminal output. On the server, `highlightCode` keeps Shiki out of the client bundle.
-- **It fits where code shows up.** Use it in a chat answer, a Markdown fence, a Trace row, Tabs, a Dialog or a `typeset` container.
+- **It fits where code shows up.** Use it in a message, a Markdown fence, a Trace line, Tabs, a Dialog or a `typeset` container.
 - **It scrolls by keyboard.** The content is focusable, and floating actions show on focus as well as on hover.
 
 ## Basic
@@ -141,7 +141,7 @@ Pass a string to `CodeBlockContent`. It renders as one text node, so it stays ch
 
 ## Header
 
-`CodeBlockHeader` holds a `CodeBlockTitle` and `CodeBlockActions`. `CodeBlockCopyButton` copies its `value`, which does not have to match what the block shows.
+`CodeBlockHeader` holds a `CodeBlockTitle` and `CodeBlockActions`. `CodeBlockCopyButton` copies its `value`.
 
 <ComponentPreview
   styleName="base-rhea"
@@ -257,7 +257,7 @@ Cap the height with a `max-h-*` class on `CodeBlockContent`. The content scrolls
   previewClassName="h-auto"
 />
 
-`CodeBlockContent` fades its scrolling edges with [`scroll-fade`](/docs/utils/scroll-fade). Add `scroll-fade-y` to a capped block that does not wrap.
+`CodeBlockContent` fades its edges with [`scroll-fade`](/docs/utils/scroll-fade) as it scrolls: left and right by default, top and bottom when it wraps. Add `scroll-fade-y` to a capped block that does not wrap.
 
 ## Show More
 
@@ -324,7 +324,7 @@ Use `variant="destructive"` for errors and failed output.
 
 ## Trace
 
-Put a `CodeBlock` with `size="sm"` in `TraceCollapsibleContent` for tool and terminal output. Add `wrap` and a `max-h-64` class to `CodeBlockContent` so long output wraps and scrolls inside the row. The block sets its own text color, so it is not muted by the trace.
+Put a `CodeBlock` with `size="sm"` in `TraceCollapsibleContent` for tool and terminal output. Add `wrap` and a `max-h-64` class to `CodeBlockContent` so long output wraps and scrolls inside the trace. The block sets its own text color, so `TraceCollapsibleContent` does not mute it.
 
 <ComponentPreview
   styleName="base-rhea"
@@ -342,9 +342,9 @@ Show several files with [Tabs](/docs/components/base/tabs), one `CodeBlock` in e
   previewClassName="h-auto"
 />
 
-## Chat Answer
+## Message
 
-In a chat, the code block sits between the answer's paragraphs inside [Message](/docs/components/base/message).
+Put a `CodeBlock` between paragraphs inside a [Message](/docs/components/base/message).
 
 <ComponentPreview
   styleName="base-rhea"
@@ -406,7 +406,7 @@ The list ships with `bash`, `css`, `diff`, `html`, `javascript`, `json`, `jsx`, 
 
 ### Terminal Output
 
-Pass `"ansi"` to render the colors in terminal output. Without it, escape codes show as text.
+Pass `"ansi"` as the language to render the colors in terminal output. Without it, escape codes show as text.
 
 <ComponentPreview
   styleName="base-rhea"
@@ -458,7 +458,7 @@ Render the message with [Streamdown](https://streamdown.ai) and route fenced cod
   previewClassName="h-auto"
 />
 
-`useIsCodeFenceIncomplete` returns `true` until the closing fence arrives, which is useful to disable the copy button. It only works when Streamdown gets `isAnimating`, so pass `isAnimating` while the message streams.
+`useIsCodeFenceIncomplete` returns `true` until the closing fence arrives. Use it to disable the copy button while the code is incomplete. It only works when Streamdown gets `isAnimating`, so pass `isAnimating` while the message streams.
 
 ```tsx showLineNumbers
 <Streamdown components={{ code: MarkdownCode }} isAnimating={isStreaming}>

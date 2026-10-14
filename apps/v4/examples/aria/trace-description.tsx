@@ -15,8 +15,10 @@ export function TraceDescriptionDemo() {
         <TraceIcon>
           <FilePenIcon />
         </TraceIcon>
-        <TraceTitle>Edited app/login/page.tsx</TraceTitle>
-        <TraceDescription className="font-mono">+12 −3</TraceDescription>
+        <TraceTitle>
+          Edited components/settings/notification-preferences-form.tsx
+        </TraceTitle>
+        <TraceDescription className="font-mono">+48 −12</TraceDescription>
       </TraceLine>
       <TraceLine>
         <TraceIcon>

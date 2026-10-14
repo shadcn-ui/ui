@@ -43,7 +43,7 @@ export function CodeBlockDemo() {
   const lines = useHighlightedCode(code, "ts")
 
   return (
-    <div className="w-full max-w-md">
+    <div className="w-full max-w-lg">
       <CodeBlock>
         <CodeBlockHeader>
           <CodeBlockTitle>

@@ -5,14 +5,17 @@ import { useChat } from "@ai-sdk/react"
 import type { UIDataTypes, UIMessage } from "ai"
 import {
   ArrowUpRightIcon,
-  BrainIcon,
+  CircleAlertIcon,
+  CircleCheckIcon,
   GlobeIcon,
-  TerminalIcon,
+  LoaderCircleIcon,
 } from "lucide-react"
 
-import { createChat } from "@/lib/ai"
+import { createChat, getMessageText } from "@/lib/ai"
+import { Bubble, BubbleContent } from "@/styles/radix-rhea/ui/bubble"
 import { Button } from "@/styles/radix-rhea/ui/button"
 import { CodeBlock, CodeBlockContent } from "@/styles/radix-rhea/ui/code-block"
+import { Message, MessageContent } from "@/styles/radix-rhea/ui/message"
 import {
   Trace,
   TraceCollapsible,
@@ -74,6 +77,7 @@ const chat = createChat<ChatMessage>()
       url: "https://pnpm.io/continuous-integration",
       title: "Continuous Integration | pnpm.io",
     })
+    writer.sleep(1000)
     writer.text(
       "The last commit bumped a version in package.json without updating pnpm-lock.yaml, so the frozen install fails. Run pnpm install locally and commit the lockfile."
     )
@@ -89,9 +93,13 @@ function ThinkingRow({ text, running }: { text: string; running: boolean }) {
   const line = (
     <TraceLine status={running ? "running" : undefined}>
       <TraceIcon>
-        <BrainIcon />
+        {running ? (
+          <LoaderCircleIcon className="animate-spin" />
+        ) : (
+          <CircleCheckIcon />
+        )}
       </TraceIcon>
-      <TraceTitle>{running ? "Thinking" : "Thought"}</TraceTitle>
+      <TraceTitle>{running ? "Thinking" : "Thought for 5s"}</TraceTitle>
     </TraceLine>
   )
 
@@ -112,9 +120,11 @@ function ThinkingRow({ text, running }: { text: string; running: boolean }) {
 function ToolRow({
   part,
   streaming,
+  defaultOpen,
 }: {
   part: Extract<Part, { type: "tool-runCommand" }>
   streaming: boolean
+  defaultOpen?: boolean
 }) {
   const command = part.input?.command
 
@@ -122,11 +132,11 @@ function ToolRow({
     const failed = part.state === "output-error"
 
     return (
-      <TraceCollapsible defaultOpen={failed}>
+      <TraceCollapsible defaultOpen={defaultOpen}>
         <TraceCollapsibleTrigger>
           <TraceLine status={failed ? "error" : undefined}>
             <TraceIcon>
-              <TerminalIcon />
+              {failed ? <CircleAlertIcon /> : <CircleCheckIcon />}
             </TraceIcon>
             <TraceTitle>
               {failed ? "Failed to run" : "Ran"} {command}
@@ -155,7 +165,11 @@ function ToolRow({
   return (
     <TraceLine status={streaming ? "running" : "error"}>
       <TraceIcon>
-        <TerminalIcon />
+        {streaming ? (
+          <LoaderCircleIcon className="animate-spin" />
+        ) : (
+          <CircleAlertIcon />
+        )}
       </TraceIcon>
       <TraceTitle>
         {streaming ? "Running" : "Failed to run"} {command}
@@ -166,17 +180,25 @@ function ToolRow({
 
 function SourcesRow({
   sources,
+  running,
 }: {
   sources: Extract<Part, { type: "source-url" }>[]
+  running: boolean
 }) {
   return (
     <TraceCollapsible>
       <TraceCollapsibleTrigger>
-        <TraceLine>
+        <TraceLine status={running ? "running" : undefined}>
           <TraceIcon>
-            <GlobeIcon />
+            {running ? (
+              <LoaderCircleIcon className="animate-spin" />
+            ) : (
+              <GlobeIcon />
+            )}
           </TraceIcon>
-          <TraceTitle>Used {sources.length} sources</TraceTitle>
+          <TraceTitle>
+            {running ? "Using" : "Used"} {sources.length} sources
+          </TraceTitle>
         </TraceLine>
       </TraceCollapsibleTrigger>
       <TraceCollapsibleContent>
@@ -218,6 +240,18 @@ export function TraceDemo() {
   return (
     <div className="flex min-h-72 w-full max-w-sm flex-col gap-4 py-6 text-sm">
       {messages.map((message) => {
+        if (message.role === "user") {
+          return (
+            <Message key={message.id} align="end">
+              <MessageContent>
+                <Bubble align="end" variant="muted">
+                  <BubbleContent>{getMessageText(message)}</BubbleContent>
+                </Bubble>
+              </MessageContent>
+            </Message>
+          )
+        }
+
         const streaming = busy && message === messages.at(-1)
         const rows = message.parts.filter(
           (part) => part.type === "reasoning" || part.type === "tool-runCommand"
@@ -225,54 +259,55 @@ export function TraceDemo() {
         const sources = message.parts.filter(
           (part) => part.type === "source-url"
         )
-        const text = message.parts
-          .map((part) => (part.type === "text" ? part.text : ""))
-          .join("")
+        const text = getMessageText(message)
 
         return (
-          <div key={message.id} className="flex flex-col gap-4">
-            {rows.length + sources.length > 0 && (
-              <Trace>
-                {rows.map((part, index) =>
-                  part.type === "reasoning" ? (
-                    <ThinkingRow
-                      key={index}
-                      text={part.text}
-                      running={streaming && part.state === "streaming"}
+          <Message key={message.id}>
+            <MessageContent className="gap-4">
+              {rows.length + sources.length > 0 && (
+                <Trace>
+                  {rows.map((part, index) =>
+                    part.type === "reasoning" ? (
+                      <ThinkingRow
+                        key={index}
+                        text={part.text}
+                        running={streaming && part.state === "streaming"}
+                      />
+                    ) : part.type === "tool-runCommand" ? (
+                      <ToolRow
+                        key={part.toolCallId}
+                        part={part}
+                        streaming={streaming}
+                        defaultOpen={index === 2}
+                      />
+                    ) : null
+                  )}
+                  {sources.length > 0 && (
+                    <SourcesRow
+                      sources={sources}
+                      running={streaming && text.length === 0}
                     />
-                  ) : part.type === "tool-runCommand" ? (
-                    <ToolRow
-                      key={part.toolCallId}
-                      part={part}
-                      streaming={streaming}
-                    />
-                  ) : null
-                )}
-                {sources.length > 0 && <SourcesRow sources={sources} />}
-              </Trace>
-            )}
-            {text && (
-              <p
-                className={message.role === "user" ? "font-medium" : undefined}
-              >
-                {text}
-              </p>
-            )}
-          </div>
+                  )}
+                </Trace>
+              )}
+              {text && <p>{text}</p>}
+            </MessageContent>
+          </Message>
         )
       })}
-      <Button
-        variant="outline"
-        size="sm"
-        className="mt-auto self-start"
-        disabled={busy}
-        onClick={() => {
-          setMessages([])
-          sendMessage(question)
-        }}
-      >
-        Replay
-      </Button>
+      {!busy && (
+        <Button
+          variant="outline"
+          size="sm"
+          className="mt-auto self-start"
+          onClick={() => {
+            setMessages([])
+            sendMessage(question)
+          }}
+        >
+          Replay
+        </Button>
+      )}
     </div>
   )
 }

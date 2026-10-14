@@ -1,4 +1,4 @@
-import { BrainIcon } from "lucide-react"
+import { CircleCheckIcon } from "lucide-react"
 
 import {
   Trace,
@@ -18,7 +18,7 @@ export function ReasoningDuration() {
         <TraceCollapsibleTrigger>
           <TraceLine>
             <TraceIcon>
-              <BrainIcon />
+              <CircleCheckIcon />
             </TraceIcon>
             <TraceTitle>Thought</TraceTitle>
             <TraceDescription>12s</TraceDescription>

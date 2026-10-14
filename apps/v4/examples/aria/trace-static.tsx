@@ -1,16 +1,21 @@
-import { TerminalIcon } from "lucide-react"
+import { GitBranchIcon } from "lucide-react"
 
-import { TraceIcon, TraceLine, TraceTitle } from "@/styles/aria-rhea/ui/trace"
+import {
+  Trace,
+  TraceIcon,
+  TraceLine,
+  TraceTitle,
+} from "@/styles/aria-rhea/ui/trace"
 
 export function TraceStatic() {
   return (
-    <div className="w-full max-w-sm">
+    <Trace className="max-w-sm">
       <TraceLine>
         <TraceIcon>
-          <TerminalIcon />
+          <GitBranchIcon />
         </TraceIcon>
-        <TraceTitle>Ran node --version</TraceTitle>
+        <TraceTitle>Created branch fix/frozen-lockfile</TraceTitle>
       </TraceLine>
-    </div>
+    </Trace>
   )
 }

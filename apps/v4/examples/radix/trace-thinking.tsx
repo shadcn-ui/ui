@@ -5,8 +5,10 @@ import { useChat } from "@ai-sdk/react"
 import type { UIMessage } from "ai"
 import { BrainIcon } from "lucide-react"
 
-import { createChat } from "@/lib/ai"
+import { createChat, getMessageText } from "@/lib/ai"
+import { Bubble, BubbleContent } from "@/styles/radix-rhea/ui/bubble"
 import { Button } from "@/styles/radix-rhea/ui/button"
+import { Message, MessageContent } from "@/styles/radix-rhea/ui/message"
 import {
   Trace,
   TraceCollapsible,
@@ -92,48 +94,62 @@ export function TraceThinking() {
   return (
     <div className="flex min-h-72 w-full max-w-sm flex-col gap-4 py-6 text-sm">
       {messages.map((message) => {
+        if (message.role === "user") {
+          return (
+            <Message key={message.id} align="end">
+              <MessageContent>
+                <Bubble align="end" variant="muted">
+                  <BubbleContent>{getMessageText(message)}</BubbleContent>
+                </Bubble>
+              </MessageContent>
+            </Message>
+          )
+        }
+
         const live = status === "streaming" && message === messages.at(-1)
 
-        return groupParts(message.parts).map((run, runIndex) =>
-          run.trace ? (
-            <Trace key={`${message.id}-${runIndex}`}>
-              {run.parts.map((part, index) =>
-                part.type === "reasoning" ? (
-                  <ThinkingTrace
-                    key={index}
-                    text={part.text}
-                    running={live && part.state === "streaming"}
-                  />
-                ) : null
+        return (
+          <Message key={message.id}>
+            <MessageContent className="gap-4">
+              {groupParts(message.parts).map((run, runIndex) =>
+                run.trace ? (
+                  <Trace key={runIndex}>
+                    {run.parts.map((part, index) =>
+                      part.type === "reasoning" ? (
+                        <ThinkingTrace
+                          key={index}
+                          text={part.text}
+                          running={live && part.state === "streaming"}
+                        />
+                      ) : null
+                    )}
+                  </Trace>
+                ) : (
+                  run.parts.map((part, index) =>
+                    part.type === "text" ? (
+                      <p key={`${runIndex}-${index}`}>{part.text}</p>
+                    ) : null
+                  )
+                )
               )}
-            </Trace>
-          ) : (
-            run.parts.map((part, index) =>
-              part.type === "text" ? (
-                <p
-                  key={`${message.id}-${runIndex}-${index}`}
-                  className={
-                    message.role === "user" ? "font-medium" : undefined
-                  }
-                >
-                  {part.text}
-                </p>
-              ) : null
-            )
-          )
+            </MessageContent>
+          </Message>
         )
       })}
-      <Button
-        variant="outline"
-        size="sm"
-        className="mt-auto self-start"
-        disabled={busy}
-        onClick={() =>
-          nextMessage ? sendMessage(nextMessage) : setMessages(initialMessages)
-        }
-      >
-        {nextMessage ? "Send message" : "Reset"}
-      </Button>
+      {!busy && (
+        <Button
+          variant="outline"
+          size="sm"
+          className="mt-auto self-start"
+          onClick={() =>
+            nextMessage
+              ? sendMessage(nextMessage)
+              : setMessages(initialMessages)
+          }
+        >
+          {nextMessage ? "Send message" : "Reset"}
+        </Button>
+      )}
     </div>
   )
 }

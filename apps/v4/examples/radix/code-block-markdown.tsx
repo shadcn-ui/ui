@@ -10,6 +10,7 @@ import {
 
 import { createChat, getMessageText } from "@/lib/ai"
 import { useHighlightedCode } from "@/registry/bases/radix/hooks/use-highlighted-code"
+import { Bubble, BubbleContent } from "@/styles/radix-rhea/ui/bubble"
 import { Button } from "@/styles/radix-rhea/ui/button"
 import {
   CodeBlock,
@@ -20,6 +21,7 @@ import {
   CodeBlockLine,
   CodeBlockTitle,
 } from "@/styles/radix-rhea/ui/code-block"
+import { Message, MessageContent } from "@/styles/radix-rhea/ui/message"
 
 const response = `Wrap the value in a \`useDebounce\` hook. It returns the latest value once it stops changing for \`delay\` milliseconds.
 
@@ -115,32 +117,40 @@ export function CodeBlockMarkdown() {
     <div className="flex min-h-112 w-full max-w-md flex-col gap-4 py-6 text-sm">
       {messages.map((message) =>
         message.role === "user" ? (
-          <p key={message.id} className="font-medium">
-            {getMessageText(message)}
-          </p>
+          <Message key={message.id} align="end">
+            <MessageContent>
+              <Bubble align="end" variant="muted">
+                <BubbleContent>{getMessageText(message)}</BubbleContent>
+              </Bubble>
+            </MessageContent>
+          </Message>
         ) : (
-          <Streamdown
-            key={message.id}
-            controls={false}
-            components={components}
-            isAnimating={busy && message === messages.at(-1)}
-          >
-            {getMessageText(message)}
-          </Streamdown>
+          <Message key={message.id}>
+            <MessageContent>
+              <Streamdown
+                controls={false}
+                components={components}
+                isAnimating={busy && message === messages.at(-1)}
+              >
+                {getMessageText(message)}
+              </Streamdown>
+            </MessageContent>
+          </Message>
         )
       )}
-      <Button
-        variant="outline"
-        size="sm"
-        className="mt-auto self-start"
-        disabled={busy}
-        onClick={() => {
-          setMessages([])
-          sendMessage(question)
-        }}
-      >
-        Replay
-      </Button>
+      {!busy && (
+        <Button
+          variant="outline"
+          size="sm"
+          className="mt-auto self-start"
+          onClick={() => {
+            setMessages([])
+            sendMessage(question)
+          }}
+        >
+          Replay
+        </Button>
+      )}
     </div>
   )
 }

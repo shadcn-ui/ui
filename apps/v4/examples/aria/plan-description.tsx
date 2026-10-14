@@ -1,4 +1,4 @@
-import { CircleCheckIcon, CircleIcon, ListChecksIcon } from "lucide-react"
+import { CircleCheckIcon, CircleIcon, RouteIcon } from "lucide-react"
 
 import {
   Trace,
@@ -25,7 +25,7 @@ export function PlanDescription() {
         <TraceCollapsibleTrigger>
           <TraceLine>
             <TraceIcon>
-              <ListChecksIcon />
+              <RouteIcon />
             </TraceIcon>
             <TraceTitle>Plan: add dark mode</TraceTitle>
             <TraceDescription>1 of {steps.length} done</TraceDescription>

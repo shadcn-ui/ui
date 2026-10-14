@@ -33,7 +33,7 @@ export function CodeBlockChat() {
     <div className="flex w-full max-w-md flex-col gap-4 text-sm">
       <Message align="end">
         <MessageContent>
-          <Bubble>
+          <Bubble variant="muted">
             <BubbleContent>How do I stream a response?</BubbleContent>
           </Bubble>
         </MessageContent>

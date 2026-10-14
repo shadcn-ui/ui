@@ -10,8 +10,10 @@ import {
   ListTodoIcon,
 } from "lucide-react"
 
-import { createChat } from "@/lib/ai"
+import { createChat, getMessageText } from "@/lib/ai"
+import { Bubble, BubbleContent } from "@/styles/radix-rhea/ui/bubble"
 import { Button } from "@/styles/radix-rhea/ui/button"
+import { Message, MessageContent } from "@/styles/radix-rhea/ui/message"
 import {
   Trace,
   TraceCollapsible,
@@ -177,40 +179,47 @@ export function QueueDemo() {
   return (
     <div className="flex min-h-72 w-full max-w-sm flex-col gap-4 py-6 text-sm">
       {messages.map((message) => {
+        if (message.role === "user") {
+          return (
+            <Message key={message.id} align="end">
+              <MessageContent>
+                <Bubble align="end" variant="muted">
+                  <BubbleContent>{getMessageText(message)}</BubbleContent>
+                </Bubble>
+              </MessageContent>
+            </Message>
+          )
+        }
+
         const streaming = busy && message === messages.at(-1)
         const todos = message.parts
           .filter((part) => part.type === "tool-writeTodos")
           .filter((part) => part.state !== "input-streaming")
           .at(-1)?.input?.todos
-        const text = message.parts
-          .map((part) => (part.type === "text" ? part.text : ""))
-          .join("")
+        const text = getMessageText(message)
 
         return (
-          <div key={message.id} className="flex flex-col gap-4">
-            {todos && <TodoQueue todos={todos} streaming={streaming} />}
-            {text && (
-              <p
-                className={message.role === "user" ? "font-medium" : undefined}
-              >
-                {text}
-              </p>
-            )}
-          </div>
+          <Message key={message.id}>
+            <MessageContent className="gap-4">
+              {todos && <TodoQueue todos={todos} streaming={streaming} />}
+              {text && <p>{text}</p>}
+            </MessageContent>
+          </Message>
         )
       })}
-      <Button
-        variant="outline"
-        size="sm"
-        className="mt-auto self-start"
-        disabled={busy}
-        onClick={() => {
-          setMessages([])
-          sendMessage(question)
-        }}
-      >
-        Replay
-      </Button>
+      {!busy && (
+        <Button
+          variant="outline"
+          size="sm"
+          className="mt-auto self-start"
+          onClick={() => {
+            setMessages([])
+            sendMessage(question)
+          }}
+        >
+          Replay
+        </Button>
+      )}
     </div>
   )
 }

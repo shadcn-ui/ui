@@ -221,8 +221,9 @@ steps, sources, file reads) is a `TraceLine` in a `Trace`, not a hand-rolled
   part or a pending approval ends the run. A heading for a run is plain text
   above it, or a collapsible summary row.
 - A pending approval (`approval-requested`) is a prompt, not a row. Render it
-  outside `Trace`, for example as an `Item` with Approve and Deny in
-  `ItemActions`. Once answered, the tool part is a line again.
+  outside `Trace` as an `Item` with Approve and Deny in `ItemActions`. See
+  /docs/ai-elements/base/confirmation. Once answered, the tool part is a line
+  again.
 - A summary (sources, a task, a whole turn) is a `TraceCollapsible` whose
   `TraceCollapsibleContent` holds a `Trace`. Set the parent line's status and
   title from its children yourself.
@@ -236,9 +237,43 @@ steps, sources, file reads) is a `TraceLine` in a `Trace`, not a hand-rolled
   `onOpenChange` (aria: `defaultExpanded`, or `isExpanded` with
   `onExpandedChange`).
 - Use `Marker` for notes and dividers between turns, not for activity.
+- A checkpoint marks a turn the reader can return to. Render a `Marker`
+  separator after that message, with a Button that calls `setMessages` with the
+  messages up to and including it. See /docs/ai-elements/base/checkpoint.
+- A folder of files is nested `Collapsible`s, one folder per row, and a file is
+  a `Button`. See /docs/ai-elements/base/file-tree. A single file the assistant
+  read is still a `TraceLine`.
+- A person's turn is a `Message` with `align="end"` and a `Bubble`. The
+  assistant's answer is a `Message`. See /docs/ai-elements/base/message.
+- A thread is those turns in `MessageScroller`. The person's turn is the
+  `scrollAnchor`, and `autoScroll` follows the reply. See
+  /docs/ai-elements/base/chat.
+- A prompt is an `InputGroup`: a textarea, an attachment chip, and a submit
+  button. See /docs/ai-elements/base/prompt-input.
+- A suggestion is a `Button` that sends its label with `sendMessage({ text })`.
+  See /docs/ai-elements/base/suggestion.
+- A model picker is a `DropdownMenu` with a `DropdownMenuRadioGroup`, next to a
+  second one for effort. Send the selected ids on `sendMessage` as
+  `body.model` and `body.effort`. See /docs/ai-elements/base/model-selector.
+- An inline citation is a `HoverCard` on a short `Button` in the sentence, from
+  a `source-url` part. See /docs/ai-elements/base/inline-citation. A list of
+  sources after the answer is still Sources.
+- Context usage is a `HoverCard` with `Progress`, read from message metadata
+  `usage`. The window size is the model's limit. See
+  /docs/ai-elements/base/context.
 - Asked for an AI Elements component such as Tool, Reasoning, Chain of Thought,
-  Task, Plan, Sources or Agent? It is a component page built with Trace (for example
-  /docs/components/base/tool). Install `trace` and copy the composition.
+  Task, Plan, Sources or Subagent? It is a component page built with Trace (for example
+  /docs/ai-elements/base/tool). Install `trace` and copy the composition.
+  Message is one turn (/docs/ai-elements/base/message). Chat is the thread in
+  Message Scroller (/docs/ai-elements/base/chat). Checkpoint is a Marker
+  (/docs/ai-elements/base/checkpoint). File Tree is nested
+  Collapsibles (/docs/ai-elements/base/file-tree). Confirmation is an Item
+  (/docs/ai-elements/base/confirmation). Prompt Input is an Input Group
+  (/docs/ai-elements/base/prompt-input). Suggestion is a Button
+  (/docs/ai-elements/base/suggestion). Model Selector is a Dropdown Menu
+  (/docs/ai-elements/base/model-selector). Inline Citation is a Hover Card
+  (/docs/ai-elements/base/inline-citation). Context is a Hover Card and Progress
+  (/docs/ai-elements/base/context).
 
 **Incorrect:**
 

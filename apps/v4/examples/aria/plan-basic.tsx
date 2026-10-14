@@ -2,7 +2,7 @@ import {
   CircleCheckIcon,
   CircleDotIcon,
   CircleIcon,
-  ListChecksIcon,
+  RouteIcon,
 } from "lucide-react"
 
 import {
@@ -33,7 +33,7 @@ export function PlanBasic() {
         <TraceCollapsibleTrigger>
           <TraceLine status="running">
             <TraceIcon>
-              <ListChecksIcon />
+              <RouteIcon />
             </TraceIcon>
             <TraceTitle>Plan: migrate to Base UI</TraceTitle>
             <TraceDescription>
