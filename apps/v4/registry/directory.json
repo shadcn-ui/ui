@@ -1357,6 +1357,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='2.8 2.8 58.4 58.4' width='24' height='24'><defs><linearGradient id='liquefy-ui-glass' x1='0.25' y1='0.067' x2='0.75' y2='0.933'><stop offset='0' stop-color='#eef0f1'/><stop offset='0.4' stop-color='#b6b8bc'/><stop offset='1' stop-color='#54555a'/></linearGradient><filter id='liquefy-ui-contact' x='-30%' y='-30%' width='160%' height='160%'><feDropShadow dx='-0.5' dy='1.2' stdDeviation='0.9' flood-color='#0b0b0f' flood-opacity='0.5'/></filter></defs><g transform='rotate(-29 25 26.1)'><rect x='13.25' y='7.3' width='23.5' height='37.6' rx='11.75' fill='url(#liquefy-ui-glass)'/><rect x='13.85' y='7.9' width='22.3' height='36.4' rx='11.15' fill='none' stroke='#ffffff' stroke-opacity='0.65' stroke-width='1.2'/></g><g transform='rotate(-29 39.05 37.9)' filter='url(#liquefy-ui-contact)'><rect x='27.3' y='19.1' width='23.5' height='37.6' rx='11.75' fill='url(#liquefy-ui-glass)'/><rect x='27.9' y='19.7' width='22.3' height='36.4' rx='11.15' fill='none' stroke='#ffffff' stroke-opacity='0.65' stroke-width='1.2'/></g></svg>"
   },
   {
+    "name": "@liquikit",
+    "homepage": "https://liquikit.dev",
+    "description": "Liquid glass components for React with physically based refraction that works in Chrome, Safari and Firefox. Built on Base UI.",
+    "url": "https://liquikit.dev/r/{name}.json",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='var(--foreground)' fill-rule='evenodd' d='M9 0h14a9 9 0 0 1 9 9v14a9 9 0 0 1-9 9H9a9 9 0 0 1-9-9V9a9 9 0 0 1 9-9Zm2 11a5 5 0 0 0 0 10h10a5 5 0 0 0 0-10Z'/></svg>"
+  },
+  {
     "name": "@livedocs",
     "homepage": "https://livedocs.xyz",
     "url": "https://livedocs.xyz/r/{name}.json",
