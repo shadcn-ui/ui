@@ -277,7 +277,7 @@ export class RegistryParseError extends RegistryError {
     let message = `Failed to parse ${subject}: ${item}`
 
     if (parseError instanceof z.ZodError) {
-      message = `Failed to parse ${subject}: ${item}\n${parseError.errors
+      message = `Failed to parse ${subject}: ${item}\n${parseError.issues
         .map((e) => `  - ${e.path.join(".")}: ${e.message}`)
         .join("\n")}`
     }
@@ -399,7 +399,7 @@ export class ConfigParseError extends RegistryError {
     let message = `Invalid ${configName} configuration in ${cwd}.`
 
     if (parseError instanceof z.ZodError) {
-      message = `Invalid ${configName} configuration in ${cwd}:\n${parseError.errors
+      message = `Invalid ${configName} configuration in ${cwd}:\n${parseError.issues
         .map((e) => `  - ${e.path.join(".")}: ${e.message}`)
         .join("\n")}`
     }
@@ -426,19 +426,19 @@ export class RegistriesIndexParseError extends RegistryError {
     let message = "Failed to parse registries index"
 
     if (parseError instanceof z.ZodError) {
-      const invalidNamespaces = parseError.errors
+      const invalidNamespaces = parseError.issues
         .filter((e) => e.path.length > 0)
-        .map((e) => `"${e.path[0]}"`)
+        .map((e) => `"${String(e.path[0])}"`)
         .filter((v, i, arr) => arr.indexOf(v) === i) // remove duplicates
 
       if (invalidNamespaces.length > 0) {
         message = `Failed to parse registries index. Invalid registry namespace(s): ${invalidNamespaces.join(
           ", "
-        )}\n${parseError.errors
+        )}\n${parseError.issues
           .map((e) => `  - ${e.path.join(".")}: ${e.message}`)
           .join("\n")}`
       } else {
-        message = `Failed to parse registries index:\n${parseError.errors
+        message = `Failed to parse registries index:\n${parseError.issues
           .map((e) => `  - ${e.path.join(".")}: ${e.message}`)
           .join("\n")}`
       }
