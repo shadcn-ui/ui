@@ -8309,6 +8309,50 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/base-nova/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/base-nova/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/code-block-example.tsx",
+        },
+      },
+    },
     message: {
       name: "message",
       title: "undefined",
@@ -9664,6 +9708,50 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/radix-nova/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/radix-nova/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/code-block-example.tsx",
+        },
+      },
+    },
     message: {
       name: "message",
       title: "undefined",
@@ -10998,6 +11086,50 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/aria/marker",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/marker-example.tsx",
+        },
+      },
+    },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/aria-nova/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/aria-nova/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/code-block-example.tsx",
         },
       },
     },
@@ -12384,6 +12516,50 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/base-vega/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/base-vega/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/code-block-example.tsx",
+        },
+      },
+    },
     message: {
       name: "message",
       title: "undefined",
@@ -13760,6 +13936,50 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       categories: undefined,
       meta: undefined,
+    },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/base-maia/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/base-maia/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/code-block-example.tsx",
+        },
+      },
     },
     message: {
       name: "message",
@@ -15138,6 +15358,50 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/base-lyra/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/base-lyra/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/code-block-example.tsx",
+        },
+      },
+    },
     message: {
       name: "message",
       title: "undefined",
@@ -16514,6 +16778,50 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       categories: undefined,
       meta: undefined,
+    },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/base-mira/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/base-mira/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/code-block-example.tsx",
+        },
+      },
     },
     message: {
       name: "message",
@@ -17892,6 +18200,50 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/base-luma/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/base-luma/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/code-block-example.tsx",
+        },
+      },
+    },
     message: {
       name: "message",
       title: "undefined",
@@ -19268,6 +19620,50 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       categories: undefined,
       meta: undefined,
+    },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/base-sera/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/base-sera/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/code-block-example.tsx",
+        },
+      },
     },
     message: {
       name: "message",
@@ -20646,6 +21042,50 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/base-rhea/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/base-rhea/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/code-block-example.tsx",
+        },
+      },
+    },
     message: {
       name: "message",
       title: "undefined",
@@ -21980,6 +22420,50 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/aria/marker",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/marker-example.tsx",
+        },
+      },
+    },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/aria-vega/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/aria-vega/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/code-block-example.tsx",
         },
       },
     },
@@ -23326,6 +23810,50 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/aria-maia/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/aria-maia/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/code-block-example.tsx",
+        },
+      },
+    },
     message: {
       name: "message",
       title: "undefined",
@@ -24666,6 +25194,50 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/aria/marker",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/marker-example.tsx",
+        },
+      },
+    },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/aria-lyra/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/aria-lyra/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/code-block-example.tsx",
         },
       },
     },
@@ -26012,6 +26584,50 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/aria-mira/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/aria-mira/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/code-block-example.tsx",
+        },
+      },
+    },
     message: {
       name: "message",
       title: "undefined",
@@ -27352,6 +27968,50 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/aria/marker",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/marker-example.tsx",
+        },
+      },
+    },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/aria-luma/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/aria-luma/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/code-block-example.tsx",
         },
       },
     },
@@ -28698,6 +29358,50 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/aria-sera/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/aria-sera/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/code-block-example.tsx",
+        },
+      },
+    },
     message: {
       name: "message",
       title: "undefined",
@@ -30038,6 +30742,50 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/aria/marker",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/marker-example.tsx",
+        },
+      },
+    },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/aria-rhea/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/aria-rhea/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/code-block-example.tsx",
         },
       },
     },
@@ -31402,6 +32150,50 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/radix-vega/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/radix-vega/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/code-block-example.tsx",
+        },
+      },
+    },
     message: {
       name: "message",
       title: "undefined",
@@ -32756,6 +33548,50 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       categories: undefined,
       meta: undefined,
+    },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/radix-maia/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/radix-maia/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/code-block-example.tsx",
+        },
+      },
     },
     message: {
       name: "message",
@@ -34112,6 +34948,50 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/radix-lyra/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/radix-lyra/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/code-block-example.tsx",
+        },
+      },
+    },
     message: {
       name: "message",
       title: "undefined",
@@ -35466,6 +36346,50 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       categories: undefined,
       meta: undefined,
+    },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/radix-mira/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/radix-mira/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/code-block-example.tsx",
+        },
+      },
     },
     message: {
       name: "message",
@@ -36822,6 +37746,50 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/radix-luma/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/radix-luma/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/code-block-example.tsx",
+        },
+      },
+    },
     message: {
       name: "message",
       title: "undefined",
@@ -38177,6 +39145,50 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/radix-sera/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/radix-sera/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/code-block-example.tsx",
+        },
+      },
+    },
     message: {
       name: "message",
       title: "undefined",
@@ -39531,6 +40543,50 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       categories: undefined,
       meta: undefined,
+    },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "styles/radix-rhea/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "styles/radix-rhea/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/code-block-example.tsx",
+        },
+      },
     },
     message: {
       name: "message",

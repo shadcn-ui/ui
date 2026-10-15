@@ -10,8 +10,18 @@ const highlightCache = new LRUCache<string, string>({
   ttl: 1000 * 60 * 60, // 1 hour.
 })
 
+const PROMPT_COLLAPSE_LINES = 12
+
 export const transformers = [
   {
+    pre(node) {
+      if (/(^|\s)prompt(\s|$)/.test(this.options.meta?.__raw ?? "")) {
+        node.properties["data-prompt"] = ""
+        if (this.source.split("\n").length > PROMPT_COLLAPSE_LINES) {
+          node.properties["data-collapsible"] = ""
+        }
+      }
+    },
     code(node) {
       if (node.tagName === "code") {
         const raw = this.source
