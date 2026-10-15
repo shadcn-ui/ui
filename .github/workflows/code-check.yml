@@ -5,6 +5,23 @@ on:
     branches: ["*"]
 
 jobs:
+  registry-changeset:
+    runs-on: ubuntu-latest
+    name: "@shadcn/registry changeset"
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - run: node .github/check-registry-changeset.js origin/${{ github.base_ref }}
+
   lint:
     runs-on: ubuntu-latest
     name: pnpm lint
@@ -121,6 +138,10 @@ jobs:
 
       - name: Build packages
         run: pnpm build:packages
+
+      # Fails if a public export of shadcn is removed or changes kind.
+      - name: Check shadcn exports
+        run: node packages/shadcn/scripts/check-exports.mjs
 
       # The generated styles under apps/v4/styles are gitignored, and the v4
       # typecheck imports them. Build them before typechecking.
