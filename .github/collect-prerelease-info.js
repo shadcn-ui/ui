@@ -1,6 +1,6 @@
 // Collect the packages that a snapshot prerelease just published, so the
 // prerelease comment workflow can render an install line per package.
-import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs"
+import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs"
 import { join } from "node:path"
 
 const [, , prNumber, channel] = process.argv
@@ -23,7 +23,15 @@ for (const dir of readdirSync(packagesDir)) {
     typeof pkg.version === "string" &&
     pkg.version.includes(`-${channel}`)
   ) {
-    published.push({ name: pkg.name, version: pkg.version })
+    // `bin` is either a path string or a `{ command: path }` map. Packages
+    // with a CLI are run with `pnpm dlx`; libraries are installed instead.
+    const hasBin =
+      typeof pkg.bin === "string" ||
+      (typeof pkg.bin === "object" &&
+        pkg.bin !== null &&
+        Object.keys(pkg.bin).length > 0)
+
+    published.push({ name: pkg.name, version: pkg.version, hasBin })
   }
 }
 

@@ -1,5 +1,5 @@
-import { Config } from "@shadcn/registry/internal/utils/get-config"
-import { transformCssVars } from "@shadcn/registry/internal/utils/updaters/update-css-vars"
+import { Config } from "@shadcn/registry/internal/get-config"
+import { transformCssVars } from "@shadcn/registry/internal/updaters/update-css-vars"
 import { describe, expect, it } from "vitest"
 
 import { getBaseColorMigration } from "./migrate-base-color"
