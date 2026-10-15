@@ -1,4 +1,4 @@
-import { REGISTRY_URL } from "@/src/registry/constants"
+import { REGISTRY_URL } from "@shadcn/registry/internal/registry/constants"
 import prompts from "prompts"
 import { beforeEach, describe, expect, it, vi } from "vitest"
 

@@ -1,18 +1,17 @@
-import { getRegistryItems, searchRegistries } from "@/src/registry"
-import { withRegistryContext } from "@/src/registry/context"
-import { RegistryError } from "@/src/registry/errors"
-import {
-  resolveSearchRegistries,
-  SEARCHABLE_TYPES,
-} from "@/src/registry/search"
 import { Server } from "@modelcontextprotocol/sdk/server/index.js"
 import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js"
+import { getRegistryItems, searchRegistries } from "@shadcn/registry"
+import { withRegistryContext } from "@shadcn/registry/internal/registry/context"
+import { RegistryError } from "@shadcn/registry/internal/registry/errors"
+import {
+  resolveSearchRegistries,
+  SEARCHABLE_TYPES,
+} from "@shadcn/registry/internal/registry/search"
 import dedent from "dedent"
 import { z } from "zod"
-import { zodToJsonSchema } from "zod-to-json-schema"
 
 import {
   findUnknownTypesMessage,
@@ -52,6 +51,11 @@ async function onGitHubAuthNotice(message: string) {
   }
 }
 
+// Keep the draft-07 tool schemas clients already receive.
+function toJsonSchema(schema: z.ZodType) {
+  return z.toJSONSchema(schema, { target: "draft-7" })
+}
+
 server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
     tools: [
@@ -59,13 +63,13 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         name: "get_project_registries",
         description:
           "Get configured registry names from components.json - Returns error if no components.json exists (use init_project to create one)",
-        inputSchema: zodToJsonSchema(z.object({})),
+        inputSchema: toJsonSchema(z.object({})),
       },
       {
         name: "list_items_in_registries",
         description:
           "List items from registries (requires components.json - use init_project if missing)",
-        inputSchema: zodToJsonSchema(
+        inputSchema: toJsonSchema(
           z.object({
             registries: z
               .array(z.string())
@@ -96,7 +100,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         name: "search_items_in_registries",
         description:
           "Search for components in registries using fuzzy matching (requires components.json). After finding an item, use get_item_examples_from_registries to see usage examples.",
-        inputSchema: zodToJsonSchema(
+        inputSchema: toJsonSchema(
           z.object({
             registries: z
               .array(z.string())
@@ -132,7 +136,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         name: "view_items_in_registries",
         description:
           "View detailed information about specific registry items including the name, description, type and files content. For usage examples, use get_item_examples_from_registries instead.",
-        inputSchema: zodToJsonSchema(
+        inputSchema: toJsonSchema(
           z.object({
             items: z
               .array(z.string())
@@ -146,7 +150,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         name: "get_item_examples_from_registries",
         description:
           "Find usage examples and demos with their complete code. Search for patterns like 'accordion-demo', 'button example', 'card-demo', etc. Returns full implementation code with dependencies.",
-        inputSchema: zodToJsonSchema(
+        inputSchema: toJsonSchema(
           z.object({
             registries: z
               .array(z.string())
@@ -166,7 +170,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         name: "get_add_command_for_items",
         description:
           "Get the shadcn CLI add command for specific items in a registry. This is useful for adding one or more components to your project.",
-        inputSchema: zodToJsonSchema(
+        inputSchema: toJsonSchema(
           z.object({
             items: z
               .array(z.string())
@@ -180,7 +184,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         name: "get_audit_checklist",
         description:
           "After creating new components or generating new code files, use this tool for a quick checklist to verify that everything is working as expected. Make sure to run the tool after all required steps have been completed.",
-        inputSchema: zodToJsonSchema(z.object({})),
+        inputSchema: toJsonSchema(z.object({})),
       },
     ],
   }
@@ -313,10 +317,10 @@ async function handleCallTool(request: {
             {
               type: "text",
               text:
-                formatSearchResultsWithPagination(results, {
+                (await formatSearchResultsWithPagination(results, {
                   query: args.query,
                   registries,
-                }) + skippedNote,
+                })) + skippedNote,
             },
           ],
         }
@@ -389,9 +393,9 @@ async function handleCallTool(request: {
             {
               type: "text",
               text:
-                formatSearchResultsWithPagination(results, {
+                (await formatSearchResultsWithPagination(results, {
                   registries,
-                }) + skippedNote,
+                })) + skippedNote,
             },
           ],
         }
@@ -552,7 +556,7 @@ async function handleCallTool(request: {
           {
             type: "text",
             text: dedent`Invalid input parameters:
-              ${error.errors
+              ${error.issues
                 .map((e) => `- ${e.path.join(".")}: ${e.message}`)
                 .join("\n")}
               `,
