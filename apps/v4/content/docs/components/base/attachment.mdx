@@ -176,7 +176,15 @@ Add an `AttachmentTrigger` to make the whole card open a link or dialog. It fill
       render={<AttachmentTrigger aria-label="Preview research-summary.pdf" />}
     />
   </Attachment>
-  <DialogContent>{/* ... */}</DialogContent>
+
+  <DialogContent closeLabel="Close preview">
+    <DialogHeader>
+      <DialogTitle>research-summary.pdf</DialogTitle>
+      <DialogDescription>
+        Preview the attached research summary.
+      </DialogDescription>
+    </DialogHeader>
+  </DialogContent>
 </Dialog>
 ```
 

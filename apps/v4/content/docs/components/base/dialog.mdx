@@ -111,6 +111,34 @@ Use `showCloseButton={false}` to hide the close button.
 
 <ComponentPreview styleName="base-nova" name="dialog-no-close-button" />
 
+## Custom Close Label
+
+Use `closeLabel` to customize the label announced by the dialog close button. This is useful when the default `"Close"` label needs to be localized or customized.
+
+```tsx showLineNumbers
+<Dialog>
+  <DialogTrigger>Open</DialogTrigger>
+  <DialogContent closeLabel="Dismiss">
+    <DialogHeader>
+      <DialogTitle>Custom close label</DialogTitle>
+      <DialogDescription>
+        The close button uses the provided label.
+      </DialogDescription>
+    </DialogHeader>
+  </DialogContent>
+</Dialog>
+```
+
+When using the optional footer close button, the same prop controls its visible label:
+
+```tsx showLineNumbers
+<DialogFooter showCloseButton closeLabel="Cancel">
+  <Button>Save changes</Button>
+</DialogFooter>
+```
+
+The default value for `closeLabel` is `"Close"`.
+
 ## Sticky Footer
 
 Keep actions visible while the content scrolls.
@@ -131,4 +159,22 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## API Reference
 
-See the [Base UI](https://base-ui.com/react/components/dialog#api-reference) documentation for more information.
+### DialogContent
+
+In addition to the underlying Base UI `Dialog.Popup` props, `DialogContent` supports the following props:
+
+| Prop               | Type      | Default  | Description                                                   |
+| ------------------ | --------- | -------- | ------------------------------------------------------------- |
+| `showCloseButton`  | `boolean` | `true`   | Whether to render the default close button.                   |
+| `closeLabel`       | `string`  | `"Close"` | Accessible label for the default close button.               |
+
+### DialogFooter
+
+`DialogFooter` supports the following props in addition to standard `<div>` props:
+
+| Prop               | Type      | Default  | Description                                      |
+| ------------------ | --------- | -------- | ------------------------------------------------ |
+| `showCloseButton`  | `boolean` | `false`  | Whether to render a close button in the footer. |
+| `closeLabel`       | `string`  | `"Close"` | Label displayed by the footer close button.     |
+
+See the [Base UI Dialog documentation](https://base-ui.com/react/components/dialog#api-reference) for the underlying Dialog API.
