@@ -30,7 +30,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.7",
     "globals": "^17",
-    "typescript": "~6.0.2",
+    "typescript": "~7.0.2",
     "typescript-eslint": "^8"
   }
 }

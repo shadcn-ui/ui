@@ -14,7 +14,7 @@
     "prettier-plugin-astro": "^1.1.0",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "turbo": "^2.11.7",
-    "typescript": "~6.0.2"
+    "typescript": "~7.0.2"
   },
   "packageManager": "pnpm@11.25.0",
   "engines": {
