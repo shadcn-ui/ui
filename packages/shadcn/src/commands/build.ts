@@ -18,6 +18,13 @@ export const buildOptionsSchema = z.object({
   outputDir: z.string(),
 })
 
+interface BuildCommandOptions {
+  output: string
+  cwd: string
+}
+
+type RegistryResult = Awaited<ReturnType<typeof readRegistryWithIncludes>>
+
 export const build = new Command()
   .name("build")
   .description("build components for a shadcn registry")
@@ -32,7 +39,10 @@ export const build = new Command()
     "the working directory. defaults to the current directory.",
     process.cwd()
   )
-  .action(async (registryFile: string, opts) => {
+  .action(async (
+    registryFile: string,
+    opts: BuildCommandOptions
+  ): Promise<void> => {
     try {
       const options = buildOptionsSchema.parse({
         cwd: path.resolve(opts.cwd),
@@ -41,7 +51,7 @@ export const build = new Command()
       })
 
       const { resolvePaths } = await preFlightBuild(options)
-      const registryResult = await readRegistryWithIncludes(
+      const registryResult: RegistryResult = await readRegistryWithIncludes(
         resolvePaths.registryFile,
         {
           cwd: resolvePaths.cwd,
@@ -96,7 +106,7 @@ export const build = new Command()
       }
 
       buildSpinner.succeed("Building registry.")
-    } catch (error) {
+    } catch (error: unknown) {
       logger.break()
       handleError(error)
     }
