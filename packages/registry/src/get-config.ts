@@ -149,8 +149,8 @@ async function resolveAliasPath(
     // Wildcard aliases with explicit extensions (e.g. `#components/*` →
     // `./src/components/*.tsx`) should strip the source extension so `ui`
     // resolves to `/src/components/ui` instead of `/src/components/ui.tsx`.
-    if (resolved.matchedAlias.includes("*") && /\.[^/]+$/.test(resolved.path)) {
-      return resolved.path.replace(/\.[^/]+$/, "")
+    if (resolved.matchedAlias.includes("*") && /\.[^/\\]+$/.test(resolved.path)) {
+      return resolved.path.replace(/\.[^/\\]+$/, "")
     }
   }
 
