@@ -2242,6 +2242,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' class='fill-none!' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-baseline-icon lucide-baseline'><path d='M4 20h16'/><path d='m6 16 6-12 6 12'/><path d='M8 12h8'/></svg>"
   },
   {
+    "name": "@shadcn-exchange",
+    "homepage": "https://shadcn.exchange",
+    "url": "https://shadcn.exchange/r/{name}.json",
+    "description": "Search blocks from every public shadcn registry with live previews, and add them from the CLI.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='8 8 240 240' fill='none' stroke='var(--foreground)' stroke-linecap='round' stroke-linejoin='round'><path stroke-width='20' d='M40 160V80A40 40 0 0 1 80 40H172M154 22L172 40L154 58M216 96V176A40 40 0 0 1 176 216H84M102 234L84 216L102 198'/><path stroke-width='24' d='M160.6 87.7L87.7 160.6M168.3 129.9L129.9 168.3'/></svg>"
+  },
+  {
     "name": "@shadcn-map",
     "homepage": "https://shadcn-map.vercel.app",
     "url": "http://shadcn-map.vercel.app/r/{name}.json",
