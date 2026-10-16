@@ -3273,6 +3273,7 @@
     "homepage": "https://bricked-ui.vercel.app",
     "url": "https://bricked-ui.vercel.app/r/{name}.json",
     "description": "A chunky pixel-art kit for React and Svelte apps. Pick any of the 91 pieces.",
+    "author": "Nehxurai (@xerinv0)",
     "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"76\" height=\"68\"><path fill=\"#f9c68f\" d=\"M0 0h76v68H0z\"/><path fill=\"#e27515\" d=\"M20 35h34v16H20zM2 17h34v16H2zm36 36h34v15H38zM2 53h34v15H2z\"/><path fill=\"#fff6ea\" d=\"M41 20h31v13H41zM23 2h31v13H23z\"/><path fill=\"#e27515\" d=\"M56 35h20v16H56z\"/><path fill=\"#fb871d\" d=\"M0 35h18v16H0z\"/><path fill=\"#fff6ea\" d=\"M0 2h18v13H0zm59 0h17v13H59z\"/><path fill=\"#ff8a1f\" d=\"M39 54h30v7H39zM3 54h30v7H3zm18-18h30v7H21zM3 18h30v7H3z\"/><path fill=\"#c25a00\" d=\"M51 35h3v16H20v-3h31zM33 17h3v16H2v-3h31zm5 0h34v3H41v13h-3z\"/><path fill=\"#ff8a1f\" d=\"M57 36h19v7H57z\"/><path fill=\"#c25a00\" d=\"M69 53h3v15H38v-2h31zm-36 0h3v15H2v-2h31zM20 0h34v2H23v13h-3zm-5 35h3v16H0v-3h15zM56 0h20v2H59v13h-3z\"/><path fill=\"#e37615\" d=\"M0 43h15v5H0z\"/><path fill=\"#c25a00\" d=\"M56 48h20v3H56z\"/><path fill=\"#ff8a1f\" d=\"M38 63h17v3H38zM2 63h17v3H2zm54-18h17v3H56zm-36 0h17v3H20zM2 27h17v3H2zm55 36h12v3H57zm-36 0h12v3H21zm18-18h12v3H39zM3 45h12v3H3zm18-18h12v3H21z\"/></svg>"
   }
 ]
