@@ -26,7 +26,7 @@ export function SavingsTargets() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <ItemGroup className="gap-3">
+        <ItemGroup role="list" className="gap-3">
           <Item
             role="listitem"
             variant="muted"
