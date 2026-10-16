@@ -59,20 +59,24 @@ function Thread({
   autoScroll,
   defaultScrollPosition,
   items,
+  restoreMessageId,
   scrollPreviousItemPeek,
   showButton = false,
   showJumpButton = false,
   showVisibility = false,
+  virtualized = false,
 }: {
   autoScroll?: boolean
   defaultScrollPosition?: React.ComponentProps<
     typeof MessageScrollerProvider
   >["defaultScrollPosition"]
   items: TestItem[]
+  restoreMessageId?: string
   scrollPreviousItemPeek?: number
   showButton?: boolean
   showJumpButton?: boolean
   showVisibility?: boolean
+  virtualized?: boolean
 }) {
   return (
     <MessageScrollerProvider
@@ -94,11 +98,21 @@ function Thread({
                 messageId={item.id}
                 scrollAnchor={item.scrollAnchor}
                 style={{
-                  height: item.height ?? ITEM_HEIGHT,
+                  containIntrinsicSize: virtualized ? "auto 160px" : undefined,
+                  contentVisibility: virtualized ? "auto" : undefined,
                   flex: "none",
+                  height: virtualized
+                    ? undefined
+                    : (item.height ?? ITEM_HEIGHT),
                 }}
               >
-                {item.id}
+                {virtualized ? (
+                  <div style={{ height: item.height ?? ITEM_HEIGHT }}>
+                    {item.id}
+                  </div>
+                ) : (
+                  item.id
+                )}
               </MessageScrollerItem>
             ))}
           </MessageScrollerContent>
@@ -109,6 +123,9 @@ function Thread({
           </MessageScrollerButton>
         ) : null}
         {showJumpButton ? <JumpButton messageId="m5" /> : null}
+        {restoreMessageId ? (
+          <RestoreMessage messageId={restoreMessageId} />
+        ) : null}
         {showVisibility ? <VisibilityProbe /> : null}
       </MessageScroller>
     </MessageScrollerProvider>
@@ -158,6 +175,16 @@ function JumpButton({ messageId }: { messageId: string }) {
       Jump to message
     </button>
   )
+}
+
+function RestoreMessage({ messageId }: { messageId: string }) {
+  const { scrollToMessage } = useMessageScroller()
+
+  React.useLayoutEffect(() => {
+    scrollToMessage(messageId, { align: "start", behavior: "auto" })
+  }, [messageId, scrollToMessage])
+
+  return null
 }
 
 // Resolve after a few real animation frames so the component's rAF-scheduled
@@ -397,6 +424,40 @@ test("scrolls to a mounted message by id", async () => {
   await settle()
 
   expect(viewportOffsetOf("m5", viewport)).toBeLessThanOrEqual(1)
+})
+
+test("restores an estimated off-screen row using its real layout", async () => {
+  await renderThread({
+    defaultScrollPosition: "start",
+    items: [],
+    restoreMessageId: "m100",
+    virtualized: true,
+  })
+
+  const viewport = getViewport()
+  viewport.style.scrollPaddingBlockStart = "24px"
+  const items = Array.from({ length: 150 }, (_, index) => ({
+    height: index % 3 === 0 ? 320 : 32,
+    id: `m${index}`,
+  }))
+
+  flushSync(() => {
+    root!.render(
+      <Thread
+        defaultScrollPosition="start"
+        items={items}
+        restoreMessageId="m100"
+        virtualized
+      />
+    )
+  })
+
+  await settle(8)
+
+  // 24px authored scroll-padding + the provider's default 12px scrollMargin.
+  expect(Math.abs(viewportOffsetOf("m100", viewport) - 36)).toBeLessThanOrEqual(
+    2
+  )
 })
 
 test("preserves a scrolled-to turn across a prepend (command-path anchor)", async () => {
