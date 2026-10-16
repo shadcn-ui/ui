@@ -149,6 +149,28 @@ Wrap the `Accordion` in a `Card` component.
   previewClassName="*:data-[slot=accordion]:max-w-sm h-[435px]"
 />
 
+## With Icon
+
+Add an icon to the `AccordionTrigger` by rendering it as a child alongside the label. Icons without an explicit size default to `size-4`.
+
+<ComponentPreview
+  styleName="aria-nova"
+  name="accordion-with-icon"
+  align="start"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-[300px]"
+/>
+
+## Chevron Position
+
+Use `data-chevron-position="left"` on the `AccordionTrigger` to place the chevron on the left instead of the right. It composes with custom icons.
+
+<ComponentPreview
+  styleName="aria-nova"
+  name="accordion-chevron-left"
+  align="start"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-[300px]"
+/>
+
 ## RTL
 
 To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
