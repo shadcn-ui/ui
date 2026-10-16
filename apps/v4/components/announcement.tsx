@@ -7,7 +7,7 @@ export function Announcement() {
   return (
     <Badge asChild variant="secondary" className="bg-muted">
       <Link href="/docs/changelog">
-        New Questionnaire component <ArrowRightIcon />
+        Trace, Code Block and AI Elements <ArrowRightIcon />
       </Link>
     </Badge>
   )

@@ -192,6 +192,7 @@ export function createAiSdkFormat<
             type: "tool-output-available",
             toolCallId: chunk.toolCallId,
             output: chunk.output,
+            preliminary: chunk.preliminary,
             providerExecuted: chunk.providerExecuted,
             toolMetadata: chunk.toolMetadata,
             dynamic: chunk.dynamic,
