@@ -6955,7 +6955,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/accordion.tsx",
@@ -7000,7 +7000,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/alert-dialog.tsx",
@@ -7045,7 +7045,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/avatar.tsx",
@@ -7112,7 +7112,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/button.tsx",
@@ -7134,7 +7134,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["separator"],
+      registryDependencies: ["separator", "compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/button-group.tsx",
@@ -7201,7 +7201,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/carousel.tsx",
@@ -7246,7 +7246,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/checkbox.tsx",
@@ -7292,7 +7292,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button", "input-group"],
+      registryDependencies: ["button", "input-group", "compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/combobox.tsx",
@@ -7338,7 +7338,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/context-menu.tsx",
@@ -7361,7 +7361,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/dialog.tsx",
@@ -7384,7 +7384,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/drawer.tsx",
@@ -7407,7 +7407,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/dropdown-menu.tsx",
@@ -7474,7 +7474,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/hover-card.tsx",
@@ -7519,7 +7519,12 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button", "input", "textarea"],
+      registryDependencies: [
+        "button",
+        "input",
+        "textarea",
+        "compose-class-name",
+      ],
       files: [
         {
           path: "styles/base-nova/ui/input-group.tsx",
@@ -7564,7 +7569,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["separator"],
+      registryDependencies: ["separator", "compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/item.tsx",
@@ -7609,7 +7614,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["dropdown-menu"],
+      registryDependencies: ["dropdown-menu", "compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/menubar.tsx",
@@ -7632,7 +7637,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/navigation-menu.tsx",
@@ -7677,7 +7682,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/popover.tsx",
@@ -7700,7 +7705,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/progress.tsx",
@@ -7723,7 +7728,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/radio-group.tsx",
@@ -7769,7 +7774,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/scroll-area.tsx",
@@ -7792,7 +7797,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/select.tsx",
@@ -7815,7 +7820,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/separator.tsx",
@@ -7838,7 +7843,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/sheet.tsx",
@@ -7869,6 +7874,7 @@ export const Index: Record<string, Record<string, any>> = {
         "skeleton",
         "tooltip",
         "use-mobile",
+        "compose-class-name",
       ],
       files: [
         {
@@ -7913,7 +7919,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/slider.tsx",
@@ -7981,7 +7987,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/switch.tsx",
@@ -8026,7 +8032,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/tabs.tsx",
@@ -8071,7 +8077,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/toast.tsx",
@@ -8094,7 +8100,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/toggle.tsx",
@@ -8117,7 +8123,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["toggle"],
+      registryDependencies: ["toggle", "compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/toggle-group.tsx",
@@ -8140,7 +8146,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/tooltip.tsx",
@@ -8228,7 +8234,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-nova/ui/attachment.tsx",
@@ -11162,7 +11168,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/accordion.tsx",
@@ -11207,7 +11213,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/alert-dialog.tsx",
@@ -11252,7 +11258,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/avatar.tsx",
@@ -11319,7 +11325,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/button.tsx",
@@ -11341,7 +11347,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["separator"],
+      registryDependencies: ["separator", "compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/button-group.tsx",
@@ -11408,7 +11414,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/carousel.tsx",
@@ -11453,7 +11459,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/checkbox.tsx",
@@ -11499,7 +11505,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button", "input-group"],
+      registryDependencies: ["button", "input-group", "compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/combobox.tsx",
@@ -11545,7 +11551,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/context-menu.tsx",
@@ -11568,7 +11574,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/dialog.tsx",
@@ -11591,7 +11597,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/drawer.tsx",
@@ -11614,7 +11620,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/dropdown-menu.tsx",
@@ -11681,7 +11687,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/hover-card.tsx",
@@ -11726,7 +11732,12 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button", "input", "textarea"],
+      registryDependencies: [
+        "button",
+        "input",
+        "textarea",
+        "compose-class-name",
+      ],
       files: [
         {
           path: "styles/base-vega/ui/input-group.tsx",
@@ -11771,7 +11782,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["separator"],
+      registryDependencies: ["separator", "compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/item.tsx",
@@ -11816,7 +11827,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["dropdown-menu"],
+      registryDependencies: ["dropdown-menu", "compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/menubar.tsx",
@@ -11839,7 +11850,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/navigation-menu.tsx",
@@ -11884,7 +11895,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/popover.tsx",
@@ -11907,7 +11918,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/progress.tsx",
@@ -11930,7 +11941,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/radio-group.tsx",
@@ -11976,7 +11987,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/scroll-area.tsx",
@@ -11999,7 +12010,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/select.tsx",
@@ -12022,7 +12033,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/separator.tsx",
@@ -12045,7 +12056,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/sheet.tsx",
@@ -12076,6 +12087,7 @@ export const Index: Record<string, Record<string, any>> = {
         "skeleton",
         "tooltip",
         "use-mobile",
+        "compose-class-name",
       ],
       files: [
         {
@@ -12120,7 +12132,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/slider.tsx",
@@ -12188,7 +12200,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/switch.tsx",
@@ -12233,7 +12245,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/tabs.tsx",
@@ -12278,7 +12290,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/toast.tsx",
@@ -12301,7 +12313,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/toggle.tsx",
@@ -12324,7 +12336,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["toggle"],
+      registryDependencies: ["toggle", "compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/toggle-group.tsx",
@@ -12347,7 +12359,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/tooltip.tsx",
@@ -12435,7 +12447,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-vega/ui/attachment.tsx",
@@ -12583,7 +12595,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/accordion.tsx",
@@ -12628,7 +12640,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/alert-dialog.tsx",
@@ -12673,7 +12685,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/avatar.tsx",
@@ -12740,7 +12752,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/button.tsx",
@@ -12762,7 +12774,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["separator"],
+      registryDependencies: ["separator", "compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/button-group.tsx",
@@ -12829,7 +12841,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/carousel.tsx",
@@ -12874,7 +12886,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/checkbox.tsx",
@@ -12920,7 +12932,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button", "input-group"],
+      registryDependencies: ["button", "input-group", "compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/combobox.tsx",
@@ -12966,7 +12978,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/context-menu.tsx",
@@ -12989,7 +13001,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/dialog.tsx",
@@ -13012,7 +13024,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/drawer.tsx",
@@ -13035,7 +13047,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/dropdown-menu.tsx",
@@ -13102,7 +13114,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/hover-card.tsx",
@@ -13147,7 +13159,12 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button", "input", "textarea"],
+      registryDependencies: [
+        "button",
+        "input",
+        "textarea",
+        "compose-class-name",
+      ],
       files: [
         {
           path: "styles/base-maia/ui/input-group.tsx",
@@ -13192,7 +13209,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["separator"],
+      registryDependencies: ["separator", "compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/item.tsx",
@@ -13237,7 +13254,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["dropdown-menu"],
+      registryDependencies: ["dropdown-menu", "compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/menubar.tsx",
@@ -13260,7 +13277,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/navigation-menu.tsx",
@@ -13305,7 +13322,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/popover.tsx",
@@ -13328,7 +13345,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/progress.tsx",
@@ -13351,7 +13368,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/radio-group.tsx",
@@ -13397,7 +13414,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/scroll-area.tsx",
@@ -13420,7 +13437,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/select.tsx",
@@ -13443,7 +13460,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/separator.tsx",
@@ -13466,7 +13483,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/sheet.tsx",
@@ -13497,6 +13514,7 @@ export const Index: Record<string, Record<string, any>> = {
         "skeleton",
         "tooltip",
         "use-mobile",
+        "compose-class-name",
       ],
       files: [
         {
@@ -13541,7 +13559,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/slider.tsx",
@@ -13609,7 +13627,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/switch.tsx",
@@ -13654,7 +13672,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/tabs.tsx",
@@ -13699,7 +13717,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/toast.tsx",
@@ -13722,7 +13740,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/toggle.tsx",
@@ -13745,7 +13763,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["toggle"],
+      registryDependencies: ["toggle", "compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/toggle-group.tsx",
@@ -13768,7 +13786,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/tooltip.tsx",
@@ -13856,7 +13874,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-maia/ui/attachment.tsx",
@@ -14004,7 +14022,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/accordion.tsx",
@@ -14049,7 +14067,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/alert-dialog.tsx",
@@ -14094,7 +14112,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/avatar.tsx",
@@ -14161,7 +14179,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/button.tsx",
@@ -14183,7 +14201,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["separator"],
+      registryDependencies: ["separator", "compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/button-group.tsx",
@@ -14250,7 +14268,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/carousel.tsx",
@@ -14295,7 +14313,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/checkbox.tsx",
@@ -14341,7 +14359,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button", "input-group"],
+      registryDependencies: ["button", "input-group", "compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/combobox.tsx",
@@ -14387,7 +14405,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/context-menu.tsx",
@@ -14410,7 +14428,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/dialog.tsx",
@@ -14433,7 +14451,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/drawer.tsx",
@@ -14456,7 +14474,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/dropdown-menu.tsx",
@@ -14523,7 +14541,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/hover-card.tsx",
@@ -14568,7 +14586,12 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button", "input", "textarea"],
+      registryDependencies: [
+        "button",
+        "input",
+        "textarea",
+        "compose-class-name",
+      ],
       files: [
         {
           path: "styles/base-lyra/ui/input-group.tsx",
@@ -14613,7 +14636,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["separator"],
+      registryDependencies: ["separator", "compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/item.tsx",
@@ -14658,7 +14681,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["dropdown-menu"],
+      registryDependencies: ["dropdown-menu", "compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/menubar.tsx",
@@ -14681,7 +14704,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/navigation-menu.tsx",
@@ -14726,7 +14749,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/popover.tsx",
@@ -14749,7 +14772,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/progress.tsx",
@@ -14772,7 +14795,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/radio-group.tsx",
@@ -14818,7 +14841,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/scroll-area.tsx",
@@ -14841,7 +14864,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/select.tsx",
@@ -14864,7 +14887,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/separator.tsx",
@@ -14887,7 +14910,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/sheet.tsx",
@@ -14918,6 +14941,7 @@ export const Index: Record<string, Record<string, any>> = {
         "skeleton",
         "tooltip",
         "use-mobile",
+        "compose-class-name",
       ],
       files: [
         {
@@ -14962,7 +14986,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/slider.tsx",
@@ -15030,7 +15054,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/switch.tsx",
@@ -15075,7 +15099,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/tabs.tsx",
@@ -15120,7 +15144,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/toast.tsx",
@@ -15143,7 +15167,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/toggle.tsx",
@@ -15166,7 +15190,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["toggle"],
+      registryDependencies: ["toggle", "compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/toggle-group.tsx",
@@ -15189,7 +15213,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/tooltip.tsx",
@@ -15277,7 +15301,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-lyra/ui/attachment.tsx",
@@ -15425,7 +15449,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/accordion.tsx",
@@ -15470,7 +15494,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/alert-dialog.tsx",
@@ -15515,7 +15539,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/avatar.tsx",
@@ -15582,7 +15606,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/button.tsx",
@@ -15604,7 +15628,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["separator"],
+      registryDependencies: ["separator", "compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/button-group.tsx",
@@ -15671,7 +15695,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/carousel.tsx",
@@ -15716,7 +15740,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/checkbox.tsx",
@@ -15762,7 +15786,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button", "input-group"],
+      registryDependencies: ["button", "input-group", "compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/combobox.tsx",
@@ -15808,7 +15832,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/context-menu.tsx",
@@ -15831,7 +15855,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/dialog.tsx",
@@ -15854,7 +15878,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/drawer.tsx",
@@ -15877,7 +15901,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/dropdown-menu.tsx",
@@ -15944,7 +15968,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/hover-card.tsx",
@@ -15989,7 +16013,12 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button", "input", "textarea"],
+      registryDependencies: [
+        "button",
+        "input",
+        "textarea",
+        "compose-class-name",
+      ],
       files: [
         {
           path: "styles/base-mira/ui/input-group.tsx",
@@ -16034,7 +16063,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["separator"],
+      registryDependencies: ["separator", "compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/item.tsx",
@@ -16079,7 +16108,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["dropdown-menu"],
+      registryDependencies: ["dropdown-menu", "compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/menubar.tsx",
@@ -16102,7 +16131,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/navigation-menu.tsx",
@@ -16147,7 +16176,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/popover.tsx",
@@ -16170,7 +16199,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/progress.tsx",
@@ -16193,7 +16222,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/radio-group.tsx",
@@ -16239,7 +16268,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/scroll-area.tsx",
@@ -16262,7 +16291,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/select.tsx",
@@ -16285,7 +16314,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/separator.tsx",
@@ -16308,7 +16337,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/sheet.tsx",
@@ -16339,6 +16368,7 @@ export const Index: Record<string, Record<string, any>> = {
         "skeleton",
         "tooltip",
         "use-mobile",
+        "compose-class-name",
       ],
       files: [
         {
@@ -16383,7 +16413,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/slider.tsx",
@@ -16451,7 +16481,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/switch.tsx",
@@ -16496,7 +16526,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/tabs.tsx",
@@ -16541,7 +16571,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/toast.tsx",
@@ -16564,7 +16594,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/toggle.tsx",
@@ -16587,7 +16617,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["toggle"],
+      registryDependencies: ["toggle", "compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/toggle-group.tsx",
@@ -16610,7 +16640,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/tooltip.tsx",
@@ -16698,7 +16728,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-mira/ui/attachment.tsx",
@@ -16846,7 +16876,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/accordion.tsx",
@@ -16891,7 +16921,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/alert-dialog.tsx",
@@ -16936,7 +16966,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/avatar.tsx",
@@ -17003,7 +17033,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/button.tsx",
@@ -17025,7 +17055,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["separator"],
+      registryDependencies: ["separator", "compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/button-group.tsx",
@@ -17092,7 +17122,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/carousel.tsx",
@@ -17137,7 +17167,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/checkbox.tsx",
@@ -17183,7 +17213,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button", "input-group"],
+      registryDependencies: ["button", "input-group", "compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/combobox.tsx",
@@ -17229,7 +17259,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/context-menu.tsx",
@@ -17252,7 +17282,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/dialog.tsx",
@@ -17275,7 +17305,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/drawer.tsx",
@@ -17298,7 +17328,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/dropdown-menu.tsx",
@@ -17365,7 +17395,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/hover-card.tsx",
@@ -17410,7 +17440,12 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button", "input", "textarea"],
+      registryDependencies: [
+        "button",
+        "input",
+        "textarea",
+        "compose-class-name",
+      ],
       files: [
         {
           path: "styles/base-luma/ui/input-group.tsx",
@@ -17455,7 +17490,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["separator"],
+      registryDependencies: ["separator", "compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/item.tsx",
@@ -17500,7 +17535,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["dropdown-menu"],
+      registryDependencies: ["dropdown-menu", "compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/menubar.tsx",
@@ -17523,7 +17558,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/navigation-menu.tsx",
@@ -17568,7 +17603,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/popover.tsx",
@@ -17591,7 +17626,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/progress.tsx",
@@ -17614,7 +17649,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/radio-group.tsx",
@@ -17660,7 +17695,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/scroll-area.tsx",
@@ -17683,7 +17718,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/select.tsx",
@@ -17706,7 +17741,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/separator.tsx",
@@ -17729,7 +17764,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/sheet.tsx",
@@ -17760,6 +17795,7 @@ export const Index: Record<string, Record<string, any>> = {
         "skeleton",
         "tooltip",
         "use-mobile",
+        "compose-class-name",
       ],
       files: [
         {
@@ -17804,7 +17840,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/slider.tsx",
@@ -17872,7 +17908,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/switch.tsx",
@@ -17917,7 +17953,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/tabs.tsx",
@@ -17962,7 +17998,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/toast.tsx",
@@ -17985,7 +18021,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/toggle.tsx",
@@ -18008,7 +18044,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["toggle"],
+      registryDependencies: ["toggle", "compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/toggle-group.tsx",
@@ -18031,7 +18067,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/tooltip.tsx",
@@ -18119,7 +18155,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-luma/ui/attachment.tsx",
@@ -18267,7 +18303,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/accordion.tsx",
@@ -18312,7 +18348,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/alert-dialog.tsx",
@@ -18357,7 +18393,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/avatar.tsx",
@@ -18424,7 +18460,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/button.tsx",
@@ -18446,7 +18482,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["separator"],
+      registryDependencies: ["separator", "compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/button-group.tsx",
@@ -18513,7 +18549,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/carousel.tsx",
@@ -18558,7 +18594,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/checkbox.tsx",
@@ -18604,7 +18640,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button", "input-group"],
+      registryDependencies: ["button", "input-group", "compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/combobox.tsx",
@@ -18650,7 +18686,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/context-menu.tsx",
@@ -18673,7 +18709,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/dialog.tsx",
@@ -18696,7 +18732,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/drawer.tsx",
@@ -18719,7 +18755,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/dropdown-menu.tsx",
@@ -18786,7 +18822,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/hover-card.tsx",
@@ -18831,7 +18867,12 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button", "input", "textarea"],
+      registryDependencies: [
+        "button",
+        "input",
+        "textarea",
+        "compose-class-name",
+      ],
       files: [
         {
           path: "styles/base-sera/ui/input-group.tsx",
@@ -18876,7 +18917,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["separator"],
+      registryDependencies: ["separator", "compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/item.tsx",
@@ -18921,7 +18962,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["dropdown-menu"],
+      registryDependencies: ["dropdown-menu", "compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/menubar.tsx",
@@ -18944,7 +18985,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/navigation-menu.tsx",
@@ -18989,7 +19030,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/popover.tsx",
@@ -19012,7 +19053,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/progress.tsx",
@@ -19035,7 +19076,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/radio-group.tsx",
@@ -19081,7 +19122,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/scroll-area.tsx",
@@ -19104,7 +19145,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/select.tsx",
@@ -19127,7 +19168,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/separator.tsx",
@@ -19150,7 +19191,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/sheet.tsx",
@@ -19181,6 +19222,7 @@ export const Index: Record<string, Record<string, any>> = {
         "skeleton",
         "tooltip",
         "use-mobile",
+        "compose-class-name",
       ],
       files: [
         {
@@ -19225,7 +19267,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/slider.tsx",
@@ -19293,7 +19335,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/switch.tsx",
@@ -19338,7 +19380,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/tabs.tsx",
@@ -19383,7 +19425,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/toast.tsx",
@@ -19406,7 +19448,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/toggle.tsx",
@@ -19429,7 +19471,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["toggle"],
+      registryDependencies: ["toggle", "compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/toggle-group.tsx",
@@ -19452,7 +19494,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/tooltip.tsx",
@@ -19540,7 +19582,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-sera/ui/attachment.tsx",
@@ -19688,7 +19730,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/accordion.tsx",
@@ -19733,7 +19775,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/alert-dialog.tsx",
@@ -19778,7 +19820,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/avatar.tsx",
@@ -19845,7 +19887,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/button.tsx",
@@ -19867,7 +19909,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["separator"],
+      registryDependencies: ["separator", "compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/button-group.tsx",
@@ -19934,7 +19976,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/carousel.tsx",
@@ -19979,7 +20021,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/checkbox.tsx",
@@ -20025,7 +20067,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button", "input-group"],
+      registryDependencies: ["button", "input-group", "compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/combobox.tsx",
@@ -20071,7 +20113,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/context-menu.tsx",
@@ -20094,7 +20136,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/dialog.tsx",
@@ -20117,7 +20159,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/drawer.tsx",
@@ -20140,7 +20182,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/dropdown-menu.tsx",
@@ -20207,7 +20249,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/hover-card.tsx",
@@ -20252,7 +20294,12 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button", "input", "textarea"],
+      registryDependencies: [
+        "button",
+        "input",
+        "textarea",
+        "compose-class-name",
+      ],
       files: [
         {
           path: "styles/base-rhea/ui/input-group.tsx",
@@ -20297,7 +20344,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["separator"],
+      registryDependencies: ["separator", "compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/item.tsx",
@@ -20342,7 +20389,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["dropdown-menu"],
+      registryDependencies: ["dropdown-menu", "compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/menubar.tsx",
@@ -20365,7 +20412,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/navigation-menu.tsx",
@@ -20410,7 +20457,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/popover.tsx",
@@ -20433,7 +20480,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/progress.tsx",
@@ -20456,7 +20503,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/radio-group.tsx",
@@ -20502,7 +20549,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/scroll-area.tsx",
@@ -20525,7 +20572,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/select.tsx",
@@ -20548,7 +20595,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/separator.tsx",
@@ -20571,7 +20618,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/sheet.tsx",
@@ -20602,6 +20649,7 @@ export const Index: Record<string, Record<string, any>> = {
         "skeleton",
         "tooltip",
         "use-mobile",
+        "compose-class-name",
       ],
       files: [
         {
@@ -20646,7 +20694,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/slider.tsx",
@@ -20714,7 +20762,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/switch.tsx",
@@ -20759,7 +20807,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/tabs.tsx",
@@ -20804,7 +20852,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/toast.tsx",
@@ -20827,7 +20875,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/toggle.tsx",
@@ -20850,7 +20898,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["toggle"],
+      registryDependencies: ["toggle", "compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/toggle-group.tsx",
@@ -20873,7 +20921,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/tooltip.tsx",
@@ -20961,7 +21009,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "compose-class-name"],
       files: [
         {
           path: "styles/base-rhea/ui/attachment.tsx",

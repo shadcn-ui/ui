@@ -4,6 +4,7 @@ export const ui: Registry["items"] = [
   {
     name: "accordion",
     type: "registry:ui",
+    registryDependencies: ["compose-class-name"],
     files: [
       {
         path: "ui/accordion.tsx",
@@ -39,7 +40,7 @@ export const ui: Registry["items"] = [
   {
     name: "alert-dialog",
     type: "registry:ui",
-    registryDependencies: ["button"],
+    registryDependencies: ["button", "compose-class-name"],
     files: [
       {
         path: "ui/alert-dialog.tsx",
@@ -75,6 +76,7 @@ export const ui: Registry["items"] = [
   {
     name: "avatar",
     type: "registry:ui",
+    registryDependencies: ["compose-class-name"],
     files: [
       {
         path: "ui/avatar.tsx",
@@ -127,6 +129,7 @@ export const ui: Registry["items"] = [
   {
     name: "button",
     type: "registry:ui",
+    registryDependencies: ["compose-class-name"],
     files: [
       {
         path: "ui/button.tsx",
@@ -144,7 +147,7 @@ export const ui: Registry["items"] = [
   {
     name: "button-group",
     type: "registry:ui",
-    registryDependencies: ["separator"],
+    registryDependencies: ["separator", "compose-class-name"],
     files: [
       {
         path: "ui/button-group.tsx",
@@ -205,7 +208,7 @@ export const ui: Registry["items"] = [
         type: "registry:ui",
       },
     ],
-    registryDependencies: ["button"],
+    registryDependencies: ["button", "compose-class-name"],
     dependencies: ["embla-carousel-react"],
     meta: {
       links: {
@@ -238,6 +241,7 @@ export const ui: Registry["items"] = [
   {
     name: "checkbox",
     type: "registry:ui",
+    registryDependencies: ["compose-class-name"],
     files: [
       {
         path: "ui/checkbox.tsx",
@@ -274,7 +278,7 @@ export const ui: Registry["items"] = [
   {
     name: "combobox",
     type: "registry:ui",
-    registryDependencies: ["button", "input-group"],
+    registryDependencies: ["button", "input-group", "compose-class-name"],
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -314,6 +318,7 @@ export const ui: Registry["items"] = [
   {
     name: "context-menu",
     type: "registry:ui",
+    registryDependencies: ["compose-class-name"],
     files: [
       {
         path: "ui/context-menu.tsx",
@@ -332,7 +337,7 @@ export const ui: Registry["items"] = [
   {
     name: "dialog",
     type: "registry:ui",
-    registryDependencies: ["button"],
+    registryDependencies: ["button", "compose-class-name"],
     files: [
       {
         path: "ui/dialog.tsx",
@@ -351,6 +356,7 @@ export const ui: Registry["items"] = [
   {
     name: "drawer",
     type: "registry:ui",
+    registryDependencies: ["compose-class-name"],
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -370,6 +376,7 @@ export const ui: Registry["items"] = [
   {
     name: "dropdown-menu",
     type: "registry:ui",
+    registryDependencies: ["compose-class-name"],
     files: [
       {
         path: "ui/dropdown-menu.tsx",
@@ -427,6 +434,7 @@ export const ui: Registry["items"] = [
   {
     name: "hover-card",
     type: "registry:ui",
+    registryDependencies: ["compose-class-name"],
     files: [
       {
         path: "ui/hover-card.tsx",
@@ -462,7 +470,7 @@ export const ui: Registry["items"] = [
   {
     name: "input-group",
     type: "registry:ui",
-    registryDependencies: ["button", "input", "textarea"],
+    registryDependencies: ["button", "input", "textarea", "compose-class-name"],
     files: [
       {
         path: "ui/input-group.tsx",
@@ -499,7 +507,7 @@ export const ui: Registry["items"] = [
   {
     name: "item",
     type: "registry:ui",
-    registryDependencies: ["separator"],
+    registryDependencies: ["separator", "compose-class-name"],
     files: [
       {
         path: "ui/item.tsx",
@@ -535,7 +543,7 @@ export const ui: Registry["items"] = [
   {
     name: "menubar",
     type: "registry:ui",
-    registryDependencies: ["dropdown-menu"],
+    registryDependencies: ["dropdown-menu", "compose-class-name"],
     files: [
       {
         path: "ui/menubar.tsx",
@@ -554,6 +562,7 @@ export const ui: Registry["items"] = [
   {
     name: "navigation-menu",
     type: "registry:ui",
+    registryDependencies: ["compose-class-name"],
     files: [
       {
         path: "ui/navigation-menu.tsx",
@@ -590,6 +599,7 @@ export const ui: Registry["items"] = [
   {
     name: "popover",
     type: "registry:ui",
+    registryDependencies: ["compose-class-name"],
     files: [
       {
         path: "ui/popover.tsx",
@@ -608,6 +618,7 @@ export const ui: Registry["items"] = [
   {
     name: "progress",
     type: "registry:ui",
+    registryDependencies: ["compose-class-name"],
     files: [
       {
         path: "ui/progress.tsx",
@@ -626,6 +637,7 @@ export const ui: Registry["items"] = [
   {
     name: "radio-group",
     type: "registry:ui",
+    registryDependencies: ["compose-class-name"],
     files: [
       {
         path: "ui/radio-group.tsx",
@@ -663,6 +675,7 @@ export const ui: Registry["items"] = [
   {
     name: "scroll-area",
     type: "registry:ui",
+    registryDependencies: ["compose-class-name"],
     files: [
       {
         path: "ui/scroll-area.tsx",
@@ -681,6 +694,7 @@ export const ui: Registry["items"] = [
   {
     name: "select",
     type: "registry:ui",
+    registryDependencies: ["compose-class-name"],
     files: [
       {
         path: "ui/select.tsx",
@@ -699,6 +713,7 @@ export const ui: Registry["items"] = [
   {
     name: "separator",
     type: "registry:ui",
+    registryDependencies: ["compose-class-name"],
     files: [
       {
         path: "ui/separator.tsx",
@@ -717,7 +732,7 @@ export const ui: Registry["items"] = [
   {
     name: "sheet",
     type: "registry:ui",
-    registryDependencies: ["button"],
+    registryDependencies: ["button", "compose-class-name"],
     files: [
       {
         path: "ui/sheet.tsx",
@@ -744,6 +759,7 @@ export const ui: Registry["items"] = [
       "skeleton",
       "tooltip",
       "use-mobile",
+      "compose-class-name",
     ],
     files: [
       {
@@ -779,6 +795,7 @@ export const ui: Registry["items"] = [
   {
     name: "slider",
     type: "registry:ui",
+    registryDependencies: ["compose-class-name"],
     files: [
       {
         path: "ui/slider.tsx",
@@ -833,6 +850,7 @@ export const ui: Registry["items"] = [
   {
     name: "switch",
     type: "registry:ui",
+    registryDependencies: ["compose-class-name"],
     files: [
       {
         path: "ui/switch.tsx",
@@ -868,6 +886,7 @@ export const ui: Registry["items"] = [
   {
     name: "tabs",
     type: "registry:ui",
+    registryDependencies: ["compose-class-name"],
     files: [
       {
         path: "ui/tabs.tsx",
@@ -904,7 +923,7 @@ export const ui: Registry["items"] = [
     name: "toast",
     type: "registry:ui",
     dependencies: ["@base-ui/react"],
-    registryDependencies: ["button"],
+    registryDependencies: ["button", "compose-class-name"],
     files: [
       {
         path: "ui/toast.tsx",
@@ -923,6 +942,7 @@ export const ui: Registry["items"] = [
   {
     name: "toggle",
     type: "registry:ui",
+    registryDependencies: ["compose-class-name"],
     files: [
       {
         path: "ui/toggle.tsx",
@@ -941,7 +961,7 @@ export const ui: Registry["items"] = [
   {
     name: "toggle-group",
     type: "registry:ui",
-    registryDependencies: ["toggle"],
+    registryDependencies: ["toggle", "compose-class-name"],
     files: [
       {
         path: "ui/toggle-group.tsx",
@@ -960,6 +980,7 @@ export const ui: Registry["items"] = [
   {
     name: "tooltip",
     type: "registry:ui",
+    registryDependencies: ["compose-class-name"],
     docs: `The \`tooltip\` component has been added. Remember to wrap your app with the \`TooltipProvider\` component.
 
 \`\`\`tsx title="app/layout.tsx"
@@ -1045,7 +1066,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   {
     name: "attachment",
     type: "registry:ui",
-    registryDependencies: ["button"],
+    registryDependencies: ["button", "compose-class-name"],
     files: [
       {
         path: "ui/attachment.tsx",
