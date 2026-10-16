@@ -55,7 +55,7 @@
     "@tanstack/react-form": "^1.20.0",
     "@tanstack/react-table": "^9.0.0",
     "@vercel/analytics": "^1.4.1",
-    "ai": "canary",
+    "ai": "7.0.0-canary.159",
     "change-case": "^5.4.4",
     "chrono-node": "^2.8.2",
     "class-variance-authority": "^0.7.1",
