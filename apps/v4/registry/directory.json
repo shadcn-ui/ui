@@ -720,6 +720,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none'><rect x='20' y='20' width='160' height='160' rx='24' fill='var(--foreground)'/><rect x='30' y='62' width='140' height='110' rx='16' fill='var(--background)'/><circle cx='54' cy='84' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='78' cy='84' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='122' cy='84' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='146' cy='84' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='54' cy='108' r='7' fill='var(--foreground)' opacity='0.3'/><rect x='78' y='102' width='44' height='12' rx='6' fill='var(--foreground)'/><circle cx='78' cy='108' r='10' fill='var(--foreground)'/><circle cx='122' cy='108' r='10' fill='var(--foreground)'/><circle cx='146' cy='108' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='54' cy='132' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='78' cy='132' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='100' cy='132' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='122' cy='132' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='146' cy='132' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='54' cy='156' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='78' cy='156' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='100' cy='156' r='7' fill='var(--foreground)' opacity='0.3'/></svg>"
   },
   {
+    "name": "@dualkit",
+    "homepage": "https://dualkit.dev",
+    "url": "https://dualkit.dev/r/{name}.json",
+    "description": "Bilingual Arabic and English components for Gulf products: RTL-aware buttons, sheets, tabs and toasts, Gulf money, Hijri dates and Arabic digit input.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 24 24' fill='var(--foreground)'><path d='M8.99 18.55C8.99 19.47 8.21 20.2 7.35 19.95C3.11 18.75 0 14.75 0 10C0 5.25 3.11 1.25 7.35.05C8.21-.2 8.99.53 8.99 1.45Z'/><path fill-opacity='.35' d='M11.01 1.45C11.01.53 11.79-.2 12.65.05C16.89 1.25 20 5.25 20 10C20 14.75 16.89 18.75 12.65 19.95C11.79 20.2 11.01 19.47 11.01 18.55Z'/></svg>"
+  },
+  {
     "name": "@easeui",
     "homepage": "https://easeui.dev",
     "url": "https://easeui.dev/r/{name}.json",
