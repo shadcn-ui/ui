@@ -383,6 +383,27 @@ describe("github-cli", () => {
       ).resolves.toBe(BRANCH_SHA)
     })
 
+    it("falls back to the tag when the branch lookup returns 422", async () => {
+      server.use(
+        http.get(
+          "https://api.github.com/repos/acme/ui/commits/heads/v1.0.0",
+          () =>
+            HttpResponse.json(
+              { message: "No commit found for SHA: v1.0.0" },
+              { status: 422 }
+            )
+        ),
+        http.get(
+          "https://api.github.com/repos/acme/ui/commits/tags/v1.0.0",
+          () => HttpResponse.json({ sha: TAG_SHA })
+        )
+      )
+
+      await expect(
+        resolveGitHubRefViaAuth(ADDRESS, "v1.0.0", "token")
+      ).resolves.toBe(TAG_SHA)
+    })
+
     it("falls back to the tag only on a branch 404", async () => {
       server.use(
         http.get(

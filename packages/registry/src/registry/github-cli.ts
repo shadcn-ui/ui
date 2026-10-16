@@ -452,7 +452,8 @@ export async function resolveGitHubRefViaAuth(
   }
 
   // A shorthand ref prefers the branch. Only a missing branch may resolve as
-  // a tag, matching the git ls-remote candidate ordering.
+  // a tag, matching the git ls-remote candidate ordering. GitHub returns 404
+  // or 422 ("No commit found for SHA") when that branch does not exist.
   try {
     return await resolveCommitishSha(
       address,
@@ -463,7 +464,7 @@ export async function resolveGitHubRefViaAuth(
     if (
       error instanceof GitHubTransportError &&
       error.kind === "http" &&
-      error.statusCode === 404
+      (error.statusCode === 404 || error.statusCode === 422)
     ) {
       return resolveCommitishSha(
         address,
