@@ -174,7 +174,7 @@
     "homepage": "https://audiocn.dev",
     "url": "https://www.audiocn.dev/r/{name}.json",
     "description": "Audio components for React, built the shadcn way. Level meters, visualizers, faders, knobs, channel strips, a complete mixer, players and sound pads.",
-    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128' fill='none' stroke='var(--foreground)' stroke-linecap='round'><path d='M38.4 102.9a43.5 43.5 0 1 1 51.2 0' stroke-width='8.6'/><path d='m63.3 70 20.5-23.8' stroke-width='8'/></svg>"
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128' fill='none' stroke='var(--foreground)' stroke-linecap='round'><path fill='none' d='M38.4 102.9a43.5 43.5 0 1 1 51.2 0' stroke-width='8.6'/><path fill='none' d='m63.3 70 20.5-23.8' stroke-width='8'/></svg>"
   },
   {
     "name": "@designali",
