@@ -158,18 +158,8 @@ mcp
             silent: false,
           })
         } else {
-          const packageManager = await getPackageManager(options.cwd)
-          const installCommand = packageManager === "npm" ? "install" : "add"
-          const devFlag = packageManager === "npm" ? "--save-dev" : "-D"
-
           const installSpinner = spinner("Installing dependencies...").start()
-          await execa(
-            packageManager,
-            [installCommand, devFlag, ...DEPENDENCIES],
-            {
-              cwd: options.cwd,
-            }
-          )
+          await installMcpDependencies(options.cwd)
           installSpinner.succeed("Installing dependencies.")
         }
 
@@ -201,18 +191,8 @@ args = ["shadcn@${SHADCN_MCP_VERSION}", "mcp"]`)
           silent: false,
         })
       } else {
-        const packageManager = await getPackageManager(options.cwd)
-        const installCommand = packageManager === "npm" ? "install" : "add"
-        const devFlag = packageManager === "npm" ? "--save-dev" : "-D"
-
         const installSpinner = spinner("Installing dependencies...").start()
-        await execa(
-          packageManager,
-          [installCommand, devFlag, ...DEPENDENCIES],
-          {
-            cwd: options.cwd,
-          }
-        )
+        await installMcpDependencies(options.cwd)
         installSpinner.succeed("Installing dependencies.")
       }
 
@@ -262,4 +242,18 @@ async function runMcpInit(options: z.infer<typeof mcpInitOptionsSchema>) {
   )
 
   return clientInfo.configPath
+}
+
+async function installMcpDependencies(cwd: string) {
+  const packageManager = await getPackageManager(cwd)
+  const installCommand = packageManager === "npm" ? "install" : "add"
+  const devFlag = packageManager === "npm" ? "--save-dev" : "-D"
+  const dependencies =
+    packageManager === "deno"
+      ? DEPENDENCIES.map((dependency) => `npm:${dependency}`)
+      : DEPENDENCIES
+
+  await execa(packageManager, [installCommand, devFlag, ...dependencies], {
+    cwd,
+  })
 }
