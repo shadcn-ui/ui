@@ -319,6 +319,110 @@ describe("addComponents workspace routing", () => {
     )
   })
 
+  it("should write a hook imported by a ui file to the ui workspace", async () => {
+    // Monorepo template: the app's hooks alias points to the app itself.
+    const appConfig = createMockConfig()
+    const uiConfig = createMockConfig({
+      resolvedPaths: {
+        cwd: "/packages/ui",
+        tailwindConfig: "/packages/ui/tailwind.config.ts",
+        tailwindCss: "/packages/ui/src/globals.css",
+        utils: "/packages/ui/src/lib/utils",
+        components: "/packages/ui/src/components",
+        lib: "/packages/ui/src/lib",
+        hooks: "/packages/ui/src/hooks",
+        ui: "/packages/ui/src/components/ui",
+      },
+    })
+
+    vi.mocked(getWorkspaceConfig).mockResolvedValue({
+      ui: uiConfig,
+      hooks: appConfig,
+    })
+
+    vi.mocked(resolveRegistryTree).mockResolvedValue({
+      files: [
+        {
+          path: "registry/new-york/ui/sidebar.tsx",
+          type: "registry:ui",
+          content:
+            'import { useIsMobile } from "@/registry/new-york/hooks/use-mobile"\n',
+        },
+        {
+          path: "registry/new-york/hooks/use-mobile.ts",
+          type: "registry:hook",
+          content: "export function useIsMobile() {}",
+        },
+      ],
+      dependencies: [],
+      devDependencies: [],
+    })
+
+    vi.mocked(findPackageRoot).mockResolvedValue("/packages/ui")
+
+    await addComponents(["sidebar"], appConfig, { silent: true })
+
+    expect(updateFiles).toHaveBeenCalledTimes(1)
+    expect(updateFiles).toHaveBeenCalledWith(
+      [
+        expect.objectContaining({ type: "registry:ui" }),
+        expect.objectContaining({ type: "registry:hook" }),
+      ],
+      uiConfig,
+      expect.any(Object)
+    )
+  })
+
+  it("should keep a hook that no ui file imports in workspaceConfig.hooks", async () => {
+    const appConfig = createMockConfig()
+    const uiConfig = createMockConfig({
+      resolvedPaths: {
+        cwd: "/packages/ui",
+        tailwindConfig: "/packages/ui/tailwind.config.ts",
+        tailwindCss: "/packages/ui/src/globals.css",
+        utils: "/packages/ui/src/lib/utils",
+        components: "/packages/ui/src/components",
+        lib: "/packages/ui/src/lib",
+        hooks: "/packages/ui/src/hooks",
+        ui: "/packages/ui/src/components/ui",
+      },
+    })
+
+    vi.mocked(getWorkspaceConfig).mockResolvedValue({
+      ui: uiConfig,
+      hooks: appConfig,
+    })
+
+    vi.mocked(resolveRegistryTree).mockResolvedValue({
+      files: [
+        {
+          path: "registry/new-york/ui/button.tsx",
+          type: "registry:ui",
+          content: "export function Button() {}",
+        },
+        {
+          path: "registry/new-york/hooks/use-mobile.ts",
+          type: "registry:hook",
+          content: "export function useIsMobile() {}",
+        },
+      ],
+      dependencies: [],
+      devDependencies: [],
+    })
+
+    vi.mocked(findPackageRoot).mockResolvedValue("/packages/ui")
+
+    await addComponents(["button", "use-mobile"], appConfig, { silent: true })
+
+    expect(updateFiles).toHaveBeenCalledTimes(2)
+    expect(updateFiles).toHaveBeenNthCalledWith(
+      2,
+      [expect.objectContaining({ type: "registry:hook" })],
+      appConfig,
+      expect.any(Object)
+    )
+  })
+
   it("should route registry:lib files to workspaceConfig.lib", async () => {
     const appConfig = createMockConfig()
     const uiConfig = createMockConfig({
