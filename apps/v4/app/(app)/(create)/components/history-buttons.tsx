@@ -61,12 +61,12 @@ export function HistoryScript() {
                 if ((key === 'z' && e.shiftKey) || (key === 'y' && e.ctrlKey)) {
                   e.preventDefault();
                   if (window.parent && window.parent !== window) {
-                    window.parent.postMessage({ type: '${REDO_FORWARD_TYPE}' }, '*');
+                    window.parent.postMessage({ type: '${REDO_FORWARD_TYPE}' }, window.location.origin);
                   }
                 } else if (key === 'z') {
                   e.preventDefault();
                   if (window.parent && window.parent !== window) {
-                    window.parent.postMessage({ type: '${UNDO_FORWARD_TYPE}' }, '*');
+                    window.parent.postMessage({ type: '${UNDO_FORWARD_TYPE}' }, window.location.origin);
                   }
                 }
               });
