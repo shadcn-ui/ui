@@ -631,8 +631,8 @@ importers:
         specifier: ^14.0.0
         version: 14.0.0
       dedent:
-        specifier: ^1.6.0
-        version: 1.6.0
+        specifier: ^1.7.0
+        version: 1.7.2
       deepmerge:
         specifier: ^4.3.1
         version: 4.3.1
@@ -5684,6 +5684,14 @@ packages:
 
   dedent@1.6.0:
     resolution: {integrity: sha512-F1Z+5UCFpmQUzJa11agbyPVMbpgT/qA3/SKyJ1jyBgm7dUcUEa8v9JwDkerSQXfakBwFljIxhOJqGkjUwZ9FSA==}
+    peerDependencies:
+      babel-plugin-macros: ^3.1.0
+    peerDependenciesMeta:
+      babel-plugin-macros:
+        optional: true
+
+  dedent@1.7.2:
+    resolution: {integrity: sha512-WzMx3mW98SN+zn3hgemf4OzdmyNhhhKz5Ay0pUfQiMQ3e1g+xmTJWp/pKdwKVXhdSkAEGIIzqeuWrL3mV/AXbA==}
     peerDependencies:
       babel-plugin-macros: ^3.1.0
     peerDependenciesMeta:
@@ -14761,6 +14769,8 @@ snapshots:
       mimic-response: 1.0.1
 
   dedent@1.6.0: {}
+
+  dedent@1.7.2: {}
 
   deep-eql@5.0.2: {}
 
