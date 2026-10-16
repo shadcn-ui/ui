@@ -1,6 +1,7 @@
 import type {
   AnswerControlRegistration,
   ItemRegistration,
+  QuestionnaireAutoSubmit,
   QuestionnaireShortcutMode,
 } from "./types"
 
@@ -104,6 +105,54 @@ function compareItemOrder(
   return 0
 }
 
+function getNextSelectedAnswerIds(
+  currentAnswerIds: readonly string[],
+  answerId: string,
+  selected: boolean,
+  multiple: boolean
+) {
+  if (!selected) {
+    return currentAnswerIds.filter(
+      (currentAnswerId) => currentAnswerId !== answerId
+    )
+  }
+
+  if (!multiple) {
+    return [answerId]
+  }
+
+  return currentAnswerIds.includes(answerId)
+    ? [...currentAnswerIds]
+    : [...currentAnswerIds, answerId]
+}
+
+function getSelectedChoiceValues(
+  answers: readonly AnswerControlRegistration[],
+  selectedAnswerIds: readonly string[]
+) {
+  return answers.flatMap((answer) =>
+    answer.type === "choice" && selectedAnswerIds.includes(answer.id)
+      ? [answer.value]
+      : []
+  )
+}
+
+function shouldAutoSubmitFromChoiceValues(
+  autoSubmit: QuestionnaireAutoSubmit | undefined,
+  choiceValues: readonly string[],
+  answered: boolean
+) {
+  if (!autoSubmit) {
+    return false
+  }
+
+  if (typeof autoSubmit === "function") {
+    return autoSubmit([...choiceValues])
+  }
+
+  return answered
+}
+
 function compareAnswerOrder(
   firstAnswer: AnswerControlRegistration,
   secondAnswer: AnswerControlRegistration
@@ -131,6 +180,8 @@ export {
   compareAnswerOrder,
   compareItemOrder,
   getAnswerKeyShortcuts,
+  getNextSelectedAnswerIds,
+  getSelectedChoiceValues,
   getShortcutFromKey,
   getShortcutKeys,
   hasInputValue,
@@ -138,4 +189,5 @@ export {
   isEmptyNavigableInput,
   isRadioTarget,
   isTextEntryTarget,
+  shouldAutoSubmitFromChoiceValues,
 }

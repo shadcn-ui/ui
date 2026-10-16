@@ -253,6 +253,41 @@ items.map((question) => (
 const signals = new FormData(form).getAll("signals").map(String)
 ```
 
+## Auto submit
+
+Set `autoSubmit` on an item to continue after a fixed choice is selected.
+`true` continues as soon as the item is answered. Pass a function to wait
+until the selected values meet a condition. The last item submits the form.
+
+Freeform typing never auto-submits. Arrow keys still browse radios without
+advancing. Click, Space, and answer shortcuts do continue when `autoSubmit`
+is set.
+
+<ComponentPreview
+  align="end"
+  styleName="base-nova"
+  name="questionnaire-auto-submit"
+  hideCode
+  previewClassName="min-h-[420px] p-4 sm:p-8"
+/>
+
+```tsx
+<Questionnaire.Item autoSubmit name="task" required>
+  {/* radios continue as soon as one is selected */}
+</Questionnaire.Item>
+
+<Questionnaire.Item
+  autoSubmit={(value) => value.length > 1}
+  multiple
+  name="context"
+  required
+>
+  {/* checkboxes continue after two values are selected */}
+</Questionnaire.Item>
+```
+
+`value` is the selected choice values as a `string[]`, in DOM order.
+
 ## Freeform answers
 
 `Input` adds a freeform answer and renders a native text input.
@@ -417,7 +452,7 @@ enabled fixed choice, following the `items` order when it is provided. Compose
 
 `"letters"` assigns `A` through `Z`; `"numbers"` assigns `1` through `9`.
 Disabled choices are skipped. Selecting an answer by shortcut does not advance
-to the next item.
+to the next item unless `autoSubmit` is set.
 
 ## Validation
 
@@ -811,6 +846,10 @@ Questionnaire builds on native radio, checkbox, input, and button behavior.
 | `Enter`                  | Continues from a selected choice or selected, filled input; activates a focused action.                                         |
 | `Command/Ctrl` + `Enter` | Validates and continues from anywhere inside the questionnaire, or submits the final item.                                      |
 
+When `autoSubmit` is set, a click, Space, or answer shortcut on a fixed
+choice continues automatically. Arrow keys still browse radios without
+advancing.
+
 Shortcuts and arrow navigation pause while you type in a text field.
 Preventing the root `onKeyDown` event turns off questionnaire key handling.
 
@@ -835,6 +874,9 @@ restyle an unanswered action.
 - Navigation focuses the newly active fieldset.
 - Validation focuses the first available answer control.
 - Disabled items are omitted from progress and navigation.
+- `autoSubmit` is opt-in. It continues after a choice is selected, which is a
+  change of context. Progress already announces the new step. Arrow-key
+  browsing does not skip items.
 
 Always give `Input` an accessible name. Use an explicit `id` with a visible
 label:
@@ -949,7 +991,7 @@ The form and coordination root.
 Root exposes `current`, `total`, `first`, `last`, and `shortcuts` through data
 attributes.
 
-The optional collection types are exported from
+`QuestionnaireAutoSubmit` and the optional collection types are exported from
 `@shadcn/react/questionnaire`:
 
 ```ts
@@ -982,14 +1024,15 @@ The render state contains `current`, `total`, `first`, and `last`.
 
 One questionnaire step.
 
-| Prop             | Type                                        | Default  | Description                                                     |
-| ---------------- | ------------------------------------------- | -------- | --------------------------------------------------------------- |
-| `name`           | `string`                                    | required | Unique item identifier and native form field name.              |
-| `invalid`        | `boolean`                                   | `false`  | Marks the item invalid from an external validator.              |
-| `required`       | `boolean`                                   | `false`  | Requires an answer and prevents Skip.                           |
-| `multiple`       | `boolean`                                   | `false`  | Renders fixed choices as checkboxes.                            |
-| `disabled`       | `boolean`                                   | `false`  | Omits the item from progress and navigation.                    |
-| `onStatusChange` | `(status: QuestionnaireItemStatus) => void` | -        | Observes `"unanswered"`, `"answered"`, and `"skipped"` changes. |
+| Prop             | Type                                              | Default  | Description                                                                                         |
+| ---------------- | ------------------------------------------------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `name`           | `string`                                          | required | Unique item identifier and native form field name.                                                  |
+| `invalid`        | `boolean`                                         | `false`  | Marks the item invalid from an external validator.                                                  |
+| `required`       | `boolean`                                         | `false`  | Requires an answer and prevents Skip.                                                               |
+| `multiple`       | `boolean`                                         | `false`  | Renders fixed choices as checkboxes.                                                                |
+| `disabled`       | `boolean`                                         | `false`  | Omits the item from progress and navigation.                                                        |
+| `autoSubmit`     | `boolean \| ((value: string[]) => boolean)`       | -        | Continues after a qualifying choice selection. `true` continues once the item is answered.          |
+| `onStatusChange` | `(status: QuestionnaireItemStatus) => void`       | -        | Observes `"unanswered"`, `"answered"`, and `"skipped"` changes.                                     |
 
 Item exposes `active`, `disabled`, `invalid`, `multiple`, `required`, and
 `status` through data attributes.

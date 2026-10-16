@@ -12,17 +12,21 @@ import type {
 } from "./types"
 import {
   compareAnswerOrder,
+  getNextSelectedAnswerIds,
+  getSelectedChoiceValues,
   getShortcutKeys,
   isAnswerFilled,
   isEmptyNavigableInput,
   isRadioTarget,
   isTextEntryTarget,
+  shouldAutoSubmitFromChoiceValues,
 } from "./utils"
 
 type UseQuestionnaireItemParameters = Pick<
   QuestionnaireItemProps,
   | "aria-describedby"
   | "aria-keyshortcuts"
+  | "autoSubmit"
   | "disabled"
   | "invalid"
   | "multiple"
@@ -35,6 +39,7 @@ type UseQuestionnaireItemParameters = Pick<
 function useQuestionnaireItem({
   "aria-describedby": ariaDescribedBy,
   "aria-keyshortcuts": ariaKeyShortcuts,
+  autoSubmit,
   disabled = false,
   invalid: externallyInvalid = false,
   multiple = false,
@@ -45,6 +50,7 @@ function useQuestionnaireItem({
 }: UseQuestionnaireItemParameters) {
   const {
     activeItemName,
+    confirmCurrent,
     domVersion,
     first,
     itemDefinitionByName,
@@ -52,6 +58,7 @@ function useQuestionnaireItem({
     nativeValidation,
     registerItem,
     shortcuts,
+    shouldSuppressAutoSubmit,
   } = useQuestionnaireContext("Questionnaire.Item")
   const [element, setElement] = React.useState<HTMLFieldSetElement | null>(null)
   const [answerControlRegistrations, setAnswerControlRegistrations] =
@@ -168,6 +175,45 @@ function useQuestionnaireItem({
       })
     },
     [multiple]
+  )
+  const requestAutoSubmitFromChoiceInteraction = React.useCallback(
+    (answerId: string, selected: boolean) => {
+      if (!autoSubmit || shouldSuppressAutoSubmit()) {
+        return
+      }
+
+      const nextSelectedAnswerIds = getNextSelectedAnswerIds(
+        selectedAnswerIds,
+        answerId,
+        selected,
+        multiple
+      )
+      const choiceValues = getSelectedChoiceValues(
+        answers,
+        nextSelectedAnswerIds
+      )
+      const answered = answers.some((answer) =>
+        nextSelectedAnswerIds.includes(answer.id)
+      )
+
+      if (
+        !shouldAutoSubmitFromChoiceValues(autoSubmit, choiceValues, answered)
+      ) {
+        return
+      }
+
+      queueMicrotask(() => {
+        confirmCurrent()
+      })
+    },
+    [
+      answers,
+      autoSubmit,
+      confirmCurrent,
+      multiple,
+      selectedAnswerIds,
+      shouldSuppressAutoSubmit,
+    ]
   )
   const setAnswerSelectionFromInteraction = React.useCallback(
     (answerId: string, selected: boolean) => {
@@ -488,6 +534,7 @@ function useQuestionnaireItem({
       registerAnswerSelection,
       registerDescription,
       registerError,
+      requestAutoSubmitFromChoiceInteraction,
       required,
       resetVersion,
       selectedAnswerIds,
@@ -510,6 +557,7 @@ function useQuestionnaireItem({
       registerAnswerSelection,
       registerDescription,
       registerError,
+      requestAutoSubmitFromChoiceInteraction,
       required,
       resetVersion,
       selectedAnswerIds,

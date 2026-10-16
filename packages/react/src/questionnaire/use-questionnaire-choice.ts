@@ -30,6 +30,7 @@ function useQuestionnaireChoice({
     required,
     resetVersion,
     selectedAnswerIds,
+    requestAutoSubmitFromChoiceInteraction,
     setAnswerDefault,
     setAnswerSelectionFromInteraction,
     shortcutByAnswerId,
@@ -130,12 +131,14 @@ function useQuestionnaireChoice({
 
     if (!controlled) {
       setAnswerSelectionFromInteraction(answerId, event.target.checked)
-      return
-    }
-
-    if (status === "skipped" && controlledChecked === event.target.checked) {
+    } else if (
+      status === "skipped" &&
+      controlledChecked === event.target.checked
+    ) {
       setAnswerSelectionFromInteraction(answerId, controlledChecked)
     }
+
+    requestAutoSubmitFromChoiceInteraction(answerId, event.target.checked)
   }
 
   const state: QuestionnaireChoiceState = {
