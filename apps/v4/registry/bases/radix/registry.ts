@@ -1,5 +1,4 @@
 import { registryItemSchema, type Registry } from "shadcn/schema"
-import { z } from "zod"
 
 import { fonts } from "@/registry/fonts"
 
@@ -36,7 +35,7 @@ const RADIX_STYLE = {
 export const registry = {
   name: "shadcn/ui",
   homepage: "https://ui.shadcn.com",
-  items: z.array(registryItemSchema).parse([
+  items: registryItemSchema.array().parse([
     {
       name: "index",
       ...RADIX_STYLE,

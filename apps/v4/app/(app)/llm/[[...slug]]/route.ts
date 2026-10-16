@@ -11,7 +11,11 @@ export const dynamicParams = true
 
 function getStyleFromSlug(slug: string[] | undefined, fallbackStyle: string) {
   // Detect base from URL: /docs/components/base, /radix, or /aria.
-  if (slug && slug[0] === "components" && slug[1]) {
+  if (
+    slug &&
+    (slug[0] === "components" || slug[0] === "ai-elements") &&
+    slug[1]
+  ) {
     if (slug[1] === "base") {
       return "base-nova"
     }
