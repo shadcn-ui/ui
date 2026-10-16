@@ -24,13 +24,22 @@ function getMessageScrollerScrollable({
     return EMPTY_MESSAGE_SCROLLER_SCROLLABLE
   }
 
-  const contentBottom = getContentBottom({ content, spacer, viewport })
+  // Derive the gap to the bottom from the viewport's own scroll metrics, which
+  // an ancestor CSS `zoom` scales uniformly. A getBoundingClientRect value would
+  // be zoom-scaled on-screen px from a different coordinate space; mixing it in
+  // misreports the gap under zoom, stranding the scroll-to-end button and
+  // blocking follow-bottom. Exclude the tail spacer so a freshly anchored turn's
+  // reserved room is not counted as content.
+  const tailSpacerHeight = spacer?.offsetHeight ?? 0
+  const distanceToEnd =
+    viewport.scrollHeight -
+    tailSpacerHeight -
+    viewport.clientHeight -
+    viewport.scrollTop
 
   return {
     start: viewport.scrollTop > scrollEdgeThreshold,
-    end:
-      contentBottom - viewport.scrollTop - viewport.clientHeight >
-      scrollEdgeThreshold,
+    end: distanceToEnd > scrollEdgeThreshold,
   }
 }
 
