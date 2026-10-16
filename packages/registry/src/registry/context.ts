@@ -1,4 +1,5 @@
 import { AsyncLocalStorage } from "async_hooks"
+import { resolveRegistryUrl } from "@/src/registry/url"
 
 interface RegistryContext {
   headers: Record<string, Record<string, string>>
@@ -36,8 +37,17 @@ export function setRegistryHeaders(
 ) {
   const context = registryContext.getStore() ?? fallbackContext
 
+  // Key headers by the resolved URL so the fetcher finds them no matter how
+  // the registry URL was written (host case, default port, encoding, v0).
+  const resolvedHeaders = Object.fromEntries(
+    Object.entries(headers).map(([url, value]) => [
+      resolveRegistryUrl(url),
+      value,
+    ])
+  )
+
   // Merge new headers with existing ones to preserve headers for nested dependencies
-  context.headers = { ...context.headers, ...headers }
+  context.headers = { ...context.headers, ...resolvedHeaders }
 }
 
 export function getRegistryHeadersFromContext(
@@ -45,7 +55,7 @@ export function getRegistryHeadersFromContext(
 ): Record<string, string> {
   const context = registryContext.getStore() ?? fallbackContext
 
-  return context.headers[url] || {}
+  return context.headers[resolveRegistryUrl(url)] || {}
 }
 
 export function getRegistryEnvFromContext(key: string): string | undefined {
