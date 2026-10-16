@@ -53,7 +53,7 @@ export default function ComboboxDemo() {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className="w-[200px] justify-between border-input text-foreground"
         >
           {value
             ? frameworks.find((framework) => framework.value === value)?.label

@@ -61,3 +61,6 @@ next-env.d.ts
 # `pnpm registry:build --style all`). See styles/README.md.
 /styles/*
 !/styles/README.md
+
+*storybook.log
+storybook-static

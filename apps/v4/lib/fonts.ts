@@ -2,7 +2,7 @@ import {
   Geist_Mono as FontMono,
   Noto_Sans_Arabic as FontNotoSansArabic,
   Noto_Sans_Hebrew as FontNotoSansHebrew,
-  Geist as FontSans,
+  Hanken_Grotesk as FontSans,
 } from "next/font/google"
 import { cn } from "cn"
 

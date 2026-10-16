@@ -1,15 +1,16 @@
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
 import nextVitals from "eslint-config-next/core-web-vitals"
+import storybook from "eslint-plugin-storybook"
 import tseslint from "typescript-eslint"
 
 const eslintConfig = tseslint.config(
   // Remove the @typescript-eslint plugin from next/typescript to prevent
   // duplicate registration with tseslint.configs.recommended.
   ...nextVitals.map((config) =>
-    config.name === "next/typescript"
-      ? { ...config, plugins: {} }
-      : config
+    config.name === "next/typescript" ? { ...config, plugins: {} } : config
   ),
   ...tseslint.configs.recommended,
+  ...storybook.configs["flat/recommended"],
   {
     ignores: [
       "node_modules/**",
@@ -37,7 +38,7 @@ const eslintConfig = tseslint.config(
         },
       ],
     },
-  },
+  }
 )
 
 export default eslintConfig

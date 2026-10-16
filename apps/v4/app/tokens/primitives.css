@@ -1,0 +1,96 @@
+/*
+ * Primitive colour tokens — source: Figma `global.tokens.json` (mode: global).
+ *
+ * Rules
+ * - This is the ONLY place raw colour values live. Semantic tokens in
+ *   globals.css (`--primary`, `--border`, ...) must reference these with
+ *   var(--family-step) and never contain a hex/oklch/rgb value.
+ * - Names follow Figma exactly: `Indigo/100-Base` -> `--indigo-100-base`.
+ * - Deliberately plain CSS variables (not registered in `@theme`): Tailwind's
+ *   own palette also has `indigo-*` and `amber-*`, and registering ours would
+ *   mix two scales under one name and change utilities used elsewhere on the
+ *   docs site.
+ */
+:root {
+  /* Indigo — Primary */
+  --indigo-10: #f0ecff;
+  --indigo-20: #e0d9ff;
+  --indigo-40: #c1b2ff;
+  --indigo-60: #a28cff;
+  --indigo-80: #8465ff;
+  --indigo-100-base: #5232d0;
+  --indigo-140: #4228a6;
+  --indigo-180: #311e7d;
+  --indigo-200: #211453;
+
+  /* Noir — Typography & Background */
+  --noir-10: #f4f4f5;
+  --noir-20: #e9e9eb;
+  --noir-30: #d4d5d8;
+  --noir-40: #bebfc5;
+  --noir-50: #93959e;
+  --noir-60: #686b77;
+  --noir-70: #3d4152;
+  --noir-80-base: #262a39;
+  --noir-90: #171a27;
+
+  /* Amber — Warning */
+  --amber-10: #fff4e5;
+  --amber-20: #ffe2bd;
+  --amber-40: #fec57b;
+  --amber-60: #faa53d;
+  --amber-80: #f18d13;
+  --amber-100-base: #d97008;
+  --amber-140: #b65c02;
+  --amber-180: #974f0c;
+  --amber-200: #5f3811;
+
+  /* Jade — Success */
+  --jade-10: #dfffcf;
+  --jade-20: #baf3db;
+  --jade-40: #7ee2b8;
+  --jade-60: #4bce97;
+  --jade-80: #2abb7f;
+  --jade-100-base: #22a06b;
+  --jade-140: #1f845a;
+  --jade-180: #216e4e;
+  --jade-200: #164b35;
+
+  /* Cherry — Error */
+  --cherry-10: #fcedeb;
+  --cherry-20: #f9dbd7;
+  --cherry-40: #f4b6ae;
+  --cherry-60: #ee9286;
+  --cherry-80: #e96d5d;
+  --cherry-100-base: #e34935;
+  --cherry-140: #b63a2a;
+  --cherry-180: #882c20;
+  --cherry-200: #5b1d15;
+
+  /* Luxe — Tiering (Figma name is "100 -Base", normalised) */
+  --luxe-10: #f8f4ec;
+  --luxe-20: #ebdec7;
+  --luxe-40: #dec9a3;
+  --luxe-60: #d1b37e;
+  --luxe-80: #c49d59;
+  --luxe-100-base: #be9347;
+  --luxe-140: #af8846;
+  --luxe-180: #917444;
+  --luxe-200: #735f43;
+
+  /* Atlantic — Highlight */
+  --atlantic-10: #e5eefb;
+  --atlantic-20: #ccddf7;
+  --atlantic-40: #99bcf0;
+  --atlantic-60: #669ae8;
+  --atlantic-80: #3379e1;
+  --atlantic-100-base: #0057d9;
+  --atlantic-140: #0046ae;
+  --atlantic-180: #003482;
+  --atlantic-200: #002357;
+
+  /* Pearl — Text on Dark */
+  --pearl-50: #0046ae;
+  --pearl-90: #003482;
+  --pearl-100: #002357;
+}

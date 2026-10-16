@@ -2,8 +2,11 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "./legacy-themes.css";
+@import "./tokens/primitives.css";
+@import "./tokens/primitives-tailwind.css";
 
 @source "../node_modules/streamdown/dist/*.js";
+@source "../stories/**/*.tsx";
 @source "../styles/base-luma/**/*.tsx";
 @source "../styles/base-lyra/**/*.tsx";
 @source "../styles/base-maia/**/*.tsx";
@@ -47,6 +50,9 @@
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
   --font-mono: var(--font-mono);
+  --font-serif: Georgia, ui-serif, serif;
+  --radius-xxs: calc(var(--radius) * 0.2);
+  --radius-xs: calc(var(--radius) * 0.4);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -73,6 +79,10 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-focus: var(--focus);
+  --color-focus-destructive: var(--focus-destructive);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary-hover: var(--secondary-hover);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -98,38 +108,68 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0% 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0% 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0% 0 0);
-  --primary: oklch(0% 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.97 0.01 17);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0% 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+
+  /* Semantic tokens — source: Light.tokens.json. Values are primitives only
+     (tokens/primitives.css, tokens/primitives-tailwind.css); no raw colours. */
+  --background: var(--tailwind-white);
+  --foreground: var(--noir-80-base);
+  --card: var(--tailwind-white);
+  --card-foreground: var(--tailwind-neutral-950);
+  --popover: var(--tailwind-white);
+  --popover-foreground: var(--tailwind-neutral-950);
+  --primary: var(--indigo-100-base);
+  --primary-foreground: var(--tailwind-neutral-50);
+  --secondary: var(--indigo-10);
+  --secondary-foreground: var(--tailwind-neutral-900);
+  --muted: var(--tailwind-neutral-100);
+  --muted-foreground: var(--tailwind-neutral-500);
+  --accent: var(--tailwind-neutral-100);
+  --accent-foreground: var(--noir-60);
+  --destructive: var(--cherry-140);
+  --destructive-foreground: var(--tailwind-red-50);
+  --border: var(--tailwind-neutral-200);
+  --input: var(--tailwind-neutral-200);
+  /* Focus border = brand (Applique `ring-light` = Indigo/700 = #5232d0). */
+  --ring: var(--indigo-100-base);
+  --ring-offset: var(--background);
+
+  /* Focus halos (custom/outline = Indigo/80 @ 50%; destructive/20 = red @ 20%) */
+  --focus: color-mix(in srgb, var(--indigo-80) 50%, transparent);
+  --focus-destructive: color-mix(
+    in srgb,
+    var(--tailwind-red-600) 20%,
+    transparent
+  );
+
+  /* Hover states (not in Figma variables; derived from the base so no new hex).
+     primary: 90% base over white; secondary: 80% base over white. */
+  --primary-hover: color-mix(
+    in srgb,
+    var(--primary) 90%,
+    var(--tailwind-white)
+  );
+  --secondary-hover: color-mix(
+    in srgb,
+    var(--secondary) 80%,
+    var(--tailwind-white)
+  );
+
+  --chart-1: var(--tailwind-orange-600);
+  --chart-2: var(--tailwind-teal-600);
+  --chart-3: var(--tailwind-cyan-900);
+  --chart-4: var(--tailwind-amber-400);
+  --chart-5: var(--tailwind-amber-500);
+
+  --sidebar: var(--tailwind-neutral-50);
+  --sidebar-foreground: var(--tailwind-neutral-950);
+  --sidebar-primary: var(--tailwind-neutral-900);
+  --sidebar-primary-foreground: var(--tailwind-neutral-50);
+  --sidebar-accent: var(--tailwind-neutral-100);
+  --sidebar-accent-foreground: var(--tailwind-neutral-900);
+  --sidebar-border: var(--tailwind-neutral-200);
+  --sidebar-ring: var(--tailwind-neutral-400);
+
+  /* Docs-site chrome, not covered by Light.tokens.json — unchanged. */
   --surface: oklch(0.98 0 0);
   --surface-foreground: var(--foreground);
   --code: var(--surface);
@@ -141,25 +181,29 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --card: #0a0a0a;
+  --card-foreground: #fafafa;
+  --popover: #0a0a0a;
+  --popover-foreground: #fafafa;
+  --primary: #e5e5e5;
+  --primary-hover: #e5e5e5e6;
+  --primary-foreground: #171717;
   --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
+  --secondary-hover: oklch(0.269 0 0 / 80%);
+  --secondary-foreground: #fafafa;
   --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
+  --muted-foreground: #a3a3a3;
   --accent: oklch(0.371 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.58 0.22 27);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
+  --accent-foreground: #fafafa;
+  --destructive: #b63a2a;
+  --destructive-foreground: #fef2f2;
+  --border: #ffffff1a;
+  --input: #ffffff26;
   --ring: oklch(0.556 0 0);
+  --focus: #8465ff80;
+  --focus-destructive: #dc262666;
   --chart-1: var(--color-blue-300);
   --chart-2: var(--color-blue-500);
   --chart-3: var(--color-blue-600);

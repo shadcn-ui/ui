@@ -1,0 +1,17 @@
+<!-- Fonts for Storybook. The app loads these through next/font (lib/fonts.ts),
+     which Storybook's preview does not run, so --font-sans/--font-mono would be
+     undefined and text would fall back to the system font. Keep in sync with
+     lib/fonts.ts and the Figma `font` variables (Applique mode). -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&family=Geist+Mono:wght@400&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  :root {
+    --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --font-heading: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+</style>

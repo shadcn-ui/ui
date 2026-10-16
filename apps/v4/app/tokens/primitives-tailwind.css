@@ -1,0 +1,47 @@
+/*
+ * BRIDGE primitives — Tailwind-derived values that are NOT in the Applique
+ * `global.tokens.json`.
+ *
+ * Light.tokens.json still aliases these (via "2. Theme" / "1. TailwindCSS":
+ * colors/background-light, colors/muted-foreground-light, chart-*, sidebar-*),
+ * so the semantic layer needs a primitive to point at. They are kept here,
+ * prefixed `--tailwind-`, so that:
+ *   1. semantics never contain a raw value, and
+ *   2. it is obvious which colours still need an Applique equivalent.
+ *
+ * To retire one: add the Applique primitive to primitives.css, repoint the
+ * semantic in globals.css, then delete the line here.
+ */
+:root {
+  --tailwind-white: #ffffff;
+
+  --tailwind-neutral-50: #fafafa;
+  --tailwind-neutral-100: #f5f5f5;
+  --tailwind-neutral-200: #e5e5e5;
+  --tailwind-neutral-400: #a3a3a3;
+  --tailwind-neutral-500: #737373;
+  --tailwind-neutral-900: #171717;
+  --tailwind-neutral-950: #0a0a0a;
+
+  --tailwind-red-50: #fef2f2;
+  --tailwind-red-600: #dc2626;
+
+  /* Chart series */
+  --tailwind-orange-600: #ea580c;
+  --tailwind-teal-600: #0d9488;
+  --tailwind-cyan-900: #164e63;
+  --tailwind-amber-400: #fbbf24;
+  --tailwind-amber-500: #f59e0b;
+
+  /* White alpha scale (`alpha/5..90` in global.tokens.json; used by dark mode) */
+  --alpha-5: color-mix(in srgb, var(--tailwind-white) 95%, transparent);
+  --alpha-10: color-mix(in srgb, var(--tailwind-white) 90%, transparent);
+  --alpha-20: color-mix(in srgb, var(--tailwind-white) 80%, transparent);
+  --alpha-30: color-mix(in srgb, var(--tailwind-white) 70%, transparent);
+  --alpha-40: color-mix(in srgb, var(--tailwind-white) 60%, transparent);
+  --alpha-50: color-mix(in srgb, var(--tailwind-white) 50%, transparent);
+  --alpha-60: color-mix(in srgb, var(--tailwind-white) 40%, transparent);
+  --alpha-70: color-mix(in srgb, var(--tailwind-white) 30%, transparent);
+  --alpha-80: color-mix(in srgb, var(--tailwind-white) 20%, transparent);
+  --alpha-90: color-mix(in srgb, var(--tailwind-white) 10%, transparent);
+}
