@@ -68,6 +68,9 @@ export default function ComboboxDropdownMenu() {
                     placeholder="Filter label..."
                     autoFocus={true}
                     className="h-9"
+                    ref={(input) => {
+                      if (input) setTimeout(() => input.focus(), 10)
+                    }}
                   />
                   <CommandList>
                     <CommandEmpty>No label found.</CommandEmpty>
