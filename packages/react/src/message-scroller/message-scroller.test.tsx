@@ -754,6 +754,66 @@ describe("MessageScroller", () => {
     expect(rendered.state().end).toBe(true)
   })
 
+  it("releases an anchored turn when the viewport is pressed before a scrollbar drag", async () => {
+    const messages = [
+      { id: "message-1", height: 80 },
+      { id: "message-2", height: 80 },
+      { id: "message-3", height: 80 },
+      { id: "message-4", height: 20, scrollAnchor: true },
+    ]
+    const rendered = await renderTestScroller({
+      defaultScrollPosition: "end",
+      messages: messages.slice(0, 3),
+    })
+
+    await rendered.rerender(messages)
+
+    expect(rendered.viewport().scrollTop).toBe(176)
+
+    // A scrollbar drag fires pointerdown on the viewport and then only scroll
+    // events: no wheel, touch, or keydown.
+    await act(async () => {
+      rendered
+        .viewport()
+        .dispatchEvent(new Event("pointerdown", { bubbles: true }))
+      rendered.viewport().scrollTop = 60
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    rendered.message("message-4").dataset.testHeight = "60"
+    await triggerResize(rendered.content())
+
+    expect(rendered.viewport().scrollTop).toBe(60)
+  })
+
+  it("keeps an anchored turn when a message is pressed", async () => {
+    const messages = [
+      { id: "message-1", height: 80 },
+      { id: "message-2", height: 80 },
+      { id: "message-3", height: 80 },
+      { id: "message-4", height: 20, scrollAnchor: true },
+    ]
+    const rendered = await renderTestScroller({
+      defaultScrollPosition: "end",
+      messages: messages.slice(0, 3),
+    })
+
+    await rendered.rerender(messages)
+
+    await act(async () => {
+      rendered
+        .message("message-2")
+        .dispatchEvent(new Event("pointerdown", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    rendered.message("message-4").dataset.testHeight = "60"
+    await triggerResize(rendered.content())
+
+    expect(rendered.message("message-4").getBoundingClientRect().top).toBe(64)
+  })
+
   it("does not follow appends after user scroll intent without autoScroll", async () => {
     const rendered = await renderTestScroller({
       defaultScrollPosition: "end",
