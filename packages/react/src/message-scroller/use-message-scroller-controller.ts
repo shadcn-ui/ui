@@ -79,6 +79,8 @@ function useMessageScrollerController({
     firstItemRef,
     itemCountRef,
     lastScrollTopRef,
+    lastDistanceFromEndRef,
+    movedAwayFromEndRef,
     messageElementsRef,
     modeRef,
     pendingScrollFrameRef,
@@ -147,7 +149,8 @@ function useMessageScrollerController({
   // to following in handleResize, once the reply consumes the tail spacer.
   const reconcileFollowMode = React.useCallback(
     (scrollable: MessageScrollerScrollable) => {
-      const scrollTop = viewportRef.current?.scrollTop ?? 0
+      const viewport = viewportRef.current
+      const scrollTop = viewport?.scrollTop ?? 0
       // Content growing past the live edge also reads as "not at the end", but
       // only a scrollbar drag moves scrollTop up. Growth must not release
       // follow-output: the resize handler is coalesced onto a frame, so a state
@@ -157,9 +160,32 @@ function useMessageScrollerController({
 
       lastScrollTopRef.current = scrollTop
 
+      // Distance from the end, not scrollTop: a resize above can move scrollTop
+      // via scroll anchoring without the reader moving at all. A keyboard scroll
+      // animation's first frame can be only 1-2px, landing inside
+      // scrollEdgeThreshold before the gesture has actually gone anywhere — so
+      // track direction across frames instead of trusting a single sample.
+      const distanceFromEnd = viewport
+        ? viewport.scrollHeight - viewport.clientHeight - scrollTop
+        : 0
+      const movedAway =
+        distanceFromEnd >
+        lastDistanceFromEndRef.current + SCROLL_POSITION_EPSILON
+      const movedToward =
+        distanceFromEnd <
+        lastDistanceFromEndRef.current - SCROLL_POSITION_EPSILON
+
+      if (movedAway) {
+        movedAwayFromEndRef.current = true
+      } else if (movedToward) {
+        movedAwayFromEndRef.current = false
+      }
+      lastDistanceFromEndRef.current = distanceFromEnd
+
       if (
         autoScrollRef.current &&
         !scrollable.end &&
+        !movedAwayFromEndRef.current &&
         modeRef.current !== "settling-jump" &&
         modeRef.current !== "anchored-to-message"
       ) {
@@ -175,7 +201,7 @@ function useMessageScrollerController({
     },
     []
   )
-
+  
   const commitScrollState = React.useCallback(() => {
     const nextState = getMessageScrollerScrollable({
       content: contentRef.current,
@@ -629,7 +655,11 @@ function useMessageScrollerController({
     [schedulePendingScrollToMessageFlush, scheduleVisibilitySync]
   )
 
-  const userScrollIntent = React.useCallback(() => {
+  const userScrollIntent = React.useCallback((direction?: "up" | "down") => {
+    if (direction) {
+      movedAwayFromEndRef.current = direction === "up"
+    }
+
     if (
       modeRef.current === "following-bottom" ||
       modeRef.current === "anchored-to-message" ||
