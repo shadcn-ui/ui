@@ -382,6 +382,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' fill='none' viewBox='0 0 512 512'><rect width='512' height='512' fill='var(--foreground)' rx='128'/><rect x='86' y='86' width='340' height='340' fill='var(--background)' rx='122'/><rect x='171' y='171' width='170' height='170' fill='var(--foreground)' rx='46'/></svg>"
   },
   {
+    "name": "@bevel",
+    "homepage": "https://bevel-ui.vercel.app",
+    "url": "https://bevel-ui.vercel.app/r/{name}.json",
+    "description": "Tactile, skeuomorphic React components for real product work: guarded switches, annunciators, motorized faders, split-flap boards. Base UI and Tailwind CSS v4.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='var(--foreground)'><rect x='3' y='3' width='26' height='26' rx='7' fill-opacity='.22'/><rect x='8' y='6.5' width='16' height='16' rx='4.5'/></svg>"
+  },
+  {
     "name": "@billingsdk",
     "homepage": "https://billingsdk.com",
     "url": "https://billingsdk.com/r/{name}.json",
