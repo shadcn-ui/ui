@@ -1229,7 +1229,7 @@
   }
 
   .cn-slider-thumb {
-    @apply size-3 border-none bg-primary transition-colors hover:ring-2 hover:ring-ring/30 focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:outline-hidden;
+    @apply size-3 border-none bg-primary transition-colors hover:ring-2 hover:ring-ring/30 focus-visible:ring-2 focus-visible:ring-ring/30 has-focus-visible:ring-2 has-focus-visible:ring-ring/30 focus-visible:outline-hidden;
   }
 
   /* MARK: Toast */
