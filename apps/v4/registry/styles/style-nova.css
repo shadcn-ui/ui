@@ -800,7 +800,7 @@
   }
 
   .cn-menubar-trigger {
-    @apply hover:bg-muted aria-expanded:bg-muted rounded-sm px-1.5 py-[2px] text-sm font-medium;
+    @apply hover:bg-muted aria-expanded:bg-muted focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-3 rounded-sm px-1.5 py-[2px] text-sm font-medium;
   }
 
   .cn-menubar-content {
