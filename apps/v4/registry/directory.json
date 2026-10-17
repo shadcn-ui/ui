@@ -1995,6 +1995,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='24' height='24' fill='none'><path fill='currentColor' d='M3 19V10C3 6.13 6.13 3 10 3H19C24.52 3 29 7.48 29 13C29 18.32 24.85 22.67 19.6 22.98V17.5C22.71 17.81 25 15.73 25 12.8C25 9.93 23.05 8 20.5 8C19.26 8 18.25 8.44 17.1 9.2L6.2 16.4C4.75 17.36 3.65 18.09 3 19Z'/><path fill='currentColor' d='M3 24.2C3 21.98 4.14 20.06 6 18.85L7.5 17.88C8.58 17.18 9.5 17.8 9.5 19V29H6.5C4.57 29 3 27.43 3 25.5V24.2ZM11.5 17.13C11.5 16.43 11.78 16.02 12.37 15.63L14.9 13.98C16.12 13.18 17.5 13.88 17.5 15.3V28C17.5 28.55 17.05 29 16.5 29H12.5C11.95 29 11.5 28.55 11.5 28V17.13Z'/><path fill='currentColor' d='M23 12.8A2 2 0 1 1 19 12.8A2 2 0 1 1 23 12.8Z'/></svg>"
   },
   {
+    "name": "@pluginui",
+    "homepage": "https://pluginui.com",
+    "url": "https://pluginui.com/r/{name}.json",
+    "description": "Design modern interfaces for instruments and effects, on the web or in native DAWs. Customizable controls and themes powered by the Maru Audio platform.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 10 224 80' fill='none'><path d='M8 78c18 0 27-12 35-31 7-18 17-27 27-26 12 1 20 13 26 31 5 16 10 26 20 26 10 0 16-11 23-24 7-12 15-17 24-15 11 3 18 14 24 26 5 10 14 13 29 13' stroke='var(--foreground)' stroke-linecap='butt' stroke-linejoin='round' stroke-width='14'/></svg>"
+  },
+  {
     "name": "@pmndrs",
     "homepage": "https://pmndrs.github.io/design-system",
     "url": "https://pmndrs.github.io/design-system/r/{name}.json",
