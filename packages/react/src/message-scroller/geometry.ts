@@ -115,6 +115,30 @@ function getMessageScrollerItems(
   )
 }
 
+// The first item that is a message (it has a messageId). Rows without one, such
+// as a "load earlier" control or a lead-in above the transcript, may stay first
+// while older messages are inserted after them, so prepends are told by where
+// the first message moved to among the messages, not by the first child.
+function getFirstMessageItem(items: HTMLElement[]) {
+  return items.find((item) => item.dataset.messageId !== undefined) ?? null
+}
+
+function getMessageIndex(items: HTMLElement[], item: HTMLElement) {
+  let index = 0
+
+  for (const candidate of items) {
+    if (candidate === item) {
+      return index
+    }
+
+    if (candidate.dataset.messageId !== undefined) {
+      index += 1
+    }
+  }
+
+  return -1
+}
+
 function getNewScrollAnchor(items: HTMLElement[], previousItemCount: number) {
   for (let index = previousItemCount; index < items.length; index++) {
     const item = items[index]
@@ -380,6 +404,8 @@ export {
   getMessageScrollerItems,
   getMessageScrollerScrollable,
   getMessageScrollerVisibilityState,
+  getFirstMessageItem,
+  getMessageIndex,
   getNewScrollAnchor,
   getTailSpacerHeight,
   getUnanchoredScrollAnchor,
