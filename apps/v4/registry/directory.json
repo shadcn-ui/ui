@@ -1762,7 +1762,7 @@
     "url": "https://notionic.dev/r/{name}.json",
     "description": "Render Notion pages in React Server Components: code blocks, callouts, tables, toggles, tabs, KaTeX equations and Mermaid diagrams for notionic.",
     "author": "Nubelson Fernandes",
-    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='none' stroke='var(--foreground)' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'><path d='M28 74V22M28 46C28 31 36 22 48 22S68 31 68 46V74'/></svg>"
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='var(--foreground)'><rect x='20.5' y='20.5' width='17' height='17' rx='4'/><rect x='39.5' y='20.5' width='17' height='17' rx='4'/><rect x='58.5' y='20.5' width='17' height='17' rx='4'/><rect x='20.5' y='39.5' width='17' height='17' rx='4'/><rect x='58.5' y='39.5' width='17' height='17' rx='4'/><rect x='20.5' y='58.5' width='17' height='17' rx='4'/><rect x='58.5' y='58.5' width='17' height='17' rx='4'/></svg>"
   },
   {
     "name": "@notra",
