@@ -297,7 +297,7 @@
   }
 
   .cn-combobox-empty {
-    @apply text-muted-foreground hidden w-full justify-center py-2 text-center text-xs group-data-empty/combobox-content:flex;
+    @apply text-muted-foreground flex w-full justify-center py-2 text-center text-xs empty:hidden;
   }
 
   .cn-combobox-list {
