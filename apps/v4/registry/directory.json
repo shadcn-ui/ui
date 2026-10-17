@@ -1757,6 +1757,14 @@
     "logo": "<svg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='6' y='4' width='28' height='22' rx='0' fill='var(--foreground)'/><rect x='8' y='6' width='24' height='18' rx='0' fill='var(--background)'/><rect x='15' y='27' width='10' height='3' rx='0' fill='var(--foreground)'/><rect x='11' y='30' width='18' height='2' rx='0' fill='var(--foreground)'/><rect x='12' y='8' width='16' height='2' rx='0' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@notionic",
+    "homepage": "https://notionic.dev",
+    "url": "https://notionic.dev/r/{name}.json",
+    "description": "Render Notion pages in React Server Components: code blocks, callouts, tables, toggles, tabs, KaTeX equations and Mermaid diagrams for notionic.",
+    "author": "Nubelson Fernandes",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='none' stroke='var(--foreground)' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'><path d='M28 74V22M28 46C28 31 36 22 48 22S68 31 68 46V74'/></svg>"
+  },
+  {
     "name": "@notra",
     "homepage": "https://ui.usenotra.com",
     "url": "https://ui.usenotra.com/r/{name}.json",
