@@ -13,7 +13,7 @@
   }
 
   .cn-slider-thumb {
-    @apply ring-black/10 not-dark:bg-clip-padding ring-1 size-4 rounded-2xl bg-white shadow-md transition-[color,box-shadow] duration-200 hover:ring-4 hover:ring-ring/30 focus-visible:ring-4 focus-visible:ring-ring/30 focus-visible:outline-hidden;
+    @apply ring-black/10 not-dark:bg-clip-padding ring-1 size-4 rounded-2xl bg-white shadow-md transition-[color,box-shadow] duration-200 hover:ring-4 hover:ring-ring/30 focus-visible:ring-4 focus-visible:ring-ring/30 has-focus-visible:ring-4 has-focus-visible:ring-ring/30 focus-visible:outline-hidden;
   }
 
   /* MARK: Switch */
