@@ -756,6 +756,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none'><rect x='20' y='20' width='160' height='160' rx='24' fill='var(--foreground)'/><rect x='30' y='62' width='140' height='110' rx='16' fill='var(--background)'/><circle cx='54' cy='84' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='78' cy='84' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='122' cy='84' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='146' cy='84' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='54' cy='108' r='7' fill='var(--foreground)' opacity='0.3'/><rect x='78' y='102' width='44' height='12' rx='6' fill='var(--foreground)'/><circle cx='78' cy='108' r='10' fill='var(--foreground)'/><circle cx='122' cy='108' r='10' fill='var(--foreground)'/><circle cx='146' cy='108' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='54' cy='132' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='78' cy='132' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='100' cy='132' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='122' cy='132' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='146' cy='132' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='54' cy='156' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='78' cy='156' r='7' fill='var(--foreground)' opacity='0.3'/><circle cx='100' cy='156' r='7' fill='var(--foreground)' opacity='0.3'/></svg>"
   },
   {
+    "name": "@eased",
+    "homepage": "https://eased.dev",
+    "url": "https://eased.dev/r/{name}.json",
+    "description": "Motion-first React components and blocks for shadcn, with tuned springs, light and dark themes, and an MCP server for AI agents.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='var(--foreground)' stroke-width='5' stroke-linecap='round'><path d='M12 52C19.68 12 26.4 12 52 12'/></svg>"
+  },
+  {
     "name": "@easeui",
     "homepage": "https://easeui.dev",
     "url": "https://easeui.dev/r/{name}.json",
