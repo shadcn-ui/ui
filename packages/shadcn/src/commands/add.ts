@@ -287,7 +287,7 @@ export const add = new Command()
         )
       }
 
-      if (selectComponentsAfterInit) {
+      if (selectComponentsAfterInit || !options.components) {
         options.components = await promptForRegistryComponents(options, config)
       }
 
