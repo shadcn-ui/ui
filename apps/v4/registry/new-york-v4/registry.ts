@@ -1,5 +1,4 @@
 import { registryItemSchema, type Registry } from "shadcn/schema"
-import { z } from "zod"
 
 import { themes } from "../_legacy-themes"
 import { blocks } from "./blocks/_registry"
@@ -44,7 +43,7 @@ const NEW_YORK_V4_STYLE = {
 export const registry = {
   name: "shadcn/ui",
   homepage: "https://ui.shadcn.com",
-  items: z.array(registryItemSchema).parse(
+  items: registryItemSchema.array().parse(
     [
       {
         name: "index",
