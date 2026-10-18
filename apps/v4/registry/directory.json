@@ -2426,6 +2426,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'><rect width='28' height='28' rx='5'/><path d='M4 5h20m-1 0v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5m4 18 5-5 5 5m-1.5-11.333L14.167 15m2.667-7L10.5 14.334' stroke='var(--foreground, currentColor)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>"
   },
   {
+    "name": "@slotsmith",
+    "homepage": "https://slotsmith.dev",
+    "url": "https://slotsmith.dev/r/{name}.json",
+    "description": "shadcn/ui parts for the slotsmith data table, autocomplete, date picker and file uploader: headless React components where every part is a replaceable slot.",
+    "author": "Tareq Al-Mozayek",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M12 9 5 16l7 7M20 9l7 7-7 7' fill='none' stroke='var(--foreground)' stroke-width='3'/></svg>"
+  },
+  {
     "name": "@smoothui",
     "homepage": "https://smoothui.dev",
     "url": "https://smoothui.dev/r/{name}.json",
