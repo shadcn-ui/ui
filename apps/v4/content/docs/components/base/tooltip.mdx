@@ -93,6 +93,7 @@ export default function RootLayout({ children }) {
 ## Usage
 
 ```tsx showLineNumbers
+import { Button } from "@/components/ui/button"
 import {
   Tooltip,
   TooltipContent,
@@ -102,7 +103,9 @@ import {
 
 ```tsx showLineNumbers
 <Tooltip>
-  <TooltipTrigger>Hover</TooltipTrigger>
+  <TooltipTrigger render={<Button variant="outline" />}>
+    Hover
+  </TooltipTrigger>
   <TooltipContent>
     <p>Add to library</p>
   </TooltipContent>
