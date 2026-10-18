@@ -2794,8 +2794,8 @@
   },
   {
     "name": "@uai",
-    "homepage": "https://uaiblocks.vercel.app",
-    "url": "https://uaiblocks.vercel.app/r/{name}.json",
+    "homepage": "https://uaiblocks.dev",
+    "url": "https://uaiblocks.dev/r/{name}.json",
     "description": "Compound React components and page blocks with motion and micro-interactions built in, including AI agent UI (prompt composer, thinking, approvals) and Brazilian commerce (Pix, CEP, installments).",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 32 32'><path d='M2.15 4.75a4.75 4.75 0 0 1 9.5 0v13.4a2.6 2.6 0 0 1-3.94 2.23L2.3 17.13a.3.3 0 0 1-.15-.26Zm18.2 0a4.75 4.75 0 0 1 9.5 0v9.37a1.7 1.7 0 0 1-.83 1.46l-6.1 3.66a1.7 1.7 0 0 1-2.57-1.46ZM2.15 20v-.11a1 1 0 0 1 1.51-.86l3.26 1.95a5.5 5.5 0 0 0 2.42.77l.99.08a1.3 1.3 0 0 1 1.07.73 5.11 5.11 0 0 0 9.48-.72 1 1 0 0 1 .44-.56l6.56-3.94a1.3 1.3 0 0 1 1.97 1.12V20c0 7.39-6.56 12-13.85 12S2.15 27.39 2.15 20'/></svg>"
   },
