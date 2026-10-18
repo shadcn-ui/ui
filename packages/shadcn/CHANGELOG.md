@@ -1,5 +1,11 @@
 # shadcn
 
+## 4.22.1
+
+### Patch Changes
+
+- [#12360](https://github.com/shadcn-ui/ui/pull/12360) [`4381eeb`](https://github.com/shadcn-ui/ui/commit/4381eeb3fe421af7d25b780f85ff9cbc8d50c51a) Thanks [@shadcn](https://github.com/shadcn)! - Fix `shadcn add --all` and the component picker to only include components available for the project's style.
+
 ## 4.22.0
 
 ### Minor Changes
