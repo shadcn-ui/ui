@@ -95,6 +95,23 @@ describe("lowerEvents", () => {
     ).toEqual(splitTextDeltas("Hello there world"))
   })
 
+  it("keeps leading whitespace when splitting streamed text", () => {
+    const text = "\n\n  Hello there world"
+    const steps = lowerEvents([{ kind: "text", id: "text-1", text }], {
+      delayMs: undefined,
+    })
+
+    expect(
+      steps
+        .flatMap((step) =>
+          step.kind === "chunk" && step.chunk.type === "text-delta"
+            ? [step.chunk.delta]
+            : []
+        )
+        .join("")
+    ).toBe(text)
+  })
+
   it("emits a single delta in instant mode and none of the word sleeps when delay is zero", () => {
     const steps = lowerEvents(
       [
