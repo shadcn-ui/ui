@@ -20,9 +20,9 @@ export const transformCssVars: Transformer = (code, { config, baseColor }) => {
   const literals = new StringLiterals(code, file)
   for (const literal of literals.getStringLiterals()) {
     const raw = literals.getValue(literal)
-    const mapped = applyColorMapping(raw, baseColor.inlineColors).trim()
+    const mapped = applyColorMapping(raw, baseColor.inlineColors)
     if (mapped !== raw) {
-      literals.setValue(literal, mapped)
+      literals.setValue(literal, mapped.trim())
     }
   }
 
@@ -80,8 +80,10 @@ export function applyColorMapping(
   input: string,
   mapping: z.infer<typeof registryBaseColorSchema>["inlineColors"]
 ) {
+  let mappedAny = false
   if (input.includes(" border ")) {
     input = input.replace(" border ", " border border-border ")
+    mappedAny = true
   }
 
   const classNames = input.split(" ")
@@ -97,6 +99,7 @@ export function applyColorMapping(
 
     const needle = value?.replace(prefix, "")
     if (needle && needle in mapping.light) {
+      mappedAny = true
       lightMode.add(
         [variant, `${prefix}${mapping.light[needle]}`]
           .filter(Boolean)
@@ -112,6 +115,10 @@ export function applyColorMapping(
     }
 
     lightMode.add(className)
+  }
+
+  if (!mappedAny) {
+    return input
   }
 
   return [...Array.from(lightMode), ...Array.from(darkMode)].join(" ").trim()
