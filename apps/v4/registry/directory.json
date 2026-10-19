@@ -1714,7 +1714,13 @@
     "url": "https://motiq.dev/r/{name}.json",
     "description": "Production-ready animated React and Next.js components — accessible, reduced-motion-safe and RSC-safe — installable as editable source with the shadcn CLI. Free and open source.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><defs><linearGradient id='motiq-logo' x1='0' y1='0' x2='24' y2='24' gradientUnits='userSpaceOnUse'><stop stop-color='#7c5cff'/><stop offset='1' stop-color='#4f7cff'/></linearGradient></defs><rect width='24' height='24' rx='6' fill='url(#motiq-logo)'/><path d='M5.6 17.2V6.8h2.5L12 12.3l3.9-5.5h2.5v10.4h-2.4v-6.6L12 16.1 8 10.6v6.6H5.6Z' fill='#fff'/></svg>"
-  },
+  },{
+  "name": "@movin",
+  "homepage": "https://movin.design/components/",
+  "url": "https://movin.design/r/{name}.json",
+  "description": "288 animated UI components: buttons, toggles, checkboxes, inputs, loaders, radios and cards. Zero dependencies for most, Framer Motion for a few, with a plain HTML/CSS version of each. MIT-0.",
+  "logo": "<svg viewBox='0 0 256 256' fill='none' xmlns='http://www.w3.org/2000/svg'><circle cx='49.4554' cy='167.851' r='23.2562' fill='currentColor'/><rect x='50.2609' y='74.1316' width='37.5677' height='143.115' rx='18.7839' transform='rotate(-28 50.2609 74.1316)' fill='currentColor'/><rect x='132.641' y='74.1316' width='37.5677' height='143.115' rx='18.7839' transform='rotate(-28 132.641 74.1316)' fill='currentColor'/></svg>"
+},
   {
     "name": "@mozaika",
     "homepage": "https://mozaika.design",
