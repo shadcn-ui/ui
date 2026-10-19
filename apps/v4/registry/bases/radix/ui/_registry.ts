@@ -1083,6 +1083,42 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     ],
   },
   {
+    name: "trace",
+    type: "registry:ui",
+    registryDependencies: ["collapsible"],
+    files: [
+      {
+        path: "ui/trace.tsx",
+        type: "registry:ui",
+      },
+    ],
+    meta: {
+      links: {
+        docs: "https://ui.shadcn.com/docs/components/radix/trace",
+        examples:
+          "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/trace-example.tsx",
+      },
+    },
+  },
+  {
+    name: "code-block",
+    type: "registry:ui",
+    registryDependencies: ["button", "use-highlighted-code"],
+    files: [
+      {
+        path: "ui/code-block.tsx",
+        type: "registry:ui",
+      },
+    ],
+    meta: {
+      links: {
+        docs: "https://ui.shadcn.com/docs/components/radix/code-block",
+        examples:
+          "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/code-block-example.tsx",
+      },
+    },
+  },
+  {
     name: "message",
     type: "registry:ui",
     files: [

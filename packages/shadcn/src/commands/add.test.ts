@@ -9,6 +9,7 @@ import {
   REGISTRY_URL,
   SHADCN_URL,
 } from "@shadcn/registry/internal/registry/constants"
+import { clearRegistryCache } from "@shadcn/registry/internal/registry/fetcher"
 import fs from "fs-extra"
 import { http, HttpResponse } from "msw"
 import { setupServer } from "msw/node"
@@ -106,7 +107,7 @@ const CHAT_ITEM_URL = "https://v0.dev/chat/b/xyz"
 // tailwind.config, e.g. config-full) and "new-york-v4" (the fallback style
 // resolved by configWithDefaults whenever tailwind.config is "", which is
 // both createConfig's default and the vite-with-tailwind fixture's value).
-const STYLES = ["new-york", "new-york-v4", "base-nova"]
+const STYLES = ["new-york", "new-york-v4", "base-nova", "radix-nova"]
 
 function registerItem(name: string, body: Record<string, unknown>) {
   return STYLES.map((style) =>
@@ -120,10 +121,29 @@ const server = setupServer(
   http.get(`${REGISTRY_URL}/index.json`, () =>
     HttpResponse.json([
       uiItem("button"),
+      uiItem("code-block"),
       uiItem("sonner"),
       uiItem("toast"),
       uiItem("toaster"),
     ])
+  ),
+  ...STYLES.map((style) =>
+    http.get(`${REGISTRY_URL}/styles/${style}/registry.json`, () =>
+      HttpResponse.json({
+        name: "shadcn/ui",
+        homepage: "https://ui.shadcn.com",
+        items: [
+          uiItem("button"),
+          ...(style.endsWith("-nova") ? [uiItem("code-block")] : []),
+          uiItem("sonner"),
+          uiItem("toast"),
+          uiItem("toaster"),
+          { name: "index", type: "registry:style" },
+          { name: "utils", type: "registry:lib" },
+          { name: "dashboard-01", type: "registry:block" },
+        ],
+      })
+    )
   ),
   ...registerItem("button", uiItem("button")),
   ...registerItem("card", uiItem("card")),
@@ -247,6 +267,7 @@ describe("add command", () => {
 
   beforeEach(() => {
     vi.clearAllMocks()
+    clearRegistryCache()
     exit = mockProcessExit()
     mockPrompts({})
   })
@@ -308,6 +329,144 @@ describe("add command", () => {
         await runAdd(["button", "--view"], cwd)
 
         expect(dryRunComponents).toHaveBeenCalledTimes(1)
+        expect(addComponents).not.toHaveBeenCalled()
+      })
+    })
+  })
+
+  describe("style availability", () => {
+    it("offers components for the initialized style in the interactive picker", async () => {
+      await withTempDir(async (cwd) => {
+        await fs.writeJson(path.join(cwd, "package.json"), {
+          name: "test-project",
+          version: "1.0.0",
+        })
+        mockPrompts({
+          proceed: true,
+          base: "base",
+          selectedPreset: "nova",
+          components: ["code-block"],
+        })
+        vi.mocked(runInit).mockResolvedValue({
+          ...baseConfig(cwd),
+          style: "base-nova",
+        })
+
+        await runAdd([], cwd)
+
+        expect(prompts).toHaveBeenCalledWith(
+          expect.objectContaining({
+            name: "components",
+            choices: [
+              expect.objectContaining({ value: "button" }),
+              expect.objectContaining({ value: "code-block" }),
+              expect.objectContaining({ value: "toast" }),
+            ],
+          })
+        )
+        expect(addComponents).toHaveBeenCalledWith(
+          ["code-block"],
+          expect.objectContaining({ style: "base-nova" }),
+          expect.any(Object)
+        )
+      })
+    })
+
+    it.each([false, true])(
+      "uses the initialized style for --all (empty project: %s)",
+      async (empty) => {
+        await withTempDir(async (cwd) => {
+          if (!empty) {
+            await fs.writeJson(path.join(cwd, "package.json"), {
+              name: "test-project",
+              version: "1.0.0",
+            })
+          }
+          mockPrompts({ proceed: true, base: "base", selectedPreset: "nova" })
+          vi.mocked(createProject).mockResolvedValue({
+            projectPath: cwd,
+            projectName: "app",
+            template: "next",
+          })
+          vi.mocked(runInit).mockResolvedValue({
+            ...baseConfig(cwd),
+            style: "base-nova",
+          })
+
+          await runAdd(["--all"], cwd)
+
+          expect(runInit).toHaveBeenCalledTimes(1)
+          expect(addComponents).toHaveBeenCalledWith(
+            ["button", "code-block", "toast"],
+            expect.objectContaining({ style: "base-nova" }),
+            expect.any(Object)
+          )
+        })
+      }
+    )
+
+    it.each([
+      {
+        fixture: "config-full",
+        style: "new-york",
+        expected: ["button", "sonner"],
+      },
+      {
+        fixture: "vite-with-tailwind",
+        style: "new-york",
+        expected: ["button", "sonner"],
+      },
+      {
+        fixture: "vite-with-tailwind",
+        style: "radix-nova",
+        expected: ["button", "code-block", "sonner"],
+      },
+    ])(
+      "adds only available UI components for $style in $fixture",
+      async ({ fixture, style, expected }) => {
+        await withFixtureCopy(fixture, async (cwd) => {
+          await setConfigStyle(cwd, style)
+
+          await runAdd(["--all"], cwd)
+
+          expect(addComponents).toHaveBeenCalledWith(
+            expected,
+            expect.any(Object),
+            expect.any(Object)
+          )
+        })
+      }
+    )
+
+    it("does not offer unavailable components in the interactive picker", async () => {
+      await withFixtureCopy("config-full", async (cwd) => {
+        mockPrompts({ components: ["button"] })
+
+        await runAdd([], cwd)
+
+        expect(prompts).toHaveBeenCalledWith(
+          expect.objectContaining({
+            name: "components",
+            choices: [
+              expect.objectContaining({ value: "button" }),
+              expect.objectContaining({ value: "sonner" }),
+            ],
+          })
+        )
+      })
+    })
+
+    it("fails when the style catalog cannot be fetched", async () => {
+      server.use(
+        http.get(
+          `${REGISTRY_URL}/styles/new-york/registry.json`,
+          () => new HttpResponse(null, { status: 500 })
+        )
+      )
+
+      await withFixtureCopy("config-full", async (cwd) => {
+        await expect(runAdd(["--all"], cwd)).rejects.toThrow()
+
         expect(addComponents).not.toHaveBeenCalled()
       })
     })
@@ -699,7 +858,7 @@ describe("add command", () => {
         await runAdd(["--all"], cwd)
 
         expect(addComponents).toHaveBeenCalledWith(
-          ["button", "toast"],
+          ["button", "code-block", "toast"],
           expect.objectContaining({ style: "base-nova" }),
           expect.any(Object)
         )
