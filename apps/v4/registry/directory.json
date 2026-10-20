@@ -969,6 +969,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><rect width='48' height='48' rx='9' fill='#f54900'/><rect x='9' y='9' width='30' height='6' rx='2' fill='#0c0a09'/><rect x='9' y='21' width='21' height='6' rx='2' fill='#0c0a09'/><rect x='9' y='33' width='12' height='6' rx='2' fill='#0c0a09'/></svg>"
   },
   {
+    "name": "@fancy-ui",
+    "homepage": "https://fancy-ui.rama.app",
+    "url": "https://fancy-ui.rama.app/r/{name}.json",
+    "description": "145 animated React components with motion, glow and sound effects, built with Tailwind CSS v4.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><path id='fancy-ui-mk' d='M16 3Q16.7 15.3 29 16Q16.7 16.7 16 29Q15.3 16.7 3 16Q15.3 15.3 16 3Z'/><linearGradient id='fancy-ui-spark' x1='0' y1='0.5' x2='1' y2='0.5'><stop offset='0' stop-color='#d22374'/><stop offset='0.25' stop-color='#fd4ba0'/><stop offset='0.375' stop-color='#c128c1'/><stop offset='0.5' stop-color='#6f27f7'/><stop offset='0.625' stop-color='#4537f7'/><stop offset='0.75' stop-color='#487df9'/><stop offset='0.875' stop-color='#71e8fc'/><stop offset='1' stop-color='#8ff0fe'/></linearGradient><linearGradient id='fancy-ui-verts' x1='0.5' y1='0' x2='0.5' y2='1'><stop offset='0' stop-color='#faebfd' stop-opacity='0.92'/><stop offset='0.27' stop-color='#cd50fb' stop-opacity='0.6'/><stop offset='0.4' stop-color='#912ffa' stop-opacity='0'/><stop offset='0.6' stop-color='#8322f8' stop-opacity='0'/><stop offset='0.73' stop-color='#bf2ffa' stop-opacity='0.6'/><stop offset='1' stop-color='#fdd8fd' stop-opacity='0.92'/></linearGradient><radialGradient id='fancy-ui-tips' cx='0.5' cy='0.5' r='0.5'><stop offset='0.5' stop-color='#fff' stop-opacity='0'/><stop offset='1' stop-color='#fff' stop-opacity='0.8'/></radialGradient></defs><use href='#fancy-ui-mk' fill='url(#fancy-ui-spark)'/><use href='#fancy-ui-mk' fill='url(#fancy-ui-verts)'/><use href='#fancy-ui-mk' fill='url(#fancy-ui-tips)'/></svg>"
+  },
+  {
     "name": "@fibo",
     "homepage": "https://fibo.toribryan.com",
     "url": "https://fibo.toribryan.com/r/{name}.json",
