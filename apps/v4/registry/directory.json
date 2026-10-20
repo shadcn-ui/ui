@@ -256,6 +256,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='var(--foreground)' d='M24.78 9.37A11 11 0 1 0 24.78 22.63A8.6 8.6 0 1 1 24.78 9.37Z'/><path fill='#ff6b35' d='M24.78 11.6C24.78 11.6 21.98 14.9 21.98 16.9A2.8 2.8 0 0 0 27.58 16.9C27.58 14.9 24.78 11.6 24.78 11.6Z'/></svg>"
   },
   {
+    "name": "@beamline",
+    "homepage": "https://beamline.io",
+    "url": "https://beamline.io/registry/open/{name}.json",
+    "description": "Free MIT React components from Beamline UI, with the base styles and looks they need. The complete system of components and app screens for coding agents is at beamline.io.",
+    "author": "Danylo Pravda",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' id='beamline-favicon' viewBox='0 0 100 100' aria-hidden='true'><style>#beamline-favicon .lb polygon,#beamline-favicon .rb polygon{fill:#17181c}@media (prefers-color-scheme:dark){#beamline-favicon .lb polygon,#beamline-favicon .rb polygon{fill:#f4f4f6}}</style><defs><linearGradient id='fv-g1' x1='42.5' y1='84' x2='57.5' y2='16' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='#0065c1'/><stop offset='0.5' stop-color='#009eb9'/><stop offset='1' stop-color='#e6581b'/></linearGradient></defs><g class='lb'><polygon points='25.41,19.76 -2.51,50 25.41,80.24 34.59,71.76 12.31,50 34.59,28.24' fill='#0f0f11'/></g><g class='rb'><polygon points='65.41,28.24 87.69,50 65.41,71.76 74.59,80.24 102.51,50 74.59,19.76' fill='#0f0f11'/></g><line class='bm' x1='42.5' y1='84' x2='57.5' y2='16' stroke='url(#fv-g1)' stroke-width='9.4' pathLength='1'/></svg>"
+  },
+  {
     "name": "@designali",
     "homepage": "https://designali.com",
     "url": "https://designali.com/r/{name}.json",
