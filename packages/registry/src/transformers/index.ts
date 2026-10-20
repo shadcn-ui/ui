@@ -1,8 +1,8 @@
 import { Config } from "@/src/get-config"
 import { registryBaseColorSchema } from "@/src/registry/schema"
 import {
-  getTextFromFirstToken,
   stripByteOrderMark,
+  trimLeadingWhitespace,
 } from "@/src/transformers/source-text"
 import { transformCssVars } from "@/src/transformers/transform-css-vars"
 import { transformIcons } from "@/src/transformers/transform-icons"
@@ -31,8 +31,8 @@ export type Transformer = (
 ) => string | Promise<string>
 
 // Runs the transformers on raw, one after the other, as the ts-morph runner
-// did on a SourceFile, and returns what it returned: the text from the first
-// token, or transformJsx's output.
+// did on a SourceFile, and returns the text from its first non-whitespace
+// character (leading comments included), or transformJsx's output.
 export async function transform(
   opts: TransformOpts,
   transformers: Transformer[] = [
@@ -54,5 +54,5 @@ export async function transform(
     return await transformJsx(code, opts)
   }
 
-  return getTextFromFirstToken(code)
+  return trimLeadingWhitespace(code)
 }

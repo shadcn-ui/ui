@@ -623,8 +623,7 @@ export function Item({ className }: { className?: string }) {
     `)
   })
 
-  test("drops leading comments", async () => {
-    // Current behavior: SourceFile.getText() skips leading trivia.
+  test("keeps leading comments", async () => {
     expect(
       await cleanupMarkers(`// Copyright header.
 /* eslint-disable */
@@ -633,7 +632,9 @@ export function Item({ className }: { className?: string }) {
 export const a = <div className="cn-rtl-flip size-4" />
 `)
     ).toMatchInlineSnapshot(`
-      ""use client"
+      "// Copyright header.
+      /* eslint-disable */
+      "use client"
 
       export const a = <div className="size-4" />
       "
@@ -642,7 +643,8 @@ export const a = <div className="cn-rtl-flip size-4" />
       await cleanupMarkers(`// No markers here.
 export const b = 1
 `)
-    ).toBe(`export const b = 1
+    ).toBe(`// No markers here.
+export const b = 1
 `)
     expect(await cleanupMarkers("\uFEFF  export const c = 1\n")).toBe(
       "export const c = 1\n"
@@ -654,12 +656,12 @@ export const b = 1
     expect(await cleanupMarkers(source)).toBe(source)
   })
 
-  test("drops a byte order mark and a shebang", async () => {
+  test("drops a byte order mark and keeps a shebang", async () => {
     expect(
       await cleanupMarkers(
         `\uFEFF#!/usr/bin/env node\nconst a = <a className="cn-a b" />\n`
       )
-    ).toBe(`const a = <a className="b" />\n`)
+    ).toBe(`#!/usr/bin/env node\nconst a = <a className="b" />\n`)
   })
 
   test("returns an empty string for empty input", async () => {
