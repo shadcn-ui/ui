@@ -22,7 +22,12 @@ export const registryConfigSchema = z.record(
   z.string().refine((key) => key.startsWith("@"), {
     message: "Registry names must start with @ (e.g., @v0, @acme)",
   }),
-  registryConfigItemSchema
+  registryConfigItemSchema,
+  {
+    // Zod 4 reports key failures as "Invalid key in record".
+    error: (issue) =>
+      issue.code === "invalid_key" ? issue.issues?.[0]?.message : undefined,
+  }
 )
 
 export const rawConfigSchema = z
@@ -36,10 +41,10 @@ export const rawConfigSchema = z
       css: z.string(),
       baseColor: z.string(),
       cssVariables: z.boolean().default(true),
-      prefix: z.string().default("").optional(),
+      prefix: z.string().optional(),
     }),
     iconLibrary: z.string().optional(),
-    rtl: z.coerce.boolean().default(false).optional(),
+    rtl: z.coerce.boolean().optional(),
     menuColor: z
       .enum([
         "default",
@@ -47,9 +52,8 @@ export const rawConfigSchema = z
         "default-translucent",
         "inverted-translucent",
       ])
-      .default("default")
       .optional(),
-    menuAccent: z.enum(["subtle", "bold"]).default("subtle").optional(),
+    menuAccent: z.enum(["subtle", "bold"]).optional(),
     aliases: z.object({
       components: z.string(),
       utils: z.string(),
@@ -74,9 +78,24 @@ export const configSchema = rawConfigSchema.extend({
   }),
 })
 
+export type Config = z.infer<typeof configSchema>
+
+// Zod 4 applies defaults inside optional fields. A base config only carries
+// the fields it overrides, so it drops the defaults.
+export const registryBaseConfigSchema = rawConfigSchema
+  .extend({
+    rsc: z.coerce.boolean(),
+    tsx: z.coerce.boolean(),
+    tailwind: rawConfigSchema.shape.tailwind
+      .extend({ cssVariables: z.boolean() })
+      .partial(),
+    aliases: rawConfigSchema.shape.aliases.partial(),
+  })
+  .partial()
+
 // TODO: type the key.
 // Okay for now since I don't want a breaking change.
-export const workspaceConfigSchema = z.record(configSchema)
+export const workspaceConfigSchema = z.record(z.string(), configSchema)
 
 export const registryItemTypeSchema = z.enum([
   "registry:lib",
@@ -112,6 +131,8 @@ export const registryItemFileSchema = z.discriminatedUnion("type", [
     target: z.string().optional(),
   }),
 ])
+
+export type RegistryItemFile = z.infer<typeof registryItemFileSchema>
 
 export const registryItemTailwindSchema = z.object({
   config: z
@@ -177,7 +198,7 @@ export const registryItemCommonSchema = z.object({
 export const registryItemSchema = z.discriminatedUnion("type", [
   registryItemCommonSchema.extend({
     type: z.literal("registry:base"),
-    config: rawConfigSchema.deepPartial().optional(),
+    config: registryBaseConfigSchema.optional(),
   }),
   registryItemCommonSchema.extend({
     type: z.literal("registry:font"),
@@ -233,7 +254,8 @@ export const registrySchema = registryChunkSchema.pipe(
     name: z.string(),
     homepage: z.string(),
     include: z.array(z.string()).optional(),
-    items: z.array(registryItemSchema),
+    // Items are already parsed by registryChunkSchema.
+    items: z.array(z.custom<RegistryItem>()),
     pagination: registryPaginationSchema.optional(),
   })
 )
