@@ -141,6 +141,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='10' fill='#18181b'/><path d='M16 8 L22 24 L19 24 L16 14.5 L13 24 L10 24 Z' fill='white' stroke='white' stroke-width='2' stroke-linejoin='round'/></svg>"
   },
   {
+    "name": "@alexandrejoly",
+    "homepage": "https://alexandrejoly.me",
+    "url": "https://alexandrejoly.me/r/{name}.json",
+    "description": "Composable shadcn components that cover the details: a notification badge, an onboarding flow, a hint, infinite scroll and a CSS-only marquee.",
+    "author": "Alexandre Joly",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='12' fill='var(--foreground)'/><path d='M3 12A9 9 0 1 1 12 21M9.5 12H14.5' fill='none' stroke='var(--background)' stroke-width='2' stroke-linecap='round'/></svg>"
+  },
+  {
     "name": "@algolia",
     "homepage": "https://sitesearch.algolia.com",
     "url": "https://sitesearch.algolia.com/r/{name}.json",
