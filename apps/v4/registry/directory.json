@@ -1531,6 +1531,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='var(--foreground)' fill-rule='evenodd' d='M9 0h14a9 9 0 0 1 9 9v14a9 9 0 0 1-9 9H9a9 9 0 0 1-9-9V9a9 9 0 0 1 9-9Zm2 11a5 5 0 0 0 0 10h10a5 5 0 0 0 0-10Z'/></svg>"
   },
   {
+    "name": "@litt",
+    "homepage": "https://littmd.vercel.app",
+    "description": "Technical precision, lit from above. Controls, overlays, data and agent components on warm stone neutrals, with glass only on what floats. Every token is prefixed litt-, so your app's theme stays untouched.",
+    "url": "https://littmd.vercel.app/r/{name}.json",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='var(--foreground)' stroke-width='1.5'><rect x='4.75' y='4.75' width='22.5' height='22.5' rx='4'/><path d='M9.5 9.75h13' stroke-linecap='round'/></svg>"
+  },
+  {
     "name": "@livedocs",
     "homepage": "https://livedocs.xyz",
     "url": "https://livedocs.xyz/r/{name}.json",
