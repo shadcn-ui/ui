@@ -2158,6 +2158,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 24 24'><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M5.061 20.045C6.375 21 8.251 21 12 21s5.625 0 6.939-.955a5 5 0 0 0 1.106-1.106C21 17.625 21 15.749 21 12s0-5.625-.955-6.939a5 5 0 0 0-1.106-1.106C17.625 3 15.749 3 12 3s-5.625 0-6.939.955A5 5 0 0 0 3.955 5.06C3 6.375 3 8.251 3 12s0 5.625.955 6.939a5 5 0 0 0 1.106 1.106M17 18l1-1m-5 1l5-5m-9 5l9-9'/></svg>"
   },
   {
+    "name": "@qodesign",
+    "homepage": "https://teodoravadani.github.io/qodesign-free/",
+    "url": "https://teodoravadani.github.io/qodesign-free/r/{name}.json",
+    "description": "Free MIT animated React components and dashboards built with Tailwind CSS and Motion, each also shipped as a single HTML file.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='24' height='24' fill='none'><path fill='currentColor' fill-rule='evenodd' d='M11 3h10a8 8 0 0 1 8 8v10a8 8 0 0 1-8 8H11a8 8 0 0 1-8-8V11a8 8 0 0 1 8-8Zm4 7a5 5 0 1 0 0 10a5 5 0 0 0 0-10Zm3.2 8.4l4.3 4.3-1.4 1.4-4.3-4.3Z'/></svg>"
+  },
+  {
     "name": "@quill",
     "homepage": "https://www.quilldesignsystem.com",
     "url": "https://www.quilldesignsystem.com/r/{name}.json",
