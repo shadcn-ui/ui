@@ -1,12 +1,11 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
 import { findTailwindColorFamily } from "@/src/colors"
-import type { Config } from "@/src/utils/get-config"
-import { getProjectInfo, type ProjectInfo } from "@/src/utils/get-project-info"
-import postcss from "postcss"
-import { Node, Project, ScriptKind, SyntaxKind } from "ts-morph"
-
-import { DEFAULT_PRESETS } from "./defaults"
+import type { Config } from "@shadcn/registry/internal/get-config"
+import {
+  getProjectInfo,
+  type ProjectInfo,
+} from "@shadcn/registry/internal/get-project-info"
 import {
   encodePreset,
   parsePresetStyle,
@@ -18,7 +17,11 @@ import {
   PRESET_MENU_COLORS,
   PRESET_THEMES,
   type PresetConfig,
-} from "./preset"
+} from "@shadcn/registry/internal/preset/preset"
+import postcss from "postcss"
+import { Node, Project, ScriptKind, SyntaxKind } from "ts-morph"
+
+import { DEFAULT_PRESETS } from "./defaults"
 
 const PRESET_BASE_COLOR_SET = new Set<string>(PRESET_BASE_COLORS)
 const PRESET_ICON_LIBRARY_SET = new Set<string>(PRESET_ICON_LIBRARIES)
