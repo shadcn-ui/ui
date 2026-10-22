@@ -53,7 +53,12 @@ const nextConfig = {
     ],
   },
   outputFileTracingIncludes: {
-    "/*": ["./registry/**/*", "./styles/**/*"],
+    "/*": [
+      "./registry/**/*",
+      "./styles/**/*",
+      "./examples/**/*",
+      "./app/**/examples/**/*",
+    ],
   },
   images: {
     remotePatterns: [
