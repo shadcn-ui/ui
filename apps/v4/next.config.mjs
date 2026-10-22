@@ -41,6 +41,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   experimental: {
+    turbopackSharedRuntime: false,
     // Rewrite barrel imports to deep imports so a single icon doesn't pull the
     // whole package into the module graph. Next already optimizes lucide-react,
     // @tabler/icons-react, date-fns and lodash-es by default; these are the
