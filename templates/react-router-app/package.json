@@ -13,8 +13,8 @@
     "@react-router/node": "8.4.0",
     "@react-router/serve": "8.4.0",
     "isbot": "^5",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
     "react-router": "8.4.0"
   },
   "devDependencies": {
@@ -23,7 +23,7 @@
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "prettier": "^3.9.9",
+    "prettier": "^3.9.10",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4",
     "typescript": "^6.0.2",
