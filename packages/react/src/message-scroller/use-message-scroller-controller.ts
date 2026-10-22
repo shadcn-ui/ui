@@ -154,8 +154,19 @@ function useMessageScrollerController({
       // commit can observe the grown content before follow catches up.
       const scrolledUp =
         scrollTop < lastScrollTopRef.current - SCROLL_POSITION_EPSILON
+      const scrolledAway =
+        Math.abs(scrollTop - lastScrollTopRef.current) > SCROLL_POSITION_EPSILON
 
       lastScrollTopRef.current = scrollTop
+
+      if (
+        modeRef.current === "anchored-to-message" &&
+        scrolledAway &&
+        !autoscrollingRef.current
+      ) {
+        streamingTurnRef.current = null
+        modeRef.current = "free-scrolling"
+      }
 
       if (
         autoScrollRef.current &&
