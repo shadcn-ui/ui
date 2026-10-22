@@ -18,11 +18,7 @@ import {
   Terminal,
 } from "lucide-react"
 import { type PanelImperativeHandle } from "react-resizable-panels"
-import {
-  type registryItemFileSchema,
-  type registryItemSchema,
-} from "shadcn/schema"
-import { type z } from "zod"
+import { type RegistryItem, type RegistryItemFile } from "shadcn/schema"
 
 import { trackEvent } from "@/lib/events"
 import {
@@ -63,7 +59,7 @@ import {
 } from "@/registry/new-york-v4/ui/toggle-group"
 
 type BlockViewerContext = {
-  item: z.infer<typeof registryItemSchema>
+  item: RegistryItem
   view: "code" | "preview"
   setView: (view: "code" | "preview") => void
   activeFile: string | null
@@ -71,7 +67,7 @@ type BlockViewerContext = {
   resizablePanelRef: React.RefObject<PanelImperativeHandle | null> | null
   tree: ReturnType<typeof createFileTreeForRegistryItemFiles> | null
   highlightedFiles:
-    | (z.infer<typeof registryItemFileSchema> & {
+    | (RegistryItemFile & {
         highlightedContent: string
       })[]
     | null

@@ -1,2 +1,2 @@
-export * from "./libraries"
+export * from "@shadcn/registry/internal/icons/libraries"
 export * from "./templates"
