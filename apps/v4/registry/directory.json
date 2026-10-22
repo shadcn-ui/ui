@@ -1197,6 +1197,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='4' width='7' height='16' rx='1.5'/><rect x='15' y='4' width='7' height='16' rx='1.5'/><path d='m11 8.5 2 1.5-2 1.5'/><path d='m13 12.5-2 1.5 2 1.5'/></svg>"
   },
   {
+    "name": "@haze-ui",
+    "homepage": "https://wmzy.github.io/haze-ui/",
+    "url": "https://cdn.jsdelivr.net/gh/wmzy/haze-ui@main/registry/{name}.json",
+    "description": "150+ accessible React components and full-page blocks on controllable state and OKLCH design tokens: forms, data tables, AI chat kit, dashboard/CRUD/login blocks. npm-distributed, thin-wrapper shadcn integration.",
+    "author": "wmzy",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><path d='M6 22a5 5 0 0 1 .8-9.93A7.5 7.5 0 0 1 21.4 10.5 5.5 5.5 0 0 1 22 21.5z' stroke='var(--foreground)' stroke-width='2.2' stroke-linejoin='round' fill='var(--foreground)' fill-opacity='.12'/><path d='M10 26h12M13 29h7' stroke='var(--foreground)' stroke-width='2.2' stroke-linecap='round'/></svg>"
+  },
+  {
     "name": "@hazeglow",
     "homepage": "https://hazeglow.dev",
     "url": "https://hazeglow.dev/r/{name}.json",
