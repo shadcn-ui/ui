@@ -17,7 +17,11 @@ export function MainNav({
   const pathname = usePathname()
 
   return (
-    <nav className={cn("items-center gap-0", className)} {...props}>
+    <nav
+      aria-label="Main"
+      className={cn("items-center gap-0", className)}
+      {...props}
+    >
       {items.map((item) => (
         <Button
           key={item.href}
