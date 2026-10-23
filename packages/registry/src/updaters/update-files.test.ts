@@ -2099,6 +2099,84 @@ NEW_KEY=new_value
     }
   })
 
+  it.each([".env.example", ".env.production", ".env.test"])(
+    "should create %s instead of merging it into an existing .env.local",
+    async (envFileName) => {
+      const tempDir = getFixturesDir("temp-env-other-file-test")
+      const fsActual = (await vi.importActual(
+        "fs/promises"
+      )) as typeof import("fs/promises")
+
+      const writeFileMock = fs.writeFile as any
+
+      try {
+        await fsActual.mkdir(tempDir, { recursive: true })
+
+        await fsActual.writeFile(
+          path.join(tempDir, "components.json"),
+          JSON.stringify({
+            $schema: "https://ui.shadcn.com/schema.json",
+            style: "default",
+            tailwind: {
+              config: "tailwind.config.js",
+              css: "src/index.css",
+              baseColor: "slate",
+            },
+            aliases: {
+              components: "@/components",
+              utils: "@/lib/utils",
+            },
+          }),
+          "utf-8"
+        )
+
+        const config = await getConfig(tempDir)
+        if (!config) {
+          throw new Error("Failed to get config")
+        }
+        const envLocalPath = path.join(config.resolvedPaths.cwd, ".env.local")
+        const envFilePath = path.join(config.resolvedPaths.cwd, envFileName)
+
+        await fsActual.writeFile(
+          envLocalPath,
+          "DATABASE_URL=postgres://localhost:5432/mydb",
+          "utf-8"
+        )
+
+        const result = await updateFiles(
+          [
+            {
+              path: envFileName,
+              type: "registry:file",
+              target: `~/${envFileName}`,
+              content: "NEW_API_KEY=placeholder",
+            },
+          ],
+          config,
+          {
+            overwrite: true,
+            silent: true,
+          }
+        )
+
+        expect(result.filesCreated).toContain(envFileName)
+        expect(result.filesUpdated).not.toContain(".env.local")
+        expect(writeFileMock).toHaveBeenCalledWith(
+          envFilePath,
+          "NEW_API_KEY=placeholder",
+          "utf-8"
+        )
+        expect(writeFileMock).not.toHaveBeenCalledWith(
+          envLocalPath,
+          expect.anything(),
+          expect.anything()
+        )
+      } finally {
+        await fsActual.rm(tempDir, { recursive: true }).catch(() => {})
+      }
+    }
+  )
+
   it("should create .env when no env variants exist", async () => {
     const tempDir = getFixturesDir("temp-env-create-test")
     const fsActual = (await vi.importActual(

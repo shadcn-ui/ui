@@ -6,6 +6,7 @@ import {
   findExistingEnvFile,
   getNewEnvKeys,
   isEnvFile,
+  isLocalEnvFile,
   mergeEnvContent,
   parseEnvContent,
 } from "@/src/env-helpers"
@@ -136,7 +137,7 @@ export async function updateFiles(
       )
     }
 
-    if (isEnvFile(filePath) && !existsSync(filePath)) {
+    if (isLocalEnvFile(filePath) && !existsSync(filePath)) {
       const alternativeEnvFile = findExistingEnvFile(targetDir)
       if (alternativeEnvFile) {
         filePath = alternativeEnvFile
