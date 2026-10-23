@@ -3129,8 +3129,8 @@
   },
   {
     "name": "@krave-docs",
-    "homepage": "https://krave-docs.vercel/{name}.json",
-    "url": "https://computer-vision-mediapipe.vercel.app/r/face-detection.json",
+    "homepage": "https://krave-docs.vercel",
+    "url": "https://computer-vision-mediapipe.vercel.app/r/{name}.json",
     "description": "A professional collection of reusable, real-time computer vision components powered by MediaPipe",
     "author": "Heaven Dave Ancheta",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024' role='img' aria-labelledby='title'><title id='title'>Krave logo</title><style> .background { fill: #fff; } .logo { fill: #111827; } @media (prefers-color-scheme: dark) { .background { fill: #111827; } .logo { fill: #fff; } } </style><rect class='background' width='1024' height='1024'/><path class='logo' transform='translate(58 925) scale(1.25 -1.25)' d='M78 0V660H204V358Q274 386 333.5 433.5Q393 481 435.5 540Q478 599 495 660H639Q618 591 572.5 527Q527 463 469 414Q411 365 352 339V326Q447 325 504 279.5Q561 234 598 138L648 0H505L473 109Q455 162 430 195.5Q405 229 365 245Q325 261 263 261H204V0Z'/></svg>" 
