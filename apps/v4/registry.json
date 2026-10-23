@@ -5513,6 +5513,19 @@
           "type": "registry:component"
         }
       ]
+    } ,
+      {
+      "name": "action-handler",
+      "type": "registry:ui",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": " registry/new-york-v4/ui/action-handler.tsx",
+          "type": "registry:ui"
+
+        }
+      ]
     }
+    
   ]
 }
