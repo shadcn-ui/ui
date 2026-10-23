@@ -3023,7 +3023,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Signup 01",
       description: "A simple signup form.",
       type: "registry:block",
-      registryDependencies: ["button", "card", "input", "label"],
+      registryDependencies: ["button", "card", "input", "label", "field"],
       files: [
         {
           path: "registry/bases/base/blocks/signup-01/page.tsx",
@@ -6805,7 +6805,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Signup 01",
       description: "A simple signup form.",
       type: "registry:block",
-      registryDependencies: ["button", "card", "input", "label"],
+      registryDependencies: ["button", "card", "input", "label", "field"],
       files: [
         {
           path: "registry/bases/aria/blocks/signup-01/page.tsx",
@@ -10630,7 +10630,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Signup 01",
       description: "A simple signup form.",
       type: "registry:block",
-      registryDependencies: ["button", "card", "input", "label"],
+      registryDependencies: ["button", "card", "input", "label", "field"],
       files: [
         {
           path: "registry/bases/radix/blocks/signup-01/page.tsx",
