@@ -240,8 +240,9 @@ function ComboboxChips({
   ComboboxPrimitive.Chips.Props) {
   return (
     <ComboboxPrimitive.Chips
+      render={<InputGroup />}
       data-slot="combobox-chips"
-      className={cn("cn-combobox-chips", className)}
+      className={cn("cn-combobox-chips h-auto min-h-8 flex-wrap gap-1", className)}
       {...props}
     />
   )
@@ -287,15 +288,14 @@ function ComboboxChip({
 
 function ComboboxChipsInput({
   className,
+  disabled = false,
   ...props
 }: ComboboxPrimitive.Input.Props) {
   return (
     <ComboboxPrimitive.Input
+      render={<InputGroupInput disabled={disabled} />}
       data-slot="combobox-chip-input"
-      className={cn(
-        "cn-combobox-chip-input min-w-16 flex-1 outline-none",
-        className
-      )}
+      className={cn("cn-combobox-chip-input min-w-16 flex-1", className)}
       {...props}
     />
   )
