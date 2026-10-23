@@ -463,6 +463,69 @@ test("user scroll intent cancels follow-bottom", async () => {
   expect(getDistanceToBottom(viewport)).toBeGreaterThan(0)
 })
 
+test("Home key does not get pulled back to the end by a resizing row mid-scroll", async () => {
+  // Regression for #12021: Chromium's animated Home/PageUp scroll sometimes
+  // moves only 1-2px on its first frame — inside the default 8px
+  // scrollEdgeThreshold. reconcileFollowMode used to read that as "still at
+  // the end" and re-arm follow-bottom before the gesture had gone anywhere.
+  // A resizing row above (content-visibility in real usage) then triggered
+  // scrollToEnd, snapping the viewport back down mid-animation.
+  const initial = [{ id: "top", height: 300 }, ...createItems(10)]
+
+  await renderThread({ autoScroll: true, items: initial })
+
+  const viewport = getViewport()
+  expect(getDistanceToBottom(viewport)).toBeLessThanOrEqual(1)
+
+  // 1. Home keydown: should release follow-bottom immediately (direction-aware
+  // userScrollIntent), before any scroll frame lands.
+  viewport.dispatchEvent(
+    new KeyboardEvent("keydown", { key: "Home", bubbles: true })
+  )
+
+  // 2. The animation's first frame moves only 2px — inside scrollEdgeThreshold.
+  viewport.scrollTop -= 2
+  viewport.dispatchEvent(new Event("scroll", { bubbles: true }))
+  await settle()
+
+  // 3. A row above resizes mid-animation (content-visibility placeholder
+  // settling to its real height).
+  flushSync(() => {
+    root!.render(
+      <Thread
+        autoScroll
+        items={initial.map((item) =>
+          item.id === "m0" ? { ...item, height: 500 } : item
+        )}
+      />
+    )
+  })
+  await settle()
+
+  // 4. The rest of the keyboard scroll animation continues upward, well past
+  // the edge threshold.
+  viewport.scrollTop -= 300
+  viewport.dispatchEvent(new Event("scroll", { bubbles: true }))
+  await settle()
+
+  // 5. Another row resizes as the scroll passes it.
+  flushSync(() => {
+    root!.render(
+      <Thread
+        autoScroll
+        items={initial.map((item) =>
+          item.id === "m0" ? { ...item, height: 700 } : item
+        )}
+      />
+    )
+  })
+  await settle()
+
+  // The gesture must stay released — not get pulled back to the end by the
+  // intervening resizes.
+  expect(getDistanceToBottom(viewport)).toBeGreaterThan(0)
+})
+
 test("tracks the current anchor as it scrolls above the viewport", async () => {
   // Every tenth row is a turn-start anchor: m0, m10, m20.
   const items = Array.from({ length: 30 }, (_, index) => ({
