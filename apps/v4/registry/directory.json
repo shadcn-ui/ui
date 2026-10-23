@@ -1135,7 +1135,7 @@
   },
   {
     "name": "@getitdone",
-    "homepage": "https://github.com/getitdone-gmbh/kette-design",
+    "homepage": "https://github.com/getitdone-gmbh/kette-design-community",
     "url": "https://zero-design.itdone.de/r/{name}.json",
     "description": "React primitives for complex business software from the Get IT Done design system. Radix UI based, Tailwind CSS 3, light and dark theme included.",
     "author": "Get IT Done GmbH",
