@@ -54,7 +54,15 @@ export function ChartRadarLinesOnly() {
           config={chartConfig}
           className="mx-auto aspect-square max-h-[250px]"
         >
-          <RadarChart data={chartData}>
+          <RadarChart
+            data={chartData}
+            margin={{
+              top: 10,
+              right: 10,
+              bottom: 10,
+              left: 10,
+            }}
+          >
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent indicator="line" />}
