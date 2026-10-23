@@ -311,6 +311,100 @@ test("keeps the end pinned when bulk appending anchored turns with autoScroll", 
   expect(getDistanceToBottom(viewport)).toBeLessThanOrEqual(1)
 })
 
+test("does not re-anchor a historical turn when an item is swapped at the same count", async () => {
+  // A loaded chat: anchored user turns that mounted with the initial content.
+  const history = [
+    { id: "user-1", scrollAnchor: true },
+    { id: "assistant-1", height: 160 },
+    { id: "user-2", scrollAnchor: true },
+    { id: "assistant-2", height: 160 },
+  ]
+
+  await renderThread({
+    autoScroll: true,
+    items: history,
+    scrollPreviousItemPeek: 0,
+  })
+
+  const viewport = getViewport()
+
+  // A send appends the user turn plus a pending loader.
+  const sent = [
+    ...history,
+    { id: "user-3", scrollAnchor: true },
+    { id: "loader" },
+  ]
+  flushSync(() => {
+    root!.render(<Thread autoScroll items={sent} scrollPreviousItemPeek={0} />)
+  })
+  await settle()
+
+  expect(viewportOffsetOf("user-3", viewport)).toBeLessThanOrEqual(1)
+  const anchoredScrollTop = getScrollTop(viewport)
+
+  // First streamed chunk: the loader swaps for the assistant item in one
+  // commit, so the item count is unchanged. The scroller used to scan for any
+  // never-handled anchor, find user-1 (initial-content anchors were never
+  // marked handled), and yank the viewport to the top.
+  flushSync(() => {
+    root!.render(
+      <Thread
+        autoScroll
+        items={[
+          ...history,
+          { id: "user-3", scrollAnchor: true },
+          { id: "assistant-3" },
+        ]}
+        scrollPreviousItemPeek={0}
+      />
+    )
+  })
+  await settle()
+
+  expect(getScrollTop(viewport)).toBe(anchoredScrollTop)
+})
+
+test("still anchors a new turn swapped in at the same count", async () => {
+  const history = [
+    { id: "user-1", scrollAnchor: true },
+    { id: "assistant-1", height: 160 },
+  ]
+
+  await renderThread({
+    autoScroll: true,
+    items: history,
+    scrollPreviousItemPeek: 0,
+  })
+
+  const viewport = getViewport()
+
+  // An optimistic user message replaced by its confirmed id (same count, new
+  // anchor element) should still be anchored to the reading line.
+  flushSync(() => {
+    root!.render(
+      <Thread
+        autoScroll
+        items={[...history, { id: "optimistic", scrollAnchor: true }]}
+        scrollPreviousItemPeek={0}
+      />
+    )
+  })
+  await settle()
+
+  flushSync(() => {
+    root!.render(
+      <Thread
+        autoScroll
+        items={[...history, { id: "confirmed", scrollAnchor: true }]}
+        scrollPreviousItemPeek={0}
+      />
+    )
+  })
+  await settle()
+
+  expect(viewportOffsetOf("confirmed", viewport)).toBeLessThanOrEqual(1)
+})
+
 test("does not keep the end pinned when appending after the default bottom open", async () => {
   const initial = createItems(6)
 
