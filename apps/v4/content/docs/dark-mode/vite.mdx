@@ -142,3 +142,31 @@ export function ModeToggle() {
   )
 }
 ```
+
+## Prevent flash of unstyled content
+
+Add this script to the `<head>` of your `index.html` to prevent a flash of unstyled content (FOUC) on page load.
+
+<Callout>
+
+**Note:** In development, FOUC may still occur because Tailwind CSS is generated at runtime by Vite — this is expected and will not occur in production builds.
+
+</Callout>
+
+```html title="index.html"
+<script>
+  try {
+    const getThemePreference = () => {
+      if (typeof localStorage !== "undefined" && localStorage.getItem("vite-ui-theme")) {
+        return localStorage.getItem("vite-ui-theme")
+      }
+
+      return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+    }
+
+    const isDark = getThemePreference() === "dark"
+
+    document.documentElement.classList[isDark ? "add" : "remove"]("dark")
+  } catch (_) {}
+</script>
+```
