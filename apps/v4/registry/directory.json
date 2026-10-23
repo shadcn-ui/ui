@@ -899,6 +899,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round'><rect width='24' height='24' rx='5'/><g stroke='var(--foreground, currentColor)' stroke-width='1.275'><path d='M20.5 16.25a1.7 1.7 0 0 1-1.7 1.7H5.2a1.7 1.7 0 0 1-1.7-1.7V9.875A3.81 3.81 0 0 1 7.325 6.05H17.1c1.87 0 3.4 1.53 3.4 3.4z'/><path d='M7.325 6.05a3.81 3.81 0 0 1 3.825 3.825v6.375a1.7 1.7 0 0 1-1.7 1.7M6.9 10.3h.85m10.115 3.4-2.04 2.04m1.632-4.284-3.876 3.876'/></g></svg>"
   },
   {
+    "name": "@emend",
+    "homepage": "https://getemend.vercel.app",
+    "url": "https://getemend.vercel.app/r/{name}.json",
+    "description": "AI editing components for Tiptap. Add reviewable AI edits to an existing editor or start with a full editor.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><defs><linearGradient id='_2jyroc0' x1='3.724' x2='35.74' y1='3.132' y2='36.21' gradientUnits='userSpaceOnUse'><stop stop-color='#575757' offset='0'/><stop offset='1'/></linearGradient><linearGradient id='_2jyroc1' x1='7.421' x2='31.97' y1='6.434' y2='31.8' gradientUnits='userSpaceOnUse'><stop offset='0'/><stop stop-color='#515151' offset='1'/></linearGradient></defs><rect x='1.719' y='1.652' width='36.56' height='36.72' rx='4.738' fill='url(#_2jyroc0)'/><path d='m6.18 8.74c0-1.96 1.58-3.53 3.53-3.53h20.72c1.96 0 3.53 1.57 3.53 3.53v20.52c0 2.04-1.65 3.63-3.62 3.63h-20.54c-2.02 0-3.62-1.63-3.62-3.68v-20.47z' fill='url(#_2jyroc1)' stroke='#484848' stroke-width='0.1579'/><path d='m20.02 13.06c-3.47 0-5.82 2.68-5.82 5.94 0 3.66 2.76 5.63 5.82 5.63 2.66 0 4.95-1.72 5.33-3.64h-2.5c-0.47 0.96-1.74 1.53-2.92 1.53-1.72-0.03-3.27-1.22-3.29-2.93h9.02c0.15-3.01-1.45-6.53-5.64-6.53zm-3.28 4.73c0.23-1.52 1.58-2.66 3.19-2.66 1.68 0 2.99 1.17 3.14 2.66h-6.33z' fill='#FFFFFF'/></svg>"
+  },
+  {
     "name": "@emerald-ui",
     "homepage": "https://emerald-ui.com",
     "url": "https://emerald-ui.com/r/{name}.json",
