@@ -469,7 +469,7 @@
   }
 
   .cn-accordion-trigger {
-    @apply **:data-[slot=accordion-trigger-icon]:text-muted-foreground gap-6 p-4 text-left text-sm font-medium hover:underline **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4;
+    @apply **:data-[slot=accordion-trigger-icon]:text-muted-foreground gap-6 p-4 text-left text-sm font-medium hover:underline **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 *:[svg]:shrink-0 *:[svg:not([class*='size-'])]:size-4 data-[chevron-position=left]:justify-start data-[chevron-position=left]:**:data-[slot=accordion-trigger-icon]:m-0 data-[chevron-position=left]:**:data-[slot=accordion-trigger-icon]:order-first;
   }
 
   .cn-accordion-content {
