@@ -243,8 +243,14 @@ async function addWorkspaceComponents(
       : config
   }
 
+  const targetKeyByFile = getTargetKeyByFile(
+    tree.files ?? [],
+    getTargetConfigKeyForFile,
+    getTargetConfigForKey
+  )
+
   for (const file of tree.files ?? []) {
-    const targetKey = getTargetConfigKeyForFile(file)
+    const targetKey = targetKeyByFile.get(file)!
     if (!filesByTarget.has(targetKey)) {
       filesByTarget.set(targetKey, [])
     }
@@ -255,9 +261,7 @@ async function addWorkspaceComponents(
     const targetFiles = filesByTarget.get(targetKey)!
     const targetConfig = getTargetConfigForKey(targetKey)
     const plannedFiles = (tree.files ?? []).filter((file) => {
-      const fileTargetConfig = getTargetConfigForKey(
-        getTargetConfigKeyForFile(file)
-      )
+      const fileTargetConfig = getTargetConfigForKey(targetKeyByFile.get(file)!)
 
       return (
         fileTargetConfig.resolvedPaths.cwd === targetConfig.resolvedPaths.cwd
@@ -392,6 +396,52 @@ async function addWorkspaceComponents(
   if (tree.docs) {
     logger.info(tree.docs)
   }
+}
+
+// A hook or lib imported only by files in another workspace is written there,
+// since those files' imports are rewritten with that workspace's aliases.
+// e.g. sidebar.tsx goes to packages/ui and imports use-mobile, which the app's
+// hooks alias would otherwise put in the app.
+function getTargetKeyByFile(
+  files: z.infer<typeof registryItemFileSchema>[],
+  getTargetKey: (
+    file: z.infer<typeof registryItemFileSchema>
+  ) => TargetAliasKey,
+  getTargetConfig: (key: TargetAliasKey) => z.infer<typeof configSchema>
+) {
+  const targetKeyByFile = new Map(
+    files.map((file) => [file, getTargetKey(file)])
+  )
+
+  for (const file of files) {
+    if (
+      file.target ||
+      (file.type !== "registry:hook" && file.type !== "registry:lib")
+    ) {
+      continue
+    }
+
+    const specifier = `@/${file.path.replace(/\.[^/.]+$/, "")}`
+    const importerKeys = files
+      .filter(
+        (importer) =>
+          importer !== file &&
+          (importer.content?.includes(`"${specifier}"`) ||
+            importer.content?.includes(`'${specifier}'`))
+      )
+      .map((importer) => targetKeyByFile.get(importer)!)
+    const importerCwds = new Set(
+      importerKeys.map((key) => getTargetConfig(key).resolvedPaths.cwd)
+    )
+    const fileCwd = getTargetConfig(targetKeyByFile.get(file)!).resolvedPaths
+      .cwd
+
+    if (importerCwds.size === 1 && !importerCwds.has(fileCwd)) {
+      targetKeyByFile.set(file, importerKeys[0])
+    }
+  }
+
+  return targetKeyByFile
 }
 
 async function resolveAndValidateRegistryTree(
