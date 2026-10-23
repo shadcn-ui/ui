@@ -264,6 +264,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='1' y='1' width='30' height='30' rx='9' fill='var(--foreground)'/><path d='M21.6 11.3A7.4 7.4 0 1 0 21.6 20.7' fill='none' stroke='var(--background)' stroke-width='2.6' stroke-linecap='round'/><circle cx='21.6' cy='11.3' r='2.3' fill='var(--background)'/></svg>"
   },
   {
+    "name": "@creative-ui",
+    "homepage": "https://ui.krutikraut.com",
+    "url": "https://ui.krutikraut.com/r/{name}.json",
+    "description": "Creative components and Claude Code skills by Krutik Raut. Install UI blocks or drop a full design skill into .claude/skills with one shadcn command.",
+    "author": "Krutik Raut",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='var(--foreground)'/><path d='M14.8017 23C13.011 23 11.5939 22.5082 10.5502 21.5246C9.51673 20.541 9 19.1427 9 17.3298C9 16.1244 9.19441 14.972 9.58323 13.8727C9.98229 12.7637 10.5348 11.7801 11.2408 10.9219C11.9469 10.0636 12.8371 9.36451 13.9115 8.82449C14.9961 8.27483 16.1983 8 17.5183 8C18.9815 8 20.0917 8.29412 20.8489 8.88235C21.6163 9.46095 22 10.1938 22 11.081C22 11.7464 21.8312 12.3298 21.4935 12.8312C21.1661 13.3327 20.6698 13.5834 20.0047 13.5834C19.4522 13.5834 19.0378 13.4532 18.7615 13.1929C18.4852 12.9325 18.3471 12.6432 18.3471 12.325C18.3471 12.0164 18.4597 11.5969 18.6848 11.0665C18.9099 10.5265 19.0889 10.0926 19.222 9.76471C19.1094 9.50434 18.8587 9.3163 18.4699 9.20058C18.0811 9.07522 17.6769 9.01254 17.2574 9.01254C15.8658 9.01254 14.6635 9.77917 13.6505 11.3124C12.6478 12.8361 12.1464 14.7068 12.1464 16.9248C12.1464 18.2941 12.4687 19.3838 13.1133 20.1938C13.7682 20.9942 14.6482 21.3944 15.7532 21.3944C16.7458 21.3944 17.6257 21.1437 18.3932 20.6422C19.1708 20.1408 19.9126 19.432 20.6187 18.5159L21.4935 19.1234C20.7875 20.1745 19.8257 21.0858 18.608 21.8573C17.4006 22.6191 16.1318 23 14.8017 23Z' fill='var(--background)'/><circle cx='24.5' cy='24.5' r='2.5' fill='#fbbf24'/></svg>"
+  },
+  {
     "name": "@crucible",
     "homepage": "https://crucibleui.com",
     "url": "https://crucibleui.com/r/{name}.json",
