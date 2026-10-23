@@ -1527,6 +1527,329 @@ describe("Questionnaire", () => {
     expect(onSubmit).toHaveBeenCalledOnce()
   })
 
+  it("does not auto-submit a choice without autoSubmit", async () => {
+    await renderQuestionnaire()
+    await choose("scope-delegation")
+
+    expect(item("scope").hasAttribute("data-active")).toBe(true)
+    expect(item("detail").hasAttribute("data-active")).toBe(false)
+  })
+
+  it("auto-submits a radio choice and advances to the next item", async () => {
+    await act(async () => {
+      root.render(
+        <Questionnaire.Root data-testid="root" defaultItem="first">
+          <TestItem autoSubmit required name="first" />
+          <TestItem required name="second" />
+          <Questionnaire.Next data-testid="next" />
+        </Questionnaire.Root>
+      )
+    })
+
+    await choose("first-choice")
+
+    expect(item("second").hasAttribute("data-active")).toBe(true)
+    expect(document.activeElement).toBe(item("second"))
+  })
+
+  it("auto-submits the last item by submitting the form", async () => {
+    const onSubmit = vi.fn((event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault()
+    })
+
+    await act(async () => {
+      root.render(
+        <Questionnaire.Root
+          data-testid="root"
+          defaultItem="only"
+          onSubmit={onSubmit}
+        >
+          <TestItem autoSubmit required name="only" />
+          <Questionnaire.Submit data-testid="submit" />
+        </Questionnaire.Root>
+      )
+    })
+
+    await choose("only-choice")
+
+    expect(onSubmit).toHaveBeenCalledOnce()
+    expect(item("only").hasAttribute("data-active")).toBe(true)
+  })
+
+  it("auto-submits a multiple item only when the predicate passes", async () => {
+    await act(async () => {
+      root.render(
+        <Questionnaire.Root data-testid="root" defaultItem="signals">
+          <Questionnaire.Item
+            autoSubmit={(value) => value.length > 1}
+            data-testid="signals"
+            multiple
+            name="signals"
+            required
+          >
+            <Questionnaire.Title>Signals</Questionnaire.Title>
+            <TestChoice data-testid="progress" value="progress">
+              Progress
+            </TestChoice>
+            <TestChoice data-testid="risks" value="risks">
+              Risks
+            </TestChoice>
+          </Questionnaire.Item>
+          <TestItem required name="next" />
+          <Questionnaire.Next data-testid="next" />
+        </Questionnaire.Root>
+      )
+    })
+
+    await choose("progress")
+
+    expect(item("signals").hasAttribute("data-active")).toBe(true)
+    expect(new FormData(form()).getAll("signals")).toEqual(["progress"])
+
+    await choose("risks")
+
+    expect(item("next").hasAttribute("data-active")).toBe(true)
+    expect(new FormData(form()).getAll("signals")).toEqual(["progress", "risks"])
+  })
+
+  it("auto-submits a multiple item on the first choice when autoSubmit is true", async () => {
+    await act(async () => {
+      root.render(
+        <Questionnaire.Root data-testid="root" defaultItem="signals">
+          <Questionnaire.Item
+            autoSubmit
+            data-testid="signals"
+            multiple
+            name="signals"
+            required
+          >
+            <Questionnaire.Title>Signals</Questionnaire.Title>
+            <TestChoice data-testid="progress" value="progress">
+              Progress
+            </TestChoice>
+            <TestChoice data-testid="risks" value="risks">
+              Risks
+            </TestChoice>
+          </Questionnaire.Item>
+          <TestItem required name="next" />
+        </Questionnaire.Root>
+      )
+    })
+
+    await choose("progress")
+
+    expect(item("next").hasAttribute("data-active")).toBe(true)
+  })
+
+  it("does not auto-submit when arrow keys browse radios", async () => {
+    await act(async () => {
+      root.render(
+        <Questionnaire.Root data-testid="root" defaultItem="first">
+          <Questionnaire.Item autoSubmit data-testid="first" name="first" required>
+            <Questionnaire.Title>First</Questionnaire.Title>
+            <TestChoice data-testid="first-choice" value="first">
+              First
+            </TestChoice>
+            <TestChoice data-testid="first-other" value="other">
+              Other
+            </TestChoice>
+          </Questionnaire.Item>
+          <TestItem required name="second" />
+        </Questionnaire.Root>
+      )
+    })
+
+    item("first").focus()
+    await keydown(item("first"), "ArrowDown")
+
+    expect(choiceInput("first-choice").checked).toBe(true)
+    expect(item("first").hasAttribute("data-active")).toBe(true)
+    expect(item("second").hasAttribute("data-active")).toBe(false)
+  })
+
+  it("auto-submits when a shortcut selects a choice", async () => {
+    await act(async () => {
+      root.render(
+        <Questionnaire.Root
+          data-testid="root"
+          defaultItem="first"
+          shortcuts="letters"
+        >
+          <TestItem autoSubmit required name="first" />
+          <TestItem required name="second" />
+        </Questionnaire.Root>
+      )
+    })
+
+    await keydown(choiceInput("first-choice"), "a")
+
+    expect(choiceInput("first-choice").checked).toBe(true)
+    expect(item("second").hasAttribute("data-active")).toBe(true)
+  })
+
+  it("does not auto-submit from defaultChecked or freeform typing", async () => {
+    const onSubmit = vi.fn((event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault()
+    })
+
+    await act(async () => {
+      root.render(
+        <Questionnaire.Root
+          data-testid="root"
+          defaultItem="first"
+          onSubmit={onSubmit}
+        >
+          <Questionnaire.Item autoSubmit data-testid="first" name="first" required>
+            <Questionnaire.Title>First</Questionnaire.Title>
+            <TestChoice
+              data-testid="first-choice"
+              defaultChecked
+              value="first"
+            >
+              First
+            </TestChoice>
+            <Questionnaire.Input
+              data-testid="first-input"
+              aria-label="Another answer"
+            />
+          </Questionnaire.Item>
+          <TestItem required name="second" />
+        </Questionnaire.Root>
+      )
+    })
+
+    expect(item("first").hasAttribute("data-active")).toBe(true)
+    expect(choiceInput("first-choice").checked).toBe(true)
+    expect(onSubmit).not.toHaveBeenCalled()
+
+    await type(freeform("first-input"), "A custom answer")
+
+    expect(item("first").hasAttribute("data-active")).toBe(true)
+    expect(item("second").hasAttribute("data-active")).toBe(false)
+  })
+
+  it("does not leave an invalid autoSubmit item", async () => {
+    await act(async () => {
+      root.render(
+        <Questionnaire.Root data-testid="root" defaultItem="first">
+          <Questionnaire.Item
+            autoSubmit
+            data-testid="first"
+            invalid
+            name="first"
+            required
+          >
+            <Questionnaire.Title>First</Questionnaire.Title>
+            <TestChoice data-testid="first-choice" value="first">
+              First
+            </TestChoice>
+            <Questionnaire.Error data-testid="first-error" />
+          </Questionnaire.Item>
+          <TestItem required name="second" />
+        </Questionnaire.Root>
+      )
+    })
+
+    await choose("first-choice")
+
+    expect(item("first").hasAttribute("data-active")).toBe(true)
+    expect(item("first").getAttribute("aria-invalid")).toBe("true")
+    expect(item("second").hasAttribute("data-active")).toBe(false)
+  })
+
+  it("auto-submits again after returning to a previous item", async () => {
+    await act(async () => {
+      root.render(
+        <Questionnaire.Root data-testid="root" defaultItem="first">
+          <Questionnaire.Item
+            autoSubmit
+            data-testid="first"
+            name="first"
+            required
+          >
+            <Questionnaire.Title>First</Questionnaire.Title>
+            <TestChoice data-testid="first-choice" value="first">
+              First
+            </TestChoice>
+            <TestChoice data-testid="first-other" value="other">
+              Other
+            </TestChoice>
+          </Questionnaire.Item>
+          <TestItem required name="second" />
+          <Questionnaire.Previous data-testid="previous" />
+        </Questionnaire.Root>
+      )
+    })
+
+    await choose("first-choice")
+    await click(previous())
+    await choose("first-other")
+
+    expect(item("second").hasAttribute("data-active")).toBe(true)
+  })
+
+  it("stays on a multiple item when unchecking makes the predicate fail", async () => {
+    await act(async () => {
+      root.render(
+        <Questionnaire.Root data-testid="root" defaultItem="signals">
+          <Questionnaire.Item
+            autoSubmit={(value) => value.length > 1}
+            data-testid="signals"
+            multiple
+            name="signals"
+            required
+          >
+            <Questionnaire.Title>Signals</Questionnaire.Title>
+            <TestChoice data-testid="progress" value="progress">
+              Progress
+            </TestChoice>
+            <TestChoice data-testid="risks" value="risks">
+              Risks
+            </TestChoice>
+          </Questionnaire.Item>
+          <TestItem required name="next" />
+        </Questionnaire.Root>
+      )
+    })
+
+    await choose("progress")
+    await choose("progress")
+
+    expect(item("signals").hasAttribute("data-active")).toBe(true)
+    expect(choiceInput("progress").checked).toBe(false)
+  })
+
+  it("auto-submits a controlled choice after a user change", async () => {
+    function ControlledAutoSubmitQuestionnaire() {
+      const [checked, setChecked] = React.useState(false)
+
+      return (
+        <Questionnaire.Root data-testid="root" defaultItem="first">
+          <Questionnaire.Item autoSubmit data-testid="first" name="first" required>
+            <Questionnaire.Title>First</Questionnaire.Title>
+            <TestChoice
+              data-testid="first-choice"
+              checked={checked}
+              value="first"
+              onChange={(event) => setChecked(event.target.checked)}
+            >
+              First
+            </TestChoice>
+          </Questionnaire.Item>
+          <TestItem required name="second" />
+        </Questionnaire.Root>
+      )
+    }
+
+    await act(async () => {
+      root.render(<ControlledAutoSubmitQuestionnaire />)
+    })
+
+    await choose("first-choice")
+
+    expect(item("second").hasAttribute("data-active")).toBe(true)
+  })
+
   it("does not handle modified, repeated, prevented, or composing keys", async () => {
     const onSubmit = vi.fn((event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault()
