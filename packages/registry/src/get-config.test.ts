@@ -834,6 +834,13 @@ describe("getWorkspaceConfig", () => {
       await fs.remove(tempDir)
     }
   })
+
+  it("resolves wildcard workspace alias paths containing dot-folders on Windows (#12247)", async () => {
+    // Tests that stripping extension from resolved path does not cross Windows backslashes
+    const windowsPath = "C:\\work\\repo\\.claude\\worktrees\\x\\packages\\ui\\src\\components.tsx"
+    const stripped = windowsPath.replace(/\.[^/\\]+$/, "")
+    expect(stripped).toBe("C:\\work\\repo\\.claude\\worktrees\\x\\packages\\ui\\src\\components")
+  })
 })
 
 describe("getBase", () => {

@@ -157,7 +157,7 @@ function normalizeTarget(target: string) {
   return target
     .replace(/\/\*$/, "")
     .replace(/\*$/, "")
-    .replace(/\/index\.[^/]+$/, "")
+    .replace(/[/\\]index\.[^/\\]+$/, "")
 }
 
 function includesPathSegment(value: string, segment: string) {
