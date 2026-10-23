@@ -991,6 +991,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><path id='fancy-ui-mk' d='M16 3Q16.7 15.3 29 16Q16.7 16.7 16 29Q15.3 16.7 3 16Q15.3 15.3 16 3Z'/><linearGradient id='fancy-ui-spark' x1='0' y1='0.5' x2='1' y2='0.5'><stop offset='0' stop-color='#d22374'/><stop offset='0.25' stop-color='#fd4ba0'/><stop offset='0.375' stop-color='#c128c1'/><stop offset='0.5' stop-color='#6f27f7'/><stop offset='0.625' stop-color='#4537f7'/><stop offset='0.75' stop-color='#487df9'/><stop offset='0.875' stop-color='#71e8fc'/><stop offset='1' stop-color='#8ff0fe'/></linearGradient><linearGradient id='fancy-ui-verts' x1='0.5' y1='0' x2='0.5' y2='1'><stop offset='0' stop-color='#faebfd' stop-opacity='0.92'/><stop offset='0.27' stop-color='#cd50fb' stop-opacity='0.6'/><stop offset='0.4' stop-color='#912ffa' stop-opacity='0'/><stop offset='0.6' stop-color='#8322f8' stop-opacity='0'/><stop offset='0.73' stop-color='#bf2ffa' stop-opacity='0.6'/><stop offset='1' stop-color='#fdd8fd' stop-opacity='0.92'/></linearGradient><radialGradient id='fancy-ui-tips' cx='0.5' cy='0.5' r='0.5'><stop offset='0.5' stop-color='#fff' stop-opacity='0'/><stop offset='1' stop-color='#fff' stop-opacity='0.8'/></radialGradient></defs><use href='#fancy-ui-mk' fill='url(#fancy-ui-spark)'/><use href='#fancy-ui-mk' fill='url(#fancy-ui-verts)'/><use href='#fancy-ui-mk' fill='url(#fancy-ui-tips)'/></svg>"
   },
   {
+    "name": "@fewtone",
+    "homepage": "https://ui.fewtone.com",
+    "url": "https://ui.fewtone.com/r/{name}.json",
+    "description": "Accessible, customizable React components for Next.js and Tailwind CSS, built on Radix with smooth motion.",
+    "author": "FewTone",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 42 30' fill='var(--foreground)'><path d='M0.01 29.99L0.01 10.42C0.01 10.42 10.1 10.15 11.19 11.49C12.29 12.83 8.03 13.84 8.03 16.09C8.03 18.34 11.19 20.48 11.19 20.48L11.19 29.99L0.01 29.99Z'/><path d='M0 12.96L0 0L29.27 0C29.27 0 29.82 7.09 25.21 8.73C20.59 10.36 14.49 7.21 10.97 8.73C7.45 10.24 12.82 11.03 10.97 12.63C9.11 14.23 0 12.96 0 12.96Z'/><path d='M41.7 0V19.58C41.7 19.58 31.61 19.85 30.52 18.5C29.42 17.16 33.68 16.15 33.68 13.9C33.68 11.65 30.52 9.51 30.52 9.51L30.52 0L41.7 0Z'/><path d='M41.7 17.03V30L12.43 30C12.43 30 11.88 22.91 16.49 21.27C21.11 19.63 27.21 22.79 30.73 21.27C34.25 19.76 28.88 18.97 30.73 17.37C32.59 15.77 41.7 17.03 41.7 17.03Z'/></svg>"
+  },
+  {
     "name": "@fibo",
     "homepage": "https://fibo.toribryan.com",
     "url": "https://fibo.toribryan.com/r/{name}.json",
@@ -2970,6 +2978,14 @@
     "url": "https://trytweenly.vercel.app/r/{name}.json",
     "description": "Animated React components built on Motion and GSAP. Tweak every prop live, copy the code, and own it.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='7' fill='var(--foreground)'/><circle cx='15' cy='15' r='6' fill='#ff4d12'/></svg>"
+  },
+  {
+    "name": "@twelfth",
+    "homepage": "https://ui.twelfth.ai",
+    "url": "https://ui.twelfth.ai/r/{name}.json",
+    "description": "Components for category managers and retail buying teams: price position, sales vs forecast with P10–P90 bands, weeks of cover, pricing scoreboards and micro charts. Built by Twelfth.",
+    "author": "Twelfth",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect x='3' y='15' width='18' height='18' rx='4' fill='var(--foreground)'/><rect x='27' y='15' width='18' height='18' rx='4' fill='var(--foreground)'/><rect x='51' y='15' width='18' height='18' rx='4' fill='var(--foreground)'/><rect x='75' y='15' width='18' height='18' rx='4' fill='var(--foreground)'/><rect x='3' y='39' width='18' height='18' rx='4' fill='var(--foreground)'/><rect x='27' y='39' width='18' height='18' rx='4' fill='var(--foreground)'/><rect x='51' y='39' width='18' height='18' rx='4' fill='var(--foreground)'/><rect x='75' y='39' width='18' height='18' rx='4' fill='var(--foreground)'/><rect x='3' y='63' width='18' height='18' rx='4' fill='var(--foreground)'/><rect x='27' y='63' width='18' height='18' rx='4' fill='var(--foreground)'/><rect x='51' y='63' width='18' height='18' rx='4' fill='var(--foreground)'/><circle cx='84' cy='72' r='9' fill='#c8a24b'/></svg>"
   },
   {
     "name": "@typedora-ui",
