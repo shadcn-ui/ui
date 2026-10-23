@@ -27,7 +27,7 @@
     "@tanstack/devtools-vite": "latest",
     "@tanstack/eslint-config": "latest",
     "@tanstack/router-cli": "^1.167.39",
-    "@types/node": "^20",
+    "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^6",
