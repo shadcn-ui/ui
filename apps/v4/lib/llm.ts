@@ -97,7 +97,7 @@ export function processMdxForLLMs(content: string, style: Style["name"]) {
         return match
       }
 
-      let source = fs.readFileSync(src, "utf8")
+      let source = fs.readFileSync(/* turbopackIgnore: true */ src, "utf8")
 
       // Replace all base-specific paths.
       for (const base of BASES) {
