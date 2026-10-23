@@ -6,9 +6,19 @@ import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 import { Select as SelectPrimitive } from "radix-ui"
 
 function Select({
+  onValueChange,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Root>) {
-  return <SelectPrimitive.Root data-slot="select" {...props} />
+  return (
+    <SelectPrimitive.Root
+      data-slot="select"
+      {...props}
+      onValueChange={(value) => {
+        if (value === "") return
+        onValueChange?.(value)
+      }}
+    />
+  )
 }
 
 function SelectGroup({
