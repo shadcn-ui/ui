@@ -64,8 +64,8 @@ export default function FormRhfTextarea() {
           Customize your experience by telling us more about yourself.
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <form id="form-rhf-textarea" onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
+        <CardContent>
           <FieldGroup>
             <Controller
               name="about"
@@ -93,18 +93,18 @@ export default function FormRhfTextarea() {
               )}
             />
           </FieldGroup>
-        </form>
-      </CardContent>
-      <CardFooter>
-        <Field orientation="horizontal">
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
-            Reset
-          </Button>
-          <Button type="submit" form="form-rhf-textarea">
-            Save
-          </Button>
-        </Field>
-      </CardFooter>
+        </CardContent>
+        <CardFooter>
+          <Field orientation="horizontal">
+            <Button type="button" variant="outline" onClick={() => form.reset()}>
+              Reset
+            </Button>
+            <Button type="submit">
+              Save
+            </Button>
+          </Field>
+        </CardFooter>
+      </form>
     </Card>
   )
 }
