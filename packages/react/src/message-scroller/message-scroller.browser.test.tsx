@@ -311,6 +311,103 @@ test("keeps the end pinned when bulk appending anchored turns with autoScroll", 
   expect(getDistanceToBottom(viewport)).toBeLessThanOrEqual(1)
 })
 
+test("does not yank an anchored turn to the bottom on placement with autoScroll", async () => {
+  const initial = createItems(6)
+
+  await renderThread({ autoScroll: true, items: initial })
+
+  const viewport = getViewport()
+
+  expect(getDistanceToBottom(viewport)).toBeLessThanOrEqual(1)
+
+  // Place an anchored turn with a short reply. The placement scrolls
+  // programmatically; in a real browser that fires a scroll event, and the
+  // drain must not collapse the reserved tail spacer. The old code yanked the
+  // turn to the live edge on every placement - jsdom cannot see this because
+  // programmatic scrolls do not fire scroll events there.
+  flushSync(() => {
+    root!.render(
+      <Thread
+        autoScroll
+        items={[
+          ...initial,
+          { id: "new-user", scrollAnchor: true },
+          { id: "new-assistant", height: 20 },
+        ]}
+      />
+    )
+  })
+  await settle()
+
+  // The anchored turn sits at the reading line (peek above), not at the live
+  // edge: the reserved spacer room is still below it.
+  expect(viewportOffsetOf("new-user", viewport)).toBeLessThanOrEqual(65)
+
+  const spacer = document.querySelector(
+    "[data-message-scroller-spacer]"
+  ) as HTMLElement
+  expect(spacer.hidden).toBe(false)
+})
+
+test("drains a released spacer after a manual scroll during an anchored stream", async () => {
+  const initial = createItems(6)
+
+  await renderThread({ autoScroll: true, items: initial })
+
+  const viewport = getViewport()
+
+  // Place an anchored turn with a short reply.
+  flushSync(() => {
+    root!.render(
+      <Thread
+        autoScroll
+        items={[
+          ...initial,
+          { id: "new-user", scrollAnchor: true },
+          { id: "new-assistant", height: 20 },
+        ]}
+      />
+    )
+  })
+  await settle()
+
+  expect(viewportOffsetOf("new-user", viewport)).toBeLessThanOrEqual(65)
+
+  // A manual scroll releases the anchor and strands the reserved tail spacer.
+  viewport.dispatchEvent(new WheelEvent("wheel", { bubbles: true, deltaY: 20 }))
+  viewport.scrollTop += 20
+  viewport.dispatchEvent(new Event("scroll", { bubbles: true }))
+  await settle()
+
+  const scrollTopAfterRelease = getScrollTop(viewport)
+
+  // The reply grows below the released anchor. The drain must not collapse the
+  // spacer in one frame (the yank) nor freeze it forever: the reader keeps
+  // their place while the reply fills the reserved room.
+  flushSync(() => {
+    root!.render(
+      <Thread
+        autoScroll
+        items={[
+          ...initial,
+          { id: "new-user", scrollAnchor: true },
+          { id: "new-assistant", height: 200 },
+        ]}
+      />
+    )
+  })
+  await settle()
+
+  expect(getScrollTop(viewport)).toBe(scrollTopAfterRelease)
+
+  // Scrolling to the real bottom finishes the drain and re-engages following.
+  viewport.scrollTop = viewport.scrollHeight
+  viewport.dispatchEvent(new Event("scroll", { bubbles: true }))
+  await settle()
+
+  expect(getDistanceToBottom(viewport)).toBeLessThanOrEqual(1)
+})
+
 test("does not keep the end pinned when appending after the default bottom open", async () => {
   const initial = createItems(6)
 
