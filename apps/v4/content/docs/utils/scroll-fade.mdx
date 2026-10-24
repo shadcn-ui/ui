@@ -159,7 +159,11 @@ Use `scroll-fade-none` to remove the fade. It works in any class order, so the t
 
 ## Fallback
 
-The scroll-aware behavior is implemented with [CSS scroll-driven animations](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll-driven_animations), with no JavaScript and no scroll listeners. In browsers that do not support scroll-driven animations, `scroll-fade` falls back to a static fade on both edges, and edge utilities fall back to a static fade on the selected edge.
+The scroll-aware behavior is implemented with [CSS scroll-driven animations](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll-driven_animations), with no JavaScript and no scroll listeners. Firefox has not shipped scroll-driven animations yet, so it needs a fallback.
+
+Inside a [`ScrollArea`](/docs/components/scroll-area), apply `scroll-fade` to the viewport. It publishes how far the content extends past each edge as `--scroll-area-overflow-{x,y}-{start,end}`, and `scroll-fade` reads those variables when scroll-driven animations are unavailable. The fade stays fully scroll-aware there, and "no overflow, no fade" still holds. Those variables are registered with `inherits: false`, so they resolve on the viewport itself and not on its descendants.
+
+On a bare scroll container the fade is simply not shown, because there is no way to measure overflow in CSS alone. Reach for `ScrollArea` if you want the fade in every browser.
 
 Since the mask is applied to the scroll container itself, a visible scrollbar fades with the content at the edges. Pair `scroll-fade` with `no-scrollbar`, which ships in the same package, if you want to hide the scrollbar entirely.
 
