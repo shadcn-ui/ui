@@ -13,6 +13,12 @@ export {
 } from "@/src/registry/resolve-file-imports"
 
 export function isUrl(path: string) {
+  // `new URL()` parses Windows drive paths such as `C:\path\to\item.json` as
+  // URLs with a `c:` scheme. Treat them as local paths instead.
+  if (/^[a-zA-Z]:[\\/]/.test(path)) {
+    return false
+  }
+
   try {
     new URL(path)
     return true
