@@ -1113,6 +1113,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4'/><g stroke='var(--foreground)' fill='none' stroke-linecap='round' stroke-linejoin='round'><path d='M6.72 4.36v2.36M27.96 25.6H25.6m-4.13 0H13.8c-3.337 0-5.007 0-6.043-1.037S6.72 21.857 6.72 18.52v-7.67M25.6 27.96v-11.8c0-4.45 0-6.675-1.383-8.057S20.61 6.72 16.16 6.72H4.36' stroke-width='1.77'/><path d='m21.824 16.16-5.664 5.664M20.691 9.93 9.93 20.69' stroke-width='2.266'/></g></svg>"
   },
   {
+    "name": "@fun-loader",
+    "homepage": "https://vectorchi.github.io/fun-loader/",
+    "url": "https://vectorchi.github.io/fun-loader/r/{name}.json",
+    "description": "Rotating, playful loading messages for AI responses and other slow tasks, themed with your tokens. The lines change when the wait runs long.",
+    "author": "VectorChi",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='11 11 27 27' fill='var(--foreground)'><path d='M37 35h-6a13 13 0 1 0-7 2h13a1 1 0 0 0 0-2M24 13q3 0 5.5 1.5-1.8.7-3.5 1.9-2.7-1.7-5.6-2.8A11 11 0 0 1 24 13m-6.2 1.9q3.4.9 6.4 2.7l-2.4 2q-3-1.6-6.6-2.2a11 11 0 0 1 2.6-2.5m-3.7 4.3q3.2.5 6.2 2l-2 2.4Q16 22.4 13.2 22q.1-1.5.9-2.9m-1.1 5q2.2.2 4.2 1-1.4 2.4-2.4 4.9a11 11 0 0 1-1.8-6m3.3 7.7a26 26 0 0 1 15-16q1.3 1 2.1 2.4a23 23 0 0 0-14.5 15.4 11 11 0 0 1-2.6-1.8m7.4 3.1q-1.5 0-3-.5a21 21 0 0 1 13.6-14.4q.5 1.5.7 3A18 18 0 0 0 23.7 35M35 25.2a11 11 0 0 1-9 9.6 16 16 0 0 1 9-9.6'/></svg>"
+  },
+  {
     "name": "@gaia",
     "homepage": "https://ui.heygaia.io",
     "url": "https://ui.heygaia.io/r/{name}.json",
