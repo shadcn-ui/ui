@@ -2050,6 +2050,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' class='fill-none!' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/></svg>"
   },
   {
+    "name": "@ouro",
+    "homepage": "https://ourostack.github.io/ouro-ui",
+    "url": "https://ourostack.github.io/ouro-ui/r/{name}.json",
+    "description": "Human-facing React components built on Base UI and Tailwind CSS, with agent-readable contracts and optional tests.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><path d='M19.5 12a7.5 7.5 0 1 1-2.2-5.3' stroke='currentColor' stroke-width='2.25' stroke-linecap='round'/><circle cx='18.6' cy='8.4' r='2' fill='currentColor'/></svg>"
+  },
+  {
     "name": "@paceui",
     "homepage": "https://paceui.com",
     "url": "https://paceui.com/r/{name}.json",
