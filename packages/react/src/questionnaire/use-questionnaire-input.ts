@@ -32,6 +32,8 @@ function useQuestionnaireInput({
   } = useQuestionnaireItemContext("Questionnaire.Input")
   const answerId = React.useId()
   const inputRef = React.useRef<HTMLInputElement | null>(null)
+  const [inputElement, setInputElement] =
+    React.useState<HTMLInputElement | null>(null)
   const initialDefaultFilledRef = React.useRef(hasInputValue(defaultValue))
   const controlled = controlledValue !== undefined
   const defaultFilled = hasInputValue(defaultValue)
@@ -52,19 +54,17 @@ function useQuestionnaireInput({
   )
 
   React.useLayoutEffect(() => {
-    const input = inputRef.current
-
-    if (!input) {
+    if (!inputElement) {
       return
     }
 
     return registerAnswerControl({
       disabled,
-      element: input,
+      element: inputElement,
       id: answerId,
       type: "input",
     })
-  }, [disabled, answerId, registerAnswerControl])
+  }, [disabled, answerId, inputElement, registerAnswerControl])
 
   React.useLayoutEffect(() => {
     if (controlled) {
@@ -120,6 +120,7 @@ function useQuestionnaireInput({
   const setInputRef = React.useCallback(
     (element: HTMLInputElement | null) => {
       inputRef.current = element
+      setInputElement(element)
       composeRefs(ref)?.(element)
     },
     [ref]
