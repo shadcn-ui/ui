@@ -59,7 +59,7 @@ const translations: Translations = {
       open: "افتح القائمة",
       account: "الحساب",
       profile: "الملف الشخصي",
-      billing: "الفوترة",
+      billing: "الفاتورة",
       settings: "الإعدادات",
       logout: "تسجيل الخروج",
       team: "الفريق",
