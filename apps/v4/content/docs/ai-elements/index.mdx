@@ -7,6 +7,8 @@ AI Elements are patterns for building agentic interfaces. Each one is a composit
 
 A [Chat](/docs/ai-elements/base/chat) is a list of [Message](/docs/ai-elements/base/message) turns inside a [Message Scroller](/docs/components/base/message-scroller). The steps an agent takes inside a turn, like [Reasoning](/docs/ai-elements/base/reasoning), [Tool](/docs/ai-elements/base/tool) and [Plan](/docs/ai-elements/base/plan), are built on [Trace](/docs/components/base/trace), so every step has the same shape.
 
+**Building a chatbot?** Start from the [chatbot template](https://github.com/shadcn-ui/chatbot-template). It is a Next.js app built with the AI SDK and shadcn/ui, with streaming chat, tool calls, web search and clarifying questions.
+
 **Coming from [elements.ai-sdk.dev](https://elements.ai-sdk.dev)?** See [Migrating from AI SDK Elements](#migrating-from-ai-sdk-elements).
 
 ## Patterns
@@ -276,7 +278,7 @@ Your copy keeps working. If you still need one of these, [open an issue](https:/
 
 ### New projects
 
-Build from shadcn/ui components instead.
+Build from shadcn/ui components instead. For a chatbot, start from the [chatbot template](https://github.com/shadcn-ui/chatbot-template).
 
 <Steps>
 
