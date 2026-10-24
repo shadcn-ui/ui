@@ -7,6 +7,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='var(--foreground)'><path fill-rule='evenodd' d='M58 9C77 10 87 27 86 45C84 66 63 87 43 86C25 85 10 71 10 52C10 33 36 7 58 9ZM56 30C47 27 35 36 31 47C26 60 32 70 40 69C52 68 64 54 65 43C66 37 62 32 56 30Z'/></svg>"
   },
   {
+    "name": "@0nlytype",
+    "homepage": "https://thedirectors.agency/ui",
+    "url": "https://thedirectors.agency/ui/r/{name}.json",
+    "description": "A component library made of type and nothing else: every control, sign and ornament is set in words. Two typefaces, one accent and a great deal of space.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='var(--foreground)'><path fill-rule='evenodd' d='M40 12a26 36 0 1 1 0 72a26 36 0 1 1 0-72Zm0 8a18 28 0 1 0 0 56a18 28 0 1 0 0-56Z'/><circle cx='79' cy='78' r='7'/></svg>"
+  },
+  {
     "name": "@1st-pouf",
     "homepage": "https://1st-pouf.worksonmy.dev",
     "url": "https://1st-pouf.worksonmy.dev/r/{name}.json",
