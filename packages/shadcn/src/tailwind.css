@@ -555,7 +555,7 @@
   background-image: var(
     --shimmer-image,
     linear-gradient(
-      calc(90deg + var(--shimmer-angle)),
+      calc(90deg + var(--shimmer-angle, 20deg)),
       var(--_base) calc(50% - var(--_spread)),
       color-mix(in oklch, var(--_highlight), var(--_base) 50%)
         calc(50% - var(--_spread) * 0.5),
