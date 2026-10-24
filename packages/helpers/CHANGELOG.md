@@ -1,5 +1,11 @@
 # @shadcn/helpers
 
+## 0.3.0
+
+### Minor Changes
+
+- [#12307](https://github.com/shadcn-ui/ui/pull/12307) [`4233ed1`](https://github.com/shadcn-ui/ui/commit/4233ed1caded8c38f4bc14b14afe1f93ebcaf966) Thanks [@shadcn](https://github.com/shadcn)! - Add `{ preliminary: true }` to the tool handle's `output()` to stream preliminary tool output.
+
 ## 0.2.0
 
 ### Minor Changes
