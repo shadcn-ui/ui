@@ -9,11 +9,11 @@
     "./react-internal": "./react-internal.js"
   },
   "devDependencies": {
-    "@babel/core": "^8.0.1",
-    "@babel/eslint-parser": "^8.0.1",
-    "@babel/preset-typescript": "^8.0.1",
+    "@babel/core": "^8.0.7",
+    "@babel/eslint-parser": "^8.0.7",
+    "@babel/preset-typescript": "^8.0.7",
     "@eslint/js": "^10",
-    "@next/eslint-plugin-next": "^16.4.0",
+    "@next/eslint-plugin-next": "^16.4.2",
     "eslint": "^10",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-only-warn": "^1.2.1",
