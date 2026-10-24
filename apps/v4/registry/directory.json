@@ -3498,10 +3498,10 @@
     "logo": "<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg' fill='currentColor'><path d='M6.45 5.9L18.23 16L6.45 26.1L3 22.07L10.09 16L3 9.93Z'/><path d='M18.4 20.24H29V24.48H18.4Z'/></svg>"
   },
   {
-    "name": "@agent-ui-kit",
-    "homepage": "https://agent-ui-kit-demo.vercel.app",
-    "url": "https://agent-ui-kit-demo.vercel.app/r/{name}.json",
-    "description": "Accessible React components for agent runs: tool call timeline, human-in-the-loop approvals, per-hunk diff review and run telemetry, typed against AI SDK message parts.",
+    "name": "@signoff-ui",
+    "homepage": "https://signoff-ui.vercel.app",
+    "url": "https://signoff-ui.vercel.app/r/{name}.json",
+    "description": "Review what your agent changed and approve what it may do: multi-file diff review, tool approvals with rules, tool call timeline and run telemetry, for AI SDK and AG-UI agents.",
     "author": "Diogo Esteves",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='var(--foreground)'><rect x='10' y='9' width='2' height='14' opacity='.35'/><circle cx='11' cy='9' r='3'/><circle cx='11' cy='16' r='3'/><circle cx='11' cy='23' r='3'/><rect x='17' y='8' width='9' height='2' rx='1' opacity='.6'/><rect x='17' y='15' width='6' height='2' rx='1' opacity='.6'/><rect x='17' y='22' width='9' height='2' rx='1' opacity='.6'/></svg>"
   },
