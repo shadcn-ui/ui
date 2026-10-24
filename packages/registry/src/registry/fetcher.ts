@@ -2,7 +2,6 @@ import { createHash } from "crypto"
 import { promises as fs } from "fs"
 import { homedir } from "os"
 import path from "path"
-import { resolveRegistryUrl } from "@/src/registry/builder"
 import { getRegistryHeadersFromContext } from "@/src/registry/context"
 import {
   RegistryFetchError,
@@ -15,6 +14,7 @@ import {
 } from "@/src/registry/errors"
 import { fetchWithProxy } from "@/src/registry/proxy"
 import { registryItemSchema } from "@/src/registry/schema"
+import { resolveRegistryUrl } from "@/src/registry/url"
 import { z } from "zod"
 
 const registryCache = new Map<string, Promise<unknown>>()
