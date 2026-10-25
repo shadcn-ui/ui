@@ -109,6 +109,13 @@ describe("isUrl", () => {
     expect(isUrl("")).toBe(false)
     expect(isUrl("just-text")).toBe(false)
   })
+
+  it("should return false for Windows absolute paths", () => {
+    expect(isUrl("C:\\Users\\me\\registry\\button.json")).toBe(false)
+    expect(isUrl("C:/Users/me/registry/button.json")).toBe(false)
+    expect(isUrl("d:\\button.json")).toBe(false)
+    expect(isLocalFile("C:\\Users\\me\\registry\\button.json")).toBe(true)
+  })
 })
 
 describe("isLocalFile", () => {
