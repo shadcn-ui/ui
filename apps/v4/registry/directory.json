@@ -264,6 +264,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='1' y='1' width='30' height='30' rx='9' fill='var(--foreground)'/><path d='M21.6 11.3A7.4 7.4 0 1 0 21.6 20.7' fill='none' stroke='var(--background)' stroke-width='2.6' stroke-linecap='round'/><circle cx='21.6' cy='11.3' r='2.3' fill='var(--background)'/></svg>"
   },
   {
+    "name": "@creative-ui",
+    "homepage": "https://ui.krutikraut.com",
+    "url": "https://ui.krutikraut.com/r/{name}.json",
+    "description": "Creative components and Claude Code skills by Krutik Raut. Install UI blocks or drop a full design skill into .claude/skills with one shadcn command.",
+    "author": "Krutik Raut",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='var(--foreground)'/><path d='M14.8017 23C13.011 23 11.5939 22.5082 10.5502 21.5246C9.51673 20.541 9 19.1427 9 17.3298C9 16.1244 9.19441 14.972 9.58323 13.8727C9.98229 12.7637 10.5348 11.7801 11.2408 10.9219C11.9469 10.0636 12.8371 9.36451 13.9115 8.82449C14.9961 8.27483 16.1983 8 17.5183 8C18.9815 8 20.0917 8.29412 20.8489 8.88235C21.6163 9.46095 22 10.1938 22 11.081C22 11.7464 21.8312 12.3298 21.4935 12.8312C21.1661 13.3327 20.6698 13.5834 20.0047 13.5834C19.4522 13.5834 19.0378 13.4532 18.7615 13.1929C18.4852 12.9325 18.3471 12.6432 18.3471 12.325C18.3471 12.0164 18.4597 11.5969 18.6848 11.0665C18.9099 10.5265 19.0889 10.0926 19.222 9.76471C19.1094 9.50434 18.8587 9.3163 18.4699 9.20058C18.0811 9.07522 17.6769 9.01254 17.2574 9.01254C15.8658 9.01254 14.6635 9.77917 13.6505 11.3124C12.6478 12.8361 12.1464 14.7068 12.1464 16.9248C12.1464 18.2941 12.4687 19.3838 13.1133 20.1938C13.7682 20.9942 14.6482 21.3944 15.7532 21.3944C16.7458 21.3944 17.6257 21.1437 18.3932 20.6422C19.1708 20.1408 19.9126 19.432 20.6187 18.5159L21.4935 19.1234C20.7875 20.1745 19.8257 21.0858 18.608 21.8573C17.4006 22.6191 16.1318 23 14.8017 23Z' fill='var(--background)'/><circle cx='24.5' cy='24.5' r='2.5' fill='#fbbf24'/></svg>"
+  },
+  {
     "name": "@crucible",
     "homepage": "https://crucibleui.com",
     "url": "https://crucibleui.com/r/{name}.json",
@@ -899,6 +907,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round'><rect width='24' height='24' rx='5'/><g stroke='var(--foreground, currentColor)' stroke-width='1.275'><path d='M20.5 16.25a1.7 1.7 0 0 1-1.7 1.7H5.2a1.7 1.7 0 0 1-1.7-1.7V9.875A3.81 3.81 0 0 1 7.325 6.05H17.1c1.87 0 3.4 1.53 3.4 3.4z'/><path d='M7.325 6.05a3.81 3.81 0 0 1 3.825 3.825v6.375a1.7 1.7 0 0 1-1.7 1.7M6.9 10.3h.85m10.115 3.4-2.04 2.04m1.632-4.284-3.876 3.876'/></g></svg>"
   },
   {
+    "name": "@emend",
+    "homepage": "https://getemend.vercel.app",
+    "url": "https://getemend.vercel.app/r/{name}.json",
+    "description": "AI editing components for Tiptap. Add reviewable AI edits to an existing editor or start with a full editor.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><defs><linearGradient id='_2jyroc0' x1='3.724' x2='35.74' y1='3.132' y2='36.21' gradientUnits='userSpaceOnUse'><stop stop-color='#575757' offset='0'/><stop offset='1'/></linearGradient><linearGradient id='_2jyroc1' x1='7.421' x2='31.97' y1='6.434' y2='31.8' gradientUnits='userSpaceOnUse'><stop offset='0'/><stop stop-color='#515151' offset='1'/></linearGradient></defs><rect x='1.719' y='1.652' width='36.56' height='36.72' rx='4.738' fill='url(#_2jyroc0)'/><path d='m6.18 8.74c0-1.96 1.58-3.53 3.53-3.53h20.72c1.96 0 3.53 1.57 3.53 3.53v20.52c0 2.04-1.65 3.63-3.62 3.63h-20.54c-2.02 0-3.62-1.63-3.62-3.68v-20.47z' fill='url(#_2jyroc1)' stroke='#484848' stroke-width='0.1579'/><path d='m20.02 13.06c-3.47 0-5.82 2.68-5.82 5.94 0 3.66 2.76 5.63 5.82 5.63 2.66 0 4.95-1.72 5.33-3.64h-2.5c-0.47 0.96-1.74 1.53-2.92 1.53-1.72-0.03-3.27-1.22-3.29-2.93h9.02c0.15-3.01-1.45-6.53-5.64-6.53zm-3.28 4.73c0.23-1.52 1.58-2.66 3.19-2.66 1.68 0 2.99 1.17 3.14 2.66h-6.33z' fill='#FFFFFF'/></svg>"
+  },
+  {
     "name": "@emerald-ui",
     "homepage": "https://emerald-ui.com",
     "url": "https://emerald-ui.com/r/{name}.json",
@@ -989,6 +1004,14 @@
     "url": "https://fancy-ui.rama.app/r/{name}.json",
     "description": "145 animated React components with motion, glow and sound effects, built with Tailwind CSS v4.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><path id='fancy-ui-mk' d='M16 3Q16.7 15.3 29 16Q16.7 16.7 16 29Q15.3 16.7 3 16Q15.3 15.3 16 3Z'/><linearGradient id='fancy-ui-spark' x1='0' y1='0.5' x2='1' y2='0.5'><stop offset='0' stop-color='#d22374'/><stop offset='0.25' stop-color='#fd4ba0'/><stop offset='0.375' stop-color='#c128c1'/><stop offset='0.5' stop-color='#6f27f7'/><stop offset='0.625' stop-color='#4537f7'/><stop offset='0.75' stop-color='#487df9'/><stop offset='0.875' stop-color='#71e8fc'/><stop offset='1' stop-color='#8ff0fe'/></linearGradient><linearGradient id='fancy-ui-verts' x1='0.5' y1='0' x2='0.5' y2='1'><stop offset='0' stop-color='#faebfd' stop-opacity='0.92'/><stop offset='0.27' stop-color='#cd50fb' stop-opacity='0.6'/><stop offset='0.4' stop-color='#912ffa' stop-opacity='0'/><stop offset='0.6' stop-color='#8322f8' stop-opacity='0'/><stop offset='0.73' stop-color='#bf2ffa' stop-opacity='0.6'/><stop offset='1' stop-color='#fdd8fd' stop-opacity='0.92'/></linearGradient><radialGradient id='fancy-ui-tips' cx='0.5' cy='0.5' r='0.5'><stop offset='0.5' stop-color='#fff' stop-opacity='0'/><stop offset='1' stop-color='#fff' stop-opacity='0.8'/></radialGradient></defs><use href='#fancy-ui-mk' fill='url(#fancy-ui-spark)'/><use href='#fancy-ui-mk' fill='url(#fancy-ui-verts)'/><use href='#fancy-ui-mk' fill='url(#fancy-ui-tips)'/></svg>"
+  },
+  {
+    "name": "@fewtone",
+    "homepage": "https://ui.fewtone.com",
+    "url": "https://ui.fewtone.com/r/{name}.json",
+    "description": "Accessible, customizable React components for Next.js and Tailwind CSS, built on Radix with smooth motion.",
+    "author": "FewTone",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 42 30' fill='var(--foreground)'><path d='M0.01 29.99L0.01 10.42C0.01 10.42 10.1 10.15 11.19 11.49C12.29 12.83 8.03 13.84 8.03 16.09C8.03 18.34 11.19 20.48 11.19 20.48L11.19 29.99L0.01 29.99Z'/><path d='M0 12.96L0 0L29.27 0C29.27 0 29.82 7.09 25.21 8.73C20.59 10.36 14.49 7.21 10.97 8.73C7.45 10.24 12.82 11.03 10.97 12.63C9.11 14.23 0 12.96 0 12.96Z'/><path d='M41.7 0V19.58C41.7 19.58 31.61 19.85 30.52 18.5C29.42 17.16 33.68 16.15 33.68 13.9C33.68 11.65 30.52 9.51 30.52 9.51L30.52 0L41.7 0Z'/><path d='M41.7 17.03V30L12.43 30C12.43 30 11.88 22.91 16.49 21.27C21.11 19.63 27.21 22.79 30.73 21.27C34.25 19.76 28.88 18.97 30.73 17.37C32.59 15.77 41.7 17.03 41.7 17.03Z'/></svg>"
   },
   {
     "name": "@fibo",
@@ -2747,6 +2770,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 789.79 1058.83' fill='var(--foreground)'><path d='M361.13,1058.28c28.61-24.08,55.58-46.86,82.62-69.55,41.82-35.09,83.8-69.99,125.49-105.23,39.2-33.13,57.7-75.81,57.69-126.9-.05-177.51-.02-355.01-.02-532.52v-9.26c10,3.28,18.99,5.96,27.69,9.36,1.36.53,1.99,4.36,2.02,6.68.17,14.17.25,28.35-.05,42.51-.11,5.26,1.68,7.95,6.82,9.47,15.55,4.58,30.97,9.59,47.4,14.73.21-2.91.48-5.06.49-7.22.1-14.17.02-28.35.23-42.52.15-10.07,3.69-12.79,13.08-9.76,17.45,5.63,34.83,11.45,52.15,17.48,9.32,3.24,12.66,8.43,12.67,18.46.03,35.78-.07,71.56.05,107.34.03,7.56-2.6,13.42-8.55,18.1-9.31,7.32-18.32,15.04-27.71,22.25-3.47,2.67-4.92,5.42-4.91,9.88.11,138.01.03,276.02.1,414.03.01,32.23-2.08,64.19-14.18,94.47-24.52,61.33-67.45,101.93-133.21,115.85-9.24,1.96-18.91,2.61-28.38,2.64-67.61.24-135.22.17-202.83.18-2.22,0-4.44-.24-8.67-.49ZM707.67,578.13c0-28.19.75-55.54-.53-82.79-.32-6.88-5.92-14.7-11.24-19.89-10.81-10.58-24.41-6.66-29.84,7.52-1.06,2.78-1.94,5.84-1.96,8.77-.15,24.56-.09,49.13-.09,74.2,14.53,4.06,28.94,8.09,43.64,12.2Z'/><path d='M550.29,611.15h-140.74c-.15-3.18-.37-5.67-.37-8.15-.02-58.79.02-117.58-.07-176.37,0-4.36.43-7.09,5.61-8.45,58.86-15.42,117.64-31.12,176.45-46.74.42-.11.9-.01,2.63-.01,0,2.81,0,5.68,0,8.54-.03,125.94.18,251.88-.23,377.83-.13,40.79-16.04,74.87-47.7,101.19-78.26,65.05-156.45,130.16-234.85,195.04-3.21,2.66-8.17,4.4-12.36,4.49-21.32.45-42.66.21-66.02.21,3.09-2.75,4.81-4.38,6.64-5.88,71.94-58.84,143.89-117.65,215.82-176.5,19.42-15.89,38.64-32.02,58.12-47.83,25.37-20.58,37.33-47.15,37.14-79.7-.26-43.22-.07-86.44-.08-129.66,0-2.29,0-4.57,0-8Z'/><path d='M560.11,210.07c0-7.96,0-15.13,0-22.31.01-55.3.02-110.61.03-165.91,0-13.02,7.86-22.02,19.1-21.85,11.18.17,18.62,8.67,18.62,21.58-.02,58.79,3.25,117.83-1.19,176.29-3.69,48.59-.74,96.93-2.82,145.33-.24,5.6-3.85,5.64-7.21,6.51-38.68,10.01-77.36,19.98-116.08,29.85-26.11,6.66-52.25,13.21-78.42,19.65-13.71,3.38-24.86-5.34-24.87-19.28-.03-34.86.01-69.71.07-104.57.02-12.2,5.31-18.61,17.17-21.91,16.55-4.6,33.02-9.5,49.53-14.27,12.34-3.56,18.24.81,18.31,13.64.07,11.85-.05,23.7.09,35.55.09,7.1,1.61,8.22,8.64,6.39,14.15-3.7,28.21-7.77,42.4-11.3,5.37-1.34,6.93-4.22,6.84-9.43-.26-14.4.02-28.81-.19-43.22-.1-6.94,2.65-10.63,9.69-11.98,13.22-2.53,26.31-5.68,40.3-8.76Z'/><path d='M361.32,924.39c-47.66,5.68-95.31,11.36-143.75,17.13-.12,2.35-.34,4.79-.35,7.24-.04,23.47.13,46.94-.25,70.41-.05,3.11-2.01,7.08-4.39,9.12-10.77,9.2-21.85,18.06-33.17,26.57-2.88,2.16-7.06,3.65-10.65,3.67-49.49.29-98.99.3-148.49.31-13.39,0-20.24-6.84-20.25-20.15-.04-31.6-.03-63.21.03-94.81.03-13.68,7.96-21.79,21.61-21.78,95.97.05,191.94.2,287.91.31,17.15.02,34.3,0,51.45,0,.1.66.2,1.33.3,1.99Z'/><path d='M179.64,881.76c0-27.43-.27-54.36.13-81.28.16-11.16,9.64-18.62,21.94-18.62,52.72.02,105.44.02,158.16.07,44.36.04,88.72.15,133.07.23,3.93,0,7.87,0,11.94,1.58-41.18,4.92-82.37,9.83-124.17,14.82v83.19h-201.07Z'/><path d='M541.46,651.31v11.92h-63.14v83.22h-180.91c-.16-2.11-.45-4.12-.45-6.13-.03-21.82-.06-43.65.02-65.47.05-15.26,8.51-23.64,23.77-23.63,70.81.02,141.62.06,212.43.1,2.51,0,5.02,0,8.29,0Z'/><path d='M789.79,68.43c-21.66,23.89-42.73,46.06-74.45,52.96-7.27,1.58-15.63,2.2-22.63.21-25.49-7.24-50.59-9.24-76.16,1.67-.36-2.34-.77-3.82-.79-5.3-.28-22.74-.36-45.48-.88-68.22-.11-4.86,1.6-6.76,6.03-8.28,34.87-11.94,67.86-10,98.71,11.86,19.17,13.58,40.53,19.02,63.96,15.43,1.5-.23,3.04-.17,6.2-.33Z'/><path d='M230.89,504.03c27.49.25,49.21,22.49,48.96,50.14-.27,28.73-22.72,51.45-50.58,51.18-27.41-.27-49.86-23.56-49.59-51.46.26-27.63,23.35-50.1,51.22-49.85Z'/></svg>"
   },
   {
+    "name": "@studio-blocks",
+    "homepage": "https://studio-blocks.arhamkhnz.com",
+    "url": "https://studio-blocks.arhamkhnz.com/r/{name}.json",
+    "description": "A collection of minimal, reusable UI blocks built with React, Tailwind CSS, and shadcn/ui.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='#000'/><g fill='#fff'><rect x='12' y='12' width='40' height='12' rx='2'/><rect x='12' y='28' width='12' height='24' rx='2'/><rect x='28' y='28' width='24' height='24' rx='2'/></g></svg>"
+  },
+  {
     "name": "@styleui",
     "homepage": "https://www.styleui.dev/",
     "url": "https://www.styleui.dev/r/{name}.json",
@@ -2970,6 +3000,14 @@
     "url": "https://trytweenly.vercel.app/r/{name}.json",
     "description": "Animated React components built on Motion and GSAP. Tweak every prop live, copy the code, and own it.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='7' fill='var(--foreground)'/><circle cx='15' cy='15' r='6' fill='#ff4d12'/></svg>"
+  },
+  {
+    "name": "@twelfth",
+    "homepage": "https://ui.twelfth.ai",
+    "url": "https://ui.twelfth.ai/r/{name}.json",
+    "description": "Components for category managers and retail buying teams: price position, sales vs forecast with P10–P90 bands, weeks of cover, pricing scoreboards and micro charts. Built by Twelfth.",
+    "author": "Twelfth",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect x='3' y='15' width='18' height='18' rx='4' fill='var(--foreground)'/><rect x='27' y='15' width='18' height='18' rx='4' fill='var(--foreground)'/><rect x='51' y='15' width='18' height='18' rx='4' fill='var(--foreground)'/><rect x='75' y='15' width='18' height='18' rx='4' fill='var(--foreground)'/><rect x='3' y='39' width='18' height='18' rx='4' fill='var(--foreground)'/><rect x='27' y='39' width='18' height='18' rx='4' fill='var(--foreground)'/><rect x='51' y='39' width='18' height='18' rx='4' fill='var(--foreground)'/><rect x='75' y='39' width='18' height='18' rx='4' fill='var(--foreground)'/><rect x='3' y='63' width='18' height='18' rx='4' fill='var(--foreground)'/><rect x='27' y='63' width='18' height='18' rx='4' fill='var(--foreground)'/><rect x='51' y='63' width='18' height='18' rx='4' fill='var(--foreground)'/><circle cx='84' cy='72' r='9' fill='#c8a24b'/></svg>"
   },
   {
     "name": "@typedora-ui",
