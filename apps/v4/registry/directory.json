@@ -206,6 +206,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128' fill='none' stroke='var(--foreground)' stroke-linecap='round'><path d='M38.4 102.9a43.5 43.5 0 1 1 51.2 0' stroke-width='8.6'/><path d='m63.3 70 20.5-23.8' stroke-width='8'/></svg>"
   },
   {
+    "name": "@avara-ui",
+    "homepage": "https://avaraui.com",
+    "url": "https://avaraui.com/r/{name}.json",
+    "description": "Animated React components and website sections you install as source, themed with CSS variables for Next.js and Vite.",
+    "author": "AlgorizeTech",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='none'><title>Avara UI Logo</title><g fill='#7957F5' stroke='#7957F5' stroke-width='5' stroke-linejoin='round' stroke-linecap='round'><path d='M219 19 L188 39 171 57 160 73 132 123 122 147 89 208 25 337 9 375 5 399 6 436 12 457 19 471 32 487 49 499 72 504 86 503 105 495 119 484 137 460 210 313 262 203 266 200 270 204 293 254 323 255 343 262 357 270 387 299 405 335 411 366 411 394 405 428 392 455 368 484 380 495 408 507 431 508 452 503 466 495 481 480 498 452 505 430 507 412 505 374 489 328 419 183 400 138 361 63 335 35 320 24 291 12 273 9 254 9 Z'/><path d='M292 287 C280 287 269 295 261 307 C251 321 247 340 247 359 C247 384 256 407 271 427 C284 444 299 455 315 458 C333 461 350 451 363 434 C375 418 382 396 382 375 C382 350 372 326 356 307 C340 290 319 283 301 286 Z'/></g></svg>"
+  },
+  {
     "name": "@babelize",
     "homepage": "https://elements.babelize.co",
     "url": "https://elements.babelize.co/r/{name}.json",
