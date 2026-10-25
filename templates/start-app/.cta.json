@@ -13,5 +13,6 @@
   "routerOnly": false,
   "version": 1,
   "framework": "react",
+  "bundler": "vite",
   "chosenAddOns": ["eslint"]
 }
