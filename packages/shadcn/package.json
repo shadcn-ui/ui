@@ -115,7 +115,7 @@
     "stringify-object": "^5.0.0",
     "ts-morph": "^26.0.0",
     "tsconfig-paths": "^4.2.0",
-    "undici": "^7.29.1",
+    "undici": "^7.30.1",
     "validate-npm-package-name": "^7.0.1",
     "zod": "^4.2.0"
   },

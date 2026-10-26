@@ -410,8 +410,8 @@ importers:
         specifier: ^8.46.2
         version: 8.46.2(eslint@9.26.0(jiti@2.7.0))(typescript@5.9.2)
       undici:
-        specifier: ^7.29.1
-        version: 7.29.1
+        specifier: ^7.30.1
+        version: 7.30.1
       unist-builder:
         specifier: 3.0.0
         version: 3.0.0
@@ -555,8 +555,8 @@ importers:
         specifier: ^4.41.0
         version: 4.41.0
       undici:
-        specifier: ^7.29.1
-        version: 7.29.1
+        specifier: ^7.30.1
+        version: 7.30.1
       zod:
         specifier: ^4.2.0
         version: 4.4.3
@@ -685,8 +685,8 @@ importers:
         specifier: ^4.2.0
         version: 4.2.0
       undici:
-        specifier: ^7.29.1
-        version: 7.29.1
+        specifier: ^7.30.1
+        version: 7.30.1
       validate-npm-package-name:
         specifier: ^7.0.1
         version: 7.0.1
@@ -9375,8 +9375,8 @@ packages:
     resolution: {integrity: sha512-zWpdTVD54H48CIybL0rWQ3ukpb9d23wM7eH5RtfdmeP70cWHNjtfo7P4vZX+5CoDcO53J4Pu5uXp7lNfjc6DRA==}
     engines: {node: '>=18.17'}
 
-  undici@7.29.1:
-    resolution: {integrity: sha512-RYONW2MeafgYlkVOKYKkA/Ag7BmXqgIWCa8t1m0JcxrQg9pI9lEqRhAOruOBCbAohOa/gkCF+iPi9hrgvTzu6Q==}
+  undici@7.30.1:
+    resolution: {integrity: sha512-03KrMbjIFDWQR5RNPrSw3bd1r12JpyFQl9/yxjUbJtqkjmllqC5lFjZh6ujeuJCKr8EOQvRW872Oy/az+nLYxg==}
     engines: {node: '>=20.18.1'}
 
   unicorn-magic@0.1.0:
@@ -13728,7 +13728,6 @@ snapshots:
       - msw
       - utf-8-validate
       - vite
-    optional: true
 
   '@vitest/expect@3.2.7':
     dependencies:
@@ -16583,7 +16582,7 @@ snapshots:
       saxes: 6.0.0
       symbol-tree: 3.2.4
       tough-cookie: 6.0.1
-      undici: 7.29.1
+      undici: 7.30.1
       w3c-xmlserializer: 5.0.0
       webidl-conversions: 8.0.1
       whatwg-mimetype: 5.0.0
@@ -19388,7 +19387,7 @@ snapshots:
 
   undici@6.28.1: {}
 
-  undici@7.29.1: {}
+  undici@7.30.1: {}
 
   unicorn-magic@0.1.0: {}
 
