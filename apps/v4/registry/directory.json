@@ -1750,7 +1750,42 @@
     "name": "@moduix-react",
     "homepage": "https://moduix.dev",
     "url": "https://moduix.dev/r/react/{name}.json",
-    "description": "Ark-first React components, blocks, and themes with native CSS, available as a package or a shadcn-compatible copy-owned registry.",
+    "description": "Accessible React components and blocks built on Ark UI and styled with CSS Modules.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect x='1.4' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='1.4' y='12.3' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='1.4' y='22.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='11.9' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='12.3' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='22.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/></svg>"
+  },
+  {
+    "name": "@moduix-react-tailwind",
+    "homepage": "https://moduix.dev",
+    "url": "https://moduix.dev/r/react-tailwind/{name}.json",
+    "description": "Accessible React components and blocks built on Ark UI and styled with Tailwind CSS.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect x='1.4' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='1.4' y='12.3' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='1.4' y='22.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='11.9' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='12.3' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='22.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/></svg>"
+  },
+  {
+    "name": "@moduix-solid",
+    "homepage": "https://moduix.dev",
+    "url": "https://moduix.dev/r/solid/{name}.json",
+    "description": "Accessible Solid components and blocks built on Ark UI and styled with CSS Modules.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect x='1.4' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='1.4' y='12.3' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='1.4' y='22.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='11.9' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='12.3' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='22.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/></svg>"
+  },
+  {
+    "name": "@moduix-solid-tailwind",
+    "homepage": "https://moduix.dev",
+    "url": "https://moduix.dev/r/solid-tailwind/{name}.json",
+    "description": "Accessible Solid components and blocks built on Ark UI and styled with Tailwind CSS.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect x='1.4' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='1.4' y='12.3' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='1.4' y='22.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='11.9' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='12.3' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='22.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/></svg>"
+  },
+  {
+    "name": "@moduix-vue",
+    "homepage": "https://moduix.dev",
+    "url": "https://moduix.dev/r/vue/{name}.json",
+    "description": "Accessible Vue components and blocks built on Ark UI and styled with CSS Modules.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect x='1.4' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='1.4' y='12.3' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='1.4' y='22.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='11.9' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='12.3' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='22.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/></svg>"
+  },
+  {
+    "name": "@moduix-vue-tailwind",
+    "homepage": "https://moduix.dev",
+    "url": "https://moduix.dev/r/vue-tailwind/{name}.json",
+    "description": "Accessible Vue components and blocks built on Ark UI and styled with Tailwind CSS.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect x='1.4' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='1.4' y='12.3' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='1.4' y='22.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='11.9' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='1.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='12.3' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/><rect x='22.4' y='22.4' width='8.2' height='8.2' rx='1.1' fill='var(--foreground)'/></svg>"
   },
   {
