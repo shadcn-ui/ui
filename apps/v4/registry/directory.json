@@ -308,6 +308,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='var(--foreground)' d='M24.78 9.37A11 11 0 1 0 24.78 22.63A8.6 8.6 0 1 1 24.78 9.37Z'/><path fill='#ff6b35' d='M24.78 11.6C24.78 11.6 21.98 14.9 21.98 16.9A2.8 2.8 0 0 0 27.58 16.9C27.58 14.9 24.78 11.6 24.78 11.6Z'/></svg>"
   },
   {
+    "name": "@cuelark",
+    "homepage": "https://ui.cuelark.com",
+    "url": "https://ui.cuelark.com/r/{name}.json",
+    "description": "Accessible React components with an AI agent UI kit (prompt input, reasoning, tool calls, plans with approval, citations, traces), GSAP motion and live theming.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)'><path fill-rule='evenodd' d='M4.6 11.55a7.2 7.2 0 1 1 14.4 0a7.2 7.2 0 1 1-14.4 0z M16.15 9.95a1.15 1.15 0 1 0-2.3 0a1.15 1.15 0 1 0 2.3 0z M8.6 16.7L4.45 19.05a.7.7 0 0 1-1.1-.75L5.8 13.6z M18 9.75l3 1.25a.5.5 0 0 1 0 .9l-3 1.25z'/></svg>"
+  },
+  {
     "name": "@designali",
     "homepage": "https://designali.com",
     "url": "https://designali.com/r/{name}.json",
