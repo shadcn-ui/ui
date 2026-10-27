@@ -37,6 +37,14 @@ export function createStyleMap(input: string) {
 
       selectorParser((selectorsRoot) => {
         selectorsRoot.each((sel) => {
+          let isConditional = false
+          sel.walk((node) => {
+            if (node.type === "pseudo" && node.value === ":has") {
+              isConditional = true
+            }
+          })
+          if (isConditional) return
+
           const targetClass = findSubjectClass(sel)
 
           if (!targetClass) {
