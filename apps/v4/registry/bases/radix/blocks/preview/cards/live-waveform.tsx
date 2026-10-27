@@ -528,7 +528,7 @@ export function LiveWaveformCard() {
           historySize={120}
         />
       </CardContent>
-      <CardFooter className="gap-2">
+      <CardFooter className="grid gap-2">
         <Button
           size="sm"
           variant={active ? "default" : "outline"}
