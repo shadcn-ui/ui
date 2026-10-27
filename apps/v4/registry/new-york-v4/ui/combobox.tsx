@@ -10,7 +10,6 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
-  InputGroupInput,
 } from "@/registry/new-york-v4/ui/input-group"
 
 const Combobox = ComboboxPrimitive.Root
@@ -66,7 +65,9 @@ function ComboboxInput({
   return (
     <InputGroup className={cn("w-auto", className)}>
       <ComboboxPrimitive.Input
-        render={<InputGroupInput disabled={disabled} />}
+        disabled={disabled}
+        data-slot="input-group-control"
+        className="h-9 w-full min-w-0 flex-1 rounded-none border-0 bg-transparent px-3 py-1 text-base shadow-none outline-none selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground transition-[color,box-shadow] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-transparent"
         {...props}
       />
       <InputGroupAddon align="inline-end">
