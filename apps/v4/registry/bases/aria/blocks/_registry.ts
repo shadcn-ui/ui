@@ -197,7 +197,7 @@ export const blocks: Registry["items"] = [
     title: "Signup 01",
     description: "A simple signup form.",
     type: "registry:block",
-    registryDependencies: ["button", "card", "input", "label"],
+    registryDependencies: ["button", "card", "input", "label", "field"],
     files: [
       {
         path: "blocks/signup-01/page.tsx",
