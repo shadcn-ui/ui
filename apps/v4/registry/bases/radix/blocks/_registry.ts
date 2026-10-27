@@ -917,4 +917,36 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["sidebar", "dashboard"],
   },
+  {
+    name: "data-grid",
+    title: "Data Grid",
+    description:
+      "A flexible and customizable data grid with API search and pagination support.",
+    type: "registry:block",
+    dependencies: ["@tanstack/react-table"],
+    registryDependencies: [
+      "badge",
+      "button",
+      "checkbox",
+      "dropdown-menu",
+      "input",
+      "table",
+    ],
+    files: [
+      {
+        path: "blocks/data-grid/page.tsx",
+        target: "app/data-grid/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/data-grid/data-grid-demo.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/data-grid/components/data-grid.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["data-grid"],
+  },
 ]
