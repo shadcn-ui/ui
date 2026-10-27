@@ -1,6 +1,6 @@
 import type { Config } from "@/src/get-config"
 import { transformRsc } from "@/src/transformers/transform-rsc"
-import { afterEach, beforeEach, describe, expect, it } from "vitest"
+import { describe, expect, it } from "vitest"
 
 import { transform } from "."
 
@@ -137,16 +137,7 @@ describe("transformRsc", () => {
       [transformRsc]
     )
 
-  // directiveRegex is a module-level /g regex used with .test(): a match leaves
-  // lastIndex set, so the next "use client" file keeps its directive. A file
-  // whose first expression statement does not match resets lastIndex to 0.
-  const resetDirectiveRegex = () => rsc(`"use foo"\n`)
-
-  // Reset before and after each test so they do not depend on run order.
-  beforeEach(resetDirectiveRegex)
-  afterEach(resetDirectiveRegex)
-
-  it("resets the regex on a CSS file, which ts-morph tested and failed", async () => {
+  it("does not depend on the previous file, a CSS file, which ts-morph tested and failed", async () => {
     const raw = `"use client"
 
 import * as React from "react"
@@ -165,16 +156,15 @@ import * as React from "react"
 `)
   })
 
-  it("consecutive removals alternate because the regex is global", async () => {
-    // Current behavior: every other "use client" file keeps the directive.
+  it("removes the directive from consecutive files", async () => {
     const raw = `"use client"
 
 import * as React from "react"
 `
-    await resetDirectiveRegex()
     expect(await rsc(raw)).toBe(`import * as React from "react"
 `)
-    expect(await rsc(raw)).toBe(raw)
+    expect(await rsc(raw)).toBe(`import * as React from "react"
+`)
     expect(await rsc(raw)).toBe(`import * as React from "react"
 `)
   })
@@ -208,7 +198,6 @@ import * as React from "react"
     expect(await rsc(raw)).toBe(`import * as React from "react"
 `)
 
-    await resetDirectiveRegex()
     // The comment survives remove(); the blank line after it does not.
     expect(await rscFullText(raw)).toBe(`// Copyright (c) shadcn
 import * as React from "react"
