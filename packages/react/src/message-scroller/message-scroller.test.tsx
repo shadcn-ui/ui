@@ -822,6 +822,56 @@ describe("MessageScroller", () => {
     expect(rendered.viewport().scrollTop).toBe(0)
   })
 
+  it("releases turn-anchoring on a scrollbar drag so streamed resizing does not yank back", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    // Append message-4 with scrollAnchor: true (starts anchored streaming turn)
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 40, scrollAnchor: true },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(176)
+    expect(rendered.message("message-4").getBoundingClientRect().top).toBe(64)
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(300)
+    })
+
+    // A scrollbar drag fires only a scroll event — no wheel, touch, or keydown,
+    // so it never reaches userScrollIntent directly.
+    await act(async () => {
+      rendered.viewport().scrollTop = 60
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(60)
+
+    // A streamed chunk arrives and resizes content below the anchor.
+    rendered.message("message-4").dataset.testHeight = "160"
+    await triggerResize(rendered.content())
+
+    // The scroll position must NOT be yanked back to 176 by reanchorToAnchoredMessage;
+    // it must preserve the user's manual scroll position of 60.
+    expect(rendered.viewport().scrollTop).toBe(60)
+  })
+
   it("releases follow-bottom on a bare scroll-away so later resizes do not snap back", async () => {
     const rendered = await renderTestScroller({
       autoScroll: true,
