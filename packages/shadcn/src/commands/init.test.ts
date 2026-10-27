@@ -224,6 +224,48 @@ describe("runInit", () => {
     expect(postInit).not.toHaveBeenCalled()
   })
 
+  it("preserves existing Next.js styles when re-initializing a configured project", async () => {
+    const nextProjectInfo = {
+      ...projectInfo,
+      framework: { ...projectInfo.framework, name: "next-app" },
+    }
+    vi.mocked(preFlightInit).mockResolvedValue({
+      errors: {},
+      projectInfo: nextProjectInfo as any,
+    })
+
+    await runInit({
+      ...createInitOptions(cwd),
+      template: undefined,
+      existingConfig: {},
+    })
+
+    expect(addComponents).toHaveBeenCalledWith(
+      expect.any(Array),
+      expect.any(Object),
+      expect.objectContaining({ isNewProject: false })
+    )
+  })
+
+  it("cleans up Next.js defaults on first initialization", async () => {
+    const nextProjectInfo = {
+      ...projectInfo,
+      framework: { ...projectInfo.framework, name: "next-app" },
+    }
+    vi.mocked(preFlightInit).mockResolvedValue({
+      errors: {},
+      projectInfo: nextProjectInfo as any,
+    })
+
+    await runInit({ ...createInitOptions(cwd), template: undefined })
+
+    expect(addComponents).toHaveBeenCalledWith(
+      expect.any(Array),
+      expect.any(Object),
+      expect.objectContaining({ isNewProject: true })
+    )
+  })
+
   it("runs template postInit after creating a new project", async () => {
     const projectPath = path.join(cwd, "vite-app")
     await mkdir(projectPath)
