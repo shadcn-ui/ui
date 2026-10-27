@@ -149,6 +149,18 @@ You can back these aliases with either:
 
 The aliases in `components.json` are still required when using the CLI. They tell the CLI which import roots map to `components`, `ui`, `lib`, `hooks`, and `utils`.
 
+The `components` and `lib` aliases are broad roots. The `ui` and `utils`
+aliases point to the conventional locations inside those roots that shadcn
+components import most often.
+
+| Alias | Typical value | Used for |
+| --- | --- | --- |
+| `components` | `@/components` | The root for application components and more complex registry items. |
+| `ui` | `@/components/ui` | The directory where UI primitives from the registry are installed. |
+| `lib` | `@/lib` | The root for shared library code. |
+| `utils` | `@/lib/utils` | The utility module imported by components, for example the `cn` helper. |
+| `hooks` | `@/hooks` | The directory for shared React hooks. |
+
 <Callout className="mt-6">
   **Important:** If you're using package imports, enable
   `resolvePackageJsonImports` and use `moduleResolution: "bundler"` in your
@@ -227,7 +239,9 @@ For framework-specific setup, see the [package imports guide](/docs/package-impo
 
 ### aliases.utils
 
-Import alias for your utility functions.
+Import alias for your utility functions. This usually points to a module such as
+`@/lib/utils`, not to the entire `lib` directory. Components use this alias when
+they import helpers such as `cn`.
 
 ```json title="components.json"
 {
@@ -239,7 +253,8 @@ Import alias for your utility functions.
 
 ### aliases.components
 
-Import alias for your components.
+Import alias for your components root. This is the parent location for generated
+application components and more complex registry items.
 
 ```json title="components.json"
 {
@@ -253,7 +268,10 @@ Import alias for your components.
 
 Import alias for `ui` components.
 
-The CLI will use the `aliases.ui` value to determine where to place your `ui` components. Use this config if you want to customize the installation directory for your `ui` components.
+The CLI will use the `aliases.ui` value to determine where to place registry UI
+primitives such as `button`, `dialog`, and `card`. Use this config if you want
+to customize the installation directory for your `ui` components while keeping
+`aliases.components` as the broader components root.
 
 ```json title="components.json"
 {
@@ -265,7 +283,9 @@ The CLI will use the `aliases.ui` value to determine where to place your `ui` co
 
 ### aliases.lib
 
-Import alias for `lib` functions such as `format-date` or `generate-id`.
+Import alias for your shared library root. Use this for modules such as
+`format-date` or `generate-id`. The `aliases.utils` value can still point to a
+specific file within this root, for example `@/lib/utils`.
 
 ```json title="components.json"
 {
