@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "shadcn/ui",
   url: "https://ui.shadcn.com",
-  ogImage: "https://ui.shadcn.com/og.jpg",
+  ogImage: "https://ui.shadcn.com/opengraph-image.png",
   description:
     "Composable, accessible components with thoughtful defaults. Build your own component library with code you can customize, extend, and make your own.",
   links: {
