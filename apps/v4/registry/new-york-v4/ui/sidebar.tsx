@@ -266,7 +266,7 @@ function SidebarTrigger({
       data-slot="sidebar-trigger"
       variant="ghost"
       size="icon"
-      className={cn("size-7", className)}
+      className={cn("size-7 group-data-[collapsible=icon]:size-8!", className)}
       onClick={(event) => {
         onClick?.(event)
         toggleSidebar()
