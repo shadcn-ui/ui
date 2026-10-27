@@ -46,11 +46,22 @@ export function ComponentPreviewTabs({
   direction?: "ltr" | "rtl"
   styleName?: string
 }) {
+  const previewRef = React.useRef<HTMLDivElement>(null)
+
   const [isMobileCodeVisible, setIsMobileCodeVisible] = React.useState(false)
   const base = styleName?.match(/^(base|radix|aria)-/)?.[1] || "radix"
 
+  React.useEffect(() => {
+    if (direction !== "rtl") return
+    const scrollY = window.scrollY
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: scrollY })
+    })
+  }, [direction])
+
   return (
     <div
+      ref={previewRef}
       data-slot="component-preview"
       data-not-typeset
       className={cn(
