@@ -20,7 +20,7 @@ vi.mock("prompts", () => ({
   default: vi.fn(),
 }))
 
-vi.mock("@shadcn/registry/internal/utils/spinner", () => ({
+vi.mock("@shadcn/registry/internal/spinner", () => ({
   spinner: vi.fn(() => ({
     start: vi.fn().mockReturnThis(),
     succeed: vi.fn(),
@@ -29,7 +29,7 @@ vi.mock("@shadcn/registry/internal/utils/spinner", () => ({
   })),
 }))
 
-vi.mock("@shadcn/registry/internal/utils/logger", () => ({
+vi.mock("@shadcn/registry/internal/logger", () => ({
   logger: {
     info: vi.fn(),
     warn: vi.fn(),
@@ -37,15 +37,15 @@ vi.mock("@shadcn/registry/internal/utils/logger", () => ({
   },
 }))
 
-vi.mock("@shadcn/registry/internal/utils/get-package-manager", () => ({
+vi.mock("@shadcn/registry/internal/get-package-manager", () => ({
   getPackageManager: vi.fn(),
 }))
 
-vi.mock("@shadcn/registry/internal/utils/get-package-info", () => ({
+vi.mock("@shadcn/registry/internal/get-package-info", () => ({
   getPackageInfo: vi.fn(),
 }))
 
-vi.mock("@shadcn/registry/internal/utils/updaters/update-dependencies", () => ({
+vi.mock("@shadcn/registry/internal/updaters/update-dependencies", () => ({
   updateDependencies: vi.fn(),
 }))
 
@@ -905,7 +905,7 @@ describe("migrateRadix - package.json updates", () => {
 
     // Mock package info
     const { getPackageInfo } = await import(
-      "@shadcn/registry/internal/utils/get-package-info"
+      "@shadcn/registry/internal/get-package-info"
     )
     vi.mocked(getPackageInfo).mockReturnValue(mockPackageJson)
 
@@ -931,7 +931,7 @@ describe("migrateRadix - package.json updates", () => {
 
     // Mock package manager detection
     const { getPackageManager } = await import(
-      "@shadcn/registry/internal/utils/get-package-manager"
+      "@shadcn/registry/internal/get-package-manager"
     )
     vi.mocked(getPackageManager).mockResolvedValue("npm")
 
@@ -953,12 +953,12 @@ describe("migrateRadix - package.json updates", () => {
     }
 
     const { getPackageInfo } = await import(
-      "@shadcn/registry/internal/utils/get-package-info"
+      "@shadcn/registry/internal/get-package-info"
     )
     vi.mocked(getPackageInfo).mockReturnValue(mockPackageJson)
 
     const { updateDependencies } = await import(
-      "@shadcn/registry/internal/utils/updaters/update-dependencies"
+      "@shadcn/registry/internal/updaters/update-dependencies"
     )
 
     const fg = await import("fast-glob")
@@ -984,7 +984,7 @@ describe("migrateRadix - package.json updates", () => {
 
   it("should handle missing package.json gracefully", async () => {
     const { getPackageInfo } = await import(
-      "@shadcn/registry/internal/utils/get-package-info"
+      "@shadcn/registry/internal/get-package-info"
     )
     vi.mocked(getPackageInfo).mockReturnValue(null)
 
@@ -1010,12 +1010,12 @@ describe("migrateRadix - package.json updates", () => {
     }
 
     const { getPackageInfo } = await import(
-      "@shadcn/registry/internal/utils/get-package-info"
+      "@shadcn/registry/internal/get-package-info"
     )
     vi.mocked(getPackageInfo).mockReturnValue(mockPackageJson)
 
     const { updateDependencies } = await import(
-      "@shadcn/registry/internal/utils/updaters/update-dependencies"
+      "@shadcn/registry/internal/updaters/update-dependencies"
     )
 
     mockFs.writeFile.mockResolvedValue(undefined)
@@ -1067,12 +1067,12 @@ describe("migrateRadix - package.json updates", () => {
     }
 
     const { getPackageInfo } = await import(
-      "@shadcn/registry/internal/utils/get-package-info"
+      "@shadcn/registry/internal/get-package-info"
     )
     vi.mocked(getPackageInfo).mockReturnValue(mockPackageJson)
 
     const { getPackageManager } = await import(
-      "@shadcn/registry/internal/utils/get-package-manager"
+      "@shadcn/registry/internal/get-package-manager"
     )
     vi.mocked(getPackageManager).mockResolvedValue("npm")
 
@@ -1124,12 +1124,12 @@ describe("migrateRadix - package.json updates", () => {
     }
 
     const { getPackageInfo } = await import(
-      "@shadcn/registry/internal/utils/get-package-info"
+      "@shadcn/registry/internal/get-package-info"
     )
     vi.mocked(getPackageInfo).mockReturnValue(mockPackageJson)
 
     const { getPackageManager } = await import(
-      "@shadcn/registry/internal/utils/get-package-manager"
+      "@shadcn/registry/internal/get-package-manager"
     )
     vi.mocked(getPackageManager).mockResolvedValue("npm")
 

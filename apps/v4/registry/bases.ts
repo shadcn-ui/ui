@@ -1,7 +1,6 @@
-import { type registryItemSchema } from "shadcn/schema"
-import { type z } from "zod"
+import { type RegistryItem } from "shadcn/schema"
 
-export const BASES: z.infer<typeof registryItemSchema>[] = [
+export const BASES: RegistryItem[] = [
   {
     name: "base",
     type: "registry:style",

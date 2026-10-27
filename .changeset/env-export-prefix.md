@@ -1,4 +1,5 @@
 ---
+"@shadcn/registry": patch
 "shadcn": patch
 ---
 
