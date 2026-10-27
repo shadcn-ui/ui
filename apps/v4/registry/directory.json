@@ -228,6 +228,13 @@
     "logo": "<svg viewBox='0 0 57 52' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M16.38 51.9C13.22 51.9 10.72 50.94 8.88 49.02C7.08 47.1 6.18 44.62 6.18 41.58V36.6C6.18 34.88 5.94 33.42 5.46 32.22C4.98 30.98 4.28 30.04 3.36 29.4C2.68125 28.9278 1.89363 28.6298 0.997152 28.506C0.45006 28.4305 0 27.9923 0 27.44V24.46C0 23.9077 0.45006 23.4696 0.997151 23.394C1.89363 23.2702 2.68125 22.9722 3.36 22.5C4.28 21.86 4.98 20.94 5.46 19.74C5.94 18.5 6.18 17.02 6.18 15.3V10.32C6.18 7.28 7.08 4.8 8.88 2.88C10.72 0.960001 13.22 0 16.38 0H18.74C19.2923 0 19.74 0.447715 19.74 1V3.6413C19.74 4.20847 19.2681 4.65986 18.701 4.6577C16.0796 4.6477 14.166 5.01514 12.96 5.76C11.64 6.6 10.98 8.08 10.98 10.2V15.72C10.98 18.72 10.32 21.06 9 22.74C7.6869 24.3714 6.11651 25.4091 4.28883 25.8531C4.27196 25.8572 4.26 25.8723 4.26 25.8896C4.26 25.9073 4.27245 25.9226 4.28977 25.9264C6.15668 26.3312 7.72676 27.3891 9 29.1C10.32 30.82 10.98 33.18 10.98 36.18V41.7C10.98 43.78 11.64 45.24 12.96 46.08C14.1679 46.8261 16.0859 47.2093 18.7138 47.2296C19.276 47.2339 19.74 47.6834 19.74 48.2456V50.9C19.74 51.4523 19.2923 51.9 18.74 51.9H16.38Z' fill='var(--foreground)'/><path d='M39.8803 51.9H37.5203C36.968 51.9 36.5203 51.4523 36.5203 50.9V48.2453C36.5203 47.6832 36.9842 47.2337 37.5462 47.2297C40.2081 47.2105 42.1261 46.8272 43.3003 46.08C44.6203 45.24 45.2803 43.78 45.2803 41.7V36.18C45.2803 33.18 45.9203 30.82 47.2003 29.1C48.5133 27.3891 50.1034 26.3312 51.9706 25.9264C51.9879 25.9226 52.0003 25.9073 52.0003 25.8896C52.0003 25.8723 51.9884 25.8572 51.9715 25.8531C50.1438 25.4091 48.5734 24.3714 47.2603 22.74C45.9403 21.06 45.2803 18.72 45.2803 15.72V10.2C45.2803 8.08 44.6203 6.6 43.3003 5.76C42.128 5.01397 40.2142 4.64655 37.5589 4.65775C36.9919 4.66014 36.5203 4.20878 36.5203 3.6418V1C36.5203 0.447716 36.968 0 37.5203 0H39.8803C43.0803 0 45.5803 0.960001 47.3803 2.88C49.1803 4.8 50.0803 7.28 50.0803 10.32V15.3C50.0803 17.02 50.3203 18.5 50.8003 19.74C51.2803 20.94 51.9803 21.86 52.9003 22.5C53.5791 22.9722 54.3667 23.2702 55.2632 23.394C55.8103 23.4696 56.2603 23.9077 56.2603 24.46V27.44C56.2603 27.9923 55.8103 28.4305 55.2632 28.506C54.3667 28.6298 53.5791 28.9278 52.9003 29.4C51.9803 30.04 51.2803 30.98 50.8003 32.22C50.3203 33.42 50.0803 34.88 50.0803 36.6V41.58C50.0803 44.62 49.1803 47.1 47.3803 49.02C45.5803 50.94 43.0803 51.9 39.8803 51.9Z' fill='var(--foreground)'/><path d='M28.5245 17.78C26.6523 17.78 25.1345 16.2622 25.1345 14.39C25.1345 12.5178 26.6523 11 28.5245 11C30.3968 11 31.9145 12.5178 31.9145 14.39C31.9145 16.2622 30.3968 17.78 28.5245 17.78Z' fill='var(--foreground)'/><path d='M28.5245 29.56C26.6523 29.56 25.1345 28.0422 25.1345 26.17C25.1345 24.2978 26.6523 22.78 28.5245 22.78C30.3968 22.78 31.9145 24.2978 31.9145 26.17C31.9145 28.0422 30.3968 29.56 28.5245 29.56Z' fill='#05A46C'/><path d='M28.5245 41.34C26.6523 41.34 25.1345 39.8222 25.1345 37.95C25.1345 36.0778 26.6523 34.56 28.5245 34.56C30.3968 34.56 31.9145 36.0778 31.9145 37.95C31.9145 39.8222 30.3968 41.34 28.5245 41.34Z' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@bash",
+    "homepage": "https://bash-ui-registry.vercel.app",
+    "url": "https://bash-ui-registry.vercel.app/r/{name}.json",
+    "description": "Animated components and charts, plus themes for whole design systems, built on one shared set of tokens so every component works in any theme.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22' fill='var(--foreground)'><rect x='0' y='4' width='14' height='3' rx='1.5'/><rect x='4' y='9.5' width='18' height='3' rx='1.5' opacity='.6'/><rect x='0' y='15' width='11' height='3' rx='1.5' opacity='.35'/></svg>"
+  },
+  {
     "name": "@bevel",
     "homepage": "https://bevel-ui.vercel.app",
     "url": "https://bevel-ui.vercel.app/r/{name}.json",
@@ -823,6 +830,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' width='24' height='24'><circle cx='62' cy='38' r='28' fill='#e10000'/><rect x='12' y='32' width='56' height='56' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@dimaac",
+    "homepage": "https://ui.dimaac.com",
+    "url": "https://ui.dimaac.com/r/{name}.json",
+    "description": "Animated React components from the DiMaac builds: GSAP, WebGL and physics, light and dark, with live previews and a prompt for your AI agent.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 75 111' fill='var(--foreground)'><path d='M42.3447 55.2821V102.404L31.8417 110.282H30.3447V55.2821A7.5 7.5 0 0 0 42.3447 55.2821ZM8.3661 8.94717C9.37902 2.10251 16.8316 -2.10005 23.2694 1.08097L23.911 1.42374L25.8446 2.55753C35.5377 8.31711 45.4047 15.3513 53.6034 22.8603C62.1498 30.6882 69.7215 39.7797 72.6288 49.1103C74.136 53.9493 74.4864 59.1978 72.6903 64.3416C70.8867 69.5049 67.2099 73.7292 62.1726 77.0301C57.5103 80.0856 51.4284 82.5183 43.8447 84.3399V68.8182C48.2679 67.5225 51.5724 66.0447 53.952 64.4853C56.8683 62.5743 58.0452 60.7869 58.5312 59.3964C59.0232 57.9861 59.1009 56.1291 58.3056 53.5752C56.6052 48.1173 51.456 41.2377 43.4697 33.9228C37.3743 28.3403 30.0984 22.9315 22.6395 18.1933L18.1513 72.8319C22.0425 72.5685 25.5978 72.2133 28.8417 71.7948V86.9151C24.2037 87.4587 19.1872 87.8637 13.7802 88.1103C7.74687 88.3848 2.23938 83.3451 2.77625 76.7871L8.28699 9.63858L8.3661 8.94717Z'/><circle cx='36.3447' cy='46.2821' r='6'/></svg>"
+  },
+  {
     "name": "@docscn",
     "homepage": "https://docscn.dev",
     "url": "https://docscn.dev/r/{name}.json",
@@ -1187,7 +1201,7 @@
   },
   {
     "name": "@getitdone",
-    "homepage": "https://github.com/getitdone-gmbh/kette-design",
+    "homepage": "https://github.com/getitdone-gmbh/kette-design-community",
     "url": "https://zero-design.itdone.de/r/{name}.json",
     "description": "React primitives for complex business software from the Get IT Done design system. Radix UI based, Tailwind CSS 3, light and dark theme included.",
     "author": "Get IT Done GmbH",
@@ -2253,6 +2267,13 @@
     "url": "https://ui.persian-labs.ir/r/{name}.json",
     "description": "RTL-first, copy-paste React components and UI blocks for Persian interfaces, built on Base UI and Tailwind CSS. Includes unique Persian-focused patterns with full LTR support.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024' fill='var(--foreground)'><path d='M210 842V330C210 286 226 251 258 219L382 95V842H210Z'/><path fill-rule='evenodd' clip-rule='evenodd' d='M382 95H608C754 95 848 187 848 326C848 465 754 557 608 557H382V405H594C661 405 696 375 696 326C696 277 661 247 594 247H382V95Z'/></svg>"
+  },
+  {
+    "name": "@prestige",
+    "homepage": "https://prestigeui.com",
+    "url": "https://prestigeui.com/r/{name}.json",
+    "description": "Animated React components and full-page blocks built with Tailwind CSS and Motion. Free components, with Pro blocks and templates unlocked by a license key.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='236 210 780 780' fill='var(--foreground)'><path d='M410 870V486L628 360L842 484V714L628 838L518 774V914L628 978L962 784V420L628 222L290 418V800Z'/><path fill-opacity='.4' d='M628 478L736 540L628 602L520 540Z'/><path fill-opacity='.65' d='M520 540L628 602V724L520 662Z'/><path fill-opacity='.85' d='M628 602L736 540V662L628 724Z'/></svg>"
   },
   {
     "name": "@prompt-kit",
