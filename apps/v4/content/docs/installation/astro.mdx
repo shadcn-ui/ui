@@ -203,11 +203,10 @@ If your project already has the `@/*` alias configured, skip this step.
 
 Add the following code to the `tsconfig.json` file to resolve paths:
 
-```ts title="tsconfig.json" {4-9} showLineNumbers
+```ts title="tsconfig.json" {4-8} showLineNumbers
 {
   "compilerOptions": {
     // ...
-    "baseUrl": ".",
     "paths": {
       "@/*": [
         "./src/*"
