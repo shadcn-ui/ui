@@ -11,6 +11,7 @@ import {
   parseRegistryBaseParts,
   POINTER_CURSOR_SELECTOR,
   PRESETS,
+  rtlDocsUrl,
   STYLES,
 } from "./config"
 
@@ -162,6 +163,40 @@ describe("buildRegistryBase", () => {
     })
 
     expect(result.success).toBe(false)
+  })
+})
+
+describe("rtlDocsUrl", () => {
+  // Only these three frameworks have a /docs/rtl/<framework> page; the enum
+  // carries eight more templates that used to be pasted into the URL as-is.
+  it.each([
+    ["next", "https://ui.shadcn.com/docs/rtl/next"],
+    ["start", "https://ui.shadcn.com/docs/rtl/start"],
+    ["vite", "https://ui.shadcn.com/docs/rtl/vite"],
+  ] as const)("links %s at its own guide", (template, expected) => {
+    expect(rtlDocsUrl(template)).toBe(expected)
+  })
+
+  it.each([
+    ["next-monorepo", "https://ui.shadcn.com/docs/rtl/next"],
+    ["start-monorepo", "https://ui.shadcn.com/docs/rtl/start"],
+    ["vite-monorepo", "https://ui.shadcn.com/docs/rtl/vite"],
+  ] as const)("sends %s to its framework guide", (template, expected) => {
+    expect(rtlDocsUrl(template)).toBe(expected)
+  })
+
+  it.each([
+    "astro",
+    "astro-monorepo",
+    "laravel",
+    "react-router",
+    "react-router-monorepo",
+  ] as const)("sends %s to the RTL index rather than a missing page", (template) => {
+    expect(rtlDocsUrl(template)).toBe("https://ui.shadcn.com/docs/rtl")
+  })
+
+  it("falls back to the Next.js guide when no template is set", () => {
+    expect(rtlDocsUrl(undefined)).toBe("https://ui.shadcn.com/docs/rtl/next")
   })
 })
 
