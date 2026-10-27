@@ -51,7 +51,7 @@ const translations: Translations = {
       calculator: "الآلة الحاسبة",
       settings: "الإعدادات",
       profile: "الملف الشخصي",
-      billing: "الفوترة",
+      billing: "الفاتورة",
     },
   },
   he: {
