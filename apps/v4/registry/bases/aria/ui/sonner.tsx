@@ -6,11 +6,11 @@ import { Toaster as Sonner, type ToasterProps } from "sonner"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme()
+  const { theme: resolvedTheme = "system" } = useTheme()
 
   return (
     <Sonner
-      theme={theme as ToasterProps["theme"]}
+      theme={props.theme ?? resolvedTheme}
       className="toaster group"
       icons={{
         success: (
