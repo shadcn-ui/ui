@@ -1081,7 +1081,7 @@ describe("tailwind.css package specifiers", () => {
     const { cwd } = await createWorkspace({ css: "@repo/ui/missing.css" })
 
     await expect(getConfig(cwd)).rejects.toThrow(
-      /Could not resolve .*@repo\/ui\/missing\.css/
+      /Could not resolve .*@repo\/ui\/missing\.css[\s\S]*Add this path to the "exports"/
     )
   })
 
@@ -1089,7 +1089,7 @@ describe("tailwind.css package specifiers", () => {
     const { cwd } = await createWorkspace({ css: "@repo/ui/gone.css" })
 
     await expect(getConfig(cwd)).rejects.toThrow(
-      /Could not resolve .*@repo\/ui\/gone\.css/
+      /Could not resolve .*@repo\/ui\/gone\.css[\s\S]*src\/gone\.css.*which does not exist/
     )
   })
 

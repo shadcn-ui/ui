@@ -144,16 +144,19 @@ export async function resolveConfigFilePath(
     return resolved.path
   }
 
-  // Bare paths like `app/globals.css` look like specifiers too, so only
-  // error when the value names a workspace package.
-  if (resolved || (await isWorkspacePackageSpecifier(value, cwd))) {
+  // No local file and no matching export. If the value starts with a
+  // workspace package name (`@workspace/ui/missing.css`), its export is
+  // broken, so fail. Otherwise it is a relative path to a file that does not
+  // exist yet (`app/globals.css`), returned as before.
+  if (await isWorkspacePackageSpecifier(value, cwd)) {
+    const source = `${highlighter.info(value)} (${field} in components.json)`
+    const missingTarget = resolved && highlighter.info(resolved.path)
+    const hint = missingTarget
+      ? `Its "exports" entry points at ${missingTarget}, which does not exist.`
+      : `Add this path to the "exports" of the workspace package's package.json.`
+
     throw new Error(
-      [
-        `Could not resolve ${highlighter.info(
-          value
-        )} (${field} in components.json) from ${highlighter.info(cwd)}.`,
-        `Add this path to the "exports" of the workspace package's package.json, pointing at an existing file.`,
-      ].join("\n")
+      `Could not resolve ${source} from ${highlighter.info(cwd)}.\n${hint}`
     )
   }
 
