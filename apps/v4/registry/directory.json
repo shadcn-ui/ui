@@ -3604,7 +3604,6 @@
   "homepage": "https://afterglowui.vercel.app",
   "url": "https://afterglowui.vercel.app/r/{name}.json",
   "description": "Glass sidebars, liquid controls and animated icons for React, built with Tailwind CSS and shadcn/ui.",
-  "Author" : "Piyush Rathore",
   "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)'><circle cx='12' cy='12' r='9'/></svg>"
   }
 ]
