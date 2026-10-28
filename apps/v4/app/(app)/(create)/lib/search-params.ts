@@ -36,6 +36,7 @@ import {
   type StyleName,
   type ThemeName,
 } from "@/registry/config"
+import { parseAsHexColor } from "@/app/(app)/(create)/lib/custom-primary"
 import { FONTS } from "@/app/(app)/(create)/lib/fonts"
 import { getPresetCode } from "@/app/(app)/(create)/lib/preset-code"
 import { resolvePresetOverrides } from "@/app/(app)/(create)/lib/preset-query"
@@ -94,6 +95,7 @@ const designSystemSearchParams = {
   pointer: parseAsBoolean.withDefault(false),
   size: parseAsInteger.withDefault(100),
   custom: parseAsBoolean.withDefault(false),
+  primary: parseAsHexColor,
 }
 
 // Design system param keys that get encoded into the preset code.
@@ -130,6 +132,7 @@ const NON_DESIGN_SYSTEM_KEYS = [
   "pointer",
   "size",
   "custom",
+  "primary",
 ] as const
 
 // Shared across hook instances so only one mount effect encodes the initial URL.
@@ -232,6 +235,7 @@ function resolvePresetParams(
         pointer: rawParams.pointer,
         size: rawParams.size,
         custom: rawParams.custom,
+        primary: rawParams.primary,
       })
     }
   }

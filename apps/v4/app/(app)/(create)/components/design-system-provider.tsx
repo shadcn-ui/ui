@@ -9,6 +9,7 @@ import {
   type DesignSystemConfig,
 } from "@/registry/config"
 import { useIframeMessageListener } from "@/app/(app)/(create)/hooks/use-iframe-sync"
+import { applyCustomPrimary } from "@/app/(app)/(create)/lib/custom-primary"
 import { FONTS } from "@/app/(app)/(create)/lib/fonts"
 import {
   useDesignSystemSearchParams,
@@ -84,6 +85,7 @@ export function DesignSystemProvider({
     menuAccent,
     menuColor,
     pointer,
+    primary,
     radius,
   } = searchParams
   const effectiveRadius = style === "lyra" ? "none" : radius
@@ -205,8 +207,11 @@ export function DesignSystemProvider({
       radius: effectiveRadius,
     }
 
-    return buildRegistryTheme(config)
-  }, [baseColor, theme, chartColor, menuAccent, effectiveRadius])
+    const built = buildRegistryTheme(config)
+    return built.cssVars
+      ? { ...built, cssVars: applyCustomPrimary(built.cssVars, primary) }
+      : built
+  }, [baseColor, theme, chartColor, menuAccent, effectiveRadius, primary])
 
   // Use useLayoutEffect for synchronous CSS var updates.
   React.useLayoutEffect(() => {
