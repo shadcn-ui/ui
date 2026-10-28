@@ -106,6 +106,17 @@ function getWorkspacePackageExportEntries(
   return entries
 }
 
+export async function isWorkspacePackageSpecifier(
+  importPath: string,
+  cwd: string
+) {
+  const specifier = parsePackageSpecifier(importPath)
+
+  return Boolean(
+    specifier && (await findWorkspacePackage(cwd, specifier.packageName))
+  )
+}
+
 async function findWorkspacePackage(cwd: string, packageName: string) {
   const workspaceRoot = await findWorkspaceRoot(cwd)
 

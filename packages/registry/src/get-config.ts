@@ -1,6 +1,4 @@
-import { createRequire } from "module"
 import path from "path"
-import { getPackageInfo } from "@/src/get-package-info"
 import { getProjectInfo } from "@/src/get-project-info"
 import { highlighter } from "@/src/highlighter"
 import { createJsonConfigExplorer } from "@/src/json-config"
@@ -12,6 +10,10 @@ import {
   workspaceConfigSchema,
 } from "@/src/registry/schema"
 import { resolveImportWithMetadata } from "@/src/resolve-import"
+import {
+  isWorkspacePackageSpecifier,
+  resolveWorkspacePackageExport,
+} from "@/src/workspace"
 import fg from "fast-glob"
 import fs from "fs-extra"
 import { loadConfig, type ConfigLoaderSuccessResult } from "tsconfig-paths"
@@ -99,9 +101,13 @@ export async function resolveConfigPaths(
     resolvedPaths: {
       cwd,
       tailwindConfig: config.tailwind.config
-        ? resolveConfigFilePath(cwd, config.tailwind.config, "tailwind.config")
+        ? await resolveConfigFilePath(
+            cwd,
+            config.tailwind.config,
+            "tailwind.config"
+          )
         : "",
-      tailwindCss: resolveConfigFilePath(
+      tailwindCss: await resolveConfigFilePath(
         cwd,
         config.tailwind.css,
         "tailwind.css"
@@ -118,71 +124,40 @@ export async function resolveConfigPaths(
 }
 
 // A components.json file path (`tailwind.css`, `tailwind.config`) is relative
-// to cwd, or a package specifier such as `@workspace/ui/globals.css` resolved
-// through Node module resolution.
-export function resolveConfigFilePath(
+// to cwd, or a workspace package export such as `@workspace/ui/globals.css`,
+// resolved the same way as aliases.
+export async function resolveConfigFilePath(
   cwd: string,
   value: string,
   field: "tailwind.css" | "tailwind.config"
 ) {
-  if (!isPackageSpecifier(cwd, value)) {
-    return path.resolve(cwd, value)
+  const localPath = path.resolve(cwd, value)
+
+  // An existing local file always wins, so current configs keep working.
+  if (await fs.pathExists(localPath)) {
+    return localPath
   }
 
-  let resolved: string
-  try {
-    // Realpath so workspace packages resolve to their source, not a symlink.
-    resolved = fs.realpathSync(
-      createRequire(path.join(cwd, "package.json")).resolve(value)
-    )
-  } catch (error) {
+  const resolved = await resolveWorkspacePackageExport(value, cwd)
+
+  if (resolved && (await fs.pathExists(resolved.path))) {
+    return resolved.path
+  }
+
+  // Bare paths like `app/globals.css` look like specifiers too, so only
+  // error when the value names a workspace package.
+  if (resolved || (await isWorkspacePackageSpecifier(value, cwd))) {
     throw new Error(
       [
         `Could not resolve ${highlighter.info(
           value
         )} (${field} in components.json) from ${highlighter.info(cwd)}.`,
-        `Make sure the package is installed and its package.json "exports" includes this path.`,
-        error instanceof Error ? error.message : String(error),
+        `Add this path to the "exports" of the workspace package's package.json, pointing at an existing file.`,
       ].join("\n")
     )
   }
 
-  // The CLI writes to this file, so never let it point into an installed
-  // package (node_modules or a pnpm store).
-  if (resolved.split(/[\\/]/).includes("node_modules")) {
-    throw new Error(
-      `${highlighter.info(value)} (${field} in components.json) resolves to ${highlighter.info(
-        resolved
-      )}, inside an installed package. Point it at a file in your project or a workspace package.`
-    )
-  }
-
-  return resolved
-}
-
-function isPackageSpecifier(cwd: string, value: string) {
-  if (
-    value.startsWith(".") ||
-    path.isAbsolute(value) ||
-    path.win32.isAbsolute(value) ||
-    // An existing local file always wins, so current configs keep working.
-    fs.existsSync(path.resolve(cwd, value))
-  ) {
-    return false
-  }
-
-  // Bare paths like `app/globals.css` look like specifiers too, so only treat
-  // the value as one when its package is a declared dependency.
-  const segments = value.split("/")
-  const packageName = value.startsWith("@")
-    ? segments.slice(0, 2).join("/")
-    : segments[0]
-  const packageInfo = getPackageInfo(cwd, false)
-
-  return Boolean(
-    packageInfo?.dependencies?.[packageName] ||
-      packageInfo?.devDependencies?.[packageName]
-  )
+  return localPath
 }
 
 async function resolveAliasPath(

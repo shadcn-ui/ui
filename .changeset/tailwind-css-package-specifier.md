@@ -3,4 +3,4 @@
 "shadcn": minor
 ---
 
-Allow `tailwind.css` and `tailwind.config` in `components.json` to be package specifiers, such as `@workspace/ui/globals.css`. It is resolved from the directory of `components.json` through Node module resolution, honouring `package.json` `exports`. A specifier is used only when no local file exists at that path and its package is a declared dependency, so existing relative paths are unchanged. A specifier that resolves into an installed package in `node_modules` is rejected.
+Allow `tailwind.css` and `tailwind.config` in `components.json` to point at a file exported by a workspace package, such as `@workspace/ui/globals.css`. These resolve through the workspace package's `package.json` `exports`, the same way as aliases. An existing local file at that path always wins, and values that don't name a workspace package are treated as plain paths, so existing configs are unchanged.

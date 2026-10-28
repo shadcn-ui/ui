@@ -997,13 +997,12 @@ describe("createConfig", () => {
 describe("tailwind.css package specifiers", () => {
   const globalsCss = '@import "tailwindcss";\n'
 
-  // An app depending on @repo/ui, a workspace package exporting its CSS.
-  async function createWorkspace(options: {
-    css: string
-    config?: string
-    install?: "workspace-link" | "package"
-  }) {
+  // A pnpm workspace with no node_modules: an app and @repo/ui, a workspace
+  // package exporting its CSS.
+  async function createWorkspace(options: { css: string; config?: string }) {
     const root = await createTempDir({
+      "pnpm-workspace.yaml": "packages:\n  - apps/*\n  - packages/*\n",
+      "package.json": JSON.stringify({ name: "root", private: true }),
       "apps/web/components.json": JSON.stringify({
         style: "new-york",
         tailwind: {
@@ -1027,33 +1026,17 @@ describe("tailwind.css package specifiers", () => {
         exports: {
           "./globals.css": "./src/styles/globals.css",
           "./tailwind.config": "./tailwind.config.js",
+          "./gone.css": "./src/gone.css",
         },
       }),
       "packages/ui/src/styles/globals.css": globalsCss,
       "packages/ui/tailwind.config.js": "module.exports = {}\n",
     })
-    const cwd = path.join(root, "apps/web")
-    const installed = path.join(cwd, "node_modules/@repo/ui")
-
-    if (options.install === "package") {
-      // A real installed copy, as a registry install or pnpm store would have.
-      await writeFiles(installed, {
-        "package.json": JSON.stringify({
-          name: "@repo/ui",
-          exports: { "./globals.css": "./globals.css" },
-        }),
-        "globals.css": globalsCss,
-      })
-    } else {
-      await fs.ensureSymlink(path.join(root, "packages/ui"), installed, "dir")
-    }
 
     return {
-      cwd,
-      sourceCss: path.join(
-        await fs.realpath(root),
-        "packages/ui/src/styles/globals.css"
-      ),
+      root,
+      cwd: path.join(root, "apps/web"),
+      sourceCss: path.join(root, "packages/ui/src/styles/globals.css"),
     }
   }
 
@@ -1061,8 +1044,9 @@ describe("tailwind.css package specifiers", () => {
     for (const css of [
       "../../packages/ui/src/styles/globals.css",
       "styles/globals.css",
-      // Not a local file and not a dependency: still a plain path.
+      // Not a local file and not a workspace package: still a plain path.
       "app/globals.css",
+      "@other/pkg/globals.css",
     ]) {
       const { cwd } = await createWorkspace({ css })
       expect((await getConfig(cwd))?.resolvedPaths.tailwindCss).toBe(
@@ -1071,7 +1055,7 @@ describe("tailwind.css package specifiers", () => {
     }
   })
 
-  it("resolves a scoped specifier through package exports", async () => {
+  it("resolves a workspace package export", async () => {
     const { cwd, sourceCss } = await createWorkspace({
       css: "@repo/ui/globals.css",
     })
@@ -1083,13 +1067,13 @@ describe("tailwind.css package specifiers", () => {
   })
 
   it("resolves tailwind.config the same way", async () => {
-    const { cwd, sourceCss } = await createWorkspace({
+    const { root, cwd } = await createWorkspace({
       css: "@repo/ui/globals.css",
       config: "@repo/ui/tailwind.config",
     })
 
     expect((await getConfig(cwd))?.resolvedPaths.tailwindConfig).toBe(
-      path.join(path.dirname(sourceCss), "../../tailwind.config.js")
+      path.join(root, "packages/ui/tailwind.config.js")
     )
   })
 
@@ -1099,6 +1083,29 @@ describe("tailwind.css package specifiers", () => {
     await expect(getConfig(cwd)).rejects.toThrow(
       /Could not resolve .*@repo\/ui\/missing\.css/
     )
+  })
+
+  it("throws a clear error for an export pointing at a missing file", async () => {
+    const { cwd } = await createWorkspace({ css: "@repo/ui/gone.css" })
+
+    await expect(getConfig(cwd)).rejects.toThrow(
+      /Could not resolve .*@repo\/ui\/gone\.css/
+    )
+  })
+
+  it("prefers the workspace source over an installed copy", async () => {
+    const { cwd, sourceCss } = await createWorkspace({
+      css: "@repo/ui/globals.css",
+    })
+    await writeFiles(path.join(cwd, "node_modules/@repo/ui"), {
+      "package.json": JSON.stringify({
+        name: "@repo/ui",
+        exports: { "./globals.css": "./globals.css" },
+      }),
+      "globals.css": globalsCss,
+    })
+
+    expect((await getConfig(cwd))?.resolvedPaths.tailwindCss).toBe(sourceCss)
   })
 
   it("writes css vars to the resolved workspace file", async () => {
@@ -1116,14 +1123,5 @@ describe("tailwind.css package specifiers", () => {
     expect(await fs.readFile(sourceCss, "utf8")).toContain(
       "--brand: oklch(0.5 0.2 250)"
     )
-  })
-
-  it("rejects a specifier resolving into an installed package", async () => {
-    const { cwd } = await createWorkspace({
-      css: "@repo/ui/globals.css",
-      install: "package",
-    })
-
-    await expect(getConfig(cwd)).rejects.toThrow(/inside an installed package/)
   })
 })
