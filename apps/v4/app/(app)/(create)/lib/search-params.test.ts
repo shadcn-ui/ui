@@ -13,6 +13,7 @@ describe("buildPresetUrlUpdate", () => {
       item: "preview-02",
       size: 100,
       custom: false,
+      primary: null,
     })
 
     expect(update.preset).toBeTypeOf("string")
@@ -29,6 +30,7 @@ describe("buildPresetUrlUpdate", () => {
       item: "preview-02",
       size: 100,
       custom: false,
+      primary: null,
     })
 
     expect(update.template).toBe("start")
@@ -44,10 +46,28 @@ describe("buildPresetUrlUpdate", () => {
         item: "preview-02",
         size: 100,
         custom: false,
+        primary: null,
       },
       { template: "vite" }
     )
 
     expect(update.template).toBe("vite")
+  })
+
+  it("keeps the custom primary when a design system param changes", () => {
+    const update = buildPresetUrlUpdate(
+      {
+        ...DEFAULT_CONFIG,
+        preset: "b0",
+        template: "next",
+        item: "preview-02",
+        size: 100,
+        custom: false,
+        primary: "7c3aed",
+      },
+      { font: "geist" }
+    )
+
+    expect(update.primary).toBe("7c3aed")
   })
 })
