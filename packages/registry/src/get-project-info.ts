@@ -4,8 +4,8 @@ import { Framework, FRAMEWORKS } from "@/src/frameworks"
 import {
   Config,
   getConfig,
+  resolveConfigFilePath,
   resolveConfigPaths,
-  resolveTailwindCssPath,
 } from "@/src/get-config"
 import { getPackageInfo } from "@/src/get-package-info"
 import {
@@ -259,7 +259,11 @@ export async function getTailwindVersion(
 export async function getTailwindCssFile(cwd: string, configCssFile?: string) {
   // If the existing config has a known CSS file, check it first.
   if (configCssFile) {
-    const resolvedPath = resolveTailwindCssPath(cwd, configCssFile)
+    const resolvedPath = resolveConfigFilePath(
+      cwd,
+      configCssFile,
+      "tailwind.css"
+    )
     if (await fs.pathExists(resolvedPath)) {
       return configCssFile
     }

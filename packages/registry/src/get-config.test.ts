@@ -1000,12 +1000,18 @@ describe("tailwind.css package specifiers", () => {
   // An app depending on @repo/ui, a workspace package exporting its CSS.
   async function createWorkspace(options: {
     css: string
+    config?: string
     install?: "workspace-link" | "package"
   }) {
     const root = await createTempDir({
       "apps/web/components.json": JSON.stringify({
         style: "new-york",
-        tailwind: { css: options.css, baseColor: "zinc", cssVariables: true },
+        tailwind: {
+          css: options.css,
+          config: options.config,
+          baseColor: "zinc",
+          cssVariables: true,
+        },
         aliases: { components: "@/components", utils: "@/lib/utils" },
       }),
       "apps/web/package.json": JSON.stringify({
@@ -1018,9 +1024,13 @@ describe("tailwind.css package specifiers", () => {
       "apps/web/styles/globals.css": globalsCss,
       "packages/ui/package.json": JSON.stringify({
         name: "@repo/ui",
-        exports: { "./globals.css": "./src/styles/globals.css" },
+        exports: {
+          "./globals.css": "./src/styles/globals.css",
+          "./tailwind.config": "./tailwind.config.js",
+        },
       }),
       "packages/ui/src/styles/globals.css": globalsCss,
+      "packages/ui/tailwind.config.js": "module.exports = {}\n",
     })
     const cwd = path.join(root, "apps/web")
     const installed = path.join(cwd, "node_modules/@repo/ui")
@@ -1069,6 +1079,17 @@ describe("tailwind.css package specifiers", () => {
     expect((await getConfig(cwd))?.resolvedPaths.tailwindCss).toBe(sourceCss)
     expect(await getTailwindCssFile(cwd, "@repo/ui/globals.css")).toBe(
       "@repo/ui/globals.css"
+    )
+  })
+
+  it("resolves tailwind.config the same way", async () => {
+    const { cwd, sourceCss } = await createWorkspace({
+      css: "@repo/ui/globals.css",
+      config: "@repo/ui/tailwind.config",
+    })
+
+    expect((await getConfig(cwd))?.resolvedPaths.tailwindConfig).toBe(
+      path.join(path.dirname(sourceCss), "../../tailwind.config.js")
     )
   })
 

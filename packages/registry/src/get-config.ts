@@ -99,9 +99,13 @@ export async function resolveConfigPaths(
     resolvedPaths: {
       cwd,
       tailwindConfig: config.tailwind.config
-        ? path.resolve(cwd, config.tailwind.config)
+        ? resolveConfigFilePath(cwd, config.tailwind.config, "tailwind.config")
         : "",
-      tailwindCss: resolveTailwindCssPath(cwd, config.tailwind.css),
+      tailwindCss: resolveConfigFilePath(
+        cwd,
+        config.tailwind.css,
+        "tailwind.css"
+      ),
       utils: resolvedUtils,
       components: resolvedComponents,
       ui: resolvedUi,
@@ -113,25 +117,30 @@ export async function resolveConfigPaths(
   })
 }
 
-// `tailwind.css` is a path relative to cwd, or a package specifier such as
-// `@workspace/ui/globals.css` resolved through Node module resolution.
-export function resolveTailwindCssPath(cwd: string, css: string) {
-  if (!isTailwindCssSpecifier(cwd, css)) {
-    return path.resolve(cwd, css)
+// A components.json file path (`tailwind.css`, `tailwind.config`) is relative
+// to cwd, or a package specifier such as `@workspace/ui/globals.css` resolved
+// through Node module resolution.
+export function resolveConfigFilePath(
+  cwd: string,
+  value: string,
+  field: "tailwind.css" | "tailwind.config"
+) {
+  if (!isPackageSpecifier(cwd, value)) {
+    return path.resolve(cwd, value)
   }
 
   let resolved: string
   try {
     // Realpath so workspace packages resolve to their source, not a symlink.
     resolved = fs.realpathSync(
-      createRequire(path.join(cwd, "package.json")).resolve(css)
+      createRequire(path.join(cwd, "package.json")).resolve(value)
     )
   } catch (error) {
     throw new Error(
       [
         `Could not resolve ${highlighter.info(
-          css
-        )} (tailwind.css in components.json) from ${highlighter.info(cwd)}.`,
+          value
+        )} (${field} in components.json) from ${highlighter.info(cwd)}.`,
         `Make sure the package is installed and its package.json "exports" includes this path.`,
         error instanceof Error ? error.message : String(error),
       ].join("\n")
@@ -142,7 +151,7 @@ export function resolveTailwindCssPath(cwd: string, css: string) {
   // package (node_modules or a pnpm store).
   if (resolved.split(/[\\/]/).includes("node_modules")) {
     throw new Error(
-      `${highlighter.info(css)} (tailwind.css in components.json) resolves to ${highlighter.info(
+      `${highlighter.info(value)} (${field} in components.json) resolves to ${highlighter.info(
         resolved
       )}, inside an installed package. Point it at a file in your project or a workspace package.`
     )
@@ -151,21 +160,21 @@ export function resolveTailwindCssPath(cwd: string, css: string) {
   return resolved
 }
 
-function isTailwindCssSpecifier(cwd: string, css: string) {
+function isPackageSpecifier(cwd: string, value: string) {
   if (
-    css.startsWith(".") ||
-    path.isAbsolute(css) ||
-    path.win32.isAbsolute(css) ||
+    value.startsWith(".") ||
+    path.isAbsolute(value) ||
+    path.win32.isAbsolute(value) ||
     // An existing local file always wins, so current configs keep working.
-    fs.existsSync(path.resolve(cwd, css))
+    fs.existsSync(path.resolve(cwd, value))
   ) {
     return false
   }
 
   // Bare paths like `app/globals.css` look like specifiers too, so only treat
   // the value as one when its package is a declared dependency.
-  const segments = css.split("/")
-  const packageName = css.startsWith("@")
+  const segments = value.split("/")
+  const packageName = value.startsWith("@")
     ? segments.slice(0, 2).join("/")
     : segments[0]
   const packageInfo = getPackageInfo(cwd, false)

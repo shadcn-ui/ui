@@ -20,7 +20,8 @@ import {
 vi.mock("@/src/get-config", () => ({
   getConfig: vi.fn(),
   resolveConfigPaths: vi.fn(),
-  resolveTailwindCssPath: (cwd: string, css: string) => path.resolve(cwd, css),
+  resolveConfigFilePath: (cwd: string, value: string) =>
+    path.resolve(cwd, value),
 }))
 
 vi.mock("@/src/registry/api", () => ({
