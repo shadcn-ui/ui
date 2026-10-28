@@ -72,6 +72,8 @@ Path to the CSS file that imports Tailwind CSS into your project.
 }
 ```
 
+In a monorepo, you can also use a package specifier such as `@workspace/ui/globals.css`. It is resolved from the directory of `components.json` through Node module resolution, so the package must be a dependency and include the file in its `package.json` `exports`. It must resolve to a file in your project or a workspace package, not to an installed package in `node_modules`.
+
 ### tailwind.baseColor
 
 This is used to generate the default theme tokens for your components. **This cannot be changed after initialization.**

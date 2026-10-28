@@ -1,4 +1,6 @@
+import { createRequire } from "module"
 import path from "path"
+import { getPackageInfo } from "@/src/get-package-info"
 import { getProjectInfo } from "@/src/get-project-info"
 import { highlighter } from "@/src/highlighter"
 import { createJsonConfigExplorer } from "@/src/json-config"
@@ -11,6 +13,7 @@ import {
 } from "@/src/registry/schema"
 import { resolveImportWithMetadata } from "@/src/resolve-import"
 import fg from "fast-glob"
+import fs from "fs-extra"
 import { loadConfig, type ConfigLoaderSuccessResult } from "tsconfig-paths"
 import { z } from "zod"
 
@@ -98,7 +101,7 @@ export async function resolveConfigPaths(
       tailwindConfig: config.tailwind.config
         ? path.resolve(cwd, config.tailwind.config)
         : "",
-      tailwindCss: path.resolve(cwd, config.tailwind.css),
+      tailwindCss: resolveTailwindCssPath(cwd, config.tailwind.css),
       utils: resolvedUtils,
       components: resolvedComponents,
       ui: resolvedUi,
@@ -108,6 +111,69 @@ export async function resolveConfigPaths(
       hooks: resolvedHooks,
     },
   })
+}
+
+// `tailwind.css` is a path relative to cwd, or a package specifier such as
+// `@workspace/ui/globals.css` resolved through Node module resolution.
+export function resolveTailwindCssPath(cwd: string, css: string) {
+  if (!isTailwindCssSpecifier(cwd, css)) {
+    return path.resolve(cwd, css)
+  }
+
+  let resolved: string
+  try {
+    // Realpath so workspace packages resolve to their source, not a symlink.
+    resolved = fs.realpathSync(
+      createRequire(path.join(cwd, "package.json")).resolve(css)
+    )
+  } catch (error) {
+    throw new Error(
+      [
+        `Could not resolve ${highlighter.info(
+          css
+        )} (tailwind.css in components.json) from ${highlighter.info(cwd)}.`,
+        `Make sure the package is installed and its package.json "exports" includes this path.`,
+        error instanceof Error ? error.message : String(error),
+      ].join("\n")
+    )
+  }
+
+  // The CLI writes to this file, so never let it point into an installed
+  // package (node_modules or a pnpm store).
+  if (resolved.split(/[\\/]/).includes("node_modules")) {
+    throw new Error(
+      `${highlighter.info(css)} (tailwind.css in components.json) resolves to ${highlighter.info(
+        resolved
+      )}, inside an installed package. Point it at a file in your project or a workspace package.`
+    )
+  }
+
+  return resolved
+}
+
+function isTailwindCssSpecifier(cwd: string, css: string) {
+  if (
+    css.startsWith(".") ||
+    path.isAbsolute(css) ||
+    path.win32.isAbsolute(css) ||
+    // An existing local file always wins, so current configs keep working.
+    fs.existsSync(path.resolve(cwd, css))
+  ) {
+    return false
+  }
+
+  // Bare paths like `app/globals.css` look like specifiers too, so only treat
+  // the value as one when its package is a declared dependency.
+  const segments = css.split("/")
+  const packageName = css.startsWith("@")
+    ? segments.slice(0, 2).join("/")
+    : segments[0]
+  const packageInfo = getPackageInfo(cwd, false)
+
+  return Boolean(
+    packageInfo?.dependencies?.[packageName] ||
+      packageInfo?.devDependencies?.[packageName]
+  )
 }
 
 async function resolveAliasPath(

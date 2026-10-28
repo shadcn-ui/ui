@@ -1,7 +1,8 @@
 import os from "os"
 import path from "path"
-import { getProjectConfig } from "@/src/get-project-info"
+import { getProjectConfig, getTailwindCssFile } from "@/src/get-project-info"
 import { getFixturesDir, writeFiles } from "@/src/test-helpers"
+import { updateCss } from "@/src/updaters/update-css"
 import fs from "fs-extra"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
@@ -990,5 +991,118 @@ describe("createConfig", () => {
     expect(config1.resolvedPaths).not.toBe(config2.resolvedPaths)
     expect(config1.tailwind).not.toBe(config2.tailwind)
     expect(config1.aliases).not.toBe(config2.aliases)
+  })
+})
+
+describe("tailwind.css package specifiers", () => {
+  const globalsCss = '@import "tailwindcss";\n'
+
+  // An app depending on @repo/ui, a workspace package exporting its CSS.
+  async function createWorkspace(options: {
+    css: string
+    install?: "workspace-link" | "package"
+  }) {
+    const root = await createTempDir({
+      "apps/web/components.json": JSON.stringify({
+        style: "new-york",
+        tailwind: { css: options.css, baseColor: "zinc", cssVariables: true },
+        aliases: { components: "@/components", utils: "@/lib/utils" },
+      }),
+      "apps/web/package.json": JSON.stringify({
+        name: "web",
+        dependencies: { "@repo/ui": "workspace:*" },
+      }),
+      "apps/web/tsconfig.json": JSON.stringify({
+        compilerOptions: { baseUrl: ".", paths: { "@/*": ["./*"] } },
+      }),
+      "apps/web/styles/globals.css": globalsCss,
+      "packages/ui/package.json": JSON.stringify({
+        name: "@repo/ui",
+        exports: { "./globals.css": "./src/styles/globals.css" },
+      }),
+      "packages/ui/src/styles/globals.css": globalsCss,
+    })
+    const cwd = path.join(root, "apps/web")
+    const installed = path.join(cwd, "node_modules/@repo/ui")
+
+    if (options.install === "package") {
+      // A real installed copy, as a registry install or pnpm store would have.
+      await writeFiles(installed, {
+        "package.json": JSON.stringify({
+          name: "@repo/ui",
+          exports: { "./globals.css": "./globals.css" },
+        }),
+        "globals.css": globalsCss,
+      })
+    } else {
+      await fs.ensureSymlink(path.join(root, "packages/ui"), installed, "dir")
+    }
+
+    return {
+      cwd,
+      sourceCss: path.join(
+        await fs.realpath(root),
+        "packages/ui/src/styles/globals.css"
+      ),
+    }
+  }
+
+  it("keeps relative paths unchanged", async () => {
+    for (const css of [
+      "../../packages/ui/src/styles/globals.css",
+      "styles/globals.css",
+      // Not a local file and not a dependency: still a plain path.
+      "app/globals.css",
+    ]) {
+      const { cwd } = await createWorkspace({ css })
+      expect((await getConfig(cwd))?.resolvedPaths.tailwindCss).toBe(
+        path.resolve(cwd, css)
+      )
+    }
+  })
+
+  it("resolves a scoped specifier through package exports", async () => {
+    const { cwd, sourceCss } = await createWorkspace({
+      css: "@repo/ui/globals.css",
+    })
+
+    expect((await getConfig(cwd))?.resolvedPaths.tailwindCss).toBe(sourceCss)
+    expect(await getTailwindCssFile(cwd, "@repo/ui/globals.css")).toBe(
+      "@repo/ui/globals.css"
+    )
+  })
+
+  it("throws a clear error for an unexported subpath", async () => {
+    const { cwd } = await createWorkspace({ css: "@repo/ui/missing.css" })
+
+    await expect(getConfig(cwd)).rejects.toThrow(
+      /Could not resolve .*@repo\/ui\/missing\.css/
+    )
+  })
+
+  it("writes css vars to the resolved workspace file", async () => {
+    const { cwd, sourceCss } = await createWorkspace({
+      css: "@repo/ui/globals.css",
+    })
+    const config = await getConfig(cwd)
+
+    await updateCss(undefined, config!, {
+      silent: true,
+      tailwindVersion: "v4",
+      cssVars: { light: { brand: "oklch(0.5 0.2 250)" } },
+    })
+
+    expect(await fs.readFile(sourceCss, "utf8")).toContain(
+      "--brand: oklch(0.5 0.2 250)"
+    )
+  })
+
+  it("rejects a specifier resolving into an installed package", async () => {
+    const { cwd } = await createWorkspace({
+      css: "@repo/ui/globals.css",
+      install: "package",
+    })
+
+    await expect(getConfig(cwd)).rejects.toThrow(/inside an installed package/)
   })
 })
