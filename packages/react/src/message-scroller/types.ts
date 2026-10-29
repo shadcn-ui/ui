@@ -38,6 +38,7 @@ type MessageScrollerMode =
   | "following-bottom" // autoScroll on, pinned to the latest message.
   | "free-scrolling" // reader scrolled away; position left alone (prepends still preserved).
   | "anchored-to-message" // holding a turn at the reading line while it streams.
+  | "anchored-following-bottom" // placed a new anchor, but keep auto-follow armed for the reply.
   | "settling-jump" // a programmatic jump is animating; intent detection suppressed until it settles.
 
 // Where a saved transcript opens on the first non-empty render.
