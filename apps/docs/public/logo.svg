@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="سازه UI">
+  <rect width="64" height="64" rx="16" fill="#0F766E" />
+  <path
+    d="M16 52V30C16 20.6 23.2 13 32 13s16 7.6 16 17v22"
+    stroke="#F6E7C1"
+    stroke-width="4"
+    stroke-linecap="round"
+  />
+  <path d="M24 52V32a8 8 0 0 1 16 0v20" fill="#F2B134" />
+  <path d="M32 24v28" stroke="#0F766E" stroke-width="2.5" stroke-linecap="round" />
+  <path d="M11 52h42" stroke="#F6E7C1" stroke-width="4" stroke-linecap="round" />
+</svg>

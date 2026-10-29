@@ -1,0 +1,87 @@
+/* Vazirmatn variable font, bundled locally for offline Persian typography. */
+@import './fonts.css';
+
+@layer base {
+  :root {
+    color-scheme: light;
+
+    --background: 40 33% 98%;
+    --foreground: 224 25% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 25% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 25% 12%;
+
+    --primary: 174 72% 26%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 35 55% 94%;
+    --secondary-foreground: 174 50% 18%;
+
+    --muted: 40 20% 94%;
+    --muted-foreground: 220 12% 42%;
+
+    --accent: 38 95% 55%;
+    --accent-foreground: 30 80% 12%;
+
+    --destructive: 0 72% 48%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 35 20% 87%;
+    --input: 35 20% 84%;
+    --ring: 174 72% 30%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    color-scheme: dark;
+
+    --background: 225 24% 9%;
+    --foreground: 40 30% 96%;
+
+    --card: 224 22% 12%;
+    --card-foreground: 40 30% 96%;
+
+    --popover: 224 22% 12%;
+    --popover-foreground: 40 30% 96%;
+
+    --primary: 172 62% 43%;
+    --primary-foreground: 174 80% 8%;
+
+    --secondary: 35 18% 18%;
+    --secondary-foreground: 40 30% 96%;
+
+    --muted: 224 18% 17%;
+    --muted-foreground: 220 12% 65%;
+
+    --accent: 40 90% 54%;
+    --accent-foreground: 30 80% 10%;
+
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 224 18% 20%;
+    --input: 224 18% 24%;
+    --ring: 172 62% 43%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: 'Vazirmatn Variable', Vazirmatn, Tahoma, sans-serif;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
+}

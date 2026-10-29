@@ -1,10 +1,10 @@
 packages:
-  - "apps/*"
-  - "packages/*"
-  - "!**/test/**"
-  - "!**/fixtures/**"
-  - "!**/temp/**"
-  - "!packages/tests/temp/**"
+  - 'apps/*'
+  - 'packages/*'
+  - '!**/test/**'
+  - '!**/fixtures/**'
+  - '!**/temp/**'
+  - '!packages/tests/temp/**'
 
 minimumReleaseAge: 2880
 # TODO: remove once cn@0.2.2 (published 2026-09-01) is older than the 48h
@@ -17,3 +17,10 @@ minimumReleaseAgeExclude:
   - "@tanstack/table-core"
   - "@tanstack/react-store"
   - "@tanstack/store"
+
+onlyBuiltDependencies:
+  - esbuild
+  - vue-demi
+allowBuilds:
+  esbuild: true
+  vue-demi: true

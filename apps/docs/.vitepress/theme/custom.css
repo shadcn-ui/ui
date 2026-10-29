@@ -1,0 +1,532 @@
+/* -------------------------------------------------------------------------- */
+/*  سازه UI — VitePress theme overrides                                        */
+/*  VitePress 1.x does not ship an RTL layout, so the physical positioning     */
+/*  of the sidebar, nav, aside and outline is mirrored here.                  */
+/* -------------------------------------------------------------------------- */
+
+:root {
+  --vp-c-brand-1: #0f766e;
+  --vp-c-brand-2: #0d9488;
+  --vp-c-brand-3: #14b8a6;
+  --vp-c-brand-soft: rgb(13 148 136 / 12%);
+  --vp-c-brand: #0f766e;
+  --vp-c-brand-light: #0d9488;
+  --vp-c-brand-lighter: #14b8a6;
+  --vp-c-brand-dark: #115e59;
+  --vp-c-brand-darker: #134e4a;
+
+  --vp-c-bg: #fdfcf9;
+  --vp-c-bg-alt: #f7f4ec;
+  --vp-c-bg-soft: #f3efe5;
+  --vp-c-bg-elv: #fffdf8;
+  --vp-c-divider: #e6e0d3;
+  --vp-c-gutter: #ece7dc;
+
+  --vp-c-text-1: #1c2433;
+  --vp-c-text-2: #505b6b;
+  --vp-c-text-3: #8a8f98;
+
+  --vp-sidebar-bg-color: #faf8f2;
+  --vp-nav-bg-color: rgb(253 252 249 / 86%);
+  --vp-local-nav-bg-color: rgb(253 252 249 / 92%);
+
+  --vp-font-family-base: 'Vazirmatn Variable', Vazirmatn, Tahoma, sans-serif;
+  --vp-font-family-mono: 'SFMono-Regular', ui-monospace, 'Cascadia Code', Menlo, monospace;
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(120deg, #0f766e 20%, #14b8a6 60%, #f2b134);
+  --vp-home-hero-image-background-image: linear-gradient(
+    135deg,
+    rgb(15 118 110 / 24%),
+    rgb(242 177 52 / 18%)
+  );
+  --vp-home-hero-image-filter: blur(48px);
+}
+
+.dark {
+  --vp-c-brand-1: #2dd4bf;
+  --vp-c-brand-2: #5eead4;
+  --vp-c-brand-3: #99f6e4;
+  --vp-c-brand-soft: rgb(45 212 191 / 12%);
+  --vp-c-brand: #2dd4bf;
+  --vp-c-brand-light: #5eead4;
+  --vp-c-brand-lighter: #99f6e4;
+  --vp-c-brand-dark: #14b8a6;
+  --vp-c-brand-darker: #0d9488;
+
+  --vp-c-bg: #10151c;
+  --vp-c-bg-alt: #151c25;
+  --vp-c-bg-soft: #19222c;
+  --vp-c-bg-elv: #1c2631;
+  --vp-c-divider: #2a3542;
+  --vp-c-gutter: #232d39;
+
+  --vp-c-text-1: #f5f0e4;
+  --vp-c-text-2: #b6bec8;
+  --vp-c-text-3: #7f8a97;
+
+  --vp-sidebar-bg-color: #0e131a;
+  --vp-nav-bg-color: rgb(16 21 28 / 86%);
+  --vp-local-nav-bg-color: rgb(16 21 28 / 92%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--vp-font-family-base);
+  letter-spacing: -0.005em;
+}
+
+::selection {
+  background-color: rgb(13 148 136 / 22%);
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Navbar                                                                    */
+/* -------------------------------------------------------------------------- */
+
+.VPNavBar {
+  backdrop-filter: saturate(180%) blur(14px);
+}
+
+@media (max-width: 767px) {
+  html[dir='rtl'] .VPNavBar .wrapper {
+    padding: 0 24px 0 8px;
+  }
+}
+
+html[dir='rtl'] .VPNavBarTitle .title .logo {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+@media (min-width: 960px) {
+  html[dir='rtl'] .VPNavBar.has-sidebar .title {
+    right: 0;
+    left: auto;
+  }
+
+  html[dir='rtl'] .VPNavBar.has-sidebar .content {
+    padding-right: var(--vp-sidebar-width);
+    padding-left: 32px;
+  }
+
+  html[dir='rtl'] .VPNavBar.has-sidebar .divider {
+    padding-right: var(--vp-sidebar-width);
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  html[dir='rtl'] .VPNavBar.has-sidebar .title {
+    padding-right: max(32px, calc((100% - (var(--vp-layout-max-width) - 64px)) / 2));
+    padding-left: 0;
+    width: calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 32px);
+  }
+
+  html[dir='rtl'] .VPNavBar.has-sidebar .content {
+    padding-right: calc((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width));
+    padding-left: calc((100vw - var(--vp-layout-max-width)) / 2 + 32px);
+  }
+
+  html[dir='rtl'] .VPNavBar.has-sidebar .divider {
+    padding-right: calc((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width));
+    padding-left: 0;
+  }
+}
+
+html[dir='rtl'] .VPNavBar .social-links {
+  margin-right: 0;
+  margin-left: -8px;
+}
+
+/* The extra menu sits on the inline-start side in RTL, so its panel has to
+   grow towards the content instead of off the left edge of the viewport. */
+html[dir='rtl'] .VPNavBarExtra .menu {
+  right: auto;
+  left: 0;
+}
+
+.DocSearch-Button .DocSearch-Button-Placeholder {
+  padding: 0 0 0 16px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Sidebar                                                                   */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 959px) {
+  html[dir='rtl'] .VPSidebar {
+    right: 0;
+    left: auto;
+    transform: translateX(100%);
+  }
+
+  html[dir='rtl'] .VPSidebar.open {
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 960px) {
+  html[dir='rtl'] .VPSidebar {
+    right: 0;
+    left: auto;
+  }
+}
+
+@media (min-width: 1440px) {
+  html[dir='rtl'] .VPSidebar {
+    padding-right: max(32px, calc((100% - (var(--vp-layout-max-width) - 64px)) / 2));
+    padding-left: 32px;
+    width: calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 32px);
+  }
+}
+
+html[dir='rtl'] .VPSidebarItem .items {
+  border-right: 1px solid var(--vp-c-divider) !important;
+  border-left: none !important;
+  padding-right: 16px !important;
+  padding-left: 0 !important;
+}
+
+html[dir='rtl'] .VPSidebarItem .indicator {
+  right: -17px;
+  left: auto;
+}
+
+html[dir='rtl'] .VPSidebarItem .caret {
+  margin-right: 0;
+  margin-left: -7px;
+}
+
+html[dir='rtl'] .VPSidebarItem .caret-icon {
+  transform: rotate(-90deg);
+}
+
+html[dir='rtl'] .VPSidebarItem.collapsed .caret-icon {
+  transform: rotate(0);
+}
+
+html[dir='rtl'] .VPSidebarItem.is-active > .item > .link > .text {
+  font-weight: 700;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Content shell                                                             */
+/* -------------------------------------------------------------------------- */
+
+@media (min-width: 960px) {
+  html[dir='rtl'] .VPContent.has-sidebar {
+    padding-right: var(--vp-sidebar-width);
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  html[dir='rtl'] .VPContent.has-sidebar {
+    padding-right: calc((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width));
+    padding-left: calc((100vw - var(--vp-layout-max-width)) / 2);
+  }
+}
+
+@media (min-width: 960px) {
+  html[dir='rtl'] .VPLocalNav.has-sidebar {
+    padding-right: var(--vp-sidebar-width);
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  html[dir='rtl'] .VPLocalNav.has-sidebar {
+    padding-right: calc((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width));
+    padding-left: 0;
+  }
+}
+
+html[dir='rtl'] .VPLocalNav .menu-icon {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+@media (min-width: 960px) {
+  html[dir='rtl'] .VPLocalNavOutlineDropdown .items {
+    right: calc(var(--vp-sidebar-width) + 32px);
+    left: auto;
+  }
+}
+
+html[dir='rtl'] .VPLocalNavOutlineDropdown .icon {
+  margin-right: 2px;
+  margin-left: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Doc content                                                               */
+/* -------------------------------------------------------------------------- */
+
+.vp-doc {
+  text-align: start;
+}
+
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4 {
+  letter-spacing: -0.015em;
+}
+
+.vp-doc h2 {
+  border-top-color: var(--vp-c-divider);
+}
+
+.vp-doc .header-anchor {
+  right: 0;
+  left: auto;
+  margin-right: -0.87em;
+  margin-left: 0;
+}
+
+.vp-doc ul,
+.vp-doc ol {
+  padding-right: 1.25rem;
+  padding-left: 0;
+}
+
+.vp-doc li::marker {
+  color: var(--vp-c-brand-1);
+}
+
+.vp-doc blockquote {
+  border-right: 2px solid var(--vp-c-divider);
+  border-left: none;
+  padding-right: 16px;
+  padding-left: 0;
+}
+
+.vp-doc th {
+  text-align: right;
+}
+
+.vp-doc td {
+  text-align: right;
+}
+
+.vp-doc table {
+  width: 100%;
+}
+
+.vp-doc tr:nth-child(2n) {
+  background-color: var(--vp-c-bg-soft);
+}
+
+.vp-doc div[class*='language-'],
+.vp-doc div[class*='language-'] pre,
+.vp-doc div[class*='language-'] code {
+  direction: ltr;
+  text-align: left;
+}
+
+.vp-doc div[class*='language-'] {
+  border-radius: 12px;
+}
+
+.vp-doc div[class*='language-'] button.copy {
+  right: 8px;
+  left: auto;
+}
+
+.vp-doc :not(pre) > code {
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
+.vp-doc .custom-block {
+  border-radius: 12px;
+}
+
+.vp-doc .custom-block-title {
+  font-weight: 700;
+}
+
+.vp-doc .custom-block.tip {
+  border-color: rgb(13 148 136 / 28%);
+}
+
+/* Aside / outline */
+
+html[dir='rtl'] .VPDoc .aside {
+  padding-right: 32px;
+  padding-left: 0;
+}
+
+html[dir='rtl'] .VPDocAsideOutline .content {
+  border-right: 1px solid var(--vp-c-divider) !important;
+  border-left: none !important;
+  padding-right: 16px !important;
+  padding-left: 0 !important;
+}
+
+html[dir='rtl'] .VPDocAsideOutline .outline-marker {
+  right: -1px;
+  left: auto;
+}
+
+html[dir='rtl'] .VPDocOutlineItem .outline-link.nested {
+  padding-right: 13px;
+  padding-left: 0;
+}
+
+html[dir='rtl'] .VPDocFooter .pager-link.next {
+  margin-right: auto;
+  margin-left: 0;
+  text-align: left;
+}
+
+html[dir='rtl'] .VPDocFooter .edit-link-icon {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Home                                                                      */
+/* -------------------------------------------------------------------------- */
+
+@media (min-width: 960px) {
+  html[dir='rtl'] .VPHero.has-image .container {
+    text-align: right;
+  }
+
+  html[dir='rtl'] .VPHero.has-image .name,
+  html[dir='rtl'] .VPHero.has-image .text,
+  html[dir='rtl'] .VPHero.has-image .tagline {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  html[dir='rtl'] .VPHero.has-image .actions {
+    justify-content: flex-start;
+  }
+
+  html[dir='rtl'] .VPHero .image-container {
+    transform: translate(32px, -32px);
+  }
+}
+
+html[dir='rtl'] .VPHero .name {
+  font-weight: 800;
+}
+
+html[dir='rtl'] .VPHero .text {
+  color: var(--vp-c-text-1);
+}
+
+html[dir='rtl'] .VPHero .tagline {
+  color: var(--vp-c-text-2);
+}
+
+html[dir='rtl'] .VPFeature {
+  text-align: right;
+}
+
+html[dir='rtl'] .VPFeature .icon {
+  background-color: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+}
+
+html[dir='rtl'] .VPFeature .link-text-icon {
+  margin-right: 6px;
+  margin-left: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Small helpers used in Markdown                                            */
+/* -------------------------------------------------------------------------- */
+
+.saaze-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 8px;
+}
+
+.saaze-badges span {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 999px;
+  padding: 3px 10px;
+  background-color: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+.saaze-lead {
+  margin: 8px 0 24px;
+  font-size: 16px;
+  line-height: 2;
+  color: var(--vp-c-text-2);
+}
+
+.saaze-callout {
+  display: grid;
+  gap: 4px;
+  margin: 20px 0;
+  border: 1px solid rgb(13 148 136 / 24%);
+  border-radius: 12px;
+  padding: 14px 16px;
+  background-color: var(--vp-c-brand-soft);
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--vp-c-text-2);
+}
+
+.saaze-callout strong {
+  color: var(--vp-c-brand-1);
+}
+
+.saaze-api-table code {
+  white-space: nowrap;
+}
+
+.saaze-install {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background-color: var(--vp-c-bg-soft);
+}
+
+.saaze-install code {
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
+@media (max-width: 767px) {
+  .VPDoc {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .VPDoc .content {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .VPHero .name,
+  html[dir='rtl'] .VPHero .text {
+    font-size: 40px;
+    line-height: 1.25;
+  }
+
+  html[dir='rtl'] .VPHero .tagline {
+    font-size: 17px;
+  }
+}

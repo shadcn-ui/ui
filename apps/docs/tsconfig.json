@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@saaze/ui": ["../../packages/ui/src/index.ts"],
+      "@saaze/ui/*": ["../../packages/ui/src/*"],
+      "@saaze/utils": ["../../packages/utils/src/index.ts"],
+      "@/*": ["../../packages/ui/src/*"]
+    },
+    "types": ["vite/client"]
+  },
+  "include": [".vitepress/**/*.ts", ".vitepress/**/*.vue", "demos/**/*.vue", "demos/**/*.ts"]
+}

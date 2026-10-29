@@ -1,0 +1,61 @@
+{
+  "name": "@saaze/ui",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "کامپوننت‌های راست‌به‌چپ و فارسی سازه UI برای Vue 3",
+  "license": "MIT",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "components.json",
+    "tailwind.config.ts"
+  ],
+  "main": "./dist/saaze-ui.js",
+  "module": "./dist/saaze-ui.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/saaze-ui.js"
+    },
+    "./style.css": "./dist/style.css",
+    "./styles": "./src/styles/index.css",
+    "./theme.css": "./src/styles/theme.css",
+    "./fonts.css": "./src/styles/fonts.css",
+    "./components/*": "./src/components/*",
+    "./tailwind.config": "./tailwind.config.ts"
+  },
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "typecheck": "vue-tsc -p tsconfig.json --noEmit"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  },
+  "dependencies": {
+    "@fontsource-variable/vazirmatn": "^5.3.0",
+    "@saaze/utils": "workspace:*",
+    "class-variance-authority": "^0.7.1",
+    "lucide-vue-next": "^1.0.0",
+    "radix-vue": "^1.9.17",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.10",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.19",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.7",
+    "vite-plugin-dts": "^5.1.2",
+    "vue": "^3.5.44",
+    "vue-tsc": "^3.3.13"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

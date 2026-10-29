@@ -1,0 +1,31 @@
+{
+  "name": "@saaze/docs",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "description": "مستندات و پیش‌نمایش زنده سازه UI",
+  "scripts": {
+    "dev": "vitepress dev --port 5173",
+    "build": "vitepress build",
+    "preview": "vitepress preview --port 4173",
+    "typecheck": "vue-tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@fontsource-variable/vazirmatn": "^5.3.0",
+    "@saaze/ui": "workspace:*",
+    "@saaze/utils": "workspace:*",
+    "lucide-vue-next": "^1.0.0",
+    "radix-vue": "^1.9.17",
+    "vue": "^3.5.44"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.19",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.7",
+    "vitepress": "^1.6.4",
+    "vue-tsc": "^3.3.13"
+  }
+}

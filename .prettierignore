@@ -1,5 +1,8 @@
-dist
 node_modules
+dist
+pnpm-lock.yaml
+apps/docs/.vitepress/cache
+apps/docs/.vitepress/dist
 .next
 build
 .contentlayer
