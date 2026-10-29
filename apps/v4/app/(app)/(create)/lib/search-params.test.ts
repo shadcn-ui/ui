@@ -1,8 +1,21 @@
+import { decodePreset } from "shadcn/preset"
 import { describe, expect, it } from "vitest"
 
 import { DEFAULT_CONFIG } from "@/registry/config"
 
-import { buildPresetUrlUpdate } from "./search-params"
+import {
+  buildPresetUrlUpdate,
+  loadDesignSystemSearchParams,
+  resolvePresetParams,
+} from "./search-params"
+
+function resolveUrl(query: string) {
+  const searchParams = new URLSearchParams(query)
+  return resolvePresetParams(
+    loadDesignSystemSearchParams(searchParams),
+    searchParams
+  )
+}
 
 describe("buildPresetUrlUpdate", () => {
   it("encodes design system params into preset and clears individual keys", () => {
@@ -68,6 +81,45 @@ describe("buildPresetUrlUpdate", () => {
       { font: "geist" }
     )
 
-    expect(update.primary).toBe("7c3aed")
+    expect(decodePreset(update.preset as string)?.primary).toBe("7c3aed")
+  })
+
+  it("encodes the custom primary into a 'c' preset code", () => {
+    const update = buildPresetUrlUpdate({
+      ...DEFAULT_CONFIG,
+      preset: "b0",
+      template: "next",
+      item: "preview-02",
+      size: 100,
+      custom: false,
+      primary: "7c3aed",
+    })
+
+    expect(update.preset).toMatch(/^c/)
+    expect(update.primary).toBeNull()
+  })
+
+  it("returns to a 'b' preset code when the custom primary is removed", () => {
+    const update = buildPresetUrlUpdate({
+      ...DEFAULT_CONFIG,
+      preset: "c0Y9zJ0",
+      template: "next",
+      item: "preview-02",
+      size: 100,
+      custom: false,
+      primary: null,
+    })
+
+    expect(update.preset).toMatch(/^b/)
+  })
+})
+
+describe("resolvePresetParams", () => {
+  it("reads the custom primary from a 'c' preset code", () => {
+    expect(resolveUrl("preset=c0Y9zJ0").primary).toBe("7c3aed")
+  })
+
+  it("has no custom primary for a plain 'b' preset code", () => {
+    expect(resolveUrl("preset=b0").primary).toBeNull()
   })
 })
