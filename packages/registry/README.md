@@ -153,7 +153,7 @@ import { registryItemSchema } from "@shadcn/registry/schema"
 const item = registryItemSchema.parse(json)
 ```
 
-The schemas use [zod](https://zod.dev) v3. `registrySchema` validates `registry.json`, `registryItemSchema` an item and `rawConfigSchema` `components.json`.
+The schemas use [zod](https://zod.dev) v4. `registrySchema` validates `registry.json`, `registryItemSchema` an item and `rawConfigSchema` `components.json`.
 
 ## Errors
 

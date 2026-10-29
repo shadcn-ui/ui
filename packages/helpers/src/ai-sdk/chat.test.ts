@@ -181,6 +181,29 @@ describe("AI SDK chat", () => {
     ])
   })
 
+  it("marks a tool part preliminary until its final output", () => {
+    const pending = createChat<TestMessage>()
+      .user("Weather?")
+      .assistant(({ writer }) => {
+        writer
+          .tool("getWeather", { input: { city: "San Francisco" } })
+          .output(weatherOutput, { preliminary: true })
+      })
+    const done = createChat<TestMessage>()
+      .user("Weather?")
+      .assistant(({ writer }) => {
+        writer
+          .tool("getWeather", { input: { city: "San Francisco" } })
+          .output(weatherOutput, { preliminary: true })
+          .output(weatherOutput)
+      })
+
+    expect(pending.get().at(-1)?.parts).toMatchObject([
+      { type: "tool-getWeather", state: "output-available", preliminary: true },
+    ])
+    expect(done.get().at(-1)?.parts[0]).not.toHaveProperty("preliminary", true)
+  })
+
   it("returns top messages and then the next scripted message", () => {
     const chat = createChat()
       .user("Hello")
