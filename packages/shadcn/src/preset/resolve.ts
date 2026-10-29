@@ -18,6 +18,7 @@ import {
   PRESET_THEMES,
   type PresetConfig,
 } from "@shadcn/registry/internal/preset/preset"
+import { oklchToHex } from "@shadcn/registry/internal/preset/primary"
 import postcss from "postcss"
 import { Node, Project, ScriptKind, SyntaxKind } from "ts-morph"
 
@@ -92,6 +93,7 @@ export async function resolveProjectPreset(
     config.tailwind.baseColor
   )
   const theme = matchTheme(cssState)
+  const primary = theme ? null : matchCustomPrimary(cssState)
   const chartColor = matchChartColor(cssState)
   const iconLibrary = asPresetValue<PresetConfig["iconLibrary"]>(
     PRESET_ICON_LIBRARY_SET,
@@ -143,7 +145,9 @@ export async function resolveProjectPreset(
   const values = {
     style,
     baseColor: baseColor ?? defaults.baseColor,
-    theme: theme ?? defaults.theme,
+    // The picker pairs a custom primary with the base color theme.
+    theme:
+      theme ?? (primary ? (baseColor ?? defaults.baseColor) : defaults.theme),
     chartColor: chartColor ?? defaults.chartColor,
     iconLibrary: iconLibrary ?? defaults.iconLibrary,
     font,
@@ -151,11 +155,12 @@ export async function resolveProjectPreset(
     radius: radius ?? defaults.radius,
     menuAccent: menuAccent ?? defaults.menuAccent,
     menuColor: menuColor ?? defaults.menuColor,
+    ...(primary && { primary }),
   } satisfies PresetConfig
 
   const fallbacks = [
     !baseColor && "baseColor",
-    !theme && "theme",
+    !theme && !primary && "theme",
     !chartColor && "chartColor",
     !iconLibrary && "iconLibrary",
     !resolvedFont && "font",
@@ -282,6 +287,21 @@ function matchTheme(state: CssState) {
 
   const darkTheme = matchPresetThemeValue(darkPrimary)
   return darkTheme === lightTheme ? lightTheme : null
+}
+
+// A custom primary is one OKLCH value used in light and dark.
+function matchCustomPrimary(state: CssState) {
+  const light = state.rootVars["--primary"]
+  const dark = state.darkVars["--primary"]
+
+  if (
+    !light ||
+    (dark && normalizeCssValue(dark) !== normalizeCssValue(light))
+  ) {
+    return null
+  }
+
+  return oklchToHex(light)
 }
 
 function matchChartColor(state: CssState) {

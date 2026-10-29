@@ -3,6 +3,7 @@ import {
   type IconLibrary,
   type IconLibraryName,
 } from "shadcn/icons"
+import { getPrimaryForeground, hexToOklch } from "shadcn/preset"
 import { registryItemSchema, type RegistryItem } from "shadcn/schema"
 import { z } from "zod"
 
@@ -11,10 +12,6 @@ import { BASES, type Base } from "@/registry/bases"
 import { bodyFonts, fonts, headingFonts } from "@/registry/fonts"
 import { STYLES, type Style } from "@/registry/styles"
 import { THEMES, type Theme } from "@/registry/themes"
-import {
-  getPrimaryForeground,
-  hexToOklch,
-} from "@/app/(app)/(create)/lib/custom-primary"
 
 const SHADCN_VERSION = "latest"
 const DEFAULT_RADIUS_VALUE = "0.625rem"
