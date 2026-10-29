@@ -2947,6 +2947,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' class='fill-none!' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='size-5'><path d='M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z'></path><path d='M12 22V12'></path><polyline points='3.29 7 12 12 20.71 7'></polyline><path d='m7.5 4.27 9 5.15'></path></svg>"
   },
   {
+    "name": "@tenvell",
+    "homepage": "https://tenvell.esher1.chatgpt.site",
+    "url": "https://tenvell.esher1.chatgpt.site/r/{name}.json",
+    "description": "Minimal React components with thin liquid-glass surfaces, subtle hover depth, four glass finishes, and light and dark themes. Editable source, original typography, and CSS tokens.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='1.35' stroke-linecap='round' stroke-linejoin='round'><path d='M13 13.74a2 2 0 0 1-2 0L2.5 8.87a1 1 0 0 1 0-1.74L11 2.26a2 2 0 0 1 2 0l8.5 4.87a1 1 0 0 1 0 1.74z'/><path d='m20 14.285 1.5.845a1 1 0 0 1 0 1.74L13 21.74a2 2 0 0 1-2 0l-8.5-4.87a1 1 0 0 1 0-1.74l1.5-.845'/></svg>"
+  },
+  {
     "name": "@termcn",
     "homepage": "https://termcn.vercel.app",
     "url": "https://termcn.vercel.app/r/{name}.json",
