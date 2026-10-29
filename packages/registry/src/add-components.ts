@@ -251,6 +251,8 @@ async function addWorkspaceComponents(
     filesByTarget.get(targetKey)!.push(file)
   }
 
+  // Registry dependencies are declared per item, not per file, so also
+  // install them in every other workspace that receives files.
   const dependencyTargets = new Map<string, Config>()
   for (const targetKey of Array.from(filesByTarget.keys())) {
     const targetConfig = getTargetConfigForKey(targetKey)
