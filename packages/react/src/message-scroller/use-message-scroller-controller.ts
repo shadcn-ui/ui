@@ -160,6 +160,7 @@ function useMessageScrollerController({
       if (
         autoScrollRef.current &&
         !scrollable.end &&
+        spacerHeightRef.current === 0 &&
         modeRef.current !== "settling-jump" &&
         modeRef.current !== "anchored-to-message"
       ) {
@@ -250,6 +251,7 @@ function useMessageScrollerController({
     scrollToEnd,
     scrollToMessage,
     scrollToStart,
+    setTailSpacerHeight,
   } = useMessageScrollerCommands({
     refs,
     commitScrollState,
@@ -501,6 +503,81 @@ function useMessageScrollerController({
     scrollToEnd,
   ])
 
+  // A manual scroll during an anchored streaming turn releases the anchor
+  // (userScrollIntent -> free-scrolling) and strands the reserved tail spacer.
+  // Nothing re-arms follow in that mode, so the spacer would otherwise freeze
+  // at its current height and leave dead space below the reply. Drain it: as
+  // the reply grows (resize) or as the reader scrolls to the real bottom
+  // (scroll), shrink the spacer toward zero so the reserved room is consumed
+  // without moving the reader, and hand back to following once the reply fills
+  // the viewport (spacer hits zero at the real bottom). Returns true when the
+  // spacer drained to zero and the view handed off to following, so callers can
+  // skip any further state reconciliation for the frame.
+  //
+  // The drain is skipped while a programmatic scroll is in flight (autoscrolling
+  // or an anchored/settling jump): those paths already consume the spacer via
+  // reanchorToAnchoredMessage, and letting the scroll event drain it would yank
+  // the anchored turn to the bottom. The remaining room is recomputed from
+  // absolute geometry on every event (contentBottom + spacer - viewport bottom)
+  // so the drain converges instead of over-draining across inertial scroll
+  // events, and the spacer is left untouched while the reader is above the
+  // spacer zone entirely.
+  const drainReleasedSpacer = React.useCallback(() => {
+    if (
+      !autoScrollRef.current ||
+      spacerHeightRef.current <= 0 ||
+      modeRef.current === "following-bottom" ||
+      modeRef.current === "anchored-to-message" ||
+      modeRef.current === "settling-jump" ||
+      autoscrollingRef.current
+    ) {
+      return false
+    }
+
+    const viewport = viewportRef.current
+    const content = contentRef.current
+
+    if (!viewport || !content) {
+      return false
+    }
+
+    const contentBottom = getContentBottom({
+      content,
+      spacer: spacerRef.current,
+      viewport,
+    })
+
+    // How far the reader has scrolled into the reserved spacer zone. When the
+    // viewport bottom has not yet reached the content bottom the reader is
+    // above the spacer zone entirely, so the spacer must be left untouched.
+    const overlap =
+      viewport.scrollTop + viewport.clientHeight - contentBottom
+
+    if (overlap <= 0) {
+      return false
+    }
+
+    // Recompute the remaining spacer room from absolute geometry on every event
+    // so the drain converges instead of over-draining: the spacer shrinks by
+    // the amount of room the reader has already scrolled past, never by a delta
+    // that compounds across inertial scroll events.
+    const nextSpacerHeight = Math.max(
+      0,
+      contentBottom +
+        spacerHeightRef.current -
+        (viewport.scrollTop + viewport.clientHeight)
+    )
+
+    if (nextSpacerHeight === 0) {
+      scrollToEnd({ behavior: "auto" })
+      return true
+    }
+
+    setTailSpacerHeight(nextSpacerHeight)
+
+    return false
+  }, [scrollToEnd, setTailSpacerHeight])
+
   const handleResize = React.useCallback(() => {
     if (modeRef.current === "following-bottom" && autoScrollRef.current) {
       scrollToEnd({ behavior: "auto" })
@@ -530,9 +607,16 @@ function useMessageScrollerController({
       return
     }
 
+    // Drain a stranded spacer as the reply grows below it. Early return when
+    // it hit zero so the following hand-off owns the frame.
+    if (drainReleasedSpacer()) {
+      return
+    }
+
     scheduleStateCommit()
     scheduleVisibilitySync()
   }, [
+    drainReleasedSpacer,
     reanchorToAnchoredMessage,
     scheduleStateCommit,
     scheduleVisibilitySync,
@@ -666,10 +750,20 @@ function useMessageScrollerController({
   )
 
   const syncAfterScroll = React.useCallback(() => {
+    // A released spacer can be stranded if the stream ends before the reply
+    // drains it (no more resizes to drive the drain). Let a scroll to the real
+    // bottom - contentBottom plus the remaining spacer - finish the job: the
+    // reader reclaims the dead space and following re-arms once it hits zero.
+    drainReleasedSpacer()
     commitScrollState()
     scheduleVisibilitySync()
     capturePrependAnchor()
-  }, [capturePrependAnchor, commitScrollState, scheduleVisibilitySync])
+  }, [
+    capturePrependAnchor,
+    commitScrollState,
+    drainReleasedSpacer,
+    scheduleVisibilitySync,
+  ])
 
   const context = React.useMemo<MessageScrollerContextValue>(
     () => ({
