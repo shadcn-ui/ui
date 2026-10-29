@@ -185,6 +185,7 @@ export function materializeParts<
             ...parts[index],
             state: "output-available",
             output: event.output,
+            preliminary: event.preliminary,
             providerExecuted: event.providerExecuted,
             toolMetadata: event.toolMetadata,
           } as UIMessagePart<DATA_PARTS, TOOLS>
