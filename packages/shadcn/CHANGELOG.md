@@ -1,5 +1,26 @@
 # shadcn
 
+## 4.23.0
+
+### Minor Changes
+
+- [#12296](https://github.com/shadcn-ui/ui/pull/12296) [`15f59b4`](https://github.com/shadcn-ui/ui/commit/15f59b41750542ef5d41ee34601a85a4e7c1be17) Thanks [@mattzcarey](https://github.com/mattzcarey)! - Upgrade the MCP server to MCP TypeScript SDK v2 (`@modelcontextprotocol/server`). `shadcn mcp` now serves MCP protocol 2026-07-28 as well as earlier versions. The `shadcn/mcp` export is now an `McpServer`, and a new `createServer()` export returns a fresh instance per connection. Code that called `server.setRequestHandler(...)` on the old `Server` export should use `server.registerTool(...)` or `server.server.setRequestHandler(...)` instead.
+
+## 4.22.2
+
+### Patch Changes
+
+- [#12479](https://github.com/shadcn-ui/ui/pull/12479) [`8f04138`](https://github.com/shadcn-ui/ui/commit/8f04138777c1b6996e709993362a7b0a12888ecf) Thanks [@dependabot](https://github.com/apps/dependabot)! - Update `undici` to 7.30.1.
+
+- Updated dependencies [[`8f04138`](https://github.com/shadcn-ui/ui/commit/8f04138777c1b6996e709993362a7b0a12888ecf)]:
+  - @shadcn/registry@0.2.1
+
+## 4.22.1
+
+### Patch Changes
+
+- [#12360](https://github.com/shadcn-ui/ui/pull/12360) [`4381eeb`](https://github.com/shadcn-ui/ui/commit/4381eeb3fe421af7d25b780f85ff9cbc8d50c51a) Thanks [@shadcn](https://github.com/shadcn)! - Fix `shadcn add --all` and the component picker to only include components available for the project's style.
+
 ## 4.22.0
 
 ### Minor Changes

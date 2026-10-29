@@ -10,13 +10,13 @@
   },
   "dependencies": {
     "next-themes": "^0.4.6",
-    "react": "19.3.0",
-    "react-dom": "19.3.0",
-    "zod": "^4.6.6"
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@turbo/gen": "^2.11.7",
+    "@turbo/gen": "^2.11.10",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
