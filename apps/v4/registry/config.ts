@@ -11,6 +11,10 @@ import { BASES, type Base } from "@/registry/bases"
 import { bodyFonts, fonts, headingFonts } from "@/registry/fonts"
 import { STYLES, type Style } from "@/registry/styles"
 import { THEMES, type Theme } from "@/registry/themes"
+import {
+  getPrimaryForeground,
+  hexToOklch,
+} from "@/app/(app)/(create)/lib/custom-primary"
 
 const SHADCN_VERSION = "latest"
 const DEFAULT_RADIUS_VALUE = "0.625rem"
@@ -126,6 +130,10 @@ export const designSystemConfigSchema = z
     radius: z
       .enum(RADII.map((r) => r.name) as [RadiusValue, ...RadiusValue[]])
       .default("default"),
+    primary: z
+      .string()
+      .regex(/^[0-9a-f]{6}$/)
+      .optional(),
     template: z
       .enum([
         "next",
@@ -726,6 +734,15 @@ export function buildRegistryTheme(config: DesignSystemConfig) {
       if (chartLight?.[key]) lightVars[key] = chartLight[key]
       if (chartDark?.[key]) darkVars[key] = chartDark[key]
     }
+  }
+
+  // Apply custom primary before the menu accent copies it.
+  if (config.primary) {
+    const primary = hexToOklch(config.primary)
+    const foreground = getPrimaryForeground(config.primary)
+    lightVars.primary = darkVars.primary = primary
+    lightVars["primary-foreground"] = darkVars["primary-foreground"] =
+      foreground
   }
 
   // Apply menu accent transformation.
