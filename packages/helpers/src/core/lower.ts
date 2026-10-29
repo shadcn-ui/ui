@@ -173,6 +173,7 @@ export function lowerEvents<
             type: "tool-output-available",
             toolCallId: event.toolCallId,
             output: event.output,
+            preliminary: event.preliminary,
             providerExecuted: event.providerExecuted,
             toolMetadata: event.toolMetadata,
             dynamic: event.dynamic,

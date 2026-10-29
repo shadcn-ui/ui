@@ -494,6 +494,22 @@ export const Components: Record<string, any> = {
       ) || "marker"
     return { default: mod.default || mod[exportName] }
   }),
+  trace: React.lazy(async () => {
+    const mod = await import("@/registry/bases/base/ui/trace")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "trace"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block": React.lazy(async () => {
+    const mod = await import("@/registry/bases/base/ui/code-block")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block"
+    return { default: mod.default || mod[exportName] }
+  }),
   message: React.lazy(async () => {
     const mod = await import("@/registry/bases/base/ui/message")
     const exportName =
@@ -1064,6 +1080,24 @@ export const Components: Record<string, any> = {
       ) || "marker-example"
     return { default: mod.default || mod[exportName] }
   }),
+  "trace-example": React.lazy(async () => {
+    const mod = await import("@/registry/bases/base/examples/trace-example")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "trace-example"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block-example": React.lazy(async () => {
+    const mod = await import(
+      "@/registry/bases/base/examples/code-block-example"
+    )
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block-example"
+    return { default: mod.default || mod[exportName] }
+  }),
   "message-example": React.lazy(async () => {
     const mod = await import("@/registry/bases/base/examples/message-example")
     const exportName =
@@ -1334,6 +1368,14 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "use-mobile"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "use-highlighted-code": React.lazy(async () => {
+    const mod = await import("@/registry/bases/base/hooks/use-highlighted-code")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "use-highlighted-code"
     return { default: mod.default || mod[exportName] }
   }),
 }

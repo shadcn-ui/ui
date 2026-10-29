@@ -23,8 +23,8 @@ describe("getInstallArgs", () => {
     expect(getInstallArgs("yarn")).toEqual(["--no-immutable"])
   })
 
-  it("returns an empty array for npm", () => {
-    expect(getInstallArgs("npm")).toEqual([])
+  it("skips audit and fund for npm", () => {
+    expect(getInstallArgs("npm")).toEqual(["--no-audit", "--no-fund"])
   })
 
   it("returns an empty array for bun", () => {

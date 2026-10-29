@@ -1,8 +1,8 @@
+import { Config } from "@/src/get-config"
 import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
 import { RegistryNotConfiguredError } from "@/src/registry/errors"
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
 import { fetchRegistryItems } from "@/src/registry/resolver"
-import { Config } from "@/src/utils/get-config"
 
 // Recursively discovers all registry namespaces including nested ones.
 export async function resolveRegistryNamespaces(
