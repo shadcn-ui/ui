@@ -5,6 +5,7 @@ import type { Config } from "@/src/get-config"
 import { findPackageRoot, getWorkspaceConfig } from "@/src/get-config"
 import { logger } from "@/src/logger"
 import { resolveRegistryTree } from "@/src/registry/resolver"
+import { updateDependencies } from "@/src/updaters/update-dependencies"
 import { updateFiles } from "@/src/updaters/update-files"
 import { updateFonts } from "@/src/updaters/update-fonts"
 import { updateTailwindConfig } from "@/src/updaters/update-tailwind-config"
@@ -1058,4 +1059,161 @@ export function ExampleCard() {
       expect(listedAsUpdated).toBe(!skipped)
     }
   )
+
+  describe("dependencies", () => {
+    const uiConfig = createMockConfig({
+      resolvedPaths: {
+        cwd: "/packages/ui",
+        tailwindConfig: "/packages/ui/tailwind.config.ts",
+        tailwindCss: "/packages/ui/src/globals.css",
+        utils: "/packages/ui/src/lib/utils",
+        components: "/packages/ui/src/components",
+        lib: "/packages/ui/src/lib",
+        hooks: "/packages/ui/src/hooks",
+        ui: "/packages/ui/src/components/ui",
+      },
+    })
+
+    it("should install dependencies in the app when files are written to the app", async () => {
+      const appConfig = createMockConfig()
+
+      vi.mocked(getWorkspaceConfig).mockResolvedValue({
+        ui: uiConfig,
+      })
+
+      vi.mocked(resolveRegistryTree).mockResolvedValue({
+        files: [
+          {
+            path: "registry/components/hello.tsx",
+            type: "registry:component",
+            content: "export function Hello() {}",
+          },
+          {
+            path: "registry/hooks/use-today.ts",
+            type: "registry:hook",
+            content: "export function useToday() {}",
+          },
+        ],
+        dependencies: ["date-fns"],
+        devDependencies: [],
+      })
+
+      await addComponents(["hello"], appConfig, { silent: true })
+
+      expect(updateDependencies).toHaveBeenCalledTimes(2)
+      expect(updateDependencies).toHaveBeenNthCalledWith(
+        1,
+        ["date-fns"],
+        [],
+        uiConfig,
+        expect.any(Object)
+      )
+      expect(updateDependencies).toHaveBeenNthCalledWith(
+        2,
+        ["date-fns"],
+        [],
+        appConfig,
+        expect.any(Object)
+      )
+    })
+
+    it("should install dependencies in every workspace that receives files", async () => {
+      const appConfig = createMockConfig()
+
+      vi.mocked(getWorkspaceConfig).mockResolvedValue({
+        ui: uiConfig,
+      })
+
+      vi.mocked(resolveRegistryTree).mockResolvedValue({
+        files: [
+          {
+            path: "registry/ui/calendar.tsx",
+            type: "registry:ui",
+            content: "export function Calendar() {}",
+          },
+          {
+            path: "registry/components/hello.tsx",
+            type: "registry:component",
+            content: "export function Hello() {}",
+          },
+        ],
+        dependencies: ["date-fns"],
+        devDependencies: [],
+      })
+
+      await addComponents(["hello"], appConfig, { silent: true })
+
+      expect(updateDependencies).toHaveBeenCalledTimes(2)
+      expect(updateDependencies).toHaveBeenNthCalledWith(
+        1,
+        ["date-fns"],
+        [],
+        uiConfig,
+        expect.any(Object)
+      )
+      expect(updateDependencies).toHaveBeenNthCalledWith(
+        2,
+        ["date-fns"],
+        [],
+        appConfig,
+        expect.any(Object)
+      )
+    })
+
+    it("should install dependencies only in the ui workspace when every file is written there", async () => {
+      vi.mocked(getWorkspaceConfig).mockResolvedValue({
+        ui: uiConfig,
+      })
+
+      vi.mocked(resolveRegistryTree).mockResolvedValue({
+        files: [
+          {
+            path: "registry/ui/input-otp.tsx",
+            type: "registry:ui",
+            content: "export function InputOTP() {}",
+          },
+        ],
+        dependencies: ["input-otp"],
+        devDependencies: [],
+      })
+
+      await addComponents(["input-otp"], createMockConfig(), { silent: true })
+
+      expect(updateDependencies).toHaveBeenCalledTimes(1)
+      expect(updateDependencies).toHaveBeenCalledWith(
+        ["input-otp"],
+        [],
+        uiConfig,
+        expect.any(Object)
+      )
+    })
+
+    it("should install dependencies in the project when there is no ui workspace", async () => {
+      const appConfig = createMockConfig()
+
+      vi.mocked(getWorkspaceConfig).mockResolvedValue(null)
+
+      vi.mocked(resolveRegistryTree).mockResolvedValue({
+        files: [
+          {
+            path: "registry/components/hello.tsx",
+            type: "registry:component",
+            content: "export function Hello() {}",
+          },
+        ],
+        dependencies: ["date-fns"],
+        devDependencies: [],
+      })
+
+      await addComponents(["hello"], appConfig, { silent: true })
+
+      expect(updateDependencies).toHaveBeenCalledTimes(1)
+      expect(updateDependencies).toHaveBeenCalledWith(
+        ["date-fns"],
+        [],
+        appConfig,
+        expect.any(Object)
+      )
+    })
+  })
 })

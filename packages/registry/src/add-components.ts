@@ -251,6 +251,25 @@ async function addWorkspaceComponents(
     filesByTarget.get(targetKey)!.push(file)
   }
 
+  const dependencyTargets = new Map<string, Config>()
+  for (const targetKey of Array.from(filesByTarget.keys())) {
+    const targetConfig = getTargetConfigForKey(targetKey)
+    dependencyTargets.set(targetConfig.resolvedPaths.cwd, targetConfig)
+  }
+  dependencyTargets.delete(mainTargetConfig.resolvedPaths.cwd)
+
+  for (const targetConfig of Array.from(dependencyTargets.values())) {
+    await updateDependencies(
+      tree.dependencies,
+      tree.devDependencies,
+      targetConfig,
+      {
+        silent: true,
+        interactive: options.interactive,
+      }
+    )
+  }
+
   for (const targetKey of Array.from(filesByTarget.keys())) {
     const targetFiles = filesByTarget.get(targetKey)!
     const targetConfig = getTargetConfigForKey(targetKey)
