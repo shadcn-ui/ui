@@ -1,14 +1,14 @@
 import path from "path"
 import { createTemplate } from "@/src/templates/create-template"
-import { spinner } from "@shadcn/registry/internal/utils/spinner"
+import { spinner } from "@shadcn/registry/internal/spinner"
 import { execa } from "execa"
 import fs from "fs-extra"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
 vi.mock("fs-extra")
 vi.mock("execa")
-vi.mock("@shadcn/registry/internal/utils/spinner")
-vi.mock("@shadcn/registry/internal/utils/logger", () => ({
+vi.mock("@shadcn/registry/internal/spinner")
+vi.mock("@shadcn/registry/internal/logger", () => ({
   logger: { break: vi.fn(), error: vi.fn(), info: vi.fn() },
 }))
 

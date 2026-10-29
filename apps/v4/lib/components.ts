@@ -16,6 +16,7 @@ export const UI_COMPONENTS = [
   "carousel",
   "chart",
   "checkbox",
+  "code-block",
   "collapsible",
   "combobox",
   "command",
@@ -65,6 +66,7 @@ export const UI_COMPONENTS = [
   "toggle",
   "toggle-group",
   "tooltip",
+  "trace",
   "typography",
 ] as const
 
