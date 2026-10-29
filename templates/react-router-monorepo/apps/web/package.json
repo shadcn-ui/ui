@@ -11,16 +11,16 @@
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
-    "@react-router/node": "8.4.0",
-    "@react-router/serve": "8.4.0",
+    "@react-router/node": "8.5.0",
+    "@react-router/serve": "8.5.0",
     "@workspace/ui": "workspace:*",
     "isbot": "^5",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
-    "react-router": "8.4.0"
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router": "8.5.0"
   },
   "devDependencies": {
-    "@react-router/dev": "8.4.0",
+    "@react-router/dev": "8.5.0",
     "@tailwindcss/vite": "^4",
     "@types/node": "^22",
     "@types/react": "^19",
