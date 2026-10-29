@@ -110,6 +110,7 @@ const DESIGN_SYSTEM_KEYS = [
   "radius",
   "menuAccent",
   "menuColor",
+  "primary",
 ] as const
 
 function normalizeFontHeading(
@@ -132,7 +133,6 @@ const NON_DESIGN_SYSTEM_KEYS = [
   "pointer",
   "size",
   "custom",
-  "primary",
 ] as const
 
 // Shared across hook instances so only one mount effect encodes the initial URL.
@@ -216,7 +216,7 @@ function normalizeDesignSystemParams(
 // theme that base-color themes originally borrowed charts from.
 type SearchParamsLike = Pick<URLSearchParams, "get" | "has">
 
-function resolvePresetParams(
+export function resolvePresetParams(
   rawParams: DesignSystemSearchParams,
   searchParams: SearchParamsLike
 ) {
@@ -235,7 +235,7 @@ function resolvePresetParams(
         pointer: rawParams.pointer,
         size: rawParams.size,
         custom: rawParams.custom,
-        primary: rawParams.primary,
+        primary: decoded.primary ?? null,
       })
     }
   }

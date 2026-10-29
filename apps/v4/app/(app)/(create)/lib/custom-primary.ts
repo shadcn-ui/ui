@@ -5,12 +5,6 @@ const HEX_PATTERN = /^[0-9a-f]{6}$/
 const LIGHT_FOREGROUND = "oklch(0.985 0 0)"
 const DARK_FOREGROUND = "oklch(0.205 0 0)"
 
-type ThemeCssVars = {
-  theme?: Record<string, string>
-  light?: Record<string, string>
-  dark?: Record<string, string>
-}
-
 // Accepts "#abc", "abc", "#aabbcc" or "aabbcc" and returns "aabbcc", or null.
 export function normalizeHex(input: string) {
   let hex = input.trim().replace(/^#/, "").toLowerCase()
@@ -74,24 +68,4 @@ export function getPrimaryForeground(hex: string) {
   return contrastWithWhite >= contrastWithBlack
     ? LIGHT_FOREGROUND
     : DARK_FOREGROUND
-}
-
-export function applyCustomPrimary<T extends ThemeCssVars>(
-  cssVars: T,
-  primary: string | null | undefined
-): T {
-  if (!primary) {
-    return cssVars
-  }
-
-  const overrides = {
-    primary: hexToOklch(primary),
-    "primary-foreground": getPrimaryForeground(primary),
-  }
-
-  return {
-    ...cssVars,
-    light: { ...cssVars.light, ...overrides },
-    dark: { ...cssVars.dark, ...overrides },
-  }
 }

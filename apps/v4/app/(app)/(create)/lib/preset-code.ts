@@ -14,7 +14,7 @@ type PresetCodeConfig = Pick<
   | "radius"
   | "menuAccent"
   | "menuColor"
->
+> & { primary?: string | null }
 
 export function getPresetCode(config: PresetCodeConfig) {
   const presetConfig: Partial<PresetConfig> = {
@@ -28,6 +28,7 @@ export function getPresetCode(config: PresetCodeConfig) {
     radius: config.radius as PresetConfig["radius"],
     menuAccent: config.menuAccent as PresetConfig["menuAccent"],
     menuColor: config.menuColor as PresetConfig["menuColor"],
+    primary: config.primary ?? undefined,
   }
 
   return encodePreset(presetConfig)

@@ -51,7 +51,6 @@ import {
   ToggleGroupItem,
 } from "@/styles/base-nova/ui/toggle-group"
 import { usePresetCode } from "@/app/(app)/(create)/hooks/use-design-system"
-import { applyCustomPrimary } from "@/app/(app)/(create)/lib/custom-primary"
 import {
   useDesignSystemSearchParams,
   type DesignSystemSearchParams,
@@ -226,6 +225,7 @@ export function ProjectForm({
       template: params.template,
       rtl: params.rtl,
       pointer: params.pointer,
+      primary: params.primary ?? undefined,
     }
   }, [
     params.base,
@@ -237,6 +237,7 @@ export function ProjectForm({
     params.menuAccent,
     params.menuColor,
     params.pointer,
+    params.primary,
     params.radius,
     params.rtl,
     params.style,
@@ -251,8 +252,8 @@ export function ProjectForm({
       return ""
     }
 
-    return formatThemeCss(applyCustomPrimary(theme.cssVars, params.primary))
-  }, [themeConfig, params.primary])
+    return formatThemeCss(theme.cssVars)
+  }, [themeConfig])
 
   React.useEffect(() => {
     if (copiedTarget) {
@@ -408,12 +409,6 @@ export function ProjectForm({
               </FieldGroup>
               <DialogFooter className="m-0 min-w-0 p-6">
                 <div className="flex w-full min-w-0 flex-col gap-3">
-                  {params.primary && (
-                    <p className="text-sm text-muted-foreground">
-                      The preset does not include your custom primary color yet.
-                      Copy it from the Theme tab.
-                    </p>
-                  )}
                   <Tabs
                     value={packageManager}
                     onValueChange={(value) => {
@@ -486,12 +481,6 @@ export function ProjectForm({
               </FieldGroup>
               <DialogFooter className="m-0 min-w-0 p-6">
                 <div className="flex w-full min-w-0 flex-col gap-3">
-                  {params.primary && (
-                    <p className="text-sm text-muted-foreground">
-                      The preset does not include your custom primary color yet.
-                      Copy it from the Theme tab.
-                    </p>
-                  )}
                   <Tabs
                     value={packageManager}
                     onValueChange={(value) => {

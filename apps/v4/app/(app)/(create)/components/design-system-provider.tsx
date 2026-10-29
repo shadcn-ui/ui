@@ -9,7 +9,6 @@ import {
   type DesignSystemConfig,
 } from "@/registry/config"
 import { useIframeMessageListener } from "@/app/(app)/(create)/hooks/use-iframe-sync"
-import { applyCustomPrimary } from "@/app/(app)/(create)/lib/custom-primary"
 import { FONTS } from "@/app/(app)/(create)/lib/fonts"
 import {
   useDesignSystemSearchParams,
@@ -205,12 +204,10 @@ export function DesignSystemProvider({
       chartColor,
       menuAccent,
       radius: effectiveRadius,
+      primary: primary ?? undefined,
     }
 
-    const built = buildRegistryTheme(config)
-    return built.cssVars
-      ? { ...built, cssVars: applyCustomPrimary(built.cssVars, primary) }
-      : built
+    return buildRegistryTheme(config)
   }, [baseColor, theme, chartColor, menuAccent, effectiveRadius, primary])
 
   // Use useLayoutEffect for synchronous CSS var updates.
