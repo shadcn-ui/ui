@@ -1,0 +1,252 @@
+import * as fs from "fs/promises"
+import * as path from "path"
+import { getImportDeclarationSources } from "@/src/codemod/import-declarations"
+import { ProjectInfo } from "@/src/get-project-info"
+import { configSchema, registryItemSchema } from "@/src/registry/schema"
+import {
+  isLocalAliasImport,
+  resolveImportWithMetadata,
+} from "@/src/resolve-import"
+import postcss from "postcss"
+import { loadConfig } from "tsconfig-paths"
+import { z } from "zod"
+
+// The `shadcn build` crawler. It lives apart from registry/utils, which the
+// read-only API imports, so that a bundle of those helpers leaves out Babel
+// and postcss.
+
+const FILE_EXTENSIONS_FOR_LOOKUP = [".tsx", ".ts", ".jsx", ".js", ".css"]
+const FILE_PATH_SKIP_LIST = ["lib/utils.ts"]
+const DEPENDENCY_SKIP_LIST = [
+  /^(react|react-dom|next)(\/.*)?$/, // Matches react, react-dom, next and their submodules
+  /^(node|jsr|npm):.*$/, // Matches node:, jsr:, and npm: prefixed modules
+]
+
+// This returns the dependency from the module specifier.
+// Here dependency means an npm package.
+export function getDependencyFromModuleSpecifier(
+  moduleSpecifier: string
+): string | null {
+  if (DEPENDENCY_SKIP_LIST.some((pattern) => pattern.test(moduleSpecifier))) {
+    return null
+  }
+
+  // If the module specifier does not start with `@` and has a /, add the dependency first part only.
+  // E.g. `foo/bar` -> `foo`
+  if (!moduleSpecifier.startsWith("@") && moduleSpecifier.includes("/")) {
+    moduleSpecifier = moduleSpecifier.split("/")[0]
+  }
+
+  // For scoped packages, we want to keep the first two parts
+  // E.g. `@types/react/dom` -> `@types/react`
+  if (moduleSpecifier.startsWith("@")) {
+    const parts = moduleSpecifier.split("/")
+    if (parts.length > 2) {
+      moduleSpecifier = parts.slice(0, 2).join("/")
+    }
+  }
+
+  return moduleSpecifier
+}
+
+export async function recursivelyResolveFileImports(
+  filePath: string,
+  config: z.infer<typeof configSchema>,
+  projectInfo: ProjectInfo,
+  processedFiles: Set<string> = new Set()
+): Promise<Pick<z.infer<typeof registryItemSchema>, "files" | "dependencies">> {
+  const resolvedFilePath = path.resolve(config.resolvedPaths.cwd, filePath)
+  const relativeRegistryFilePath = path.relative(
+    config.resolvedPaths.cwd,
+    resolvedFilePath
+  )
+
+  if (FILE_PATH_SKIP_LIST.includes(relativeRegistryFilePath)) {
+    return { dependencies: [], files: [] }
+  }
+
+  const fileExtension = path.extname(filePath)
+  if (!FILE_EXTENSIONS_FOR_LOOKUP.includes(fileExtension)) {
+    return { dependencies: [], files: [] }
+  }
+
+  // Prevent infinite loop: skip if already processed
+  if (processedFiles.has(relativeRegistryFilePath)) {
+    return { dependencies: [], files: [] }
+  }
+  processedFiles.add(relativeRegistryFilePath)
+
+  const stat = await fs.stat(resolvedFilePath)
+  if (!stat.isFile()) {
+    return { dependencies: [], files: [] }
+  }
+
+  const content = await fs.readFile(resolvedFilePath, "utf-8")
+  const tsConfig = await loadConfig(config.resolvedPaths.cwd)
+  if (tsConfig.resultType === "failed") {
+    return { dependencies: [], files: [] }
+  }
+
+  const files: z.infer<typeof registryItemSchema>["files"] = []
+  const dependencies = new Set<string>()
+
+  const fileType = determineFileType(filePath)
+  const originalFile = {
+    path: relativeRegistryFilePath,
+    type: fileType,
+    target: "",
+  }
+  files.push(originalFile)
+
+  const moduleSpecifiers =
+    fileExtension === ".css"
+      ? getCssImportSpecifiers(content)
+      : getImportDeclarationSources(content).map((source) => source.value)
+  for (const moduleSpecifier of moduleSpecifiers) {
+    const isRelativeImport = moduleSpecifier.startsWith(".")
+    const isAliasImport = isLocalAliasImport(
+      moduleSpecifier,
+      projectInfo.aliasPrefix
+    )
+
+    if (!isAliasImport && !isRelativeImport) {
+      const dependency = getDependencyFromModuleSpecifier(moduleSpecifier)
+      if (dependency) {
+        dependencies.add(dependency)
+      }
+      continue
+    }
+
+    let probableImportFilePath = (
+      await resolveImportWithMetadata(moduleSpecifier, {
+        ...tsConfig,
+        cwd: config.resolvedPaths.cwd,
+      })
+    )?.path
+
+    if (isRelativeImport) {
+      probableImportFilePath = path.resolve(
+        path.dirname(resolvedFilePath),
+        moduleSpecifier
+      )
+    }
+
+    if (!probableImportFilePath) {
+      continue
+    }
+
+    const hasExtension = path.extname(probableImportFilePath)
+    if (!hasExtension) {
+      for (const ext of FILE_EXTENSIONS_FOR_LOOKUP) {
+        const pathWithExt: string = `${probableImportFilePath}${ext}`
+        try {
+          await fs.access(pathWithExt)
+          probableImportFilePath = pathWithExt
+          break
+        } catch {
+          continue
+        }
+      }
+    }
+
+    const nestedRelativeRegistryFilePath = path.relative(
+      config.resolvedPaths.cwd,
+      probableImportFilePath
+    )
+
+    if (
+      processedFiles.has(nestedRelativeRegistryFilePath) ||
+      FILE_PATH_SKIP_LIST.includes(nestedRelativeRegistryFilePath)
+    ) {
+      continue
+    }
+
+    const fileType = determineFileType(moduleSpecifier)
+    const file = {
+      path: nestedRelativeRegistryFilePath,
+      type: fileType,
+      target: "",
+    }
+
+    // TODO (shadcn): fix this.
+    if (fileType === "registry:page" || fileType === "registry:file") {
+      file.target = moduleSpecifier
+    }
+
+    files.push(file)
+
+    const nestedResults = await recursivelyResolveFileImports(
+      nestedRelativeRegistryFilePath,
+      config,
+      projectInfo,
+      processedFiles
+    )
+
+    if (nestedResults.files) {
+      for (const file of nestedResults.files) {
+        if (!processedFiles.has(file.path)) {
+          processedFiles.add(file.path)
+          files.push(file)
+        }
+      }
+    }
+
+    if (nestedResults.dependencies) {
+      nestedResults.dependencies.forEach((dep) => dependencies.add(dep))
+    }
+  }
+
+  const uniqueFiles = Array.from(
+    new Map(files.map((file) => [file.path, file])).values()
+  )
+
+  return {
+    dependencies: Array.from(dependencies),
+    files: uniqueFiles,
+  }
+}
+
+// The imports ts-morph found in a CSS file, which it parsed as TSX: each
+// top-level `@import "x"` or `@import 'x'` is an import declaration of x
+// there, whatever follows the string, and `@import url(x)` is not. CSS that
+// postcss cannot parse has none.
+function getCssImportSpecifiers(content: string) {
+  let root: postcss.Root
+  try {
+    root = postcss.parse(content)
+  } catch {
+    return []
+  }
+
+  return root.nodes.flatMap((node) => {
+    const specifier =
+      node.type === "atrule" && node.name === "import"
+        ? /^(["'])(.*?)\1/.exec(node.params)?.[2]
+        : undefined
+    return specifier === undefined ? [] : [specifier]
+  })
+}
+
+// This is a bit tricky to accurately determine.
+// For now we'll use the module specifier to determine the type.
+function determineFileType(
+  moduleSpecifier: string
+): z.infer<typeof registryItemSchema>["type"] {
+  if (moduleSpecifier.includes("/ui/")) {
+    return "registry:ui"
+  }
+
+  if (moduleSpecifier.includes("/lib/")) {
+    return "registry:lib"
+  }
+
+  if (moduleSpecifier.includes("/hooks/")) {
+    return "registry:hook"
+  }
+
+  if (moduleSpecifier.includes("/components/")) {
+    return "registry:component"
+  }
+
+  return "registry:component"
+}

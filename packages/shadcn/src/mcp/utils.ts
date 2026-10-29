@@ -1,9 +1,9 @@
+import { getPackageRunner } from "@shadcn/registry/internal/get-package-manager"
 import { getRegistriesConfig } from "@shadcn/registry/internal/registry/api"
 import {
   findUnknownSearchTypes,
   SEARCHABLE_TYPES,
 } from "@shadcn/registry/internal/registry/search"
-import { getPackageRunner } from "@shadcn/registry/internal/utils/get-package-manager"
 import {
   registryItemSchema,
   searchResultsSchema,
@@ -27,7 +27,7 @@ export async function getMcpConfig(cwd = process.cwd()) {
   }
 }
 
-export function formatSearchResultsWithPagination(
+export async function formatSearchResultsWithPagination(
   results: z.infer<typeof searchResultsSchema>,
   options?: {
     query?: string
@@ -35,6 +35,7 @@ export function formatSearchResultsWithPagination(
   }
 ) {
   const { query, registries } = options || {}
+  const addCommand = await npxShadcn("add")
 
   const formattedItems = results.items.map((item) => {
     const parts: string[] = [`- ${item.name}`]
@@ -51,9 +52,7 @@ export function formatSearchResultsWithPagination(
       parts.push(`[${item.registry}]`)
     }
 
-    parts.push(
-      `\n  Add command: \`${npxShadcn(`add ${item.addCommandArgument}`)}\``
-    )
+    parts.push(`\n  Add command: \`${addCommand} ${item.addCommandArgument}\``)
 
     return parts.join(" ")
   })

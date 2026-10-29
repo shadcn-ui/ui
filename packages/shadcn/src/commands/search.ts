@@ -1,6 +1,10 @@
 import path from "path"
 import { handleError } from "@/src/utils/handle-error"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
+import { loadEnvFiles } from "@shadcn/registry/internal/env-loader"
+import { createConfig, getConfig } from "@shadcn/registry/internal/get-config"
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { logger } from "@shadcn/registry/internal/logger"
 import { configWithDefaults } from "@shadcn/registry/internal/registry/config"
 import { BUILTIN_REGISTRIES } from "@shadcn/registry/internal/registry/constants"
 import { clearRegistryContext } from "@shadcn/registry/internal/registry/context"
@@ -12,13 +16,6 @@ import {
   searchRegistries,
 } from "@shadcn/registry/internal/registry/search"
 import { validateRegistryConfigForItems } from "@shadcn/registry/internal/registry/validator"
-import { loadEnvFiles } from "@shadcn/registry/internal/utils/env-loader"
-import {
-  createConfig,
-  getConfig,
-} from "@shadcn/registry/internal/utils/get-config"
-import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
-import { logger } from "@shadcn/registry/internal/utils/logger"
 import { rawConfigSchema } from "@shadcn/registry/schema"
 import { Command } from "commander"
 import fsExtra from "fs-extra"

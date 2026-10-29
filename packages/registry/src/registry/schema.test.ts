@@ -1,8 +1,11 @@
 import { describe, expect, it } from "vitest"
 
 import {
+  rawConfigSchema,
+  registryBaseConfigSchema,
   registryChunkSchema,
   registryConfigSchema,
+  registryItemSchema,
   registrySchema,
 } from "./schema"
 
@@ -31,7 +34,7 @@ describe("registryConfigSchema", () => {
     const result = registryConfigSchema.safeParse(invalidConfig)
     expect(result.success).toBe(false)
     if (!result.success) {
-      expect(result.error.errors[0].message).toContain(
+      expect(result.error.issues[0].message).toContain(
         "Registry names must start with @"
       )
     }
@@ -45,7 +48,7 @@ describe("registryConfigSchema", () => {
     const result = registryConfigSchema.safeParse(invalidConfig)
     expect(result.success).toBe(false)
     if (!result.success) {
-      expect(result.error.errors[0].message).toContain(
+      expect(result.error.issues[0].message).toContain(
         "Registry URL must include {name} placeholder"
       )
     }
@@ -127,6 +130,73 @@ describe("registrySchema", () => {
         total: "100",
       },
     })
+
+    expect(result.success).toBe(false)
+  })
+
+  it("should reject invalid items", () => {
+    const result = registrySchema.safeParse({
+      name: "example",
+      homepage: "https://example.com",
+      items: [{ name: "button", type: "registry:nope" }],
+    })
+
+    expect(result.success).toBe(false)
+  })
+})
+
+describe("rawConfigSchema", () => {
+  const config = {
+    style: "new-york",
+    tailwind: { css: "app/globals.css", baseColor: "neutral" },
+    aliases: { components: "@/components", utils: "@/lib/utils" },
+  }
+
+  it("should apply defaults to required fields", () => {
+    const result = rawConfigSchema.parse(config)
+
+    expect(result.rsc).toBe(false)
+    expect(result.tsx).toBe(true)
+    expect(result.tailwind.cssVariables).toBe(true)
+  })
+
+  it("should leave optional fields unset", () => {
+    const result = rawConfigSchema.parse(config)
+
+    expect(result).not.toHaveProperty("rtl")
+    expect(result).not.toHaveProperty("menuColor")
+    expect(result).not.toHaveProperty("menuAccent")
+    expect(result.tailwind).not.toHaveProperty("prefix")
+  })
+})
+
+describe("registryBaseConfigSchema", () => {
+  it("should not apply defaults", () => {
+    const result = registryBaseConfigSchema.parse({
+      style: "nova",
+      tailwind: { baseColor: "zinc" },
+    })
+
+    expect(result).toEqual({
+      style: "nova",
+      tailwind: { baseColor: "zinc" },
+    })
+  })
+
+  it("should parse registry:base config without defaults", () => {
+    const result = registryItemSchema.parse({
+      name: "nova",
+      type: "registry:base",
+      config: { style: "nova" },
+    })
+
+    expect(result).toMatchObject({ config: { style: "nova" } })
+    expect(result).not.toHaveProperty("config.rsc")
+    expect(result).not.toHaveProperty("config.tsx")
+  })
+
+  it("should reject unknown keys", () => {
+    const result = registryBaseConfigSchema.safeParse({ nope: true })
 
     expect(result.success).toBe(false)
   })
