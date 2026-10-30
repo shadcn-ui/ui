@@ -137,24 +137,37 @@ async function resolveAliasPath(
     (resolved.source === "package_imports" ||
       resolved.source === "workspace_package_exports")
   ) {
-    // Exact aliases (e.g. `#hooks` → `./src/hooks/index.ts`) should resolve
-    // to the directory root.
-    if (
-      !resolved.matchedAlias.includes("*") &&
-      /\/index\.[^/]+$/.test(resolved.path)
-    ) {
-      return path.dirname(resolved.path)
-    }
-
-    // Wildcard aliases with explicit extensions (e.g. `#components/*` →
-    // `./src/components/*.tsx`) should strip the source extension so `ui`
-    // resolves to `/src/components/ui` instead of `/src/components/ui.tsx`.
-    if (resolved.matchedAlias.includes("*") && /\.[^/]+$/.test(resolved.path)) {
-      return resolved.path.replace(/\.[^/]+$/, "")
-    }
+    return stripResolvedAliasArtifact(resolved.path, resolved.matchedAlias)
   }
 
   return resolved.path
+}
+
+// `[^/]` treats `\` as a character, so on Windows a dot-folder
+// (`.claude`, `.worktrees`) swallows the rest of the path.
+const TRAILING_EXTENSION = /\.[^/\\]+$/
+const INDEX_MODULE = /[/\\]index\.[^/\\]+$/
+
+export function stripResolvedAliasArtifact(
+  resolvedPath: string,
+  matchedAlias: string
+) {
+  // Exact aliases (e.g. `#hooks` → `./src/hooks/index.ts`) should resolve
+  // to the directory root.
+  if (!matchedAlias.includes("*") && INDEX_MODULE.test(resolvedPath)) {
+    return (
+      resolvedPath.includes("\\") ? path.win32 : path
+    ).dirname(resolvedPath)
+  }
+
+  // Wildcard aliases with explicit extensions (e.g. `#components/*` →
+  // `./src/components/*.tsx`) should strip the source extension so `ui`
+  // resolves to `/src/components/ui` instead of `/src/components/ui.tsx`.
+  if (matchedAlias.includes("*") && TRAILING_EXTENSION.test(resolvedPath)) {
+    return resolvedPath.replace(TRAILING_EXTENSION, "")
+  }
+
+  return resolvedPath
 }
 
 function assertResolvedAliases(
