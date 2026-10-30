@@ -143,7 +143,7 @@
 
   /* MARK: Button */
   .cn-button {
-    @apply focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-none border border-transparent bg-clip-padding text-xs font-semibold uppercase tracking-widest focus-visible:ring-2 aria-invalid:ring-2 active:not-aria-[haspopup]:translate-y-px [&_svg:not([class*='size-'])]:size-3.5;
+    @apply focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-none border border-transparent bg-clip-padding text-xs font-semibold uppercase tracking-widest focus-visible:ring-2 aria-invalid:ring-2 aria-invalid:focus-visible:ring-ring/30 dark:aria-invalid:focus-visible:ring-ring/30 active:not-aria-[haspopup]:translate-y-px [&_svg:not([class*='size-'])]:size-3.5;
   }
 
   .cn-button-variant-default {
@@ -272,11 +272,11 @@
 
   /* MARK: Checkbox */
   .cn-checkbox {
-    @apply border-input bg-transparent data-checked:bg-primary data-checked:text-primary-foreground dark:data-checked:bg-primary data-checked:border-primary aria-invalid:aria-checked:border-primary aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 flex size-4.5 items-center justify-center rounded-none border transition-shadow group-has-disabled/field:opacity-50 focus-visible:ring-2 aria-invalid:ring-2 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:not-data-checked:border-input group-has-[:focus-visible]/field-label:data-checked:border-primary;
+    @apply border-input bg-transparent data-checked:bg-primary data-checked:text-primary-foreground dark:data-checked:bg-primary data-checked:border-primary aria-invalid:aria-checked:border-primary aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 flex size-4.5 items-center justify-center rounded-none border transition-shadow group-has-disabled/field:opacity-50 focus-visible:ring-2 aria-invalid:ring-2 aria-invalid:focus-visible:ring-ring/30 dark:aria-invalid:focus-visible:ring-ring/30 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:not-data-checked:border-input group-has-[:focus-visible]/field-label:data-checked:border-primary;
   }
 
   .cn-checkbox-aria {
-    @apply data-selected:bg-primary data-selected:text-primary-foreground dark:data-selected:bg-primary data-selected:border-primary data-focus-visible:border-ring data-focus-visible:ring-ring/30 data-focus-visible:ring-2 data-invalid:data-selected:border-primary data-invalid:border-destructive dark:data-invalid:border-destructive/50 data-invalid:ring-destructive/20 dark:data-invalid:ring-destructive/40 data-invalid:ring-2;
+    @apply data-selected:bg-primary data-selected:text-primary-foreground dark:data-selected:bg-primary data-selected:border-primary data-focus-visible:border-ring data-focus-visible:ring-ring/30 data-focus-visible:ring-2 data-invalid:data-selected:border-primary data-invalid:border-destructive dark:data-invalid:border-destructive/50 data-invalid:ring-destructive/20 dark:data-invalid:ring-destructive/40 data-invalid:ring-2 data-invalid:data-focus-visible:ring-ring/30 dark:data-invalid:data-focus-visible:ring-ring/30;
   }
 
   .cn-checkbox-indicator {
@@ -961,11 +961,11 @@
   }
 
   .cn-radio-group-item {
-    @apply border-input bg-transparent data-checked:border-foreground aria-invalid:aria-checked:border-foreground aria-invalid:border-destructive focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 dark:aria-invalid:border-destructive/50 flex size-4.5 rounded-full border focus-visible:ring-2 aria-invalid:ring-2 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:not-data-checked:border-input group-has-[:focus-visible]/field-label:data-checked:border-foreground;
+    @apply border-input bg-transparent data-checked:border-foreground aria-invalid:aria-checked:border-foreground aria-invalid:border-destructive focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 dark:aria-invalid:border-destructive/50 flex size-4.5 rounded-full border focus-visible:ring-2 aria-invalid:ring-2 aria-invalid:focus-visible:ring-ring/30 dark:aria-invalid:focus-visible:ring-ring/30 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:not-data-checked:border-input group-has-[:focus-visible]/field-label:data-checked:border-foreground;
   }
 
   .cn-radio-group-item-aria {
-    @apply data-selected:border-foreground data-focus-visible:border-ring data-focus-visible:ring-ring/30 data-focus-visible:ring-2 data-invalid:data-selected:border-foreground data-invalid:border-destructive data-invalid:ring-destructive/20 dark:data-invalid:ring-destructive/40 dark:data-invalid:border-destructive/50 data-invalid:ring-2;
+    @apply data-selected:border-foreground data-focus-visible:border-ring data-focus-visible:ring-ring/30 data-focus-visible:ring-2 data-invalid:data-selected:border-foreground data-invalid:border-destructive data-invalid:ring-destructive/20 dark:data-invalid:ring-destructive/40 dark:data-invalid:border-destructive/50 data-invalid:ring-2 data-invalid:data-focus-visible:ring-ring/30 dark:data-invalid:data-focus-visible:ring-ring/30;
   }
 
   .cn-radio-group-indicator {
@@ -1239,11 +1239,11 @@
 
   /* MARK: Switch */
   .cn-switch {
-    @apply data-checked:bg-primary data-unchecked:bg-input data-checked:border-primary border data-unchecked:border-input/50 focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 shrink-0 rounded-none focus-visible:ring-2 aria-invalid:ring-2 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:data-unchecked:border-input/50 group-has-[:focus-visible]/field-label:data-checked:border-primary data-[size=default]:h-4.5 data-[size=default]:w-8.25 data-[size=sm]:h-3.5 data-[size=sm]:w-6.25;
+    @apply data-checked:bg-primary data-unchecked:bg-input data-checked:border-primary border data-unchecked:border-input/50 focus-visible:border-ring focus-visible:ring-ring/30 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 shrink-0 rounded-none focus-visible:ring-2 aria-invalid:ring-2 aria-invalid:focus-visible:ring-ring/30 dark:aria-invalid:focus-visible:ring-ring/30 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:data-unchecked:border-input/50 group-has-[:focus-visible]/field-label:data-checked:border-primary data-[size=default]:h-4.5 data-[size=default]:w-8.25 data-[size=sm]:h-3.5 data-[size=sm]:w-6.25;
   }
 
   .cn-switch-aria {
-    @apply data-selected:bg-primary not-data-selected:bg-input data-selected:border-primary not-data-selected:border-input/50 data-focus-visible:border-ring data-focus-visible:ring-ring/30 data-focus-visible:ring-2 data-invalid:ring-destructive/20 dark:data-invalid:ring-destructive/40 data-invalid:border-destructive dark:data-invalid:border-destructive/50 data-invalid:ring-2;
+    @apply data-selected:bg-primary not-data-selected:bg-input data-selected:border-primary not-data-selected:border-input/50 data-focus-visible:border-ring data-focus-visible:ring-ring/30 data-focus-visible:ring-2 data-invalid:ring-destructive/20 dark:data-invalid:ring-destructive/40 data-invalid:border-destructive dark:data-invalid:border-destructive/50 data-invalid:ring-2 data-invalid:data-focus-visible:ring-ring/30 dark:data-invalid:data-focus-visible:ring-ring/30;
   }
 
   .cn-switch-thumb {
