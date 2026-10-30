@@ -858,6 +858,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'><rect width='24' height='24' rx='2' fill='#8763B3'/><g transform='rotate(-12 12 12)'><path d='M3 7c3 -2 6 -2 9 0s6 2 9 0' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='M3 17c3 -2 6 -2 9 0s6 2 9 0' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='M3 12c3 -2 6 -2 9 0s6 2 9 0' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/></g></svg>"
   },
   {
+    "name": "@dotgrain",
+    "homepage": "https://dotgrain.space",
+    "url": "https://dotgrain.space/r/{name}.json",
+    "description": "React components rendered as dither and ASCII: backgrounds, media, text effects, controls, charts and a hero block, with real DOM text and one tiny WebGL2 engine.",
+    "author": "SachPlayZ",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='var(--foreground)'><circle cx='12' cy='12' r='4.4'/><circle cx='36' cy='12' r='6.3'/><circle cx='60' cy='12' r='6.4'/><circle cx='84' cy='12' r='8.9'/><circle cx='12' cy='36' r='4.5'/><circle cx='36' cy='36' r='4.8'/><circle cx='60' cy='36' r='7.2'/><circle cx='84' cy='36' r='7.1'/><circle cx='12' cy='60' r='2.9'/><circle cx='36' cy='60' r='4.4'/><circle cx='60' cy='60' r='4.5'/><circle cx='84' cy='60' r='6.5'/><circle cx='12' cy='84' r='2.0'/><circle cx='36' cy='84' r='3.0'/><circle cx='60' cy='84' r='4.5'/><circle cx='84' cy='84' r='4.9'/></svg>"
+  },
+  {
     "name": "@dotmatrix",
     "homepage": "https://dotmatrix.zzzzshawn.cloud",
     "url": "https://dotmatrix.zzzzshawn.cloud/r/{name}.json",
