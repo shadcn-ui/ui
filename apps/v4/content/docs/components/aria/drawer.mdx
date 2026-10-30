@@ -286,10 +286,10 @@ snap point prop.
 
 <Step>Review Vaul-only props.</Step>
 
-Vaul props like `handleOnly`, `repositionInputs`, and
-`shouldScaleBackground` do not have one-to-one replacements in the Base UI drawer
-API. Use Base UI props such as `disablePointerDismissal`, `modal`, `snapPoints`,
-or controlled `open` state for the behavior you need.
+Vaul props like `handleOnly` and `shouldScaleBackground` do not have one-to-one
+replacements in the Base UI drawer API. Use Base UI props such as
+`disablePointerDismissal`, `modal`, `snapPoints`, or controlled `open` state for
+the behavior you need.
 
 ```diff
 - <Drawer handleOnly repositionInputs={false} shouldScaleBackground>
@@ -300,6 +300,10 @@ or controlled `open` state for the behavior you need.
 - <Drawer dismissible={false}>
 + <Drawer disablePointerDismissal>
 ```
+
+`repositionInputs` is no longer needed. `DrawerPortal` renders Base UI's
+`Drawer.VirtualKeyboardProvider`, and a bottom drawer moves up and shrinks to
+stay above the on-screen keyboard while one of its inputs has focus.
 
 <Step>Update custom data attribute selectors.</Step>
 
