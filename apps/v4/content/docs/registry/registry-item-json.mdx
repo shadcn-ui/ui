@@ -196,6 +196,12 @@ The `files` property is used to specify the files of your registry item. Each fi
 
 **The `target` property is required for `registry:page` and `registry:file` types.**
 
+When `shadcn build` reads a binary file, such as a WOFF2 font, it writes
+base64-encoded `content` with `encoding: "base64"` in the built item. `shadcn add`
+decodes that content back to bytes and skips text transformations for the file.
+Text files keep their existing content representation without an `encoding`
+property. The `encoding` property is optional and accepts only `"base64"`.
+
 ```json title="registry-item.json" showLineNumbers
 {
   "files": [

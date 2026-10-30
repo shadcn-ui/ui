@@ -84,6 +84,94 @@ describe("build command", () => {
     })
   })
 
+  it("base64-encodes binary registry files", async () => {
+    const font = Buffer.from([0x77, 0x4f, 0x46, 0x32, 0x00, 0xff, 0x80, 0x01])
+    const cwd = await createFixture({
+      "registry.json": JSON.stringify({
+        name: "example",
+        homepage: "https://example.com",
+        items: [
+          {
+            name: "font",
+            type: "registry:item",
+            files: [
+              {
+                path: "font.woff2",
+                type: "registry:file",
+                target: "public/font.woff2",
+              },
+            ],
+          },
+        ],
+      }),
+      "font.woff2": font,
+    })
+
+    await build.parseAsync(
+      ["node", "shadcn", "registry.json", "--cwd", cwd, "--output", "public/r"],
+      { from: "node" }
+    )
+
+    const item = JSON.parse(
+      await fs.readFile(path.join(cwd, "public/r/font.json"), "utf-8")
+    )
+
+    expect(item.files[0]).toEqual({
+      path: "font.woff2",
+      content: font.toString("base64"),
+      encoding: "base64",
+      type: "registry:file",
+      target: "public/font.woff2",
+    })
+  })
+
+  it.each(["hello café 世界", ""])(
+    "replaces stale encoding when building text %j",
+    async (content) => {
+      const cwd = await createFixture({
+        "registry.json": JSON.stringify({
+          name: "example",
+          homepage: "https://example.com",
+          items: [
+            {
+              name: "note",
+              type: "registry:item",
+              files: [
+                {
+                  path: "note.txt",
+                  type: "registry:file",
+                  target: "public/note.txt",
+                  content: "AP+A",
+                  encoding: "base64",
+                },
+              ],
+            },
+          ],
+        }),
+        "note.txt": content,
+      })
+
+      await build.parseAsync(
+        [
+          "node",
+          "shadcn",
+          "registry.json",
+          "--cwd",
+          cwd,
+          "--output",
+          "public/r",
+        ],
+        { from: "node" }
+      )
+
+      const item = JSON.parse(
+        await fs.readFile(path.join(cwd, "public/r/note.json"), "utf-8")
+      )
+      expect(item.files[0].content).toBe(content)
+      expect(item.files[0]).not.toHaveProperty("encoding")
+    }
+  )
+
   it("creates nested output directories for item names with path segments", async () => {
     const cwd = await createFixture({
       "registry.json": JSON.stringify({
@@ -127,7 +215,7 @@ describe("build command", () => {
   })
 })
 
-async function createFixture(files: Record<string, string>) {
+async function createFixture(files: Record<string, string | Buffer>) {
   const cwd = await fs.mkdtemp(path.join(tmpdir(), "shadcn-build-"))
 
   await Promise.all(
