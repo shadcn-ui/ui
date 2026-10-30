@@ -1570,6 +1570,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 18V6m0 12h16M8 14l4-6 4 3 4-7'/></svg>"
   },
   {
+    "name": "@kinematic",
+    "homepage": "https://kinematic.design",
+    "url": "https://kinematic.design/r/{name}.json",
+    "description": "An activity component for React: one live surface for uploads, agents, music, calls and timers that morphs between them instead of stacking toasts.",
+    "author": "Saumya Das",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='3 3 26 26' fill='var(--foreground)'><path fill-rule='evenodd' d='M11 3h10a8 8 0 0 1 8 8v10a8 8 0 0 1-8 8H11a8 8 0 0 1-8-8V11a8 8 0 0 1 8-8ZM12.5 7.5h7a2.5 2.5 0 0 1 0 5h-7a2.5 2.5 0 0 1 0-5Z'/></svg>"
+  },
+  {
     "name": "@kinetic",
     "homepage": "https://kinetic.itsjay.in",
     "url": "https://kinetic.itsjay.in/r/{name}.json",
