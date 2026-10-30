@@ -64,13 +64,13 @@
     }
   },
   "devDependencies": {
-    "@types/react-dom": "19.2.2",
+    "@types/react-dom": "19.3.0",
     "@vitest/browser": "^3.2.7",
     "jsdom": "^28.1.0",
-    "playwright": "^1.61.0",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "rimraf": "^6.0.1",
+    "playwright": "^1.64.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "rimraf": "^6.1.3",
     "tsup": "^8.5.0",
     "typescript": "^5.9.2",
     "vite-tsconfig-paths": "^4.3.2",
