@@ -5,6 +5,8 @@ import type { Config } from "@/src/get-config"
 import { findPackageRoot, getWorkspaceConfig } from "@/src/get-config"
 import { logger } from "@/src/logger"
 import { resolveRegistryTree } from "@/src/registry/resolver"
+import type { RegistryItemFile } from "@/src/registry/schema"
+import { updateDependencies } from "@/src/updaters/update-dependencies"
 import { updateFiles } from "@/src/updaters/update-files"
 import { updateFonts } from "@/src/updaters/update-fonts"
 import { updateTailwindConfig } from "@/src/updaters/update-tailwind-config"
@@ -1058,4 +1060,116 @@ export function ExampleCard() {
       expect(listedAsUpdated).toBe(!skipped)
     }
   )
+
+  describe("dependencies", () => {
+    const uiConfig = createMockConfig({
+      resolvedPaths: {
+        cwd: "/packages/ui",
+        tailwindConfig: "/packages/ui/tailwind.config.ts",
+        tailwindCss: "/packages/ui/src/globals.css",
+        utils: "/packages/ui/src/lib/utils",
+        components: "/packages/ui/src/components",
+        lib: "/packages/ui/src/lib",
+        hooks: "/packages/ui/src/hooks",
+        ui: "/packages/ui/src/components/ui",
+      },
+    })
+
+    const hooksPackageConfig = createMockConfig({
+      resolvedPaths: {
+        cwd: "/packages/hooks",
+        tailwindConfig: "/packages/hooks/tailwind.config.ts",
+        tailwindCss: "/packages/hooks/src/globals.css",
+        utils: "/packages/hooks/src/lib/utils",
+        components: "/packages/hooks/src/components",
+        lib: "/packages/hooks/src/lib",
+        hooks: "/packages/hooks/src/hooks",
+        ui: "/packages/hooks/src/components/ui",
+      },
+    })
+    const appConfig = createMockConfig()
+    const uiFile: RegistryItemFile = {
+      path: "registry/ui/input-otp.tsx",
+      type: "registry:ui",
+    }
+    const componentFile: RegistryItemFile = {
+      path: "registry/components/hello.tsx",
+      type: "registry:component",
+    }
+    const hookFile: RegistryItemFile = {
+      path: "registry/hooks/use-today.ts",
+      type: "registry:hook",
+    }
+    const libFile: RegistryItemFile = {
+      path: "registry/lib/format.ts",
+      type: "registry:lib",
+    }
+
+    it.each<{
+      name: string
+      workspace: Awaited<ReturnType<typeof getWorkspaceConfig>>
+      files: RegistryItemFile[]
+      expected: Config[]
+    }>([
+      {
+        name: "app only",
+        workspace: { ui: uiConfig },
+        files: [componentFile, hookFile],
+        expected: [uiConfig, appConfig],
+      },
+      {
+        name: "split",
+        workspace: { ui: uiConfig },
+        files: [uiFile, componentFile],
+        expected: [uiConfig, appConfig],
+      },
+      {
+        name: "ui only",
+        workspace: { ui: uiConfig },
+        files: [uiFile],
+        expected: [uiConfig],
+      },
+      {
+        name: "no ui workspace",
+        workspace: null,
+        files: [componentFile],
+        expected: [appConfig],
+      },
+      {
+        name: "lib in the ui workspace",
+        workspace: { ui: uiConfig, lib: uiConfig },
+        files: [uiFile, libFile],
+        expected: [uiConfig],
+      },
+      {
+        name: "hooks in a separate package",
+        workspace: { ui: uiConfig, hooks: hooksPackageConfig },
+        files: [uiFile, hookFile, componentFile],
+        expected: [uiConfig, hooksPackageConfig, appConfig],
+      },
+    ])(
+      "should install dependencies in each workspace that receives files ($name)",
+      async ({ workspace, files, expected }) => {
+        vi.mocked(getWorkspaceConfig).mockResolvedValue(workspace)
+        vi.mocked(resolveRegistryTree).mockResolvedValue({
+          files,
+          dependencies: ["date-fns"],
+          devDependencies: ["tw-animate-css"],
+        })
+
+        await addComponents(["hello"], appConfig, { silent: true })
+
+        expect(updateDependencies).toHaveBeenCalledTimes(expected.length)
+        expected.forEach((config, index) => {
+          expect(updateDependencies).toHaveBeenNthCalledWith(
+            index + 1,
+            ["date-fns"],
+            ["tw-animate-css"],
+            config,
+            expect.objectContaining({ silent: true })
+          )
+        })
+      }
+    )
+  })
 })
