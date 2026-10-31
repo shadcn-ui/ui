@@ -935,7 +935,7 @@
   }
 
   .cn-menubar-trigger {
-    @apply hover:bg-muted aria-expanded:bg-muted rounded-2xl px-2 py-0.75 text-sm font-medium;
+    @apply hover:bg-muted aria-expanded:bg-muted focus-visible:border-ring focus-visible:ring-ring/30 focus-visible:ring-3 rounded-2xl px-2 py-0.75 text-sm font-medium;
   }
 
   .cn-menubar-content {
