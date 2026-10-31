@@ -189,10 +189,6 @@
     animation-fill-mode: both;
   }
 
-  @supports not (animation-timeline: scroll()) {
-    --scroll-fade-t: var(--_scroll-fade-size-t);
-    --scroll-fade-b: var(--_scroll-fade-size-b);
-  }
 }
 
 @utility scroll-fade-y {
@@ -229,10 +225,6 @@
     animation-fill-mode: both;
   }
 
-  @supports not (animation-timeline: scroll()) {
-    --scroll-fade-t: var(--_scroll-fade-size-t);
-    --scroll-fade-b: var(--_scroll-fade-size-b);
-  }
 }
 
 @utility scroll-fade-x {
@@ -278,10 +270,6 @@
     animation-fill-mode: both;
   }
 
-  @supports not (animation-timeline: scroll()) {
-    --scroll-fade-s: var(--_scroll-fade-size-s);
-    --scroll-fade-e: var(--_scroll-fade-size-e);
-  }
 }
 
 @utility scroll-fade-t {
@@ -309,9 +297,6 @@
     animation-fill-mode: both;
   }
 
-  @supports not (animation-timeline: scroll()) {
-    --scroll-fade-t: var(--_scroll-fade-size-t);
-  }
 }
 
 @utility scroll-fade-b {
@@ -342,9 +327,6 @@
     animation-fill-mode: both;
   }
 
-  @supports not (animation-timeline: scroll()) {
-    --scroll-fade-b: var(--_scroll-fade-size-b);
-  }
 }
 
 @utility scroll-fade-l {
@@ -372,9 +354,6 @@
     animation-fill-mode: both;
   }
 
-  @supports not (animation-timeline: scroll()) {
-    --scroll-fade-s: var(--_scroll-fade-size-s);
-  }
 }
 
 @utility scroll-fade-r {
@@ -405,9 +384,6 @@
     animation-fill-mode: both;
   }
 
-  @supports not (animation-timeline: scroll()) {
-    --scroll-fade-e: var(--_scroll-fade-size-e);
-  }
 }
 
 @utility scroll-fade-s {
@@ -443,9 +419,6 @@
     animation-fill-mode: both;
   }
 
-  @supports not (animation-timeline: scroll()) {
-    --scroll-fade-s: var(--_scroll-fade-size-s);
-  }
 }
 
 @utility scroll-fade-e {
@@ -484,9 +457,6 @@
     animation-fill-mode: both;
   }
 
-  @supports not (animation-timeline: scroll()) {
-    --scroll-fade-e: var(--_scroll-fade-size-e);
-  }
 }
 
 @utility scroll-fade-* {
