@@ -47,6 +47,14 @@ describe("resolveItemAddress", () => {
       "/Users/me/registry/button.json",
       { scheme: "file", path: "/Users/me/registry/button.json" },
     ],
+    [
+      "C:\\Users\\me\\registry\\button.json",
+      { scheme: "file", path: "C:\\Users\\me\\registry\\button.json" },
+    ],
+    [
+      "C:/Users/me/registry/button.json",
+      { scheme: "file", path: "C:/Users/me/registry/button.json" },
+    ],
   ])("resolves file item address %s", (input, expected) => {
     expect(resolveItemAddress(input)).toEqual(expected)
   })
