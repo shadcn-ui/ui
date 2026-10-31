@@ -18,6 +18,11 @@ import {
 
 export const description = "A stacked bar chart with a legend"
 
+function parseDate(date: string) {
+  const [year, month, day] = date.split("-").map(Number)
+  return new Date(year, month - 1, day)
+}
+
 const chartData = [
   { date: "2024-07-15", running: 450, swimming: 300 },
   { date: "2024-07-16", running: 380, swimming: 420 },
@@ -54,7 +59,7 @@ export function ChartTooltipLabelFormatter() {
               tickMargin={10}
               axisLine={false}
               tickFormatter={(value) => {
-                return new Date(value).toLocaleDateString("en-US", {
+                    return parseDate(value).toLocaleDateString("en-US", {
                   weekday: "short",
                 })
               }}
@@ -75,7 +80,7 @@ export function ChartTooltipLabelFormatter() {
               content={
                 <ChartTooltipContent
                   labelFormatter={(value) => {
-                    return new Date(value).toLocaleDateString("en-US", {
+                return parseDate(value).toLocaleDateString("en-US", {
                       day: "numeric",
                       month: "long",
                       year: "numeric",
