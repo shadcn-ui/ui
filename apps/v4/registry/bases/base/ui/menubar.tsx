@@ -106,7 +106,6 @@ function MenubarItem({
 function MenubarCheckboxItem({
   className,
   children,
-  checked,
   inset,
   ...props
 }: MenuPrimitive.CheckboxItem.Props & {
@@ -120,7 +119,6 @@ function MenubarCheckboxItem({
         "cn-menubar-checkbox-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
-      checked={checked}
       {...props}
     >
       <span className="cn-menubar-checkbox-item-indicator pointer-events-none absolute flex items-center justify-center">
