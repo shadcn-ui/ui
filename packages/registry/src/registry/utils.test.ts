@@ -109,6 +109,12 @@ describe("isUrl", () => {
     expect(isUrl("")).toBe(false)
     expect(isUrl("just-text")).toBe(false)
   })
+
+  it("should return false for Windows absolute paths", () => {
+    expect(isUrl("C:\\Users\\user\\component.json")).toBe(false)
+    expect(isUrl("C:/Users/user/component.json")).toBe(false)
+    expect(isUrl("d:\\registry\\button.json")).toBe(false)
+  })
 })
 
 describe("isLocalFile", () => {
@@ -120,6 +126,8 @@ describe("isLocalFile", () => {
     expect(isLocalFile("nested/directory/dialog.json")).toBe(true)
     expect(isLocalFile("~/Desktop/component.json")).toBe(true)
     expect(isLocalFile("~/Documents/shared/button.json")).toBe(true)
+    expect(isLocalFile("C:\\Users\\user\\component.json")).toBe(true)
+    expect(isLocalFile("C:/Users/user/component.json")).toBe(true)
   })
 
   it("should return false for URLs ending with .json", () => {
