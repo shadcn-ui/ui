@@ -3338,6 +3338,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='currentColor'/><g fill='var(--background)'><circle cx='9.6' cy='9.6' r='1.6'/><circle cx='16' cy='9.6' r='1.6'/><circle cx='22.4' cy='9.6' r='1.6'/><circle cx='9.6' cy='16' r='1.6'/><circle cx='16' cy='16' r='1.6'/><circle cx='22.4' cy='16' r='1.6'/><circle cx='9.6' cy='22.4' r='1.6'/><circle cx='16' cy='22.4' r='1.6'/><circle cx='22.4' cy='22.4' r='1.6'/></g></svg>"
   },
   {
+    "name": "@yiui",
+    "homepage": "https://yiui.dev",
+    "url": "https://yiui.dev/r/{name}.json",
+    "description": "Chinese-first React components in a line-grid style: bar controls, motion graphics, charts, an AI chat panel and an app shell template. Built on Base UI.",
+    "author": "Travins",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 584 584' fill='var(--foreground)'><path transform='translate(84 0)' d='M156 130 416 0 416 36 156 166ZM156 192 416 62 416 98 156 228ZM156 254 416 124 416 160 156 290ZM0 394 416 186 416 258 0 466ZM78 453 416 284 416 356 78 525ZM156 512 416 382 416 454 156 584Z'/></svg>"
+  },
+  {
     "name": "@yukihi",
     "homepage": "https://github.com/yukihito-jokyu/design-system",
     "url": "https://design.yukihi.tokyo/v1/r/{name}.json",
