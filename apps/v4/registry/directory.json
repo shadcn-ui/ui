@@ -279,6 +279,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='chewypixel-fill' x1='0' y1='3' x2='0' y2='29' gradientUnits='userSpaceOnUse'><stop stop-color='#a78bfa'/><stop offset='1' stop-color='#7c3aed'/></linearGradient><mask id='chewypixel-bite'><rect width='32' height='32' fill='white'/><circle cx='28' cy='4' r='6' fill='black'/></mask></defs><rect x='3' y='3' width='26' height='26' rx='7' fill='url(#chewypixel-fill)' mask='url(#chewypixel-bite)'/><rect x='9' y='11' width='5' height='5' rx='1.5' fill='white' fill-opacity='0.9'/></svg>"
   },
   {
+    "name": "@cloudlet",
+    "homepage": "https://cloudlet.dev/toaster",
+    "url": "https://cloudlet.dev/r/{name}.json",
+    "description": "A React toaster whose stack collapses to a pill and morphs into the Island, with operations, forms and spring motion, themed by your shadcn tokens.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='cloudlet-g' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='0' y2='32'><stop offset='0' stop-color='#1570d1'/><stop offset='1' stop-color='#2785ce'/></linearGradient><mask id='cloudlet-s' maskUnits='userSpaceOnUse' x='-50' y='-80' width='250' height='250'><rect x='-50' y='-80' width='250' height='250' fill='#fff'/><path d='M18 65H106A17 17 0 0 1 106 99H18A17 17 0 0 1 18 65Z' stroke='#000' stroke-width='11'/><rect x='-50' y='65' width='250' height='80'/></mask><mask id='cloudlet-b' maskUnits='userSpaceOnUse' x='-50' y='-80' width='250' height='250'><rect x='-50' y='-80' width='250' height='250' fill='#fff'/><path d='M18 65H106A17 17 0 0 1 106 99H18A17 17 0 0 1 18 65Z' stroke='#000' stroke-width='11'/><rect x='-50' y='65' width='250' height='80'/><circle cx='42' cy='63' r='27.5'/></mask></defs><rect width='32' height='32' rx='8' fill='url(#cloudlet-g)'/><g transform='translate(2.99 2.78) scale(0.20984)' fill='#fff'><circle mask='url(#cloudlet-b)' cx='77' cy='56' r='29'/><circle mask='url(#cloudlet-s)' cx='42' cy='63' r='22'/><path d='M18 65H106A17 17 0 0 1 106 99H18A17 17 0 0 1 18 65Z'/></g></svg>"
+  },
+  {
     "name": "@clover-ui",
     "homepage": "https://cloverui.xyz",
     "url": "https://cloverui.xyz/r/{name}.json",
