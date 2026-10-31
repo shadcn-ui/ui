@@ -143,6 +143,25 @@ Use `ItemGroup` to group related items together.
   previewClassName="h-96"
 />
 
+`ItemGroup` has no ARIA role. To announce the items as a list, add `role="list"` to the group and `role="listitem"` to each item. When an item renders as a link, put `role="listitem"` on a wrapper so the link keeps its role.
+
+```tsx showLineNumbers
+<ItemGroup role="list">
+  <Item role="listitem">
+    <ItemContent>
+      <ItemTitle>Inbox</ItemTitle>
+    </ItemContent>
+  </Item>
+  <div role="listitem">
+    <Item render={<a href="/archive" />}>
+      <ItemContent>
+        <ItemTitle>Archive</ItemTitle>
+      </ItemContent>
+    </Item>
+  </div>
+</ItemGroup>
+```
+
 ## Header
 
 Use `ItemHeader` to add a header above the item content.
