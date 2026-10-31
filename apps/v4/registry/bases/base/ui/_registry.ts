@@ -212,7 +212,7 @@ export const ui: Registry["items"] = [
         docs: "https://ui.shadcn.com/docs/components/base/carousel",
         examples:
           "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/carousel-example.tsx",
-        api: "https://www.embla-carousel.com/get-started/react",
+        api: "https://www.embla-carousel.com/docs/v8/api",
       },
     },
   },
