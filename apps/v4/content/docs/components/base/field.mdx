@@ -235,12 +235,12 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## Validation and Errors
 
-- Add `data-invalid` to `Field` to switch the entire block into an error state.
+- Add `invalid` to `Field` to switch the entire block into an error state.
 - Add `aria-invalid` on the input itself for assistive technologies.
 - Render `FieldError` immediately after the control or inside `FieldContent` to keep error messages aligned with the field.
 
-```tsx showLineNumbers /data-invalid/ /aria-invalid/
-<Field data-invalid>
+```tsx showLineNumbers /invalid/ /aria-invalid/
+<Field invalid>
   <FieldLabel htmlFor="email">Email</FieldLabel>
   <Input id="email" type="email" aria-invalid />
   <FieldError>Enter a valid email address.</FieldError>
@@ -308,6 +308,7 @@ The core wrapper for a single field. Provides orientation control, invalid state
 | -------------- | -------------------------------------------- | ------------ |
 | `orientation`  | `"vertical" \| "horizontal" \| "responsive"` | `"vertical"` |
 | `className`    | `string`                                     |              |
+| `invalid`      | `boolean`                                    |              |
 | `data-invalid` | `boolean`                                    |              |
 
 ```tsx
