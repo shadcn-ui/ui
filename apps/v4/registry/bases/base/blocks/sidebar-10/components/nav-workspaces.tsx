@@ -45,7 +45,7 @@ export function NavWorkspaces({
                 </SidebarMenuButton>
                 <SidebarMenuAction
                   render={<CollapsibleTrigger />}
-                  className="left-2 bg-sidebar-accent text-sidebar-accent-foreground data-open:rotate-90"
+                  className="left-2 bg-sidebar-accent text-sidebar-accent-foreground aria-expanded:rotate-90"
                   showOnHover
                 >
                   <IconPlaceholder
