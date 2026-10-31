@@ -36,6 +36,7 @@ import {
   type StyleName,
   type ThemeName,
 } from "@/registry/config"
+import { parseAsHexColor } from "@/app/(app)/(create)/lib/custom-primary"
 import { FONTS } from "@/app/(app)/(create)/lib/fonts"
 import { getPresetCode } from "@/app/(app)/(create)/lib/preset-code"
 import { resolvePresetOverrides } from "@/app/(app)/(create)/lib/preset-query"
@@ -94,6 +95,7 @@ const designSystemSearchParams = {
   pointer: parseAsBoolean.withDefault(false),
   size: parseAsInteger.withDefault(100),
   custom: parseAsBoolean.withDefault(false),
+  primary: parseAsHexColor,
 }
 
 // Design system param keys that get encoded into the preset code.
@@ -108,6 +110,7 @@ const DESIGN_SYSTEM_KEYS = [
   "radius",
   "menuAccent",
   "menuColor",
+  "primary",
 ] as const
 
 function normalizeFontHeading(
@@ -213,7 +216,7 @@ function normalizeDesignSystemParams(
 // theme that base-color themes originally borrowed charts from.
 type SearchParamsLike = Pick<URLSearchParams, "get" | "has">
 
-function resolvePresetParams(
+export function resolvePresetParams(
   rawParams: DesignSystemSearchParams,
   searchParams: SearchParamsLike
 ) {
@@ -232,6 +235,7 @@ function resolvePresetParams(
         pointer: rawParams.pointer,
         size: rawParams.size,
         custom: rawParams.custom,
+        primary: decoded.primary ?? null,
       })
     }
   }

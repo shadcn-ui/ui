@@ -84,6 +84,7 @@ export function DesignSystemProvider({
     menuAccent,
     menuColor,
     pointer,
+    primary,
     radius,
   } = searchParams
   const effectiveRadius = style === "lyra" ? "none" : radius
@@ -203,10 +204,11 @@ export function DesignSystemProvider({
       chartColor,
       menuAccent,
       radius: effectiveRadius,
+      primary: primary ?? undefined,
     }
 
     return buildRegistryTheme(config)
-  }, [baseColor, theme, chartColor, menuAccent, effectiveRadius])
+  }, [baseColor, theme, chartColor, menuAccent, effectiveRadius, primary])
 
   // Use useLayoutEffect for synchronous CSS var updates.
   React.useLayoutEffect(() => {
