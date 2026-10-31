@@ -1,7 +1,8 @@
 import os from "os"
 import path from "path"
-import { getProjectConfig } from "@/src/get-project-info"
+import { getProjectConfig, getTailwindCssFile } from "@/src/get-project-info"
 import { getFixturesDir, writeFiles } from "@/src/test-helpers"
+import { updateCss } from "@/src/updaters/update-css"
 import fs from "fs-extra"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
@@ -990,5 +991,137 @@ describe("createConfig", () => {
     expect(config1.resolvedPaths).not.toBe(config2.resolvedPaths)
     expect(config1.tailwind).not.toBe(config2.tailwind)
     expect(config1.aliases).not.toBe(config2.aliases)
+  })
+})
+
+describe("tailwind.css package specifiers", () => {
+  const globalsCss = '@import "tailwindcss";\n'
+
+  // A pnpm workspace with no node_modules: an app and @repo/ui, a workspace
+  // package exporting its CSS.
+  async function createWorkspace(options: { css: string; config?: string }) {
+    const root = await createTempDir({
+      "pnpm-workspace.yaml": "packages:\n  - apps/*\n  - packages/*\n",
+      "package.json": JSON.stringify({ name: "root", private: true }),
+      "apps/web/components.json": JSON.stringify({
+        style: "new-york",
+        tailwind: {
+          css: options.css,
+          config: options.config,
+          baseColor: "zinc",
+          cssVariables: true,
+        },
+        aliases: { components: "@/components", utils: "@/lib/utils" },
+      }),
+      "apps/web/package.json": JSON.stringify({
+        name: "web",
+        dependencies: { "@repo/ui": "workspace:*" },
+      }),
+      "apps/web/tsconfig.json": JSON.stringify({
+        compilerOptions: { baseUrl: ".", paths: { "@/*": ["./*"] } },
+      }),
+      "apps/web/styles/globals.css": globalsCss,
+      "packages/ui/package.json": JSON.stringify({
+        name: "@repo/ui",
+        exports: {
+          "./globals.css": "./src/styles/globals.css",
+          "./tailwind.config": "./tailwind.config.js",
+          "./gone.css": "./src/gone.css",
+        },
+      }),
+      "packages/ui/src/styles/globals.css": globalsCss,
+      "packages/ui/tailwind.config.js": "module.exports = {}\n",
+    })
+
+    return {
+      root,
+      cwd: path.join(root, "apps/web"),
+      sourceCss: path.join(root, "packages/ui/src/styles/globals.css"),
+    }
+  }
+
+  it("keeps relative paths unchanged", async () => {
+    for (const css of [
+      "../../packages/ui/src/styles/globals.css",
+      "styles/globals.css",
+      // Not a local file and not a workspace package: still a plain path.
+      "app/globals.css",
+      "@other/pkg/globals.css",
+    ]) {
+      const { cwd } = await createWorkspace({ css })
+      expect((await getConfig(cwd))?.resolvedPaths.tailwindCss).toBe(
+        path.resolve(cwd, css)
+      )
+    }
+  })
+
+  it("resolves a workspace package export", async () => {
+    const { cwd, sourceCss } = await createWorkspace({
+      css: "@repo/ui/globals.css",
+    })
+
+    expect((await getConfig(cwd))?.resolvedPaths.tailwindCss).toBe(sourceCss)
+    expect(await getTailwindCssFile(cwd, "@repo/ui/globals.css")).toBe(
+      "@repo/ui/globals.css"
+    )
+  })
+
+  it("resolves tailwind.config the same way", async () => {
+    const { root, cwd } = await createWorkspace({
+      css: "@repo/ui/globals.css",
+      config: "@repo/ui/tailwind.config",
+    })
+
+    expect((await getConfig(cwd))?.resolvedPaths.tailwindConfig).toBe(
+      path.join(root, "packages/ui/tailwind.config.js")
+    )
+  })
+
+  it("throws a clear error for an unexported subpath", async () => {
+    const { cwd } = await createWorkspace({ css: "@repo/ui/missing.css" })
+
+    await expect(getConfig(cwd)).rejects.toThrow(
+      /Could not resolve .*@repo\/ui\/missing\.css[\s\S]*Add this path to the "exports"/
+    )
+  })
+
+  it("throws a clear error for an export pointing at a missing file", async () => {
+    const { cwd } = await createWorkspace({ css: "@repo/ui/gone.css" })
+
+    await expect(getConfig(cwd)).rejects.toThrow(
+      /Could not resolve .*@repo\/ui\/gone\.css[\s\S]*src\/gone\.css.*which does not exist/
+    )
+  })
+
+  it("prefers the workspace source over an installed copy", async () => {
+    const { cwd, sourceCss } = await createWorkspace({
+      css: "@repo/ui/globals.css",
+    })
+    await writeFiles(path.join(cwd, "node_modules/@repo/ui"), {
+      "package.json": JSON.stringify({
+        name: "@repo/ui",
+        exports: { "./globals.css": "./globals.css" },
+      }),
+      "globals.css": globalsCss,
+    })
+
+    expect((await getConfig(cwd))?.resolvedPaths.tailwindCss).toBe(sourceCss)
+  })
+
+  it("writes css vars to the resolved workspace file", async () => {
+    const { cwd, sourceCss } = await createWorkspace({
+      css: "@repo/ui/globals.css",
+    })
+    const config = await getConfig(cwd)
+
+    await updateCss(undefined, config!, {
+      silent: true,
+      tailwindVersion: "v4",
+      cssVars: { light: { brand: "oklch(0.5 0.2 250)" } },
+    })
+
+    expect(await fs.readFile(sourceCss, "utf8")).toContain(
+      "--brand: oklch(0.5 0.2 250)"
+    )
   })
 })

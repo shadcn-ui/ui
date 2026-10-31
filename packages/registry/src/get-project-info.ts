@@ -1,7 +1,12 @@
 import { promises as fsPromises } from "fs"
 import path from "path"
 import { Framework, FRAMEWORKS } from "@/src/frameworks"
-import { Config, getConfig, resolveConfigPaths } from "@/src/get-config"
+import {
+  Config,
+  getConfig,
+  resolveConfigFilePath,
+  resolveConfigPaths,
+} from "@/src/get-config"
 import { getPackageInfo } from "@/src/get-package-info"
 import {
   getPackageImportAliases,
@@ -254,7 +259,11 @@ export async function getTailwindVersion(
 export async function getTailwindCssFile(cwd: string, configCssFile?: string) {
   // If the existing config has a known CSS file, check it first.
   if (configCssFile) {
-    const resolvedPath = path.resolve(cwd, configCssFile)
+    const resolvedPath = await resolveConfigFilePath(
+      cwd,
+      configCssFile,
+      "tailwind.css"
+    )
     if (await fs.pathExists(resolvedPath)) {
       return configCssFile
     }

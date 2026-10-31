@@ -60,6 +60,8 @@ Path to where your `tailwind.config.js` file is located. **For Tailwind CSS v4, 
 }
 ```
 
+Like `tailwind.css`, this can also be a workspace package export such as `@workspace/ui/tailwind.config`.
+
 ### tailwind.css
 
 Path to the CSS file that imports Tailwind CSS into your project.
@@ -71,6 +73,8 @@ Path to the CSS file that imports Tailwind CSS into your project.
   }
 }
 ```
+
+In a monorepo, you can also point at a file exported by a workspace package, such as `@workspace/ui/globals.css`. It is resolved the same way as [aliases](#aliases) that point at workspace packages: through the `exports` field of that package's `package.json`, without needing `node_modules`. A path relative to `components.json` that exists always takes precedence.
 
 ### tailwind.baseColor
 
