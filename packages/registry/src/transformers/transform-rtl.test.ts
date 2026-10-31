@@ -69,6 +69,17 @@ describe("applyRtlMapping", () => {
     expect(applyRtlMapping("rounded-br-md")).toBe("rounded-ee-md")
   })
 
+  it("transforms rounded corner classes without a value", () => {
+    expect(applyRtlMapping("rounded-l")).toBe("rounded-s")
+    expect(applyRtlMapping("rounded-r")).toBe("rounded-e")
+    expect(applyRtlMapping("rounded-tl")).toBe("rounded-ss")
+    expect(applyRtlMapping("rounded-tr")).toBe("rounded-se")
+    expect(applyRtlMapping("rounded-bl")).toBe("rounded-es")
+    expect(applyRtlMapping("rounded-br")).toBe("rounded-ee")
+    expect(applyRtlMapping("md:rounded-r")).toBe("md:rounded-e")
+    expect(applyRtlMapping("rounded-lg")).toBe("rounded-lg")
+  })
+
   it("transforms text alignment classes", () => {
     expect(applyRtlMapping("text-left")).toBe("text-start")
     expect(applyRtlMapping("text-right")).toBe("text-end")

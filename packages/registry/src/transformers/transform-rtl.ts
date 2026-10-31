@@ -22,7 +22,8 @@ import { getArgumentStrings, getClassNameStrings } from "./transform-tw-prefix"
 // Order matters to avoid partial matches:
 // - Negative prefixes before positive (e.g., -ml- before ml-).
 // - Specific corners before general ones e.g. rounded-tl- before rounded-l-.
-// - With-value variants before without-value (e.g., border-l- before border-l).
+// - With-value variants before without-value (e.g., border-l- before border-l,
+//   rounded-l- before rounded-l).
 const RTL_MAPPINGS: [string, string][] = [
   ["-ml-", "-ms-"],
   ["-mr-", "-me-"],
@@ -42,6 +43,12 @@ const RTL_MAPPINGS: [string, string][] = [
   ["rounded-br-", "rounded-ee-"],
   ["rounded-l-", "rounded-s-"],
   ["rounded-r-", "rounded-e-"],
+  ["rounded-tl", "rounded-ss"],
+  ["rounded-tr", "rounded-se"],
+  ["rounded-bl", "rounded-es"],
+  ["rounded-br", "rounded-ee"],
+  ["rounded-l", "rounded-s"],
+  ["rounded-r", "rounded-e"],
   ["border-l-", "border-s-"],
   ["border-r-", "border-e-"],
   ["border-l", "border-s"],
