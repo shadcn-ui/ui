@@ -97,6 +97,16 @@ afterEach(async () => {
   )
 })
 
+const customPrimaryCss = `:root {
+  --primary: oklch(0.541 0.247 293.009);
+  --primary-foreground: oklch(0.985 0 0);
+}
+
+.dark {
+  --primary: oklch(0.541 0.247 293.009);
+  --primary-foreground: oklch(0.985 0 0);
+}`
+
 describe("resolveProjectPreset", () => {
   it("derives preset values and code from project css", async () => {
     const config = await createTestConfig({
@@ -348,5 +358,28 @@ export default function App({ Component, pageProps }) {
 
     expect(result.values?.style).toBe("luma")
     expect(result.code).toBe(encodePreset(result.values!))
+  })
+
+  it("reads a custom primary back into a 'c' preset code", async () => {
+    const config = await createTestConfig({
+      css: customPrimaryCss,
+      baseColor: "olive",
+    })
+
+    const result = await resolveProjectPreset(config)
+
+    expect(result.values?.primary).toBe("7c3aed")
+    expect(result.values?.theme).toBe("olive")
+    expect(result.code).toMatch(/^c/)
+    expect(result.fallbacks).not.toContain("theme")
+  })
+
+  it("does not treat a theme primary as a custom primary", async () => {
+    const config = await createTestConfig({ css: presetCssWithHeadingFont })
+
+    const result = await resolveProjectPreset(config)
+
+    expect(result.values?.primary).toBeUndefined()
+    expect(result.code).toMatch(/^b/)
   })
 })

@@ -76,4 +76,42 @@ describe("parseDesignSystemConfig", () => {
 
     expect(result.data.pointer).toBe(true)
   })
+
+  it("reads the custom primary from a 'c' preset code", () => {
+    const result = parseDesignSystemConfig(
+      new URLSearchParams("preset=c0Y9zJ0&base=base&track=1")
+    )
+
+    if (!result.success) {
+      throw new Error(result.error)
+    }
+
+    expect(result.data.primary).toBe("7c3aed")
+  })
+
+  it("reads the custom primary from explicit params", () => {
+    const result = parseDesignSystemConfig(
+      new URLSearchParams(
+        "base=base&style=nova&baseColor=neutral&theme=neutral&iconLibrary=lucide&font=inter&menuAccent=subtle&menuColor=default&radius=default&primary=7c3aed"
+      )
+    )
+
+    if (!result.success) {
+      throw new Error(result.error)
+    }
+
+    expect(result.data.primary).toBe("7c3aed")
+  })
+
+  it("has no custom primary for 'b' preset codes", () => {
+    const result = parseDesignSystemConfig(
+      new URLSearchParams("preset=b0&base=base")
+    )
+
+    if (!result.success) {
+      throw new Error(result.error)
+    }
+
+    expect(result.data.primary).toBeUndefined()
+  })
 })

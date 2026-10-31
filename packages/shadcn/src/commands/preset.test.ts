@@ -127,6 +127,30 @@ describe("preset commands", () => {
     })
   })
 
+  it("decodes the custom primary from 'c' codes", () => {
+    const result = decodePresetCode("c0Y9zJ0")
+
+    expect(result.version).toBe("c")
+    expect(result.values.primary).toBe("7c3aed")
+    expect(result.values.theme).toBe("neutral")
+  })
+
+  it("prints the custom primary in human output", () => {
+    printPresetDecode(decodePresetCode("c0Y9zJ0"))
+
+    expect(logger.log).toHaveBeenCalledWith("  primary      #7c3aed")
+  })
+
+  it("does not print a primary row for codes without one", () => {
+    printPresetDecode(decodePresetCode("b0"))
+
+    expect(
+      vi
+        .mocked(logger.log)
+        .mock.calls.some((call) => String(call[0]).includes("primary"))
+    ).toBe(false)
+  })
+
   it("applies compatibility values for older preset codes", () => {
     const result = decodePresetCode("a0")
 

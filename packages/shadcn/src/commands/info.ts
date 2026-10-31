@@ -276,6 +276,9 @@ export function printPresetInfo(
       radius: formatPresetValue("radius", preset.values?.radius),
       menuAccent: formatPresetValue("menuAccent", preset.values?.menuAccent),
       menuColor: formatPresetValue("menuColor", preset.values?.menuColor),
+      ...(preset.values && "primary" in preset.values && preset.values.primary
+        ? { primary: `#${preset.values.primary}` }
+        : {}),
       url: `${SHADCN_URL}/create?preset=${preset.code}`,
     })
 

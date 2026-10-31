@@ -178,6 +178,7 @@ export type PresetConfig = {
   radius: (typeof PRESET_RADII)[number]
   menuAccent: (typeof PRESET_MENU_ACCENTS)[number]
   menuColor: (typeof PRESET_MENU_COLORS)[number]
+  primary?: string
 }
 
 export const DEFAULT_PRESET_CONFIG: PresetConfig = Object.fromEntries(
@@ -186,9 +187,18 @@ export const DEFAULT_PRESET_CONFIG: PresetConfig = Object.fromEntries(
 
 const BASE62 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
-// Version prefixes — "a" = v1 (no chartColor), "b" = v2 (with chartColor).
+// Version prefixes — "a" = v1 (no chartColor), "b" = v2 (with chartColor),
+// "c" = v2 fields plus a custom primary hex. "c" is only used when a primary is set.
 const CURRENT_VERSION = "b"
-const VALID_VERSIONS = ["a", "b"] as const
+const PRIMARY_VERSION = "c"
+const VALID_VERSIONS = ["a", "b", "c"] as const
+
+// The primary hex is a fixed-width base62 block right after the version char.
+const PRIMARY_LENGTH = 5
+const MAX_PRIMARY = 0xffffff
+const MAX_CODE_LENGTH = 10
+const MAX_PRIMARY_CODE_LENGTH = 1 + PRIMARY_LENGTH + 9
+const HEX_PATTERN = /^[0-9a-f]{6}$/
 
 export function toBase62(num: number) {
   if (num === 0) return "0"
@@ -211,7 +221,7 @@ export function fromBase62(str: string) {
   return result
 }
 
-// Always produces v2 ("b") codes.
+// Produces v2 ("b") codes, or "c" codes when a valid primary hex is set.
 export function encodePreset(config: Partial<PresetConfig>) {
   const merged = { ...DEFAULT_PRESET_CONFIG, ...config }
 
@@ -226,11 +236,21 @@ export function encodePreset(config: Partial<PresetConfig>) {
     offset += field.bits
   }
 
+  const primary = config.primary?.toLowerCase()
+  if (primary && HEX_PATTERN.test(primary)) {
+    return (
+      PRIMARY_VERSION +
+      toBase62(parseInt(primary, 16)).padStart(PRIMARY_LENGTH, "0") +
+      toBase62(bits)
+    )
+  }
+
   return CURRENT_VERSION + toBase62(bits)
 }
 
 // "a"-prefixed codes use v1 fields (no chartColor).
 // "b"-prefixed codes use v2 fields (with chartColor).
+// "c"-prefixed codes use v2 fields after a fixed-width primary hex.
 export function decodePreset(code: string): PresetConfig | null {
   if (!code || code.length < 2) {
     return null
@@ -243,7 +263,17 @@ export function decodePreset(code: string): PresetConfig | null {
 
   const fields = version === "a" ? PRESET_FIELDS_V1 : PRESET_FIELDS_V2
 
-  const bits = fromBase62(code.slice(1))
+  let primary: string | undefined
+  let body = code.slice(1)
+  if (version === PRIMARY_VERSION) {
+    if (body.length <= PRIMARY_LENGTH) return null
+    const hex = fromBase62(body.slice(0, PRIMARY_LENGTH))
+    if (hex < 0 || hex > MAX_PRIMARY) return null
+    primary = hex.toString(16).padStart(6, "0")
+    body = body.slice(PRIMARY_LENGTH)
+  }
+
+  const bits = fromBase62(body)
   if (bits < 0) return null
 
   const result = {} as Record<string, string>
@@ -259,16 +289,28 @@ export function decodePreset(code: string): PresetConfig | null {
     result.fontHeading = "inherit"
   }
 
+  if (primary) {
+    result.primary = primary
+  }
+
   return result as PresetConfig
 }
 
 // Check if a string looks like a preset code (version char + base62).
 export function isPresetCode(value: string) {
-  if (!value || value.length < 2 || value.length > 10) {
+  if (!value || value.length < 2) {
     return false
   }
 
   if (!VALID_VERSIONS.includes(value[0] as (typeof VALID_VERSIONS)[number])) {
+    return false
+  }
+
+  const [min, max] =
+    value[0] === PRIMARY_VERSION
+      ? [PRIMARY_LENGTH + 2, MAX_PRIMARY_CODE_LENGTH]
+      : [2, MAX_CODE_LENGTH]
+  if (value.length < min || value.length > max) {
     return false
   }
 

@@ -225,6 +225,7 @@ export function ProjectForm({
       template: params.template,
       rtl: params.rtl,
       pointer: params.pointer,
+      primary: params.primary ?? undefined,
     }
   }, [
     params.base,
@@ -236,6 +237,7 @@ export function ProjectForm({
     params.menuAccent,
     params.menuColor,
     params.pointer,
+    params.primary,
     params.radius,
     params.rtl,
     params.style,
