@@ -34,6 +34,7 @@ function useMessageScrollerCommands({
     autoscrollingTimeoutRef,
     contentRef,
     itemCountRef,
+    lastScrollTopRef,
     messageElementsRef,
     modeRef,
     pendingScrollToMessageRef,
@@ -43,6 +44,7 @@ function useMessageScrollerCommands({
     spacerGapRef,
     spacerHeightRef,
     spacerRef,
+    userReleasedFollowRef,
     viewportRef,
   } = refs
 
@@ -123,6 +125,9 @@ function useMessageScrollerCommands({
         top: nextScrollTop,
         behavior,
       })
+      if (behavior === "auto") {
+        lastScrollTopRef.current = viewport.scrollTop
+      }
       scheduleStateCommit()
     },
     [commitScrollState, scheduleStateCommit, setAutoScrolling]
@@ -136,6 +141,7 @@ function useMessageScrollerCommands({
 
       setTailSpacerHeight(0)
       streamingTurnRef.current = null
+      userReleasedFollowRef.current = false
       modeRef.current = "free-scrolling"
       scrollToPosition(0, { behavior })
       scheduleVisibilitySync()
@@ -155,6 +161,7 @@ function useMessageScrollerCommands({
 
       setTailSpacerHeight(0)
       streamingTurnRef.current = null
+      userReleasedFollowRef.current = false
       modeRef.current = autoScrollRef.current
         ? "following-bottom"
         : "free-scrolling"
@@ -217,6 +224,7 @@ function useMessageScrollerCommands({
         viewportTop: getElementViewportTop(element, viewport),
       }
 
+      userReleasedFollowRef.current = false
       modeRef.current = keepPreviousPeek
         ? "anchored-to-message"
         : "settling-jump"
@@ -322,6 +330,7 @@ function useMessageScrollerCommands({
     scrollToEnd,
     scrollToMessage,
     scrollToStart,
+    setAutoScrolling,
   }
 }
 

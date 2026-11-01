@@ -142,6 +142,7 @@ function MessageScrollerViewport({
   onKeyDown,
   onScroll,
   onTouchMove,
+  onTouchStart,
   onWheel,
   preserveScrollOnPrepend = true,
   ref,
@@ -158,6 +159,7 @@ function MessageScrollerViewport({
     viewportRef,
   } = useMessageScrollerContext()
   const pendingDefaultScroll = usePendingDefaultScroll()
+  const lastTouchYRef = React.useRef<number | null>(null)
 
   preserveScrollOnPrependRef.current = preserveScrollOnPrepend
 
@@ -175,18 +177,46 @@ function MessageScrollerViewport({
   }
 
   function handleWheel(event: React.WheelEvent<HTMLDivElement>) {
-    userScrollIntent()
+    if (event.deltaY !== 0 || event.deltaX === 0) {
+      userScrollIntent(event.deltaY > 0 ? "end" : "start")
+    }
+
     onWheel?.(event)
   }
 
+  function handleTouchStart(event: React.TouchEvent<HTMLDivElement>) {
+    lastTouchYRef.current = event.touches[0]?.clientY ?? null
+    onTouchStart?.(event)
+  }
+
   function handleTouchMove(event: React.TouchEvent<HTMLDivElement>) {
-    userScrollIntent()
+    const touchY = event.touches[0]?.clientY
+    const lastTouchY = lastTouchYRef.current
+
+    if (touchY !== undefined) {
+      lastTouchYRef.current = touchY
+    }
+
+    if (touchY === undefined || lastTouchY === null) {
+      userScrollIntent("start")
+    } else if (touchY !== lastTouchY) {
+      userScrollIntent(touchY < lastTouchY ? "end" : "start")
+    }
+
     onTouchMove?.(event)
   }
 
   function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
     if (USER_SCROLL_KEYS.has(event.key)) {
-      userScrollIntent()
+      const direction =
+        event.key === "ArrowDown" ||
+        event.key === "PageDown" ||
+        event.key === "End" ||
+        (event.key === " " && !event.shiftKey)
+          ? "end"
+          : "start"
+
+      userScrollIntent(direction)
     }
 
     onKeyDown?.(event)
@@ -226,6 +256,7 @@ function MessageScrollerViewport({
       onKeyDown={handleKeyDown}
       onScroll={handleScroll}
       onTouchMove={handleTouchMove}
+      onTouchStart={handleTouchStart}
       onWheel={handleWheel}
       {...props}
       {...(pendingDefaultScroll ? { "data-pending-scroll": "" } : null)}

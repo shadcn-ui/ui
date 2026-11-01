@@ -1,7 +1,8 @@
 import * as React from "react"
+import { userEvent } from "@vitest/browser/context"
 import { flushSync } from "react-dom"
 import { createRoot, type Root } from "react-dom/client"
-import { afterEach, expect, test } from "vitest"
+import { afterEach, expect, test, vi } from "vitest"
 
 import {
   MessageScroller as MessageScrollerPrimitive,
@@ -461,6 +462,97 @@ test("user scroll intent cancels follow-bottom", async () => {
 
   expect(getScrollTop(viewport)).toBe(0)
   expect(getDistanceToBottom(viewport)).toBeGreaterThan(0)
+})
+
+test("native PageUp releases follow-bottom during batched streaming", async () => {
+  const historyLines = Array.from(
+    { length: 40 },
+    (_, index) => `history ${index}`
+  )
+
+  function StreamingFixture() {
+    const [chunks, setChunks] = React.useState<string[]>([])
+
+    React.useEffect(() => {
+      let sequence = 0
+      const timeouts = new Set<number>()
+      const interval = window.setInterval(() => {
+        const nextChunk = `delta ${++sequence}`
+        const timeout = window.setTimeout(() => {
+          timeouts.delete(timeout)
+          setChunks((previous) => [...previous, nextChunk])
+        }, 16)
+        timeouts.add(timeout)
+      }, 60)
+
+      return () => {
+        window.clearInterval(interval)
+        timeouts.forEach((timeout) => window.clearTimeout(timeout))
+      }
+    }, [])
+
+    return (
+      <MessageScrollerProvider autoScroll>
+        <MessageScroller style={{ width: 600, height: 360 }}>
+          <MessageScrollerViewport
+            aria-label="viewport"
+            style={{ height: 360, overflowY: "auto" }}
+          >
+            <MessageScrollerContent
+              style={{ display: "flex", flexDirection: "column" }}
+            >
+              <MessageScrollerItem messageId="history">
+                {historyLines.map((line) => (
+                  <p
+                    key={line}
+                    style={{ lineHeight: "22px", margin: "0 0 12px" }}
+                  >
+                    {line}
+                  </p>
+                ))}
+              </MessageScrollerItem>
+              <MessageScrollerItem messageId="live">
+                {chunks.map((chunk) => (
+                  <p
+                    key={chunk}
+                    style={{ lineHeight: "22px", margin: "0 0 12px" }}
+                  >
+                    {chunk}
+                  </p>
+                ))}
+              </MessageScrollerItem>
+            </MessageScrollerContent>
+          </MessageScrollerViewport>
+        </MessageScroller>
+      </MessageScrollerProvider>
+    )
+  }
+
+  container = document.createElement("div")
+  document.body.appendChild(container)
+  root = createRoot(container)
+  flushSync(() => {
+    root!.render(<StreamingFixture />)
+  })
+
+  await vi.waitFor(() => {
+    expect(container?.textContent).toContain("delta 4")
+  })
+  await settle(2)
+
+  const viewport = getViewport()
+  viewport.focus()
+  await userEvent.keyboard("{PageUp}")
+
+  await vi.waitFor(
+    () => {
+      expect(container?.textContent).toContain("delta 12")
+    },
+    { timeout: 3000 }
+  )
+  await settle()
+
+  expect(getDistanceToBottom(viewport)).toBeGreaterThan(100)
 })
 
 test("tracks the current anchor as it scrolls above the viewport", async () => {
