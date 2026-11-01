@@ -3,7 +3,6 @@
 import * as React from "react"
 import { cn } from "cn"
 import {
-  Focusable,
   OverlayArrow,
   Tooltip as TooltipPrimitive,
   TooltipTrigger as TooltipTriggerPrimitive,
@@ -14,7 +13,7 @@ function TooltipTrigger({
   children,
   ...props
 }: React.ComponentProps<typeof TooltipTriggerPrimitive>) {
-  const [trigger, tooltip] = React.Children.toArray(children)
+  const [trigger, ...tooltipChildren] = React.Children.toArray(children)
 
   return (
     <TooltipTriggerPrimitive
@@ -22,10 +21,8 @@ function TooltipTrigger({
       delay={delay}
       {...props}
     >
-      <Focusable>
-        {trigger as React.ComponentProps<typeof Focusable>["children"]}
-      </Focusable>
-      {tooltip}
+      {trigger}
+      {tooltipChildren}
     </TooltipTriggerPrimitive>
   )
 }
