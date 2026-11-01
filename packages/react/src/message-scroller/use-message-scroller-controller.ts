@@ -665,6 +665,14 @@ function useMessageScrollerController({
     []
   )
 
+  const shouldSuspendContentResizeObserver = React.useCallback(
+    () =>
+      modeRef.current === "anchored-to-message" &&
+      streamingTurnRef.current !== null &&
+      streamingTurnRef.current.isConnected,
+    []
+  )
+
   const syncAfterScroll = React.useCallback(() => {
     commitScrollState()
     scheduleVisibilitySync()
@@ -685,6 +693,7 @@ function useMessageScrollerController({
       setRootElement,
       setSpacerElement,
       setViewportElement,
+      shouldSuspendContentResizeObserver,
       stateStore,
       syncAfterScroll,
       unobserveVisibility,
@@ -704,6 +713,7 @@ function useMessageScrollerController({
       setRootElement,
       setSpacerElement,
       setViewportElement,
+      shouldSuspendContentResizeObserver,
       stateStore,
       syncAfterScroll,
       unobserveVisibility,

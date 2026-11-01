@@ -112,11 +112,25 @@ class TestResizeObserver {
 
   observe(element: Element) {
     this.elements.add(element)
-    window.requestAnimationFrame(() => this.trigger())
+    window.requestAnimationFrame(() => {
+      if (this.elements.has(element)) {
+        this.trigger()
+      }
+    })
   }
 
   trigger() {
-    this.callback([], this as unknown as ResizeObserver)
+    const entries = Array.from(this.elements).map(
+      (element) =>
+        ({
+          target: element,
+          contentRect: element.getBoundingClientRect(),
+        }) as ResizeObserverEntry
+    )
+
+    if (entries.length > 0) {
+      this.callback(entries, this as unknown as ResizeObserver)
+    }
   }
 
   unobserve(element: Element) {
@@ -675,7 +689,7 @@ describe("MessageScroller", () => {
     expect(rendered.scroller().hasAttribute("data-autoscrolling")).toBe(true)
   })
 
-  it("follows late content resize while autoScroll remains engaged", async () => {
+  it("follows late content resize before the next animation frame", async () => {
     const rendered = await renderTestScroller({
       autoScroll: true,
       defaultScrollPosition: "end",
@@ -689,9 +703,15 @@ describe("MessageScroller", () => {
     expect(rendered.viewport().scrollTop).toBe(140)
 
     rendered.message("message-3").dataset.testHeight = "140"
-    await triggerResize(rendered.content())
+    triggerResizeSync(rendered.content())
 
+    // ResizeObserver delivery runs before paint. The live edge must already be
+    // corrected here, without waiting for a requestAnimationFrame callback.
     expect(rendered.viewport().scrollTop).toBe(200)
+
+    await act(async () => {
+      await flushAnimationFrames()
+    })
     expect(rendered.state()).toMatchObject({
       start: true,
       end: false,
@@ -1498,7 +1518,9 @@ function renderPendingScrollToContainer(tree: React.ReactElement) {
     scroller: container.querySelector("[data-testid=scroller]"),
     viewport: container.querySelector("[data-testid=viewport]"),
     async hydrate() {
-      const consoleError = vi.spyOn(console, "error").mockImplementation(() => {})
+      const consoleError = vi
+        .spyOn(console, "error")
+        .mockImplementation(() => {})
 
       await act(async () => {
         hydrateRoot(container, tree)
@@ -1711,13 +1733,17 @@ function installIntersectionObserver() {
   ).IntersectionObserver = TestIntersectionObserver
 }
 
+function triggerResizeSync(element: Element) {
+  resizeObservers.forEach((observer) => {
+    if (observer.has(element)) {
+      observer.trigger()
+    }
+  })
+}
+
 async function triggerResize(element: Element) {
   await act(async () => {
-    resizeObservers.forEach((observer) => {
-      if (observer.has(element)) {
-        observer.trigger()
-      }
-    })
+    triggerResizeSync(element)
     await flushAnimationFrames()
   })
 }
