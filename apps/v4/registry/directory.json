@@ -1680,6 +1680,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='currentColor'/><path d='M10 8h4v12h8v4H10z' fill='var(--background)'/></svg>"
   },
   {
+    "name": "@layout-kit",
+    "homepage": "https://layout.csikie.com",
+    "url": "https://layout.csikie.com/r/{name}.json",
+    "description": "Typed React layout primitives for shadcn: Stack, Row, Col, Grid, GridItem, and Page, with responsive gap, alignment, and column props.",
+    "author": "Erik Csiki-Gecse",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='#9ae600' d='M2 2h16v12h-8v16H2Z'/><path fill='var(--foreground)' d='M22 2h8v28H14V18h8Z'/></svg>"
+  },
+  {
     "name": "@lema-ds",
     "homepage": "https://ds.lema.ufpb.br",
     "url": "https://ds.lema.ufpb.br/r/{name}.json",
