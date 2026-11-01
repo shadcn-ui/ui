@@ -1,35 +1,30 @@
+import * as React from "react"
 import { debounce, parseAsInteger, useQueryState } from "nuqs"
+import useSWRImmutable from "swr/immutable"
 
+import {
+  createRegistryDirectoryView,
+  getRegistryDirectoryPage,
+} from "@/lib/registry-health/directory"
 import { useMounted } from "@/hooks/use-mounted"
 import globalRegistries from "@/registry/directory.json"
 
-const PAGE_SIZE = 10
-
-const normalizeQuery = (query: string) =>
-  query.toLowerCase().replaceAll(" ", "").replaceAll("@", "")
-
-function finderFn<T extends (typeof globalRegistries)[0]>(
-  registry: T,
-  query: string
-) {
-  const normalizedName = normalizeQuery(registry.name)
-  const normalizedDecription = normalizeQuery(registry.description)
-  const normalizedQuery = normalizeQuery(query)
-
-  return (
-    normalizedName.includes(normalizedQuery) ||
-    normalizedDecription.includes(normalizedQuery)
-  )
-}
-
-const searchDirectory = (query: string | null) => {
-  if (!query) return globalRegistries
-
-  return globalRegistries.filter((registry) => finderFn(registry, query))
+async function fetchRegistryMetadata(url: string) {
+  const response = await fetch(url, { signal: AbortSignal.timeout(5000) })
+  if (!response.ok) {
+    throw new Error("Registry health is unavailable")
+  }
+  return { payload: await response.json(), fetchedAt: Date.now() }
 }
 
 export function useSearchRegistry() {
   const mounted = useMounted()
+  const [now] = React.useState(() => Date.now())
+  const { data, isLoading } = useSWRImmutable(
+    mounted ? "/r/registries.json" : null,
+    fetchRegistryMetadata,
+    { shouldRetryOnError: false }
+  )
   const [query, setQuery] = useQueryState("q", {
     defaultValue: "",
     limitUrlUpdates: debounce(250),
@@ -44,28 +39,28 @@ export function useSearchRegistry() {
   const currentQuery = mounted ? query : ""
   const currentPageValue = mounted ? page : 1
 
-  const registries = searchDirectory(currentQuery)
-  const totalPages = Math.ceil(registries.length / PAGE_SIZE)
-
-  // Clamp page to valid range.
-  const currentPage = Math.max(1, Math.min(currentPageValue, totalPages))
-
-  const paginatedRegistries = registries.slice(
-    (currentPage - 1) * PAGE_SIZE,
-    currentPage * PAGE_SIZE
+  const view = React.useMemo(
+    () =>
+      createRegistryDirectoryView(
+        globalRegistries,
+        data?.payload,
+        Math.max(data?.fetchedAt ?? now, now)
+      ),
+    [data, now]
   )
+  const result = getRegistryDirectoryPage(view, {
+    query: currentQuery,
+    page: currentPageValue,
+  })
 
   return {
-    isLoading: !mounted,
+    ...result,
+    isLoading: !mounted || isLoading,
     query: currentQuery,
     setQuery: (value: string | null) => {
       setQuery(value)
       setPage(null)
     },
-    registries,
-    paginatedRegistries,
-    page: currentPage,
-    totalPages,
     setPage,
   }
 }

@@ -1,14 +1,14 @@
 import * as fs from "fs/promises"
 import * as path from "path"
 import { preFlightBuild } from "@/src/preflights/preflight-build"
+import { handleError } from "@/src/utils/handle-error"
+import { logger } from "@shadcn/registry/internal/logger"
 import {
   createRegistryCatalog,
   createRegistryItem,
   readRegistryWithIncludes,
-} from "@/src/registry/loader"
-import { handleError } from "@/src/utils/handle-error"
-import { logger } from "@/src/utils/logger"
-import { spinner } from "@/src/utils/spinner"
+} from "@shadcn/registry/internal/registry/loader"
+import { spinner } from "@shadcn/registry/internal/spinner"
 import { Command } from "commander"
 import { z } from "zod"
 

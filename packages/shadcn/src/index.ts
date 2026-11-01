@@ -51,4 +51,5 @@ async function main() {
 
 main()
 
-export * from "./registry/api"
+export * from "@shadcn/registry/internal/registry/api"
+export * from "./utils/registry-api"

@@ -1,35 +1,34 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
-import { getRegistryBaseColor } from "@/src/registry/api"
-import { configWithDefaults } from "@/src/registry/config"
-import { resolveRegistryTree } from "@/src/registry/resolver"
-import { registryResolvedItemsTreeSchema } from "@/src/schema"
-import { isContentSame } from "@/src/utils/compare"
-import { isEnvFile } from "@/src/utils/env-helpers"
-import { getSupportedFontMarkers } from "@/src/utils/font-markers"
-import type { Config } from "@/src/utils/get-config"
-import { getProjectInfo } from "@/src/utils/get-project-info"
-import { transform } from "@/src/utils/transformers"
-import { transformAsChild } from "@/src/utils/transformers/transform-aschild"
-import { transformCleanup } from "@/src/utils/transformers/transform-cleanup"
-import { transformCssVars as transformCssVarsTransformer } from "@/src/utils/transformers/transform-css-vars"
-import { transformFont } from "@/src/utils/transformers/transform-font"
-import { transformIcons } from "@/src/utils/transformers/transform-icons"
-import { transformImport } from "@/src/utils/transformers/transform-import"
-import { transformMenu } from "@/src/utils/transformers/transform-menu"
-import { transformRsc } from "@/src/utils/transformers/transform-rsc"
-import { transformRtl } from "@/src/utils/transformers/transform-rtl"
-import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
-import { transformCss } from "@/src/utils/updaters/update-css"
-import { transformCssVars } from "@/src/utils/updaters/update-css-vars"
+import { isContentSame } from "@shadcn/registry/internal/compare"
+import { isEnvFile } from "@shadcn/registry/internal/env-helpers"
+import { getSupportedFontMarkers } from "@shadcn/registry/internal/font-markers"
+import type { Config } from "@shadcn/registry/internal/get-config"
+import { getProjectInfo } from "@shadcn/registry/internal/get-project-info"
+import { getRegistryBaseColor } from "@shadcn/registry/internal/registry/api"
+import { configWithDefaults } from "@shadcn/registry/internal/registry/config"
+import { resolveRegistryTree } from "@shadcn/registry/internal/registry/resolver"
+import { transform } from "@shadcn/registry/internal/transformers/index"
+import { transformAsChild } from "@shadcn/registry/internal/transformers/transform-aschild"
+import { transformCleanup } from "@shadcn/registry/internal/transformers/transform-cleanup"
+import { transformCssVars as transformCssVarsTransformer } from "@shadcn/registry/internal/transformers/transform-css-vars"
+import { transformFont } from "@shadcn/registry/internal/transformers/transform-font"
+import { transformIcons } from "@shadcn/registry/internal/transformers/transform-icons"
+import { transformImport } from "@shadcn/registry/internal/transformers/transform-import"
+import { transformMenu } from "@shadcn/registry/internal/transformers/transform-menu"
+import { transformRsc } from "@shadcn/registry/internal/transformers/transform-rsc"
+import { transformRtl } from "@shadcn/registry/internal/transformers/transform-rtl"
+import { transformTwPrefixes } from "@shadcn/registry/internal/transformers/transform-tw-prefix"
+import { transformCss } from "@shadcn/registry/internal/updaters/update-css"
+import { transformCssVars } from "@shadcn/registry/internal/updaters/update-css-vars"
 import {
   findCommonRoot,
   getPlannedFilePaths,
   resolveFilePath,
   rewriteResolvedImportsInContent,
-} from "@/src/utils/updaters/update-files"
-import { massageTreeForFonts } from "@/src/utils/updaters/update-fonts"
-import { Project } from "ts-morph"
+} from "@shadcn/registry/internal/updaters/update-files"
+import { massageTreeForFonts } from "@shadcn/registry/internal/updaters/update-fonts"
+import { registryResolvedItemsTreeSchema } from "@shadcn/registry/schema"
 import { loadConfig } from "tsconfig-paths"
 import type { z } from "zod"
 
@@ -154,9 +153,6 @@ async function processFiles(
   } catch {
     tsConfig = { resultType: "failed" } as ReturnType<typeof loadConfig>
   }
-  const project = new Project({
-    compilerOptions: {},
-  })
   const plannedFilePaths = getPlannedFilePaths(files, config, {
     isSrcDir: projectInfo?.isSrcDir,
     framework: projectInfo?.framework.name,
@@ -227,7 +223,6 @@ async function processFiles(
             config,
             content,
             filePaths: plannedFilePaths,
-            project,
             projectInfo,
             resolvedPath: filePath,
             tsConfig,

@@ -8,6 +8,7 @@ export default [
     rules: {
       "import/no-cycle": "off",
       "import/order": "off",
+      "import/consistent-type-specifier-style": "off",
       "sort-imports": "off",
       "@typescript-eslint/array-type": "off",
       "@typescript-eslint/require-await": "off",

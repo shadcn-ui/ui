@@ -1,10 +1,10 @@
-import { RegistryError } from "@/src/registry/errors"
 import {
   getPackageManagerFromUserAgent,
   getPackageRunnerCommand,
-} from "@/src/utils/get-package-manager"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
+} from "@shadcn/registry/internal/get-package-manager"
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { logger } from "@shadcn/registry/internal/logger"
+import { RegistryError } from "@shadcn/registry/internal/registry/errors"
 import { z } from "zod"
 
 import packageJson from "../../package.json"

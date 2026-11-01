@@ -5,8 +5,8 @@ import {
   formatMonorepoMessage,
   getMonorepoTargets,
   isMonorepoRoot,
-} from "@/src/utils/get-monorepo-info"
-import { getPackageManager } from "@/src/utils/get-package-manager"
+} from "@shadcn/registry/internal/get-monorepo-info"
+import { getPackageManager } from "@shadcn/registry/internal/get-package-manager"
 import { execa } from "execa"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
@@ -16,29 +16,34 @@ vi.mock("execa", () => ({
   execa: vi.fn(),
 }))
 
-vi.mock("@/src/utils/get-package-manager", () => ({
+vi.mock("@shadcn/registry/internal/get-package-manager", () => ({
   getPackageManager: vi.fn().mockResolvedValue("pnpm"),
 }))
 
-vi.mock("@/src/utils/get-monorepo-info", async (importOriginal) => {
-  const actual =
-    await importOriginal<typeof import("@/src/utils/get-monorepo-info")>()
-  return {
-    ...actual,
-    formatMonorepoMessage: vi.fn(),
-    getMonorepoTargets: vi.fn().mockResolvedValue([]),
-    isMonorepoRoot: vi.fn().mockResolvedValue(false),
+vi.mock(
+  "@shadcn/registry/internal/get-monorepo-info",
+  async (importOriginal) => {
+    const actual =
+      await importOriginal<
+        typeof import("@shadcn/registry/internal/get-monorepo-info")
+      >()
+    return {
+      ...actual,
+      formatMonorepoMessage: vi.fn(),
+      getMonorepoTargets: vi.fn().mockResolvedValue([]),
+      isMonorepoRoot: vi.fn().mockResolvedValue(false),
+    }
   }
-})
+)
 
-vi.mock("@/src/utils/spinner", () => ({
+vi.mock("@shadcn/registry/internal/spinner", () => ({
   spinner: vi.fn(() => ({
     start: vi.fn().mockReturnThis(),
     succeed: vi.fn(),
   })),
 }))
 
-vi.mock("@/src/utils/logger", () => ({
+vi.mock("@shadcn/registry/internal/logger", () => ({
   logger: {
     break: vi.fn(),
     error: vi.fn(),

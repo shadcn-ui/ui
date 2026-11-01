@@ -10,9 +10,9 @@ and maintainers can catch problems early.
 We check that a registry is online, follows the registry format, and works with
 the `shadcn` CLI. These checks are combined into a status and a score.
 
-<Callout title="Registry Health is experimental and not live yet.">
-  Scores are collected but do not yet affect registry visibility or ordering.
-  The scoring model and its thresholds may change before launch.
+<Callout title="Registry Health is experimental.">
+  Health checks and catalog size help order the Registry Directory. The scoring
+  model and its thresholds may change as we learn from the results.
 </Callout>
 
 **Registry Health only applies to registries listed in the shadcn/ui Registry
@@ -33,8 +33,13 @@ browsing without removing it from the API.
 | Daily   | Registry items | A rotating sample of items can be downloaded and validated. |
 | Weekly  | CLI            | A rotating item works with `shadcn add --dry-run`.          |
 
-Item checks rotate through the catalog over approximately 30 days. Scheduled
-runs are best-effort, so we use the time of each real observation instead of
+Daily item checks rotate through the catalog over approximately 30 days. The
+weekly CLI check picks one item using a reproducible shuffle rather than the
+order in the registry index. It prefers items that have not been checked
+recently and avoids repeating the previous item when possible. This is a
+sample, not a check of every item.
+
+Scheduled runs are best-effort, so we use the time of each real observation instead of
 assuming that every scheduled check ran.
 
 ## Status
@@ -138,7 +143,55 @@ When there is not enough registry-wide data to calculate an average, we start
 with an 85% availability prior and a 90% prior for the other measured rates. A
 change to the formula, weights, or thresholds requires a new `scoreVersion`.
 
-## Health data in the API
+## Directory ranking
+
+The health score tells you how reliably a registry works. Directory ranking
+also considers how much it offers. When two registries have similar health,
+the one with more items will usually appear first.
+
+Health contributes up to 80 points. Catalog size contributes up to 20 points,
+with smaller gains for each additional item. The size bonus stops at 500 items,
+so a very large catalog cannot keep gaining points just by adding more items.
+
+```text
+rankingScore = 0.8 * healthScore
+             + 20 * min(1, log(1 + itemCount) / log(501))
+```
+
+For example, these registries all have a health score of 98:
+
+| Unique items | Ranking score |
+| -----------: | ------------: |
+|            1 |         80.63 |
+|          100 |        93.248 |
+|          500 |          98.4 |
+|        1,000 |          98.4 |
+
+We count distinct item names in the most recent valid registry index. Repeating
+the same name does not increase the count. Items with different names, including
+style variants and icons, count separately. We do not try to guess whether they
+are versions of the same component. Catalog size does not tell us whether an
+item is useful or well designed.
+
+The directory sorts by ranking score, with alphabetical order for ties. A
+**Degraded** registry is still ranked by its score rather than receiving an
+extra penalty for its status. Checks that fail because an item needs payment
+or authentication still affect its health score.
+
+If the monitor has not published ranking data yet, the directory uses health
+scores instead. Once ranking data is available, it uses the size-adjusted
+scores. It does not compare the two kinds of score in the same list.
+
+Registries that are still **Observing**, are blocked by a monitoring challenge,
+have an empty catalog, or do not have ranking data appear after ranked registries,
+in alphabetical order. They are not given a zero score. **Unavailable**
+registries appear last but remain searchable and accessible through the API.
+
+The ordering stays the same while you search and move between pages. If health
+data cannot be loaded or is more than six hours old, the directory falls back
+to alphabetical order. Scores and status badges are not shown in the list.
+
+## Health and ranking data in the API
 
 `/r/registries.json` adds an optional `health` object to each registry. It
 includes:
@@ -158,6 +211,23 @@ The object also includes two flags:
 
 The Registry Directory does not currently use the `hidden` flag.
 
+Once a valid index has been observed, the API also includes a separate
+`ranking` object:
+
+```json
+{
+  "version": 1,
+  "score": 93.248,
+  "itemCount": 100
+}
+```
+
+Its score is out of 100 and rounded to three decimal places. `itemCount` is the
+full unique count, even when it is above the 500-item bonus cap. `version`
+identifies the ranking formula. The existing `health.score` and `scoreVersion`
+are unchanged. The API keeps its original order; directory clients can use the
+ranking metadata to sort their own lists.
+
 ## Monitoring limitations
 
 All checks come from one hosted runner. Latency is therefore kept as a private
@@ -170,6 +240,6 @@ to everyone.
 
 ## What happens next
 
-We will collect and review baseline data before using Registry Health in the
-Directory. Ranking, filtering, and health UI will ship separately once the
-monitoring data is reliable.
+We will keep reviewing the checks and ranking results. Health badges and
+filtering can follow later. A higher ranking is not a recommendation or a
+security review. Always review third-party code before installing it.
