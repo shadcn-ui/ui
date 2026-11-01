@@ -3060,8 +3060,8 @@
   },
   {
     "name": "@tenvell",
-    "homepage": "https://tenvell.esher1.chatgpt.site",
-    "url": "https://tenvell.esher1.chatgpt.site/r/{name}.json",
+    "homepage": "https://tenvell.space",
+    "url": "https://tenvell.space/r/{name}.json",
     "description": "Minimal React components with thin liquid-glass surfaces, subtle hover depth, four glass finishes, and light and dark themes. Editable source, original typography, and CSS tokens.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='1.35' stroke-linecap='round' stroke-linejoin='round'><path d='M13 13.74a2 2 0 0 1-2 0L2.5 8.87a1 1 0 0 1 0-1.74L11 2.26a2 2 0 0 1 2 0l8.5 4.87a1 1 0 0 1 0 1.74z'/><path d='m20 14.285 1.5.845a1 1 0 0 1 0 1.74L13 21.74a2 2 0 0 1-2 0l-8.5-4.87a1 1 0 0 1 0-1.74l1.5-.845'/></svg>"
   },
