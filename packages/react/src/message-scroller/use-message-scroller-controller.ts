@@ -22,6 +22,7 @@ import {
   SCROLL_POSITION_EPSILON,
 } from "./types"
 import type {
+  MessageScrollerButtonDirection,
   MessageScrollerContextValue,
   MessageScrollerProviderProps,
   MessageScrollerRegisterMessage,
@@ -95,6 +96,7 @@ function useMessageScrollerController({
     spacerRef,
     stateFrameRef,
     stateStore,
+    userReleasedFollowRef,
     viewportRef,
     visibilityFrameRef,
     visibilityObserverRef,
@@ -102,6 +104,13 @@ function useMessageScrollerController({
     visibleMessageIdsRef,
     handledScrollAnchorsRef,
   } = refs
+
+  const previousAutoScrollRef = React.useRef(autoScroll)
+
+  if (previousAutoScrollRef.current !== autoScroll) {
+    previousAutoScrollRef.current = autoScroll
+    userReleasedFollowRef.current = false
+  }
 
   const previousDefaultScrollPositionRef = React.useRef(defaultScrollPosition)
 
@@ -154,12 +163,19 @@ function useMessageScrollerController({
       // commit can observe the grown content before follow catches up.
       const scrolledUp =
         scrollTop < lastScrollTopRef.current - SCROLL_POSITION_EPSILON
+      const scrolledDown =
+        scrollTop > lastScrollTopRef.current + SCROLL_POSITION_EPSILON
 
       lastScrollTopRef.current = scrollTop
+
+      if ((scrollable.end && scrolledUp) || (!scrollable.end && scrolledDown)) {
+        userReleasedFollowRef.current = false
+      }
 
       if (
         autoScrollRef.current &&
         !scrollable.end &&
+        !userReleasedFollowRef.current &&
         modeRef.current !== "settling-jump" &&
         modeRef.current !== "anchored-to-message"
       ) {
@@ -250,6 +266,7 @@ function useMessageScrollerController({
     scrollToEnd,
     scrollToMessage,
     scrollToStart,
+    setAutoScrolling,
   } = useMessageScrollerCommands({
     refs,
     commitScrollState,
@@ -278,6 +295,7 @@ function useMessageScrollerController({
     }
 
     viewport.scrollTop += delta
+    lastScrollTopRef.current = viewport.scrollTop
     anchor.viewportTop = getElementViewportTop(anchor.element, viewport)
     scheduleStateCommit()
     scheduleVisibilitySync()
@@ -629,18 +647,45 @@ function useMessageScrollerController({
     [schedulePendingScrollToMessageFlush, scheduleVisibilitySync]
   )
 
-  const userScrollIntent = React.useCallback(() => {
-    if (
-      modeRef.current === "following-bottom" ||
-      modeRef.current === "anchored-to-message" ||
-      modeRef.current === "settling-jump"
-    ) {
-      // A deliberate gesture releases auto-follow, turn-anchoring, and an in-flight
-      // programmatic jump so re-pinning (and re-arming) never fights the reader.
-      streamingTurnRef.current = null
-      modeRef.current = "free-scrolling"
-    }
-  }, [])
+  const userScrollIntent = React.useCallback(
+    (direction: MessageScrollerButtonDirection = "start") => {
+      if (direction === "end") {
+        const hadReleasedFollow = userReleasedFollowRef.current
+        userReleasedFollowRef.current = false
+
+        if (
+          modeRef.current === "anchored-to-message" ||
+          modeRef.current === "settling-jump"
+        ) {
+          streamingTurnRef.current = null
+          modeRef.current = "free-scrolling"
+          scheduleStateCommit()
+        } else if (hadReleasedFollow) {
+          scheduleStateCommit()
+        }
+
+        return
+      }
+
+      if ((viewportRef.current?.scrollTop ?? 0) > SCROLL_POSITION_EPSILON) {
+        userReleasedFollowRef.current = true
+      }
+
+      if (
+        modeRef.current === "following-bottom" ||
+        modeRef.current === "anchored-to-message" ||
+        modeRef.current === "settling-jump"
+      ) {
+        // A deliberate gesture releases auto-follow, turn-anchoring, and an in-flight
+        // programmatic jump so re-pinning (and re-arming) never fights the reader.
+        streamingTurnRef.current = null
+        modeRef.current = "free-scrolling"
+      }
+
+      setAutoScrolling(false)
+    },
+    [scheduleStateCommit, setAutoScrolling]
+  )
 
   const mirrorStateAttributes = React.useCallback(
     () => writeStateAttributes(stateStore.getSnapshot()),

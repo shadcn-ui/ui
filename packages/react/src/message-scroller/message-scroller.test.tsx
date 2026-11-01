@@ -754,6 +754,98 @@ describe("MessageScroller", () => {
     expect(rendered.state().end).toBe(true)
   })
 
+  it("does not re-arm follow-bottom on a queued live-edge scroll event before native PageUp movement starts", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    rendered.message("message-3").dataset.testHeight = "140"
+    await triggerResize(rendered.content())
+
+    expect(rendered.viewport().scrollTop).toBe(200)
+    expect(rendered.scroller().hasAttribute("data-autoscrolling")).toBe(true)
+
+    await act(async () => {
+      rendered
+        .viewport()
+        .dispatchEvent(
+          new KeyboardEvent("keydown", { bubbles: true, key: "PageUp" })
+        )
+    })
+
+    expect(rendered.scroller().hasAttribute("data-autoscrolling")).toBe(false)
+
+    await act(async () => {
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    await act(async () => {
+      rendered.viewport().scrollTop = 120
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    rendered.message("message-3").dataset.testHeight = "260"
+    await triggerResize(rendered.content())
+
+    expect(rendered.viewport().scrollTop).toBe(120)
+    expect(rendered.state().end).toBe(true)
+
+    await act(async () => {
+      rendered.viewport().scrollTop = 320
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    rendered.message("message-3").dataset.testHeight = "300"
+    await triggerResize(rendered.content())
+
+    expect(rendered.viewport().scrollTop).toBe(360)
+    expect(rendered.state().end).toBe(false)
+  })
+
+  it("keeps follow-bottom engaged on downward scroll keys and downward wheel at the live edge", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    await act(async () => {
+      rendered
+        .viewport()
+        .dispatchEvent(
+          new KeyboardEvent("keydown", { bubbles: true, key: "End" })
+        )
+      rendered
+        .viewport()
+        .dispatchEvent(
+          new KeyboardEvent("keydown", { bubbles: true, key: "PageDown" })
+        )
+      rendered
+        .viewport()
+        .dispatchEvent(new WheelEvent("wheel", { bubbles: true, deltaY: 40 }))
+      await flushAnimationFrames()
+    })
+
+    rendered.message("message-3").dataset.testHeight = "160"
+    await triggerResize(rendered.content())
+
+    expect(rendered.viewport().scrollTop).toBe(220)
+    expect(rendered.state().end).toBe(false)
+  })
+
   it("does not follow appends after user scroll intent without autoScroll", async () => {
     const rendered = await renderTestScroller({
       defaultScrollPosition: "end",
