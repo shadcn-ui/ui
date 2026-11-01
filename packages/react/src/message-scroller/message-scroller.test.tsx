@@ -754,6 +754,165 @@ describe("MessageScroller", () => {
     expect(rendered.state().end).toBe(true)
   })
 
+  it("does not release autoScroll when scroll keys are typed in an editable input", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    const input = document.createElement("input")
+    rendered.content().appendChild(input)
+
+    await act(async () => {
+      input.dispatchEvent(
+        new KeyboardEvent("keydown", { key: " ", bubbles: true })
+      )
+      input.dispatchEvent(
+        new KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true })
+      )
+      await flushAnimationFrames()
+    })
+
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 80 },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(220)
+  })
+
+  it("does not release autoScroll when scroll keys are typed in textarea or contenteditable", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    const textarea = document.createElement("textarea")
+    const editable = document.createElement("div")
+    editable.contentEditable = "true"
+    rendered.content().appendChild(textarea)
+    rendered.content().appendChild(editable)
+
+    await act(async () => {
+      textarea.dispatchEvent(
+        new KeyboardEvent("keydown", { key: " ", bubbles: true })
+      )
+      editable.dispatchEvent(
+        new KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true })
+      )
+      await flushAnimationFrames()
+    })
+
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 80 },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(220)
+  })
+
+  it("does not release autoScroll when keydown event is default-prevented", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    const child = document.createElement("div")
+    rendered.content().appendChild(child)
+    child.addEventListener("keydown", (e) => e.preventDefault())
+
+    await act(async () => {
+      child.dispatchEvent(
+        new KeyboardEvent("keydown", {
+          key: "ArrowDown",
+          cancelable: true,
+          bubbles: true,
+        })
+      )
+      await flushAnimationFrames()
+    })
+
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 80 },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(220)
+  })
+
+  it("releases autoScroll when scroll keys are typed on the viewport", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    await act(async () => {
+      rendered
+        .viewport()
+        .dispatchEvent(
+          new KeyboardEvent("keydown", { key: "ArrowUp", bubbles: true })
+        )
+      rendered.viewport().scrollTop = 60
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 80 },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(60)
+  })
+
   it("does not follow appends after user scroll intent without autoScroll", async () => {
     const rendered = await renderTestScroller({
       defaultScrollPosition: "end",
@@ -1498,7 +1657,9 @@ function renderPendingScrollToContainer(tree: React.ReactElement) {
     scroller: container.querySelector("[data-testid=scroller]"),
     viewport: container.querySelector("[data-testid=viewport]"),
     async hydrate() {
-      const consoleError = vi.spyOn(console, "error").mockImplementation(() => {})
+      const consoleError = vi
+        .spyOn(console, "error")
+        .mockImplementation(() => {})
 
       await act(async () => {
         hydrateRoot(container, tree)
