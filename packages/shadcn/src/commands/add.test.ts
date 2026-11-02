@@ -332,6 +332,54 @@ describe("add command", () => {
         expect(addComponents).not.toHaveBeenCalled()
       })
     })
+
+    it.each(["--dry-run", "--diff", "--view"])(
+      "exits 1 without running init when components.json is missing (%s)",
+      async (flag) => {
+        await withTempDir(async (cwd) => {
+          await fs.writeJson(path.join(cwd, "package.json"), {
+            name: "no-config-project",
+            version: "1.0.0",
+          })
+          const { logger } = await import("@shadcn/registry/internal/logger")
+
+          mockPrompts({
+            proceed: true,
+            base: "radix",
+            selectedPreset: "nova",
+          })
+
+          await expect(runAdd(["button", flag], cwd)).rejects.toThrow(
+            "process.exit:1"
+          )
+
+          expect(logger.error).toHaveBeenCalledWith(
+            expect.stringContaining("requires an initialized project")
+          )
+          expect(runInit).not.toHaveBeenCalled()
+          expect(addComponents).not.toHaveBeenCalled()
+          expect(dryRunComponents).not.toHaveBeenCalled()
+          expect(fs.existsSync(path.join(cwd, "components.json"))).toBe(false)
+        })
+      }
+    )
+
+    it("exits 1 without scaffolding a project in an empty directory", async () => {
+      await withTempDir(async (emptyDir) => {
+        mockPrompts({
+          base: "radix",
+          selectedPreset: "nova",
+        })
+
+        await expect(runAdd(["button", "--dry-run"], emptyDir)).rejects.toThrow(
+          "process.exit:1"
+        )
+
+        expect(createProject).not.toHaveBeenCalled()
+        expect(runInit).not.toHaveBeenCalled()
+        expect(dryRunComponents).not.toHaveBeenCalled()
+      })
+    })
   })
 
   describe("style availability", () => {
