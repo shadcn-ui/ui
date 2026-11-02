@@ -139,22 +139,30 @@ async function resolveAliasPath(
   ) {
     // Exact aliases (e.g. `#hooks` → `./src/hooks/index.ts`) should resolve
     // to the directory root.
-    if (
-      !resolved.matchedAlias.includes("*") &&
-      /\/index\.[^/]+$/.test(resolved.path)
-    ) {
+    if (!resolved.matchedAlias.includes("*") && isIndexFile(resolved.path)) {
       return path.dirname(resolved.path)
     }
 
     // Wildcard aliases with explicit extensions (e.g. `#components/*` →
     // `./src/components/*.tsx`) should strip the source extension so `ui`
     // resolves to `/src/components/ui` instead of `/src/components/ui.tsx`.
-    if (resolved.matchedAlias.includes("*") && /\.[^/]+$/.test(resolved.path)) {
-      return resolved.path.replace(/\.[^/]+$/, "")
+    if (resolved.matchedAlias.includes("*")) {
+      return stripFileExtension(resolved.path)
     }
   }
 
   return resolved.path
+}
+
+// Resolved paths use the platform separator, so both separators are segment
+// boundaries. Otherwise a dot in a parent directory on Windows (e.g.
+// `C:\repo.worktrees\app\src\components`) is read as a file extension.
+export function isIndexFile(filePath: string) {
+  return /[\\/]index\.[^\\/]+$/.test(filePath)
+}
+
+export function stripFileExtension(filePath: string) {
+  return filePath.replace(/\.[^\\/]+$/, "")
 }
 
 function assertResolvedAliases(
