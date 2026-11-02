@@ -12,6 +12,7 @@ import {
   getConfig,
   getRawConfig,
   getWorkspaceConfig,
+  stripResolvedAliasArtifact,
 } from "./get-config"
 
 const tempDirs: string[] = []
@@ -833,6 +834,61 @@ describe("getWorkspaceConfig", () => {
     } finally {
       await fs.remove(tempDir)
     }
+  })
+})
+
+describe("stripResolvedAliasArtifact", () => {
+  const windowsDir =
+    "C:\\work\\repo\\.claude\\worktrees\\x\\packages\\ui\\src\\components"
+  const posixDir =
+    "/work/repo/.claude/worktrees/x/packages/ui/src/components"
+
+  it("keeps a Windows directory under a dot-folder", () => {
+    expect(
+      stripResolvedAliasArtifact(windowsDir, "./src/components/*.tsx")
+    ).toBe(windowsDir)
+  })
+
+  it("strips only the extension from a Windows file under a dot-folder", () => {
+    expect(
+      stripResolvedAliasArtifact(
+        `${windowsDir}\\ui.tsx`,
+        "./src/components/*.tsx"
+      )
+    ).toBe(`${windowsDir}\\ui`)
+  })
+
+  it("strips only the extension from a POSIX file under a dot-folder", () => {
+    expect(
+      stripResolvedAliasArtifact(
+        `${posixDir}/ui.tsx`,
+        "./src/components/*.tsx"
+      )
+    ).toBe(`${posixDir}/ui`)
+  })
+
+  it("resolves a Windows index module to its directory", () => {
+    expect(
+      stripResolvedAliasArtifact(
+        "C:\\work\\repo\\.claude\\worktrees\\x\\src\\hooks\\index.ts",
+        "#hooks"
+      )
+    ).toBe("C:\\work\\repo\\.claude\\worktrees\\x\\src\\hooks")
+  })
+
+  it("resolves a POSIX index module to its directory", () => {
+    expect(
+      stripResolvedAliasArtifact(
+        "/work/repo/.claude/worktrees/x/src/hooks/index.ts",
+        "#hooks"
+      )
+    ).toBe("/work/repo/.claude/worktrees/x/src/hooks")
+  })
+
+  it("leaves a non-index exact alias unchanged", () => {
+    expect(
+      stripResolvedAliasArtifact(`${posixDir}/button.tsx`, "#components")
+    ).toBe(`${posixDir}/button.tsx`)
   })
 })
 
