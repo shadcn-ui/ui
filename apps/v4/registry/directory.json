@@ -106,6 +106,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='-14 -14 135 135' fill='var(--foreground)'><path d='M106.447 67.3367C106.447 69.7104 104.523 71.6348 102.149 71.6348H75.928C73.5542 71.6348 71.6299 73.5591 71.6299 75.9329V102.16C71.6299 104.534 69.7056 106.458 67.3318 106.458H35.8198C35.8185 106.458 35.8174 106.459 35.8174 106.46C35.8174 106.462 35.8163 106.463 35.8149 106.463H4.29811C1.92433 106.463 0 104.539 0 102.165V39.1262C0 36.7525 1.92433 34.8281 4.29811 34.8281H30.5193C32.8931 34.8281 34.8174 32.9038 34.8174 30.53V4.29812C34.8174 1.92433 36.7417 0 39.1155 0H102.149C104.523 0 106.447 1.92433 106.447 4.29811V67.3367ZM35.8174 66.3425C35.8174 68.7163 37.7417 70.6406 40.1155 70.6406H66.3318C68.7056 70.6406 70.6299 68.7163 70.6299 66.3425V40.1155C70.6299 37.7417 68.7056 35.8174 66.3318 35.8174H40.1155C37.7417 35.8174 35.8174 37.7417 35.8174 40.1155V66.3425Z'/></svg>"
   },
   {
+    "name": "@afterglowui",
+    "homepage": "https://afterglowui.vercel.app",
+    "url": "https://afterglowui.vercel.app/r/{name}.json",
+    "description": "Glass sidebars, liquid controls and animated icons for React, built with Tailwind CSS and shadcn/ui.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)'><circle cx='12' cy='12' r='9'/></svg>"
+  },
+  {
     "name": "@agentcn",
     "homepage": "https://agentcn.vercel.app",
     "url": "https://agentcn.vercel.app/r/{name}.json",
@@ -294,11 +301,25 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 301 301'><path fill='var(--foreground)' d='M150.564.849c26.359 0 47.728 21.368 47.728 47.728-.001 26.358-21.369 47.727-47.728 47.727a47.5 47.5 0 0 1-22.705-5.737l-37.576 37.576a47.4 47.4 0 0 1 3.757 9.07h113.05c5.868-19.714 24.128-34.092 45.748-34.092 26.359 0 47.728 21.369 47.728 47.728s-21.369 47.727-47.728 47.727c-21.62 0-39.879-14.376-45.747-34.09H94.039a47.5 47.5 0 0 1-5.319 11.735l36.471 36.472a47.5 47.5 0 0 1 25.373-7.299c26.359 0 47.727 21.368 47.728 47.727 0 26.359-21.369 47.728-47.728 47.728s-47.727-21.369-47.727-47.728c0-7.096 1.55-13.831 4.329-19.884l-38.99-38.991a47.55 47.55 0 0 1-19.884 4.33c-26.359 0-47.727-21.368-47.727-47.727s21.368-47.728 47.727-47.728c8.22 0 15.953 2.079 22.706 5.738l37.576-37.577a47.5 47.5 0 0 1-5.737-22.705c0-26.36 21.368-47.728 47.727-47.728m0 231.818c-11.297 0-20.454 9.158-20.454 20.454s9.157 20.455 20.454 20.455 20.455-9.158 20.455-20.455-9.158-20.454-20.455-20.454M48.292 130.395c-11.296 0-20.455 9.157-20.455 20.454s9.159 20.454 20.455 20.454c11.297 0 20.455-9.157 20.455-20.454s-9.158-20.454-20.455-20.454m204.546 0c-11.296 0-20.455 9.157-20.455 20.454s9.159 20.454 20.455 20.454c11.297 0 20.454-9.157 20.454-20.454s-9.157-20.454-20.454-20.454M150.564 28.121c-11.297 0-20.454 9.159-20.454 20.456s9.157 20.453 20.454 20.454c11.297 0 20.455-9.158 20.455-20.455s-9.158-20.455-20.455-20.455'/></svg>"
   },
   {
+    "name": "@chartory",
+    "homepage": "https://usechartory.com",
+    "url": "https://usechartory.com/r/{name}.json",
+    "description": "100 free, MIT-licensed chart types for React, laid out from your data at four sizes: sankey, gantt, calendar heatmap, ridgeline and more, in SVG with no chart library. Pro types, widgets and templates with a token.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M6.13064 6.7887C10.7076 1.88224 18.22 1.07431 23.7434 4.94202C24.8744 5.73398 25.1491 7.29298 24.3572 8.42395C23.5652 9.55495 22.0063 9.82969 20.8753 9.03772C17.3425 6.56399 12.5175 7.12803 9.65017 10.3492C6.78326 13.5712 6.78326 18.4295 9.65017 21.6515H9.64968C12.517 24.8731 17.3424 25.4369 20.8753 22.963C22.0062 22.1711 23.5652 22.4459 24.3572 23.5768C25.1491 24.7077 24.8743 26.2667 23.7434 27.0587C18.1324 30.9878 10.4685 30.0921 5.91482 24.9757V24.9752C1.36173 19.8582 1.36173 12.1425 5.91482 7.02551L6.13064 6.7887Z' fill='var(--foreground)'/><circle cx='27' cy='16' r='3' fill='#FE6D2B'/></svg>"
+  },
+  {
     "name": "@chewypixel",
     "homepage": "https://chewypixel.io/components",
     "url": "https://chewypixel.io/r/{name}.json",
     "description": "Animated components from the Chewypixel templates, built with Motion.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='chewypixel-fill' x1='0' y1='3' x2='0' y2='29' gradientUnits='userSpaceOnUse'><stop stop-color='#a78bfa'/><stop offset='1' stop-color='#7c3aed'/></linearGradient><mask id='chewypixel-bite'><rect width='32' height='32' fill='white'/><circle cx='28' cy='4' r='6' fill='black'/></mask></defs><rect x='3' y='3' width='26' height='26' rx='7' fill='url(#chewypixel-fill)' mask='url(#chewypixel-bite)'/><rect x='9' y='11' width='5' height='5' rx='1.5' fill='white' fill-opacity='0.9'/></svg>"
+  },
+  {
+    "name": "@cloudlet",
+    "homepage": "https://cloudlet.dev/toaster",
+    "url": "https://cloudlet.dev/r/{name}.json",
+    "description": "A React toaster whose stack collapses to a pill and morphs into the Island, with operations, forms and spring motion, themed by your shadcn tokens.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='cloudlet-g' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='0' y2='32'><stop offset='0' stop-color='#1570d1'/><stop offset='1' stop-color='#2785ce'/></linearGradient><mask id='cloudlet-s' maskUnits='userSpaceOnUse' x='-50' y='-80' width='250' height='250'><rect x='-50' y='-80' width='250' height='250' fill='#fff'/><path d='M18 65H106A17 17 0 0 1 106 99H18A17 17 0 0 1 18 65Z' stroke='#000' stroke-width='11'/><rect x='-50' y='65' width='250' height='80'/></mask><mask id='cloudlet-b' maskUnits='userSpaceOnUse' x='-50' y='-80' width='250' height='250'><rect x='-50' y='-80' width='250' height='250' fill='#fff'/><path d='M18 65H106A17 17 0 0 1 106 99H18A17 17 0 0 1 18 65Z' stroke='#000' stroke-width='11'/><rect x='-50' y='65' width='250' height='80'/><circle cx='42' cy='63' r='27.5'/></mask></defs><rect width='32' height='32' rx='8' fill='url(#cloudlet-g)'/><g transform='translate(2.99 2.78) scale(0.20984)' fill='#fff'><circle mask='url(#cloudlet-b)' cx='77' cy='56' r='29'/><circle mask='url(#cloudlet-s)' cx='42' cy='63' r='22'/><path d='M18 65H106A17 17 0 0 1 106 99H18A17 17 0 0 1 18 65Z'/></g></svg>"
   },
   {
     "name": "@clover-ui",
@@ -1433,8 +1454,8 @@
     "name": "@hirael",
     "homepage": "https://hirael.com",
     "url": "https://hirael.com/r/{name}.json",
-    "description": "The components shadcn/ui doesn't ship. A collection of high-utility React components built on top of shadcn/ui.",
-    "logo": "<svg x='6' y='6' width='58' height='58' viewBox='80 104 352 352'><title>Hirael</title><path d='M160 340V235C160 171 203 128 256 128C309 128 352 171 352 235V340' fill='none' stroke='currentColor' stroke-width='18' stroke-linecap='square'></path><path d='M256 220C262 242 274 254 296 260C274 266 262 278 256 300C250 278 238 266 216 260C238 254 250 242 256 220Z' fill='currentColor'></path><path d='M95 372C160 364 352 364 417 372C352 380 160 380 95 372Z' fill='currentColor'></path><path d='M135 405C185 399 327 399 377 405C327 411 185 411 135 405Z' fill='currentColor'></path><path d='M190 438C220 434 292 434 322 438C292 442 220 442 190 438Z' fill='currentColor'></path></svg>"
+    "description": "A collection of shadcn/ui components, blocks and page templates for building modern, fast and beautiful websites. Built on Radix UI and Base UI. Works with the shadcn CLI and any preset, in light, dark and RTL",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='var(--foreground)'><title>Hirael</title><path d='M2.3 12h2.4v10.95h6.2V14.6h4.6v8.35h6.2V12h-2.4V1.05h-6.2V9.4H8.5V1.05H2.3Z'/></svg>"
   },
   {
     "name": "@honestui",
@@ -1685,6 +1706,14 @@
     "url": "https://layish.vercel.app/r/{name}.json",
     "description": "Composed shadcn blocks. Ask wraps Questionnaire with review, cancel, auto-advance, and HITL results for AI SDK addToolOutput.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='currentColor'/><path d='M10 8h4v12h8v4H10z' fill='var(--background)'/></svg>"
+  },
+  {
+    "name": "@layout-kit",
+    "homepage": "https://layout.csikie.com",
+    "url": "https://layout.csikie.com/r/{name}.json",
+    "description": "Typed React layout primitives for shadcn: Stack, Row, Col, Grid, GridItem, and Page, with responsive gap, alignment, and column props.",
+    "author": "Erik Csiki-Gecse",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='#9ae600' d='M2 2h16v12h-8v16H2Z'/><path fill='var(--foreground)' d='M22 2h8v28H14V18h8Z'/></svg>"
   },
   {
     "name": "@lema-ds",
@@ -3067,8 +3096,8 @@
   },
   {
     "name": "@tenvell",
-    "homepage": "https://tenvell.esher1.chatgpt.site",
-    "url": "https://tenvell.esher1.chatgpt.site/r/{name}.json",
+    "homepage": "https://tenvell.space",
+    "url": "https://tenvell.space/r/{name}.json",
     "description": "Minimal React components with thin liquid-glass surfaces, subtle hover depth, four glass finishes, and light and dark themes. Editable source, original typography, and CSS tokens.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='1.35' stroke-linecap='round' stroke-linejoin='round'><path d='M13 13.74a2 2 0 0 1-2 0L2.5 8.87a1 1 0 0 1 0-1.74L11 2.26a2 2 0 0 1 2 0l8.5 4.87a1 1 0 0 1 0 1.74z'/><path d='m20 14.285 1.5.845a1 1 0 0 1 0 1.74L13 21.74a2 2 0 0 1-2 0l-8.5-4.87a1 1 0 0 1 0-1.74l1.5-.845'/></svg>"
   },
