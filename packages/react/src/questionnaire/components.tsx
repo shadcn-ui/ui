@@ -102,6 +102,7 @@ function QuestionnaireProgress({
 function QuestionnaireItem({
   "aria-describedby": ariaDescribedBy,
   "aria-keyshortcuts": ariaKeyShortcuts,
+  autoSubmit,
   children,
   disabled = false,
   invalid = false,
@@ -115,6 +116,7 @@ function QuestionnaireItem({
   const { context, itemProps, state } = useQuestionnaireItem({
     "aria-describedby": ariaDescribedBy,
     "aria-keyshortcuts": ariaKeyShortcuts,
+    autoSubmit,
     disabled,
     invalid,
     multiple,
