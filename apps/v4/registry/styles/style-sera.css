@@ -5,7 +5,7 @@
   }
 
   .cn-accordion-trigger {
-    @apply focus-visible:ring-ring/30 focus-visible:border-ring **:data-[slot=accordion-trigger-icon]:text-muted-foreground rounded-none gap-6 py-4 text-left text-sm font-semibold hover:underline focus-visible:ring-2 **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-3.5;
+    @apply focus-visible:ring-ring/30 focus-visible:border-ring **:data-[slot=accordion-trigger-icon]:text-muted-foreground rounded-none gap-6 py-4 text-left text-sm font-semibold hover:underline focus-visible:ring-2 **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-3.5 *:[svg]:shrink-0 *:[svg:not([class*='size-'])]:size-4 data-[chevron-position=left]:justify-start data-[chevron-position=left]:**:data-[slot=accordion-trigger-icon]:m-0 data-[chevron-position=left]:**:data-[slot=accordion-trigger-icon]:order-first;
   }
 
   .cn-accordion-content {
