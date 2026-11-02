@@ -146,6 +146,48 @@ NEXT_KEY=value`
 })
 
 describe("mergeEnvContent", () => {
+  test.each([
+    '"https://example.com/#callback"',
+    "'secret#suffix'",
+    '"  value with surrounding spaces  "',
+    '"Line 1\\nLine 2"',
+    '"value#suffix" # inline comment',
+    "'value#suffix' # inline comment",
+    '""',
+  ])("should preserve quoted values when appending %s", (value) => {
+    expect(mergeEnvContent("EXISTING=keep", `NEW_KEY=${value}`)).toBe(
+      `EXISTING=keep\n\nNEW_KEY=${value}\n`
+    )
+  })
+
+  test("should not leave an unclosed quote before the next variable", () => {
+    const newContent = `MULTI_LINE="Line 1
+Line 2"
+NEXT_KEY="value#suffix"`
+
+    expect(mergeEnvContent("EXISTING=keep", newContent)).toBe(
+      'EXISTING=keep\n\nMULTI_LINE=Line 1\nNEXT_KEY="value#suffix"\n'
+    )
+  })
+
+  test.each([
+    ['"', "'value\"#fragment'", "\\"],
+    ["'", '"value\'#fragment"', "\\"],
+    ['"', "'value\"#fragment'", "\\\\"],
+    ["'", '"value\'#fragment"', "\\\\"],
+  ])(
+    "should not treat an escaped %s as a closing quote",
+    (quote, nextValue, slashes) => {
+      const newContent = `MULTI_LINE=${quote}Line 1 ${slashes}${quote}
+Line 2${quote}
+NEXT_KEY=${nextValue}`
+
+      expect(mergeEnvContent("EXISTING=keep", newContent)).toBe(
+        `EXISTING=keep\n\nMULTI_LINE=Line 1 ${slashes}\nNEXT_KEY=${nextValue}\n`
+      )
+    }
+  )
+
   test("should append only new keys", () => {
     const existing = `KEY1=value1`
     const newContent = `KEY2=value2`
