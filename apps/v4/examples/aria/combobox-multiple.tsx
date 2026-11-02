@@ -35,7 +35,7 @@ export function ComboboxMultiple() {
         <ComboboxChipList<{ name: string }>>
           {(value) => <ComboboxChip id={value.name}>{value.name}</ComboboxChip>}
         </ComboboxChipList>
-        <ComboboxChipsInput />
+        <ComboboxChipsInput placeholder="Add framework" />
       </ComboboxChips>
       <ComboboxContent>
         <ComboboxList
