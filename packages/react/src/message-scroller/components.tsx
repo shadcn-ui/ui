@@ -43,7 +43,7 @@ function useMessageScrollerItemContext() {
 }
 
 function useMessageScroller() {
-  const { scrollToEnd, scrollToMessage, scrollToStart } =
+  const { scrollToEnd, scrollToMessage, scrollToStart, userScrollIntent } =
     useMessageScrollerContext()
 
   return React.useMemo(
@@ -51,8 +51,9 @@ function useMessageScroller() {
       scrollToEnd,
       scrollToMessage,
       scrollToStart,
+      userScrollIntent,
     }),
-    [scrollToEnd, scrollToMessage, scrollToStart]
+    [scrollToEnd, scrollToMessage, scrollToStart, userScrollIntent]
   )
 }
 

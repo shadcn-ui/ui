@@ -43,11 +43,11 @@ All from `@shadcn/react/message-scroller`.
 
 ### Hooks (flat siblings)
 
-| Hook                             | Returns                                                                     |
-| -------------------------------- | --------------------------------------------------------------------------- |
-| `useMessageScroller()`           | `{ scrollToMessage, scrollToStart, scrollToEnd }`                           |
+| Hook                             | Returns                                                                                  |
+| -------------------------------- | ---------------------------------------------------------------------------------------- |
+| `useMessageScroller()`           | `{ scrollToMessage, scrollToStart, scrollToEnd, userScrollIntent }`                      |
 | `useMessageScrollerScrollable()` | `MessageScrollerScrollable` — `{ start, end }`, the edges the viewport can scroll toward |
-| `useMessageScrollerVisibility()` | `MessageScrollerVisibilityState` — `currentAnchorId`, `visibleMessageIds`   |
+| `useMessageScrollerVisibility()` | `MessageScrollerVisibilityState` — `currentAnchorId`, `visibleMessageIds`                |
 
 ### Types
 

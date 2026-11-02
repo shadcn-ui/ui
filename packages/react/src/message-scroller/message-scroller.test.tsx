@@ -787,6 +787,37 @@ describe("MessageScroller", () => {
     expect(rendered.viewport().scrollTop).toBe(60)
   })
 
+  it("releases an anchored turn when an external scrollbar reports scroll intent", async () => {
+    const messages = [
+      { id: "message-1", height: 80 },
+      { id: "message-2", height: 80 },
+      { id: "message-3", height: 80 },
+      { id: "message-4", height: 20, scrollAnchor: true },
+    ]
+    const rendered = await renderTestScroller({
+      defaultScrollPosition: "end",
+      messages: messages.slice(0, 3),
+    })
+
+    await rendered.rerender(messages)
+
+    expect(rendered.viewport().scrollTop).toBe(176)
+
+    // A scrollbar outside the viewport never reaches its event handlers, so
+    // it reports the gesture through useMessageScroller().
+    await act(async () => {
+      rendered.api().userScrollIntent()
+      rendered.viewport().scrollTop = 60
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    rendered.message("message-4").dataset.testHeight = "60"
+    await triggerResize(rendered.content())
+
+    expect(rendered.viewport().scrollTop).toBe(60)
+  })
+
   it("keeps an anchored turn when a message is pressed", async () => {
     const messages = [
       { id: "message-1", height: 80 },
