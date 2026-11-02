@@ -2352,6 +2352,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-minus-icon lucide-minus'><path d='M5 12h14'/></svg>"
   },
   {
+    "name": "@plopui",
+    "homepage": "https://plopui.com",
+    "url": "https://plopui.com/r/{name}.json",
+    "description": "Hand-drawn React UI, imperfect on purpose: sticker buttons, washi-tape tags and a marker font, built on accessible native elements (WCAG AA). Installs the @plop-ui/react npm package plus editable examples and blocks.",
+    "author": "Lark Babao",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><g transform='translate(-2.5 2) scale(0.78)' fill='none' stroke='var(--foreground)' stroke-width='4.2' stroke-linecap='round' stroke-linejoin='round'><path d='M16 48 C 14 28, 28 18, 44 18 C 60 18, 70 30, 68 46 C 66 60, 56 66, 42 66 C 26 66, 17 60, 16 48 Z'/><path d='M18 49 C 9 45, 7 59, 18 61'/><path d='M16 41 C 15 18, 60 10, 68 36 C 50 32, 32 34, 16 41 Z' fill='var(--foreground)'/><path d='M62 34 C 72 29, 83 31, 83 37 C 77 42, 68 42, 62 40 Z'/><circle cx='40' cy='15' r='3.2' fill='var(--foreground)' stroke='none'/><ellipse cx='46' cy='47' rx='2.6' ry='3.8' fill='var(--foreground)' stroke='none'/><ellipse cx='58' cy='46' rx='2.6' ry='3.8' fill='var(--foreground)' stroke='none'/><path d='M46 56 C 51 61, 58 60, 62 53' stroke-width='3.2'/></g></svg>"
+  },
+  {
     "name": "@plotcn",
     "homepage": "https://plotcn.vercel.app",
     "description": "Source-first React visualization components for Recharts, D3.js, and Google Charts",
