@@ -1,6 +1,6 @@
 ﻿import { describe, expect, it } from "vitest"
 
-import { resolveIconLibrary } from "./resolve-icon-library"
+import { resolveIconLibrary } from "./libraries"
 
 describe("resolveIconLibrary", () => {
   it.each(["lucide", "tabler", "hugeicons", "phosphor", "remixicon"])(
