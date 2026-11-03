@@ -88,6 +88,8 @@ export async function formatCode(code: string, styleName: string) {
   code = code.replaceAll("@/registry/new-york-v4/", "@/components/")
 
   for (const base of BASES) {
+    code = code.replaceAll(`@/registry/bases/${base.name}/hooks/`, "@/hooks/")
+    code = code.replaceAll(`@/registry/bases/${base.name}/lib/`, "@/lib/")
     code = code.replaceAll(`@/registry/bases/${base.name}/`, "@/components/")
     code = code.replaceAll(
       `@/examples/${base.name}/ui-rtl/`,

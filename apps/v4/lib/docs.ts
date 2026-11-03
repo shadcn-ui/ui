@@ -1,12 +1,10 @@
 export const PAGES_NEW = [
-  "/docs/changelog",
-  "/docs/changelog/2026-08-questionnaire",
-  "/docs/registry/dynamic-search",
-  "/docs/components/radix/questionnaire",
-  "/docs/components/base/questionnaire",
-  "/docs/components/aria/questionnaire",
-  "/docs/react/questionnaire",
-  "/docs/registry/health",
+  "/docs/components/radix/trace",
+  "/docs/components/base/trace",
+  "/docs/components/aria/trace",
+  "/docs/components/radix/code-block",
+  "/docs/components/base/code-block",
+  "/docs/components/aria/code-block",
 ]
 
 export const PAGES_UPDATED = []

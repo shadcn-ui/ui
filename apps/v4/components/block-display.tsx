@@ -1,7 +1,6 @@
 import * as React from "react"
 import { cn } from "cn"
-import { type registryItemFileSchema } from "shadcn/schema"
-import { type z } from "zod"
+import { type RegistryItemFile } from "shadcn/schema"
 
 import { highlightCode } from "@/lib/highlight-code"
 import {
@@ -67,7 +66,7 @@ const getCachedFileTree = React.cache(
 )
 
 const getCachedHighlightedFiles = React.cache(
-  async (files: z.infer<typeof registryItemFileSchema>[]) => {
+  async (files: RegistryItemFile[]) => {
     return await Promise.all(
       files.map(async (file) => ({
         ...file,

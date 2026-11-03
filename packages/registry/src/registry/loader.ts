@@ -640,7 +640,7 @@ function formatItemSource(source: RegistryItemSource | undefined) {
 }
 
 function formatZodIssues(error: z.ZodError) {
-  return error.errors
+  return error.issues
     .map((issue) => {
       const issuePath = issue.path.length ? issue.path.join(".") : "(root)"
       return `  - ${issuePath}: ${issue.message}`
