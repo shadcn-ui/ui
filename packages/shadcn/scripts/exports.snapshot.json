@@ -151,9 +151,11 @@
   },
   "./mcp": {
     "runtime": {
+      "createServer": "function",
       "server": "object"
     },
     "types": {
+      "createServer": "value",
       "server": "value"
     }
   },
