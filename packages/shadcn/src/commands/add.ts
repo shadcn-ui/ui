@@ -312,6 +312,7 @@ export const add = new Command()
           config,
           {
             overwrite: options.overwrite,
+            path: options.path,
           }
         )
         dryRunSpinner.stop()
