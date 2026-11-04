@@ -404,6 +404,103 @@ describe("dryRunComponents", () => {
     expect(result.devDependencies).toEqual(["@types/node"])
   })
 
+  it("should resolve files to a custom directory path", async () => {
+    const config = createMockConfig()
+
+    vi.mocked(resolveRegistryTree).mockResolvedValue({
+      files: [
+        {
+          path: "registry/ui/sidebar.tsx",
+          type: "registry:ui",
+          content: "export function Sidebar() {}",
+        },
+        {
+          path: "registry/hooks/use-mobile.ts",
+          type: "registry:hook",
+          content: "export function useMobile() {}",
+        },
+      ],
+      dependencies: [],
+      devDependencies: [],
+    })
+
+    const result = await dryRunComponents(["sidebar"], config, {
+      path: "src/custom",
+    })
+
+    expect(result.files.map((file) => file.path)).toEqual([
+      "src/custom/sidebar.tsx",
+      "src/custom/use-mobile.ts",
+    ])
+  })
+
+  it("should use a custom file path for the first file only", async () => {
+    const config = createMockConfig()
+
+    vi.mocked(resolveRegistryTree).mockResolvedValue({
+      files: [
+        {
+          path: "registry/ui/sidebar.tsx",
+          type: "registry:ui",
+          content: "export function Sidebar() {}",
+        },
+        {
+          path: "registry/hooks/use-mobile.ts",
+          type: "registry:hook",
+          content: "export function useMobile() {}",
+        },
+      ],
+      dependencies: [],
+      devDependencies: [],
+    })
+
+    const result = await dryRunComponents(["sidebar"], config, {
+      path: "src/custom/my-sidebar.tsx",
+    })
+
+    expect(result.files.map((file) => file.path)).toEqual([
+      "src/custom/my-sidebar.tsx",
+      "hooks/use-mobile.ts",
+    ])
+  })
+
+  it("should diff against the existing file at a custom path", async () => {
+    const config = createMockConfig()
+    const customFilePath = "/apps/web/src/custom/button.tsx"
+
+    vi.mocked(existsSync).mockImplementation(
+      (filePath) => filePath === customFilePath
+    )
+    vi.mocked(fs.readFile).mockImplementation((async (filePath: string) =>
+      filePath === customFilePath
+        ? "export function Button() { return <button>Edited</button> }"
+        : "") as never)
+
+    vi.mocked(resolveRegistryTree).mockResolvedValue({
+      files: [
+        {
+          path: "registry/ui/button.tsx",
+          type: "registry:ui",
+          content: "export function Button() { return <button>Click</button> }",
+        },
+      ],
+      dependencies: [],
+      devDependencies: [],
+    })
+
+    const result = await dryRunComponents(["button"], config, {
+      path: "src/custom",
+    })
+
+    expect(result.files).toHaveLength(1)
+    expect(result.files[0]).toMatchObject({
+      path: "src/custom/button.tsx",
+      action: "overwrite",
+      existingContent:
+        "export function Button() { return <button>Edited</button> }",
+    })
+  })
+
   it("should throw when registry tree resolution fails", async () => {
     const config = createMockConfig()
 
