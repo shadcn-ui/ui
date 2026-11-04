@@ -39,7 +39,7 @@ const PROJECT_SHARED_IGNORE = [
 
 const TS_CONFIG_SCHEMA = z.object({
   compilerOptions: z.object({
-    paths: z.record(z.string().or(z.array(z.string()))),
+    paths: z.record(z.string(), z.string().or(z.array(z.string()))),
   }),
 })
 
