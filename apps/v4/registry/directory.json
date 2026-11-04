@@ -1895,6 +1895,13 @@
     "logo": "<svg width='24' height='24' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'> <path d='M7.5 36.5C8.8 27.6 9.6 19.6 12.4 11.5C17.1 17.4 20.6 24 24.1 30.7C27.3 24.8 29.1 16.8 33.2 9.8C36.4 17.7 38.4 27.5 40.5 36.5' fill='none' stroke='var(--foreground)' stroke-linecap='round' stroke-linejoin='round' stroke-width='6.5'/> <path d='M40.2 3.8L41.4 7.1L44.8 8.3L41.4 9.5L40.2 12.8L39 9.5L35.7 8.3L39 7.1L40.2 3.8Z' fill='var(--foreground)'/> </svg>"
   },
   {
+    "name": "@miseui",
+    "homepage": "https://miseui.junsu4621.workers.dev",
+    "url": "https://miseui.junsu4621.workers.dev/r/{name}.json",
+    "description": "Whole screens, palettes and living effects for developers who do not design, each with the psychology behind its shape and a rule for when not to use it.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='var(--foreground)'><circle cx='24' cy='48' r='12' opacity='.4'/><circle cx='48' cy='48' r='12' opacity='.7'/><circle cx='72' cy='48' r='12'/></svg>"
+  },
+  {
     "name": "@mizzle",
     "homepage": "https://mizzle.saddy.me",
     "url": "https://mizzle.saddy.me/r/{name}.json",
