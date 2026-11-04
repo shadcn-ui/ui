@@ -56,7 +56,7 @@
   },
   "scripts": {
     "dev": "tsup --watch",
-    "build": "tsup",
+    "build": "tsup --dts",
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
@@ -86,6 +86,7 @@
     "tsconfig-paths": "^4.2.0",
     "type-fest": "^4.41.0",
     "undici": "^7.30.1",
+    "validate-npm-package-name": "^7.0.1",
     "zod": "^4.2.0"
   },
   "devDependencies": {
