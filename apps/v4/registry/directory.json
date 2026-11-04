@@ -301,6 +301,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 301 301'><path fill='var(--foreground)' d='M150.564.849c26.359 0 47.728 21.368 47.728 47.728-.001 26.358-21.369 47.727-47.728 47.727a47.5 47.5 0 0 1-22.705-5.737l-37.576 37.576a47.4 47.4 0 0 1 3.757 9.07h113.05c5.868-19.714 24.128-34.092 45.748-34.092 26.359 0 47.728 21.369 47.728 47.728s-21.369 47.727-47.728 47.727c-21.62 0-39.879-14.376-45.747-34.09H94.039a47.5 47.5 0 0 1-5.319 11.735l36.471 36.472a47.5 47.5 0 0 1 25.373-7.299c26.359 0 47.727 21.368 47.728 47.727 0 26.359-21.369 47.728-47.728 47.728s-47.727-21.369-47.727-47.728c0-7.096 1.55-13.831 4.329-19.884l-38.99-38.991a47.55 47.55 0 0 1-19.884 4.33c-26.359 0-47.727-21.368-47.727-47.727s21.368-47.728 47.727-47.728c8.22 0 15.953 2.079 22.706 5.738l37.576-37.577a47.5 47.5 0 0 1-5.737-22.705c0-26.36 21.368-47.728 47.727-47.728m0 231.818c-11.297 0-20.454 9.158-20.454 20.454s9.157 20.455 20.454 20.455 20.455-9.158 20.455-20.455-9.158-20.454-20.455-20.454M48.292 130.395c-11.296 0-20.455 9.157-20.455 20.454s9.159 20.454 20.455 20.454c11.297 0 20.455-9.157 20.455-20.454s-9.158-20.454-20.455-20.454m204.546 0c-11.296 0-20.455 9.157-20.455 20.454s9.159 20.454 20.455 20.454c11.297 0 20.454-9.157 20.454-20.454s-9.157-20.454-20.454-20.454M150.564 28.121c-11.297 0-20.454 9.159-20.454 20.456s9.157 20.453 20.454 20.454c11.297 0 20.455-9.158 20.455-20.455s-9.158-20.455-20.455-20.455'/></svg>"
   },
   {
+    "name": "@calendarcn",
+    "homepage": "https://calendarcn.xyz",
+    "url": "https://calendarcn.xyz/r/{name}.json",
+    "description": "A calendar for React inspired by Notion Calendar. Day, week, month and agenda views with drag and resize, keyboard shortcuts, and ICS import and export.",
+    "author": "Victor Nogueira",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M8 2v4M16 2v4'/><rect width='18' height='18' x='3' y='4' rx='2'/><path d='M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01'/></svg>"
+  },
+  {
     "name": "@chartory",
     "homepage": "https://usechartory.com",
     "url": "https://usechartory.com/r/{name}.json",
@@ -351,6 +359,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 -6 28 28' fill='var(--foreground)'><path d='M6.76393 4.19584C7.56731 3.9348 8.4327 3.9348 9.23607 4.19584C10.2866 4.53717 11.4149 3.96226 11.7562 2.91176C12.0975 1.86125 11.5226 0.73294 10.4721 0.391609C8.86539 -0.130455 7.13461 -0.130455 5.52786 0.391609C3.92112 0.913672 2.52089 1.931 1.52786 3.29778C0.53484 4.66456 0 6.31063 0 8.00006C0 9.68949 0.534839 11.3356 1.52786 12.7023C2.52089 14.0691 3.92112 15.0864 5.52786 15.6085C7.13461 16.1306 8.86539 16.1306 10.4721 15.6085C12.0789 15.0864 13.4791 14.0691 14.4721 12.7023C15.4652 11.3356 16 9.6895 16 8.00006C16 7.15534 16.2674 6.33231 16.7639 5.64892C17.2604 4.96553 17.9606 4.45687 18.7639 4.19584C19.5673 3.9348 20.4327 3.9348 21.2361 4.19584C22.0394 4.45687 22.7396 4.96553 23.2361 5.64892C23.7326 6.33231 24 7.15534 24 8.00006C24 8.84478 23.7326 9.66781 23.2361 10.3512C22.7396 11.0346 22.0394 11.5433 21.2361 11.8043C20.4327 12.0653 19.5673 12.0653 18.7639 11.8043C17.7134 11.463 16.5851 12.0379 16.2438 13.0884C15.9025 14.1389 16.4774 15.2672 17.5279 15.6085C19.1346 16.1306 20.8654 16.1306 22.4721 15.6085C24.0789 15.0864 25.4791 14.0691 26.4721 12.7023C27.4652 11.3356 28 9.6895 28 8.00006C28 6.31063 27.4652 4.66456 26.4721 3.29778C25.4791 1.931 24.0789 0.913673 22.4721 0.391609C20.8654 -0.130455 19.1346 -0.130455 17.5279 0.391609C15.9211 0.913673 14.5209 1.931 13.5279 3.29778C12.5348 4.66456 12 6.31063 12 8.00006C12 8.84478 11.7326 9.66781 11.2361 10.3512C10.7396 11.0346 10.0394 11.5433 9.23607 11.8043C8.43269 12.0653 7.56731 12.0653 6.76393 11.8043C5.96056 11.5433 5.26044 11.0346 4.76393 10.3512C4.26742 9.66781 4 8.84478 4 8.00006C4 7.15534 4.26742 6.33231 4.76393 5.64892C5.26044 4.96553 5.96056 4.45687 6.76393 4.19584Z'/></svg>"
   },
   {
+    "name": "@cortexcn",
+    "homepage": "https://www.cortexcn.dev",
+    "url": "https://ui.cortexcn.dev/r/{name}.json",
+    "description": "The shadcn/ui components on the Cortexcn design tokens, page blocks for heroes, features, services, and loaders, and an agent kit with skills and a DESIGN.md. Built with React, Tailwind CSS v4, and Motion.",
+    "author": "Syed Moinuddin",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 3' fill='var(--foreground)'><path d='M.17 0H.83A.17 .17 0 0 1 1 .17V.83A.17 .17 0 0 1 .83 1H.17A.17 .17 0 0 1 0 .83V.17A.17 .17 0 0 1 .17 0Z'/><path d='M2.17 2H2.83A.17 .17 0 0 1 3 2.17V2.83A.17 .17 0 0 1 2.83 3H2.17A.17 .17 0 0 1 2 2.83V2.17A.17 .17 0 0 1 2.17 2Z'/><path d='M2.17 0H2.83A.17 .17 0 0 1 3 .17V.83A.17 .17 0 0 1 2.83 1H2.32A.32 .32 0 0 0 2 1.32V1.83A.17 .17 0 0 1 1.83 2H1.32A.32 .32 0 0 0 1 2.32V2.83A.17 .17 0 0 1 .83 3H.17A.17 .17 0 0 1 0 2.83V2.17A.17 .17 0 0 1 .17 2H.68A.32 .32 0 0 0 1 1.68V1.17A.17 .17 0 0 1 1.17 1H1.68A.32 .32 0 0 0 2 .68V.17A.17 .17 0 0 1 2.17 0Z'/></svg>"
+  },
+  {
     "name": "@creance",
     "homepage": "https://creance.pages.dev",
     "url": "https://creance.pages.dev/r/{name}.json",
@@ -378,6 +394,13 @@
     "url": "https://ui.cuelark.com/r/{name}.json",
     "description": "Accessible React components with an AI agent UI kit (prompt input, reasoning, tool calls, plans with approval, citations, traces), GSAP motion and live theming.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)'><path fill-rule='evenodd' d='M4.6 11.55a7.2 7.2 0 1 1 14.4 0a7.2 7.2 0 1 1-14.4 0z M16.15 9.95a1.15 1.15 0 1 0-2.3 0a1.15 1.15 0 1 0 2.3 0z M8.6 16.7L4.45 19.05a.7.7 0 0 1-1.1-.75L5.8 13.6z M18 9.75l3 1.25a.5.5 0 0 1 0 .9l-3 1.25z'/></svg>"
+  },
+  {
+    "name": "@cupertinoui",
+    "homepage": "https://www.cupertino-ui.com",
+    "url": "https://www.cupertino-ui.com/r/{name}.json",
+    "description": "macOS-style components for shadcn/ui with a free MIT-licensed core, CSS-variable theming, and light and dark appearance.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='var(--foreground)'><path fill-rule='evenodd' d='M5.5 2.5h9A4.5 4.5 0 0 1 19 7v6a4.5 4.5 0 0 1-4.5 4.5h-9A4.5 4.5 0 0 1 1 13V7a4.5 4.5 0 0 1 4.5-4.5ZM5.2 5.5a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8Zm4.2 0a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8Zm4.2 0a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8Z'/></svg>"
   },
   {
     "name": "@designali",
@@ -1129,6 +1152,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><rect width='48' height='48' rx='9' fill='#f54900'/><rect x='9' y='9' width='30' height='6' rx='2' fill='#0c0a09'/><rect x='9' y='21' width='21' height='6' rx='2' fill='#0c0a09'/><rect x='9' y='33' width='12' height='6' rx='2' fill='#0c0a09'/></svg>"
   },
   {
+    "name": "@facadeui",
+    "homepage": "https://facadeui.com",
+    "url": "https://facadeui.com/r/{name}.json",
+    "description": "Animated components and page blocks for local business, real estate and agency websites: booking slots, opening hours, listing grids, valuation funnels, review walls.",
+    "author": "Marco Schulz",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='var(--foreground)'><rect x='4' y='19' width='24' height='9' rx='2.5' opacity='.35'/><rect x='7' y='11' width='18' height='7' rx='2.5' opacity='.7'/><rect x='10' y='4' width='12' height='6' rx='2.5'/></svg>"
+  },
+  {
     "name": "@fancy-ui",
     "homepage": "https://fancy-ui.rama.app",
     "url": "https://fancy-ui.rama.app/r/{name}.json",
@@ -1614,6 +1645,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024' fill='var(--foreground)'><rect x='215' y='210' width='175' height='625' rx='87.5'/><path d='M453 522 720 272' stroke='var(--foreground)' stroke-width='175' stroke-linecap='round'/><circle cx='687' cy='737' r='102'/></svg>"
   },
   {
+    "name": "@kashi",
+    "homepage": "https://kashi.sepantapouya.com/docs/installation/",
+    "url": "https://kashi.sepantapouya.com/r/{name}.json",
+    "description": "A Persian, RTL-first design system: Jalali date pickers, Iranian national ID, bank card and IBAN inputs, an Iran provinces map and 70+ accessible React components.",
+    "author": "Sepanta Pouya",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='var(--foreground)'><path fill-rule='evenodd' d='M16 1L11.61 5.39H5.39V11.61L1 16L5.39 20.39V26.61H11.61L16 31L20.39 26.61H26.61V20.39L31 16L26.61 11.61V5.39H20.39ZM16 7L13.36 9.64L9.64 9.64L9.64 13.36L7 16L9.64 18.64L9.64 22.36L13.36 22.36L16 25L18.64 22.36L22.36 22.36L22.36 18.64L25 16L22.36 13.36L22.36 9.64L18.64 9.64Z'/><path d='M16 10.6L14.42 12.18L12.18 12.18L12.18 14.42L10.6 16L12.18 17.58L12.18 19.82L14.42 19.82L16 21.4L17.58 19.82L19.82 19.82L19.82 17.58L21.4 16L19.82 14.42L19.82 12.18L17.58 12.18Z'/></svg>"
+  },
+  {
     "name": "@katok-ui",
     "homepage": "https://katok-ui.jeongmin.dev",
     "url": "https://katok-ui.jeongmin.dev/r/{name}.json",
@@ -1893,6 +1932,13 @@
     "url": "https://ui.tinkererslabs.com/r/{name}.json",
     "description": "A playful, high-utility shadcn registry: PDF, DOCX and JSON viewers, redaction and bounding boxes, agent chat with tool calls, data tables, command palettes, OTP inputs, and shader fields.",
     "logo": "<svg width='24' height='24' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'> <path d='M7.5 36.5C8.8 27.6 9.6 19.6 12.4 11.5C17.1 17.4 20.6 24 24.1 30.7C27.3 24.8 29.1 16.8 33.2 9.8C36.4 17.7 38.4 27.5 40.5 36.5' fill='none' stroke='var(--foreground)' stroke-linecap='round' stroke-linejoin='round' stroke-width='6.5'/> <path d='M40.2 3.8L41.4 7.1L44.8 8.3L41.4 9.5L40.2 12.8L39 9.5L35.7 8.3L39 7.1L40.2 3.8Z' fill='var(--foreground)'/> </svg>"
+  },
+  {
+    "name": "@miseui",
+    "homepage": "https://miseui.junsu4621.workers.dev",
+    "url": "https://miseui.junsu4621.workers.dev/r/{name}.json",
+    "description": "Whole screens, palettes and living effects for developers who do not design, each with the psychology behind its shape and a rule for when not to use it.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='var(--foreground)'><circle cx='24' cy='48' r='12' opacity='.4'/><circle cx='48' cy='48' r='12' opacity='.7'/><circle cx='72' cy='48' r='12'/></svg>"
   },
   {
     "name": "@mizzle",
@@ -2350,6 +2396,14 @@
     "url": "https://platejs.org/r/{name}.json",
     "description": "AI-powered rich text editor for React.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-minus-icon lucide-minus'><path d='M5 12h14'/></svg>"
+  },
+  {
+    "name": "@plopui",
+    "homepage": "https://plopui.com",
+    "url": "https://plopui.com/r/{name}.json",
+    "description": "Hand-drawn React UI, imperfect on purpose: sticker buttons, washi-tape tags and a marker font, built on accessible native elements (WCAG AA). Installs the @plop-ui/react npm package plus editable examples and blocks.",
+    "author": "Lark Babao",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><g transform='translate(-2.5 2) scale(0.78)' fill='none' stroke='var(--foreground)' stroke-width='4.2' stroke-linecap='round' stroke-linejoin='round'><path d='M16 48 C 14 28, 28 18, 44 18 C 60 18, 70 30, 68 46 C 66 60, 56 66, 42 66 C 26 66, 17 60, 16 48 Z'/><path d='M18 49 C 9 45, 7 59, 18 61'/><path d='M16 41 C 15 18, 60 10, 68 36 C 50 32, 32 34, 16 41 Z' fill='var(--foreground)'/><path d='M62 34 C 72 29, 83 31, 83 37 C 77 42, 68 42, 62 40 Z'/><circle cx='40' cy='15' r='3.2' fill='var(--foreground)' stroke='none'/><ellipse cx='46' cy='47' rx='2.6' ry='3.8' fill='var(--foreground)' stroke='none'/><ellipse cx='58' cy='46' rx='2.6' ry='3.8' fill='var(--foreground)' stroke='none'/><path d='M46 56 C 51 61, 58 60, 62 53' stroke-width='3.2'/></g></svg>"
   },
   {
     "name": "@plotcn",
@@ -3365,6 +3419,14 @@
     "logo": "<svg viewBox='0 0 209 209' xmlns='http://www.w3.org/2000/svg'><path fill='#ffa81b' d='M0 0h209v209H0z'/><path fill='#ff6200' d='M0 80h209v129H0z'/><path fill='#eb3132' d='M0 142h209v67H0z'/><path fill='#cc3566' d='M0 187h209v22H0z'/><path d='M167.09 104.5L65.13 169.81V39.19l101.96 65.31z' fill='#ebe4c1'/></svg>"
   },
   {
+    "name": "@vilqor",
+    "homepage": "https://midnight-lite.vilqor.com",
+    "url": "https://midnight-lite.vilqor.com/r/{name}.json",
+    "description": "Midnight: a dark landing page theme and blocks for AI and SaaS products. A night sky, a guilloche rosette, a serif hero, product tiles with cited sources, a call to action and a footer.",
+    "author": "Vilqor",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='var(--foreground)' fill-rule='evenodd' d='M8 0h16a8 8 0 0 1 8 8v16a8 8 0 0 1-8 8H8a8 8 0 0 1-8-8V8a8 8 0 0 1 8-8Zm2.806 9.762L16 18.953l5.194-9.191a1.5 1.5 0 0 1 2.612 1.476l-6.5 11.5a1.5 1.5 0 0 1-2.612 0l-6.5-11.5a1.5 1.5 0 0 1 2.612-1.476Z'/></svg>"
+  },
+  {
     "name": "@visant",
     "homepage": "https://ui.visantlabs.com",
     "url": "https://ui.visantlabs.com/r/{name}.json",
@@ -3454,6 +3516,13 @@
     "url": "https://shadcn-heatmap.pages.dev/r/{name}.json",
     "description": "Beautiful, accessible heatmap components for React: GitHub-style calendar, weekday x hour matrix, date x hour, and status timeline. Built with shadcn/ui conventions.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='2' y='2' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.15'/><rect x='12' y='2' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.35'/><rect x='22' y='2' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.75'/><rect x='2' y='12' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.55'/><rect x='12' y='12' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='1'/><rect x='22' y='12' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.35'/><rect x='2' y='22' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.9'/><rect x='12' y='22' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.15'/><rect x='22' y='22' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.55'/></svg>"
+  },
+  {
+    "name": "@wisty",
+    "homepage": "https://ui.wisty.ai",
+    "url": "https://ui.wisty.ai/r/{style}/{name}.json",
+    "description": "Salesforce Lightning (SLDS 2) for shadcn/ui: the shadcn primitives restyled, plus lookups, data tables, charts and Salesforce app blocks. Radix and Base UI.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 119 79' fill='var(--foreground)'><path fill-rule='evenodd' d='M4.04319 7.68975C9.78118 4.37389 20.1183 10.9755 29.7031 23.1293C29.4882 25.8388 29.372 28.6515 29.372 31.533C29.372 40.5731 30.4981 48.9209 32.3979 55.6731C32.6687 49.5488 33.7346 42.6417 35.6559 35.481C41.0844 15.2031 51.4169 0.0817134 59.5017 0C67.5865 0.0817134 77.9154 15.1988 83.3482 35.481C85.2652 42.6417 86.3311 49.5488 86.6019 55.6731C88.506 48.9209 89.6278 40.5731 89.6278 31.533C89.6278 28.6515 89.5113 25.8431 89.2964 23.1293C98.8813 10.9712 109.219 4.37389 114.957 7.68975C122.38 11.9776 119.293 31.2233 108.066 50.6799C98.2451 67.7065 85.4414 79.2453 77.4211 78.9959C69.3062 79.1722 58.8445 63.9692 53.3687 43.5192L53.2397 43.0332C53.1538 44.7707 53.1108 46.5383 53.1108 48.336C53.1108 55.5698 53.8325 62.3607 55.0961 68.2441C50.6432 75.0306 45.7954 79.0862 41.5831 78.9959C33.5627 79.2496 20.763 67.7065 10.9374 50.6799C-0.293621 31.2233 -3.3797 11.9776 4.04319 7.68975Z'/></svg>"
   },
   {
     "name": "@wxcn",
