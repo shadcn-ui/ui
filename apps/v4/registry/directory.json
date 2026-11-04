@@ -996,6 +996,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='var(--foreground)' stroke-width='5' stroke-linecap='round'><path d='M12 52C19.68 12 26.4 12 52 12'/></svg>"
   },
   {
+    "name": "@easeout",
+    "homepage": "https://www.easeoutstudio.com",
+    "url": "https://www.easeoutstudio.com/r/{name}.json",
+    "description": "Interaction components tuned by hand: a curved image wall, an OTP input that talks back, a magnetic dock, flip buttons and a spring slider. Motion and Tailwind, MIT.",
+    "author": "Darshit Shukla",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='3.2' stroke-linecap='round'><path d='M19.75 10A8 8 0 1 0 18.13 17.14'/><path d='M4.81 15.5C7.2 10 9.29 10 19.75 10'/></svg>"
+  },
+  {
     "name": "@easeui",
     "homepage": "https://easeui.dev",
     "url": "https://easeui.dev/r/{name}.json",
