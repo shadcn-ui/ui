@@ -403,6 +403,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='var(--foreground)'><path fill-rule='evenodd' d='M5.5 2.5h9A4.5 4.5 0 0 1 19 7v6a4.5 4.5 0 0 1-4.5 4.5h-9A4.5 4.5 0 0 1 1 13V7a4.5 4.5 0 0 1 4.5-4.5ZM5.2 5.5a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8Zm4.2 0a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8Zm4.2 0a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8Z'/></svg>"
   },
   {
+    "name": "@dashral",
+    "homepage": "https://dashral.com",
+    "url": "https://dashral.com/r/{name}.json",
+    "description": "Accessible React components with motion editions, plus free blocks for dashboards and landing pages. MIT.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path fill='currentColor' fill-rule='evenodd' d='M18 4h28a14 14 0 0 1 14 14v28a14 14 0 0 1-14 14H18A14 14 0 0 1 4 46V18A14 14 0 0 1 18 4ZM17 21a4 4 0 1 0 8 0a4 4 0 1 0-8 0ZM17 32a4 4 0 1 0 8 0a4 4 0 1 0-8 0ZM17 43a4 4 0 1 0 8 0a4 4 0 1 0-8 0Z'/></svg>"
+  },
+  {
     "name": "@designali",
     "homepage": "https://designali.com",
     "url": "https://designali.com/r/{name}.json",
