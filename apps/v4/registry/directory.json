@@ -952,6 +952,13 @@
     "description": "A collection of beautiful, reusable component blocks built with React",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'><rect width='24' height='24' rx='2' fill='#8763B3'/><g transform='rotate(-12 12 12)'><path d='M3 7c3 -2 6 -2 9 0s6 2 9 0' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='M3 17c3 -2 6 -2 9 0s6 2 9 0' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='M3 12c3 -2 6 -2 9 0s6 2 9 0' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/></g></svg>"
   },
+    {
+    "name": "@dot",
+    "homepage": "https://bydot.co",
+    "url": "https://bydot.co/r/{name}.json",
+    "description": "Motion-first React components built with Framer Motion.",
+    "logo": "<svg width='88' height='104' viewBox='0 0 88 104' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='48' width='16' height='95' fill='var(--foreground)'/><rect y='104' width='16' height='64' transform='rotate(-90 0 104)' fill='var(--foreground)'/><path d='M16 80H0V60C0 48.9543 8.95431 40 20 40H80V56H20C17.7909 56 16 57.7909 16 60V80Z' fill='var(--foreground)'/><rect x='72' y='88' width='16' height='16' rx='8' fill='var(--foreground)'/></svg>"
+  },
   {
     "name": "@dotgrain",
     "homepage": "https://dotgrain.space",
