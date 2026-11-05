@@ -403,6 +403,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='var(--foreground)'><path fill-rule='evenodd' d='M5.5 2.5h9A4.5 4.5 0 0 1 19 7v6a4.5 4.5 0 0 1-4.5 4.5h-9A4.5 4.5 0 0 1 1 13V7a4.5 4.5 0 0 1 4.5-4.5ZM5.2 5.5a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8Zm4.2 0a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8Zm4.2 0a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8Z'/></svg>"
   },
   {
+    "name": "@dashral",
+    "homepage": "https://dashral.com",
+    "url": "https://dashral.com/r/{name}.json",
+    "description": "Accessible React components with motion editions, plus free blocks for dashboards and landing pages. MIT.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path fill='currentColor' fill-rule='evenodd' d='M18 4h28a14 14 0 0 1 14 14v28a14 14 0 0 1-14 14H18A14 14 0 0 1 4 46V18A14 14 0 0 1 18 4ZM17 21a4 4 0 1 0 8 0a4 4 0 1 0-8 0ZM17 32a4 4 0 1 0 8 0a4 4 0 1 0-8 0ZM17 43a4 4 0 1 0 8 0a4 4 0 1 0-8 0Z'/></svg>"
+  },
+  {
     "name": "@designali",
     "homepage": "https://designali.com",
     "url": "https://designali.com/r/{name}.json",
@@ -946,6 +953,14 @@
     "logo": "<svg width='800' height='800' viewBox='0 0 800 800' fill='none' xmlns='http://www.w3.org/2000/svg'><Title>Dominik UI 10x Logo</Title><path d='M197.966 254.091V545h-70.171V319.716h-1.704l-65.057 39.773v-60.796l71.733-44.602zm184.623 298.011q-38.067 0-65.625-18.04-27.556-18.182-42.471-52.13-14.915-34.091-14.773-81.96.142-47.87 14.915-81.25 14.915-33.523 42.329-50.995 27.558-17.613 65.625-17.613 38.069 0 65.625 17.613 27.7 17.472 42.614 50.995 14.915 33.522 14.773 81.25 0 48.011-14.915 82.102t-42.472 52.131q-27.414 17.897-65.625 17.897m0-57.528q22.728 0 36.79-23.154 14.062-23.295 13.921-71.448 0-31.535-6.392-51.989-6.393-20.596-17.756-30.682-11.364-10.085-26.563-10.085-22.584 0-36.505 22.869-13.92 22.727-14.063 69.887-.141 31.959 6.108 52.983 6.393 21.022 17.898 31.392 11.506 10.227 26.562 10.227M605.53 326.818l35.937 71.875 37.216-71.875h70.029l-60.938 109.091L750.984 545h-69.46l-40.057-72.443L602.405 545H531.95l63.353-109.091-60.228-109.091z' fill='#fdc700'/></svg>"
   },
   {
+    "name": "@doodle-icons",
+    "homepage": "https://doodle.oreoui.com",
+    "url": "https://doodle.oreoui.com/r/{name}.json",
+    "description": "200+ free hand-drawn React icons that draw themselves in and wiggle, each installed as its own source file. MIT licensed; a paid Pro set is sold separately.",
+    "author": "Nicole Tang",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='var(--foreground)' stroke-width='4.3' stroke-linecap='round' stroke-linejoin='round'><path d='M 13 8.5 C 18.8 8.6, 23.4 15.2, 23.5 24 C 23.6 32.7, 18.9 39.4, 13 39.5 C 7.1 39.6, 2.4 32.8, 2.5 24 C 2.6 15.3, 7.2 8.6, 13 8.5 Z'/><path d='M 29 8.5 C 33.2 8.6, 36.4 15.2, 36.5 24 C 36.6 32.7, 33.3 39.4, 29 39.5 C 24.8 39.6, 21.6 32.8, 21.5 24 C 21.5 15.3, 24.8 8.6, 29 8.5 Z'/><path d='M 42 8.5 C 44 8.6, 45.4 15.2, 45.5 24 C 45.6 32.7, 44 39.4, 42 39.5 C 40 39.6, 38.6 32.8, 38.5 24 C 38.5 15.3, 40 8.6, 42 8.5 Z'/></svg>"
+  },
+  {
     "name": "@doras-ui",
     "homepage": "https://ui.doras.to/",
     "url": "https://ui.doras.to/r/{name}.json",
@@ -994,6 +1009,14 @@
     "url": "https://eased.dev/r/{name}.json",
     "description": "Motion-first React components and blocks for shadcn, with tuned springs, light and dark themes, and an MCP server for AI agents.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='var(--foreground)' stroke-width='5' stroke-linecap='round'><path d='M12 52C19.68 12 26.4 12 52 12'/></svg>"
+  },
+  {
+    "name": "@easeout",
+    "homepage": "https://www.easeoutstudio.com",
+    "url": "https://www.easeoutstudio.com/r/{name}.json",
+    "description": "Interaction components tuned by hand: a curved image wall, an OTP input that talks back, a magnetic dock, flip buttons and a spring slider. Motion and Tailwind, MIT.",
+    "author": "Darshit Shukla",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='3.2' stroke-linecap='round'><path d='M19.75 10A8 8 0 1 0 18.13 17.14'/><path d='M4.81 15.5C7.2 10 9.29 10 19.75 10'/></svg>"
   },
   {
     "name": "@easeui",
