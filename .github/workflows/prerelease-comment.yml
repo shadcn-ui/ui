@@ -41,8 +41,14 @@ jobs:
               return;
             }
 
+            // CLIs run with `pnpm dlx`; libraries install with `pnpm add`. The
+            // artifact comes from the PR head, so a branch cut before `hasBin`
+            // existed omits it — keep the old `dlx` line in that case.
             const installs = info.packages
-              .map((p) => `pnpm dlx ${p.name}@${p.version}`)
+              .map(
+                (p) =>
+                  `pnpm ${p.hasBin === false ? "add" : "dlx"} ${p.name}@${p.version}`
+              )
               .join("\n");
             const links = info.packages
               .map(

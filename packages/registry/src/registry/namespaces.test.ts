@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest"
 
-import { Config } from "../utils/get-config"
+import { Config } from "../get-config"
 import { BUILTIN_REGISTRIES } from "./constants"
 import { RegistryNotConfiguredError } from "./errors"
 import { resolveRegistryNamespaces } from "./namespaces"

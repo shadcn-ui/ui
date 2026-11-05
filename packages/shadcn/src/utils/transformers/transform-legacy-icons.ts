@@ -1,12 +1,13 @@
 import { LEGACY_ICON_LIBRARIES } from "@/src/utils/legacy-icon-libraries"
 import { getRegistryIcons } from "@/src/utils/registry-api"
-import { Transformer } from "@shadcn/registry/internal/utils/transformers/index"
 import { SourceFile, SyntaxKind } from "ts-morph"
+
+import { toTextTransformer, type SourceFileTransformer } from "./source-file"
 
 // Lucide is the default icon library in the registry.
 const SOURCE_LIBRARY = "lucide"
 
-export const transformLegacyIcons: Transformer = async ({
+const transformLegacyIconsSourceFile: SourceFileTransformer = async ({
   sourceFile,
   config,
 }) => {
@@ -79,6 +80,10 @@ export const transformLegacyIcons: Transformer = async ({
 
   return sourceFile
 }
+
+export const transformLegacyIcons = toTextTransformer(
+  transformLegacyIconsSourceFile
+)
 
 function _useSemicolon(sourceFile: SourceFile) {
   return (

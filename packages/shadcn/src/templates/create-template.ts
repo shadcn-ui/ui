@@ -1,10 +1,10 @@
 import os from "os"
 import path from "path"
 import { handleError } from "@/src/utils/handle-error"
+import type { Config } from "@shadcn/registry/internal/get-config"
+import { parsePnpmWorkspacePackages } from "@shadcn/registry/internal/get-monorepo-info"
 import type { RegistryItem } from "@shadcn/registry/internal/registry/schema"
-import type { Config } from "@shadcn/registry/internal/utils/get-config"
-import { parsePnpmWorkspacePackages } from "@shadcn/registry/internal/utils/get-monorepo-info"
-import { spinner } from "@shadcn/registry/internal/utils/spinner"
+import { spinner } from "@shadcn/registry/internal/spinner"
 import { execa } from "execa"
 import fs from "fs-extra"
 

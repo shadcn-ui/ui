@@ -184,7 +184,6 @@ export const DEFAULT_PRESET_CONFIG: PresetConfig = Object.fromEntries(
   PRESET_FIELDS_V2.map((f) => [f.key, f.values[0]])
 ) as PresetConfig
 
-// Base62 alphabet.
 const BASE62 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
 // Version prefixes — "a" = v1 (no chartColor), "b" = v2 (with chartColor).
@@ -212,7 +211,6 @@ export function fromBase62(str: string) {
   return result
 }
 
-// Encode a PresetConfig into a short alphanumeric code.
 // Always produces v2 ("b") codes.
 export function encodePreset(config: Partial<PresetConfig>) {
   const merged = { ...DEFAULT_PRESET_CONFIG, ...config }
@@ -231,7 +229,6 @@ export function encodePreset(config: Partial<PresetConfig>) {
   return CURRENT_VERSION + toBase62(bits)
 }
 
-// Decode a preset code back into a PresetConfig.
 // "a"-prefixed codes use v1 fields (no chartColor).
 // "b"-prefixed codes use v2 fields (with chartColor).
 export function decodePreset(code: string): PresetConfig | null {
@@ -284,12 +281,10 @@ export function isPresetCode(value: string) {
   return true
 }
 
-// Validate that a preset code decodes successfully.
 export function isValidPreset(code: string) {
   return decodePreset(code) !== null
 }
 
-// Generate a random PresetConfig.
 export function generateRandomConfig(): PresetConfig {
   const pick = <T>(arr: readonly T[]) =>
     arr[Math.floor(Math.random() * arr.length)]
@@ -299,7 +294,6 @@ export function generateRandomConfig(): PresetConfig {
   ) as PresetConfig
 }
 
-// Generate a random preset code.
 export function generateRandomPreset() {
   return encodePreset(generateRandomConfig())
 }

@@ -11,8 +11,8 @@ on:
       - "packages/shadcn/src/commands/init.ts"
       - "packages/shadcn/src/templates/**"
       - "packages/shadcn/src/utils/create-project.ts"
-      - "packages/registry/src/utils/get-monorepo-info.ts"
-      - "packages/registry/src/utils/get-package-manager.ts"
+      - "packages/registry/src/get-monorepo-info.ts"
+      - "packages/registry/src/get-package-manager.ts"
       - "pnpm-lock.yaml"
       - "templates/**"
 
@@ -51,7 +51,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 22.23.4
 
       - uses: pnpm/action-setup@v4
         name: Install pnpm

@@ -1,9 +1,9 @@
+import type { Config } from "@shadcn/registry/internal/get-config"
 import {
   getPackageJsonRegistries,
   getRegistriesIndex,
 } from "@shadcn/registry/internal/registry/api"
 import { resolveRegistryNamespaces } from "@shadcn/registry/internal/registry/namespaces"
-import type { Config } from "@shadcn/registry/internal/utils/get-config"
 import fs from "fs-extra"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
@@ -19,7 +19,7 @@ vi.mock("@shadcn/registry/internal/registry/api", () => ({
   getPackageJsonRegistries: vi.fn(),
 }))
 
-vi.mock("@shadcn/registry/internal/utils/spinner", () => ({
+vi.mock("@shadcn/registry/internal/spinner", () => ({
   spinner: vi.fn().mockReturnValue({
     start: vi.fn().mockReturnValue({
       succeed: vi.fn(),

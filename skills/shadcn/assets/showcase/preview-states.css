@@ -1,0 +1,14 @@
+/* Add to the app's global CSS after the dark variant. */
+/* Lets the design system page pin interaction states with data-preview="hover focus active". */
+@custom-variant hover {
+  @media (hover: hover) {
+    &:hover {
+      @slot;
+    }
+  }
+  &[data-preview~="hover"] {
+    @slot;
+  }
+}
+@custom-variant focus-visible (&:focus-visible, &[data-preview~="focus"]);
+@custom-variant active (&:active, &[data-preview~="active"]);
