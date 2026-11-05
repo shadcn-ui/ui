@@ -307,7 +307,7 @@ export async function resolveRegistryTree(
     sourceMap.set(item, source)
   })
 
-  payload = topologicalSortRegistryItems(payload, sourceMap)
+  payload = topologicalSortRegistryItems(payload, sourceMap, config)
 
   // Sort the payload so that registry:theme items come first,
   // while maintaining the relative order of all items.
@@ -678,7 +678,8 @@ function extractItemIdentifierFromDependency(dependency: string) {
 
 function topologicalSortRegistryItems(
   items: z.infer<typeof registryItemWithSourceSchema>[],
-  sourceMap: Map<z.infer<typeof registryItemWithSourceSchema>, string>
+  sourceMap: Map<z.infer<typeof registryItemWithSourceSchema>, string>,
+  config: Config
 ) {
   const itemMap = new Map<
     string,
@@ -712,11 +713,19 @@ function topologicalSortRegistryItems(
     }
     depToHashes.get(item.name)!.push(hash)
 
-    if (source !== item.name) {
-      if (!depToHashes.has(source)) {
-        depToHashes.set(source, [])
+    // Namespaced dependencies are fetched as URLs. Keep both addresses so
+    // sorting uses the same registry source as fetching, even when another
+    // registry has an item with the same name.
+    const resolvedSource =
+      buildUrlAndHeadersForRegistryItem(source, config)?.url ?? source
+    for (const address of Array.from(new Set([source, resolvedSource]))) {
+      if (address === item.name) {
+        continue
       }
-      depToHashes.get(source)!.push(hash)
+      if (!depToHashes.has(address)) {
+        depToHashes.set(address, [])
+      }
+      depToHashes.get(address)!.push(hash)
     }
   })
 
@@ -728,7 +737,10 @@ function topologicalSortRegistryItems(
       item.registryDependencies.forEach((dep) => {
         let depHash: string | undefined
 
-        const exactMatches = depToHashes.get(dep) || []
+        const resolvedDep =
+          buildUrlAndHeadersForRegistryItem(dep, config)?.url ?? dep
+        const exactMatches =
+          depToHashes.get(resolvedDep) || depToHashes.get(dep) || []
         if (exactMatches.length === 1) {
           depHash = exactMatches[0]
         } else if (exactMatches.length > 1) {
