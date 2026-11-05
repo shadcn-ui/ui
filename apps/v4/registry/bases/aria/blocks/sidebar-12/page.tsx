@@ -21,7 +21,7 @@ export default function Page() {
           <SidebarTrigger className="-ml-1" />
           <Separator
             orientation="vertical"
-            className="mr-2 data-vertical:h-4 data-vertical:self-auto"
+            className="mr-2 aria-[orientation=vertical]:h-4 aria-[orientation=vertical]:self-auto"
           />
           <Breadcrumb>
             <BreadcrumbList>

@@ -8,7 +8,7 @@ export function SiteHeader() {
         <SidebarTrigger className="-ml-1" />
         <Separator
           orientation="vertical"
-          className="mx-2 h-4 data-vertical:self-auto"
+          className="mx-2 aria-[orientation=vertical]:h-4 aria-[orientation=vertical]:self-auto"
         />
         <h1 className="text-base font-medium">Documents</h1>
       </div>
