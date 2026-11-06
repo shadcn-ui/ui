@@ -62,6 +62,7 @@ function Thread({
   scrollPreviousItemPeek,
   showButton = false,
   showJumpButton = false,
+  showReleaseButton = false,
   showVisibility = false,
 }: {
   autoScroll?: boolean
@@ -72,6 +73,7 @@ function Thread({
   scrollPreviousItemPeek?: number
   showButton?: boolean
   showJumpButton?: boolean
+  showReleaseButton?: boolean
   showVisibility?: boolean
 }) {
   return (
@@ -109,6 +111,7 @@ function Thread({
           </MessageScrollerButton>
         ) : null}
         {showJumpButton ? <JumpButton messageId="m5" /> : null}
+        {showReleaseButton ? <ReleaseButton /> : null}
         {showVisibility ? <VisibilityProbe /> : null}
       </MessageScroller>
     </MessageScrollerProvider>
@@ -156,6 +159,22 @@ function JumpButton({ messageId }: { messageId: string }) {
       }}
     >
       Jump to message
+    </button>
+  )
+}
+
+function ReleaseButton() {
+  const { releaseAutoScroll } = useMessageScroller()
+
+  return (
+    <button
+      data-testid="release"
+      type="button"
+      onClick={() => {
+        releaseAutoScroll()
+      }}
+    >
+      Release auto scroll
     </button>
   )
 }
@@ -281,6 +300,45 @@ test("keeps auto-scroll pinned when the final message grows", async () => {
   await settle()
 
   expect(getDistanceToBottom(viewport)).toBeLessThanOrEqual(1)
+})
+
+test("releaseAutoScroll stops the final message growth from re-pinning to the end", async () => {
+  const initial = createItems(6)
+
+  await renderThread({
+    autoScroll: true,
+    items: initial,
+    showReleaseButton: true,
+  })
+
+  const viewport = getViewport()
+
+  expect(getDistanceToBottom(viewport)).toBeLessThanOrEqual(1)
+
+  const scrollTopBefore = getScrollTop(viewport)
+
+  // Model a consumer that grows content in response to a user action (e.g.
+  // expanding a collapsed section): hand scroll control back first, then grow
+  // the final message in the same commit.
+  document.querySelector<HTMLButtonElement>('[data-testid="release"]')!.click()
+
+  flushSync(() => {
+    root!.render(
+      <Thread
+        autoScroll
+        showReleaseButton
+        items={initial.map((item, index) =>
+          index === initial.length - 1 ? { ...item, height: 240 } : item
+        )}
+      />
+    )
+  })
+  await settle()
+
+  // The growth stays below the fold instead of yanking the viewport to the end,
+  // so the reader keeps looking at what they expanded.
+  expect(getScrollTop(viewport)).toBe(scrollTopBefore)
+  expect(getDistanceToBottom(viewport)).toBeGreaterThan(0)
 })
 
 test("keeps the end pinned when bulk appending anchored turns with autoScroll", async () => {
