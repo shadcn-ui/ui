@@ -410,6 +410,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path fill='currentColor' fill-rule='evenodd' d='M18 4h28a14 14 0 0 1 14 14v28a14 14 0 0 1-14 14H18A14 14 0 0 1 4 46V18A14 14 0 0 1 18 4ZM17 21a4 4 0 1 0 8 0a4 4 0 1 0-8 0ZM17 32a4 4 0 1 0 8 0a4 4 0 1 0-8 0ZM17 43a4 4 0 1 0 8 0a4 4 0 1 0-8 0Z'/></svg>"
   },
   {
+    "name": "@dentil",
+    "homepage": "https://www.dentil.dev",
+    "url": "https://www.dentil.dev/r/{name}.json",
+    "description": "Dashboard primitives: a server-driven data table with Linear-style filters, promise-based modals and sheets, a date picker, and phone, currency, address and country inputs.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='var(--foreground)' fill-rule='evenodd' d='M4 0h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4ZM1 4v2h14V4H1Zm0 3v4h2V7H1Zm3 0v4h2V7H4Zm3 0v4h2V7H7Zm3 0v4h2V7h-2Zm3 0v4h2V7h-2Z'/></svg>"
+  },
+  {
     "name": "@designali",
     "homepage": "https://designali.com",
     "url": "https://designali.com/r/{name}.json",
@@ -968,6 +975,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'><rect width='24' height='24' rx='2' fill='#8763B3'/><g transform='rotate(-12 12 12)'><path d='M3 7c3 -2 6 -2 9 0s6 2 9 0' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='M3 17c3 -2 6 -2 9 0s6 2 9 0' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='M3 12c3 -2 6 -2 9 0s6 2 9 0' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/></g></svg>"
   },
   {
+    "name": "@dot",
+    "homepage": "https://bydot.co",
+    "url": "https://bydot.co/r/{name}.json",
+    "description": "Motion-first React components built with Framer Motion.",
+    "logo": "<svg width='88' height='104' viewBox='0 0 88 104' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='48' width='16' height='95' fill='var(--foreground)'/><rect y='104' width='16' height='64' transform='rotate(-90 0 104)' fill='var(--foreground)'/><path d='M16 80H0V60C0 48.9543 8.95431 40 20 40H80V56H20C17.7909 56 16 57.7909 16 60V80Z' fill='var(--foreground)'/><rect x='72' y='88' width='16' height='16' rx='8' fill='var(--foreground)'/></svg>"
+  },
+  {
     "name": "@dotgrain",
     "homepage": "https://dotgrain.space",
     "url": "https://dotgrain.space/r/{name}.json",
@@ -1288,6 +1302,14 @@
     "description": "React components for AI agent and conversational interfaces, including chat, messages, confirmations, and workflow states.",
     "author": "Beibei Zhang",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><image width='40' height='40' href='data:image/png;base64,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'/></svg>"
+  },
+  {
+    "name": "@frame12",
+    "homepage": "https://frame12.dev",
+    "url": "https://frame12.dev/r/{name}.json",
+    "description": "Comic-inspired React UI with ink-framed panels, screentone charts, 12fps stepped motion, accessible components, application blocks, and an enforceable design grammar.",
+    "author": "Laqwan Brodie",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='currentColor'><path fill-rule='evenodd' d='M0 0H32V32H0ZM2.5 2.5V29.5H29.5V2.5Z'/><path d='M5 5H27V13.4L5 17Z'/><path d='M5 21.5L27 17.9V27H5Z'/></svg>"
   },
   {
     "name": "@framecn",
