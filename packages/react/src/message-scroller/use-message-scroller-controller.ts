@@ -462,7 +462,7 @@ function useMessageScrollerController({
         }
       }
 
-      if (items.length === previousItemCount) {
+      if (items.length <= previousItemCount) {
         const anchor = getUnanchoredScrollAnchor(
           items,
           handledScrollAnchorsRef.current
@@ -491,8 +491,8 @@ function useMessageScrollerController({
     reconcileScrollPosition()
     capturePrependAnchor()
 
-    // Mark the anchors already in Content so an equal-count change only anchors
-    // a row that the change itself inserted.
+    // Mark the anchors already in Content so a change that adds no items only
+    // anchors a row that the change itself inserted.
     for (const item of items) {
       if (item.dataset.scrollAnchor === "true") {
         handledScrollAnchorsRef.current.add(item)

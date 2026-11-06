@@ -1154,6 +1154,25 @@ describe("MessageScroller", () => {
     expect(rendered.viewport().scrollTop).toBe(256)
   })
 
+  it("anchors the new row when a change removes more children than it adds", async () => {
+    const rendered = await renderTestScroller({
+      messages: savedChat,
+      contentEnd: (
+        <>
+          <div role="alert" />
+          <div role="status" />
+        </>
+      ),
+    })
+
+    await rendered.rerender(
+      [...savedChat, { id: "user-3", height: 40, scrollAnchor: true }],
+      { contentEnd: null }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(256)
+  })
+
   it("does not reconcile scroll position when only the parent re-renders", async () => {
     const rendered = await renderTestScrollerWithParent({
       messages: [
