@@ -30,6 +30,7 @@ export function useReset() {
       style: params.style,
       baseColor: preset.baseColor,
       theme: preset.theme,
+      primary: null,
       chartColor: preset.chartColor,
       iconLibrary: preset.iconLibrary,
       font: preset.font,
