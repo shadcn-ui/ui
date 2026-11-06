@@ -458,7 +458,6 @@ function useMessageScrollerController({
             { align: "start" },
             { keepPreviousPeek: true }
           )
-          handledScrollAnchorsRef.current.add(anchor)
           return
         }
       }
@@ -475,7 +474,6 @@ function useMessageScrollerController({
             { align: "start" },
             { keepPreviousPeek: true }
           )
-          handledScrollAnchorsRef.current.add(anchor)
           return
         }
       }
@@ -492,6 +490,14 @@ function useMessageScrollerController({
 
     reconcileScrollPosition()
     capturePrependAnchor()
+
+    // Mark the anchors already in Content so an equal-count change only anchors
+    // a row that the change itself inserted.
+    for (const item of items) {
+      if (item.dataset.scrollAnchor === "true") {
+        handledScrollAnchorsRef.current.add(item)
+      }
+    }
   }, [
     applyDefaultScrollPosition,
     capturePrependAnchor,
