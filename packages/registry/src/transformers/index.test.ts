@@ -23,9 +23,10 @@ const config = {
 } as Config
 
 describe("transform() output text", () => {
-  // The runner returns ts-morph's SourceFile#getText(), which starts at the
-  // first token: leading trivia (comments, blank lines, BOM, shebang) is lost.
-  test("drops a leading line comment", async () => {
+  // The runner returns the text from its first non-whitespace character:
+  // leading comments and a shebang are kept, leading blank lines and a byte
+  // order mark are not (#9206).
+  test("keeps a leading line comment", async () => {
     expect(
       await transform(
         {
@@ -39,13 +40,50 @@ export const a = 1
         },
         []
       )
-    ).toBe(`import * as React from "react"
+    ).toBe(`// @ts-nocheck
+import * as React from "react"
 
 export const a = 1
 `)
   })
 
-  test("drops a leading license block comment", async () => {
+  // #9206: a registry item with a header above its imports and a JSDoc block
+  // after them, installed with the default transformers without RSC.
+  test("keeps a registry header through the default transformers", async () => {
+    expect(
+      await transform({
+        filename: "example.tsx",
+        raw: `// @acme/example v1.2.3
+"use client"
+
+import * as React from "react"
+
+/**
+ * Example component.
+ * @see https://example.com/docs
+ */
+
+const Example = () => <div className="flex">Example</div>
+export { Example }
+`,
+        config: { ...config, rsc: false },
+      })
+    ).toMatchInlineSnapshot(`
+      "// @acme/example v1.2.3
+      import * as React from "react"
+
+      /**
+       * Example component.
+       * @see https://example.com/docs
+       */
+
+      const Example = () => <div className="flex">Example</div>
+      export { Example }
+      "
+    `)
+  })
+
+  test("keeps a leading license block comment", async () => {
     expect(
       await transform(
         {
@@ -63,7 +101,11 @@ import * as React from "react"
         []
       )
     ).toMatchInlineSnapshot(`
-      ""use client"
+      "/**
+       * @license MIT
+       */
+
+      "use client"
 
       import * as React from "react"
       "
@@ -104,7 +146,7 @@ import * as React from "react"
 `)
   })
 
-  test("drops a shebang line", async () => {
+  test("keeps a shebang line", async () => {
     expect(
       await transform(
         {
@@ -118,14 +160,15 @@ console.log("hello")
         []
       )
     ).toMatchInlineSnapshot(`
-      "console.log("hello")
+      "#!/usr/bin/env node
+      // cli entry
+      console.log("hello")
       "
     `)
   })
 
-  // TypeScript skips merge conflict markers as trivia: a <<<<<<< line, and
-  // from ======= to the >>>>>>> line.
-  test("drops leading merge conflict markers", async () => {
+  // ts-morph skipped merge conflict markers as trivia; they are text now.
+  test("keeps leading merge conflict markers", async () => {
     expect(
       await transform(
         {
@@ -142,7 +185,8 @@ export const c = 1
         },
         []
       )
-    ).toBe(`import { a } from "@/lib/a"
+    ).toBe(`<<<<<<< HEAD
+import { a } from "@/lib/a"
 =======
 import { b } from "@/lib/b"
 >>>>>>> branch
@@ -163,7 +207,10 @@ export const c = 1
         },
         []
       )
-    ).toBe(`export const c = 1
+    ).toBe(`=======
+import { b } from "@/lib/b"
+>>>>>>> branch
+export const c = 1
 `)
   })
 
@@ -202,10 +249,12 @@ export const a = 1 /* trailing */
         },
         []
       )
-    ).toBe(`import * as React from "react"\r\n\r\nexport const a = 1\r\n`)
+    ).toBe(
+      `// header\r\nimport * as React from "react"\r\n\r\nexport const a = 1\r\n`
+    )
   })
 
-  test("returns an empty string for whitespace or comment only input", async () => {
+  test("returns an empty string for whitespace only input and keeps a lone comment", async () => {
     expect(await transform({ filename: "empty.ts", raw: ``, config }, [])).toBe(
       ``
     )
@@ -214,7 +263,11 @@ export const a = 1 /* trailing */
         { filename: "empty.ts", raw: `// only a comment\n\n`, config },
         []
       )
-    ).toMatchInlineSnapshot(`""`)
+    ).toMatchInlineSnapshot(`
+      "// only a comment
+
+      "
+    `)
   })
 
   // With transformJsx the runner returns transformJsx's result, which reads
@@ -275,7 +328,8 @@ const a: string = "a"
         },
         []
       )
-    ).toBe(`const a: string = "a"
+    ).toBe(`// @ts-nocheck
+const a: string = "a"
 `)
   })
 })
@@ -400,7 +454,8 @@ describe("transform() non-TS inputs", () => {
         config,
       })
     ).toMatchInlineSnapshot(`
-      "@import "tailwindcss";
+      "/* Global styles */
+      @import "tailwindcss";
       @import "tw-animate-css";
 
       @custom-variant dark (&:is(.dark *));

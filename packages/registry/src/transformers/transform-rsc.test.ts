@@ -205,11 +205,12 @@ import * as React from 'react'
 
 import * as React from "react"
 `
-    expect(await rsc(raw)).toBe(`import * as React from "react"
+    // The comment survives remove(); the blank line after it does not.
+    expect(await rsc(raw)).toBe(`// Copyright (c) shadcn
+import * as React from "react"
 `)
 
     await resetDirectiveRegex()
-    // The comment survives remove(); the blank line after it does not.
     expect(await rscFullText(raw)).toBe(`// Copyright (c) shadcn
 import * as React from "react"
 `)
