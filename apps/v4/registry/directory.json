@@ -3312,6 +3312,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='#4D6B34'/><rect x='6' y='6' width='12' height='12' rx='3.5' fill='none' stroke='#F5F3EF' stroke-width='2'/><rect x='17' y='17' width='9' height='9' rx='2.5' fill='#F5F3EF'/></svg>"
   },
   {
+    "name": "@ui95",
+    "homepage": "https://nostalgui.vercel.app",
+    "url": "https://nostalgui.vercel.app/r/{name}.json",
+    "description": "Retro Windows 95 style components for shadcn. Square corners, four-ink palettes, ordered dither, stepped motion and synthesized click sounds.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='-1 -4 13 13' width='24' height='24' fill='currentColor' shape-rendering='crispEdges'><path d='M0 0h1v1H0zM2 0h1v1H2zM4 0h1v1H4zM5 0h1v1H5zM7 0h1v1H7zM8 0h1v1H8zM9 0h1v1H9zM10 0h1v1H10zM1 1h1v1H1zM3 1h1v1H3zM6 1h1v1H6zM7 1h1v1H7zM0 2h1v1H0zM2 2h1v1H2zM4 2h1v1H4zM5 2h1v1H5zM6 2h1v1H6zM7 2h1v1H7zM8 2h1v1H8zM9 2h1v1H9zM1 3h1v1H1zM6 3h1v1H6zM10 3h1v1H10zM0 4h1v1H0zM2 4h1v1H2zM4 4h1v1H4zM5 4h1v1H5zM7 4h1v1H7zM8 4h1v1H8zM9 4h1v1H9z'/></svg>"
+  },
+  {
     "name": "@uiarc",
     "homepage": "https://uiarc.dev",
     "url": "https://uiarc.dev/r/{name}.json",
