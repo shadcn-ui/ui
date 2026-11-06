@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "example-critical",
+  "type": "registry:lib",
+  "files": [
+    {
+      "path": "lib/utils.ts",
+      "type": "registry:lib",
+      "content": "export function utils() { return 'critical' }"
+    }
+  ]
+}
