@@ -6,12 +6,11 @@ import { Slider as SliderPrimitive } from "radix-ui"
 
 function Slider({
   className,
-  defaultValue,
-  value,
   min = 0,
   max = 100,
   ...props
 }: React.ComponentProps<typeof SliderPrimitive.Root>) {
+  const { value, defaultValue } = props
   const _values = React.useMemo(
     () =>
       Array.isArray(value)
@@ -25,8 +24,6 @@ function Slider({
   return (
     <SliderPrimitive.Root
       data-slot="slider"
-      defaultValue={defaultValue}
-      value={value}
       min={min}
       max={max}
       className={cn(
