@@ -32,11 +32,12 @@ export const transformImport: Transformer = (
   for (const { specifier, importDeclaration } of getImportStringLiterals(
     file.program
   )) {
-    const updated = updateImportAliases(
-      literals.getValue(specifier),
-      config,
-      isRemote
-    )
+    const original = literals.getValue(specifier)
+    if (original === "cn" && config.aliases?.utils) {
+      literals.setValue(specifier, config.aliases.utils)
+      continue
+    }
+    const updated = updateImportAliases(original, config, isRemote)
     literals.setValue(specifier, updated)
 
     // Replace `import { cn } from "@/lib/utils"`
