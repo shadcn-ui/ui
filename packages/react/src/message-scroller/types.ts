@@ -184,7 +184,7 @@ type MessageScrollerContextValue = {
   stateStore: MessageScrollerStore<MessageScrollerScrollable>
   syncAfterScroll: () => void
   unobserveVisibility: () => void
-  userScrollIntent: () => void
+  userScrollIntent: (direction?: MessageScrollerButtonDirection) => void
   viewportRef: React.RefObject<HTMLDivElement | null>
   visibilityStore: MessageScrollerVisibilityStore
 }
