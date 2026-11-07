@@ -825,6 +825,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='#24a0ed' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'><path d='M18.4 16.3c9.6-.7 18.6-.6 27.7.2 7 .6 10.8 5.1 10.7 11.2-.1 6.3-4 10.7-11 11.2-9 .6-17.9.6-27.2-.1-7-.6-10.8-5-10.7-11.2.1-6.1 3.8-10.7 10.5-11.3Z' /><path d='M45.6 20.3a7.3 7.3 0 0 1 .3 14.6 7.3 7.3 0 0 1-.3-14.6Z' /><path d='M8.3 52.6c15.6-.9 33.1-.8 48.7.1' stroke-width='2.6' /><path d='M8.1 49.6v5.6M56.9 49.8v5.6' stroke-width='2.6' /></svg>"
   },
   {
+    "name": "@crd-ui",
+    "homepage": "https://crd-ui.juanda.co",
+    "url": "https://crd-ui.juanda.co/r/{name}.json",
+    "description": "Credit and debit card preview for React payment forms, with live brand detection, a 3D flip to the CVC and themeable variants.",
+    "author": "Juan David García Rincón",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)'><path fill-rule='evenodd' d='M2.6 5h18.8A1.6 1.6 0 0 1 23 6.6v10.8a1.6 1.6 0 0 1-1.6 1.6H2.6A1.6 1.6 0 0 1 1 17.4V6.6A1.6 1.6 0 0 1 2.6 5ZM2.4 12.6h19.2v4.5a.5.5 0 0 1-.5.5H2.9a.5.5 0 0 1-.5-.5ZM4.4 14.6h3v1.2h-3ZM8.4 14.6h3v1.2h-3ZM12.4 14.6h3v1.2h-3ZM16.4 14.6h3v1.2h-3Z'/></svg>"
+  },
+  {
     "name": "@creative-tim",
     "homepage": "https://www.creative-tim.com/ui",
     "url": "https://www.creative-tim.com/ui/r/{name}.json",
