@@ -3238,6 +3238,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><g fill='none' stroke='currentColor' stroke-linecap='round' stroke-width='1.2'><path d='M15 6v2.5M8.6 8.6l1.8 1.8M6 15h2.5M8.6 21.4l1.8-1.8M15 24v-2.5'/><circle cx='15' cy='15' r='6'/></g><circle cx='20' cy='15' r='6.5' fill='currentColor'/></svg>"
   },
   {
+    "name": "@tomei",
+    "homepage": "https://tomei.zubeyr.dev",
+    "url": "https://tomei.zubeyr.dev/ui/r/{name}.json",
+    "description": "Award-level components, sections and pages for landing pages and dashboards.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='currentColor'><path d='M26.5 2h11v60h-11z'/><path d='M55.23 12.24l5.5 9.52-51.96 30-5.5-9.52z'/><path d='M3.27 21.76l5.5-9.52 51.96 30-5.5 9.52z'/></svg>"
+  },
+  {
     "name": "@tuiparts",
     "homepage": "https://tuiparts.sh",
     "url": "https://tuiparts.sh/r/{name}.json",
