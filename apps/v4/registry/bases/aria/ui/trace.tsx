@@ -91,6 +91,7 @@ function TraceDescription({
 
 function TraceCollapsible({
   className,
+  isExpanded,
   ...props
 }: Omit<React.ComponentProps<typeof Collapsible>, "isExpanded" | "className"> &
   (
@@ -106,6 +107,7 @@ function TraceCollapsible({
   }) {
   return (
     <Collapsible
+      {...(isExpanded === undefined ? {} : { isExpanded })}
       data-slot="trace-collapsible"
       className={cn(
         "cn-trace-collapsible flex w-full min-w-0 flex-col",
