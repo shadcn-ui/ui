@@ -1957,6 +1957,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)'><circle cx='12' cy='12' r='7.2'/><circle cx='18.6' cy='12.0' r='3.4'/><circle cx='16.67' cy='16.67' r='3.4'/><circle cx='12.0' cy='18.6' r='3.4'/><circle cx='7.33' cy='16.67' r='3.4'/><circle cx='5.4' cy='12.0' r='3.4'/><circle cx='7.33' cy='7.33' r='3.4'/><circle cx='12.0' cy='5.4' r='3.4'/><circle cx='16.67' cy='7.33' r='3.4'/></svg>"
   },
   {
+    "name": "@medium-zoom",
+    "homepage": "https://medium-zoom.francoischalifour.com",
+    "url": "https://medium-zoom.francoischalifour.com/r/{name}.json",
+    "description": "Accessible React image zoom powered by medium-zoom, with keyboard controls and theme-aware styling.",
+    "author": "François Chalifour",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160' fill='var(--foreground)'><polygon points='160 160 0 160 0 0' opacity='0.6'/><polygon points='160 0 160 160 0 160'/></svg>"
+  },
+  {
     "name": "@mewo",
     "homepage": "https://mewo-ui.vercel.app",
     "url": "https://mewo-ui.vercel.app/r/{name}.json",
