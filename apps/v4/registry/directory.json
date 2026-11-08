@@ -1327,6 +1327,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4'/><g stroke='var(--foreground)' fill='none' stroke-linecap='round' stroke-linejoin='round'><path d='M6.72 4.36v2.36M27.96 25.6H25.6m-4.13 0H13.8c-3.337 0-5.007 0-6.043-1.037S6.72 21.857 6.72 18.52v-7.67M25.6 27.96v-11.8c0-4.45 0-6.675-1.383-8.057S20.61 6.72 16.16 6.72H4.36' stroke-width='1.77'/><path d='m21.824 16.16-5.664 5.664M20.691 9.93 9.93 20.69' stroke-width='2.266'/></g></svg>"
   },
   {
+    "name": "@furin",
+    "homepage": "https://furin.dev",
+    "url": "https://furin.dev/r/{name}.json",
+    "description": "Animated React components with zero dependencies: text effects, living backgrounds, tilt cards, cursors and loaders.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='var(--foreground)' d='M10.5 3h11v26L16 24.5 10.5 29z'/></svg>"
+  },
+  {
     "name": "@gaia",
     "homepage": "https://ui.heygaia.io",
     "url": "https://ui.heygaia.io/r/{name}.json",
