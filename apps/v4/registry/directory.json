@@ -7,6 +7,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='var(--foreground)'><path fill-rule='evenodd' d='M58 9C77 10 87 27 86 45C84 66 63 87 43 86C25 85 10 71 10 52C10 33 36 7 58 9ZM56 30C47 27 35 36 31 47C26 60 32 70 40 69C52 68 64 54 65 43C66 37 62 32 56 30Z'/></svg>"
   },
   {
+  "name": "@detent",
+  "homepage": "https://detentui.com",
+  "url": "https://detentui.com/r/{name}.json",
+  "description": "Components and blocks for products that should feel expensive: considered motion, real states, and source you own.",
+  "author": "Deepak Sharma",
+  "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)'><rect x='3.75' y='3' width='5.5' height='18' rx='1.1'/><path d='M11.25 3a9 9 0 0 1 0 18z'/></svg>"
+},
+  {
     "name": "@01orbital",
     "homepage": "https://01orbital.dev",
     "url": "https://01orbital.dev/r/{name}.json",
