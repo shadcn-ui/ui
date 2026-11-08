@@ -494,6 +494,14 @@ export const Components: Record<string, any> = {
       ) || "message"
     return { default: mod.default || mod[exportName] }
   }),
+  "prompt-input": React.lazy(async () => {
+    const mod = await import("@/registry/bases/aria/ui/prompt-input")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "prompt-input"
+    return { default: mod.default || mod[exportName] }
+  }),
   "accordion-example": React.lazy(async () => {
     const mod = await import("@/registry/bases/aria/examples/accordion-example")
     const exportName =

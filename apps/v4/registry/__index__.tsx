@@ -8369,6 +8369,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/base-nova/ui/prompt-input.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
   },
   "radix-nova": {
     accordion: {
@@ -9768,6 +9784,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/radix-nova/ui/prompt-input.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
   },
   "aria-nova": {
     accordion: {
@@ -11154,6 +11186,22 @@ export const Index: Record<string, Record<string, any>> = {
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/message-example.tsx",
         },
       },
+    },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/aria-nova/ui/prompt-input.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
     },
   },
   "base-vega": {
@@ -12569,6 +12617,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "styles/base-vega/ui/message.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/base-vega/ui/prompt-input.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -13997,6 +14061,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/base-maia/ui/prompt-input.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
   },
   "base-lyra": {
     accordion: {
@@ -15411,6 +15491,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "styles/base-lyra/ui/message.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/base-lyra/ui/prompt-input.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -16839,6 +16935,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/base-mira/ui/prompt-input.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
   },
   "base-luma": {
     accordion: {
@@ -18253,6 +18365,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "styles/base-luma/ui/message.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/base-luma/ui/prompt-input.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -19681,6 +19809,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/base-sera/ui/prompt-input.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
   },
   "base-rhea": {
     accordion: {
@@ -21102,6 +21246,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/base-rhea/ui/prompt-input.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
   },
   "aria-vega": {
     accordion: {
@@ -22488,6 +22648,22 @@ export const Index: Record<string, Record<string, any>> = {
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/message-example.tsx",
         },
       },
+    },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/aria-vega/ui/prompt-input.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
     },
   },
   "aria-maia": {
@@ -23876,6 +24052,22 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/aria-maia/ui/prompt-input.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
   },
   "aria-lyra": {
     accordion: {
@@ -25262,6 +25454,22 @@ export const Index: Record<string, Record<string, any>> = {
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/message-example.tsx",
         },
       },
+    },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/aria-lyra/ui/prompt-input.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
     },
   },
   "aria-mira": {
@@ -26650,6 +26858,22 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/aria-mira/ui/prompt-input.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
   },
   "aria-luma": {
     accordion: {
@@ -28036,6 +28260,22 @@ export const Index: Record<string, Record<string, any>> = {
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/message-example.tsx",
         },
       },
+    },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/aria-luma/ui/prompt-input.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
     },
   },
   "aria-sera": {
@@ -29424,6 +29664,22 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/aria-sera/ui/prompt-input.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
   },
   "aria-rhea": {
     accordion: {
@@ -30810,6 +31066,22 @@ export const Index: Record<string, Record<string, any>> = {
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/message-example.tsx",
         },
       },
+    },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/aria-rhea/ui/prompt-input.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
     },
   },
   "radix-vega": {
@@ -32203,6 +32475,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "styles/radix-vega/ui/message.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/radix-vega/ui/prompt-input.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -33609,6 +33897,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/radix-maia/ui/prompt-input.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
   },
   "radix-lyra": {
     accordion: {
@@ -35001,6 +35305,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "styles/radix-lyra/ui/message.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/radix-lyra/ui/prompt-input.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -36407,6 +36727,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/radix-mira/ui/prompt-input.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
   },
   "radix-luma": {
     accordion: {
@@ -37799,6 +38135,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "styles/radix-luma/ui/message.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/radix-luma/ui/prompt-input.tsx",
           type: "registry:ui",
           target: "",
         },
@@ -39205,6 +39557,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/radix-sera/ui/prompt-input.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
   },
   "radix-rhea": {
     accordion: {
@@ -40597,6 +40965,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "styles/radix-rhea/ui/message.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "styles/radix-rhea/ui/prompt-input.tsx",
           type: "registry:ui",
           target: "",
         },

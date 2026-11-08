@@ -1150,4 +1150,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       },
     ],
   },
+  {
+    name: "prompt-input",
+    type: "registry:ui",
+    dependencies: ["@shadcn/react", "lexical@0.53.0", "@lexical/react@0.53.0"],
+    registryDependencies: ["input-group"],
+    files: [{ path: "ui/prompt-input.tsx", type: "registry:ui" }],
+  },
 ]
