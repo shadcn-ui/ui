@@ -1605,6 +1605,13 @@
     "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"var(--foreground)\"><rect x=\"6\" y=\"6\" width=\"16\" height=\"16\" rx=\"4\"/><rect x=\"26\" y=\"6\" width=\"16\" height=\"16\" rx=\"8\"/><rect x=\"6\" y=\"26\" width=\"16\" height=\"16\" rx=\"8\"/><rect x=\"26\" y=\"26\" width=\"16\" height=\"16\" rx=\"4\"/></svg>"
   },
   {
+    "name": "@illos",
+    "homepage": "https://illos.dev",
+    "url": "https://illos.dev/r/{name}.json",
+    "description": "Animated SVG illustrations for product sites and apps in four styles (Shader, HUD, Isometric, Interface), each in light and dark. Free ones install without a key; Pro ones need an Illos Pro key.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='-26.8 0 400 400' fill='var(--foreground)'><path fill-rule='evenodd' d='M0,253.81 L0,100 L173.21,0 L346.41,100 L346.41,300 L173.21,400 L76.6,344.23 L76.6,204 L116.6,227.09 L116.6,321.13 L173.21,353.81 L306.41,276.91 L306.41,123.09 L173.21,46.19 L40,123.09 L40,276.91 Z M76.6,140 L116.6,163.09 L116.6,203.09 L76.6,180 Z'/></svg>"
+  },
+  {
     "name": "@indiacn",
     "homepage": "https://indiacn.in",
     "url": "https://indiacn.in/r/{name}.json",
