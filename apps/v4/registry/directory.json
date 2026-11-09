@@ -1591,6 +1591,14 @@
     "logo": "<svg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M16 3C16 3 7 8 7 16C7 24 12 29 16 29C20 29 25 24 25 16C25 8 16 3 16 3Z' fill='var(--foreground)'/><circle cx='12' cy='14' r='2' fill='var(--background)'/><circle cx='20' cy='14' r='2' fill='var(--background)'/><path d='M11 20C11 20 13 22 16 22C19 22 21 20 21 20' stroke='var(--background)' stroke-width='1.5' stroke-linecap='round'/><path d='M16 3V10' stroke='var(--background)' stroke-width='1.5' stroke-linecap='round' opacity='0.6'/></svg>"
   },
   {
+    "name": "@ikada",
+    "homepage": "https://sproutboat.com/ikada",
+    "url": "https://sproutboat.com/ikada/r/{name}.json",
+    "description": "The Sproutboat design system: calm, dense dashboard components on Base UI and Tailwind v4 with OKLCH tokens, toasts with undo, and charts.",
+    "author": "Sproutboat",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)'><path fill-rule='evenodd' d='M2 6L2.03 5.33L2.1 4.95L2.23 4.65L2.41 4.41L2.65 4.23L2.95 4.1L3.6 4.02L4.8 8L3.33 7.97L2.95 7.9L2.65 7.77L2.41 7.59L2.23 7.35L2.1 7.05L2.03 6.67ZM2 18L2.03 17.33L2.1 16.95L2.23 16.65L2.41 16.41L2.65 16.23L2.95 16.1L3.33 16.03L4 16L7.2 16L8.4 20L4 20L3.33 19.97L2.95 19.9L2.65 19.77L2.41 19.59L2.23 19.35L2.1 19.05L2.03 18.67ZM3 12L3.03 11.33L3.1 10.95L3.23 10.65L3.41 10.41L3.65 10.23L3.95 10.1L4.33 10.03L5.4 10L6.6 14L4.33 13.97L3.95 13.9L3.65 13.77L3.41 13.59L3.23 13.35L3.1 13.05L3.03 12.67ZM4.45 3.5L6.45 3.5L11.55 20.5L9.55 20.5ZM7.6 4L11.1 4L12.3 8L8.8 8ZM9.4 10L12.9 10L14.1 14L10.6 14ZM11.2 16L14.7 16L15.9 20L12.4 20ZM11.95 3.5L13.95 3.5L19.05 20.5L17.05 20.5ZM15.1 4L19.67 4.03L20.05 4.1L20.35 4.23L20.59 4.41L20.77 4.65L20.9 4.95L20.97 5.33L20.97 6.67L20.9 7.05L20.77 7.35L20.59 7.59L20.35 7.77L20.05 7.9L19.67 7.97L16.3 8ZM16.9 10L20.67 10.03L21.05 10.1L21.35 10.23L21.59 10.41L21.77 10.65L21.9 10.95L21.97 11.33L21.97 12.67L21.9 13.05L21.77 13.35L21.59 13.59L21.35 13.77L21.05 13.9L20.67 13.97L18.1 14ZM18.7 16L20.17 16.03L20.55 16.1L20.85 16.23L21.09 16.41L21.27 16.65L21.4 16.95L21.47 17.33L21.47 18.67L21.4 19.05L21.27 19.35L21.09 19.59L20.85 19.77L20.55 19.9L19.9 19.98Z'/></svg>"
+  },
+  {
     "name": "@ikas",
     "homepage": "https://builders.ikas.com/docs/app-development/ui-kit",
     "url": "https://builders.ikas.com/r/{name}.json",
