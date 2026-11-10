@@ -403,6 +403,20 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='var(--foreground)'><path fill-rule='evenodd' d='M5.5 2.5h9A4.5 4.5 0 0 1 19 7v6a4.5 4.5 0 0 1-4.5 4.5h-9A4.5 4.5 0 0 1 1 13V7a4.5 4.5 0 0 1 4.5-4.5ZM5.2 5.5a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8Zm4.2 0a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8Zm4.2 0a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8Z'/></svg>"
   },
   {
+    "name": "@dashral",
+    "homepage": "https://dashral.com",
+    "url": "https://dashral.com/r/{name}.json",
+    "description": "Accessible React components with motion editions, plus free blocks for dashboards and landing pages. MIT.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path fill='currentColor' fill-rule='evenodd' d='M18 4h28a14 14 0 0 1 14 14v28a14 14 0 0 1-14 14H18A14 14 0 0 1 4 46V18A14 14 0 0 1 18 4ZM17 21a4 4 0 1 0 8 0a4 4 0 1 0-8 0ZM17 32a4 4 0 1 0 8 0a4 4 0 1 0-8 0ZM17 43a4 4 0 1 0 8 0a4 4 0 1 0-8 0Z'/></svg>"
+  },
+  {
+    "name": "@dentil",
+    "homepage": "https://www.dentil.dev",
+    "url": "https://www.dentil.dev/r/{name}.json",
+    "description": "Dashboard primitives: a server-driven data table with Linear-style filters, promise-based modals and sheets, a date picker, and phone, currency, address and country inputs.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='var(--foreground)' fill-rule='evenodd' d='M4 0h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4ZM1 4v2h14V4H1Zm0 3v4h2V7H1Zm3 0v4h2V7H4Zm3 0v4h2V7H7Zm3 0v4h2V7h-2Zm3 0v4h2V7h-2Z'/></svg>"
+  },
+  {
     "name": "@designali",
     "homepage": "https://designali.com",
     "url": "https://designali.com/r/{name}.json",
@@ -932,6 +946,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 75 111' fill='var(--foreground)'><path d='M42.3447 55.2821V102.404L31.8417 110.282H30.3447V55.2821A7.5 7.5 0 0 0 42.3447 55.2821ZM8.3661 8.94717C9.37902 2.10251 16.8316 -2.10005 23.2694 1.08097L23.911 1.42374L25.8446 2.55753C35.5377 8.31711 45.4047 15.3513 53.6034 22.8603C62.1498 30.6882 69.7215 39.7797 72.6288 49.1103C74.136 53.9493 74.4864 59.1978 72.6903 64.3416C70.8867 69.5049 67.2099 73.7292 62.1726 77.0301C57.5103 80.0856 51.4284 82.5183 43.8447 84.3399V68.8182C48.2679 67.5225 51.5724 66.0447 53.952 64.4853C56.8683 62.5743 58.0452 60.7869 58.5312 59.3964C59.0232 57.9861 59.1009 56.1291 58.3056 53.5752C56.6052 48.1173 51.456 41.2377 43.4697 33.9228C37.3743 28.3403 30.0984 22.9315 22.6395 18.1933L18.1513 72.8319C22.0425 72.5685 25.5978 72.2133 28.8417 71.7948V86.9151C24.2037 87.4587 19.1872 87.8637 13.7802 88.1103C7.74687 88.3848 2.23938 83.3451 2.77625 76.7871L8.28699 9.63858L8.3661 8.94717Z'/><circle cx='36.3447' cy='46.2821' r='6'/></svg>"
   },
   {
+    "name": "@ding",
+    "homepage": "https://ding.yusufcengiz.dev",
+    "url": "https://ding.yusufcengiz.dev/r/{name}.json",
+    "description": "A toast with spring physics for React. Only one toast is on screen, and a new call morphs it in place instead of stacking.",
+    "author": "Yusuf Cengiz",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='3 -104 830 830' fill='var(--foreground)'><defs><mask id='ding-mascot-a' maskUnits='userSpaceOnUse' x='0' y='0' width='830' height='720'><rect width='830' height='720' fill='#fff'/><path d='M568.2 50.7C569.1 15.5 607.6 2.5 631 27.3C643.9 41 640.6 60.3 628.2 73.7C635.8 79.8 641.1 84.2 647.2 91.8C664.6 113.1 672 141 668.8 168.2C667.8 176.3 664.8 184.8 665.6 192.9C666.6 200.3 674.5 207.7 678.5 214.2C687.5 229.1 688.7 247.9 677.2 261.8C668.2 272.6 655.2 276.4 641.8 277.5L635 278C631 276.7 623.6 272.9 619.2 271.1C608.4 266.7 597.3 262 586.2 258.5C584.7 258.3 560.6 249.8 558.7 248.8C534.3 267.4 504.5 262.6 493.9 232.1C491.9 232 486 231.5 484.2 230.7C467.6 226.5 446.8 223.8 431.9 219.7C415.2 207.2 393.5 194.6 390.4 171.1C389.2 161.4 391.9 151.6 398 143.9C406.2 133.5 416.8 129.5 429.3 126.2C436 124.4 442.8 122.8 448.6 118.7C457 112.6 461.9 102.6 468 94.4C485.8 70.7 512.1 54.6 541.8 51C550.7 49.9 559.4 50.3 568.2 50.7Z' fill='#000' stroke='#000' stroke-width='22' stroke-linejoin='round'/><path d='M493.9 232.1C491.4 218.6 493.1 205.3 501.1 193.8C503.1 191 505.8 188.2 509.4 187.6C516.4 186.3 565.9 205.3 574.4 210.1C574.9 225 570.5 238.9 558.7 248.8C534.3 267.4 504.5 262.6 493.9 232.1Z' fill='#000' stroke='#000' stroke-width='22' stroke-linejoin='round'/><path d='M475.7 365.4C515.2 362.7 511.3 433.2 476 440.4C438.4 443.4 440.6 375.5 475.7 365.4Z' fill='#000'/><path d='M333.3 319.5C371.3 318.2 352.2 387.2 313.6 392C274.5 392.1 296.5 325.1 333.3 319.5Z' fill='#000'/></mask><mask id='ding-mascot-b' maskUnits='userSpaceOnUse' x='0' y='0' width='830' height='720'><path d='M568.2 50.7C569.1 15.5 607.6 2.5 631 27.3C643.9 41 640.6 60.3 628.2 73.7C635.8 79.8 641.1 84.2 647.2 91.8C664.6 113.1 672 141 668.8 168.2C667.8 176.3 664.8 184.8 665.6 192.9C666.6 200.3 674.5 207.7 678.5 214.2C687.5 229.1 688.7 247.9 677.2 261.8C668.2 272.6 655.2 276.4 641.8 277.5L635 278C631 276.7 623.6 272.9 619.2 271.1C608.4 266.7 597.3 262 586.2 258.5C584.7 258.3 560.6 249.8 558.7 248.8C534.3 267.4 504.5 262.6 493.9 232.1C491.9 232 486 231.5 484.2 230.7C467.6 226.5 446.8 223.8 431.9 219.7C415.2 207.2 393.5 194.6 390.4 171.1C389.2 161.4 391.9 151.6 398 143.9C406.2 133.5 416.8 129.5 429.3 126.2C436 124.4 442.8 122.8 448.6 118.7C457 112.6 461.9 102.6 468 94.4C485.8 70.7 512.1 54.6 541.8 51C550.7 49.9 559.4 50.3 568.2 50.7Z' fill='#fff'/><path d='M484.2 230.7C482.7 228 469.7 222.8 466 220.9C452.3 213.9 412.9 192.6 418 174.5C419 170.8 421.8 168.2 425.2 166.4C449.4 154.1 515.5 173.9 540.2 182.6C563.2 190.6 637.3 220 647.6 242.4C648.9 245.2 649.3 248.4 648.1 251.3C646.3 255.4 642.5 257.9 638.4 259.3C626.1 263.6 610.9 261.5 598.4 259.5C595.4 259.1 590.7 257.6 587.8 257.9C587 258 586.8 258.1 586.2 258.5C584.7 258.3 560.6 249.8 558.7 248.8C534.3 267.4 504.5 262.6 493.9 232.1C491.9 232 486 231.5 484.2 230.7Z' fill='#000'/><path d='M493.9 232.1C491.4 218.6 493.1 205.3 501.1 193.8C503.1 191 505.8 188.2 509.4 187.6C516.4 186.3 565.9 205.3 574.4 210.1C574.9 225 570.5 238.9 558.7 248.8C534.3 267.4 504.5 262.6 493.9 232.1Z' fill='#fff'/></mask></defs><path d='M635 278C663.7 293 686.2 307.1 707 333C764.6 404.8 742.1 518.2 671.9 573.3C601 628.9 512.7 607.9 433.4 586.8C393.7 576.1 354.3 564.4 315.2 551.6C293.5 544.5 271.9 537 250.5 529.1C213.6 515.4 174.6 500.5 150.1 467.9C96.9 397 139.1 303.5 202 255.1C259.4 211.1 327.4 205.2 397 214.6C408.6 216.2 420.2 218.2 431.9 219.7C446.8 223.8 467.6 226.5 484.2 230.7C486 231.5 491.9 232 493.9 232.1C504.5 262.6 534.3 267.4 558.7 248.8C560.6 249.8 584.7 258.3 586.2 258.5C597.3 262 608.4 266.7 619.2 271.1C623.6 272.9 631 276.7 635 278Z' mask='url(#ding-mascot-a)'/><rect width='830' height='720' mask='url(#ding-mascot-b)'/><path d='M802.6 139.4C817.1 137.9 818.8 149.4 821.3 160.7C827.4 188.4 813 185.5 793.1 187.9C779.3 189.5 765.4 191.2 751.6 193.1C747.8 193.5 744.2 194 740.4 192.6C731 189.3 729.6 174.6 738 169.6C744 166 751.5 162.9 757.9 159.9C772.7 152.9 787.6 146.1 802.6 139.4Z'/><path d='M757.7 76.3C759.5 76.2 761.4 76.1 763.1 76.5C770.9 77.9 780.8 90.2 785.3 96.5C787.4 99.5 789.9 104.5 788.8 108.3C786.9 114.5 741.4 144.6 733.5 150.2C726.1 156 715.4 159 710 149C708.3 146 708 142.4 709 139.1C710.4 134.9 727.1 113.5 730.8 108.7C736.1 101.8 751.1 80.1 757.7 76.3Z'/><path d='M28 282.6C38.5 281.9 77.5 300.8 89.2 305.2C101.2 309.7 101 329.1 83.6 334.1C75.5 334.4 32.3 321.1 21.9 317.8C18.7 316.8 15.9 313.6 14.7 310.3C12.2 303.5 14.8 297.7 17.7 291.5C20.1 286.2 22.6 284.5 28 282.6Z'/><path d='M75.6 220.8C79.3 220.5 84.6 220.5 87.5 223.4C99 235.2 108.8 248.9 119.4 261.6C122.4 265.3 127.4 271 127.3 276C127.3 285.7 119.8 290.3 110.9 290.8C101.7 288.9 84.6 268.5 76.1 262C73.4 260 61.2 248.3 60 245.7C55.2 234.8 66.3 224.7 75.6 220.8Z'/></svg>"
+  },
+  {
     "name": "@docscn",
     "homepage": "https://docscn.dev",
     "url": "https://docscn.dev/r/{name}.json",
@@ -946,11 +968,26 @@
     "logo": "<svg width='800' height='800' viewBox='0 0 800 800' fill='none' xmlns='http://www.w3.org/2000/svg'><Title>Dominik UI 10x Logo</Title><path d='M197.966 254.091V545h-70.171V319.716h-1.704l-65.057 39.773v-60.796l71.733-44.602zm184.623 298.011q-38.067 0-65.625-18.04-27.556-18.182-42.471-52.13-14.915-34.091-14.773-81.96.142-47.87 14.915-81.25 14.915-33.523 42.329-50.995 27.558-17.613 65.625-17.613 38.069 0 65.625 17.613 27.7 17.472 42.614 50.995 14.915 33.522 14.773 81.25 0 48.011-14.915 82.102t-42.472 52.131q-27.414 17.897-65.625 17.897m0-57.528q22.728 0 36.79-23.154 14.062-23.295 13.921-71.448 0-31.535-6.392-51.989-6.393-20.596-17.756-30.682-11.364-10.085-26.563-10.085-22.584 0-36.505 22.869-13.92 22.727-14.063 69.887-.141 31.959 6.108 52.983 6.393 21.022 17.898 31.392 11.506 10.227 26.562 10.227M605.53 326.818l35.937 71.875 37.216-71.875h70.029l-60.938 109.091L750.984 545h-69.46l-40.057-72.443L602.405 545H531.95l63.353-109.091-60.228-109.091z' fill='#fdc700'/></svg>"
   },
   {
+    "name": "@doodle-icons",
+    "homepage": "https://doodle.oreoui.com",
+    "url": "https://doodle.oreoui.com/r/{name}.json",
+    "description": "200+ free hand-drawn React icons that draw themselves in and wiggle, each installed as its own source file. MIT licensed; a paid Pro set is sold separately.",
+    "author": "Nicole Tang",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='var(--foreground)' stroke-width='4.3' stroke-linecap='round' stroke-linejoin='round'><path d='M 13 8.5 C 18.8 8.6, 23.4 15.2, 23.5 24 C 23.6 32.7, 18.9 39.4, 13 39.5 C 7.1 39.6, 2.4 32.8, 2.5 24 C 2.6 15.3, 7.2 8.6, 13 8.5 Z'/><path d='M 29 8.5 C 33.2 8.6, 36.4 15.2, 36.5 24 C 36.6 32.7, 33.3 39.4, 29 39.5 C 24.8 39.6, 21.6 32.8, 21.5 24 C 21.5 15.3, 24.8 8.6, 29 8.5 Z'/><path d='M 42 8.5 C 44 8.6, 45.4 15.2, 45.5 24 C 45.6 32.7, 44 39.4, 42 39.5 C 40 39.6, 38.6 32.8, 38.5 24 C 38.5 15.3, 40 8.6, 42 8.5 Z'/></svg>"
+  },
+  {
     "name": "@doras-ui",
     "homepage": "https://ui.doras.to/",
     "url": "https://ui.doras.to/r/{name}.json",
     "description": "A collection of beautiful, reusable component blocks built with React",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'><rect width='24' height='24' rx='2' fill='#8763B3'/><g transform='rotate(-12 12 12)'><path d='M3 7c3 -2 6 -2 9 0s6 2 9 0' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='M3 17c3 -2 6 -2 9 0s6 2 9 0' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='M3 12c3 -2 6 -2 9 0s6 2 9 0' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/></g></svg>"
+  },
+  {
+    "name": "@dot",
+    "homepage": "https://bydot.co",
+    "url": "https://bydot.co/r/{name}.json",
+    "description": "Motion-first React components built with Framer Motion.",
+    "logo": "<svg width='88' height='104' viewBox='0 0 88 104' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='48' width='16' height='95' fill='var(--foreground)'/><rect y='104' width='16' height='64' transform='rotate(-90 0 104)' fill='var(--foreground)'/><path d='M16 80H0V60C0 48.9543 8.95431 40 20 40H80V56H20C17.7909 56 16 57.7909 16 60V80Z' fill='var(--foreground)'/><rect x='72' y='88' width='16' height='16' rx='8' fill='var(--foreground)'/></svg>"
   },
   {
     "name": "@dotgrain",
@@ -994,6 +1031,14 @@
     "url": "https://eased.dev/r/{name}.json",
     "description": "Motion-first React components and blocks for shadcn, with tuned springs, light and dark themes, and an MCP server for AI agents.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='var(--foreground)' stroke-width='5' stroke-linecap='round'><path d='M12 52C19.68 12 26.4 12 52 12'/></svg>"
+  },
+  {
+    "name": "@easeout",
+    "homepage": "https://www.easeoutstudio.com",
+    "url": "https://www.easeoutstudio.com/r/{name}.json",
+    "description": "Interaction components tuned by hand: a curved image wall, an OTP input that talks back, a magnetic dock, flip buttons and a spring slider. Motion and Tailwind, MIT.",
+    "author": "Darshit Shukla",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='3.2' stroke-linecap='round'><path d='M19.75 10A8 8 0 1 0 18.13 17.14'/><path d='M4.81 15.5C7.2 10 9.29 10 19.75 10'/></svg>"
   },
   {
     "name": "@easeui",
@@ -1267,6 +1312,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><image width='40' height='40' href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAACU9JREFUeAGdWEtsXFcZ/v9zZpw0SZvJwwkC2jiEQJ7EjUSkiEcmCxYsWGRZQCIpZMGC2gaKWglkOxsWBOx0A1IWzgbBBgWQEAgJ4rKpCIu6YsECoTpQqHioGbfEre2Z8/d/nXPvjN28TjK+d869c8/3f//3P+5BeMhxY+rbbSAcxUY8gxFHQ8DtEHAHIAJE7ASERb62SECvhAbMn/7q8/PwEAMf5OYbU1OttLo6hiGMCZgQkQADYmCofED9rkeeDgSBvwU5508Mi/yIedrUnD59YWLxfte8L4ACrLu8MsnkjBPKYgjBFmVAvL4cM5AgN0AGJUeS+4XZYEeMMVyLIUw/eR9A7wnwt888O8Yum2JErcIGMwYxMEkowApLBpIfGiPpnECNdi24MQLaDFBGp099+RvX7rZ+uNvF33ztmzMJYJYIWkD8l4ccSJbKR/mrH3azWoxyASkl1J/oFf6feM6OPkcj/GfuT3Pfn4EHZfD6+Hhr00q8zpa3mQVlg5lgpoKaFFhfwpQyZnrD7OI+VmPFrDGYdVppU0EgLDQwnmWXd+6LwaFlvMHWt50tMRiVFyNRTpDMOFQWk9xoTPkNxnSiwpgd+ZNUxeT3kpzz9Iku0fWNsKwD+MuvfH2GEoxC5Qp9eHK3YvJHJ8ebKtR6n7vS5jJeMqOywfkncq9g5MeyJNo3N3B3H8CfPf3c+R7FcZMW6IKmM/3mBIi+yBxjRqAt7nJxo+QXzir50xxwQWl6zWYIzB6N35y7PFbHVDT4k/NTIxFXbzRCGmnAGgXsgeU2TSEiF43cEsVymnOdpZO+1JLTj+psIJptLudLu9dM0WOnGeP+rMdGDewkr7ZP5aSZV7SilurhYxe/5AlOzZLHm4F+kP//uvlHWPr7ojhGDUkcyduG99KuQ0fgkVYLQnMIVt5awqVbf4O3Xv+Hs104kmeKUFpdSJP8faK4eO78d0cShPNEDIw/PebPzmvidhPLGNBZ37wHye5DR+HxT3wat+wahtBo6uVNj26HPcdPwvDRkxZElDyUXQ2oa46/PDfTKgCZrMnEgBJzzkCVwUQIRewepZgVQQNggQDqOY/PN29vwfDhI1WguPzyeOwDT8D2fQcqEjyi8/XVbne8AGS22iImYU0AJmVP6A45uWBhcCPmyCkAj1D+v/PDBx0Pvsf9AK3HDwCkmnE+BCgr6BkFePWLM+1EcZ8BE36DBmWCKGAxmRRp3SJQpYu8KpUcQtTcshX62B0AJyeNR7aUS5ZbyWVPkulbL139XlvqwhkuZ5gye6xVBabgNFwrKwdYxEHQ5GmHH9JdWYVBo3L2yVJIa6sl65SKWQgnKV4nQsIwqrpzFxNFyi7O7haw66oi1RasfU++0PJ//wNA62OoPv7/79eLJHgx6KtGGhrQDj1OLR69fGugnlY1A2VVzF1fB7Le1+VaBtp59VVYW75TXR7Q7tryMrzx17+wL3ndlComa4O1OBp6CfdTzbUaKJQDhX+sWRmrxmVw1KZ6q6sFZHdlBRZ//zt485+vQc0yHe8s3YbXXvoDrN65A9RLWAxwCSPmWk0tfOHzP6LIVSNiFxrIhQ66eh5xjYuCzPMH1vx6qlWTXFGCVwTrcnJPKPO5s9m8cyds27tHKwYnanj7jf/1N7Ta5Mp3fYbmbj0y2IZqTjsqYS1phbB/AYKmmCQtsbo1iSqzZlTPoVZ/URsFrTDWo5T0s9Lp0OqbS5bUZHFpWq3RsNScQLtt0aH1SVgyROghLon2PGJJgwUiH6PC9sjWX2pE54Am7Vy8GtRSTM68dglztdAGNnnnQdVv3Jl8uU+HWdS3GRl2Ui0wGCiZHhF6yZN3SUFRibG+yasolfD1TlvZ1A5nMHDQs2TmGLTL0u6ovxNK1prx9VtMWVggj1T9CDivyRrFYMlb5pRFa/fwifYncefBA1QHAM5Oykwkt8SNUCDWxmFKxupgsGWPeEwtBl73xVTcKiKxY6rnRK8qPf80t26lnR85AHtPnsDYbJI1iVR6RuPGi6TktwRVN67ACrPaCXvXrfeUblvu7/E7dZdgYbAOZz1m1/fUq+j6DPC+j59Uy4ce3Qa7jx/WHJRTBVZ61KpiKAjrDs6sugwMDqkLreQ5YFbYfHj+pxfmeVHRoQLrS9TkQaORHtX1zW2P0a6PHtQ2UR49fOwIhKGmNTtElN2TKL/FQSmVKbdImT2LJ6xaJyTvbORRt05ffHZeuxl+2JVcd4seVX8CMpagkevvP3UC6+k6chM6fPQwQIloT7ZUeyOlmktNlsYuVXrLTUJ+2eJv85pm1FWb06wFh4KyCuIu75EBAwaqLj30IfMcVE3O8HFjsQJSpZB6SoH8FljmwNlONpWoVlFpugCcuHahgxRnNfeJe9E6GQs6i2px/QdPHRsIOpNQHGIWjx2GvDgUYMlBelLuy5dAQFR/kS9P5N9c482mxQJQRmNlbZrB3TY5uLtdf8Lolt07YM+h/c6cA/RKkbUYh5r+JpgFb/kwawK9M3eQmHNidq9pGBaZjemMqwCc+PmFDifzS9m1lZtVf7jv1JEsm2xn7TupFnccPGCvUNn3iXLs5KB2hr2Wlapk7iWL1OnTE8ZeXqlvXH5qbpbvGmtow9DTBiJw46DfWZExdDHaOdg9XZ7raQlGbw60SYi2LSe7IhRs2yT4ptO6ZqPaGbvyqW99Z7yOZ8O9mR88NXcDodtuSLcI3QyEn83n0PNupytdEINdEyOse5RGRBqBdTteBgYNjG3HOWjZq/FdsIUzz00+OYhlw70Z3ATn2LSXPUjc5ZGqkijuj+7i6FUHSp9Qin5OKaoCxCyHqmZb3WXb5tM7dHZDLHCXMfuFqzORemOVW5VNdSmfM4NdbFRMKhPaG2K1syXNJzZC3tTMO7GlH+T5K2cnL42/F4a77g+O//jiBNv7NHc8ix4w+lJfmgorjeisItTSCZRsAqV0eWueM0oHumn8buBkRLjH+PWff7XwmaOf+wVLZQeTcMK2VexdFNXCZPswllTUI7o97LVL9xd9gG0vyvwLnNjPnb106cV7rf9Am+g/PD8z0uylSe5p2hwY+wLYa0Gj5n7ddJJI1c0miQkLCj5ZYm1cWd62efbc1FTnftd8IID1wfs57SFIZ/h9ZTRgl3fGeiMMcrvolcF1eKO8w7QuMGXz1MBXPjt7eR4eYrwLq8bZrYIfOVEAAAAASUVORK5CYII='/></svg>"
   },
   {
+    "name": "@frame12",
+    "homepage": "https://frame12.dev",
+    "url": "https://frame12.dev/r/{name}.json",
+    "description": "Comic-inspired React UI with ink-framed panels, screentone charts, 12fps stepped motion, accessible components, application blocks, and an enforceable design grammar.",
+    "author": "Laqwan Brodie",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='currentColor'><path fill-rule='evenodd' d='M0 0H32V32H0ZM2.5 2.5V29.5H29.5V2.5Z'/><path d='M5 5H27V13.4L5 17Z'/><path d='M5 21.5L27 17.9V27H5Z'/></svg>"
+  },
+  {
     "name": "@framecn",
     "homepage": "https://framecn.vercel.app",
     "url": "https://framecn.vercel.app/r/{name}.json",
@@ -1515,6 +1568,13 @@
     "url": "https://ui.iandefined.com/r/{name}.json",
     "description": "Thoughtful React components, blocks, hooks, and utilities for product engineers, built with Base UI and Tailwind CSS v4.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='var(--foreground)'><path d='M247.94 79.21a8 8 0 0 0-4.36-6.37L197.29 49.7C191.54 39.24 177.21 32 160 32c-22.43 0-40 12.3-40 28a20.8 20.8 0 0 0 1.06 6.53l-19.52 9.76A53.7 53.7 0 0 0 80 72c-22.43 0-40 12.3-40 28a20.8 20.8 0 0 0 1.06 6.53l-28.64 14.31A8 8 0 0 0 8 128v64a8 8 0 0 0 4.42 7.16l64 32a8 8 0 0 0 7.16 0l160-80A8 8 0 0 0 248 144V80a4.5 4.5 0 0 0-.06-.79M80 151.06L33.89 128L51 119.45c7.24 5.29 17.48 8.55 29 8.55c22.43 0 40-12.3 40-28a21.77 21.77 0 0 0-4.35-12.88L131 79.45c7.24 5.29 17.48 8.55 29 8.55c18.38 0 33.49-8.26 38.35-19.88L222.11 80ZM160 48c12.23 0 21.69 5 23.63 10.12c0 .09.07.18.11.28A5.3 5.3 0 0 1 184 60c0 5.66-10.26 12-24 12c-9.66 0-17.6-3.14-21.46-7a7 7 0 0 0-.86-.93A6.66 6.66 0 0 1 136 60c0-5.66 10.26-12 24-12M80 88a37 37 0 0 1 17.13 3.87a7.5 7.5 0 0 0 1 .56c3.69 2.21 5.87 5 5.87 7.57c0 5.66-10.26 12-24 12c-9.67 0-17.61-3.14-21.47-7a7.5 7.5 0 0 1-.84-.93A6.62 6.62 0 0 1 56 100c0-5.66 10.26-12 24-12m-56 52.94l48 24v46.12l-48-24Z'/></svg>"
+  },
+  {
+    "name": "@iconaut",
+    "homepage": "https://iconaut.design",
+    "url": "https://iconaut.design/r/{name}.json",
+    "description": "Free, MIT-licensed icons in line, solid and duotone on one 24 by 24 grid, each drawn natively at 16, 20 and 24px. Each one installs as a React component without dependencies.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)'><path fill-rule='evenodd' d='M7.50 3.00H16.50A4.50 4.50 0 0 1 21.00 7.50V16.50A4.50 4.50 0 0 1 16.50 21.00H7.50A4.50 4.50 0 0 1 3.00 16.50V7.50A4.50 4.50 0 0 1 7.50 3.00ZM8.94 9.48H8.94A1.26 1.26 0 0 1 10.20 10.74V13.26A1.26 1.26 0 0 1 8.94 14.52H8.94A1.26 1.26 0 0 1 7.68 13.26V10.74A1.26 1.26 0 0 1 8.94 9.48ZM15.06 9.48H15.06A1.26 1.26 0 0 1 16.32 10.74V13.26A1.26 1.26 0 0 1 15.06 14.52H15.06A1.26 1.26 0 0 1 13.80 13.26V10.74A1.26 1.26 0 0 1 15.06 9.48Z'/></svg>"
   },
   {
     "name": "@iconiq",
@@ -3310,6 +3370,13 @@
     "url": "https://raw.githubusercontent.com/Shrootiiii/ui/main/r/{name}.json",
     "description": "Free React and Tailwind components with Framer Motion interaction states and Tailwind CSS styling: buttons, badge, text field, toggle switch and breadcrumbs.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='#4D6B34'/><rect x='6' y='6' width='12' height='12' rx='3.5' fill='none' stroke='#F5F3EF' stroke-width='2'/><rect x='17' y='17' width='9' height='9' rx='2.5' fill='#F5F3EF'/></svg>"
+  },
+  {
+    "name": "@ui95",
+    "homepage": "https://ui95.dev",
+    "url": "https://ui95.dev/r/{name}.json",
+    "description": "Retro Windows 95 style components for shadcn. Square corners, four-ink palettes, ordered dither, stepped motion and synthesized click sounds.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='-1 -4 13 13' width='24' height='24' fill='currentColor' shape-rendering='crispEdges'><path d='M0 0h1v1H0zM2 0h1v1H2zM4 0h1v1H4zM5 0h1v1H5zM7 0h1v1H7zM8 0h1v1H8zM9 0h1v1H9zM10 0h1v1H10zM1 1h1v1H1zM3 1h1v1H3zM6 1h1v1H6zM7 1h1v1H7zM0 2h1v1H0zM2 2h1v1H2zM4 2h1v1H4zM5 2h1v1H5zM6 2h1v1H6zM7 2h1v1H7zM8 2h1v1H8zM9 2h1v1H9zM1 3h1v1H1zM6 3h1v1H6zM10 3h1v1H10zM0 4h1v1H0zM2 4h1v1H2zM4 4h1v1H4zM5 4h1v1H5zM7 4h1v1H7zM8 4h1v1H8zM9 4h1v1H9z'/></svg>"
   },
   {
     "name": "@uiarc",
