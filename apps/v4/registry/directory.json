@@ -2995,6 +2995,14 @@
     "description": "Large collection of game, interface, retro, and voice sound effects for web applications",
     "logo": "<svg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='0' y='8.1' width='3' height='9.9' rx='1.5' fill='currentColor'/><rect x='3.75' y='1.8' width='3' height='16.2' rx='1.5' fill='currentColor'/><rect x='7.5' y='11.7' width='3' height='6.3' rx='1.5' fill='currentColor'/><rect x='11.25' y='4.5' width='3' height='13.5' rx='1.5' fill='currentColor'/><rect x='15' y='9.9' width='3' height='8.1' rx='1.5' fill='currentColor'/></svg>"
   },
+    {
+    "name": "@soundza",
+    "homepage": "https://soundza.com/soundkit",
+    "url": "https://soundza.com/r/{name}.json",
+    "description": "Library of CC0 video sound effects and music beds for Remotion and React, each with its hit point for frame-accurate sync.",
+    "logo": "<svg width='18' height='18' viewBox='0 0 128 128' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='4.5' y='49' width='15' height='30' rx='7.5' fill='currentColor'/><rect x='30.5' y='32.75' width='15' height='62.5' rx='7.5' fill='currentColor'/><rect x='56.5' y='9' width='15' height='110' rx='7.5' fill='currentColor'/><rect x='82.5' y='32.75' width='15' height='62.5' rx='7.5' fill='currentColor'/><rect x='108.5' y='49' width='15' height='30' rx='7.5' fill='currentColor'/></svg>"
+  },
+
   {
     "name": "@spaceui",
     "homepage": "https://www.spaceui.one",
