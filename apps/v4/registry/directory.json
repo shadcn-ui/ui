@@ -389,6 +389,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='var(--foreground)' d='M24.78 9.37A11 11 0 1 0 24.78 22.63A8.6 8.6 0 1 1 24.78 9.37Z'/><path fill='#ff6b35' d='M24.78 11.6C24.78 11.6 21.98 14.9 21.98 16.9A2.8 2.8 0 0 0 27.58 16.9C27.58 14.9 24.78 11.6 24.78 11.6Z'/></svg>"
   },
   {
+    "name": "@csvjetty",
+    "homepage": "https://www.csvjetty.com",
+    "url": "https://www.csvjetty.com/r/{name}.json",
+    "description": "CSV import for React with column mapping, validation, inline correction, and an account-free demo. MIT integration code for the hosted CSVJetty service.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M5 3h14l8 8v18H5V3Zm14 0v8h8M9 16h14M9 21h14M14 12v14' fill='none' stroke='var(--foreground)' stroke-width='2'/></svg>"
+  },
+  {
     "name": "@cuelark",
     "homepage": "https://ui.cuelark.com",
     "url": "https://ui.cuelark.com/r/{name}.json",
