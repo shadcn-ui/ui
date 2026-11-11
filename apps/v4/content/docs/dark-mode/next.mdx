@@ -36,6 +36,10 @@ Add the `ThemeProvider` to your root layout and add the `suppressHydrationWarnin
 ```tsx {1,6,9-14,16} title="app/layout.tsx" showLineNumbers
 import { ThemeProvider } from "@/components/theme-provider"
 
+interface RootLayoutProps {
+  children: React.ReactNode
+}
+
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
