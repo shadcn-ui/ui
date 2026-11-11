@@ -52,6 +52,7 @@ import {
 } from "@shadcn/registry/internal/get-project-info"
 import { highlighter } from "@shadcn/registry/internal/highlighter"
 import { logger } from "@shadcn/registry/internal/logger"
+import { mergeConfig } from "@shadcn/registry/internal/merge-config"
 import {
   decodePreset,
   isPresetBase,
@@ -73,7 +74,6 @@ import {
   registryBaseConfigSchema,
 } from "@shadcn/registry/schema"
 import { Command } from "commander"
-import deepmerge from "deepmerge"
 import fsExtra from "fs-extra"
 import prompts from "prompts"
 import { z } from "zod"
@@ -740,8 +740,8 @@ export async function runInit(
   const backupPath = `${targetPath}${FILE_BACKUP_SUFFIX}`
 
   // Merge and keep registries at the end.
-  const mergeConfig = (base: typeof config, override: object) => {
-    const { registries, ...merged } = deepmerge(base, override)
+  const mergeComponentsConfig = (base: typeof config, override: object) => {
+    const { registries, ...merged } = mergeConfig(base, override)
     return { ...merged, registries } as typeof config
   }
 
@@ -757,13 +757,13 @@ export async function runInit(
         }
       }
     } else {
-      config = mergeConfig(existingConfig, config)
+      config = mergeComponentsConfig(existingConfig, config)
     }
   }
 
   // Merge config from registry:base item.
   if (options.registryBaseConfig) {
-    config = mergeConfig(config, options.registryBaseConfig)
+    config = mergeComponentsConfig(config, options.registryBaseConfig)
   }
 
   // Ensure rtl is set from CLI option (takes priority over registryBaseConfig).

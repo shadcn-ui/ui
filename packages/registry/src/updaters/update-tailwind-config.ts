@@ -32,10 +32,10 @@ import { Config } from "@/src/get-config"
 import { TailwindVersion } from "@/src/get-project-info"
 import { highlighter } from "@/src/highlighter"
 import { logger } from "@/src/logger"
+import { mergeConfig } from "@/src/merge-config"
 import { registryItemTailwindSchema } from "@/src/registry/schema"
 import { spinner } from "@/src/spinner"
 import { types as t } from "@babel/core"
-import deepmerge from "deepmerge"
 import objectToString from "stringify-object"
 import { z } from "zod"
 
@@ -412,8 +412,8 @@ function addTailwindConfigTheme(
       getText(code, themeInitializer),
       options
     )
-    const result = deepmerge(themeObject, theme, {
-      arrayMerge: (dst, src) => src,
+    const result = mergeConfig(themeObject, theme, {
+      replaceArrays: true,
     })
     const resultString = objectToString(result)
       .replace(/\'\.\.\.(.*)\'/g, "...$1") // Remove quote around spread element
@@ -467,7 +467,7 @@ function getElementTexts(code: string, array: t.ArrayExpression) {
   )
 }
 
-// deepmerge and addTailwindConfigTheme's reprint would drop spreads, so they
+// Merging and reprinting the theme would drop spreads, so they
 // become strings first: `...name` in an object becomes
 // `"___name": "...name"`, and in an array, `"...name"`.
 // unnestSpreadProperties turns them back.
@@ -495,7 +495,7 @@ export function nestSpreadProperties(
           code,
           object,
           i,
-          // Need to escape the name with " so that deepmerge doesn't mishandle the key
+          // Quote the placeholder key so it survives the reprint.
           `"___${spreadText.replace(/^\.\.\./, "")}"`,
           `"...${spreadText.replace(/^\.\.\./, "")}"`,
           options

@@ -512,9 +512,6 @@ importers:
       code-block-writer:
         specifier: ^13.0.3
         version: 13.0.3
-      deepmerge:
-        specifier: ^4.3.1
-        version: 4.3.1
       execa:
         specifier: ^9.6.0
         version: 9.6.0
@@ -633,9 +630,6 @@ importers:
       dedent:
         specifier: ^1.6.0
         version: 1.6.0
-      deepmerge:
-        specifier: ^4.3.1
-        version: 4.3.1
       diff:
         specifier: ^8.0.2
         version: 8.0.2
@@ -5686,10 +5680,6 @@ packages:
 
   deep-is@0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
-
-  deepmerge@4.3.1:
-    resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
-    engines: {node: '>=0.10.0'}
 
   default-browser-id@5.0.1:
     resolution: {integrity: sha512-x1VCxdX4t+8wVfd1so/9w+vQ4vx7lKd2Qp5tDRutErwmR85OgmfX7RlLRMWafRMY7hbEiXIbudNrjOAPa/hL8Q==}
@@ -14674,8 +14664,6 @@ snapshots:
   deep-extend@0.6.0: {}
 
   deep-is@0.1.4: {}
-
-  deepmerge@4.3.1: {}
 
   default-browser-id@5.0.1: {}
 

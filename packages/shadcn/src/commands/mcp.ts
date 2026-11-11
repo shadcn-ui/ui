@@ -8,10 +8,10 @@ import { getConfig } from "@shadcn/registry/internal/get-config"
 import { getPackageManager } from "@shadcn/registry/internal/get-package-manager"
 import { highlighter } from "@shadcn/registry/internal/highlighter"
 import { logger } from "@shadcn/registry/internal/logger"
+import { mergeConfig } from "@shadcn/registry/internal/merge-config"
 import { spinner } from "@shadcn/registry/internal/spinner"
 import { updateDependencies } from "@shadcn/registry/internal/updaters/update-dependencies"
 import { Command } from "commander"
-import deepmerge from "deepmerge"
 import { execa } from "execa"
 import fsExtra from "fs-extra"
 import prompts from "prompts"
@@ -228,8 +228,6 @@ args = ["shadcn@${SHADCN_MCP_VERSION}", "mcp"]`)
     }
   })
 
-const overwriteMerge = (_: any[], sourceArray: any[]) => sourceArray
-
 async function runMcpInit(options: z.infer<typeof mcpInitOptionsSchema>) {
   const { client, cwd } = options
 
@@ -253,10 +251,10 @@ async function runMcpInit(options: z.infer<typeof mcpInitOptionsSchema>) {
     existingConfig = JSON.parse(content)
   } catch {}
 
-  const mergedConfig = deepmerge(
+  const mergedConfig = mergeConfig(
     existingConfig,
     clientInfo.config as Record<string, unknown>,
-    { arrayMerge: overwriteMerge }
+    { replaceArrays: true }
   )
 
   await fs.writeFile(
