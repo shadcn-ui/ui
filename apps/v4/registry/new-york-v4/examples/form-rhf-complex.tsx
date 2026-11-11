@@ -122,8 +122,8 @@ export default function FormRhfComplex() {
           Choose your subscription plan and billing period.
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <form id="form-rhf-complex" onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
+        <CardContent>
           <FieldGroup>
             <Controller
               name="plan"
@@ -290,18 +290,18 @@ export default function FormRhfComplex() {
               )}
             />
           </FieldGroup>
-        </form>
-      </CardContent>
-      <CardFooter className="border-t">
-        <Field>
-          <Button type="submit" form="form-rhf-complex">
-            Save Preferences
-          </Button>
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
-            Reset
-          </Button>
-        </Field>
-      </CardFooter>
+        </CardContent>
+        <CardFooter className="border-t">
+          <Field>
+            <Button type="submit">
+              Save Preferences
+            </Button>
+            <Button type="button" variant="outline" onClick={() => form.reset()}>
+              Reset
+            </Button>
+          </Field>
+        </CardFooter>
+      </form>
     </Card>
   )
 }

@@ -64,8 +64,8 @@ export default function FormRhfSwitch() {
           Manage your account security preferences.
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <form id="form-rhf-switch" onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
+        <CardContent>
           <FieldGroup>
             <Controller
               name="twoFactor"
@@ -97,18 +97,18 @@ export default function FormRhfSwitch() {
               )}
             />
           </FieldGroup>
-        </form>
-      </CardContent>
-      <CardFooter>
-        <Field orientation="horizontal">
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
-            Reset
-          </Button>
-          <Button type="submit" form="form-rhf-switch">
-            Save
-          </Button>
-        </Field>
-      </CardFooter>
+        </CardContent>
+        <CardFooter>
+          <Field orientation="horizontal">
+            <Button type="button" variant="outline" onClick={() => form.reset()}>
+              Reset
+            </Button>
+            <Button type="submit">
+              Save
+            </Button>
+          </Field>
+        </CardFooter>
+      </form>
     </Card>
   )
 }
