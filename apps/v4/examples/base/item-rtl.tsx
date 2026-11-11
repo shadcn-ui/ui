@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { BadgeCheckIcon, ChevronRightIcon } from "lucide-react"
+import { BadgeCheckIcon, ChevronRightIcon, ChevronLeftIcon } from "lucide-react"
 
 import {
   useTranslation,
@@ -71,7 +71,11 @@ export function ItemRtl() {
           <ItemTitle>{t.verifiedTitle}</ItemTitle>
         </ItemContent>
         <ItemActions>
-          <ChevronRightIcon className="size-4" />
+          {
+            dir === "ltr"
+            ? <ChevronRightIcon className="size-4" />
+            : <ChevronLeftIcon className="size-4" />
+          }
         </ItemActions>
       </Item>
     </div>
