@@ -48,6 +48,7 @@ function DialogContent({
   className,
   children,
   showCloseButton = true,
+  onInteractOutside,
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
   showCloseButton?: boolean
@@ -61,6 +62,17 @@ function DialogContent({
           "cn-dialog-content fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 outline-none",
           className
         )}
+        onInteractOutside={(e) => {
+          const target = e.detail.originalEvent.target as Element
+          if (
+            target?.closest("[data-radix-popper-content-wrapper]") ||
+            target?.closest("[data-base-ui-portal]")
+          ) {
+            e.preventDefault()
+            return
+          }
+          onInteractOutside?.(e)
+        }}
         {...props}
       >
         {children}
