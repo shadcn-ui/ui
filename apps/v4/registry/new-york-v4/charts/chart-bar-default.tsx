@@ -12,6 +12,7 @@ import {
   CardTitle,
 } from "@/registry/new-york-v4/ui/card"
 import {
+  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
