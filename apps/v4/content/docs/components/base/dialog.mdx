@@ -123,6 +123,17 @@ Long content can scroll while the header stays in view.
 
 <ComponentPreview styleName="base-nova" name="dialog-scrollable-content" />
 
+## Nested Dialog Backdrops
+
+Base UI does not render backdrops for nested dialogs by default. Pass
+`forceRender` through `overlayProps` to render a backdrop for a nested dialog.
+
+```tsx showLineNumbers
+<DialogContent overlayProps={{ forceRender: true }}>
+  {/* Nested dialog content */}
+</DialogContent>
+```
+
 ## RTL
 
 To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
