@@ -144,7 +144,7 @@ const frameworks = [
   "Next.js",
   "SvelteKit",
   "Nuxt.js",
-  "Remix",
+  "React Router",
   "Astro",
 ] as const
 

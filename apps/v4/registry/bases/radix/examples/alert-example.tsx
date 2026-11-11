@@ -292,7 +292,7 @@ function AlertExample5() {
                 <SelectContent>
                   <SelectGroup>
                     <SelectItem value="next">Next.js</SelectItem>
-                    <SelectItem value="remix">Remix</SelectItem>
+                    <SelectItem value="react-router">React Router</SelectItem>
                     <SelectItem value="astro">Astro</SelectItem>
                     <SelectItem value="nuxt">Nuxt</SelectItem>
                   </SelectGroup>
