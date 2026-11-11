@@ -1795,6 +1795,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='1.5 1.5 20.5 20.5' fill='none'><path d='M6.5 2.5L10.5 6.5L6.5 10.5L2.5 6.5Z' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='butt' stroke-linejoin='round'/><path d='M16.1582 2.8242A1.5 1.5 0 0 1 18.8418 2.8242L21.8429 8.8294A1.5 1.5 0 0 1 20.5012 11L14.4988 11A1.5 1.5 0 0 1 13.1571 8.8294Z' fill='var(--foreground)' fill-opacity='0.4'/><path d='M6.5 13C8.9853 13 11 15.0147 11 17.5C11 19.9853 8.9853 22 6.5 22C4.0147 22 2 19.9853 2 17.5C2 15.0147 4.0147 13 6.5 13Z' fill='var(--foreground)' fill-opacity='0.4'/><path d='M10 17.5C10 19.433 8.433 21 6.5 21C4.567 21 3 19.433 3 17.5C3 15.567 4.567 14 6.5 14C8.433 14 10 15.567 10 17.5Z' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/><path d='M19 13C20.6569 13 22 14.3431 22 16L22 19C22 20.6569 20.6569 22 19 22L16 22C14.3431 22 13 20.6569 13 19L13 16C13 14.3431 14.3431 13 16 13L19 13Z' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@keyline-ui",
+    "homepage": "https://keyline-ui.dev",
+    "url": "https://keyline-ui.dev/r/{name}.json",
+    "description": "React components for dense, work-heavy interfaces: toolbars, data tables, menus, inspectors and app shells. Built on Base UI, installed as source. Free under MIT.",
+    "author": "Nityam Dixit",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='var(--foreground)' shape-rendering='crispEdges'><title>Keyline UI</title><rect width='10' height='10'/><path fill-rule='evenodd' d='M2 2h14v14H2zM4 4v10h10V4z'/></svg>"
+  },
+  {
     "name": "@kibo-ui",
     "homepage": "https://www.kibo-ui.com/",
     "url": "https://www.kibo-ui.com/r/{name}.json",
