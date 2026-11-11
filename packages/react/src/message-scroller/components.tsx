@@ -43,16 +43,22 @@ function useMessageScrollerItemContext() {
 }
 
 function useMessageScroller() {
-  const { scrollToEnd, scrollToMessage, scrollToStart } =
+  const { scrollToEnd, scrollToMessage, scrollToStart, userScrollIntent } =
     useMessageScrollerContext()
 
   return React.useMemo(
     () => ({
+      // Public name for the internal user-scroll-intent transition. Releases
+      // follow-bottom and turn-anchoring exactly as a wheel/touch/key gesture
+      // does, so content grown in response to a user action (expanding a
+      // collapsed section) is left where it is instead of being re-pinned to
+      // the end.
+      releaseAutoScroll: userScrollIntent,
       scrollToEnd,
       scrollToMessage,
       scrollToStart,
     }),
-    [scrollToEnd, scrollToMessage, scrollToStart]
+    [scrollToEnd, scrollToMessage, scrollToStart, userScrollIntent]
   )
 }
 
