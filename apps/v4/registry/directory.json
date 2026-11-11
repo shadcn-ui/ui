@@ -2592,6 +2592,14 @@
     "logo": "<svg width='12' height='12' viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'><path d='M11.2827 5.73682V7.60662H8.33242C7.55179 7.60662 6.91563 8.24945 6.91563 9.03203V12.0002H5.05713V9.03203C5.05713 7.72959 5.81831 6.59486 6.91563 6.06103C7.34623 5.85141 7.82682 5.73682 8.33242 5.73682H11.2827Z' fill='#8504FE'/> <path d='M0.6521 6.32195V4.43468H3.6302C4.41819 4.43468 5.06035 3.78584 5.06035 2.99594V0H6.93639V2.99594C6.93639 4.31055 6.16803 5.45589 5.06035 5.99471C4.6257 6.20629 4.14057 6.32195 3.6302 6.32195H0.6521Z' fill='#8504FE'/></svg>"
   },
   {
+    "name": "@prequelui",
+    "homepage": "https://prequelui.terravidhal.me",
+    "url": "https://prequelui.terravidhal.me/r/{name}.json",
+    "description": "Animated, open-source blocks for shadcn/ui: charts, metrics, tables and feeds with purposeful motion, reduced-motion support and light/dark themes. MIT, with an MCP server for AI editors.",
+    "author": "terravidhal",
+    "logo": "<svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path fill='var(--foreground)' fill-rule='evenodd' d='M12 2a10 10 0 1 1 0 20a10 10 0 1 1 0-20Zm-3.5 4a2.5 2.5 0 1 0 0 5a2.5 2.5 0 1 0 0-5Z'/></svg>"
+  },
+  {
     "name": "@preskok",
     "homepage": "https://ui-three-mu.vercel.app",
     "url": "https://ui-three-mu.vercel.app/r/{name}.json",
