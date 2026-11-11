@@ -1,6 +1,6 @@
 {
   "name": "shadcn-ui",
-  "description": "The shadcn/ui agent skills for Claude Code",
+  "description": "The shadcn/ui agent skills",
   "owner": {
     "name": "shadcn-ui",
     "url": "https://ui.shadcn.com"

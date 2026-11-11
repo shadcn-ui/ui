@@ -23,7 +23,7 @@
   "skills": ["./shadcn", "./migrate-radix-to-base"],
   "interface": {
     "displayName": "shadcn/ui",
-    "shortDescription": "Build and manage UI with shadcn/ui agent skills",
+    "shortDescription": "Build and manage UI with shadcn/ui",
     "longDescription": "shadcn/ui is a framework for building UI, components, and design systems. Components are added as source code via the CLI. This plugin installs the agent skills already in this repository so coding agents can work with shadcn/ui correctly.\n\nThe shadcn skill manages components and projects — adding, searching, fixing, debugging, styling, and composing UI (including chat interfaces). It supplies project context, component docs, and usage examples. Use it when working with shadcn/ui, component registries, presets, --preset codes, or any project with a components.json file, and when initializing or applying design systems.\n\nThe migrate-radix-to-base skill migrates React projects and components from Radix UI to Base UI. Use it when asked to migrate from Radix, move to Base UI, convert Radix primitives, or switch a shadcn project's base library — for a single component or a whole project.",
     "developerName": "shadcn",
     "category": "Developer Tools",
