@@ -64,7 +64,7 @@ export function ChartBarLabel() {
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={8}>
+            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={[8, 8, 0, 0]}>
               <LabelList
                 position="top"
                 offset={12}
