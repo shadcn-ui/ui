@@ -152,6 +152,7 @@ function ComboboxContent({
   offset = 6,
   crossOffset = 0,
   anchor,
+  container,
   ...props
 }: Omit<
   React.ComponentProps<typeof PopoverPrimitive>,
