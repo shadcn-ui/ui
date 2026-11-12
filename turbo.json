@@ -18,6 +18,7 @@
       ],
       "outputs": [
         "dist/**",
+        ".vitepress/dist/**",
         ".next/**",
         "!.next/cache/**",
         "public/r/styles/**",
