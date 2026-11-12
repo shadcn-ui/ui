@@ -105,7 +105,9 @@ function QuestionnaireItem({
   children,
   disabled = false,
   invalid = false,
-  multiple = false,
+  max,
+  min,
+  multiple,
   name,
   onStatusChange,
   ref,
@@ -117,6 +119,8 @@ function QuestionnaireItem({
     "aria-keyshortcuts": ariaKeyShortcuts,
     disabled,
     invalid,
+    max,
+    min,
     multiple,
     name,
     onStatusChange,
@@ -130,6 +134,9 @@ function QuestionnaireItem({
     stateAttributesMapping: {
       active: (isActive) => ({
         "data-active": isActive ? "" : undefined,
+      }),
+      maxReached: (isMaxReached) => ({
+        "data-max-reached": isMaxReached ? "" : undefined,
       }),
     },
   })
@@ -321,23 +328,42 @@ function QuestionnaireError({
   render,
   ...props
 }: QuestionnaireErrorProps) {
-  const { invalid, registerError, required } = useQuestionnaireItemContext(
-    "Questionnaire.Error"
-  )
+  const { effectiveMax, effectiveMin, invalid, multiple, registerError } =
+    useQuestionnaireItemContext("Questionnaire.Error")
   const generatedId = React.useId()
   const errorId = id ?? generatedId
 
   React.useLayoutEffect(() => registerError(errorId), [errorId, registerError])
 
+  const defaultErrorMessage = React.useMemo(() => {
+    if (!multiple && effectiveMin > 0) {
+      return "Choose an answer to continue."
+    }
+
+    if (effectiveMin > 0 && effectiveMax !== undefined) {
+      if (effectiveMin === effectiveMax) {
+        return `Select ${effectiveMin} ${effectiveMin === 1 ? "answer" : "answers"} to continue.`
+      }
+
+      return `Select between ${effectiveMin} and ${effectiveMax} answers to continue.`
+    }
+
+    if (effectiveMin > 1) {
+      return `Select at least ${effectiveMin} answers to continue.`
+    }
+
+    if (effectiveMax !== undefined) {
+      return `Select at most ${effectiveMax} ${effectiveMax === 1 ? "answer" : "answers"} to continue.`
+    }
+
+    return "Choose an answer to continue."
+  }, [effectiveMax, effectiveMin, multiple])
+
   return useRender({
     defaultTagName: "p",
     props: mergeProps<"p">(
       {
-        children:
-          children ??
-          (required
-            ? "Choose an answer to continue."
-            : "Choose an answer or skip this question."),
+        children: children ?? defaultErrorMessage,
         hidden: !invalid,
         id: errorId,
         role: invalid ? "alert" : undefined,

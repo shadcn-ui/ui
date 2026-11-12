@@ -2813,9 +2813,17 @@ export const Components: Record<string, any> = {
   "questionnaire-multiple": React.lazy(async () => {
     const mod = await import("@/examples/aria/questionnaire-multiple")
     const exportName =
+    Object.keys(mod).find(
+      (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+    ) || "questionnaire-multiple"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "questionnaire-min-max": React.lazy(async () => {
+    const mod = await import("@/examples/aria/questionnaire-min-max")
+    const exportName =
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
-      ) || "questionnaire-multiple"
+      ) || "questionnaire-min-max"
     return { default: mod.default || mod[exportName] }
   }),
   "questionnaire-navigation-state": React.lazy(async () => {
