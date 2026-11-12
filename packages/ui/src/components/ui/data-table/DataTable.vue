@@ -4,6 +4,7 @@ import { formatJalali, formatNumber, toPersianDigits } from '@saaze/utils'
 import { ArrowDown, ArrowUp, ArrowUpDown, Inbox, Loader2 } from 'lucide-vue-next'
 import { Pagination } from '@/components/ui/pagination'
 import { cn } from '@/lib/utils'
+import { useResolvedDirection } from '@/lib/rtl'
 import type { DataTableAlign, DataTableColumn, DataTableProps, DataTableSort } from './types'
 
 const props = withDefaults(defineProps<DataTableProps<T>>(), {
@@ -17,7 +18,7 @@ const props = withDefaults(defineProps<DataTableProps<T>>(), {
   loadingText: 'در حال بارگذاری…',
   rowsPerPageLabel: 'تعداد در صفحه',
   ariaLabel: 'جدول داده',
-  dir: 'rtl',
+  dir: undefined,
   striped: false,
   stickyHeader: false,
   rowKey: undefined,
@@ -25,6 +26,7 @@ const props = withDefaults(defineProps<DataTableProps<T>>(), {
   tableClass: undefined,
 })
 
+const direction = useResolvedDirection(() => props.dir)
 const emits = defineEmits<{
   'update:page': [page: number]
   'update:pageSize': [pageSize: number]
@@ -178,7 +180,7 @@ defineExpose({ page, pageSize: internalPageSize, sort, pageCount, setPage })
 </script>
 
 <template>
-  <div :dir="dir" :class="cn('w-full', props.class)">
+  <div :dir="direction" :class="cn('w-full', props.class)">
     <div class="relative w-full overflow-auto rounded-lg border bg-card" :aria-busy="loading">
       <table :aria-label="ariaLabel" :class="cn('w-full caption-bottom text-sm', props.tableClass)">
         <thead :class="cn('bg-muted/50', stickyHeader && 'sticky top-0 z-10 backdrop-blur')">
@@ -312,7 +314,7 @@ defineExpose({ page, pageSize: internalPageSize, sort, pageCount, setPage })
       <Pagination
         :page="currentPage"
         :page-count="pageCount"
-        :dir="dir"
+        :dir="direction"
         :disabled="loading"
         @update:page="setPage"
       />

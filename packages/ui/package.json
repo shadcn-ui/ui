@@ -39,12 +39,19 @@
   "dependencies": {
     "@fontsource-variable/vazirmatn": "^5.3.0",
     "@saaze/utils": "workspace:*",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@vueuse/core": "^10.11.1",
     "class-variance-authority": "^0.7.1",
+    "embla-carousel": "^8.6.0",
+    "embla-carousel-vue": "^8.6.0",
     "lucide-vue-next": "^1.0.0",
     "radix-vue": "^1.9.17",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "vee-validate": "^4.15.1",
+    "vue-sonner": "^2.0.9"
   },
   "devDependencies": {
+    "@vee-validate/zod": "^4.15.1",
     "@vitejs/plugin-vue": "^6.0.10",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
@@ -53,7 +60,8 @@
     "vite": "^7.3.7",
     "vite-plugin-dts": "^5.1.2",
     "vue": "^3.5.44",
-    "vue-tsc": "^3.3.13"
+    "vue-tsc": "^3.3.13",
+    "zod": "^3.25.76"
   },
   "publishConfig": {
     "access": "public"

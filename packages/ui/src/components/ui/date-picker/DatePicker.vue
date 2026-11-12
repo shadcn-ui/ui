@@ -5,7 +5,7 @@ import { PopoverContent, PopoverPortal, PopoverRoot, PopoverTrigger } from 'radi
 import { CalendarDays, X } from 'lucide-vue-next'
 import { Calendar } from '@/components/ui/calendar'
 import { cn } from '@/lib/utils'
-import { resolveLogicalAlign, type LogicalAlign } from '@/lib/rtl'
+import { resolveLogicalAlign, type LogicalAlign, useResolvedDirection } from '@/lib/rtl'
 
 interface Props {
   modelValue?: Date | null
@@ -40,7 +40,7 @@ const props = withDefaults(defineProps<Props>(), {
   clearable: true,
   id: undefined,
   ariaLabel: undefined,
-  dir: 'rtl',
+  dir: undefined,
   align: 'start',
   side: 'bottom',
   weekStartsOn: 6,
@@ -51,6 +51,7 @@ const props = withDefaults(defineProps<Props>(), {
   popoverClass: undefined,
 })
 
+const direction = useResolvedDirection(() => props.dir)
 const emits = defineEmits<{
   'update:modelValue': [value: Date | null]
   change: [value: Date | null]
@@ -65,7 +66,7 @@ const displayValue = computed(() =>
     ? formatJalali(props.modelValue, { pattern: props.displayFormat })
     : '',
 )
-const physicalAlign = computed(() => resolveLogicalAlign(props.align, props.dir))
+const physicalAlign = computed(() => resolveLogicalAlign(props.align, direction.value))
 
 function handleSelect(value: Date) {
   emits('update:modelValue', value)
@@ -85,7 +86,7 @@ defineExpose({ open })
 
 <template>
   <PopoverRoot v-model:open="open">
-    <div :dir="dir" :class="cn('relative', props.class)">
+    <div :dir="direction" :class="cn('relative', props.class)">
       <PopoverTrigger as-child>
         <button
           :id="id"
@@ -126,7 +127,7 @@ defineExpose({ open })
 
       <PopoverPortal>
         <PopoverContent
-          :dir="dir"
+          :dir="direction"
           :align="physicalAlign"
           :side="side"
           :side-offset="6"
@@ -147,7 +148,7 @@ defineExpose({ open })
             :default-month="defaultMonth"
             :min-date="minDate"
             :max-date="maxDate"
-            :dir="dir"
+            :dir="direction"
             :week-starts-on="weekStartsOn"
             :show-outside-days="showOutsideDays"
             :show-today="showToday"

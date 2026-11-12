@@ -21,6 +21,7 @@ import {
 import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { useResolvedDirection } from '@/lib/rtl'
 
 interface Props {
   modelValue?: Date | null
@@ -42,7 +43,7 @@ const props = withDefaults(defineProps<Props>(), {
   minDate: null,
   maxDate: null,
   disabled: false,
-  dir: 'rtl',
+  dir: undefined,
   weekStartsOn: 6,
   showOutsideDays: true,
   showToday: true,
@@ -50,6 +51,7 @@ const props = withDefaults(defineProps<Props>(), {
   class: undefined,
 })
 
+const direction = useResolvedDirection(() => props.dir)
 const emits = defineEmits<{
   'update:modelValue': [value: Date]
   select: [value: Date]
@@ -254,6 +256,11 @@ async function focusDate(date: JalaliDate) {
   button?.focus()
 }
 
+/** ستون خانه در شبکه با توجه به `weekStartsOn` (نه روز هفته شنبه‌مبنا) */
+function columnOf(cell: JalaliDayCell): number {
+  return (cell.date.getDay() - props.weekStartsOn + 7) % 7
+}
+
 async function handleGridKeydown(event: KeyboardEvent) {
   if (event.metaKey || event.ctrlKey || event.altKey) return
 
@@ -268,10 +275,10 @@ async function handleGridKeydown(event: KeyboardEvent) {
 
   switch (event.key) {
     case 'ArrowRight':
-      nextDate = addJalaliDays(cell.jalali, props.dir === 'rtl' ? -1 : 1)
+      nextDate = addJalaliDays(cell.jalali, direction.value === 'rtl' ? -1 : 1)
       break
     case 'ArrowLeft':
-      nextDate = addJalaliDays(cell.jalali, props.dir === 'rtl' ? 1 : -1)
+      nextDate = addJalaliDays(cell.jalali, direction.value === 'rtl' ? 1 : -1)
       break
     case 'ArrowUp':
       nextDate = addJalaliDays(cell.jalali, -7)
@@ -280,10 +287,10 @@ async function handleGridKeydown(event: KeyboardEvent) {
       nextDate = addJalaliDays(cell.jalali, 7)
       break
     case 'Home':
-      nextDate = addJalaliDays(cell.jalali, -cell.weekday)
+      nextDate = addJalaliDays(cell.jalali, -columnOf(cell))
       break
     case 'End':
-      nextDate = addJalaliDays(cell.jalali, 6 - cell.weekday)
+      nextDate = addJalaliDays(cell.jalali, 6 - columnOf(cell))
       break
     case 'PageUp':
       nextDate = addJalaliMonths(cell.jalali, -1)
@@ -314,8 +321,11 @@ defineExpose({ view, selectToday })
 </script>
 
 <template>
-  <div :dir="dir" :class="cn('w-[19rem] max-w-full rounded-lg bg-background p-3', props.class)">
-    <h2 class="sr-only" aria-live="polite">{{ monthName }} {{ toPersianDigits(view.year) }}</h2>
+  <div
+    :dir="direction"
+    :class="cn('w-[19rem] max-w-full rounded-lg bg-background p-3', props.class)"
+  >
+    <span class="sr-only" aria-live="polite">{{ monthName }} {{ toPersianDigits(view.year) }}</span>
 
     <div class="flex items-center justify-between gap-2">
       <Button
@@ -325,7 +335,7 @@ defineExpose({ view, selectToday })
         aria-label="ماه قبل"
         @click="changeMonth(-1)"
       >
-        <ChevronRight v-if="dir === 'rtl'" aria-hidden="true" />
+        <ChevronRight v-if="direction === 'rtl'" aria-hidden="true" />
         <ChevronLeft v-else aria-hidden="true" />
       </Button>
 
@@ -365,7 +375,7 @@ defineExpose({ view, selectToday })
         aria-label="ماه بعد"
         @click="changeMonth(1)"
       >
-        <ChevronLeft v-if="dir === 'rtl'" aria-hidden="true" />
+        <ChevronLeft v-if="direction === 'rtl'" aria-hidden="true" />
         <ChevronRight v-else aria-hidden="true" />
       </Button>
     </div>
@@ -374,7 +384,7 @@ defineExpose({ view, selectToday })
       ref="gridRef"
       role="grid"
       :aria-label="gridLabel"
-      class="mt-3 w-full table-fixed select-none border-collapse"
+      class="saaze-calendar-grid mt-3 w-full table-fixed select-none border-collapse"
       @keydown="handleGridKeydown"
     >
       <thead>

@@ -4,6 +4,7 @@ import { toPersianDigits } from '@saaze/utils'
 import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { useResolvedDirection } from '@/lib/rtl'
 
 interface Props {
   page?: number
@@ -23,13 +24,14 @@ const props = withDefaults(defineProps<Props>(), {
   pageCount: 1,
   siblingCount: 1,
   disabled: false,
-  dir: 'rtl',
+  dir: undefined,
   showLabels: true,
   previousLabel: 'قبلی',
   nextLabel: 'بعدی',
   ariaLabel: 'صفحه‌بندی',
 })
 
+const direction = useResolvedDirection(() => props.dir)
 const emit = defineEmits<{
   'update:page': [page: number]
   change: [page: number]
@@ -86,7 +88,7 @@ function pageLabel(page: number): string {
 </script>
 
 <template>
-  <nav :dir="dir" :aria-label="ariaLabel" :class="cn('flex items-center gap-1', props.class)">
+  <nav :dir="direction" :aria-label="ariaLabel" :class="cn('flex items-center gap-1', props.class)">
     <Button
       variant="outline"
       size="sm"
@@ -94,7 +96,7 @@ function pageLabel(page: number): string {
       :aria-label="previousLabel"
       @click="goToPage(currentPage - 1)"
     >
-      <ChevronRight v-if="dir === 'rtl'" aria-hidden="true" />
+      <ChevronRight v-if="direction === 'rtl'" aria-hidden="true" />
       <ChevronLeft v-else aria-hidden="true" />
       <span v-if="showLabels" class="hidden sm:inline">{{ previousLabel }}</span>
     </Button>
@@ -128,7 +130,7 @@ function pageLabel(page: number): string {
       @click="goToPage(currentPage + 1)"
     >
       <span v-if="showLabels" class="hidden sm:inline">{{ nextLabel }}</span>
-      <ChevronLeft v-if="dir === 'rtl'" aria-hidden="true" />
+      <ChevronLeft v-if="direction === 'rtl'" aria-hidden="true" />
       <ChevronRight v-else aria-hidden="true" />
     </Button>
   </nav>

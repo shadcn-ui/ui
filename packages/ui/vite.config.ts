@@ -2,6 +2,12 @@ import { fileURLToPath, URL } from 'node:url'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
+import pkg from './package.json' with { type: 'json' }
+
+const externalPackages = [
+  ...Object.keys(pkg.peerDependencies ?? {}),
+  ...Object.keys(pkg.dependencies ?? {}),
+]
 
 export default defineConfig({
   plugins: [
@@ -30,7 +36,11 @@ export default defineConfig({
     cssCodeSplit: false,
     sourcemap: true,
     rollupOptions: {
-      external: ['vue', 'radix-vue', 'lucide-vue-next', 'class-variance-authority', '@saaze/utils'],
+      // همه وابستگی‌ها (و زیرمسیرهایشان) بیرونی می‌مانند تا در بسته کتابخانه تکرار نشوند؛
+      // فقط فایل‌های CSS باندل می‌شوند تا در dist/style.css قرار بگیرند.
+      external: (id) =>
+        !id.endsWith('.css') &&
+        externalPackages.some((name) => id === name || id.startsWith(`${name}/`)),
     },
   },
 })

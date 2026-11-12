@@ -5,15 +5,15 @@ import {
   type DropdownMenuSubTriggerProps,
   useForwardProps,
 } from 'radix-vue'
-import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
+import { reactiveOmit } from '@vueuse/core'
+import { ChevronRight } from 'lucide-vue-next'
 import { cn } from '@/lib/utils'
-import { useDropdownDirection } from '@/lib/rtl'
 
 const props = defineProps<
   DropdownMenuSubTriggerProps & { inset?: boolean; class?: HTMLAttributes['class'] }
 >()
-const forwarded = useForwardProps(props)
-const direction = useDropdownDirection()
+const delegatedProps = reactiveOmit(props, 'class', 'inset')
+const forwarded = useForwardProps(delegatedProps)
 </script>
 
 <template>
@@ -31,7 +31,6 @@ const direction = useDropdownDirection()
     "
   >
     <slot />
-    <ChevronLeft v-if="direction === 'rtl'" class="ms-auto size-4" aria-hidden="true" />
-    <ChevronRight v-else class="ms-auto size-4" aria-hidden="true" />
+    <ChevronRight class="ms-auto size-4 rtl:rotate-180" aria-hidden="true" />
   </DropdownMenuSubTrigger>
 </template>

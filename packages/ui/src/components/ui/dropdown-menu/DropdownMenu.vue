@@ -1,27 +1,24 @@
 <script setup lang="ts">
-import { computed, provide } from 'vue'
+import { provide } from 'vue'
 import {
   DropdownMenuRoot,
   type DropdownMenuRootEmits,
   type DropdownMenuRootProps,
   useForwardPropsEmits,
 } from 'radix-vue'
-import { dropdownDirectionKey } from '@/lib/rtl'
+import { saazeDirectionKey, useResolvedDirection } from '@/lib/rtl'
 
-const props = withDefaults(defineProps<DropdownMenuRootProps>(), {
-  dir: 'rtl',
-})
+const props = defineProps<DropdownMenuRootProps>()
 const emits = defineEmits<DropdownMenuRootEmits>()
 const forwarded = useForwardPropsEmits(props, emits)
 
-provide(
-  dropdownDirectionKey,
-  computed(() => props.dir ?? 'rtl'),
-)
+const dir = useResolvedDirection(() => props.dir)
+// زیرمنوها و آیکون‌های جهت‌دار جهت همین منو را دنبال می‌کنند.
+provide(saazeDirectionKey, dir)
 </script>
 
 <template>
-  <DropdownMenuRoot v-bind="forwarded">
-    <slot />
+  <DropdownMenuRoot v-slot="slotProps" v-bind="forwarded" :dir="dir">
+    <slot v-bind="slotProps" />
   </DropdownMenuRoot>
 </template>

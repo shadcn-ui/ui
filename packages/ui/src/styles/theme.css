@@ -34,6 +34,44 @@
     --ring: 174 72% 30%;
 
     --radius: 0.75rem;
+
+    /* رنگ‌های نمودار */
+    --chart-1: 174 72% 32%;
+    --chart-2: 38 92% 52%;
+    --chart-3: 221 70% 52%;
+    --chart-4: 340 70% 55%;
+    --chart-5: 262 55% 58%;
+
+    /* نوار کناری */
+    --sidebar: 40 30% 97%;
+    --sidebar-foreground: 224 25% 12%;
+    --sidebar-primary: 174 72% 26%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 40 20% 92%;
+    --sidebar-accent-foreground: 224 25% 12%;
+    --sidebar-border: 35 20% 87%;
+    --sidebar-ring: 174 72% 30%;
+
+    /* جهت حرکت انیمیشن‌های کشویی منطقی */
+    --saaze-slide-start-enter: -100%;
+    --saaze-slide-start-exit: -100%;
+    --saaze-slide-end-enter: 100%;
+    --saaze-slide-end-exit: 100%;
+  }
+
+  [dir='rtl'] {
+    --saaze-slide-start-enter: 100%;
+    --saaze-slide-start-exit: 100%;
+    --saaze-slide-end-enter: -100%;
+    --saaze-slide-end-exit: -100%;
+  }
+
+  /* ناحیه LTR داخل صفحه RTL باید مقدارهای ارث‌برده را بازنشانی کند. */
+  [dir='ltr'] {
+    --saaze-slide-start-enter: -100%;
+    --saaze-slide-start-exit: -100%;
+    --saaze-slide-end-enter: 100%;
+    --saaze-slide-end-exit: 100%;
   }
 
   .dark {
@@ -66,6 +104,21 @@
     --border: 224 18% 20%;
     --input: 224 18% 24%;
     --ring: 172 62% 43%;
+
+    --chart-1: 172 62% 45%;
+    --chart-2: 40 90% 58%;
+    --chart-3: 217 80% 64%;
+    --chart-4: 340 75% 65%;
+    --chart-5: 262 65% 70%;
+
+    --sidebar: 225 24% 11%;
+    --sidebar-foreground: 40 30% 96%;
+    --sidebar-primary: 172 62% 43%;
+    --sidebar-primary-foreground: 174 80% 8%;
+    --sidebar-accent: 224 18% 17%;
+    --sidebar-accent-foreground: 40 30% 96%;
+    --sidebar-border: 224 18% 20%;
+    --sidebar-ring: 172 62% 43%;
   }
 
   * {
