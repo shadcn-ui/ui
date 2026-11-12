@@ -1453,13 +1453,13 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "questionnaire-freeform",
       filePath: "examples/base/questionnaire-freeform.tsx",
     },
-    "questionnaire-multiple": {
-      name: "questionnaire-multiple",
-      filePath: "examples/base/questionnaire-multiple.tsx",
-    },
     "questionnaire-min-max": {
       name: "questionnaire-min-max",
       filePath: "examples/base/questionnaire-min-max.tsx",
+    },
+    "questionnaire-multiple": {
+      name: "questionnaire-multiple",
+      filePath: "examples/base/questionnaire-multiple.tsx",
     },
     "questionnaire-navigation-state": {
       name: "questionnaire-navigation-state",
