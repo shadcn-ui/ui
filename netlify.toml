@@ -1,0 +1,9 @@
+# Deploy the VitePress documentation site (@saaze/docs) from the monorepo root.
+# The root `build` script builds @saaze/utils and @saaze/ui first, since the docs depend on them.
+[build]
+  base = "."
+  command = "pnpm build"
+  publish = "apps/docs/.vitepress/dist"
+
+[build.environment]
+  NODE_VERSION = "22"
