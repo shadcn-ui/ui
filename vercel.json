@@ -1,0 +1,19 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "services": {
+    "docs": {
+      "root": "apps/docs",
+      "framework": "vitepress",
+      "installCommand": "node scripts/vercel-install.mjs",
+      "buildCommand": "pnpm build",
+      "outputDirectory": ".vitepress/dist"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": { "service": "docs" }
+    }
+  ]
+}
