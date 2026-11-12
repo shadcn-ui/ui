@@ -163,3 +163,12 @@ import {
 - فوکوس پس از بسته شدن به عنصر بازکننده برمی‌گردد.
 - برای آیتم‌های فقط آیکنی، `aria-label` یا متن پنهان اضافه کنید.
 - آیتم خطرناک را با رنگ `destructive` و متن روشن مشخص کنید.
+
+## گزینه خطرناک
+
+برای اقدام‌های برگشت‌ناپذیر از `variant="destructive"` روی `DropdownMenuItem` (و
+`ContextMenuItem`) استفاده کنید:
+
+```vue
+<DropdownMenuItem variant="destructive">حذف پروژه</DropdownMenuItem>
+```

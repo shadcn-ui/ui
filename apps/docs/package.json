@@ -15,9 +15,12 @@
     "@fontsource-variable/vazirmatn": "^5.3.0",
     "@saaze/ui": "workspace:*",
     "@saaze/utils": "workspace:*",
+    "@vee-validate/zod": "^4.15.1",
     "lucide-vue-next": "^1.0.0",
     "radix-vue": "^1.9.17",
-    "vue": "^3.5.44"
+    "vee-validate": "^4.15.1",
+    "vue": "^3.5.44",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",

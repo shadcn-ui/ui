@@ -84,3 +84,20 @@ const page = ref(1)
 - صفحه فعال `aria-current="page"` دارد.
 - هر دکمه شماره، `aria-label="صفحه ۱۲"` فارسی دارد.
 - دکمه‌های قبلی و بعدی در ابتدا و انتهای بازه غیرفعال می‌شوند.
+
+## اجزای ترکیب‌پذیر
+
+اگر به کنترل کامل نشانه‌گذاری نیاز دارید (مثلاً لینک‌های واقعی برای مسیریاب)، از اجزای
+هم‌نام shadcn استفاده کنید. فلش‌ها در RTL خودکار آینه می‌شوند:
+
+```vue
+<PaginationRoot>
+  <PaginationContent>
+    <PaginationItem><PaginationPrevious href="?page=1" /></PaginationItem>
+    <PaginationItem><PaginationLink href="?page=1">۱</PaginationLink></PaginationItem>
+    <PaginationItem><PaginationLink href="?page=2" is-active>۲</PaginationLink></PaginationItem>
+    <PaginationItem><PaginationEllipsis /></PaginationItem>
+    <PaginationItem><PaginationNext href="?page=3" /></PaginationItem>
+  </PaginationContent>
+</PaginationRoot>
+```

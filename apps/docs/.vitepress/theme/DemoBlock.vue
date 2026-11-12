@@ -56,7 +56,7 @@ onBeforeUnmount(() => {
 
 <template>
   <section class="saaze-demo" dir="rtl">
-    <header class="saaze-demo__header">
+    <header v-if="title || description || code" class="saaze-demo__header">
       <div class="saaze-demo__heading">
         <h3 v-if="title" class="saaze-demo__title">{{ title }}</h3>
         <p v-if="description" class="saaze-demo__description">{{ description }}</p>
@@ -104,12 +104,23 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .saaze-demo {
+  position: relative;
   margin: 24px 0;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 16px;
-  background-color: var(--vp-c-bg);
-  overflow: hidden;
+  border-radius: 12px;
+  background-color: var(--vp-c-bg-soft);
+  overflow: visible;
   box-shadow: 0 1px 2px rgb(15 23 42 / 4%);
+}
+
+.saaze-demo::after {
+  position: absolute;
+  z-index: 1;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: inherit;
+  content: '';
+  inset: 0;
+  pointer-events: none;
 }
 
 .saaze-demo__header {
@@ -185,16 +196,19 @@ onBeforeUnmount(() => {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 16px;
-  padding: 28px 20px;
-  min-height: 120px;
-  background-color: var(--vp-c-bg);
-  background-image: radial-gradient(var(--vp-c-divider) 0.7px, transparent 0.7px);
-  background-size: 16px 16px;
+  gap: 20px;
+  padding: 48px 40px;
+  min-height: 220px;
+  background-color: var(--vp-c-bg-soft);
+}
+
+.saaze-demo__preview :deep(table) {
+  display: table;
 }
 
 .saaze-demo__code {
   border-top: 1px solid var(--vp-c-divider);
+  border-radius: 0 0 15px 15px;
   background-color: var(--vp-code-block-bg);
 }
 
@@ -245,7 +259,7 @@ onBeforeUnmount(() => {
 
 @media (max-width: 640px) {
   .saaze-demo__preview {
-    padding: 20px 16px;
+    padding: 24px 16px;
   }
 }
 </style>

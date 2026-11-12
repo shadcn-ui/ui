@@ -15,7 +15,7 @@
   --vp-c-brand-dark: #115e59;
   --vp-c-brand-darker: #134e4a;
 
-  --vp-c-bg: #fdfcf9;
+  --vp-c-bg: hsl(var(--background));
   --vp-c-bg-alt: #f7f4ec;
   --vp-c-bg-soft: #f3efe5;
   --vp-c-bg-elv: #fffdf8;
@@ -26,9 +26,9 @@
   --vp-c-text-2: #505b6b;
   --vp-c-text-3: #8a8f98;
 
-  --vp-sidebar-bg-color: #faf8f2;
-  --vp-nav-bg-color: rgb(253 252 249 / 86%);
-  --vp-local-nav-bg-color: rgb(253 252 249 / 92%);
+  --vp-sidebar-bg-color: hsl(var(--background));
+  --vp-nav-bg-color: hsl(var(--background));
+  --vp-local-nav-bg-color: hsl(var(--background));
 
   --vp-font-family-base: 'Vazirmatn Variable', Vazirmatn, Tahoma, sans-serif;
   --vp-font-family-mono: 'SFMono-Regular', ui-monospace, 'Cascadia Code', Menlo, monospace;
@@ -54,7 +54,7 @@
   --vp-c-brand-dark: #14b8a6;
   --vp-c-brand-darker: #0d9488;
 
-  --vp-c-bg: #10151c;
+  --vp-c-bg: hsl(var(--background));
   --vp-c-bg-alt: #151c25;
   --vp-c-bg-soft: #19222c;
   --vp-c-bg-elv: #1c2631;
@@ -65,9 +65,9 @@
   --vp-c-text-2: #b6bec8;
   --vp-c-text-3: #7f8a97;
 
-  --vp-sidebar-bg-color: #0e131a;
-  --vp-nav-bg-color: rgb(16 21 28 / 86%);
-  --vp-local-nav-bg-color: rgb(16 21 28 / 92%);
+  --vp-sidebar-bg-color: hsl(var(--background));
+  --vp-nav-bg-color: hsl(var(--background));
+  --vp-local-nav-bg-color: hsl(var(--background));
 }
 
 html {
@@ -173,6 +173,27 @@ html[dir='rtl'] .VPNavBarExtra .menu {
   html[dir='rtl'] .VPSidebar {
     right: 0;
     left: auto;
+    top: var(--vp-nav-height);
+    padding-top: 32px;
+    scrollbar-color: var(--vp-c-text-3) transparent;
+    scrollbar-width: thin;
+  }
+
+  html[dir='rtl'] .VPSidebar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  html[dir='rtl'] .VPSidebar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  html[dir='rtl'] .VPSidebar::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    background-color: var(--vp-c-text-3);
+  }
+
+  html[dir='rtl'] .VPSidebar .curtain {
+    display: none;
   }
 }
 
@@ -315,6 +336,47 @@ html[dir='rtl'] .VPLocalNavOutlineDropdown .icon {
 
 .vp-doc table {
   width: 100%;
+}
+
+.vp-doc table.saaze-calendar-grid {
+  display: table;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.vp-doc table.saaze-calendar-grid th,
+.vp-doc table.saaze-calendar-grid td {
+  padding: 0;
+  border: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.vp-doc table.saaze-calendar-grid th {
+  padding-block-end: 0.25rem;
+}
+
+.vp-doc table.saaze-calendar-grid tr:nth-child(n) {
+  background-color: transparent;
+}
+
+.vp-doc ol.breadcrumb-list {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+:is(button, input, select, textarea).border {
+  border-style: solid;
+}
+
+html.dark .vp-doc a.hover\:bg-accent:hover,
+html.dark .vp-doc a.focus-visible\:bg-accent:focus-visible {
+  color: hsl(var(--accent-foreground));
+}
+
+html.dark .vp-doc a.hover\:bg-accent:hover *,
+html.dark .vp-doc a.focus-visible\:bg-accent:focus-visible * {
+  color: hsl(var(--accent-foreground));
 }
 
 .vp-doc tr:nth-child(2n) {
@@ -529,4 +591,36 @@ html[dir='rtl'] .VPFeature .link-text-icon {
   html[dir='rtl'] .VPHero .tagline {
     font-size: 17px;
   }
+}
+
+/* جلوگیری از نشت سبک‌های VitePress (فهرست و تیتر) به نوار کناری نمونه‌ها */
+.vp-doc [data-slot='sidebar-menu'],
+.vp-doc [data-slot='sidebar-menu-sub'] {
+  list-style: none;
+  margin: 0;
+  padding-inline-start: 0;
+}
+
+.vp-doc [data-slot='sidebar-menu'] li + li,
+.vp-doc [data-slot='sidebar-menu-sub'] li + li {
+  margin-top: 0;
+}
+
+.vp-doc [data-slot='sidebar-group-label'] {
+  margin: 0;
+  padding-top: 0;
+  border-top: 0;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: normal;
+}
+
+.vp-doc [data-slot='pagination-content'] {
+  list-style: none;
+  margin: 0;
+  padding-inline-start: 0;
+}
+
+.vp-doc [data-slot='pagination-content'] li + li {
+  margin-top: 0;
 }
