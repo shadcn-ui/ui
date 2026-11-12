@@ -5,6 +5,8 @@ import { registryNamespaceSchema } from "../registry-directory"
 export const REGISTRY_HEALTH_SCHEMA_VERSION = 1 as const
 export const REGISTRY_HEALTH_SCORE_VERSION = 1 as const
 export const REGISTRY_DRY_RUN_VERSION = 1 as const
+export const REGISTRY_ITEM_VALIDATION_VERSION = 1 as const
+export const REGISTRY_RANKING_VERSION = 1 as const
 export const REGISTRY_DRY_RUN_FAILURE_MESSAGE_MAX_LENGTH = 1000
 
 export const registryHealthStatusSchema = z.enum([
@@ -68,6 +70,16 @@ export const registryHealthGlobalMeansSchema = z
   })
   .strict()
 
+export const registryRankingSchema = z
+  .object({
+    version: z.literal(REGISTRY_RANKING_VERSION),
+    score: z.number().min(0).max(100),
+    itemCount: z.number().int().nonnegative(),
+  })
+  .strict()
+
+export type RegistryRanking = z.infer<typeof registryRankingSchema>
+
 export const registryHealthSnapshotSchema = z
   .object({
     schemaVersion: z.literal(REGISTRY_HEALTH_SCHEMA_VERSION),
@@ -75,6 +87,9 @@ export const registryHealthSnapshotSchema = z
     generatedAt: z.string().datetime(),
     globalMeans: registryHealthGlobalMeansSchema,
     registries: z.record(registryNamespaceSchema, registryHealthSchema),
+    rankings: z
+      .record(registryNamespaceSchema, registryRankingSchema)
+      .optional(),
   })
   .strict()
 
@@ -234,6 +249,7 @@ export const registryMonitorStateSchema = z
     schemaVersion: z.literal(REGISTRY_HEALTH_SCHEMA_VERSION),
     scoreVersion: z.literal(REGISTRY_HEALTH_SCORE_VERSION),
     dryRunVersion: z.number().int().nonnegative().optional(),
+    itemValidationVersion: z.number().int().nonnegative().optional(),
     updatedAt: z.string().datetime(),
     lastDailyRunAt: z.string().datetime().optional(),
     lastWeeklyRunAt: z.string().datetime().optional(),

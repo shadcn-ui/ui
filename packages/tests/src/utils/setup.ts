@@ -5,6 +5,10 @@ import { rimraf } from "rimraf"
 export const TEMP_DIR = path.join(__dirname, "../../temp")
 
 const SHADCN_CLI_PATH = path.join(__dirname, "../../../shadcn/dist/index.js")
+const SHADCN_REGISTRY_PATH = path.join(
+  __dirname,
+  "../../../registry/dist/registry/index.js"
+)
 
 async function waitForCondition(
   label: string,
@@ -22,11 +26,13 @@ async function waitForCondition(
 export default async function setup() {
   await fs.ensureDir(TEMP_DIR)
 
-  // The v4 dev script runs `pnpm --filter=shadcn build` in the background
-  // while `next dev` starts immediately. On fast CI runs the server can be
-  // ready before the CLI binary is built, so we wait for it explicitly.
+  // The CLI may still be building when the dev server is ready, so wait for
+  // it and for the @shadcn/registry build it imports.
   await waitForCondition("shadcn CLI binary", () =>
     fs.pathExists(SHADCN_CLI_PATH)
+  )
+  await waitForCondition("@shadcn/registry build", () =>
+    fs.pathExists(SHADCN_REGISTRY_PATH)
   )
 
   // The CLI's first request goes to the dynamic /init route. On a cold Next.js

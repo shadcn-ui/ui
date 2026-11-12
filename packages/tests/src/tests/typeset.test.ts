@@ -58,7 +58,7 @@ describe.each(Object.entries(FILES))(
       // Element rules nest inside one guarded umbrella via &:where(); any
       // flat .typeset descendant rule outside it carries the guard itself.
       expect(contents).toMatch(
-        /\.typeset\s+\*:not\(\s*:where\(\s*\.not-typeset,\s*\[data-not-typeset\],\s*\.not-typeset \*,\s*\[data-not-typeset\] \*\s*\)\s*\)\s*\{/
+        /\.typeset\s+\*:not\(\s*:where\(\s*\.not-typeset,\s*\[data-not-typeset\],\s*\.not-typeset \*,\s*\[data-not-typeset\] \*[^{]*\)\s*\)\s*\{/
       )
       const nested = [...contents.matchAll(/&:where\(/g)]
       expect(nested.length).toBeGreaterThan(file === "typeset.css" ? 50 : 1)

@@ -1,15 +1,15 @@
 import path from "path"
+import { handleError } from "@/src/utils/handle-error"
+import { getBase, getConfig } from "@shadcn/registry/internal/get-config"
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { logger } from "@shadcn/registry/internal/logger"
 import {
   isPresetBase,
   PRESET_BASES,
   type PresetBase,
-} from "@/src/preset/preset"
-import { getShadcnRegistryIndex } from "@/src/registry/api"
-import { SHADCN_URL } from "@/src/registry/constants"
-import { getBase, getConfig } from "@/src/utils/get-config"
-import { handleError } from "@/src/utils/handle-error"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
+} from "@shadcn/registry/internal/preset/preset"
+import { getShadcnRegistryIndex } from "@shadcn/registry/internal/registry/api"
+import { SHADCN_URL } from "@shadcn/registry/internal/registry/constants"
 import { Command } from "commander"
 
 const SHADCN_BASE_URL = "https://ui.shadcn.com"
@@ -115,11 +115,11 @@ export function resolveDocsBase(base: unknown, style: string | undefined) {
   return resolvedBase
 }
 
-function normalizeLinks(links: Record<string, string>) {
+export function normalizeLinks(links: Record<string, string>) {
   return Object.fromEntries(
     Object.entries(links).map(([key, value]) => [
       key,
-      value.startsWith(SHADCN_BASE_URL)
+      value === SHADCN_BASE_URL || value.startsWith(`${SHADCN_BASE_URL}/`)
         ? `${SHADCN_URL}${value.slice(SHADCN_BASE_URL.length)}`
         : value,
     ])

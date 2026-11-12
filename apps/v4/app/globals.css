@@ -343,6 +343,10 @@
     color: var(--color-code-foreground);
   }
 
+  [data-rehype-pretty-code-figure] pre[data-prompt] code {
+    white-space: pre-wrap;
+  }
+
   [data-line-numbers] {
     display: grid;
     min-width: 100%;

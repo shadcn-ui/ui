@@ -19,9 +19,16 @@ jobs:
     name: Publish Prerelease to NPM
     runs-on: ubuntu-latest
     environment: Preview
+    # One prerelease at a time, so two runs never publish the same snapshot
+    # version of a package.
+    concurrency:
+      group: prerelease
+      cancel-in-progress: false
     permissions:
       id-token: write
       contents: read
+      # The changelog plugin looks up the pull request of each changeset.
+      pull-requests: read
 
     steps:
       - name: Select prerelease channel
@@ -97,6 +104,9 @@ jobs:
       - name: Version snapshot
         if: steps.changesets.outputs.present == 'true'
         run: pnpm exec changeset version --snapshot ${{ steps.prerelease.outputs.channel }}
+        env:
+          # @changesets/changelog-github needs a token to read pull request info.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build packages
         if: steps.changesets.outputs.present == 'true'
@@ -104,7 +114,7 @@ jobs:
 
       - name: Publish snapshot to NPM
         if: steps.changesets.outputs.present == 'true'
-        run: pnpm exec changeset publish --tag ${{ steps.prerelease.outputs.channel }} --no-git-tag
+        run: node .github/changeset-publish.js --tag ${{ steps.prerelease.outputs.channel }} --no-git-tag
 
       - name: Collect prerelease info
         if: steps.changesets.outputs.present == 'true'
@@ -121,6 +131,11 @@ jobs:
     if: ${{ github.event_name == 'push' && github.repository_owner == 'shadcn-ui' }}
     name: Create Version PR or Publish Stable Release
     runs-on: ubuntu-latest
+    # One release at a time: changeset-publish.js checks npm and git tags, and a
+    # second run must see what the first one published.
+    concurrency:
+      group: release
+      cancel-in-progress: false
     permissions:
       id-token: write
       contents: write
@@ -150,8 +165,9 @@ jobs:
       - name: Install NPM Dependencies
         run: pnpm install
 
-      # Builds every publishable package under packages/* (shadcn, @shadcn/react,
-      # @shadcn/helpers), never apps/v4, so each dist is fresh before publish.
+      # Builds every publishable package under packages/* (shadcn,
+      # @shadcn/registry, @shadcn/react, @shadcn/helpers), never apps/v4, so
+      # each dist is fresh before publish.
       - name: Build the packages
         run: pnpm build:packages
 
@@ -171,7 +187,7 @@ jobs:
           commit: "chore(release): version packages"
           title: "chore(release): version packages"
           version: node .github/changeset-version.js
-          publish: npx changeset publish
+          publish: node .github/changeset-publish.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_ENV: "production"
