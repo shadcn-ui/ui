@@ -6,6 +6,12 @@
       "runtimeExecutable": "pnpm",
       "runtimeArgs": ["--filter=v4", "dev"],
       "port": 4000
+    },
+    {
+      "name": "docs",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@saaze/docs", "dev"],
+      "port": 5173
     }
   ]
 }
