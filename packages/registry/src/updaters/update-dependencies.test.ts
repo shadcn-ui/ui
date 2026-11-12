@@ -390,3 +390,64 @@ describe("dependency commands", () => {
     )
   })
 })
+
+describe("rush monorepo", () => {
+  const cwd = getFixturesDir("project-rush", "apps", "web")
+
+  afterEach(() => {
+    vi.restoreAllMocks()
+  })
+
+  it("installs through rush add instead of the underlying package manager (#5705)", async () => {
+    await updateDependencies(
+      // recharts is already declared in the fixture and must be skipped.
+      ["recharts", "react-is", "@base-ui/react@1.4.1"],
+      ["typescript"],
+      { resolvedPaths: { cwd } } as any,
+      { silent: true }
+    )
+
+    expect(execa).toHaveBeenCalledTimes(2)
+    expect(execa).toHaveBeenCalledWith(
+      "rush",
+      ["add", "--package", "react-is", "--package", "@base-ui/react@1.4.1"],
+      { cwd }
+    )
+    expect(execa).toHaveBeenCalledWith(
+      "rush",
+      ["add", "--package", "typescript", "--dev"],
+      { cwd }
+    )
+  })
+
+  it("installs through rush add without a shadcn config", async () => {
+    await installDependencies(cwd, ["cn"])
+
+    expect(execa).toHaveBeenCalledWith("rush", ["add", "--package", "cn"], {
+      cwd,
+    })
+  })
+
+  it("removes through rush remove", async () => {
+    await removeDependencies(cwd, ["recharts", "not-installed"])
+
+    expect(execa).toHaveBeenCalledWith(
+      "rush",
+      ["remove", "--package", "recharts"],
+      { cwd }
+    )
+  })
+
+  it("rejects dependencies that begin with a dash", async () => {
+    await expect(
+      updateDependencies(
+        ["--registry=http://malicious"],
+        [],
+        { resolvedPaths: { cwd } } as any,
+        { silent: true }
+      )
+    ).rejects.toThrow(/cannot start with/)
+
+    expect(execa).not.toHaveBeenCalled()
+  })
+})

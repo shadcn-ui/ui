@@ -5,6 +5,7 @@ import {
   getPackageManager,
   getPackageManagerFromUserAgent,
   getPackageRunnerCommand,
+  getRushRoot,
 } from "./get-package-manager"
 
 describe("getPackageManager", () => {
@@ -44,5 +45,20 @@ describe("getPackageRunnerCommand", () => {
     expect(getPackageRunnerCommand("bun")).toBe("bunx")
     expect(getPackageRunnerCommand("npm")).toBe("npx")
     expect(getPackageRunnerCommand(null)).toBe("npx")
+  })
+})
+
+describe("getRushRoot", () => {
+  it("finds rush.json from a nested project folder", () => {
+    const root = getFixturesDir("project-rush")
+
+    expect(getRushRoot(getFixturesDir("project-rush", "apps", "web"))).toBe(
+      root
+    )
+    expect(getRushRoot(root)).toBe(root)
+  })
+
+  it("returns null outside a Rush monorepo", () => {
+    expect(getRushRoot(getFixturesDir("project-pnpm"))).toBeNull()
   })
 })

@@ -1,7 +1,7 @@
 import path from "path"
 import { Config } from "@/src/get-config"
 import { getPackageInfo } from "@/src/get-package-info"
-import { getPackageManager } from "@/src/get-package-manager"
+import { getPackageManager, getRushRoot } from "@/src/get-package-manager"
 import { logger } from "@/src/logger"
 import { SHADCN_URL } from "@/src/registry/constants"
 import { RegistryItem } from "@/src/registry/schema"
@@ -107,7 +107,7 @@ export async function installDependencies(
   }
 
   await installWithPackageManager(
-    await getPackageManager(cwd),
+    await getInstallPackageManager(cwd),
     dependencies,
     devDependencies,
     cwd
@@ -125,7 +125,14 @@ export async function removeDependencies(cwd: string, dependencies: string[]) {
     return
   }
 
-  const packageManager = await getPackageManager(cwd)
+  const packageManager = await getInstallPackageManager(cwd)
+  if (packageManager === "rush") {
+    await execa("rush", ["remove", ...toRushPackageArgs(dependencies)], {
+      cwd,
+    })
+    return
+  }
+
   if (packageManager === "npm") {
     await execa("npm", ["uninstall", ...NPM_FLAGS, "--", ...dependencies], {
       cwd,
@@ -263,7 +270,22 @@ function shouldPromptForNpmFlag(config: Config) {
   return hasReact19 && hasReactDayPicker8
 }
 
+// Rush takes precedence over everything else (including Expo): inside a Rush
+// monorepo any install that bypasses the `rush` CLI fails or corrupts the
+// shared lockfile.
+async function getInstallPackageManager(cwd: string) {
+  if (getRushRoot(cwd)) {
+    return "rush" as const
+  }
+
+  return getPackageManager(cwd)
+}
+
 async function getUpdateDependenciesPackageManager(config: Config) {
+  if (getRushRoot(config.resolvedPaths.cwd)) {
+    return "rush" as const
+  }
+
   const expoVersion = getPackageInfo(config.resolvedPaths.cwd, false)
     ?.dependencies?.expo
 
@@ -313,6 +335,10 @@ async function installWithPackageManager(
 
   if (packageManager === "expo") {
     return installWithExpo(dependencies, devDependencies, cwd)
+  }
+
+  if (packageManager === "rush") {
+    return installWithRush(dependencies, devDependencies, cwd)
   }
 
   assertSafeDependencies(dependencies)
@@ -406,5 +432,31 @@ async function installWithExpo(
     await execa("npx", ["expo", "install", "-- -D", "--", ...devDependencies], {
       cwd,
     })
+  }
+}
+
+// `rush add` / `rush remove` take one `--package` per dependency. Each name is
+// bound to its own option value, so there is no `--` separator to rely on;
+// assertSafeDependencies is what keeps a registry value from becoming a flag.
+function toRushPackageArgs(dependencies: string[]) {
+  assertSafeDependencies(dependencies)
+  return dependencies.flatMap((dependency) => ["--package", dependency])
+}
+
+async function installWithRush(
+  dependencies: string[],
+  devDependencies: string[],
+  cwd: string
+) {
+  if (dependencies.length) {
+    await execa("rush", ["add", ...toRushPackageArgs(dependencies)], { cwd })
+  }
+
+  if (devDependencies.length) {
+    await execa(
+      "rush",
+      ["add", ...toRushPackageArgs(devDependencies), "--dev"],
+      { cwd }
+    )
   }
 }
