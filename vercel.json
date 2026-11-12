@@ -1,7 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
-  "outputDirectory": "apps/docs/.vitepress/dist",
   "services": {
     "docs": {
       "root": "apps/docs",
