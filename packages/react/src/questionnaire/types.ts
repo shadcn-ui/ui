@@ -13,8 +13,11 @@ type QuestionnaireChoiceDefinition = {
 type QuestionnaireItemDefinition = {
   choices?: readonly QuestionnaireChoiceDefinition[]
   disabled?: boolean
+  max?: number
+  min?: number
   name: string
   required?: boolean
+  multiple?: boolean
 }
 
 type QuestionnaireRootState = {
@@ -46,6 +49,9 @@ type QuestionnaireItemState = {
   active: boolean
   disabled: boolean
   invalid: boolean
+  maxReached: boolean
+  max?: number
+  min?: number
   multiple: boolean
   required: boolean
   status: QuestionnaireItemStatus
@@ -56,6 +62,8 @@ type QuestionnaireItemProps = Omit<
   "name" | "value"
 > & {
   invalid?: boolean
+  max?: number
+  min?: number
   name: string
   multiple?: boolean
   onStatusChange?: (status: QuestionnaireItemStatus) => void
@@ -208,6 +216,9 @@ type ItemRegistration = {
   getAnswerByElement: (element: Element) => AnswerControlRegistration | null
   getAnswerByShortcut: (shortcut: string) => AnswerControlRegistration | null
   moveAnswerFocus: (element: Element, direction: "next" | "previous") => boolean
+  max?: number
+  min?: number
+  multiple?: boolean
   name: string
   required: boolean
   reset: () => void
@@ -239,14 +250,20 @@ type QuestionnaireContextValue = QuestionnaireRootState & {
 type QuestionnaireItemContextValue = {
   active: boolean
   disabled: boolean
+  effectiveMax?: number
+  effectiveMin: number
   hasInputAnswer: boolean
   invalid: boolean
+  max?: number
+  maxReached: boolean
+  min?: number
   multiple: boolean
   name: string
   registerAnswerControl: (registration: AnswerControlRegistration) => () => void
   registerAnswerSelection: (
     answerId: string,
-    defaultSelected: boolean
+    defaultSelected: boolean,
+    disabled?: boolean
   ) => () => void
   registerDescription: (descriptionId: string) => () => void
   registerError: (errorId: string) => () => void

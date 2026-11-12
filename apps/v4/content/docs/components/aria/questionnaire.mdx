@@ -1,6 +1,6 @@
 ---
 title: Questionnaire
-description: A multi-step questionnaire with single-choice, multiple-choice, freeform, and skippable questions.
+description: A multi-step questionnaire with single-choice, multiple-choice, freeform, and skippable questions, including configurable minimum and maximum selection limits.
 base: aria
 component: true
 ---
@@ -202,6 +202,22 @@ Use `multiple` for an item that accepts more than one fixed answer.
   styleName="aria-nova"
   name="questionnaire-multiple"
   previewClassName="min-h-[420px] p-4 sm:p-8"
+/>
+
+## Minimum and maximum selections
+
+Use `min` and `max` to control the minimum and maximum number of choices a user can select.
+
+- `min={2}` requires at least two selections.
+- `max={3}` allows at most three selections.
+- Setting `min` or `max` greater than `1` automatically enables multiple selection unless `multiple` is explicitly provided.
+
+<ComponentPreview
+  align="end"
+  styleName="base-nova"
+  name="questionnaire-min-max"
+  hideCode
+  previewClassName="min-h-[480px] p-4 sm:p-8"
 />
 
 ## Freeform Answer

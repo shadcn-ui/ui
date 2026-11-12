@@ -20,6 +20,7 @@ function useQuestionnaireInput({
 }: UseQuestionnaireInputParameters) {
   const {
     disabled: itemDisabled,
+    maxReached,
     invalid,
     name: itemName,
     registerAnswerControl,
@@ -39,11 +40,38 @@ function useQuestionnaireInput({
   const [uncontrolledFilled, setUncontrolledFilled] =
     React.useState(defaultFilled)
   const disabled = itemDisabled || inputDisabled
+  const disabledRef = React.useRef(disabled)
+  disabledRef.current = disabled
   const filled = controlled ? controlledFilled : uncontrolledFilled
   const selected = selectedAnswerIds.includes(answerId)
+  const controlledOverMax =
+    controlled && controlledFilled && maxReached && !selected
+  const warnedControlledOverMaxRef = React.useRef(false)
+
+  React.useEffect(() => {
+    if (!controlledOverMax) {
+      warnedControlledOverMaxRef.current = false
+      return
+    }
+
+    if (
+      process.env.NODE_ENV !== "production" &&
+      !warnedControlledOverMaxRef.current
+    ) {
+      console.warn(
+        "[Questionnaire] Questionnaire.Input: controlled value is filled but blocked because the item is at max; keep controlled values within the item's max."
+      )
+      warnedControlledOverMaxRef.current = true
+    }
+  }, [controlledOverMax])
 
   React.useLayoutEffect(
-    () => registerAnswerSelection(answerId, initialDefaultFilledRef.current),
+    () =>
+      registerAnswerSelection(
+        answerId,
+        initialDefaultFilledRef.current,
+        disabledRef.current
+      ),
     [answerId, registerAnswerSelection]
   )
   React.useLayoutEffect(
@@ -66,8 +94,18 @@ function useQuestionnaireInput({
     })
   }, [disabled, answerId, registerAnswerControl])
 
+  const previousControlledValueRef = React.useRef(controlledValue)
+
   React.useLayoutEffect(() => {
     if (controlled) {
+      const valueChanged =
+        previousControlledValueRef.current !== controlledValue
+      previousControlledValueRef.current = controlledValue
+
+      if (status === "skipped" && !valueChanged) {
+        return
+      }
+
       syncControlledAnswerSelection(answerId, controlledFilled)
       return
     }
@@ -82,6 +120,7 @@ function useQuestionnaireInput({
     defaultFilled,
     answerId,
     resetVersion,
+    status,
     syncControlledAnswerSelection,
   ])
 
@@ -96,6 +135,10 @@ function useQuestionnaireInput({
   }, [controlled, controlledValue])
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    if (maxReached && !selected && event.target.value.trim().length > 0) {
+      return
+    }
+
     onChange?.(event)
 
     if (event.defaultPrevented) {
@@ -128,6 +171,8 @@ function useQuestionnaireInput({
   return {
     inputProps: {
       "aria-invalid": invalid || undefined,
+      "aria-disabled":
+        maxReached && !selected && !filled ? true : undefined,
       "aria-keyshortcuts": getAnswerKeyShortcuts(
         null,
         !disabled && filled && selected
@@ -139,6 +184,7 @@ function useQuestionnaireInput({
       name: selected ? itemName : undefined,
       onChange: handleChange,
       ref: setInputRef,
+      readOnly: maxReached && !selected && !filled,
       type,
       value: controlled ? controlledValue : undefined,
     },
