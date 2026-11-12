@@ -1,4 +1,5 @@
-import { describe, expect, it } from "vitest"
+import { track } from "@vercel/analytics/server"
+import { describe, expect, it, vi } from "vitest"
 
 import {
   buildRegistryBase,
@@ -6,7 +7,9 @@ import {
   POINTER_CURSOR_SELECTOR,
 } from "@/registry/config"
 
-import { GET } from "./route"
+import { GET, OPTIONS } from "./route"
+
+vi.mock("@vercel/analytics/server", () => ({ track: vi.fn() }))
 
 function createRequest(search = "") {
   const searchParams = new URLSearchParams(
@@ -31,6 +34,8 @@ describe("GET /init", () => {
     expect(response.status).toBe(200)
     expect(json).toEqual(buildRegistryBase(DEFAULT_CONFIG))
     expect(json.css["@layer base"][POINTER_CURSOR_SELECTOR]).toBeUndefined()
+    expect(response.headers.get("Access-Control-Allow-Origin")).toBe("*")
+    expect(response.headers.has("Access-Control-Allow-Credentials")).toBe(false)
   })
 
   it("returns pointer cursor css when pointer is enabled", async () => {
@@ -70,5 +75,43 @@ describe("GET /init", () => {
     expect(json.error).toBe(
       "Invalid only value. Use one or more of: theme, font"
     )
+    expect(response.headers.get("Access-Control-Allow-Origin")).toBe("*")
+  })
+
+  it("allows cross-origin clients to read invalid configuration errors", async () => {
+    const response = await GET(createRequest("?base=not-a-base"))
+
+    expect(response.status).toBe(400)
+    expect(response.headers.get("Access-Control-Allow-Origin")).toBe("*")
+    expect(response.headers.has("Access-Control-Allow-Credentials")).toBe(false)
+  })
+
+  it("keeps unexpected 500 response unchanged without CORS headers", async () => {
+    vi.mocked(track).mockImplementationOnce(() => {
+      throw new Error("synthetic internal detail")
+    })
+
+    const response = await GET(createRequest("?track=1"))
+
+    expect(response.status).toBe(500)
+    expect(await response.json()).toEqual({
+      error: "synthetic internal detail",
+    })
+    expect(response.headers.has("Access-Control-Allow-Origin")).toBe(false)
+  })
+
+  it("handles read-only preflight requests without credentialed access", async () => {
+    const response = await OPTIONS()
+
+    expect(response.status).toBe(204)
+    expect(response.headers.get("Allow")).toBe("GET, HEAD, OPTIONS")
+    expect(response.headers.get("Access-Control-Allow-Origin")).toBe("*")
+    expect(response.headers.get("Access-Control-Allow-Methods")).toBe(
+      "GET, HEAD, OPTIONS"
+    )
+    expect(response.headers.get("Access-Control-Allow-Headers")).toBe(
+      "Accept, User-Agent"
+    )
+    expect(response.headers.has("Access-Control-Allow-Credentials")).toBe(false)
   })
 })
