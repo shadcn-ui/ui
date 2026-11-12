@@ -51,10 +51,10 @@ import HomeShowcase from './.vitepress/theme/HomeShowcase.vue'
       بسازید.
     </p>
     <div class="flex flex-wrap items-center justify-center gap-3">
-      <a class="inline-flex h-10 items-center rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90" href="/guide/installation">
+      <a class="inline-flex h-10 items-center rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground no-underline transition-colors hover:bg-primary/90 hover:no-underline" href="/guide/installation">
         راهنمای نصب
       </a>
-      <a class="inline-flex h-10 items-center rounded-md border border-input bg-background px-5 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground" href="/guide/utilities">
+      <a class="inline-flex h-10 items-center rounded-md border border-input bg-background px-5 text-sm font-medium no-underline transition-colors hover:bg-accent hover:text-accent-foreground hover:no-underline" href="/guide/utilities">
         ابزارهای فارسی
       </a>
     </div>

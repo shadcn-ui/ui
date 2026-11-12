@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { ArrowLeft, CalendarCheck2, Check, Sparkles } from 'lucide-vue-next'
+import { ArrowLeft, CalendarCheck2, Check, Copy, Sparkles } from 'lucide-vue-next'
 import { Button, DatePicker, Input, Label } from '@saaze/ui'
 import { formatJalali, formatToman, parseNumber } from '@saaze/utils'
 
 const deliveryDate = ref<Date | null>(null)
 const amount = ref('')
+const commandCopyState = ref<'idle' | 'copied' | 'failed'>('idle')
+
+const installCommand = 'pnpm add @saaze/ui @saaze/utils'
 
 const total = computed(() => {
   const parsed = parseNumber(amount.value)
@@ -15,6 +18,15 @@ const total = computed(() => {
 const deliveryLabel = computed(() =>
   deliveryDate.value ? formatJalali(deliveryDate.value, { pattern: 'dddd D MMMM YYYY' }) : null,
 )
+
+async function copyInstallCommand() {
+  try {
+    await navigator.clipboard.writeText(installCommand)
+    commandCopyState.value = 'copied'
+  } catch {
+    commandCopyState.value = 'failed'
+  }
+}
 </script>
 
 <template>
@@ -49,7 +61,26 @@ const deliveryLabel = computed(() =>
 
         <div class="showcase__install">
           <span>شروع سریع</span>
-          <code dir="ltr">pnpm add @saaze/ui @saaze/utils</code>
+          <button
+            class="showcase__command"
+            type="button"
+            dir="ltr"
+            aria-label="کپی دستور نصب"
+            @click="copyInstallCommand"
+          >
+            <code>{{ installCommand }}</code>
+            <Check v-if="commandCopyState === 'copied'" aria-hidden="true" />
+            <Copy v-else aria-hidden="true" />
+          </button>
+          <span class="showcase__copy-status" role="status" aria-live="polite">
+            {{
+              commandCopyState === 'copied'
+                ? 'کپی شد'
+                : commandCopyState === 'failed'
+                  ? 'کپی نشد؛ دسترسی کلیپ‌بورد را بررسی کنید.'
+                  : ''
+            }}
+          </span>
         </div>
       </div>
 
@@ -202,13 +233,42 @@ const deliveryLabel = computed(() =>
   color: var(--vp-c-text-3);
 }
 
-.showcase__install code {
+.showcase__command {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   padding: 7px 10px;
   background-color: var(--vp-c-bg);
   color: var(--vp-c-text-1);
+  font: inherit;
+  cursor: pointer;
+  transition: border-color 150ms ease;
+}
+
+.showcase__command:hover {
+  border-color: var(--vp-c-brand-1);
+}
+
+.showcase__command:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: 2px;
+}
+
+.showcase__command code {
+  padding: 0;
   font-size: 12px;
+}
+
+.showcase__command svg {
+  width: 14px;
+  height: 14px;
+}
+
+.showcase__copy-status {
+  font-size: 12px;
+  color: var(--vp-c-text-2);
 }
 
 .showcase__preview {

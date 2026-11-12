@@ -87,8 +87,17 @@ body {
 /*  Navbar                                                                    */
 /* -------------------------------------------------------------------------- */
 
+.VPNavBar.home.top,
+.VPNavBar.has-sidebar:not(.home) {
+  background-color: var(--vp-c-bg);
+}
+
 .VPNavBar {
   backdrop-filter: saturate(180%) blur(14px);
+}
+
+html[dir='rtl'] .VPNavBarSearch {
+  margin-inline-start: 16px;
 }
 
 @media (max-width: 767px) {
@@ -149,8 +158,55 @@ html[dir='rtl'] .VPNavBarExtra .menu {
   left: 0;
 }
 
+/* Give the navbar search some room and separate the magnifier from its label.
+   VitePress spaces these with physical margins, which fall on the outer edge
+   once the page is mirrored, so use logical spacing instead. */
+@media (min-width: 768px) {
+  html[dir='rtl'] #local-search {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+html[dir='rtl'] .DocSearch-Button {
+  justify-content: space-between;
+}
+
+html[dir='rtl'] .DocSearch-Button .DocSearch-Button-Container {
+  gap: 8px;
+}
+
+html[dir='rtl'] .DocSearch-Button .DocSearch-Search-Icon {
+  margin-right: 0;
+}
+
 .DocSearch-Button .DocSearch-Button-Placeholder {
-  padding: 0 0 0 16px;
+  padding: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Search                                                                    */
+/* -------------------------------------------------------------------------- */
+
+/* Breadcrumbs stay in logical order, so under RTL each chevron already sits on
+   the inline-end (left) side of its label. The glyph itself still points to the
+   right, though, which reads backwards in Persian. Mirror it so the path points
+   towards the next crumb. */
+html[dir='rtl'] .VPLocalSearchBox .titles .vpi-chevron-right {
+  transform: scaleX(-1);
+}
+
+/* The leading "#" is a direct flex item while the labels are centered inside
+   their own spans. Centering the row keeps the hash on the same baseline. */
+html[dir='rtl'] .VPLocalSearchBox .titles {
+  align-items: center;
+}
+
+/* The "#" glyph is shorter than the Persian letters and sits high on the
+   baseline, so nudge it down to sit optically level with the label. */
+html[dir='rtl'] .VPLocalSearchBox .titles .title-icon {
+  position: relative;
+  top: 0.25em;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -291,6 +347,20 @@ html[dir='rtl'] .VPLocalNavOutlineDropdown .icon {
   text-align: start;
 }
 
+.vp-doc a {
+  text-decoration: none;
+}
+
+.vp-doc a.text-primary-foreground,
+.vp-doc a.text-primary-foreground:hover,
+.vp-doc a.text-primary-foreground:focus-visible {
+  color: hsl(var(--primary-foreground));
+}
+
+.vp-doc .vp-code-group .tabs {
+  direction: ltr;
+}
+
 .vp-doc h1,
 .vp-doc h2,
 .vp-doc h3,
@@ -313,6 +383,10 @@ html[dir='rtl'] .VPLocalNavOutlineDropdown .icon {
 .vp-doc ol {
   padding-right: 1.25rem;
   padding-left: 0;
+}
+
+.vp-doc .breadcrumb-list > li + li {
+  margin-top: 0;
 }
 
 .vp-doc li::marker {
@@ -486,6 +560,12 @@ html[dir='rtl'] .VPHero .text {
 
 html[dir='rtl'] .VPHero .tagline {
   color: var(--vp-c-text-2);
+}
+
+html.dark .VPHero .actions .VPButton.brand {
+  --vp-button-brand-text: var(--vp-c-bg);
+  --vp-button-brand-hover-text: var(--vp-c-bg);
+  --vp-button-brand-active-text: var(--vp-c-bg);
 }
 
 html[dir='rtl'] .VPFeature {
