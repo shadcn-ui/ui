@@ -92,8 +92,8 @@ updates:
         applies-to: "version-updates"
         update-types: ["minor", "patch"]
     ignore:
+      # No lockfile here, so updates rewrite the Node 22 range to ^20.
       - dependency-name: "@types/node"
-        update-types: ["version-update:semver-major"]
   - package-ecosystem: "npm"
     directory: "/templates/start-monorepo"
     schedule:
@@ -114,8 +114,8 @@ updates:
         applies-to: "version-updates"
         update-types: ["minor", "patch"]
     ignore:
+      # No lockfile here, so updates rewrite the Node 24 range to ^20.
       - dependency-name: "@types/node"
-        update-types: ["version-update:semver-major"]
   - package-ecosystem: "npm"
     directory: "/templates/vite-monorepo"
     schedule:
