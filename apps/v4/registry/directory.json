@@ -2367,6 +2367,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='none'><line x1='208' y1='128' x2='128' y2='208' stroke='var(--foreground)' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/><line x1='192' y1='40' x2='40' y2='192' stroke='var(--foreground)' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/></svg>"
   },
   {
+    "name": "@onscreen",
+    "homepage": "https://onscreen.studio",
+    "url": "https://onscreen.studio/r/{name}.json",
+    "description": "Solana UI kits for wallet, swap, stake, send and portfolio screens, with a transaction button that simulates, signs, sends and confirms.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='var(--foreground)'><path d='M28,96c-15.46,0 -28,-12.54 -28,-28v-40c0,-15.46 12.54,-28 28,-28h40c15.46,0 28,12.54 28,28v40c0,15.46 -12.54,28 -28,28zM12,68c0,8.84 7.16,16 16,16h40c8.84,0 16,-7.16 16,-16v-40c0,-8.84 -7.16,-16 -16,-16h-40c-8.84,0 -16,7.16 -16,16zM28,72c-2.21,0 -4,-1.79 -4,-4v-16c0,-2.21 1.79,-4 4,-4h40c2.21,0 4,1.79 4,4v16c0,2.21 -1.79,4 -4,4z'/></svg>"
+  },
+  {
     "name": "@opaline",
     "homepage": "https://opaline.buildlab.in",
     "url": "https://opaline.buildlab.in/r/{name}.json",
