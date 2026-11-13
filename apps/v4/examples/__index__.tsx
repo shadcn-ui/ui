@@ -1609,6 +1609,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "questionnaire-freeform",
       filePath: "examples/base/questionnaire-freeform.tsx",
     },
+    "questionnaire-min-max": {
+      name: "questionnaire-min-max",
+      filePath: "examples/base/questionnaire-min-max.tsx",
+    },
     "questionnaire-multiple": {
       name: "questionnaire-multiple",
       filePath: "examples/base/questionnaire-multiple.tsx",
@@ -3950,6 +3954,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "questionnaire-freeform": {
       name: "questionnaire-freeform",
       filePath: "examples/aria/questionnaire-freeform.tsx",
+    },
+    "questionnaire-min-max": {
+      name: "questionnaire-min-max",
+      filePath: "examples/aria/questionnaire-min-max.tsx",
     },
     "questionnaire-multiple": {
       name: "questionnaire-multiple",
@@ -6312,6 +6320,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "questionnaire-freeform": {
       name: "questionnaire-freeform",
       filePath: "examples/radix/questionnaire-freeform.tsx",
+    },
+    "questionnaire-min-max": {
+      name: "questionnaire-min-max",
+      filePath: "examples/radix/questionnaire-min-max.tsx",
     },
     "questionnaire-multiple": {
       name: "questionnaire-multiple",
