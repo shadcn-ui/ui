@@ -1,0 +1,38 @@
+{
+  "name": "shadcn-ui",
+  "description": "The shadcn/ui agent skills",
+  "owner": {
+    "name": "shadcn-ui",
+    "url": "https://ui.shadcn.com"
+  },
+  "plugins": [
+    {
+      "name": "shadcn-ui",
+      "displayName": "shadcn/ui",
+      "source": "./skills",
+      "strict": false,
+      "skills": ["./shadcn", "./migrate-radix-to-base"],
+      "description": "Agent skills for managing shadcn/ui components and projects — adding, searching, fixing, debugging, styling, and composing UI — and for migrating React projects from Radix UI to Base UI. Use when working with shadcn/ui, component registries, presets, or switching a project's base library.",
+      "version": "0.1.1",
+      "author": {
+        "name": "shadcn",
+        "url": "https://ui.shadcn.com"
+      },
+      "homepage": "https://ui.shadcn.com",
+      "repository": "https://github.com/shadcn-ui/ui",
+      "license": "MIT",
+      "category": "development",
+      "keywords": [
+        "shadcn",
+        "shadcn-ui",
+        "react",
+        "tailwindcss",
+        "components",
+        "cli",
+        "radix",
+        "base-ui",
+        "coding-agents"
+      ]
+    }
+  ]
+}
