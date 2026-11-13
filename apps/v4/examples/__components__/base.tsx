@@ -3690,6 +3690,14 @@ export const Components: Record<string, any> = {
       ) || "shimmer-rtl"
     return { default: mod.default || mod[exportName] }
   }),
+  "shimmer-skeleton": React.lazy(async () => {
+    const mod = await import("@/examples/base/shimmer-skeleton")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "shimmer-skeleton"
+    return { default: mod.default || mod[exportName] }
+  }),
   "shimmer-spread": React.lazy(async () => {
     const mod = await import("@/examples/base/shimmer-spread")
     const exportName =

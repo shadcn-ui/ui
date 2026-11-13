@@ -1845,6 +1845,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "shimmer-rtl",
       filePath: "examples/base/shimmer-rtl.tsx",
     },
+    "shimmer-skeleton": {
+      name: "shimmer-skeleton",
+      filePath: "examples/base/shimmer-skeleton.tsx",
+    },
     "shimmer-spread": {
       name: "shimmer-spread",
       filePath: "examples/base/shimmer-spread.tsx",
@@ -4186,6 +4190,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "shimmer-rtl": {
       name: "shimmer-rtl",
       filePath: "examples/aria/shimmer-rtl.tsx",
+    },
+    "shimmer-skeleton": {
+      name: "shimmer-skeleton",
+      filePath: "examples/aria/shimmer-skeleton.tsx",
     },
     "shimmer-spread": {
       name: "shimmer-spread",
@@ -6540,6 +6548,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "shimmer-rtl": {
       name: "shimmer-rtl",
       filePath: "examples/radix/shimmer-rtl.tsx",
+    },
+    "shimmer-skeleton": {
+      name: "shimmer-skeleton",
+      filePath: "examples/radix/shimmer-skeleton.tsx",
     },
     "shimmer-spread": {
       name: "shimmer-spread",
