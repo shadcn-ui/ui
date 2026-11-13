@@ -1332,6 +1332,13 @@
     "phosphor": "WalletIcon",
     "remixicon": "RiWalletLine"
   },
+  "WrapTextIcon": {
+    "lucide": "WrapTextIcon",
+    "tabler": "IconTextWrap",
+    "hugeicons": "TextWrapIcon",
+    "phosphor": "ArrowUDownLeftIcon",
+    "remixicon": "RiTextWrap"
+  },
   "ZapIcon": {
     "lucide": "ZapIcon",
     "tabler": "IconBolt",

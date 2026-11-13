@@ -313,6 +313,19 @@ writer.tool("getWeather", { input: { city: "San Francisco" } }).error()
 writer.tool("getWeather", { input: { city: "San Francisco" } }).denied()
 ```
 
+Pass `{ preliminary: true }` to `output()` to stream progress before the final
+output, as a tool with a streaming `execute` does. The part is
+`output-available` with `preliminary: true` until the final `output()` replaces
+it. Use it for a sub-agent that streams its own steps.
+
+```ts
+writer
+  .tool("researchAgent", { input: { task: "Find the image cache key." } })
+  .output({ steps: ["Searched for cacheKey"] }, { preliminary: true })
+  .sleep(900)
+  .output({ steps: ["Searched for cacheKey", "Read optimize-images.ts"] })
+```
+
 Pass `dynamic: true` to create an AI SDK `dynamic-tool` part instead of a typed
 `tool-<name>` part.
 
@@ -985,8 +998,10 @@ Calling `reasoning()` without content uses
 | `needsApproval`    | `boolean`                 | Pause the turn behind the user's decision. See [Human in the Loop](#human-in-the-loop).         |
 | `approvalId`       | `string`                  | Use a specific approval ID.                                                                     |
 
-`tool()` returns a handle with `sleep(delayMs)`, `output(value)`,
-`error(errorText?)`, and `denied()`. Use the handle when the tool lifecycle
+`tool()` returns a handle with `sleep(delayMs)`,
+`output(value, { preliminary? })`, `error(errorText?)`, and `denied()`.
+`preliminary: true` streams the output without finishing the call. Use the
+handle when the tool lifecycle
 needs events between its input and result. Calling `tool.error()` without a
 message uses `"Tool call failed."`. The resolution methods throw on a
 `needsApproval` call.
