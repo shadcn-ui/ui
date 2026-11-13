@@ -9,6 +9,7 @@ import { ActiveThemeProvider } from "@/components/active-theme"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
+import { WebMcp } from "@/components/webmcp"
 import { TooltipProvider as BaseTooltipProvider } from "@/registry/bases/base/ui/tooltip"
 import { Toaster } from "@/registry/bases/radix/ui/sonner"
 import { TooltipProvider as RadixTooltipProvider } from "@/registry/bases/radix/ui/tooltip"
@@ -112,6 +113,7 @@ export default function RootLayout({
               <BaseTooltipProvider delay={0}>
                 <RadixTooltipProvider delayDuration={0}>
                   {children}
+                  <WebMcp />
                   <Toaster position="top-center" />
                   <BaseToaster />
                 </RadixTooltipProvider>
