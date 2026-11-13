@@ -85,7 +85,7 @@ export function DividendIncome() {
         </CardAction>
       </CardHeader>
       <CardContent>
-        <ItemGroup>
+        <ItemGroup role="list">
           {HOLDINGS.map((holding) => (
             <Item key={holding.name} role="listitem" variant="muted">
               <ItemContent>
