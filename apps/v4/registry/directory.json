@@ -2462,7 +2462,7 @@
     "homepage": "https://pane.theui.company",
     "url": "https://pane.theui.company/r/{name}.json",
     "description": "Liquid glass components for React.",
-    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='16' height='16'><path fill-rule='evenodd' clip-rule='evenodd' d='M11 2h10c4.971 0 9 4.029 9 9v10c0 4.971-4.029 9-9 9H11c-4.971 0-9-4.029-9-9V11c0-4.971 4.029-9 9-9Zm0 5.5h10A3.5 3.5 0 0 1 24.5 11v10a3.5 3.5 0 0 1-3.5 3.5H11A3.5 3.5 0 0 1 7.5 21V11A3.5 3.5 0 0 1 11 7.5Z' fill='var(--foreground)'/></svg>"
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='32' height='32'><defs><linearGradient id='pane-logo-gradient' x1='-521.3' y1='-34.9' x2='726.1' y2='546.9' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='#878788'/><stop offset='.35' stop-color='#f5f5f7'/><stop offset='.5' stop-color='#181819'/><stop offset='.65' stop-color='#f5f5f7'/><stop offset='1' stop-color='#878788'/></linearGradient></defs><circle cx='256' cy='256' r='256' fill='url(#pane-logo-gradient)'/></svg>"
   },
   {
     "name": "@panelui",
