@@ -39,6 +39,7 @@ function ComboboxTrigger({
         remixicon="RiArrowDownSLine"
         className="cn-combobox-trigger-icon pointer-events-none"
       />
+      <span className="sr-only">Toggle popup</span>
     </ComboboxPrimitive.Trigger>
   )
 }
@@ -59,6 +60,7 @@ function ComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props) {
         remixicon="RiCloseLine"
         className="cn-combobox-clear-icon pointer-events-none"
       />
+      <span className="sr-only">Clear</span>
     </ComboboxPrimitive.Clear>
   )
 }

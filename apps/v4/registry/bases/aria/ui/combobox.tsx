@@ -68,6 +68,7 @@ function ComboboxTrigger({
         remixicon="RiArrowDownSLine"
         className="cn-combobox-trigger-icon pointer-events-none"
       />
+      <span className="sr-only">Toggle popup</span>
     </ButtonPrimitive>
   )
 }
