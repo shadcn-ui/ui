@@ -1,9 +1,9 @@
 [
   {
     "name": "@nested-motion",
-    "homepage": "https://motion-nest-kappa.vercel.app",
-    "url": "https://motion-nest-kappa.vercel.app/r/{name}.json",
-    "description": "Nested Motion is a collection of beautifully crafted animated React components, interactive UI effects, and motion-powered interfaces for modern web applications.",
+    "homepage": "https://nested-motion.vercel.app",
+    "url": "https://nested-motion.vercel.app/r/{name}.json",
+    "description": "Beautiful, composable React animation components built with Motion.",
     "author": "Shreya Rai"
   }
   ,
