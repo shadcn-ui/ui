@@ -1360,6 +1360,41 @@ test("preserves inactive answers and restores native defaults on reset", async (
   ).toBe("Controlled detail")
 })
 
+test("keeps controlled input keystrokes when foreign nodes are inserted on input", async () => {
+  function ControlledTextareaQuestionnaire() {
+    const [value, setValue] = React.useState("")
+
+    return (
+      <Questionnaire.Root data-testid="root" defaultItem="note">
+        <Questionnaire.Item name="note" required>
+          <Questionnaire.Title>Note</Questionnaire.Title>
+          <Questionnaire.Input
+            aria-label="Note"
+            data-testid="note"
+            onChange={(event) => setValue(event.target.value)}
+            render={<textarea />}
+            value={value}
+          />
+        </Questionnaire.Item>
+      </Questionnaire.Root>
+    )
+  }
+
+  await render(<ControlledTextareaQuestionnaire />)
+
+  const textarea = requiredElement<HTMLTextAreaElement>('[data-testid="note"]')
+
+  textarea.addEventListener("input", () => {
+    textarea.parentElement?.querySelector("x-mirror")?.remove()
+    textarea.after(document.createElement("x-mirror"))
+  })
+
+  await userEvent.type(textarea, "Bonjour")
+  await settle()
+
+  expect(textarea.value).toBe("Bonjour")
+})
+
 async function render(children: React.ReactNode) {
   container = document.createElement("div")
   document.body.appendChild(container)
