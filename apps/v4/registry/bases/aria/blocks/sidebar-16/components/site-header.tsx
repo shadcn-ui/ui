@@ -35,7 +35,7 @@ export function SiteHeader() {
         </Button>
         <Separator
           orientation="vertical"
-          className="mr-2 data-vertical:h-4 data-vertical:self-auto"
+          className="mr-2 aria-[orientation=vertical]:h-4 aria-[orientation=vertical]:self-auto"
         />
         <Breadcrumb className="hidden sm:block">
           <BreadcrumbList>
