@@ -6,13 +6,13 @@ import {
   iconLibraries,
   type IconLibraryName,
 } from "@shadcn/registry/internal/icons/libraries"
+import { mergeConfig } from "@shadcn/registry/internal/merge-config"
 import { configWithDefaults } from "@shadcn/registry/internal/registry/config"
 import { resolveRegistryTree } from "@shadcn/registry/internal/registry/resolver"
 import { updateCss } from "@shadcn/registry/internal/updaters/update-css"
 import { updateCssVars } from "@shadcn/registry/internal/updaters/update-css-vars"
 import { updateDependencies } from "@shadcn/registry/internal/updaters/update-dependencies"
 import { rawConfigSchema } from "@shadcn/registry/schema"
-import deepmerge from "deepmerge"
 import fs from "fs-extra"
 
 import type { TemplateInitOptions } from "./create-template"
@@ -27,7 +27,7 @@ export async function fontsourceMonorepoInit(options: TemplateInitOptions) {
   const packagesUiConfigPath = path.resolve(packagesUiPath, "components.json")
   let packagesUiConfig = await fs.readJson(packagesUiConfigPath)
   if (options.registryBaseConfig) {
-    packagesUiConfig = deepmerge(packagesUiConfig, options.registryBaseConfig)
+    packagesUiConfig = mergeConfig(packagesUiConfig, options.registryBaseConfig)
   }
   packagesUiConfig.tailwind.baseColor = "neutral"
   if (options.rtl) {
@@ -50,7 +50,7 @@ export async function fontsourceMonorepoInit(options: TemplateInitOptions) {
   const appsWebConfigPath = path.resolve(appsWebPath, "components.json")
   let appsWebConfig = await fs.readJson(appsWebConfigPath)
   if (options.registryBaseConfig) {
-    appsWebConfig = deepmerge(appsWebConfig, options.registryBaseConfig)
+    appsWebConfig = mergeConfig(appsWebConfig, options.registryBaseConfig)
   }
   appsWebConfig.tailwind.baseColor = "neutral"
   if (options.rtl) {
