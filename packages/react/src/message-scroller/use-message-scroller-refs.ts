@@ -23,6 +23,7 @@ type MessageScrollerRefs = {
   autoscrollingRef: React.RefObject<boolean>
   autoscrollingTimeoutRef: React.RefObject<number | null>
   streamingTurnRef: React.RefObject<HTMLElement | null>
+  userReleasedFollowRef: React.RefObject<boolean>
   contentRef: React.RefObject<HTMLDivElement | null>
   defaultScrollPositionAppliedRef: React.RefObject<boolean>
   firstItemRef: React.RefObject<HTMLElement | null>
@@ -100,6 +101,7 @@ function useMessageScrollerRefs({
   // The turn held at the reading line so a reply streaming in below it can re-pin
   // it instead of letting scrollTop clamp it loose.
   const streamingTurnRef = React.useRef<HTMLElement | null>(null)
+  const userReleasedFollowRef = React.useRef(false)
   const scrollPreviousItemPeekRef = React.useRef(scrollPreviousItemPeek)
   const preserveScrollOnPrependRef = React.useRef(true)
   const rootRef = React.useRef<HTMLDivElement | null>(null)
@@ -153,6 +155,7 @@ function useMessageScrollerRefs({
     autoscrollingRef,
     autoscrollingTimeoutRef,
     streamingTurnRef,
+    userReleasedFollowRef,
     contentRef,
     defaultScrollPositionAppliedRef,
     firstItemRef,
