@@ -2255,6 +2255,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none'><defs><linearGradient id='surface' x1='30' y1='20' x2='170' y2='180' gradientUnits='userSpaceOnUse'><stop stop-color='#F6F8FC'/><stop offset='1' stop-color='#D6DEE9'/></linearGradient><filter id='shadow' x='20' y='20' width='160' height='160' filterUnits='userSpaceOnUse'><feDropShadow dx='10' dy='10' stdDeviation='9' flood-color='#A8B2C1' flood-opacity='.7'/><feDropShadow dx='-8' dy='-8' stdDeviation='8' flood-color='white' flood-opacity='.95'/></filter></defs><rect width='200' height='200' rx='48' fill='url(#surface)'/><circle cx='100' cy='100' r='52' fill='#E8EDF4' filter='url(#shadow)'/><path d='M73 116V84h12l30 33V84h12v32h-12L85 83v33H73Z' fill='#5577A6'/></svg>"
   },
   {
+    "name": "@newtui",
+    "homepage": "https://newtui.dev",
+    "url": "https://newtui.dev/r/{name}.json",
+    "description": "Discord-inspired components built on a shared --newt-* token system. Copy-paste React components, with Vue and plain HTML/CSS versions.",
+    "author": "wolfstar-project",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><g stroke='currentColor' stroke-width='2.2' stroke-linecap='round'><line x1='4' y1='7' x2='4' y2='20'/><line x1='9.3' y1='11' x2='9.3' y2='20'/><line x1='14.7' y1='4' x2='14.7' y2='20'/><line x1='20' y1='9' x2='20' y2='20'/><line x1='2.4' y1='15.4' x2='21.6' y2='15.4'/></g></svg>"
+  },
+  {
     "name": "@nextui",
     "homepage": "https://nextui.dev",
     "url": "https://nextui.dev/r/{name}.json",
@@ -3641,6 +3649,14 @@
     "description": "Midnight: a dark landing page theme and blocks for AI and SaaS products. A night sky, a guilloche rosette, a serif hero, product tiles with cited sources, a call to action and a footer.",
     "author": "Vilqor",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='var(--foreground)' fill-rule='evenodd' d='M8 0h16a8 8 0 0 1 8 8v16a8 8 0 0 1-8 8H8a8 8 0 0 1-8-8V8a8 8 0 0 1 8-8Zm2.806 9.762L16 18.953l5.194-9.191a1.5 1.5 0 0 1 2.612 1.476l-6.5 11.5a1.5 1.5 0 0 1-2.612 0l-6.5-11.5a1.5 1.5 0 0 1 2.612-1.476Z'/></svg>"
+  },
+  {
+    "name": "@vip-ui",
+    "homepage": "https://vip-ui.dev",
+    "url": "https://vip-ui.dev/r/{name}.json",
+    "description": "Accessible, motion-rich React components, blocks, and charts built on React Aria and Tailwind CSS v4.",
+    "author": "Vipin Mishra",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='var(--foreground)'><path d='M7.71 32H7a7 7 0 0 1-7-7V7a7 7 0 0 1 7-7h13.51z'/><path d='M24.29 0H25a7 7 0 0 1 7 7v18a7 7 0 0 1-7 7H11.49z' fill-opacity='.5'/></svg>"
   },
   {
     "name": "@visant",
