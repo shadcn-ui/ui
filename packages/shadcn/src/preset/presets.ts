@@ -92,6 +92,7 @@ export function resolveInitUrl(
     menuAccent: string
     menuColor: string
     radius: string
+    primary?: string
   },
   options?: {
     template?: string
@@ -119,6 +120,10 @@ export function resolveInitUrl(
 
   if (preset.fontHeading && preset.fontHeading !== "inherit") {
     params.set("fontHeading", preset.fontHeading)
+  }
+
+  if (preset.primary) {
+    params.set("primary", preset.primary)
   }
 
   // Pass the original preset code so the server can apply

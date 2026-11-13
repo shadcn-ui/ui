@@ -3,6 +3,7 @@ import {
   type IconLibrary,
   type IconLibraryName,
 } from "shadcn/icons"
+import { getPrimaryForeground, hexToOklch } from "shadcn/preset"
 import { registryItemSchema, type RegistryItem } from "shadcn/schema"
 import { z } from "zod"
 
@@ -126,6 +127,10 @@ export const designSystemConfigSchema = z
     radius: z
       .enum(RADII.map((r) => r.name) as [RadiusValue, ...RadiusValue[]])
       .default("default"),
+    primary: z
+      .string()
+      .regex(/^[0-9a-f]{6}$/)
+      .optional(),
     template: z
       .enum([
         "next",
@@ -726,6 +731,15 @@ export function buildRegistryTheme(config: DesignSystemConfig) {
       if (chartLight?.[key]) lightVars[key] = chartLight[key]
       if (chartDark?.[key]) darkVars[key] = chartDark[key]
     }
+  }
+
+  // Apply custom primary before the menu accent copies it.
+  if (config.primary) {
+    const primary = hexToOklch(config.primary)
+    const foreground = getPrimaryForeground(config.primary)
+    lightVars.primary = darkVars.primary = primary
+    lightVars["primary-foreground"] = darkVars["primary-foreground"] =
+      foreground
   }
 
   // Apply menu accent transformation.

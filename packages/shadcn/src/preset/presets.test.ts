@@ -91,6 +91,18 @@ describe("buildInitUrl", () => {
     expect(parsed.searchParams.get("radius")).toBe("0.5")
   })
 
+  it("should include primary when set", () => {
+    const url = resolveInitUrl({ ...mockPreset, primary: "7c3aed" })
+    const parsed = new URL(url)
+    expect(parsed.searchParams.get("primary")).toBe("7c3aed")
+  })
+
+  it("should not include primary when not set", () => {
+    const url = resolveInitUrl(mockPreset)
+    const parsed = new URL(url)
+    expect(parsed.searchParams.has("primary")).toBe(false)
+  })
+
   it("should set rtl=true when preset.rtl is true", () => {
     const url = resolveInitUrl({ ...mockPreset, rtl: true })
     const parsed = new URL(url)

@@ -26,3 +26,8 @@ export {
   type PresetBase,
   type PresetConfig,
 } from "@shadcn/registry/internal/preset/preset"
+export {
+  getPrimaryForeground,
+  hexToOklch,
+  oklchToHex,
+} from "@shadcn/registry/internal/preset/primary"
