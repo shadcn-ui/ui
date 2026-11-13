@@ -1424,6 +1424,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "registry/bases/base/ui/prompt-input.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     "accordion-example": {
       name: "accordion-example",
       title: "Accordion",
@@ -5254,6 +5270,22 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "registry/bases/aria/ui/prompt-input.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     "accordion-example": {
       name: "accordion-example",
       title: "Accordion",
@@ -9041,6 +9073,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/radix/ui/message.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "prompt-input": {
+      name: "prompt-input",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["input-group"],
+      files: [
+        {
+          path: "registry/bases/radix/ui/prompt-input.tsx",
           type: "registry:ui",
           target: "",
         },
