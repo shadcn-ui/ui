@@ -16,6 +16,7 @@ export function ChartDisplay({
   chart,
   styleName,
   className,
+  children,
 }: {
   chart: Chart
   styleName: string
@@ -30,7 +31,9 @@ export function ChartDisplay({
       <ChartToolbar
         chart={chart}
         className="relative z-20 flex justify-end px-3 py-2.5"
-      />
+      >
+        {children}
+      </ChartToolbar>
       <div className="relative z-10 overflow-hidden rounded-xl bg-background">
         <ChartIframe
           src={`/view/${styleName}/${chart.name}`}
