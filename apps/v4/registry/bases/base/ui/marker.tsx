@@ -2,8 +2,7 @@ import * as React from "react"
 import { mergeProps } from "@base-ui/react/merge-props"
 import { useRender } from "@base-ui/react/use-render"
 import { cva, type VariantProps } from "class-variance-authority"
-
-import { cn } from "@/registry/bases/base/lib/utils"
+import { cn } from "cn"
 
 const markerVariants = cva(
   "cn-marker group/marker relative flex w-full items-center",

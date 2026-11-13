@@ -3,8 +3,8 @@
 import * as React from "react"
 import { Menu09Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
+import { cn } from "cn"
 
-import { cn } from "@/lib/utils"
 import { type Button } from "@/styles/base-nova/ui/button"
 import {
   Picker,

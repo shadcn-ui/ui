@@ -1,16 +1,10 @@
 export const PAGES_NEW = [
-  "/docs/utils/scroll-fade",
-  "/docs/utils/shimmer",
-  "/docs/components/radix/attachment",
-  "/docs/components/base/attachment",
-  "/docs/components/radix/bubble",
-  "/docs/components/base/bubble",
-  "/docs/components/radix/message-scroller",
-  "/docs/components/base/message-scroller",
-  "/docs/components/radix/marker",
-  "/docs/components/base/marker",
-  "/docs/components/radix/message",
-  "/docs/components/base/message",
+  "/docs/components/radix/trace",
+  "/docs/components/base/trace",
+  "/docs/components/aria/trace",
+  "/docs/components/radix/code-block",
+  "/docs/components/base/code-block",
+  "/docs/components/aria/code-block",
 ]
 
 export const PAGES_UPDATED = []

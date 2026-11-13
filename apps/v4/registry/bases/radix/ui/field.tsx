@@ -2,8 +2,8 @@
 
 import { useMemo } from "react"
 import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "cn"
 
-import { cn } from "@/registry/bases/radix/lib/utils"
 import { Label } from "@/registry/bases/radix/ui/label"
 import { Separator } from "@/registry/bases/radix/ui/separator"
 

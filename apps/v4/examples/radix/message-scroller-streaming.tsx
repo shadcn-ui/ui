@@ -83,15 +83,15 @@ const chat = createChat()
   .assistant(
     '`MessageScrollerContent` sets `role="log"` and `aria-relevant="additions"` by default, so screen readers announce new messages as they stream in.\n\nThe scroll button is a real `<button>` with an sr-only label, and it\'s removed from the tab order when you\'re already at the bottom — no ghost focus stops.'
   )
-const initialMessages = chat.get({ count: 0 })
-const transport = chat.transport({ chunkDelayMs: 20 })
+const initialMessages = chat.get(0)
+const transport = chat.transport({ delayMs: 20 })
 
 export function MessageScrollerStreaming() {
   const { messages, sendMessage, setMessages, status } = useChat({
     messages: initialMessages,
     transport,
   })
-  const nextMessage = chat.next({ after: messages })
+  const nextMessage = chat.next(messages)
   const isBusy = status === "submitted" || status === "streaming"
 
   return (

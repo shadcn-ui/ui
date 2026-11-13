@@ -64,8 +64,8 @@ const chat = createChat()
     "Yes. Keep the conversation in place while you change the preset, then send the next message to compare the new entrance against the same context.\n\nThat makes it easier to judge the difference between a subtle fade, a snappy pop, and a more dramatic 3D tilt without rebuilding the scenario each time."
   )
 
-const initialMessages = chat.get({ count: 0 })
-const transport = chat.transport({ chunkDelayMs: 15 })
+const initialMessages = chat.get(0)
+const transport = chat.transport({ delayMs: 15 })
 
 export function MessageScrollerAnimation() {
   const { messages, sendMessage, setMessages, status } = useChat({
@@ -73,7 +73,7 @@ export function MessageScrollerAnimation() {
     transport,
   })
   const [presetId, setPresetId] = React.useState<MessageAnimationId>("fade")
-  const nextMessage = chat.next({ after: messages })
+  const nextMessage = chat.next(messages)
   const isBusy = status === "submitted" || status === "streaming"
   const preset = MESSAGE_ANIMATIONS[presetId as MessageAnimationId]
 

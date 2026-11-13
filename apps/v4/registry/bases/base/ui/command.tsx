@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { Command as CommandPrimitive } from "cmdk"
+import { cn } from "cn"
 
-import { cn } from "@/registry/bases/base/lib/utils"
 import {
   Dialog,
   DialogContent,

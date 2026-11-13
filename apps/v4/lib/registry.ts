@@ -1,16 +1,19 @@
 import { promises as fs } from "fs"
 import path from "path"
-import { ExamplesComponents } from "@/examples/__components__"
+import { getComponent as getExamplesComponent } from "@/examples/__components__"
 import { ExamplesIndex } from "@/examples/__index__"
 import { LRUCache } from "lru-cache"
-import { registryItemSchema, type registryItemFileSchema } from "shadcn/schema"
-import { type z } from "zod"
+import {
+  registryItemSchema,
+  type RegistryItem,
+  type RegistryItemFile,
+} from "shadcn/schema"
 
 import { readFileFromRoot } from "@/lib/read-file"
-import { Components as StylesComponents } from "@/registry/__components__"
+import { getComponent as getStylesComponent } from "@/registry/__components__"
 import { Index as StylesIndex } from "@/registry/__index__"
 import { BASES } from "@/registry/bases"
-import { Components as BasesComponents } from "@/registry/bases/__components__"
+import { getComponent as getBasesComponent } from "@/registry/bases/__components__"
 import { Index as BasesIndex } from "@/registry/bases/__index__"
 
 // LRU cache for cross-request caching of registry items.
@@ -67,20 +70,20 @@ function getRegistryEntry(name: string, styleName: string) {
   return getStyleIndex(styleName)?.[name] ?? getBaseIndex(styleName)?.[name]
 }
 
-// Lazy components live in dedicated __components__ maps (separate from the
-// metadata indexes) so metadata-only consumers don't pull every component's
-// dynamic import into their module graph. Lookups mirror getRegistryEntry.
+// Lazy components live in per-style __components__ shards (separate from the
+// metadata indexes) so consumers only pull the requested style's dynamic
+// imports into their module graph. Lookups mirror getRegistryEntry.
 function getRegistryComponentEntry(name: string, styleName: string) {
   const base = getBaseForStyle(styleName)
   return (
-    StylesComponents[styleName]?.[name] ??
-    (base ? BasesComponents[base]?.[name] : undefined)
+    getStylesComponent(styleName, name) ??
+    (base ? getBasesComponent(base, name) : undefined)
   )
 }
 
 export function getDemoComponent(name: string, styleName: string) {
   const key = getDemoIndexKey(styleName)
-  return ExamplesComponents[key]?.[name]
+  return getExamplesComponent(key, name)
 }
 
 export async function getDemoItem(name: string, styleName: string) {
@@ -116,7 +119,7 @@ export function getRegistryComponent(name: string, styleName: string) {
 
 export async function getRegistryItems(
   styleName: string,
-  filter?: (item: z.infer<typeof registryItemSchema>) => boolean
+  filter?: (item: RegistryItem) => boolean
 ) {
   const styleIndex = getMergedIndexForStyle(styleName)
 
@@ -169,7 +172,7 @@ export async function getRegistryItem(name: string, styleName: string) {
 
   // Read all files in parallel.
   let files: typeof result.data.files = await Promise.all(
-    item.files.map(async (file: z.infer<typeof registryItemFileSchema>) => {
+    item.files.map(async (file: RegistryItemFile) => {
       const content = await getFileContent(file)
       const relativePath = path.relative(process.cwd(), file.path)
 
@@ -201,7 +204,7 @@ export async function getRegistryItem(name: string, styleName: string) {
   return parsed.data
 }
 
-async function getFileContent(file: z.infer<typeof registryItemFileSchema>) {
+async function getFileContent(file: RegistryItemFile) {
   let code = await fs.readFile(file.path, "utf-8")
 
   // Some registry items uses default export.
@@ -216,7 +219,7 @@ async function getFileContent(file: z.infer<typeof registryItemFileSchema>) {
   return code
 }
 
-function getFileTarget(file: z.infer<typeof registryItemFileSchema>) {
+function getFileTarget(file: RegistryItemFile) {
   let target = file.target
 
   if (!target || target === "") {
@@ -245,7 +248,7 @@ function getFileTarget(file: z.infer<typeof registryItemFileSchema>) {
   return target ?? ""
 }
 
-function fixFilePaths(files: z.infer<typeof registryItemSchema>["files"]) {
+function fixFilePaths(files: RegistryItem["files"]) {
   if (!files) {
     return []
   }

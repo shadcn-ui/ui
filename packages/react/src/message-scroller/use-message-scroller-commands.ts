@@ -8,7 +8,10 @@ import {
 } from "./geometry"
 import { AUTOSCROLLING_CLEAR_DELAY, SCROLL_POSITION_EPSILON } from "./types"
 import type { MessageScrollerScrollOptions } from "./types"
-import type { MessageScrollerRefs } from "./use-message-scroller-refs"
+import {
+  markDefaultScrollPositionApplied,
+  type MessageScrollerRefs,
+} from "./use-message-scroller-refs"
 
 // Imperative scroll primitives, split from the controller so the move mechanics
 // live apart from the policy that decides when to run them. Each command resolves
@@ -30,7 +33,6 @@ function useMessageScrollerCommands({
     autoscrollingRef,
     autoscrollingTimeoutRef,
     contentRef,
-    defaultScrollPositionAppliedRef,
     itemCountRef,
     messageElementsRef,
     modeRef,
@@ -67,6 +69,14 @@ function useMessageScrollerCommands({
     [commitScrollState]
   )
 
+  // Low-level spacer primitive. Unlike the scroll commands, this does not move
+  // the viewport: it only writes the tail spacer's reserved height (hiding it
+  // at zero). It lives on the commands surface rather than staying private to
+  // the controller because the controller both reserves room for an anchored
+  // turn (via reanchorToAnchoredMessage) and consumes it while draining a
+  // released spacer (in drainReleasedSpacer), and both need the same write. It
+  // is intentionally not a user-facing scroll command - treat it as an internal
+  // handle the orchestrator threads through to keep spacer writes in one place.
   const setTailSpacerHeight = React.useCallback((height: number) => {
     const spacer = spacerRef.current
 
@@ -263,7 +273,7 @@ function useMessageScrollerCommands({
             messageId,
             options,
           }
-          defaultScrollPositionAppliedRef.current = true
+          markDefaultScrollPositionApplied(refs)
 
           return true
         }
@@ -271,7 +281,7 @@ function useMessageScrollerCommands({
         return false
       }
 
-      defaultScrollPositionAppliedRef.current = true
+      markDefaultScrollPositionApplied(refs)
 
       if (scrollToElement(element, options)) {
         pendingScrollToMessageRef.current = null
@@ -308,7 +318,7 @@ function useMessageScrollerCommands({
     }
 
     pendingScrollToMessageRef.current = null
-    defaultScrollPositionAppliedRef.current = true
+    markDefaultScrollPositionApplied(refs)
 
     return true
   }, [scrollToElement])
@@ -320,6 +330,7 @@ function useMessageScrollerCommands({
     scrollToEnd,
     scrollToMessage,
     scrollToStart,
+    setTailSpacerHeight,
   }
 }
 

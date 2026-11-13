@@ -67,7 +67,7 @@ const chat = createChat()
     })
   })
 
-const initialMessages = chat.get({ count: 0 })
+const initialMessages = chat.get(0)
 const transport = chat.transport()
 
 export function FilesChat() {
@@ -75,7 +75,7 @@ export function FilesChat() {
     messages: initialMessages,
     transport,
   })
-  const nextMessage = chat.next({ after: messages })
+  const nextMessage = chat.next(messages)
   const isBusy = status === "submitted" || status === "streaming"
 
   const onSubmit = (input: string) => {

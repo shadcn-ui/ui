@@ -1,13 +1,12 @@
 import * as React from "react"
-import { type registryItemFileSchema } from "shadcn/schema"
-import { type z } from "zod"
+import { cn } from "cn"
+import { type RegistryItemFile } from "shadcn/schema"
 
 import { highlightCode } from "@/lib/highlight-code"
 import {
   createFileTreeForRegistryItemFiles,
   getRegistryItem,
 } from "@/lib/registry"
-import { cn } from "@/lib/utils"
 import { BlockViewer } from "@/components/block-viewer"
 import { ComponentPreview } from "@/components/component-preview"
 import { type Style } from "@/registry/_legacy-styles"
@@ -67,7 +66,7 @@ const getCachedFileTree = React.cache(
 )
 
 const getCachedHighlightedFiles = React.cache(
-  async (files: z.infer<typeof registryItemFileSchema>[]) => {
+  async (files: RegistryItemFile[]) => {
     return await Promise.all(
       files.map(async (file) => ({
         ...file,

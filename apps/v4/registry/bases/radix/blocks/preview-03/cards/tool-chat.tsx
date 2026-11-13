@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { useChat } from "@ai-sdk/react"
+import type { UIMessage } from "ai"
 
 import { createChat, getMessageText } from "@/lib/ai"
 import { PartReasoning } from "@/registry/bases/radix/blocks/preview-03/components/part-reasoning"
@@ -51,7 +52,9 @@ type Tools = {
   }
 }
 
-const chat = createChat<unknown, Record<string, never>, Tools>()
+type ChatMessage = UIMessage<unknown, Record<string, never>, Tools>
+
+const chat = createChat<ChatMessage>()
   .user("Check the deployment health for the checkout flow.")
   .sleep(1000)
   .assistant(({ writer }) => {
@@ -78,7 +81,7 @@ const chat = createChat<unknown, Record<string, never>, Tools>()
     )
   })
 
-const initialMessages = chat.get({ count: 0 })
+const initialMessages = chat.get(0)
 const transport = chat.transport()
 
 function isToolPart(part: {
@@ -92,7 +95,7 @@ export function ToolChat() {
     messages: initialMessages,
     transport,
   })
-  const nextMessage = chat.next({ after: messages })
+  const nextMessage = chat.next(messages)
   const isBusy = status === "submitted" || status === "streaming"
 
   const onSubmit = (input: string) => {

@@ -1,6 +1,5 @@
 import * as React from "react"
-
-import { cn } from "@/registry/bases/radix/lib/utils"
+import { cn } from "cn"
 
 function Textarea({ className, ...props }: React.ComponentProps<"textarea">) {
   return (

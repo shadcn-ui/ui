@@ -596,6 +596,12 @@
   &:where([dir="rtl"], [dir="rtl"] *) {
     animation-direction: reverse;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    background-image: none;
+    -webkit-text-fill-color: currentColor;
+  }
 }
 
 @utility shimmer-once {
@@ -633,6 +639,8 @@
   --shimmer-angle: calc(--value(integer) * 1deg);
 }
 
+/* Kept for backwards compatibility. Unlayered, so it still wins over other
+   utilities on a plain .shimmer element. Variants are handled in the utility. */
 @media (prefers-reduced-motion: reduce) {
   .shimmer {
     animation: none;

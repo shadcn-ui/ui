@@ -2,7 +2,7 @@ import dedent from "dedent"
 import {
   registryItemFileSchema,
   registryItemSchema,
-  type configSchema,
+  type Config,
   type RegistryItem,
 } from "shadcn/schema"
 import {
@@ -12,7 +12,6 @@ import {
   transformRender,
 } from "shadcn/utils"
 import { Project, ScriptKind, type SourceFile } from "ts-morph"
-import { z } from "zod"
 
 import {
   buildRegistryBase,
@@ -21,6 +20,7 @@ import {
   getInheritedHeadingFontValue,
   type DesignSystemConfig,
 } from "@/registry/config"
+import { getItemsForBase } from "@/app/(app)/(create)/lib/api"
 
 const { Index } = await import("@/registry/bases/__index__")
 
@@ -162,7 +162,7 @@ type V0Transformer = (opts: {
   filename: string
   raw: string
   sourceFile: SourceFile
-  config: z.infer<typeof configSchema>
+  config: Config
   supportedFontMarkers?: string[]
 }) => Promise<unknown>
 
@@ -178,6 +178,16 @@ function getStyle(designSystemConfig: DesignSystemConfig) {
 }
 
 export async function buildV0Payload(designSystemConfig: DesignSystemConfig) {
+  if (designSystemConfig.item) {
+    const allowedItems = await getItemsForBase(designSystemConfig.base)
+    const isAllowed = allowedItems.some(
+      (allowed) => allowed?.name === designSystemConfig.item
+    )
+    if (!isAllowed) {
+      throw new Error(`Unknown item: "${designSystemConfig.item}".`)
+    }
+  }
+
   const registryBase = buildRegistryBase(designSystemConfig)
   const normalizedFontHeading =
     designSystemConfig.fontHeading === designSystemConfig.font
@@ -303,8 +313,7 @@ function buildPackageJson(dependencies: string[]) {
     "react-dom": "^19.2.4",
     // Utility deps.
     "class-variance-authority": "^0.7.1",
-    clsx: "^2.1.1",
-    "tailwind-merge": "^3.3.1",
+    cn: "^0.2.4",
     // Component peer deps.
     "date-fns": "4.1.0",
     "embla-carousel-react": "8.5.1",
@@ -526,7 +535,7 @@ async function buildComponentFiles(designSystemConfig: DesignSystemConfig) {
 
   files.push(pageFile)
 
-  return z.array(registryItemFileSchema).parse(files)
+  return registryItemFileSchema.array().parse(files)
 }
 
 function buildTransformConfig(designSystemConfig: DesignSystemConfig) {
@@ -556,13 +565,13 @@ function buildTransformConfig(designSystemConfig: DesignSystemConfig) {
       hooks: "./hooks",
       ui: "./components/ui",
     },
-  } satisfies z.infer<typeof configSchema>
+  } satisfies Config
 }
 
 async function getRegistryItemFile(
   name: string,
   designSystemConfig: DesignSystemConfig,
-  config: z.infer<typeof configSchema>
+  config: Config
 ) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_APP_URL}/r/styles/${getStyle(designSystemConfig)}/${name}.json`
@@ -593,10 +602,7 @@ async function getRegistryItemFile(
   }
 }
 
-async function transformFileContent(
-  content: string,
-  config: z.infer<typeof configSchema>
-) {
+async function transformFileContent(content: string, config: Config) {
   const project = new Project({ compilerOptions: {} })
   const sourceFile = project.createSourceFile("component.tsx", content, {
     scriptKind: ScriptKind.TSX,

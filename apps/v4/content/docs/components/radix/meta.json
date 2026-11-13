@@ -17,6 +17,7 @@
     "carousel",
     "chart",
     "checkbox",
+    "code-block",
     "collapsible",
     "combobox",
     "command",
@@ -46,6 +47,7 @@
     "pagination",
     "popover",
     "progress",
+    "questionnaire",
     "radio-group",
     "resizable",
     "scroll-area",
@@ -65,6 +67,7 @@
     "toggle",
     "toggle-group",
     "tooltip",
+    "trace",
     "typography"
   ]
 }

@@ -1,5 +1,8 @@
-import type { Config } from "@/src/utils/get-config"
-import { DEFAULT_COMPONENTS, DEFAULT_UTILS } from "@/src/utils/get-config"
+import type { Config } from "@shadcn/registry/internal/get-config"
+import {
+  DEFAULT_COMPONENTS,
+  DEFAULT_UTILS,
+} from "@shadcn/registry/internal/get-config"
 
 export function getInitAliasDefaults(
   componentsAlias: string,

@@ -7,6 +7,7 @@ import {
 } from "./stores"
 import { EMPTY_MESSAGE_SCROLLER_SCROLLABLE } from "./types"
 import type {
+  MessageScrollerDefaultScrollPosition,
   MessageScrollerMode,
   MessageScrollerScrollable,
   MessageScrollerScrollOptions,
@@ -26,6 +27,7 @@ type MessageScrollerRefs = {
   defaultScrollPositionAppliedRef: React.RefObject<boolean>
   firstItemRef: React.RefObject<HTMLElement | null>
   itemCountRef: React.RefObject<number>
+  lastScrollTopRef: React.RefObject<number>
   messageElementsRef: React.RefObject<Map<string, HTMLElement>>
   modeRef: React.RefObject<MessageScrollerMode>
   pendingScrollFrameRef: React.RefObject<number | null>
@@ -38,6 +40,7 @@ type MessageScrollerRefs = {
     viewportTop: number
   } | null>
   preserveScrollOnPrependRef: React.RefObject<boolean>
+  pendingDefaultScrollStore: MessageScrollerStore<boolean>
   rootRef: React.RefObject<HTMLDivElement | null>
   scrollEdgeThresholdRef: React.RefObject<number>
   scrollMarginRef: React.RefObject<number>
@@ -59,11 +62,13 @@ type MessageScrollerRefs = {
 // the latest prop values mirrored onto refs each render so callbacks stay stable.
 function useMessageScrollerRefs({
   autoScroll,
+  defaultScrollPosition,
   scrollEdgeThreshold,
   scrollMargin,
   scrollPreviousItemPeek,
 }: {
   autoScroll: boolean
+  defaultScrollPosition: MessageScrollerDefaultScrollPosition
   scrollEdgeThreshold: number
   scrollMargin: number
   scrollPreviousItemPeek: number
@@ -75,6 +80,9 @@ function useMessageScrollerRefs({
   const scrollEdgeThresholdRef = React.useRef(scrollEdgeThreshold)
   const itemCountRef = React.useRef(0)
   const firstItemRef = React.useRef<HTMLElement | null>(null)
+  // The scrollTop seen by the previous state commit, so follow-release can tell
+  // a reader scrolling up from content growing past the live edge.
+  const lastScrollTopRef = React.useRef(0)
   const modeRef = React.useRef<MessageScrollerMode>(
     autoScroll ? "following-bottom" : "free-scrolling"
   )
@@ -101,6 +109,8 @@ function useMessageScrollerRefs({
   const spacerHeightRef = React.useRef(0)
   const spacerRef = React.useRef<HTMLDivElement | null>(null)
   const stateFrameRef = React.useRef<number | null>(null)
+  const pendingDefaultScrollStoreRef =
+    React.useRef<MessageScrollerStore<boolean> | null>(null)
   const stateStoreRef =
     React.useRef<MessageScrollerStore<MessageScrollerScrollable> | null>(null)
   const autoscrollingTimeoutRef = React.useRef<number | null>(null)
@@ -111,6 +121,14 @@ function useMessageScrollerRefs({
     React.useRef<MessageScrollerVisibilityStore | null>(null)
   const visibleMessageIdsRef = React.useRef(new Set<string>())
   const handledScrollAnchorsRef = React.useRef(new WeakSet<HTMLElement>())
+
+  if (pendingDefaultScrollStoreRef.current === null) {
+    pendingDefaultScrollStoreRef.current = createMessageScrollerStore(
+      defaultScrollPosition === "end" ||
+        defaultScrollPosition === "last-anchor",
+      (current, next) => current === next
+    )
+  }
 
   if (stateStoreRef.current === null) {
     stateStoreRef.current = createMessageScrollerStore(
@@ -139,12 +157,14 @@ function useMessageScrollerRefs({
     defaultScrollPositionAppliedRef,
     firstItemRef,
     itemCountRef,
+    lastScrollTopRef,
     messageElementsRef,
     modeRef,
     pendingScrollFrameRef,
     pendingScrollToMessageRef,
     prependRestoreRef,
     preserveScrollOnPrependRef,
+    pendingDefaultScrollStore: pendingDefaultScrollStoreRef.current,
     rootRef,
     scrollEdgeThresholdRef,
     scrollMarginRef,
@@ -163,5 +183,18 @@ function useMessageScrollerRefs({
   }
 }
 
-export { useMessageScrollerRefs }
+function clearPendingDefaultScroll(refs: MessageScrollerRefs) {
+  refs.pendingDefaultScrollStore.setSnapshot(false)
+}
+
+function markDefaultScrollPositionApplied(refs: MessageScrollerRefs) {
+  refs.defaultScrollPositionAppliedRef.current = true
+  clearPendingDefaultScroll(refs)
+}
+
+export {
+  clearPendingDefaultScroll,
+  markDefaultScrollPositionApplied,
+  useMessageScrollerRefs,
+}
 export type { MessageScrollerRefs }

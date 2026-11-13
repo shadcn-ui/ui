@@ -7,7 +7,7 @@ export function Announcement() {
   return (
     <Badge asChild variant="secondary" className="bg-muted">
       <Link href="/docs/changelog">
-        Base UI is now the default <ArrowRightIcon />
+        Trace, Code Block and AI Elements <ArrowRightIcon />
       </Link>
     </Badge>
   )

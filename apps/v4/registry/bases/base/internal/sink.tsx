@@ -48,10 +48,12 @@ import SwitchExample from "@/registry/bases/base/examples/switch-example"
 import TableExample from "@/registry/bases/base/examples/table-example"
 import TabsExample from "@/registry/bases/base/examples/tabs-example"
 import TextareaExample from "@/registry/bases/base/examples/textarea-example"
+import ToastExample from "@/registry/bases/base/examples/toast-example"
 import ToggleExample from "@/registry/bases/base/examples/toggle-example"
 import ToggleGroupExample from "@/registry/bases/base/examples/toggle-group-example"
 import TooltipExample from "@/registry/bases/base/examples/tooltip-example"
-import { Toaster } from "@/registry/bases/base/ui/sonner"
+import { Toaster as SonnerToaster } from "@/registry/bases/base/ui/sonner"
+import { Toaster as ToastToaster } from "@/registry/bases/base/ui/toast"
 
 export default function Page() {
   return (
@@ -106,10 +108,12 @@ export default function Page() {
       <TableExample />
       <TabsExample />
       <TextareaExample />
+      <ToastExample />
       <ToggleExample />
       <ToggleGroupExample />
       <TooltipExample />
-      <Toaster />
+      <SonnerToaster />
+      <ToastToaster />
     </div>
   )
 }

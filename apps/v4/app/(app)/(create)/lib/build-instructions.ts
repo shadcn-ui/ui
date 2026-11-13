@@ -15,11 +15,7 @@ export function buildInstructions(config: DesignSystemConfig) {
   const normalizedFontHeading =
     config.fontHeading === config.font ? "inherit" : config.fontHeading
 
-  const dependencies = [
-    ...(registryBase.dependencies ?? []),
-    "clsx",
-    "tailwind-merge",
-  ]
+  const dependencies = [...(registryBase.dependencies ?? []), "cn"]
 
   const lightVars = Object.entries(registryBase.cssVars?.light ?? {})
     .map(([key, value]) => `  --${key}: ${value};`)
@@ -71,12 +67,7 @@ function buildUtilsSection() {
     ## Step 2: Create \`lib/utils.ts\`
 
     \`\`\`ts
-    import { clsx, type ClassValue } from "clsx"
-    import { twMerge } from "tailwind-merge"
-
-    export function cn(...inputs: ClassValue[]) {
-      return twMerge(clsx(inputs))
-    }
+    export { cn } from "cn"
     \`\`\`
   `
 }

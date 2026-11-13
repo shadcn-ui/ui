@@ -35,7 +35,7 @@ The skill provides your AI assistant with the following knowledge:
 
 ### Project Context
 
-On every interaction, the skill runs `shadcn info --json` to get your project's configuration: framework, Tailwind version, aliases, base library (`base` or `radix`), icon library, installed components, and resolved file paths.
+On every interaction, the skill runs `shadcn info --json` to get your project's configuration: framework, Tailwind version, aliases, base library (`base`, `radix`, or `aria`), icon library, installed components, and resolved file paths.
 
 ### CLI Commands
 

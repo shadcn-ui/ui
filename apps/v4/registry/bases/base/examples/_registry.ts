@@ -819,6 +819,18 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "toast-example",
+    title: "Toast",
+    type: "registry:example",
+    registryDependencies: ["button", "toast", "example"],
+    files: [
+      {
+        path: "examples/toast-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "toggle-example",
     title: "Toggle",
     type: "registry:example",
@@ -909,7 +921,13 @@ export const examples: Registry["items"] = [
     name: "attachment-example",
     title: "Attachment",
     type: "registry:example",
-    registryDependencies: ["attachment"],
+    registryDependencies: [
+      "attachment",
+      "button",
+      "dialog",
+      "example",
+      "spinner",
+    ],
     files: [
       {
         path: "examples/attachment-example.tsx",
@@ -921,7 +939,14 @@ export const examples: Registry["items"] = [
     name: "bubble-example",
     title: "Bubble",
     type: "registry:example",
-    registryDependencies: ["bubble", "button", "collapsible", "example"],
+    registryDependencies: [
+      "bubble",
+      "button",
+      "collapsible",
+      "example",
+      "marker",
+      "sonner",
+    ],
     files: [
       {
         path: "examples/bubble-example.tsx",
@@ -953,6 +978,25 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "questionnaire-example",
+    title: "Questionnaire",
+    type: "registry:example",
+    registryDependencies: [
+      "button",
+      "card",
+      "dialog",
+      "example",
+      "questionnaire",
+      "sonner",
+    ],
+    files: [
+      {
+        path: "examples/questionnaire-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "marker-example",
     title: "Marker",
     type: "registry:example",
@@ -967,6 +1011,53 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/marker-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "trace-example",
+    title: "Trace",
+    type: "registry:example",
+    registryDependencies: [
+      "trace",
+      "code-block",
+      "badge",
+      "bubble",
+      "button",
+      "dialog",
+      "item",
+      "message",
+      "sheet",
+      "example",
+    ],
+    files: [
+      {
+        path: "examples/trace-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "code-block-example",
+    title: "Code Block",
+    type: "registry:example",
+    registryDependencies: [
+      "code-block",
+      "use-highlighted-code",
+      "bubble",
+      "button",
+      "card",
+      "dialog",
+      "message",
+      "tabs",
+      "trace",
+      "example",
+    ],
+    dependencies: ["streamdown"],
+    files: [
+      {
+        path: "examples/code-block-example.tsx",
         type: "registry:example",
       },
     ],

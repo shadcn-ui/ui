@@ -2,9 +2,9 @@
 
 import * as React from "react"
 import { IconCheck, IconCopy } from "@tabler/icons-react"
+import { cn } from "cn"
 
 import { trackEvent, type Event } from "@/lib/events"
-import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
 function legacyCopyToClipboard(value: string) {

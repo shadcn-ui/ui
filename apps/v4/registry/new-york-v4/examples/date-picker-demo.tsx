@@ -1,10 +1,10 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "cn"
 import { format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Calendar } from "@/registry/new-york-v4/ui/calendar"
 import {

@@ -53,7 +53,10 @@ export function ComponentsList({
   }
 
   return (
-    <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-x-8 lg:gap-x-16 lg:gap-y-6 xl:gap-x-20">
+    <div
+      data-not-typeset
+      className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-x-8 lg:gap-x-16 lg:gap-y-6 xl:gap-x-20"
+    >
       {list.map((component) => (
         <ComponentLink
           key={component.$id}

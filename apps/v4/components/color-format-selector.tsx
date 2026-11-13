@@ -1,9 +1,9 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "cn"
 
 import { getColorFormat, type Color } from "@/lib/colors"
-import { cn } from "@/lib/utils"
 import { useColors } from "@/hooks/use-colors"
 import {
   Select,

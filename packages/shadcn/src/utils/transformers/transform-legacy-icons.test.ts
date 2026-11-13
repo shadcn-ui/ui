@@ -1,8 +1,7 @@
-import { type Config } from "@/src/utils/get-config"
 import { transformLegacyIcons } from "@/src/utils/transformers/transform-legacy-icons"
+import { type Config } from "@shadcn/registry/internal/get-config"
+import { transform } from "@shadcn/registry/internal/transformers/index"
 import { describe, expect, test, vi } from "vitest"
-
-import { transform } from "../transformers"
 
 const testConfig: Config = {
   style: "new-york",
@@ -30,7 +29,7 @@ const testConfig: Config = {
   },
 }
 
-vi.mock("@/src/registry/api", () => ({
+vi.mock("@/src/utils/registry-api", () => ({
   getRegistryIcons: () => ({
     Check: {
       lucide: "Check",

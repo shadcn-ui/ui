@@ -2,7 +2,8 @@
 
 import * as React from "react"
 import { act } from "react"
-import { createRoot, type Root } from "react-dom/client"
+import { createRoot, hydrateRoot, type Root } from "react-dom/client"
+import { renderToString } from "react-dom/server"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
 import {
@@ -335,6 +336,78 @@ describe("MessageScroller", () => {
     })
     expect(rendered.button().dataset.active).toBe("false")
     expect(rendered.button().hidden).toBe(false)
+    expect(rendered.viewport().hasAttribute("data-pending-scroll")).toBe(false)
+    expect(rendered.scroller().hasAttribute("data-pending-scroll")).toBe(false)
+  })
+
+  it("emits data-pending-scroll on the server when opening at the end", () => {
+    const html = renderToString(<PendingScrollTree testIds />)
+
+    expect(html).toContain('data-pending-scroll=""')
+  })
+
+  it("emits data-pending-scroll on the server when opening at last-anchor", () => {
+    const html = renderToString(
+      <PendingScrollTree defaultScrollPosition="last-anchor" scrollAnchor />
+    )
+
+    expect(html).toContain('data-pending-scroll=""')
+  })
+
+  it("does not emit data-pending-scroll on the server when opening at the start", () => {
+    const html = renderToString(
+      <PendingScrollTree defaultScrollPosition="start" />
+    )
+
+    expect(html).not.toContain("data-pending-scroll")
+  })
+
+  it("drops data-pending-scroll when the transcript is empty", async () => {
+    const rendered = await renderTestScroller({
+      messages: [],
+    })
+
+    expect(rendered.viewport().hasAttribute("data-pending-scroll")).toBe(false)
+    expect(rendered.scroller().hasAttribute("data-pending-scroll")).toBe(false)
+  })
+
+  it("clears data-pending-scroll on hydration without errors", async () => {
+    const tree = <PendingScrollTree items={["One", "Two"]} testIds />
+    const mounted = renderPendingScrollToContainer(tree)
+
+    expect(mounted.scroller?.hasAttribute("data-pending-scroll")).toBe(true)
+    expect(mounted.viewport?.hasAttribute("data-pending-scroll")).toBe(true)
+
+    const consoleError = await mounted.hydrate()
+
+    expect(mounted.scroller?.hasAttribute("data-pending-scroll")).toBe(false)
+    expect(mounted.viewport?.hasAttribute("data-pending-scroll")).toBe(false)
+    expect(consoleError).not.toHaveBeenCalled()
+    consoleError.mockRestore()
+  })
+
+  it("converges after a pre-hydration script removes data-pending-scroll", async () => {
+    const tree = (
+      <PendingScrollTree
+        items={["One", "Two"]}
+        suppressHydrationWarning
+        testIds
+      />
+    )
+    const mounted = renderPendingScrollToContainer(tree)
+
+    expect(mounted.scroller?.hasAttribute("data-pending-scroll")).toBe(true)
+    expect(mounted.viewport?.hasAttribute("data-pending-scroll")).toBe(true)
+
+    mounted.viewport?.removeAttribute("data-pending-scroll")
+
+    const consoleError = await mounted.hydrate()
+
+    expect(consoleError).not.toHaveBeenCalled()
+    expect(mounted.scroller?.hasAttribute("data-pending-scroll")).toBe(false)
+    expect(mounted.viewport?.hasAttribute("data-pending-scroll")).toBe(false)
+    expect(document.body.contains(mounted.viewport)).toBe(true)
+    consoleError.mockRestore()
   })
 
   it("opens at the end when autoScroll starts engaged", async () => {
@@ -485,12 +558,219 @@ describe("MessageScroller", () => {
     expect(rendered.viewport().scrollTop).toBe(176)
     expect(rendered.message("message-4").getBoundingClientRect().top).toBe(64)
 
-    // Streamed growth below the anchor must not yank the reader to the live
-    // edge; the anchored turn holds at the reading line.
+    // The anchored turn was placed with no tail spacer (the content already
+    // fills the viewport), so growth must keep holding it at the reading line
+    // instead of yanking the reader to the live edge.
     rendered.message("message-4").dataset.testHeight = "160"
     await triggerResize(rendered.content())
 
     expect(rendered.message("message-4").getBoundingClientRect().top).toBe(64)
+  })
+
+  it("hands off from the anchor hold to following once the streamed reply fills the viewport", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    // The submitted turn anchors at the reading line with tail spacer room
+    // below for the reply to stream into.
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 20, scrollAnchor: true },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(176)
+    expect(rendered.message("message-4").getBoundingClientRect().top).toBe(64)
+
+    // The reply streams in below the anchor. While it still fits in the
+    // spacer room the anchor holds and following stays off.
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 20, scrollAnchor: true },
+        { id: "message-5", height: 8 },
+      ],
+      { autoScroll: true }
+    )
+    await triggerResize(rendered.content())
+
+    expect(rendered.viewport().scrollTop).toBe(176)
+    expect(rendered.message("message-4").getBoundingClientRect().top).toBe(64)
+
+    // Growth past the spacer means the reply has filled the viewport and the
+    // reader is at the live edge, so autoScroll takes over from the anchor.
+    rendered.message("message-5").dataset.testHeight = "60"
+    await triggerResize(rendered.content())
+
+    expect(rendered.viewport().scrollTop).toBe(220)
+    expect(rendered.state().end).toBe(false)
+
+    // Follow-output stays engaged for the rest of the stream.
+    rendered.message("message-5").dataset.testHeight = "100"
+    await triggerResize(rendered.content())
+
+    expect(rendered.viewport().scrollTop).toBe(260)
+    expect(rendered.state().end).toBe(false)
+  })
+
+  it("drains a released tail spacer after a manual scroll during an anchored stream", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    // The submitted turn anchors at the reading line with tail spacer room
+    // below for the reply to stream into.
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 20, scrollAnchor: true },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(176)
+    expect(rendered.message("message-4").getBoundingClientRect().top).toBe(64)
+
+    // A manual scroll during the anchored (pre-handoff) phase releases the
+    // anchor and strands the reserved tail spacer. The reader scrolls up out of
+    // the spacer zone entirely, so the reply growing below must NOT yank them
+    // back to the live edge - the spacer is left untouched until they reach the
+    // real bottom.
+    await act(async () => {
+      rendered
+        .viewport()
+        .dispatchEvent(new WheelEvent("wheel", { bubbles: true }))
+      rendered.viewport().scrollTop = 150
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    // The reply keeps streaming below the released anchor. The reader is above
+    // the spacer zone, so the drain must not move them or collapse the spacer.
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 20, scrollAnchor: true },
+        { id: "message-5", height: 8 },
+      ],
+      { autoScroll: true }
+    )
+    await triggerResize(rendered.content())
+
+    expect(rendered.viewport().scrollTop).toBe(150)
+
+    const spacer = rendered
+      .content()
+      .querySelector<HTMLElement>("[data-message-scroller-spacer]")
+    expect(spacer?.hidden).toBe(false)
+
+    // Scrolling to the real bottom - contentBottom plus the remaining spacer -
+    // drains the dead space and re-engages following at the live edge (268 -
+    // 100 = 168). The reader was not yanked mid-stream - the spacer shrank to
+    // absorb the new content instead of collapsing in a single frame.
+    await act(async () => {
+      rendered.viewport().scrollTop = rendered.viewport().scrollHeight
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(168)
+    expect(spacer?.hidden).toBe(true)
+
+    // Follow-output stays engaged for the rest of the stream.
+    rendered.message("message-5").dataset.testHeight = "60"
+    await triggerResize(rendered.content())
+
+    expect(rendered.viewport().scrollTop).toBe(220)
+    expect(rendered.state().end).toBe(false)
+  })
+
+  it("drains a stranded tail spacer on scroll when the stream ends mid-drain", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    // The submitted turn anchors with tail spacer room for the reply to stream.
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 20, scrollAnchor: true },
+      ],
+      { autoScroll: true }
+    )
+
+    // A manual scroll releases the anchor and strands the reserved spacer.
+    await act(async () => {
+      rendered
+        .viewport()
+        .dispatchEvent(new WheelEvent("wheel", { bubbles: true }))
+      rendered.viewport().scrollTop = 150
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    const strandedSpacer = rendered
+      .content()
+      .querySelector<HTMLElement>("[data-message-scroller-spacer]")
+    expect(strandedSpacer?.hidden).toBe(false)
+
+    // The stream ends before the reply drains the spacer (no further resize).
+    // A scroll to the real bottom - contentBottom plus the remaining spacer -
+    // must finish the drain: the dead space is reclaimed and following re-arms.
+    await act(async () => {
+      rendered.viewport().scrollTop = rendered.viewport().scrollHeight
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    const drainedSpacer = rendered
+      .content()
+      .querySelector<HTMLElement>("[data-message-scroller-spacer]")
+    expect(drainedSpacer?.hidden).toBe(true)
+
+    // The reader reached the live edge: the spacer is gone and the viewport
+    // sits at the real bottom (scrollHeight minus viewport). Following is
+    // re-engaged, so state.end reads false by design (follow-output suppresses
+    // the end button); the re-arm is observable through the settled scrollTop.
+    const finalViewport = rendered.viewport()
+    expect(finalViewport.scrollTop).toBe(
+      finalViewport.scrollHeight - finalViewport.clientHeight
+    )
   })
 
   it("applies the default end target after async messages mount", async () => {
@@ -714,6 +994,43 @@ describe("MessageScroller", () => {
     await triggerResize(rendered.content())
 
     expect(rendered.viewport().scrollTop).toBe(0)
+  })
+
+  it("keeps following when a state commit sees growth before the coalesced resize handler", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    // Let the opening scroll-to-end settle so the autoscrolling flag clears.
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(300)
+    })
+
+    // A large streamed chunk grows the content past the live edge, and a
+    // scroll event commits state before the frame-coalesced resize handler has
+    // caught follow-output up. The reader did not move, so the commit must not
+    // release follow-bottom, and the gap it observed must not be published —
+    // that would strobe the scroll button once per chunk.
+    rendered.message("message-3").dataset.testHeight = "160"
+    await act(async () => {
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+    })
+
+    expect(rendered.state().end).toBe(false)
+    expect(rendered.button().dataset.active).toBe("false")
+
+    await triggerResize(rendered.content())
+
+    expect(rendered.viewport().scrollTop).toBe(220)
+    expect(rendered.state().end).toBe(false)
   })
 
   it("places appended scroll anchors near the top with previous peek", async () => {
@@ -1087,6 +1404,7 @@ describe("MessageScroller", () => {
 
     expect(rendered.viewport().scrollTop).toBe(80)
     expect(rendered.message("message-2").getBoundingClientRect().top).toBe(0)
+    expect(rendered.viewport().hasAttribute("data-pending-scroll")).toBe(false)
   })
 
   it("restores to a queued message target after async messages mount", async () => {
@@ -1106,6 +1424,7 @@ describe("MessageScroller", () => {
 
     expect(rendered.viewport().scrollTop).toBe(80)
     expect(rendered.message("message-2").getBoundingClientRect().top).toBe(0)
+    expect(rendered.viewport().hasAttribute("data-pending-scroll")).toBe(false)
   })
 
   it("returns false when scrollToMessage cannot find a mounted message", async () => {
@@ -1272,6 +1591,68 @@ describe("MessageScroller", () => {
     expect(rendered.stateRenderCount()).toBe(renderCount)
   })
 })
+
+function PendingScrollTree({
+  defaultScrollPosition,
+  items = ["One"],
+  scrollAnchor = false,
+  suppressHydrationWarning,
+  testIds = false,
+}: {
+  defaultScrollPosition?: React.ComponentProps<
+    typeof MessageScrollerProvider
+  >["defaultScrollPosition"]
+  items?: string[]
+  scrollAnchor?: boolean
+  suppressHydrationWarning?: boolean
+  testIds?: boolean
+}) {
+  return (
+    <MessageScrollerProvider defaultScrollPosition={defaultScrollPosition}>
+      <MessageScroller data-testid={testIds ? "scroller" : undefined}>
+        <MessageScrollerViewport
+          data-testid={testIds ? "viewport" : undefined}
+          suppressHydrationWarning={suppressHydrationWarning}
+        >
+          <MessageScrollerContent>
+            {items.map((label, index) => (
+              <MessageScrollerItem
+                key={label}
+                messageId={`message-${index + 1}`}
+                scrollAnchor={scrollAnchor}
+              >
+                {label}
+              </MessageScrollerItem>
+            ))}
+          </MessageScrollerContent>
+        </MessageScrollerViewport>
+      </MessageScroller>
+    </MessageScrollerProvider>
+  )
+}
+
+function renderPendingScrollToContainer(tree: React.ReactElement) {
+  const container = document.createElement("div")
+
+  containers.push(container)
+  container.innerHTML = renderToString(tree)
+  document.body.appendChild(container)
+
+  return {
+    container,
+    scroller: container.querySelector("[data-testid=scroller]"),
+    viewport: container.querySelector("[data-testid=viewport]"),
+    async hydrate() {
+      const consoleError = vi.spyOn(console, "error").mockImplementation(() => {})
+
+      await act(async () => {
+        hydrateRoot(container, tree)
+      })
+
+      return consoleError
+    },
+  }
+}
 
 async function renderTestScroller(options: TestScrollerOptions) {
   const container = document.createElement("div")

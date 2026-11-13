@@ -1,9 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "cn"
 import { RadioGroup as RadioGroupPrimitive } from "radix-ui"
-
-import { cn } from "@/registry/bases/radix/lib/utils"
 
 function RadioGroup({
   className,

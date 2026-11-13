@@ -7,3 +7,13 @@ packages:
   - "!packages/tests/temp/**"
 
 minimumReleaseAge: 2880
+# TODO: remove once cn@0.2.2 (published 2026-09-01) is older than the 48h
+# minimumReleaseAge window.
+# TODO: remove once @tanstack/react-table@9.0.0 (published 2026-08-04) is older
+# than the 48h minimumReleaseAge window.
+minimumReleaseAgeExclude:
+  - "cn"
+  - "@tanstack/react-table"
+  - "@tanstack/table-core"
+  - "@tanstack/react-store"
+  - "@tanstack/store"

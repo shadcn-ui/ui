@@ -1,21 +1,22 @@
 import path from "path"
-import { configWithDefaults } from "@/src/registry/config"
-import { clearRegistryContext } from "@/src/registry/context"
+import { handleError } from "@/src/utils/handle-error"
+import { ensureRegistriesInConfig } from "@/src/utils/registries"
+import { loadEnvFiles } from "@shadcn/registry/internal/env-loader"
+import { createConfig, getConfig } from "@shadcn/registry/internal/get-config"
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { logger } from "@shadcn/registry/internal/logger"
+import { configWithDefaults } from "@shadcn/registry/internal/registry/config"
+import { BUILTIN_REGISTRIES } from "@shadcn/registry/internal/registry/constants"
+import { clearRegistryContext } from "@shadcn/registry/internal/registry/context"
 import {
   findUnknownSearchTypes,
   printSearchResults,
   resolveSearchRegistries,
   SEARCHABLE_TYPES,
   searchRegistries,
-} from "@/src/registry/search"
-import { validateRegistryConfigForItems } from "@/src/registry/validator"
-import { rawConfigSchema } from "@/src/schema"
-import { loadEnvFiles } from "@/src/utils/env-loader"
-import { createConfig, getConfig } from "@/src/utils/get-config"
-import { handleError } from "@/src/utils/handle-error"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
-import { ensureRegistriesInConfig } from "@/src/utils/registries"
+} from "@shadcn/registry/internal/registry/search"
+import { validateRegistryConfigForItems } from "@shadcn/registry/internal/registry/validator"
+import { rawConfigSchema } from "@shadcn/registry/schema"
 import { Command } from "commander"
 import fsExtra from "fs-extra"
 import { z } from "zod"
@@ -143,13 +144,20 @@ export const search = new Command()
         process.exit(1)
       }
 
-      // Only namespace registries passed explicitly need to be discovered and
-      // added to the config. Registries already configured in components.json
-      // are resolved directly from the config below.
+      // Only namespace registries that are not already configured need to be
+      // discovered and added to the config. Registries in components.json (or
+      // builtins) are resolved directly from the config below. Skipping
+      // configured registries also avoids the discovery step downloading the
+      // full catalog before the search request.
       const { config: updatedConfig, newRegistries } =
         await ensureRegistriesInConfig(
           registries
-            .filter((registry) => registry.startsWith("@"))
+            .filter(
+              (registry) =>
+                registry.startsWith("@") &&
+                !config.registries?.[registry] &&
+                !(registry in BUILTIN_REGISTRIES)
+            )
             .map((registry) => `${registry}/registry`),
           config,
           {
