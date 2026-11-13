@@ -1558,8 +1558,7 @@ import { cn } from "@/lib/utils"
       `)
     })
 
-    test("drops a leading comment header", async () => {
-      // Current behavior: the runner returns getText(), which drops the leading comment.
+    test("keeps a leading comment header", async () => {
       expect(
         await transformIconsIn(
           `/**
@@ -1574,7 +1573,10 @@ export function Component() {
           "lucide"
         )
       ).toMatchInlineSnapshot(`
-        "import * as React from "react"
+        "/**
+         * Icon demo.
+         */
+        import * as React from "react"
         import { CheckIcon } from "lucide-react"
 
         export function Component() {
