@@ -102,8 +102,14 @@ For published registries, prefer tags or full commit SHAs.
 
 ### Can GitHub registry addresses use private repositories?
 
-Not currently. GitHub registry addresses support public `github.com`
-repositories. For private registries, use a namespace with authenticated URLs.
+Yes. Private `github.com` repositories work with your GitHub credentials. The
+CLI uses the GitHub CLI (`gh auth login`) locally, or `GH_TOKEN` /
+`GITHUB_TOKEN` in CI. See
+[Private repositories](/docs/registry/github#private-repositories).
+
+GitHub Enterprise hosts are not supported. For custom registry servers with
+request authentication, use a [namespace](/docs/registry/namespace) with
+[authentication](/docs/registry/authentication).
 
 ### How do I add or override a Tailwind theme variable?
 
