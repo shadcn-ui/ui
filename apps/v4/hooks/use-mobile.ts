@@ -4,12 +4,14 @@ export function useIsMobile(mobileBreakpoint = 768) {
   const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined)
 
   React.useEffect(() => {
-    const mql = window.matchMedia(`(max-width: ${mobileBreakpoint - 1}px)`)
+    // rem in media queries resolves against the browser's default font size,
+    // matching Tailwind's rem-based breakpoints (md = 48rem).
+    const mql = window.matchMedia(`(width < ${mobileBreakpoint / 16}rem)`)
     const onChange = () => {
-      setIsMobile(window.innerWidth < mobileBreakpoint)
+      setIsMobile(mql.matches)
     }
     mql.addEventListener("change", onChange)
-    setIsMobile(window.innerWidth < mobileBreakpoint)
+    setIsMobile(mql.matches)
     return () => mql.removeEventListener("change", onChange)
   }, [mobileBreakpoint])
 
