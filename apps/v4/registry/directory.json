@@ -3251,6 +3251,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M21 11A5 5 0 1 0 16 16' fill='none' stroke='var(--foreground)' stroke-width='4.5' stroke-linecap='round'/><path d='M16 16A5 5 0 1 1 11 21' fill='none' stroke='var(--foreground)' stroke-width='4.5' stroke-linecap='round' opacity='.45'/></svg>"
   },
   {
+    "name": "@svg-scroll-draw",
+    "homepage": "https://svg-scroll-draw.vercel.app/blocks",
+    "url": "https://svg-scroll-draw.vercel.app/r/{name}.json",
+    "description": "Scroll animation blocks for React and Tailwind: a signature that draws itself, reveal cards, counters, sticky and pinned features, text reveals, a horizontal strip, video scrubbing and reading progress. Built on svg-scroll-draw, a scroll animation library with no dependencies.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><path d='M3 17C6 6 10 6 12 12S18 18 21 7'/></svg>"
+  },
+  {
     "name": "@svgl",
     "description": "A beautiful library with SVG logos.",
     "homepage": "https://svgl.app",
