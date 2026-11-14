@@ -3202,6 +3202,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='var(--foreground)'><path fill-rule='evenodd' d='M26 14h44a12 12 0 0 1 12 12v44a12 12 0 0 1-12 12H26a12 12 0 0 1-12-12V26a12 12 0 0 1 12-12Zm-4 22v34a4 4 0 0 0 4 4h44a4 4 0 0 0 4-4V36Z'/><path d='M32 48h32v6H32zM32 60h20v6H32z'/></svg>"
   },
   {
+    "name": "@striktly",
+    "homepage": "https://striktly.com/docs/registry/",
+    "url": "https://striktly.com/r/{name}.json",
+    "description": "Open-source React shader surfaces and hero blocks with motion controls and video previews. Add a downloaded Striktly kit for live WebGL.",
+    "author": "Striktly LLC",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='4' y='4' width='24' height='24' fill='#b9ff66'/></svg>"
+  },
+  {
     "name": "@studio-blocks",
     "homepage": "https://studio-blocks.arhamkhnz.com",
     "url": "https://studio-blocks.arhamkhnz.com/r/{name}.json",
