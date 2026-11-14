@@ -3329,6 +3329,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='-40 -40 1080 1080' fill='var(--foreground)'><path d='M168,0 H832 A168,168 0 0 1 1000,168 V308 A64,64 0 0 1 936,372 H64 A64,64 0 0 1 0,308 V168 A168,168 0 0 1 168,0 Z'/><path d='M64,490 H377.0 A64,64 0 0 1 441.0,554 V936 A64,64 0 0 1 377.0,1000 H168 A168,168 0 0 1 0,832 V554 A64,64 0 0 1 64,490 Z' fill-opacity='0.6'/><path d='M623.0,490 H936.0 A64,64 0 0 1 1000.0,554 V832 A168,168 0 0 1 832.0,1000 H623.0 A64,64 0 0 1 559.0,936 V554 A64,64 0 0 1 623.0,490 Z' fill-opacity='0.35'/></svg>"
   },
   {
+    "name": "@tendkit",
+    "homepage": "https://tendkit.softwaresavants.dev",
+    "url": "https://tendkit.softwaresavants.dev/r/{name}.json",
+    "description": "A customer support inbox you copy into your app: tickets, a customer portal, and email, SMS and WhatsApp channels for Resend, Microsoft 365, Gmail, Twilio and more.",
+    "author": "Software Savants",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='var(--foreground)'><path fill-rule='evenodd' d='M24 16H72A12 12 0 0 1 84 28V58A12 12 0 0 1 72 70H46L28 84V70H24A12 12 0 0 1 12 58V28A12 12 0 0 1 24 16ZM31 43L37 37L44 44L59 29L65 35L44 56Z'/></svg>"
+  },
+  {
     "name": "@tenvell",
     "homepage": "https://tenvell.space",
     "url": "https://tenvell.space/r/{name}.json",
