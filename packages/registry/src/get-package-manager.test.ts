@@ -22,6 +22,18 @@ describe("getPackageManager", () => {
     )
 
     expect(await getPackageManager(getFixturesDir("next"))).toBe("pnpm")
+
+    expect(await getPackageManager(getFixturesDir("project-deno"))).toBe("deno")
+  })
+
+  it("prefers a node lockfile next to deno.lock", async () => {
+    expect(await getPackageManager(getFixturesDir("project-deno-pnpm"))).toBe(
+      "pnpm"
+    )
+
+    expect(await getPackageManager(getFixturesDir("project-deno-npm"))).toBe(
+      "npm"
+    )
   })
 })
 
