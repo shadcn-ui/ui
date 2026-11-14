@@ -595,11 +595,13 @@ export function resolveModuleByProbablePath(
     }
   }
 
-  // Fallback: scan known files by basename.
-  const name = path.basename(absBase)
-  for (const f of relativeFiles) {
-    if (tryExts.some((e) => f.endsWith(`/${name}${e}`))) {
-      candidates.add(f)
+  // Fallback: scan known files by basename if the path itself matched nothing.
+  if (candidates.size === 0) {
+    const name = path.basename(absBase)
+    for (const f of relativeFiles) {
+      if (tryExts.some((e) => f.endsWith(`/${name}${e}`))) {
+        candidates.add(f)
+      }
     }
   }
 
