@@ -1,5 +1,12 @@
 [
   {
+    "name": "@nested-motion",
+    "homepage": "https://nested-motion.vercel.app",
+    "url": "https://nested-motion.vercel.app/r/{name}.json",
+    "description": "Beautiful, composable React animation components built with Motion.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='var(--foreground)'><rect x='12' y='12' width='48' height='48' rx='12'/><rect x='36' y='36' width='48' height='48' rx='12' opacity='0.6'/></svg>"
+  },
+  {
     "name": "@000h-cojeev",
     "homepage": "https://000h.cojeev.com",
     "url": "https://000h.cojeev.com/r/{name}.json",
