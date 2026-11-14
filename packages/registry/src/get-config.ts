@@ -10,7 +10,12 @@ import {
   workspaceConfigSchema,
 } from "@/src/registry/schema"
 import { resolveImportWithMetadata } from "@/src/resolve-import"
+import {
+  isWorkspacePackageSpecifier,
+  resolveWorkspacePackageExport,
+} from "@/src/workspace"
 import fg from "fast-glob"
+import fs from "fs-extra"
 import { loadConfig, type ConfigLoaderSuccessResult } from "tsconfig-paths"
 import { z } from "zod"
 
@@ -96,9 +101,17 @@ export async function resolveConfigPaths(
     resolvedPaths: {
       cwd,
       tailwindConfig: config.tailwind.config
-        ? path.resolve(cwd, config.tailwind.config)
+        ? await resolveConfigFilePath(
+            cwd,
+            config.tailwind.config,
+            "tailwind.config"
+          )
         : "",
-      tailwindCss: path.resolve(cwd, config.tailwind.css),
+      tailwindCss: await resolveConfigFilePath(
+        cwd,
+        config.tailwind.css,
+        "tailwind.css"
+      ),
       utils: resolvedUtils,
       components: resolvedComponents,
       ui: resolvedUi,
@@ -108,6 +121,46 @@ export async function resolveConfigPaths(
       hooks: resolvedHooks,
     },
   })
+}
+
+// A components.json file path (`tailwind.css`, `tailwind.config`) is relative
+// to cwd, or a workspace package export such as `@workspace/ui/globals.css`,
+// resolved the same way as aliases.
+export async function resolveConfigFilePath(
+  cwd: string,
+  value: string,
+  field: "tailwind.css" | "tailwind.config"
+) {
+  const localPath = path.resolve(cwd, value)
+
+  // An existing local file always wins, so current configs keep working.
+  if (await fs.pathExists(localPath)) {
+    return localPath
+  }
+
+  const resolved = await resolveWorkspacePackageExport(value, cwd)
+
+  if (resolved && (await fs.pathExists(resolved.path))) {
+    return resolved.path
+  }
+
+  // No local file and no matching export. If the value starts with a
+  // workspace package name (`@workspace/ui/missing.css`), its export is
+  // broken, so fail. Otherwise it is a relative path to a file that does not
+  // exist yet (`app/globals.css`), returned as before.
+  if (await isWorkspacePackageSpecifier(value, cwd)) {
+    const source = `${highlighter.info(value)} (${field} in components.json)`
+    const missingTarget = resolved && highlighter.info(resolved.path)
+    const hint = missingTarget
+      ? `Its "exports" entry points at ${missingTarget}, which does not exist.`
+      : `Add this path to the "exports" of the workspace package's package.json.`
+
+    throw new Error(
+      `Could not resolve ${source} from ${highlighter.info(cwd)}.\n${hint}`
+    )
+  }
+
+  return localPath
 }
 
 async function resolveAliasPath(
