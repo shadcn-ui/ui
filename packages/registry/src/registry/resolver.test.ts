@@ -723,6 +723,124 @@ describe("resolveRegistryItems with URL dependencies", () => {
   })
 })
 
+describe("resolveRegistryTree - namespaced dependency ordering", () => {
+  const server = setupServer()
+
+  beforeAll(() => server.listen({ onUnhandledRequest: "error" }))
+  afterAll(() => server.close())
+  beforeEach(() => server.resetHandlers())
+
+  test.each([
+    { baseName: "base", includeOtherRegistry: true, addressType: "namespace" },
+    { baseName: "base", includeOtherRegistry: true, addressType: "url" },
+    {
+      baseName: "base-implementation",
+      includeOtherRegistry: false,
+      addressType: "namespace",
+    },
+    {
+      baseName: "base-implementation",
+      includeOtherRegistry: false,
+      addressType: "url",
+    },
+  ])(
+    "preserves dependent overrides for $baseName dependencies ($addressType)",
+    async ({ baseName, includeOtherRegistry, addressType }) => {
+      const config = createConfig({
+        resolvedPaths: {
+          ui: path.join(process.cwd(), "components/ui"),
+        },
+        registries: {
+          "@alpha": "https://alpha.example.com/r/{name}.json",
+          "@beta": {
+            url: "https://beta.example.com/r/{name}.json",
+            params: { version: "v1" },
+          },
+        },
+      })
+
+      server.use(
+        http.get("https://alpha.example.com/r/base.json", () =>
+          HttpResponse.json({
+            name: "base",
+            type: "registry:ui",
+            dependencies: ["alpha-dependency"],
+            files: [],
+          })
+        ),
+        http.get("https://beta.example.com/r/panel.json", () =>
+          HttpResponse.json({
+            name: "panel",
+            type: "registry:ui",
+            registryDependencies: ["@beta/base"],
+            dependencies: ["panel-dependency"],
+            cssVars: { light: { primary: "panel-color" } },
+            files: [
+              {
+                path: "panel.tsx",
+                type: "registry:ui",
+                target: "components/ui/shared.tsx",
+                content: "export const Shared = 'panel'",
+              },
+            ],
+          })
+        ),
+        http.get("https://beta.example.com/r/base.json", () =>
+          HttpResponse.json({
+            name: baseName,
+            type: "registry:ui",
+            registryDependencies: ["@beta/foundation"],
+            dependencies: ["beta-dependency"],
+            cssVars: { light: { primary: "base-color" } },
+            files: [
+              {
+                path: "base.tsx",
+                type: "registry:ui",
+                target: "components/ui/shared.tsx",
+                content: "export const Shared = 'base'",
+              },
+            ],
+          })
+        ),
+        http.get("https://beta.example.com/r/foundation.json", () =>
+          HttpResponse.json({
+            name: "foundation",
+            type: "registry:ui",
+            dependencies: ["foundation-dependency"],
+            files: [],
+          })
+        )
+      )
+
+      const panel =
+        addressType === "namespace"
+          ? "@beta/panel"
+          : "https://beta.example.com/r/panel.json?version=v1"
+      const result = await resolveRegistryTree(
+        includeOtherRegistry ? ["@alpha/base", panel] : [panel],
+        config,
+        { useCache: false }
+      )
+
+      expect(result?.cssVars?.light?.primary).toBe("panel-color")
+      expect(result?.files).toEqual([
+        {
+          path: "panel.tsx",
+          type: "registry:ui",
+          target: "components/ui/shared.tsx",
+          content: "export const Shared = 'panel'",
+        },
+      ])
+      expect(result?.dependencies).toEqual([
+        ...(includeOtherRegistry ? ["alpha-dependency"] : []),
+        "foundation-dependency",
+        "beta-dependency",
+        "panel-dependency",
+      ])
+    }
+  )
+})
+
 describe("resolveRegistryTree - dependency ordering", () => {
   let customRegistry: Awaited<ReturnType<typeof createRegistryServer>>
 
