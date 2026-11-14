@@ -76,6 +76,7 @@ export async function dryRunComponents(
     overwrite?: boolean
     overwriteCssVars?: boolean
     skipFonts?: boolean
+    path?: string
   } = {}
 ) {
   const result: DryRunResult = {
@@ -133,7 +134,7 @@ async function processFiles(
   tree: z.infer<typeof registryResolvedItemsTreeSchema>,
   config: Config,
   result: DryRunResult,
-  options: { overwrite?: boolean },
+  options: { overwrite?: boolean; path?: string },
   supportedFontMarkers: string[]
 ) {
   const files = tree.files
@@ -156,6 +157,7 @@ async function processFiles(
   const plannedFilePaths = getPlannedFilePaths(files, config, {
     isSrcDir: projectInfo?.isSrcDir,
     framework: projectInfo?.framework.name,
+    path: options.path,
   })
 
   for (let index = 0; index < files.length; index++) {
@@ -171,6 +173,7 @@ async function processFiles(
         files.map((f) => f.path),
         file.path
       ),
+      path: options.path,
       fileIndex: index,
     })
 
