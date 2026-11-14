@@ -428,7 +428,8 @@ import { useMessageScroller } from "@/components/ui/message-scroller"
 ```
 
 ```tsx
-const { scrollToMessage, scrollToEnd, scrollToStart } = useMessageScroller()
+const { scrollToMessage, scrollToEnd, scrollToStart, userScrollIntent } =
+  useMessageScroller()
 ```
 
 <ComponentPreview
@@ -447,6 +448,11 @@ when the target is not mounted and cannot be queued.
 client-resolved permalinks while the transcript mounts. After rows have mounted,
 a missing id returns `false` instead of starting a guessed retry loop. A `true`
 result means the scroll ran or was queued, not that the row is already in view.
+
+The viewport releases auto-follow and turn-anchoring on wheel, touch, keyboard
+scrolling, and presses on its native scrollbar. A custom scrollbar rendered
+outside the viewport fires none of those, so call `userScrollIntent` when the
+reader grabs it, for example from the scrollbar's `onPointerDown`.
 
 ### Tracking the Reader's Position
 

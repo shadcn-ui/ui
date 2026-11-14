@@ -43,7 +43,7 @@ function useMessageScrollerItemContext() {
 }
 
 function useMessageScroller() {
-  const { scrollToEnd, scrollToMessage, scrollToStart } =
+  const { scrollToEnd, scrollToMessage, scrollToStart, userScrollIntent } =
     useMessageScrollerContext()
 
   return React.useMemo(
@@ -51,8 +51,9 @@ function useMessageScroller() {
       scrollToEnd,
       scrollToMessage,
       scrollToStart,
+      userScrollIntent,
     }),
-    [scrollToEnd, scrollToMessage, scrollToStart]
+    [scrollToEnd, scrollToMessage, scrollToStart, userScrollIntent]
   )
 }
 
@@ -140,6 +141,7 @@ function MessageScrollerViewport({
   "aria-label": ariaLabel,
   children,
   onKeyDown,
+  onPointerDown,
   onScroll,
   onTouchMove,
   onWheel,
@@ -177,6 +179,15 @@ function MessageScrollerViewport({
   function handleWheel(event: React.WheelEvent<HTMLDivElement>) {
     userScrollIntent()
     onWheel?.(event)
+  }
+
+  function handlePointerDown(event: React.PointerEvent<HTMLDivElement>) {
+    // A scrollbar drag moves scrollTop without a wheel, touch, or key event.
+    if (event.target === event.currentTarget) {
+      userScrollIntent()
+    }
+
+    onPointerDown?.(event)
   }
 
   function handleTouchMove(event: React.TouchEvent<HTMLDivElement>) {
@@ -225,6 +236,7 @@ function MessageScrollerViewport({
       tabIndex={tabIndex ?? 0}
       onKeyDown={handleKeyDown}
       onScroll={handleScroll}
+      onPointerDown={handlePointerDown}
       onTouchMove={handleTouchMove}
       onWheel={handleWheel}
       {...props}
