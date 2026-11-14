@@ -25,22 +25,41 @@ import {
   getStatementsWithComments,
   removeStatement,
 } from "@/src/codemod/statements"
+import { types as t } from "@babel/core"
+
 import {
   iconLibraries,
+  resolveIconLibrary,
   type IconLibrary,
   type IconLibraryName,
 } from "@/src/icons/libraries"
 import { type Transformer } from "@/src/transformers"
-import { types as t } from "@babel/core"
+
+type IconTransformConfig = {
+  import: string
+  usage: string
+}
 
 export const transformIcons: Transformer = (code, { config }) => {
-  const iconLibrary = config.iconLibrary
+  const resolvedLibrary = resolveIconLibrary(config.iconLibrary)
 
-  // Fail silently if the icon library is not supported.
-  // This is for legacy icon libraries.
-  if (!iconLibrary || !(iconLibrary in iconLibraries)) {
+  if (
+    resolvedLibrary.type === "invalid" ||
+    resolvedLibrary.type === "legacy"
+  ) {
     return code
   }
+
+  const targetLibrary =
+    resolvedLibrary.type === "builtin" ? resolvedLibrary.name : "lucide"
+
+  const libraryConfig: IconTransformConfig =
+    resolvedLibrary.type === "builtin"
+      ? resolvedLibrary.config
+      : {
+          import: `import { ICON } from '${resolvedLibrary.importPath}'`,
+          usage: "<ICON />",
+        }
 
   // ts-morph also transforms the JSX blocks of a file that is not code, such
   // as an MDX file. The edits are found in the code as parsed, and made on
@@ -57,8 +76,6 @@ export const transformIcons: Transformer = (code, { config }) => {
   }
   const { code: source, file } = input
 
-  const targetLibrary = iconLibrary as IconLibraryName
-  const libraryConfig = iconLibraries[targetLibrary]
   const transformedIcons: string[] = []
   const jsxEdits: TextEdit[] = []
 
@@ -130,7 +147,7 @@ function transformPlaceholder(
   code: string,
   placeholder: t.JSXElement,
   targetLibrary: IconLibraryName,
-  libraryConfig: IconLibrary
+  libraryConfig: IconTransformConfig
 ) {
   let text = getText(code, placeholder)
   // ts-morph's replaceWithText() on the whole element. It forgets the nodes
@@ -259,7 +276,7 @@ function isJsxChild(file: t.File, element: t.JSXElement) {
 function transformImports(
   code: string,
   transformedIcons: string[],
-  libraryConfig: IconLibrary
+  libraryConfig: IconTransformConfig
 ) {
   const edits: TextEdit[] = []
   const file = parseTransformInput(code)
