@@ -25,7 +25,10 @@ export function findExistingEnvFile(targetDir: string) {
   return null
 }
 
-export function parseEnvContent(content: string) {
+export function parseEnvContent(
+  content: string,
+  { preserveQuotes = false } = {}
+) {
   const lines = content.split("\n")
   const env: Record<string, string> = {}
 
@@ -46,7 +49,11 @@ export function parseEnvContent(content: string) {
     const value = trimmed.substring(equalIndex + 1).trim()
 
     if (key) {
-      env[key] = value.replace(/^["']|["']$/g, "")
+      env[key] =
+        preserveQuotes &&
+        /^(["'])(?:\\.|(?!\1)[^\\])*(?<!\\)\1(?:\s*#.*)?$/.test(value)
+          ? value
+          : value.replace(/^["']|["']$/g, "")
     }
   }
 
@@ -73,7 +80,7 @@ export function getNewEnvKeys(existingContent: string, newContent: string) {
  */
 export function mergeEnvContent(existingContent: string, newContent: string) {
   const existingEnv = parseEnvContent(existingContent)
-  const newEnv = parseEnvContent(newContent)
+  const newEnv = parseEnvContent(newContent, { preserveQuotes: true })
 
   let result = existingContent.trimEnd()
   if (result && !result.endsWith("\n")) {
