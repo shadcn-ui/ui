@@ -13,6 +13,10 @@ export {
 } from "@/src/registry/resolve-file-imports"
 
 export function isUrl(path: string) {
+  // new URL() accepts Windows drive paths like C:\foo as a URL with the "c:" scheme.
+  if (/^[a-zA-Z]:[\\/]/.test(path)) {
+    return false
+  }
   try {
     new URL(path)
     return true
