@@ -1,6 +1,6 @@
 import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion"
-import { cn } from "cn"
 
+import { cn } from "@/lib/compose-class-name"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Accordion({ className, ...props }: AccordionPrimitive.Root.Props) {
@@ -70,13 +70,18 @@ function AccordionContent({
   return (
     <AccordionPrimitive.Panel
       data-slot="accordion-content"
-      className="cn-accordion-content overflow-hidden"
+      className={(state) =>
+        cn(
+          "cn-accordion-content overflow-hidden",
+          typeof className === "function" ? className(state) : undefined
+        )
+      }
       {...props}
     >
       <div
         className={cn(
           "cn-accordion-content-inner h-(--accordion-panel-height) data-ending-style:h-0 data-starting-style:h-0 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-4",
-          className
+          typeof className === "function" ? undefined : className
         )}
       >
         {children}
