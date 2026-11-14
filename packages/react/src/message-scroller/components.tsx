@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import { composeRefs, mergeProps, useRender } from "../use-render"
-import { USER_SCROLL_KEYS } from "./types"
+import { SCROLL_POSITION_EPSILON, USER_SCROLL_KEYS } from "./types"
 import type {
   MessageScrollerButtonProps,
   MessageScrollerContentProps,
@@ -199,9 +199,9 @@ function MessageScrollerViewport({
       return
     }
 
-    // Coalesce into rAF: handleResize mutates the spacer inside the observed
-    // content, and resizing an observed element during delivery fires
-    // "ResizeObserver loop completed with undelivered notifications".
+    // Viewport resizes can re-anchor a turn by mutating the separately observed
+    // content spacer. Keep this path outside ResizeObserver delivery; streamed
+    // content growth is handled synchronously by the content observer below.
     let frame = 0
 
     const observer = new ResizeObserver(() => {
@@ -248,6 +248,7 @@ function MessageScrollerContent({
     handleResize,
     setContentElement,
     setSpacerElement,
+    shouldSuspendContentResizeObserver,
   } = useMessageScrollerContext()
   const contentRef = React.useRef<HTMLDivElement | null>(null)
 
@@ -289,23 +290,55 @@ function MessageScrollerContent({
       return
     }
 
-    // Coalesce into rAF: handleResize mutates the spacer inside this observed
-    // element, and resizing an observed element during delivery fires
-    // "ResizeObserver loop completed with undelivered notifications".
     let frame = 0
+    let disposed = false
+    let observedHeight = content.getBoundingClientRect().height
 
     const observer = new ResizeObserver(() => {
-      window.cancelAnimationFrame(frame)
-      frame = window.requestAnimationFrame(handleResize)
+      const nextHeight = content.getBoundingClientRect().height
+
+      // observe() queues an initial delivery. Ignore it when re-observing the
+      // same size so spacer corrections cannot bounce between deliveries.
+      if (Math.abs(nextHeight - observedHeight) <= SCROLL_POSITION_EPSILON) {
+        return
+      }
+
+      const shouldSuspend = shouldSuspendContentResizeObserver()
+
+      if (shouldSuspend) {
+        observer.unobserve(content)
+      }
+
+      handleResize()
+      observedHeight = content.getBoundingClientRect().height
+
+      if (shouldSuspend) {
+        // Re-anchoring changes the tail spacer and therefore the observed
+        // content box. Resume outside this delivery cycle to avoid the browser's
+        // "ResizeObserver loop completed with undelivered notifications" error.
+        // The next initial delivery also catches growth that happened while the
+        // observer was suspended.
+        window.cancelAnimationFrame(frame)
+        frame = window.requestAnimationFrame(() => {
+          if (
+            !disposed &&
+            contentRef.current === content &&
+            content.isConnected
+          ) {
+            observer.observe(content)
+          }
+        })
+      }
     })
 
     observer.observe(content)
 
     return () => {
+      disposed = true
       window.cancelAnimationFrame(frame)
       observer.disconnect()
     }
-  }, [handleResize])
+  }, [handleResize, shouldSuspendContentResizeObserver])
 
   return (
     <div

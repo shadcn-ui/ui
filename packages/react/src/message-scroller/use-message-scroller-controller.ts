@@ -749,6 +749,14 @@ function useMessageScrollerController({
     []
   )
 
+  const shouldSuspendContentResizeObserver = React.useCallback(
+    () =>
+      modeRef.current === "anchored-to-message" &&
+      streamingTurnRef.current !== null &&
+      streamingTurnRef.current.isConnected,
+    []
+  )
+
   const syncAfterScroll = React.useCallback(() => {
     // A released spacer can be stranded if the stream ends before the reply
     // drains it (no more resizes to drive the drain). Let a scroll to the real
@@ -779,6 +787,7 @@ function useMessageScrollerController({
       setRootElement,
       setSpacerElement,
       setViewportElement,
+      shouldSuspendContentResizeObserver,
       stateStore,
       syncAfterScroll,
       unobserveVisibility,
@@ -798,6 +807,7 @@ function useMessageScrollerController({
       setRootElement,
       setSpacerElement,
       setViewportElement,
+      shouldSuspendContentResizeObserver,
       stateStore,
       syncAfterScroll,
       unobserveVisibility,

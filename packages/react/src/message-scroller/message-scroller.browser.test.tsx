@@ -190,6 +190,35 @@ function getDistanceToBottom(viewport: HTMLElement) {
   )
 }
 
+async function measureNextResizeDelivery<T>(
+  element: Element,
+  mutate: () => void,
+  read: () => T
+) {
+  let armed = false
+  const measured = new Promise<T>((resolve) => {
+    const observer = new ResizeObserver(() => {
+      if (!armed) {
+        return
+      }
+
+      observer.disconnect()
+      resolve(read())
+    })
+
+    observer.observe(element)
+  })
+
+  // Discard the probe's initial delivery. Since this observer was registered
+  // after MessageScroller's observers, its next callback runs later in the
+  // same delivery batch and sees the geometry that would be painted.
+  await settle(1)
+  armed = true
+  mutate()
+
+  return measured
+}
+
 function getScrollTop(viewport: HTMLElement) {
   return Math.round(viewport.scrollTop)
 }
@@ -259,28 +288,99 @@ test("opens at the bottom by default", async () => {
   expect(getDistanceToBottom(getViewport())).toBeLessThanOrEqual(1)
 })
 
-test("keeps auto-scroll pinned when the final message grows", async () => {
+test("corrects follow growth during ResizeObserver delivery", async () => {
   const initial = createItems(6)
 
   await renderThread({ autoScroll: true, items: initial })
 
   const viewport = getViewport()
+  const content = document.querySelector('[role="log"]') as HTMLElement
+  const lastMessage = document.querySelector(
+    `[data-message-id="m${initial.length - 1}"]`
+  ) as HTMLElement
 
   expect(getDistanceToBottom(viewport)).toBeLessThanOrEqual(1)
+
+  const distanceDuringDelivery = await measureNextResizeDelivery(
+    content,
+    () => {
+      lastMessage.style.height = "240px"
+    },
+    () => getDistanceToBottom(viewport)
+  )
+
+  // A later observer in the same pre-paint batch must see the corrected live
+  // edge. Waiting for the next animation frame produces a visible thumb bounce.
+  expect(distanceDuringDelivery).toBeLessThanOrEqual(1)
+})
+
+test("corrects anchored growth during ResizeObserver delivery without a loop", async () => {
+  const initial = createItems(6)
+
+  await renderThread({ autoScroll: true, items: initial })
 
   flushSync(() => {
     root!.render(
       <Thread
         autoScroll
-        items={initial.map((item, index) =>
-          index === initial.length - 1 ? { ...item, height: 240 } : item
-        )}
+        items={[
+          ...initial,
+          { id: "turn", height: 20, scrollAnchor: true },
+          { id: "reply", height: 20 },
+        ]}
       />
     )
   })
   await settle()
 
-  expect(getDistanceToBottom(viewport)).toBeLessThanOrEqual(1)
+  const viewport = getViewport()
+  const content = document.querySelector('[role="log"]') as HTMLElement
+  const reply = document.querySelector(
+    '[data-message-id="reply"]'
+  ) as HTMLElement
+  const spacer = document.querySelector(
+    "[data-message-scroller-spacer]"
+  ) as HTMLElement
+  const baselineScrollHeight = viewport.scrollHeight
+  const baselineAnchorOffset = viewportOffsetOf("turn", viewport)
+  const loopErrors: string[] = []
+  const onError = (event: ErrorEvent) => {
+    if (event.message.includes("ResizeObserver loop")) {
+      loopErrors.push(event.message)
+      event.preventDefault()
+    }
+  }
+
+  expect(spacer.hidden).toBe(false)
+  expect(Number.parseFloat(spacer.style.height)).toBeGreaterThan(20)
+  window.addEventListener("error", onError)
+
+  try {
+    const geometryDuringDelivery = await measureNextResizeDelivery(
+      content,
+      () => {
+        reply.style.height = "40px"
+      },
+      () => ({
+        anchorOffset: viewportOffsetOf("turn", viewport),
+        scrollHeight: viewport.scrollHeight,
+      })
+    )
+
+    // The growing reply consumes the reserved spacer in the same pre-paint
+    // delivery, so neither the scrollbar nor the anchored turn wobbles.
+    expect(
+      Math.abs(geometryDuringDelivery.scrollHeight - baselineScrollHeight)
+    ).toBeLessThanOrEqual(1)
+    expect(
+      Math.abs(geometryDuringDelivery.anchorOffset - baselineAnchorOffset)
+    ).toBeLessThanOrEqual(1)
+
+    await settle()
+    expect(loopErrors).toEqual([])
+  } finally {
+    window.removeEventListener("error", onError)
+  }
 })
 
 test("keeps the end pinned when bulk appending anchored turns with autoScroll", async () => {
