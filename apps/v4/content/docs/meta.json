@@ -2,6 +2,7 @@
   "root": true,
   "pages": [
     "components",
+    "ai-elements",
     "(root)",
     "changelog",
     "react",

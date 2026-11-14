@@ -1,11 +1,11 @@
 import * as fs from "fs/promises"
 import * as path from "path"
-import { isUrl } from "@/src/registry/utils"
 import {
   registryItemSchema,
   registryItemTypeSchema,
   type RegistryItem,
-} from "@/src/schema"
+} from "@/src/registry/schema"
+import { isUrl } from "@/src/registry/utils"
 import { z } from "zod"
 
 type RegistryChunk = {
@@ -623,7 +623,7 @@ function addZodDiagnostics(
     suggestion?: string
   }
 ) {
-  for (const issue of error.errors) {
+  for (const issue of error.issues) {
     addDiagnostic(context, {
       registryFile,
       itemName: options.itemName,
@@ -682,18 +682,19 @@ function formatItemSource(source: RegistryItemSource | undefined, cwd: string) {
   return `${formatPath(source.registryFile, cwd)} items[${source.itemIndex}]`
 }
 
-function formatZodPath(issuePath: (string | number)[]) {
+function formatZodPath(issuePath: PropertyKey[]) {
   return issuePath.length ? issuePath.join(".") : "(root)"
 }
 
 function formatZodIssue(
-  issue: z.ZodIssue,
+  issue: z.core.$ZodIssue,
   pathPrefix: (string | number)[] = []
 ) {
   const path = [...pathPrefix, ...issue.path]
 
   if (
-    issue.code === z.ZodIssueCode.invalid_union_discriminator &&
+    issue.code === "invalid_union" &&
+    issue.discriminator === "type" &&
     issue.path.at(-1) === "type"
   ) {
     return `${formatZodPath(path)}: Invalid registry item type. Expected ${PUBLIC_REGISTRY_ITEM_TYPES.map(

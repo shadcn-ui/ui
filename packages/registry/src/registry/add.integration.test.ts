@@ -2,7 +2,7 @@ import { promises as fs } from "fs"
 import { createServer } from "http"
 import { tmpdir } from "os"
 import path from "path"
-import { createConfig } from "@/src/utils/get-config"
+import { createConfig } from "@/src/get-config"
 import { afterEach, describe, expect, it } from "vitest"
 
 import { addRegistryItems } from "./add"

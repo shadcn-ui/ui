@@ -29,11 +29,11 @@ vi.mock("@/src/registry/context", () => ({
   withRegistryContext: mockWithRegistryContext,
 }))
 
-vi.mock("@/src/utils/add-components", () => ({
+vi.mock("@/src/add-components", () => ({
   addComponents: mockAddComponents,
 }))
 
-vi.mock("@/src/utils/env-loader", () => ({
+vi.mock("@/src/env-loader", () => ({
   loadEnvFiles: mockLoadEnvFiles,
 }))
 

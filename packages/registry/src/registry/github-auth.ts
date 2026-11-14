@@ -4,7 +4,7 @@ import {
   type GitHubAuthMode,
 } from "@/src/registry/github-cli"
 import type { GitHubSource } from "@/src/registry/github-ref"
-import { logAboveSpinner } from "@/src/utils/spinner"
+import { logAboveSpinner } from "@/src/spinner"
 import { gray, green } from "kleur/colors"
 
 export type GitHubSourceAuthState = {

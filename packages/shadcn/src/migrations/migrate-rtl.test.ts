@@ -1,4 +1,4 @@
-import { transformDirection } from "@shadcn/registry/internal/utils/transformers/transform-rtl"
+import { transformDirection } from "@shadcn/registry/internal/transformers/transform-rtl"
 import { describe, expect, it } from "vitest"
 
 describe("migrateRtl", () => {
