@@ -199,10 +199,15 @@ describe("transformCssVars string literals", () => {
       `const a = <div className="bg-background &amp;" title='text-foreground' />\n`,
       `const a = <div className="bg-white &amp; dark:bg-stone-950" title='text-stone-950 dark:text-stone-50' />\n`,
     ],
-    // The mapped value is trimmed, and a line break in it is escaped.
+    // Unmapped text stays byte-for-byte. A mapped class string is still trimmed.
     [
       `const a = " flex "\nconst b = "bg-background x\\ny"\n`,
-      `const a = "flex"\nconst b = "bg-white x\\\ny dark:bg-stone-950"\n`,
+      `const a = " flex "\nconst b = "bg-white x\\\ny dark:bg-stone-950"\n`,
+    ],
+    // Whitespace, escapes, and repeated words are not class lists.
+    [
+      `export const newline = "\\n"\nexport const space = " "\nexport const label = "Total: "\nexport const echo = "no no no"\nexport const gaps = "a  b  c"\n`,
+      `export const newline = "\\n"\nexport const space = " "\nexport const label = "Total: "\nexport const echo = "no no no"\nexport const gaps = "a  b  c"\n`,
     ],
     // Templates are not string literals.
     ["const a = `bg-background`\n", "const a = `bg-background`\n"],
