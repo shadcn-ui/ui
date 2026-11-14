@@ -61,6 +61,7 @@ function useQuestionnaireRoot({
   )
   const [domVersion, setDomVersion] = React.useState(0)
   const pendingFocusRef = React.useRef<PendingFocus | null>(null)
+  const suppressAutoSubmitRef = React.useRef(false)
   const controlled = controlledItem !== undefined
   const activeItemName = controlled ? controlledItem : uncontrolledItem
   const previousActiveItemNameRef = React.useRef(activeItemName)
@@ -282,7 +283,7 @@ function useQuestionnaireRoot({
     setItem(logicalItems[currentIndex + 1].name)
   }, [activeItem, currentIndex, logicalItems, setItem, total])
 
-  const confirmCurrent = React.useCallback(() => {
+  const confirmCurrentImpl = React.useCallback(() => {
     if (!activeItem) {
       return
     }
@@ -299,6 +300,27 @@ function useQuestionnaireRoot({
 
     setItem(logicalItems[currentIndex + 1].name)
   }, [activeItem, currentIndex, last, logicalItems, rootElement, setItem])
+  const confirmCurrentRef = React.useRef(confirmCurrentImpl)
+  confirmCurrentRef.current = confirmCurrentImpl
+  const confirmCurrent = React.useCallback(() => {
+    confirmCurrentRef.current()
+  }, [])
+
+  const shouldSuppressAutoSubmit = React.useCallback(
+    () => suppressAutoSubmitRef.current,
+    []
+  )
+
+  function handleKeyDownCapture(event: React.KeyboardEvent<HTMLFormElement>) {
+    if (event.key !== "ArrowUp" && event.key !== "ArrowDown") {
+      return
+    }
+
+    suppressAutoSubmitRef.current = true
+    queueMicrotask(() => {
+      suppressAutoSubmitRef.current = false
+    })
+  }
 
   const skipCurrent = React.useCallback(() => {
     if (!activeItem || activeItem.required) {
@@ -473,6 +495,7 @@ function useQuestionnaireRoot({
       activeItemName,
       activeItemRequired,
       activeItemStatus,
+      confirmCurrent,
       domVersion,
       goNext,
       goPrevious,
@@ -480,6 +503,7 @@ function useQuestionnaireRoot({
       nativeValidation,
       registerItem,
       shortcuts,
+      shouldSuppressAutoSubmit,
       skipCurrent,
     }),
     [
@@ -488,6 +512,7 @@ function useQuestionnaireRoot({
       activeItemRequired,
       activeItemStatus,
       collection,
+      confirmCurrent,
       current,
       domVersion,
       first,
@@ -497,6 +522,7 @@ function useQuestionnaireRoot({
       nativeValidation,
       registerItem,
       shortcuts,
+      shouldSuppressAutoSubmit,
       skipCurrent,
       total,
     ]
@@ -514,6 +540,7 @@ function useQuestionnaireRoot({
     rootProps: {
       "data-shortcuts": shortcuts ?? undefined,
       onKeyDown: handleKeyDown,
+      onKeyDownCapture: handleKeyDownCapture,
       onReset: handleReset,
       onSubmit: handleSubmit,
       ref: setRootRef,

@@ -1585,6 +1585,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "questionnaire-animated",
       filePath: "examples/base/questionnaire-animated.tsx",
     },
+    "questionnaire-auto-submit": {
+      name: "questionnaire-auto-submit",
+      filePath: "examples/base/questionnaire-auto-submit.tsx",
+    },
     "questionnaire-card": {
       name: "questionnaire-card",
       filePath: "examples/base/questionnaire-card.tsx",
@@ -3926,6 +3930,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "questionnaire-animated": {
       name: "questionnaire-animated",
       filePath: "examples/aria/questionnaire-animated.tsx",
+    },
+    "questionnaire-auto-submit": {
+      name: "questionnaire-auto-submit",
+      filePath: "examples/aria/questionnaire-auto-submit.tsx",
     },
     "questionnaire-card": {
       name: "questionnaire-card",
@@ -6288,6 +6296,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "questionnaire-animated": {
       name: "questionnaire-animated",
       filePath: "examples/radix/questionnaire-animated.tsx",
+    },
+    "questionnaire-auto-submit": {
+      name: "questionnaire-auto-submit",
+      filePath: "examples/radix/questionnaire-auto-submit.tsx",
     },
     "questionnaire-card": {
       name: "questionnaire-card",
