@@ -2804,6 +2804,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect width='96' height='96' rx='22' fill='var(--foreground)'/><g transform='translate(24 24) scale(.5)'><path fill='var(--background)' fill-rule='evenodd' d='M0 0 H80 L0 80 Z M96 16 V96 H16 Z'/></g></svg>"
   },
   {
+    "name": "@scrollfx",
+    "homepage": "https://scrollfx-ui.vercel.app",
+    "url": "https://scrollfx-ui.vercel.app/r/{name}.json",
+    "description": "Scroll-drawn sections for React and Tailwind: a hero, chart, features, steps, changelog and pricing, each with a pen-plotter drawing that draws itself as the reader scrolls.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='none' stroke='var(--foreground)' stroke-width='6'><circle cx='48' cy='48' r='38'/><circle cx='48' cy='48' r='25'/><circle cx='48' cy='48' r='12'/></svg>"
+  },
+  {
     "name": "@scrollxui",
     "homepage": "https://www.scrollxui.dev",
     "url": "https://www.scrollxui.dev/registry/{name}.json",
