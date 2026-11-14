@@ -40,7 +40,7 @@ export function ComboboxMultiple() {
               {values.map((value: string) => (
                 <ComboboxChip key={value}>{value}</ComboboxChip>
               ))}
-              <ComboboxChipsInput />
+              <ComboboxChipsInput placeholder="Add framework" />
             </React.Fragment>
           )}
         </ComboboxValue>
