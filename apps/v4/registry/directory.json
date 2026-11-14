@@ -3358,6 +3358,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><g fill='none' stroke='currentColor' stroke-linecap='round' stroke-width='1.2'><path d='M15 6v2.5M8.6 8.6l1.8 1.8M6 15h2.5M8.6 21.4l1.8-1.8M15 24v-2.5'/><circle cx='15' cy='15' r='6'/></g><circle cx='20' cy='15' r='6.5' fill='currentColor'/></svg>"
   },
   {
+    "name": "@tonic",
+    "homepage": "https://tonic-ui-alpha.vercel.app",
+    "url": "https://tonic-ui-alpha.vercel.app/r/{name}.json",
+    "description": "Tonic UI. Chat composer and thinking indicator adapted from Pearl.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'><rect width='64' height='64' rx='14' fill='var(--foreground)'/><path d='M18 20h28v6.5H36.2V44h-8.4V26.5H18V20z' fill='var(--background)'/></svg>"
+  },
+  {
     "name": "@tuiparts",
     "homepage": "https://tuiparts.sh",
     "url": "https://tuiparts.sh/r/{name}.json",
