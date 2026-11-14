@@ -477,9 +477,16 @@ Use the `SidebarTrigger` component to render a button that toggles the sidebar.
 import { useSidebar } from "@/components/ui/sidebar"
 
 export function CustomTrigger() {
-  const { toggleSidebar } = useSidebar()
+  const { toggleSidebar, open, isMobile, openMobile } = useSidebar()
 
-  return <button onClick={toggleSidebar}>Toggle Sidebar</button>
+  return (
+    <button
+      onClick={toggleSidebar}
+      aria-expanded={isMobile ? openMobile : open}
+    >
+      Toggle Sidebar
+    </button>
+  )
 }
 ```
 
