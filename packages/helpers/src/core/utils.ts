@@ -39,7 +39,7 @@ export function cloneValue<T>(value: T): T {
 
 /** Splits text into word-plus-whitespace deltas for streaming. */
 export function splitTextDeltas(text: string) {
-  return text.match(/\S+\s*/g) ?? [text]
+  return text.match(/\s*\S+\s*/g) ?? [text]
 }
 
 /** Extracts the data part name from a `data-<name>` type string. */
