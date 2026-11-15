@@ -165,6 +165,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "candlestick-chart": {
+      name: "candlestick-chart",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["chart"],
+      files: [
+        {
+          path: "registry/new-york-v4/ui/candlestick-chart.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     card: {
       name: "card",
       title: "undefined",
@@ -2224,6 +2240,62 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       categories: ["charts", "charts-bar"],
+      meta: undefined,
+    },
+    "chart-candlestick-advanced": {
+      name: "chart-candlestick-advanced",
+      title: "undefined",
+      description: "",
+      type: "registry:block",
+      registryDependencies: [
+        "card",
+        "chart",
+        "candlestick-chart",
+        "label",
+        "select",
+        "switch",
+        "toggle-group",
+      ],
+      files: [
+        {
+          path: "registry/new-york-v4/charts/chart-candlestick-advanced.tsx",
+          type: "registry:block",
+          target: "",
+        },
+      ],
+      categories: ["charts", "charts-candlestick"],
+      meta: undefined,
+    },
+    "chart-candlestick-custom": {
+      name: "chart-candlestick-custom",
+      title: "undefined",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["card", "candlestick-chart"],
+      files: [
+        {
+          path: "registry/new-york-v4/charts/chart-candlestick-custom.tsx",
+          type: "registry:block",
+          target: "",
+        },
+      ],
+      categories: ["charts", "charts-candlestick"],
+      meta: undefined,
+    },
+    "chart-candlestick-default": {
+      name: "chart-candlestick-default",
+      title: "undefined",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["card", "candlestick-chart"],
+      files: [
+        {
+          path: "registry/new-york-v4/charts/chart-candlestick-default.tsx",
+          type: "registry:block",
+          target: "",
+        },
+      ],
+      categories: ["charts", "charts-candlestick"],
       meta: undefined,
     },
     "chart-line-default": {

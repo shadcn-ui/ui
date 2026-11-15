@@ -16,6 +16,10 @@ const links = [
     href: "/charts/bar#charts",
   },
   {
+    name: "Candlestick Charts",
+    href: "/charts/candlestick#charts",
+  },
+  {
     name: "Line Charts",
     href: "/charts/line#charts",
   },

@@ -4,7 +4,16 @@ import { registryCategories } from "@/lib/categories"
 import { siteConfig } from "@/lib/config"
 import { source } from "@/lib/source"
 
-const chartTypes = ["area", "bar", "line", "pie", "radar", "radial", "tooltip"]
+const chartTypes = [
+  "area",
+  "bar",
+  "candlestick",
+  "line",
+  "pie",
+  "radar",
+  "radial",
+  "tooltip",
+]
 
 const staticRoutes = ["/", "/blocks", "/colors", "/create", "/sera", "/typeset"]
 

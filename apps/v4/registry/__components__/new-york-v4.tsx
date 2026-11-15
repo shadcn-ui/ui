@@ -86,6 +86,14 @@ export const Components: Record<string, any> = {
       ) || "calendar"
     return { default: mod.default || mod[exportName] }
   }),
+  "candlestick-chart": React.lazy(async () => {
+    const mod = await import("@/registry/new-york-v4/ui/candlestick-chart")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "candlestick-chart"
+    return { default: mod.default || mod[exportName] }
+  }),
   card: React.lazy(async () => {
     const mod = await import("@/registry/new-york-v4/ui/card")
     const exportName =
@@ -880,6 +888,36 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "chart-bar-stacked"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "chart-candlestick-advanced": React.lazy(async () => {
+    const mod = await import(
+      "@/registry/new-york-v4/charts/chart-candlestick-advanced"
+    )
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "chart-candlestick-advanced"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "chart-candlestick-custom": React.lazy(async () => {
+    const mod = await import(
+      "@/registry/new-york-v4/charts/chart-candlestick-custom"
+    )
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "chart-candlestick-custom"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "chart-candlestick-default": React.lazy(async () => {
+    const mod = await import(
+      "@/registry/new-york-v4/charts/chart-candlestick-default"
+    )
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "chart-candlestick-default"
     return { default: mod.default || mod[exportName] }
   }),
   "chart-line-default": React.lazy(async () => {

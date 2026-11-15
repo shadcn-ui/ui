@@ -113,6 +113,18 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "candlestick-chart",
+    type: "registry:ui",
+    dependencies: ["recharts@3.8.0"],
+    registryDependencies: ["chart"],
+    files: [
+      {
+        path: "ui/candlestick-chart.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "card",
     type: "registry:ui",
     files: [

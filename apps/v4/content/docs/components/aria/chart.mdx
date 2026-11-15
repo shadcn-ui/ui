@@ -591,3 +591,121 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
   direction="rtl"
   previewClassName="h-92"
 />
+
+## Candlestick Chart
+
+A candlestick chart shows the open, high, low and close of each period. Recharts does not have a candlestick series, so `CandlestickChart` builds one from a `Bar` and an `ErrorBar`. Like `chart`, it is a thin layer on top of Recharts, and the code is yours.
+
+<ComponentPreview
+  styleName="new-york-v4"
+  name="chart-candlestick-default"
+  className="[&_.preview>div]:w-full"
+  previewClassName="h-auto"
+  hideCode
+/>
+
+### Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add candlestick-chart
+```
+
+This also adds the `chart` component if you do not have it yet.
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install recharts
+```
+
+<Step>Add the `chart` component, if you do not have it yet.</Step>
+
+<Step>
+  Copy and paste the following code into `components/ui/candlestick-chart.tsx`.
+</Step>
+
+<ComponentSource
+  name="candlestick-chart"
+  title="components/ui/candlestick-chart.tsx"
+  styleName="new-york-v4"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+### Usage
+
+Pass your data to `CandlestickChart`. Each row needs `open`, `high`, `low` and `close`. Any other keys, such as `date`, are up to you.
+
+```tsx title="components/example-chart.tsx" showLineNumbers
+import { CandlestickChart } from "@/components/ui/candlestick-chart"
+
+const chartData = [
+  { date: "2024-06-28", open: 289, high: 292, low: 283, close: 285 },
+  { date: "2024-06-29", open: 285, high: 301, low: 280, close: 291 },
+  { date: "2024-06-30", open: 291, high: 293, low: 289, close: 291 },
+]
+
+export function ExampleChart() {
+  return <CandlestickChart data={chartData} />
+}
+```
+
+Without children, the chart adds a grid, axes and a tooltip. Use `xKey` to choose which key is on the X axis. It defaults to `date`.
+
+### Props
+
+| Prop        | Type                        | Description                                                                                |
+| :---------- | :-------------------------- | :----------------------------------------------------------------------------------------- |
+| `data`      | array of rows               | One row per candle, oldest first.                                                          |
+| `xKey`      | string                      | The key used for the X axis. Defaults to `date`.                                           |
+| `config`    | `ChartConfig`               | Merged over the default `up` and `down` colors.                                            |
+| `shape`     | Recharts `Bar` shape        | Your own candle body.                                                                      |
+| `wick`      | `false` or `ErrorBar` props | Props for the wick, or `false` to hide it.                                                 |
+| `barProps`  | `Bar` props                 | Props for the candle `Bar`, except `dataKey`.                                              |
+| `className` | string                      | Class names for the `ChartContainer`.                                                      |
+| `children`  | ReactNode                   | Your own axes, grid, tooltip or series. The chart then renders only these and the candles. |
+
+### Colors
+
+Candles use the `up` and `down` colors from the chart config. Override them with `config`.
+
+```tsx title="components/example-chart.tsx" showLineNumbers
+<CandlestickChart
+  data={chartData}
+  config={{
+    up: { label: "Up", color: "var(--chart-2)" },
+    down: { label: "Down", color: "var(--chart-5)" },
+  }}
+/>
+```
+
+### Custom Shape
+
+Pass your own candle body with the `shape` prop. It receives the bar for the open to close range, and your row as `payload`. The wick is drawn for you.
+
+<ComponentPreview
+  styleName="new-york-v4"
+  name="chart-candlestick-custom"
+  className="[&_.preview>div]:w-full"
+  previewClassName="h-auto"
+/>
+
+When you pass children, use `CandlestickTooltipContent` for the tooltip and `getCandlestickDomain` for the Y axis. Both are exported from the component.
