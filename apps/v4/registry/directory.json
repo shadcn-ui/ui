@@ -1451,6 +1451,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><clipPath id='glint-ui-head'><rect x='1.5' y='4' width='29' height='24' rx='6'/></clipPath></defs><rect x='1.5' y='4' width='29' height='24' rx='6' fill='#b5e61d'/><rect x='1.5' y='6.2' width='29' height='2.4' fill='#f4b860' clip-path='url(#glint-ui-head)'/><rect x='4.5' y='10.5' width='23' height='14.5' rx='3.2' fill='#141a0f'/><circle cx='11.2' cy='16.3' r='4.1' fill='#0b0f08' stroke='#cfd3c5' stroke-width='0.9'/><circle cx='20.8' cy='16.3' r='4.1' fill='#0b0f08' stroke='#cfd3c5' stroke-width='0.9'/><circle cx='11.2' cy='16.3' r='2.5' fill='#d9ff6b'/><circle cx='20.8' cy='16.3' r='2.5' fill='#d9ff6b'/><circle cx='11.2' cy='16.3' r='0.8' fill='#141a0f'/><circle cx='20.8' cy='16.3' r='0.8' fill='#141a0f'/><circle cx='13.6' cy='22.4' r='0.75' fill='#d9ff6b'/><circle cx='16' cy='22.4' r='0.75' fill='#d9ff6b'/><circle cx='18.4' cy='22.4' r='0.75' fill='#d9ff6b'/></svg>"
   },
   {
+    "name": "@goodui",
+    "homepage": "https://goodui.dev",
+    "url": "https://goodui.dev/r/{name}.json",
+    "description": "Animated components and app blocks for shadcn: scheduling, dashboards, AI chat and more. 132 components and 39 blocks free under MIT, with an optional Pro tier.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='var(--foreground)'><path fill-rule='evenodd' d='M20 8H76A12 12 0 0 1 88 20V76A12 12 0 0 1 76 88H20A12 12 0 0 1 8 76V20A12 12 0 0 1 20 8ZM26 26V70H42V26ZM50 26V44H70V26ZM50 52V70H70V52Z'/></svg>"
+  },
+  {
     "name": "@gooseui",
     "homepage": "https://gooseui.pro",
     "url": "https://gooseui.pro/r/{name}.json",
