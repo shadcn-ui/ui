@@ -3329,6 +3329,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='-40 -40 1080 1080' fill='var(--foreground)'><path d='M168,0 H832 A168,168 0 0 1 1000,168 V308 A64,64 0 0 1 936,372 H64 A64,64 0 0 1 0,308 V168 A168,168 0 0 1 168,0 Z'/><path d='M64,490 H377.0 A64,64 0 0 1 441.0,554 V936 A64,64 0 0 1 377.0,1000 H168 A168,168 0 0 1 0,832 V554 A64,64 0 0 1 64,490 Z' fill-opacity='0.6'/><path d='M623.0,490 H936.0 A64,64 0 0 1 1000.0,554 V832 A168,168 0 0 1 832.0,1000 H623.0 A64,64 0 0 1 559.0,936 V554 A64,64 0 0 1 623.0,490 Z' fill-opacity='0.35'/></svg>"
   },
   {
+    "name": "@tentui",
+    "homepage": "https://tentui.com",
+    "url": "https://tentui.com/r/{name}.json",
+    "description": "Animated React components and copy-paste blocks for shadcn/ui: pricing, CTA, FAQ, footer and 404 sections, plus interactive pieces like OTP fields, wheel pickers and star ratings.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 128' fill='var(--foreground)'><path d='M10 128H0V107.149H10V128Z'/><path fill-rule='evenodd' d='M110 11.0045H120V21.4299H130V31.8552H140V42.5701H149.722V95.276H140V107.149H130V74.7149H120V106.57H110V128H100V74.7149H90V106.57H80V128H70V106.57H60V74.7149H50V128H40V106.57H30V74.7149H20V107.149H10V95.276H0.277778V42.5701H10V31.8552H20V21.4299H30V11.0045H40V0H110V11.0045ZM30 42.8597H40V31.8552H30V42.8597ZM110 42.8597H120V31.8552H110V42.8597Z'/><path d='M150 128H140V107.149H150V128Z'/></svg>"
+  },
+  {
     "name": "@tenvell",
     "homepage": "https://tenvell.space",
     "url": "https://tenvell.space/r/{name}.json",
