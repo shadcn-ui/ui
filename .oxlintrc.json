@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "react", "nextjs", "jsx-a11y", "import"],
+  "ignorePatterns": ["**/fixtures/**", "**/dist/**", "**/.next/**"],
+  "rules": {
+    "nextjs/no-html-link-for-pages": "off"
+  }
+}
