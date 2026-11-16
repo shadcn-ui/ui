@@ -135,6 +135,9 @@ importers:
       '@ai-sdk/react':
         specifier: 4.0.0-canary.162
         version: 4.0.0-canary.162(react@19.2.3)(zod@3.25.76)
+      '@base-ripple/core':
+        specifier: 1.0.5
+        version: 1.0.5
       '@base-ripple/react':
         specifier: ^1.0.5
         version: 1.0.5(react@19.2.3)
