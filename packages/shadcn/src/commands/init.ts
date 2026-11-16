@@ -92,6 +92,7 @@ export const initOptionsSchema = z.object({
   cssVariables: z.boolean().default(true),
   rtl: z.boolean().optional(),
   pointer: z.boolean().optional(),
+  ripple: z.boolean().optional(),
   base: z.enum(PRESET_BASES).optional(),
   template: z.string().optional(),
   monorepo: z.boolean().optional(),
@@ -112,7 +113,7 @@ export const initOptionsSchema = z.object({
 
 export function applyInitUrlOptions(
   url: URL,
-  options: Pick<z.infer<typeof initOptionsSchema>, "rtl" | "pointer">
+  options: Pick<z.infer<typeof initOptionsSchema>, "rtl" | "pointer" | "ripple">
 ) {
   if (options.rtl) {
     url.searchParams.set("rtl", "true")
@@ -124,6 +125,10 @@ export function applyInitUrlOptions(
     url.searchParams.set("pointer", "true")
   } else if (options.pointer === false) {
     url.searchParams.delete("pointer")
+  }
+
+  if (options.ripple !== undefined) {
+    url.searchParams.set("ripple", String(options.ripple))
   }
 
   return url
@@ -165,6 +170,8 @@ export const init = new Command()
   .option("--no-rtl", "disable RTL support.")
   .option("--pointer", "enable pointer cursor for buttons.")
   .option("--no-pointer", "disable pointer cursor for buttons.")
+  .option("--ripple", "enable Base Ripple on the default Button.")
+  .option("--no-ripple", "disable Base Ripple on the default Button.")
   .option("--reinstall", "re-install existing UI components.")
   .option("--no-reinstall", "do not re-install existing UI components.")
   .action(async (components, opts) => {
@@ -187,6 +194,24 @@ export const init = new Command()
         reinstall: opts.reinstall,
         cwd: path.resolve(opts.cwd),
       })
+      let installRippleButton = options.ripple !== undefined
+      const initUrlArg = [
+        ...(typeof options.preset === "string" ? [options.preset] : []),
+        ...components,
+      ].find((component) => {
+        if (!isUrl(component)) {
+          return false
+        }
+
+        try {
+          return new URL(component).pathname === "/init"
+        } catch {
+          return false
+        }
+      })
+      const initUrlHasRippleOption = initUrlArg
+        ? new URL(initUrlArg).searchParams.has("ripple")
+        : false
       const presetsByName = new Map(Object.entries(DEFAULT_PRESETS))
 
       let presetBase: PresetBase | undefined
@@ -290,6 +315,13 @@ export const init = new Command()
         // Pass existing config so preflight can use it (e.g. tailwind.css path in monorepos).
         if (existingConfig) {
           options.existingConfig = existingConfig
+          if (
+            options.ripple === undefined &&
+            !initUrlHasRippleOption &&
+            typeof existingConfig.buttonRipple === "boolean"
+          ) {
+            options.ripple = existingConfig.buttonRipple
+          }
         }
 
         let shouldReinstall = options.reinstall
@@ -319,6 +351,28 @@ export const init = new Command()
             logger.break()
           }
         }
+      }
+
+      if (
+        options.ripple === undefined &&
+        !options.defaults &&
+        options.preset === undefined &&
+        components.length === 0 &&
+        !hasExistingConfig
+      ) {
+        const { ripple } = await prompts({
+          type: "confirm",
+          name: "ripple",
+          message: "Use Base Ripple on the default Button?",
+          initial: false,
+        })
+
+        if (ripple === undefined) {
+          process.exit(1)
+        }
+
+        options.ripple = ripple
+        installRippleButton = true
       }
 
       if (
@@ -414,6 +468,7 @@ export const init = new Command()
             template: options.template,
             base: options.base!,
             pointer: options.pointer,
+            ripple: options.ripple,
           })
           components = [result.url, ...components]
           presetBase = result.base
@@ -452,6 +507,7 @@ export const init = new Command()
                 template: options.template,
                 preset: presetArg,
                 pointer: options.pointer,
+                ripple: options.ripple,
               }
             )
             presetBase = undefined
@@ -466,7 +522,11 @@ export const init = new Command()
                 base: options.base ?? "base",
                 rtl: options.rtl ?? preset.rtl,
               },
-              { template: options.template, pointer: options.pointer }
+              {
+                template: options.template,
+                pointer: options.pointer,
+                ripple: options.ripple,
+              }
             )
             presetBase = undefined
           }
@@ -507,7 +567,11 @@ export const init = new Command()
             base: resolvedBase,
             rtl: options.rtl ?? false,
           },
-          { template: options.template, pointer: options.pointer }
+          {
+            template: options.template,
+            pointer: options.pointer,
+            ripple: options.ripple,
+          }
         )
         components = [initUrl, ...components]
       }
@@ -581,9 +645,34 @@ export const init = new Command()
         }
 
         if (registryBaseConfig) {
-          options.registryBaseConfig = registryBaseConfig
+          options.registryBaseConfig = {
+            ...registryBaseConfig,
+            ...(options.ripple !== undefined && {
+              buttonRipple: options.ripple,
+            }),
+          }
+        } else if (options.ripple !== undefined) {
+          options.registryBaseConfig = { buttonRipple: options.ripple }
+        }
+
+        if (initUrlHasRippleOption) {
+          options.ripple = registryBaseConfig?.buttonRipple === true
+          installRippleButton = true
         }
       }
+
+      if (options.ripple !== undefined) {
+        options.registryBaseConfig = {
+          ...options.registryBaseConfig,
+          buttonRipple: options.ripple,
+        }
+      }
+
+      if (installRippleButton && !components.includes("button")) {
+        components.push("button")
+      }
+
+      options.components = components
 
       await runInit(options)
 
@@ -801,6 +890,9 @@ export async function runInit(
     if (config.menuColor) designSettings.menuColor = config.menuColor
     if (config.menuAccent) designSettings.menuAccent = config.menuAccent
     if (config.rtl !== undefined) designSettings.rtl = config.rtl
+    if (config.buttonRipple !== undefined) {
+      designSettings.buttonRipple = config.buttonRipple
+    }
     if (config.iconLibrary) designSettings.iconLibrary = config.iconLibrary
 
     if (Object.keys(designSettings).length > 0) {

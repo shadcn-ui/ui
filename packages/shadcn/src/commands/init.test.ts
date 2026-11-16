@@ -281,6 +281,20 @@ describe("init options", () => {
     expect(result.pointer).toBe(true)
   })
 
+  it("parses ripple flags", () => {
+    const enabled = initOptionsSchema.parse({
+      ...createInitOptions("/tmp/project"),
+      ripple: true,
+    })
+    const disabled = initOptionsSchema.parse({
+      ...createInitOptions("/tmp/project"),
+      ripple: false,
+    })
+
+    expect(enabled.ripple).toBe(true)
+    expect(disabled.ripple).toBe(false)
+  })
+
   it("applies pointer to raw init urls", () => {
     const url = applyInitUrlOptions(
       new URL("https://ui.shadcn.com/init?preset=a0"),
@@ -297,5 +311,40 @@ describe("init options", () => {
     )
 
     expect(url.searchParams.has("pointer")).toBe(false)
+  })
+
+  it("applies both enabled and disabled ripple options to raw init urls", () => {
+    const enabledUrl = applyInitUrlOptions(
+      new URL("https://ui.shadcn.com/init?preset=a0"),
+      { ripple: true }
+    )
+    const disabledUrl = applyInitUrlOptions(
+      new URL("https://ui.shadcn.com/init?preset=a0&ripple=true"),
+      { ripple: false }
+    )
+
+    expect(enabledUrl.searchParams.get("ripple")).toBe("true")
+    expect(disabledUrl.searchParams.get("ripple")).toBe("false")
+  })
+
+  it("includes Base Ripple in generated init urls when selected", async () => {
+    const { resolveInitUrl } = await import("@/src/preset/presets")
+    const url = resolveInitUrl(
+      {
+        base: "base",
+        style: "nova",
+        baseColor: "neutral",
+        theme: "neutral",
+        iconLibrary: "lucide",
+        font: "inter",
+        rtl: false,
+        menuAccent: "subtle",
+        menuColor: "default",
+        radius: "default",
+      },
+      { ripple: true }
+    )
+
+    expect(new URL(url).searchParams.get("ripple")).toBe("true")
   })
 })

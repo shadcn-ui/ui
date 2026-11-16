@@ -65,11 +65,13 @@ describe("createPresetUrl", () => {
     const url = resolveCreateUrl({
       rtl: true,
       pointer: true,
+      ripple: true,
       template: "next",
     })
     const parsed = new URL(url)
     expect(parsed.searchParams.get("rtl")).toBe("true")
     expect(parsed.searchParams.get("pointer")).toBe("true")
+    expect(parsed.searchParams.get("ripple")).toBe("true")
     expect(parsed.searchParams.get("template")).toBe("next")
   })
 })

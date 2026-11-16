@@ -133,6 +133,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description: "The button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/new-york-v4/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     "button-group": {
       name: "button-group",
       title: "undefined",
@@ -7129,6 +7145,24 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description: "The Base UI button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/base-nova/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/base/button" },
+      },
+    },
     "button-group": {
       name: "button-group",
       title: "undefined",
@@ -8551,6 +8585,24 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description: "The Radix button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/radix-nova/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/radix/button" },
+      },
+    },
     "button-group": {
       name: "button-group",
       title: "undefined",
@@ -9950,6 +10002,25 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description:
+        "The React Aria button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/aria-nova/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/aria/button" },
+      },
+    },
     "button-group": {
       name: "button-group",
       title: "undefined",
@@ -11334,6 +11405,24 @@ export const Index: Record<string, Record<string, any>> = {
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/button-example.tsx",
         },
+      },
+    },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description: "The Base UI button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/base-vega/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/base/button" },
       },
     },
     "button-group": {
@@ -12757,6 +12846,24 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description: "The Base UI button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/base-maia/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/base/button" },
+      },
+    },
     "button-group": {
       name: "button-group",
       title: "undefined",
@@ -14176,6 +14283,24 @@ export const Index: Record<string, Record<string, any>> = {
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/button-example.tsx",
         },
+      },
+    },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description: "The Base UI button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/base-lyra/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/base/button" },
       },
     },
     "button-group": {
@@ -15599,6 +15724,24 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description: "The Base UI button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/base-mira/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/base/button" },
+      },
+    },
     "button-group": {
       name: "button-group",
       title: "undefined",
@@ -17018,6 +17161,24 @@ export const Index: Record<string, Record<string, any>> = {
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/button-example.tsx",
         },
+      },
+    },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description: "The Base UI button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/base-luma/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/base/button" },
       },
     },
     "button-group": {
@@ -18441,6 +18602,24 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description: "The Base UI button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/base-sera/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/base/button" },
+      },
+    },
     "button-group": {
       name: "button-group",
       title: "undefined",
@@ -19860,6 +20039,24 @@ export const Index: Record<string, Record<string, any>> = {
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/button-example.tsx",
         },
+      },
+    },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description: "The Base UI button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/base-rhea/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/base/button" },
       },
     },
     "button-group": {
@@ -21284,6 +21481,25 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description:
+        "The React Aria button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/aria-vega/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/aria/button" },
+      },
+    },
     "button-group": {
       name: "button-group",
       title: "undefined",
@@ -22669,6 +22885,25 @@ export const Index: Record<string, Record<string, any>> = {
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/button-example.tsx",
           api: "https://react-aria.adobe.com/Button#api",
         },
+      },
+    },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description:
+        "The React Aria button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/aria-maia/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/aria/button" },
       },
     },
     "button-group": {
@@ -24058,6 +24293,25 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description:
+        "The React Aria button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/aria-lyra/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/aria/button" },
+      },
+    },
     "button-group": {
       name: "button-group",
       title: "undefined",
@@ -25443,6 +25697,25 @@ export const Index: Record<string, Record<string, any>> = {
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/button-example.tsx",
           api: "https://react-aria.adobe.com/Button#api",
         },
+      },
+    },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description:
+        "The React Aria button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/aria-mira/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/aria/button" },
       },
     },
     "button-group": {
@@ -26832,6 +27105,25 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description:
+        "The React Aria button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/aria-luma/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/aria/button" },
+      },
+    },
     "button-group": {
       name: "button-group",
       title: "undefined",
@@ -28217,6 +28509,25 @@ export const Index: Record<string, Record<string, any>> = {
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/button-example.tsx",
           api: "https://react-aria.adobe.com/Button#api",
         },
+      },
+    },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description:
+        "The React Aria button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/aria-sera/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/aria/button" },
       },
     },
     "button-group": {
@@ -29606,6 +29917,25 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description:
+        "The React Aria button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/aria-rhea/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/aria/button" },
+      },
+    },
     "button-group": {
       name: "button-group",
       title: "undefined",
@@ -30991,6 +31321,24 @@ export const Index: Record<string, Record<string, any>> = {
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/button-example.tsx",
         },
+      },
+    },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description: "The Radix button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/radix-vega/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/radix/button" },
       },
     },
     "button-group": {
@@ -32392,6 +32740,24 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description: "The Radix button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/radix-maia/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/radix/button" },
+      },
+    },
     "button-group": {
       name: "button-group",
       title: "undefined",
@@ -33789,6 +34155,24 @@ export const Index: Record<string, Record<string, any>> = {
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/button-example.tsx",
         },
+      },
+    },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description: "The Radix button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/radix-lyra/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/radix/button" },
       },
     },
     "button-group": {
@@ -35190,6 +35574,24 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description: "The Radix button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/radix-mira/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/radix/button" },
+      },
+    },
     "button-group": {
       name: "button-group",
       title: "undefined",
@@ -36587,6 +36989,24 @@ export const Index: Record<string, Record<string, any>> = {
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/button-example.tsx",
         },
+      },
+    },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description: "The Radix button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/radix-luma/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/radix/button" },
       },
     },
     "button-group": {
@@ -37988,6 +38408,24 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description: "The Radix button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/radix-sera/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/radix/button" },
+      },
+    },
     "button-group": {
       name: "button-group",
       title: "undefined",
@@ -39385,6 +39823,24 @@ export const Index: Record<string, Record<string, any>> = {
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/button-example.tsx",
         },
+      },
+    },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description: "The Radix button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "styles/radix-rhea/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/radix/button" },
       },
     },
     "button-group": {

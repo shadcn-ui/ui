@@ -26,11 +26,12 @@ export function resolveCreateUrl(
     template: string
     rtl: boolean
     pointer: boolean
+    ripple: boolean
     base: PresetBase
   }>
 ) {
   const url = new URL(`${SHADCN_URL}/create`)
-  const { rtl, pointer, ...params } = searchParams ?? {}
+  const { rtl, pointer, ripple, ...params } = searchParams ?? {}
 
   for (const [key, value] of Object.entries(params)) {
     if (value !== undefined) {
@@ -45,6 +46,10 @@ export function resolveCreateUrl(
 
   if (pointer) {
     url.searchParams.set("pointer", "true")
+  }
+
+  if (ripple) {
+    url.searchParams.set("ripple", "true")
   }
 
   return url.toString()
@@ -98,6 +103,7 @@ export function resolveInitUrl(
     preset?: string
     only?: string
     pointer?: boolean
+    ripple?: boolean
   }
 ) {
   const params = new URLSearchParams({
@@ -139,6 +145,10 @@ export function resolveInitUrl(
     params.set("pointer", "true")
   }
 
+  if (options?.ripple !== undefined) {
+    params.set("ripple", String(options.ripple))
+  }
+
   // Signal the server to record this init run.
   params.set("track", "1")
 
@@ -165,6 +175,7 @@ export async function promptForPreset(options: {
   base: PresetBase
   template?: string
   pointer?: boolean
+  ripple?: boolean
 }) {
   const presets = Object.entries(DEFAULT_PRESETS)
 
@@ -195,6 +206,7 @@ export async function promptForPreset(options: {
       command: "init",
       rtl: options.rtl,
       pointer: options.pointer,
+      ripple: options.ripple,
       base: options.base,
       ...(options.template && { template: options.template }),
     })
@@ -219,6 +231,7 @@ export async function promptForPreset(options: {
       {
         template: options.template,
         pointer: options.pointer,
+        ripple: options.ripple,
       }
     ),
     base: options.base,

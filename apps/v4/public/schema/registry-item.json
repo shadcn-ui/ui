@@ -212,6 +212,15 @@
       "type": "string",
       "description": "The theme configuration. This is available for registry:base items only."
     },
+    "config": {
+      "type": "object",
+      "properties": {
+        "buttonRipple": {
+          "type": "boolean",
+          "description": "Use Base Ripple in the default Button component."
+        }
+      }
+    },
     "font": {
       "type": "object",
       "description": "Font metadata for registry:font items. Required for registry:font type.",

@@ -43,10 +43,14 @@ Options:
   --no-rtl                   disable RTL support.
   --pointer                  enable pointer cursor for buttons.
   --no-pointer               disable pointer cursor for buttons.
+  --ripple                   use Base Ripple on the default Button.
+  --no-ripple                use the standard default Button.
   --reinstall                re-install existing UI components.
   --no-reinstall             do not re-install existing UI components.
   -h, --help                 display help for command
 ```
+
+Use `--ripple` to install the default `Button` with Base Ripple interaction feedback. The option also stores `buttonRipple` in `components.json`, so later `shadcn add button` and component reinstalls keep the same choice. Use `--no-ripple` to restore the standard default `Button`.
 
 The `create` command is an alias for `init`:
 

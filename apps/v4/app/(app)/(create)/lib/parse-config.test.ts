@@ -16,6 +16,20 @@ describe("parseDesignSystemConfig", () => {
     }
 
     expect(result.data.pointer).toBe(false)
+    expect(result.data.buttonRipple).toBe(false)
+  })
+
+  it("parses ripple as a separate default Button option", () => {
+    const result = parseDesignSystemConfig(
+      new URLSearchParams("preset=a0&ripple=true")
+    )
+
+    expect(result.success).toBe(true)
+    if (!result.success) {
+      throw new Error(result.error)
+    }
+
+    expect(result.data.buttonRipple).toBe(true)
   })
 
   it("parses pointer=true", () => {

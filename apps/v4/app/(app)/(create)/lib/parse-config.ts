@@ -24,6 +24,7 @@ export function parseDesignSystemConfig(searchParams: URLSearchParams) {
       template: searchParams.get("template") ?? undefined,
       rtl: searchParams.get("rtl") === "true",
       pointer: searchParams.get("pointer") === "true",
+      buttonRipple: searchParams.get("ripple") === "true",
     }
   } else {
     configInput = {
@@ -41,6 +42,7 @@ export function parseDesignSystemConfig(searchParams: URLSearchParams) {
       template: searchParams.get("template") ?? undefined,
       rtl: searchParams.get("rtl") === "true",
       pointer: searchParams.get("pointer") === "true",
+      buttonRipple: searchParams.get("ripple") === "true",
     }
   }
 

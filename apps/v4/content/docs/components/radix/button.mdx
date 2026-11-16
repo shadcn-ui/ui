@@ -77,6 +77,18 @@ You can also enable this during project setup with `npx shadcn@latest init --poi
 }
 ```
 
+## Base Ripple
+
+Use Base Ripple on the default `Button` during setup:
+
+```bash
+npx shadcn@latest init --ripple
+```
+
+This keeps the `Button` import and props the same while adding the ripple effect to its default implementation. The CLI installs `@base-ripple/react`, adds its stylesheet to your global CSS, and saves `"buttonRipple": true` in `components.json`. Later Button installs and reinstalls use the same implementation.
+
+Run `npx shadcn@latest init --no-ripple` to restore the standard Button implementation. Base Ripple supports pointer and keyboard activation, skips disabled buttons, marks ripple spans as hidden from assistive technology, and respects reduced-motion preferences. See the [Base Ripple React API](https://github.com/circulo-ai/base-ripple/blob/main/packages/react/README.md) for customization options.
+
 ## Size
 
 Use the `size` prop to change the size of the button.

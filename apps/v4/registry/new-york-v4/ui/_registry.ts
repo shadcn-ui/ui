@@ -90,6 +90,23 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "button-ripple",
+    type: "registry:ui",
+    title: "Button with Base Ripple",
+    description: "The button with Base Ripple interaction feedback.",
+    dependencies: ["@base-ripple/react"],
+    css: {
+      '@import "@base-ripple/react/styles.css"': {},
+    },
+    files: [
+      {
+        path: "ui/button-ripple.tsx",
+        type: "registry:ui",
+        target: "@ui/button.tsx",
+      },
+    ],
+  },
+  {
     name: "button-group",
     type: "registry:ui",
     registryDependencies: ["button", "separator"],

@@ -110,6 +110,7 @@ export const designSystemConfigSchema = z
     item: z.string().optional(),
     rtl: z.boolean().default(false),
     pointer: z.boolean().default(false),
+    buttonRipple: z.boolean().default(false),
     menuAccent: z
       .enum(
         MENU_ACCENTS.map((a) => a.value) as [
@@ -182,6 +183,7 @@ export const DEFAULT_CONFIG: DesignSystemConfig = {
   item: "Item",
   rtl: false,
   pointer: false,
+  buttonRipple: false,
   menuAccent: "subtle",
   menuColor: "default",
   radius: "default",
@@ -192,7 +194,7 @@ export type Preset = {
   name: string
   title: string
   description: string
-} & Omit<DesignSystemConfig, "pointer">
+} & Omit<DesignSystemConfig, "pointer" | "buttonRipple">
 
 export const PRESETS: Preset[] = [
   // Radix.
@@ -803,6 +805,7 @@ export function buildRegistryBase(config: DesignSystemConfig) {
     "cn",
     "tw-animate-css",
     ...(baseItem.dependencies ?? []),
+    ...(config.buttonRipple ? ["@base-ripple/react"] : []),
     ...iconLibraryItem.packages,
   ]
 
@@ -830,6 +833,7 @@ export function buildRegistryBase(config: DesignSystemConfig) {
       style: `${config.base}-${config.style}`,
       iconLibrary: iconLibraryItem.name,
       rtl: config.rtl,
+      buttonRipple: config.buttonRipple,
       menuColor: config.menuColor,
       menuAccent: config.menuAccent,
       tailwind: {

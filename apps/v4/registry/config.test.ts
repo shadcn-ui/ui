@@ -110,6 +110,16 @@ describe("buildRegistryBase", () => {
     })
   })
 
+  it("adds Base Ripple to the default Button dependencies when enabled", () => {
+    const result = buildRegistryBase({
+      ...DEFAULT_CONFIG,
+      buttonRipple: true,
+    })
+
+    expect(result.dependencies).toContain("@base-ripple/react")
+    expect(result.config).toMatchObject({ buttonRipple: true })
+  })
+
   it("defaults chartColor to the selected theme when omitted", () => {
     const result = designSystemConfigSchema.parse({
       base: "base",

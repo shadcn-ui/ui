@@ -44,6 +44,8 @@ export const rawConfigSchema = z
       prefix: z.string().optional(),
     }),
     iconLibrary: z.string().optional(),
+    // Opt in to the Base Ripple-backed built-in Button registry item.
+    buttonRipple: z.boolean().optional(),
     rtl: z.coerce.boolean().optional(),
     menuColor: z
       .enum([

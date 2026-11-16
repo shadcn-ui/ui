@@ -92,6 +92,7 @@ const designSystemSearchParams = {
   ] as const).withDefault("next"),
   rtl: parseAsBoolean.withDefault(false),
   pointer: parseAsBoolean.withDefault(false),
+  ripple: parseAsBoolean.withDefault(false),
   size: parseAsInteger.withDefault(100),
   custom: parseAsBoolean.withDefault(false),
 }
@@ -128,6 +129,7 @@ const NON_DESIGN_SYSTEM_KEYS = [
   "template",
   "rtl",
   "pointer",
+  "ripple",
   "size",
   "custom",
 ] as const
@@ -230,6 +232,7 @@ function resolvePresetParams(
         template: rawParams.template,
         rtl: rawParams.rtl,
         pointer: rawParams.pointer,
+        ripple: rawParams.ripple,
         size: rawParams.size,
         custom: rawParams.custom,
       })

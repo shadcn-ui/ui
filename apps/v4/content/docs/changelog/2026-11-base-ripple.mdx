@@ -1,0 +1,13 @@
+---
+title: November 2026 - Base Ripple Buttons
+description: Opt in to Base Ripple for the default Button during project setup.
+date: 2026-11-16
+---
+
+You can now opt in to Base Ripple for the default `Button` when creating or initializing a project:
+
+```bash
+npx shadcn@latest init --ripple
+```
+
+The CLI installs `@base-ripple/react`, adds its stylesheet, and saves the choice in `components.json`. The default Button keeps the same import and props. Use `--no-ripple` to install the standard Button implementation.
