@@ -2898,7 +2898,7 @@
   {
     "name": "@shadcndesign",
     "homepage": "https://www.shadcndesign.com",
-    "url": "https://shadcndesign-free.vercel.app/r/{name}.json",
+    "url": "https://www.shadcndesign.com/r/{style}/{name}.json",
     "description": "A growing collection of high-quality blocks and themes for shadcn/ui.",
     "logo": "<svg width='80' height='80' viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'><g clip-path='url(#clip0_22651_9557)'><g clip-path='url(#clip1_22651_9557)'><rect x='10' y='10' width='60' height='60' fill='black' stroke='#4497F7' stroke-width='5'/><rect x='2.5' y='2.5' width='15' height='15' fill='white' stroke='#4497F7' stroke-width='5'/><rect x='62.5' y='2.5' width='15' height='15' fill='white' stroke='#4497F7' stroke-width='5'/><rect x='2.5' y='62.5' width='15' height='15' fill='white' stroke='#4497F7' stroke-width='5'/><rect x='62.5' y='62.5' width='15' height='15' fill='white' stroke='#4497F7' stroke-width='5'/><path d='M23.75 56.25L56.25 23.75' stroke='white' stroke-width='5'/><path d='M43.75 56.25L56.25 43.75' stroke='white' stroke-width='5'/></g></g><defs><clipPath id='clip0_22651_9557'><rect width='80' height='80' fill='white'/></clipPath><clipPath id='clip1_22651_9557'><rect width='80' height='80' fill='white'/></clipPath></defs></svg>"
   },
