@@ -92,6 +92,8 @@ export const initOptionsSchema = z.object({
   cssVariables: z.boolean().default(true),
   rtl: z.boolean().optional(),
   pointer: z.boolean().optional(),
+  buttonActiveStyle: z.enum(["default", "ripple", "ripple-blur"]).optional(),
+  /** @deprecated Use buttonActiveStyle. */
   ripple: z.boolean().optional(),
   base: z.enum(PRESET_BASES).optional(),
   template: z.string().optional(),
@@ -113,7 +115,10 @@ export const initOptionsSchema = z.object({
 
 export function applyInitUrlOptions(
   url: URL,
-  options: Pick<z.infer<typeof initOptionsSchema>, "rtl" | "pointer" | "ripple">
+  options: Pick<
+    z.infer<typeof initOptionsSchema>,
+    "rtl" | "pointer" | "buttonActiveStyle" | "ripple"
+  >
 ) {
   if (options.rtl) {
     url.searchParams.set("rtl", "true")
@@ -127,7 +132,10 @@ export function applyInitUrlOptions(
     url.searchParams.delete("pointer")
   }
 
-  if (options.ripple !== undefined) {
+  if (options.buttonActiveStyle !== undefined) {
+    url.searchParams.set("buttonActiveStyle", options.buttonActiveStyle)
+    url.searchParams.delete("ripple")
+  } else if (options.ripple !== undefined) {
     url.searchParams.set("ripple", String(options.ripple))
   }
 
@@ -170,6 +178,11 @@ export const init = new Command()
   .option("--no-rtl", "disable RTL support.")
   .option("--pointer", "enable pointer cursor for buttons.")
   .option("--no-pointer", "disable pointer cursor for buttons.")
+  .option(
+    "--button-active-style <style>",
+    "set the Button active style (default, ripple, ripple-blur)."
+  )
+  // Backward compatibility for the previous boolean option.
   .option("--ripple", "enable Base Ripple on the default Button.")
   .option("--no-ripple", "disable Base Ripple on the default Button.")
   .option("--reinstall", "re-install existing UI components.")
@@ -194,7 +207,14 @@ export const init = new Command()
         reinstall: opts.reinstall,
         cwd: path.resolve(opts.cwd),
       })
-      let installRippleButton = options.ripple !== undefined
+      if (
+        options.buttonActiveStyle === undefined &&
+        options.ripple !== undefined
+      ) {
+        options.buttonActiveStyle = options.ripple ? "ripple" : "default"
+      }
+      options.ripple = undefined
+      let installButtonActiveStyle = options.buttonActiveStyle !== undefined
       const initUrlArg = [
         ...(typeof options.preset === "string" ? [options.preset] : []),
         ...components,
@@ -209,9 +229,23 @@ export const init = new Command()
           return false
         }
       })
-      const initUrlHasRippleOption = initUrlArg
-        ? new URL(initUrlArg).searchParams.has("ripple")
+      const initUrlHasButtonActiveStyleOption = initUrlArg
+        ? new URL(initUrlArg).searchParams.has("buttonActiveStyle") ||
+          new URL(initUrlArg).searchParams.has("ripple")
         : false
+      if (initUrlArg && options.buttonActiveStyle === undefined) {
+        const initUrlParams = new URL(initUrlArg).searchParams
+        if (initUrlParams.has("buttonActiveStyle")) {
+          options.buttonActiveStyle = initUrlParams.get("buttonActiveStyle") as
+            | "default"
+            | "ripple"
+            | "ripple-blur"
+        } else if (initUrlParams.has("ripple")) {
+          options.buttonActiveStyle =
+            initUrlParams.get("ripple") === "true" ? "ripple" : "default"
+        }
+        installButtonActiveStyle = true
+      }
       const presetsByName = new Map(Object.entries(DEFAULT_PRESETS))
 
       let presetBase: PresetBase | undefined
@@ -316,11 +350,21 @@ export const init = new Command()
         if (existingConfig) {
           options.existingConfig = existingConfig
           if (
-            options.ripple === undefined &&
-            !initUrlHasRippleOption &&
-            typeof existingConfig.buttonRipple === "boolean"
+            options.buttonActiveStyle === undefined &&
+            !initUrlHasButtonActiveStyleOption &&
+            (typeof existingConfig.buttonActiveStyle === "string" ||
+              typeof existingConfig.buttonRipple === "boolean")
           ) {
-            options.ripple = existingConfig.buttonRipple
+            options.buttonActiveStyle =
+              typeof existingConfig.buttonActiveStyle === "string"
+                ? (existingConfig.buttonActiveStyle as
+                    | "default"
+                    | "ripple"
+                    | "ripple-blur")
+                : existingConfig.buttonRipple
+                  ? "ripple"
+                  : "default"
+            installButtonActiveStyle = true
           }
         }
 
@@ -354,25 +398,30 @@ export const init = new Command()
       }
 
       if (
-        options.ripple === undefined &&
+        options.buttonActiveStyle === undefined &&
         !options.defaults &&
         options.preset === undefined &&
         components.length === 0 &&
         !hasExistingConfig
       ) {
-        const { ripple } = await prompts({
-          type: "confirm",
-          name: "ripple",
-          message: "Use Base Ripple on the default Button?",
-          initial: false,
+        const { buttonActiveStyle } = await prompts({
+          type: "select",
+          name: "buttonActiveStyle",
+          message: "Select a Button active style",
+          initial: 0,
+          choices: [
+            { title: "Default", value: "default" },
+            { title: "Simple Ripple", value: "ripple" },
+            { title: "Blurred Ripple", value: "ripple-blur" },
+          ],
         })
 
-        if (ripple === undefined) {
+        if (buttonActiveStyle === undefined) {
           process.exit(1)
         }
 
-        options.ripple = ripple
-        installRippleButton = true
+        options.buttonActiveStyle = buttonActiveStyle
+        installButtonActiveStyle = true
       }
 
       if (
@@ -468,7 +517,7 @@ export const init = new Command()
             template: options.template,
             base: options.base!,
             pointer: options.pointer,
-            ripple: options.ripple,
+            buttonActiveStyle: options.buttonActiveStyle,
           })
           components = [result.url, ...components]
           presetBase = result.base
@@ -507,7 +556,7 @@ export const init = new Command()
                 template: options.template,
                 preset: presetArg,
                 pointer: options.pointer,
-                ripple: options.ripple,
+                buttonActiveStyle: options.buttonActiveStyle,
               }
             )
             presetBase = undefined
@@ -525,7 +574,7 @@ export const init = new Command()
               {
                 template: options.template,
                 pointer: options.pointer,
-                ripple: options.ripple,
+                buttonActiveStyle: options.buttonActiveStyle,
               }
             )
             presetBase = undefined
@@ -570,7 +619,7 @@ export const init = new Command()
           {
             template: options.template,
             pointer: options.pointer,
-            ripple: options.ripple,
+            buttonActiveStyle: options.buttonActiveStyle,
           }
         )
         components = [initUrl, ...components]
@@ -647,28 +696,29 @@ export const init = new Command()
         if (registryBaseConfig) {
           options.registryBaseConfig = {
             ...registryBaseConfig,
-            ...(options.ripple !== undefined && {
-              buttonRipple: options.ripple,
+            ...(options.buttonActiveStyle !== undefined && {
+              buttonActiveStyle: options.buttonActiveStyle,
             }),
           }
-        } else if (options.ripple !== undefined) {
-          options.registryBaseConfig = { buttonRipple: options.ripple }
+        } else if (options.buttonActiveStyle !== undefined) {
+          options.registryBaseConfig = {
+            buttonActiveStyle: options.buttonActiveStyle,
+          }
         }
 
-        if (initUrlHasRippleOption) {
-          options.ripple = registryBaseConfig?.buttonRipple === true
-          installRippleButton = true
+        if (initUrlHasButtonActiveStyleOption) {
+          installButtonActiveStyle = true
         }
       }
 
-      if (options.ripple !== undefined) {
+      if (options.buttonActiveStyle !== undefined) {
         options.registryBaseConfig = {
           ...options.registryBaseConfig,
-          buttonRipple: options.ripple,
+          buttonActiveStyle: options.buttonActiveStyle,
         }
       }
 
-      if (installRippleButton && !components.includes("button")) {
+      if (installButtonActiveStyle && !components.includes("button")) {
         components.push("button")
       }
 
@@ -890,6 +940,9 @@ export async function runInit(
     if (config.menuColor) designSettings.menuColor = config.menuColor
     if (config.menuAccent) designSettings.menuAccent = config.menuAccent
     if (config.rtl !== undefined) designSettings.rtl = config.rtl
+    if (config.buttonActiveStyle !== undefined) {
+      designSettings.buttonActiveStyle = config.buttonActiveStyle
+    }
     if (config.buttonRipple !== undefined) {
       designSettings.buttonRipple = config.buttonRipple
     }

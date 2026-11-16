@@ -51,11 +51,13 @@ function Button({
   return (
     <BaseRipple
       as={Comp}
-      rippleOptions={{ origin: "pointer", sizeOffset: 96 }}
       data-slot="button"
       data-variant={variant}
       data-size={size}
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(
+        buttonVariants({ variant, size, className }),
+        "active:not-aria-[haspopup]:!translate-y-0"
+      )}
       {...props}
     />
   )

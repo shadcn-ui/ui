@@ -165,6 +165,29 @@ export const ui: Registry["items"] = [
     },
   },
   {
+    name: "button-ripple-blur",
+    type: "registry:ui",
+    title: "Button with Blurred Base Ripple",
+    description:
+      "The React Aria button with a blurred Base Ripple interaction feedback.",
+    dependencies: ["@base-ripple/react"],
+    css: {
+      '@import "@base-ripple/react/styles.css"': {},
+    },
+    files: [
+      {
+        path: "ui/button-ripple-blur.tsx",
+        type: "registry:ui",
+        target: "@ui/button.tsx",
+      },
+    ],
+    meta: {
+      links: {
+        docs: "https://ui.shadcn.com/docs/components/aria/button",
+      },
+    },
+  },
+  {
     name: "button-group",
     type: "registry:ui",
     registryDependencies: ["separator"],

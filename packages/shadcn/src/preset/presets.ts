@@ -26,12 +26,15 @@ export function resolveCreateUrl(
     template: string
     rtl: boolean
     pointer: boolean
+    buttonActiveStyle: "default" | "ripple" | "ripple-blur"
+    /** @deprecated Use buttonActiveStyle. */
     ripple: boolean
     base: PresetBase
   }>
 ) {
   const url = new URL(`${SHADCN_URL}/create`)
-  const { rtl, pointer, ripple, ...params } = searchParams ?? {}
+  const { rtl, pointer, buttonActiveStyle, ripple, ...params } =
+    searchParams ?? {}
 
   for (const [key, value] of Object.entries(params)) {
     if (value !== undefined) {
@@ -48,7 +51,9 @@ export function resolveCreateUrl(
     url.searchParams.set("pointer", "true")
   }
 
-  if (ripple) {
+  if (buttonActiveStyle) {
+    url.searchParams.set("buttonActiveStyle", buttonActiveStyle)
+  } else if (ripple) {
     url.searchParams.set("ripple", "true")
   }
 
@@ -103,6 +108,8 @@ export function resolveInitUrl(
     preset?: string
     only?: string
     pointer?: boolean
+    buttonActiveStyle?: "default" | "ripple" | "ripple-blur"
+    /** @deprecated Use buttonActiveStyle. */
     ripple?: boolean
   }
 ) {
@@ -145,7 +152,9 @@ export function resolveInitUrl(
     params.set("pointer", "true")
   }
 
-  if (options?.ripple !== undefined) {
+  if (options?.buttonActiveStyle !== undefined) {
+    params.set("buttonActiveStyle", options.buttonActiveStyle)
+  } else if (options?.ripple !== undefined) {
     params.set("ripple", String(options.ripple))
   }
 
@@ -175,6 +184,8 @@ export async function promptForPreset(options: {
   base: PresetBase
   template?: string
   pointer?: boolean
+  buttonActiveStyle?: "default" | "ripple" | "ripple-blur"
+  /** @deprecated Use buttonActiveStyle. */
   ripple?: boolean
 }) {
   const presets = Object.entries(DEFAULT_PRESETS)
@@ -206,6 +217,7 @@ export async function promptForPreset(options: {
       command: "init",
       rtl: options.rtl,
       pointer: options.pointer,
+      buttonActiveStyle: options.buttonActiveStyle,
       ripple: options.ripple,
       base: options.base,
       ...(options.template && { template: options.template }),
@@ -231,6 +243,7 @@ export async function promptForPreset(options: {
       {
         template: options.template,
         pointer: options.pointer,
+        buttonActiveStyle: options.buttonActiveStyle,
         ripple: options.ripple,
       }
     ),

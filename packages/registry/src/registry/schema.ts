@@ -44,7 +44,8 @@ export const rawConfigSchema = z
       prefix: z.string().optional(),
     }),
     iconLibrary: z.string().optional(),
-    // Opt in to the Base Ripple-backed built-in Button registry item.
+    buttonActiveStyle: z.enum(["default", "ripple", "ripple-blur"]).optional(),
+    // Legacy config key. New configs should use buttonActiveStyle.
     buttonRipple: z.boolean().optional(),
     rtl: z.coerce.boolean().optional(),
     menuColor: z

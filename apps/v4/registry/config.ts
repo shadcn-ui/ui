@@ -32,6 +32,20 @@ export type RegistryBasePart = (typeof REGISTRY_BASE_PARTS)[number]
 export const POINTER_CURSOR_SELECTOR =
   'button:not(:disabled), [role="button"]:not(:disabled)'
 
+export const BUTTON_ACTIVE_STYLE_VALUES = [
+  "default",
+  "ripple",
+  "ripple-blur",
+] as const
+
+export const BUTTON_ACTIVE_STYLES = [
+  { value: "default", label: "Press" },
+  { value: "ripple", label: "Ripple" },
+  { value: "ripple-blur", label: "Soft Ripple" },
+] as const
+
+export type ButtonActiveStyleValue = (typeof BUTTON_ACTIVE_STYLE_VALUES)[number]
+
 // Derive font values from registry fonts (e.g., "font-inter" -> "inter").
 const fontValues = bodyFonts.map((f) => f.name.replace("font-", "")) as [
   string,
@@ -110,6 +124,8 @@ export const designSystemConfigSchema = z
     item: z.string().optional(),
     rtl: z.boolean().default(false),
     pointer: z.boolean().default(false),
+    buttonActiveStyle: z.enum(BUTTON_ACTIVE_STYLE_VALUES).default("default"),
+    // Legacy config key. New configs should use buttonActiveStyle.
     buttonRipple: z.boolean().default(false),
     menuAccent: z
       .enum(
@@ -146,6 +162,10 @@ export const designSystemConfigSchema = z
   })
   .transform((data) => ({
     ...data,
+    buttonActiveStyle:
+      data.buttonRipple && data.buttonActiveStyle === "default"
+        ? "ripple"
+        : data.buttonActiveStyle,
     chartColor: data.chartColor ?? data.theme,
   }))
   .refine(
@@ -183,6 +203,7 @@ export const DEFAULT_CONFIG: DesignSystemConfig = {
   item: "Item",
   rtl: false,
   pointer: false,
+  buttonActiveStyle: "default",
   buttonRipple: false,
   menuAccent: "subtle",
   menuColor: "default",
@@ -194,7 +215,7 @@ export type Preset = {
   name: string
   title: string
   description: string
-} & Omit<DesignSystemConfig, "pointer" | "buttonRipple">
+} & Omit<DesignSystemConfig, "pointer" | "buttonActiveStyle" | "buttonRipple">
 
 export const PRESETS: Preset[] = [
   // Radix.
@@ -789,6 +810,10 @@ export function buildRegistryBase(config: DesignSystemConfig) {
   const iconLibraryItem = getIconLibrary(config.iconLibrary)
   const normalizedFontHeading =
     config.fontHeading === config.font ? "inherit" : config.fontHeading
+  const buttonActiveStyle =
+    config.buttonRipple && config.buttonActiveStyle === "default"
+      ? "ripple"
+      : config.buttonActiveStyle
 
   if (!baseItem || !iconLibraryItem) {
     throw new Error(
@@ -805,7 +830,7 @@ export function buildRegistryBase(config: DesignSystemConfig) {
     "cn",
     "tw-animate-css",
     ...(baseItem.dependencies ?? []),
-    ...(config.buttonRipple ? ["@base-ripple/react"] : []),
+    ...(buttonActiveStyle !== "default" ? ["@base-ripple/react"] : []),
     ...iconLibraryItem.packages,
   ]
 
@@ -833,6 +858,7 @@ export function buildRegistryBase(config: DesignSystemConfig) {
       style: `${config.base}-${config.style}`,
       iconLibrary: iconLibraryItem.name,
       rtl: config.rtl,
+      buttonActiveStyle,
       buttonRipple: config.buttonRipple,
       menuColor: config.menuColor,
       menuAccent: config.menuAccent,

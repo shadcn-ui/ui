@@ -154,8 +154,8 @@ export function ProjectForm({
     const monorepoFlag = isMonorepo ? " --monorepo" : ""
     const rtlFlag = params.rtl ? " --rtl" : ""
     const pointerFlag = params.pointer ? " --pointer" : ""
-    const rippleFlag = params.ripple ? " --ripple" : ""
-    const flags = `${presetFlag}${baseFlag}${templateFlag}${monorepoFlag}${rtlFlag}${pointerFlag}${rippleFlag}`
+    const buttonActiveStyleFlag = ` --button-active-style ${params.buttonActiveStyle}`
+    const flags = `${presetFlag}${baseFlag}${templateFlag}${monorepoFlag}${rtlFlag}${pointerFlag}${buttonActiveStyleFlag}`
 
     return IS_LOCAL_DEV
       ? {
@@ -174,8 +174,8 @@ export function ProjectForm({
     framework,
     isMonorepo,
     params.base,
+    params.buttonActiveStyle,
     params.pointer,
-    params.ripple,
     params.rtl,
     presetCode,
   ])
@@ -227,11 +227,12 @@ export function ProjectForm({
       template: params.template,
       rtl: params.rtl,
       pointer: params.pointer,
-      buttonRipple: params.ripple,
+      buttonActiveStyle: params.buttonActiveStyle,
     }
   }, [
     params.base,
     params.baseColor,
+    params.buttonActiveStyle,
     params.chartColor,
     params.font,
     params.fontHeading,
@@ -239,7 +240,6 @@ export function ProjectForm({
     params.menuAccent,
     params.menuColor,
     params.pointer,
-    params.ripple,
     params.radius,
     params.rtl,
     params.style,
@@ -359,25 +359,6 @@ export function ProjectForm({
                       checked={params.pointer}
                       onCheckedChange={(checked) =>
                         setParams({ pointer: checked === true })
-                      }
-                    />
-                  </Field>
-                  <Field orientation="horizontal">
-                    <FieldContent>
-                      <FieldLabel htmlFor="ripple">
-                        Use Base Ripple on the default Button
-                      </FieldLabel>
-                      <FieldDescription id="ripple-description">
-                        Adds pointer-origin ripple feedback to the generated
-                        Button component.
-                      </FieldDescription>
-                    </FieldContent>
-                    <Switch
-                      id="ripple"
-                      aria-describedby="ripple-description"
-                      checked={params.ripple}
-                      onCheckedChange={(checked) =>
-                        setParams({ ripple: checked === true })
                       }
                     />
                   </Field>

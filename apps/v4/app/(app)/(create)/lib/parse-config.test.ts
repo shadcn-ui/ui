@@ -30,6 +30,20 @@ describe("parseDesignSystemConfig", () => {
     }
 
     expect(result.data.buttonRipple).toBe(true)
+    expect(result.data.buttonActiveStyle).toBe("ripple")
+  })
+
+  it("parses the blurred Button active style", () => {
+    const result = parseDesignSystemConfig(
+      new URLSearchParams("preset=a0&buttonActiveStyle=ripple-blur")
+    )
+
+    expect(result.success).toBe(true)
+    if (!result.success) {
+      throw new Error(result.error)
+    }
+
+    expect(result.data.buttonActiveStyle).toBe("ripple-blur")
   })
 
   it("parses pointer=true", () => {

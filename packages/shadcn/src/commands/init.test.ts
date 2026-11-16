@@ -269,7 +269,7 @@ describe("init options", () => {
     })
 
     expect(result.base).toBe("aria")
-    expect(init.helpInformation()).toContain("(base, radix, aria)")
+    expect(init.helpInformation()).toMatch(/\(base, radix,\s+aria\)/)
   })
 
   it("parses pointer flags", () => {
@@ -293,6 +293,15 @@ describe("init options", () => {
 
     expect(enabled.ripple).toBe(true)
     expect(disabled.ripple).toBe(false)
+  })
+
+  it("parses Button active style values", () => {
+    const result = initOptionsSchema.parse({
+      ...createInitOptions("/tmp/project"),
+      buttonActiveStyle: "ripple-blur",
+    })
+
+    expect(result.buttonActiveStyle).toBe("ripple-blur")
   })
 
   it("applies pointer to raw init urls", () => {
@@ -327,6 +336,16 @@ describe("init options", () => {
     expect(disabledUrl.searchParams.get("ripple")).toBe("false")
   })
 
+  it("applies Button active style values to raw init urls", () => {
+    const url = applyInitUrlOptions(
+      new URL("https://ui.shadcn.com/init?preset=a0&ripple=true"),
+      { buttonActiveStyle: "ripple-blur" }
+    )
+
+    expect(url.searchParams.get("buttonActiveStyle")).toBe("ripple-blur")
+    expect(url.searchParams.has("ripple")).toBe(false)
+  })
+
   it("includes Base Ripple in generated init urls when selected", async () => {
     const { resolveInitUrl } = await import("@/src/preset/presets")
     const url = resolveInitUrl(
@@ -346,5 +365,26 @@ describe("init options", () => {
     )
 
     expect(new URL(url).searchParams.get("ripple")).toBe("true")
+  })
+
+  it("includes the selected Button active style in generated init urls", async () => {
+    const { resolveInitUrl } = await import("@/src/preset/presets")
+    const url = resolveInitUrl(
+      {
+        base: "base",
+        style: "nova",
+        baseColor: "neutral",
+        theme: "neutral",
+        iconLibrary: "lucide",
+        font: "inter",
+        rtl: false,
+        menuAccent: "subtle",
+        menuColor: "default",
+        radius: "default",
+      },
+      { buttonActiveStyle: "default" }
+    )
+
+    expect(new URL(url).searchParams.get("buttonActiveStyle")).toBe("default")
   })
 })

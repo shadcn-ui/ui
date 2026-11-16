@@ -536,6 +536,23 @@ export const ui: Registry["items"] = [
     },
   },
   {
+    name: "button-ripple-blur",
+    type: "registry:ui",
+    title: "Button with Blurred Base Ripple",
+    description: "The button with a blurred Base Ripple interaction feedback.",
+    dependencies: ["@base-ripple/react"],
+    css: {
+      '@import "@base-ripple/react/styles.css"': {},
+    },
+    files: [
+      {
+        path: "ui/button-ripple-blur.tsx",
+        type: "registry:ui",
+        target: "@ui/button.tsx",
+      },
+    ],
+  },
+  {
     name: "skeleton",
     type: "registry:ui",
     files: [

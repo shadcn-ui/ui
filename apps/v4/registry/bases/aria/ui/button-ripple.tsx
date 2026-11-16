@@ -54,11 +54,13 @@ function Button({
   return (
     <BaseRipple
       as={ButtonPrimitive}
-      rippleOptions={{ origin: "pointer", sizeOffset: 96 }}
       data-slot="button"
       data-variant={variant}
       data-size={size}
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(
+        buttonVariants({ variant, size, className }),
+        "active:not-aria-[haspopup]:!translate-y-0"
+      )}
       {...props}
     />
   )
@@ -76,11 +78,13 @@ function LinkButton({
   return (
     <BaseRipple
       as={LinkPrimitive}
-      rippleOptions={{ origin: "pointer", sizeOffset: 96 }}
       data-slot="button"
       data-variant={variant}
       data-size={size}
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(
+        buttonVariants({ variant, size, className }),
+        "active:not-aria-[haspopup]:!translate-y-0"
+      )}
       {...props}
     />
   )

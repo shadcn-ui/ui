@@ -16,6 +16,7 @@ import { decodePreset, isPresetCode } from "shadcn/preset"
 import {
   BASE_COLORS,
   BASES,
+  BUTTON_ACTIVE_STYLE_VALUES,
   DEFAULT_CONFIG,
   getThemesForBaseColor,
   iconLibraries,
@@ -26,6 +27,7 @@ import {
   THEMES,
   type BaseColorName,
   type BaseName,
+  type ButtonActiveStyleValue,
   type ChartColorName,
   type FontHeadingValue,
   type FontValue,
@@ -92,6 +94,10 @@ const designSystemSearchParams = {
   ] as const).withDefault("next"),
   rtl: parseAsBoolean.withDefault(false),
   pointer: parseAsBoolean.withDefault(false),
+  buttonActiveStyle: parseAsStringLiteral<ButtonActiveStyleValue>(
+    BUTTON_ACTIVE_STYLE_VALUES
+  ).withDefault(DEFAULT_CONFIG.buttonActiveStyle),
+  // Read old shared links; new links use buttonActiveStyle.
   ripple: parseAsBoolean.withDefault(false),
   size: parseAsInteger.withDefault(100),
   custom: parseAsBoolean.withDefault(false),
@@ -129,6 +135,7 @@ const NON_DESIGN_SYSTEM_KEYS = [
   "template",
   "rtl",
   "pointer",
+  "buttonActiveStyle",
   "ripple",
   "size",
   "custom",
@@ -223,7 +230,7 @@ function resolvePresetParams(
     const decoded = decodePreset(rawParams.preset)
     if (decoded) {
       const presetOverrides = resolvePresetOverrides(searchParams, decoded)
-      return normalizeDesignSystemParams({
+      const resolved = normalizeDesignSystemParams({
         ...decoded,
         ...presetOverrides,
         base: rawParams.base,
@@ -232,13 +239,28 @@ function resolvePresetParams(
         template: rawParams.template,
         rtl: rawParams.rtl,
         pointer: rawParams.pointer,
+        buttonActiveStyle: rawParams.buttonActiveStyle,
         ripple: rawParams.ripple,
         size: rawParams.size,
         custom: rawParams.custom,
       })
+
+      return normalizeDesignSystemParams({
+        ...resolved,
+        buttonActiveStyle:
+          searchParams.has("buttonActiveStyle") || !rawParams.ripple
+            ? resolved.buttonActiveStyle
+            : "ripple",
+      })
     }
   }
-  return normalizeDesignSystemParams(rawParams)
+  return normalizeDesignSystemParams({
+    ...rawParams,
+    buttonActiveStyle:
+      searchParams.has("buttonActiveStyle") || !rawParams.ripple
+        ? rawParams.buttonActiveStyle
+        : "ripple",
+  })
 }
 
 export function buildPresetUrlUpdate(
@@ -316,9 +338,15 @@ export function useDesignSystemSearchParams(options: Options = {}) {
           ) => Partial<DesignSystemSearchParams>),
       setOptions?: Options
     ) => {
-      const resolvedUpdates = normalizePartialDesignSystemParams(
+      const normalizedUpdates = normalizePartialDesignSystemParams(
         typeof updates === "function" ? updates(paramsRef.current) : updates
       )
+      const resolvedUpdates = {
+        ...normalizedUpdates,
+        ...("buttonActiveStyle" in normalizedUpdates && {
+          ripple: false,
+        }),
+      }
 
       const hasDesignSystemUpdate = DESIGN_SYSTEM_KEYS.some(
         (key) => key in resolvedUpdates

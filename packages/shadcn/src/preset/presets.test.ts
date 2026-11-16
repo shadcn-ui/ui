@@ -74,6 +74,14 @@ describe("createPresetUrl", () => {
     expect(parsed.searchParams.get("ripple")).toBe("true")
     expect(parsed.searchParams.get("template")).toBe("next")
   })
+
+  it("includes the Button active style as a URL parameter", () => {
+    const url = resolveCreateUrl({ buttonActiveStyle: "ripple-blur" })
+
+    expect(new URL(url).searchParams.get("buttonActiveStyle")).toBe(
+      "ripple-blur"
+    )
+  })
 })
 
 describe("buildInitUrl", () => {

@@ -78,6 +78,14 @@ export const Components: Record<string, any> = {
       ) || "button-ripple"
     return { default: mod.default || mod[exportName] }
   }),
+  "button-ripple-blur": React.lazy(async () => {
+    const mod = await import("@/styles/radix-vega/ui/button-ripple-blur")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "button-ripple-blur"
+    return { default: mod.default || mod[exportName] }
+  }),
   "button-group": React.lazy(async () => {
     const mod = await import("@/styles/radix-vega/ui/button-group")
     const exportName =

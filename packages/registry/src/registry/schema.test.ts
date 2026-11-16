@@ -200,6 +200,14 @@ describe("registryBaseConfigSchema", () => {
     expect(result.buttonRipple).toBe(true)
   })
 
+  it("accepts buttonActiveStyle on registry base config", () => {
+    const result = registryBaseConfigSchema.parse({
+      buttonActiveStyle: "ripple-blur",
+    })
+
+    expect(result.buttonActiveStyle).toBe("ripple-blur")
+  })
+
   it("should parse registry:base config without defaults", () => {
     const result = registryItemSchema.parse({
       name: "nova",

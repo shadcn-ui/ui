@@ -61,6 +61,15 @@ describe("resolveBuiltinRegistryItemName", () => {
     )
   })
 
+  it("maps built-in buttons to the blurred ripple variant", () => {
+    expect(
+      resolveBuiltinRegistryItemName(
+        "button",
+        createConfig({ buttonActiveStyle: "ripple-blur" })
+      )
+    ).toBe("button-ripple-blur")
+  })
+
   it("fetches the ripple implementation for a built-in button request", async () => {
     const mockServer = setupServer(
       http.get(

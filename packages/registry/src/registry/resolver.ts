@@ -44,8 +44,17 @@ type RegistryFetchOptions = {
 }
 
 export function resolveBuiltinRegistryItemName(name: string, config: Config) {
-  if (config.buttonRipple && name === "button") {
-    return "button-ripple"
+  if (name === "button") {
+    const buttonActiveStyle =
+      config.buttonActiveStyle ?? (config.buttonRipple ? "ripple" : "default")
+
+    if (buttonActiveStyle === "ripple") {
+      return "button-ripple"
+    }
+
+    if (buttonActiveStyle === "ripple-blur") {
+      return "button-ripple-blur"
+    }
   }
 
   return name

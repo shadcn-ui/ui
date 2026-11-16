@@ -135,7 +135,9 @@ export const apply = new Command()
           template,
           base: getBase(existingConfig.style),
           rtl,
-          ripple: existingConfig.buttonRipple,
+          buttonActiveStyle:
+            existingConfig.buttonActiveStyle ??
+            (existingConfig.buttonRipple ? "ripple" : "default"),
         })
 
         await promptToOpenPresetBuilder({

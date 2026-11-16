@@ -215,6 +215,11 @@
     "config": {
       "type": "object",
       "properties": {
+        "buttonActiveStyle": {
+          "type": "string",
+          "enum": ["default", "ripple", "ripple-blur"],
+          "description": "The active style for the default Button component."
+        },
         "buttonRipple": {
           "type": "boolean",
           "description": "Use Base Ripple in the default Button component."

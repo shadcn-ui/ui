@@ -120,6 +120,16 @@ describe("buildRegistryBase", () => {
     expect(result.config).toMatchObject({ buttonRipple: true })
   })
 
+  it("adds the blurred ripple Button implementation when selected", () => {
+    const result = buildRegistryBase({
+      ...DEFAULT_CONFIG,
+      buttonActiveStyle: "ripple-blur",
+    })
+
+    expect(result.dependencies).toContain("@base-ripple/react")
+    expect(result.config).toMatchObject({ buttonActiveStyle: "ripple-blur" })
+  })
+
   it("defaults chartColor to the selected theme when omitted", () => {
     const result = designSystemConfigSchema.parse({
       base: "base",
