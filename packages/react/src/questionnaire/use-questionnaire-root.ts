@@ -20,6 +20,7 @@ import {
   isAnswerFilled,
   isRadioTarget,
   isTextEntryTarget,
+  resolveQuestionnaireConstraints,
 } from "./utils"
 
 type UseQuestionnaireRootParameters = Pick<
@@ -153,7 +154,7 @@ function useQuestionnaireRoot({
     currentIndex < 0
       ? null
       : activeDefinition
-        ? Boolean(activeDefinition.required)
+        ? resolveQuestionnaireConstraints(activeDefinition).effectiveRequired
         : (activeItem?.required ?? false)
   const activeItemStatus =
     currentIndex < 0

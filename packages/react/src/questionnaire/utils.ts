@@ -127,6 +127,87 @@ function compareAnswerOrder(
   return 0
 }
 
+function resolveQuestionnaireConstraints({
+  max,
+  min,
+  multiple,
+  required = false,
+}: {
+  max?: number
+  min?: number
+  multiple?: boolean
+  required?: boolean
+}) {
+  const warnings: string[] = []
+
+  const isMinInteger = min !== undefined && Number.isInteger(min)
+  const isMaxInteger = max !== undefined && Number.isInteger(max)
+
+  if (min !== undefined) {
+    if (!isMinInteger) {
+      warnings.push(`min (${min}) must be an integer.`)
+    }
+    if (min < 0) {
+      warnings.push(`min (${min}) cannot be negative.`)
+    }
+  }
+
+  if (max !== undefined) {
+    if (!isMaxInteger) {
+      warnings.push(`max (${max}) must be an integer.`)
+    }
+    if (max <= 0) {
+      warnings.push(`max (${max}) must be greater than 0.`)
+    }
+  }
+
+  let validMin =
+    min !== undefined && isMinInteger && min >= 0 ? min : undefined
+  let validMax =
+    max !== undefined && isMaxInteger && max >= 1 ? max : undefined
+
+  if (validMin !== undefined && validMax !== undefined && validMin > validMax) {
+    warnings.push(`min (${min}) cannot be greater than max (${max}).`)
+    validMin = undefined
+    validMax = undefined
+  }
+
+  if (
+    multiple === false &&
+    ((validMin !== undefined && validMin > 1) ||
+      (validMax !== undefined && validMax > 1))
+  ) {
+    warnings.push(
+      `multiple={false} cannot be used with min > 1 or max > 1.`
+    )
+
+    if (validMin !== undefined && validMin > 1) {
+      validMin = undefined
+    }
+
+    if (validMax !== undefined && validMax > 1) {
+      validMax = undefined
+    }
+  }
+
+  const isMultiple =
+    multiple ??
+    ((validMax !== undefined && validMax > 1) ||
+      (validMin !== undefined && validMin > 1))
+
+  const effectiveMax = isMultiple ? validMax : 1
+  const effectiveMin = required ? Math.max(1, validMin ?? 1) : (validMin ?? 0)
+  const effectiveRequired = required || effectiveMin > 0
+
+  return {
+    effectiveMax,
+    effectiveMin,
+    effectiveRequired,
+    isMultiple,
+    warnings,
+  }
+}
+
 export {
   compareAnswerOrder,
   compareItemOrder,
@@ -138,4 +219,5 @@ export {
   isEmptyNavigableInput,
   isRadioTarget,
   isTextEntryTarget,
+  resolveQuestionnaireConstraints,
 }

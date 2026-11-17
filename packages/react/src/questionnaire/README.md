@@ -6,6 +6,11 @@ and answers are read with `FormData`.
 Questionnaire supports server rendering. Pass `Root.items` to include complete
 collection-derived state in the initial HTML.
 
+When controlling choices, keep the selected values within the item's `max`.
+Over-limit controlled choices are excluded by the questionnaire and produce a
+development warning. A freeform input becomes read-only when the remaining
+selection capacity is exhausted.
+
 ## Usage
 
 ```tsx

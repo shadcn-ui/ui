@@ -24,6 +24,7 @@ function useQuestionnaireChoice({
     hasInputAnswer,
     invalid,
     multiple,
+    maxReached,
     name: itemName,
     registerAnswerControl,
     registerAnswerSelection,
@@ -43,20 +44,47 @@ function useQuestionnaireChoice({
   const initialDefaultCheckedRef = React.useRef(defaultChecked)
   const controlled = controlledChecked !== undefined
   const disabled = itemDisabled || choiceDisabled
+  const disabledRef = React.useRef(disabled)
+  disabledRef.current = disabled
   const selected = selectedAnswerIds.includes(answerId)
   const checked = controlled
     ? status === "skipped"
       ? false
-      : controlledChecked
+      : controlledChecked && (!maxReached || selected)
     : selected
   const type = multiple ? "checkbox" : "radio"
   const shortcut =
     shortcutByChoiceValue?.get(value) ??
     shortcutByAnswerId.get(answerId) ??
     null
+  const controlledOverMax =
+    controlled && controlledChecked && maxReached && !selected
+  const warnedControlledOverMaxRef = React.useRef(false)
+
+  React.useEffect(() => {
+    if (!controlledOverMax) {
+      warnedControlledOverMaxRef.current = false
+      return
+    }
+
+    if (
+      process.env.NODE_ENV !== "production" &&
+      !warnedControlledOverMaxRef.current
+    ) {
+      console.warn(
+        "[Questionnaire] Questionnaire.Choice: controlled selection exceeds max; keep controlled values within the item's max."
+      )
+      warnedControlledOverMaxRef.current = true
+    }
+  }, [controlledOverMax])
 
   React.useLayoutEffect(
-    () => registerAnswerSelection(answerId, initialDefaultCheckedRef.current),
+    () =>
+      registerAnswerSelection(
+        answerId,
+        initialDefaultCheckedRef.current,
+        disabledRef.current
+      ),
     [answerId, registerAnswerSelection]
   )
   React.useLayoutEffect(
@@ -86,15 +114,48 @@ function useQuestionnaireChoice({
     value,
   ])
 
+  const previousControlledCheckedRef = React.useRef(controlledChecked)
+
   React.useLayoutEffect(() => {
-    if (controlled) {
-      syncControlledAnswerSelection(answerId, controlledChecked)
+    if (!controlled) {
+      return
     }
+
+    const valueChanged =
+      previousControlledCheckedRef.current !== controlledChecked
+    previousControlledCheckedRef.current = controlledChecked
+
+    if (status === "skipped" && !valueChanged) {
+      return
+    }
+
+    syncControlledAnswerSelection(answerId, controlledChecked)
   }, [
     answerId,
     controlled,
     controlledChecked,
     resetVersion,
+    status,
+    syncControlledAnswerSelection,
+  ])
+
+  React.useLayoutEffect(() => {
+    if (
+      controlled &&
+      controlledChecked &&
+      !selected &&
+      !maxReached &&
+      status !== "skipped"
+    ) {
+      syncControlledAnswerSelection(answerId, true)
+    }
+  }, [
+    answerId,
+    controlled,
+    controlledChecked,
+    maxReached,
+    selected,
+    status,
     syncControlledAnswerSelection,
   ])
 
@@ -122,6 +183,10 @@ function useQuestionnaireChoice({
   ])
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    if (event.target.checked && multiple && maxReached && !selected) {
+      return
+    }
+
     onChange?.(event)
 
     if (event.defaultPrevented) {

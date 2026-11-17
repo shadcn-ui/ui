@@ -3,7 +3,7 @@ import type {
   QuestionnaireItemDefinition,
   QuestionnaireShortcutMode,
 } from "./types"
-import { getShortcutKeys } from "./utils"
+import { getShortcutKeys, resolveQuestionnaireConstraints } from "./utils"
 
 type QuestionnaireCollection = {
   enabledItems: readonly QuestionnaireItemDefinition[]
@@ -89,6 +89,17 @@ function getCollectionDefinitionWarnings(
 
     itemNames.add(item.name)
 
+    const constraints = resolveQuestionnaireConstraints({
+      max: item.max,
+      min: item.min,
+      multiple: item.multiple,
+      required: item.required,
+    })
+
+    for (const warning of constraints.warnings) {
+      warnings.push(`Item "${item.name}": ${warning}`)
+    }
+
     const choiceValues = new Set<string>()
 
     for (const choice of item.choices ?? []) {
@@ -127,6 +138,12 @@ function getCollectionRegistrationWarnings(
 
   for (const definition of collection.items) {
     const registration = registrationByName.get(definition.name)
+    const definitionConstraints = resolveQuestionnaireConstraints({
+      max: definition.max,
+      min: definition.min,
+      multiple: definition.multiple,
+      required: definition.required,
+    })
 
     if (!registration) {
       if (!definition.disabled) {
@@ -144,9 +161,27 @@ function getCollectionRegistrationWarnings(
       )
     }
 
-    if (registration.required !== Boolean(definition.required)) {
+    if (registration.required !== definitionConstraints.effectiveRequired) {
       warnings.push(
         `Item "${definition.name}" has different required values in Root.items and Questionnaire.Item.`
+      )
+    }
+
+    if (!Object.is(registration.min, definition.min)) {
+      warnings.push(
+        `Item "${definition.name}" has different min values in Root.items and Questionnaire.Item.`
+      )
+    }
+
+    if (!Object.is(registration.max, definition.max)) {
+      warnings.push(
+        `Item "${definition.name}" has different max values in Root.items and Questionnaire.Item.`
+      )
+    }
+
+    if (registration.multiple !== definitionConstraints.isMultiple) {
+      warnings.push(
+        `Item "${definition.name}" has different multiple values in Root.items and Questionnaire.Item.`
       )
     }
 

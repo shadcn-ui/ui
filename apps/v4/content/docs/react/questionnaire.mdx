@@ -1,6 +1,6 @@
 ---
 title: Questionnaire
-description: Build accessible, multi-step questionnaires with single, multiple, freeform, and intentionally skipped answers.
+description: Build accessible, multi-step questionnaires with single, multiple, freeform, and skipped answers, with configurable minimum and maximum selection limits.
 ---
 
 `Questionnaire` is an unstyled form primitive for presenting one question at a
@@ -251,6 +251,74 @@ items.map((question) => (
 
 ```tsx
 const signals = new FormData(form).getAll("signals").map(String)
+```
+
+## Min and Max selection
+
+Use `min` and `max` to control the minimum and maximum number of choices a user can select.
+
+- `min={2}` requires at least two selections.
+- `max={3}` allows at most three selections.
+- Setting `min` or `max` greater than `1` automatically enables multiple selection unless `multiple` is explicitly provided.
+
+<ComponentPreview
+  align="end"
+  styleName="base-nova"
+  name="questionnaire-min-max"
+  hideCode
+  previewClassName="min-h-[420px] p-4 sm:p-8"
+/>
+
+```tsx
+const items = [
+  {
+    name: "frameworks",
+    required: true,
+    multiple: true,
+    min: 2,
+    max: 3,
+    prompt: "Which frameworks do you use?",
+    description: "Select at least two and no more than three frameworks.",
+    choices: [
+      { value: "react", label: "React" },
+      { value: "vue", label: "Vue" },
+      { value: "angular", label: "Angular" },
+      { value: "svelte", label: "Svelte" },
+    ],
+  },
+] as const
+```
+
+```tsx
+items.map((question) => (
+  <Questionnaire.Item
+    key={question.name}
+    name={question.name}
+    multiple={question.multiple}
+    min={question.min}
+    max={question.max}
+    required={question.required}
+  >
+    <Questionnaire.Title>{question.prompt}</Questionnaire.Title>
+    <Questionnaire.Description>
+      {question.description}
+    </Questionnaire.Description>
+    <Questionnaire.Choices>
+      {question.choices.map((choice) => (
+        <Questionnaire.Choice key={choice.value} value={choice.value}>
+          <Questionnaire.ChoiceInput />
+          <Questionnaire.ChoiceLabel>{choice.label}</Questionnaire.ChoiceLabel>
+          <Questionnaire.ChoiceShortcut />
+        </Questionnaire.Choice>
+      ))}
+    </Questionnaire.Choices>
+    <Questionnaire.Error />
+  </Questionnaire.Item>
+))
+```
+
+```tsx
+const frameworks = new FormData(form).getAll("frameworks").map(String)
 ```
 
 ## Freeform answers

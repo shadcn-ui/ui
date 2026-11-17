@@ -17,6 +17,7 @@ import {
   isEmptyNavigableInput,
   isRadioTarget,
   isTextEntryTarget,
+  resolveQuestionnaireConstraints,
 } from "./utils"
 
 type UseQuestionnaireItemParameters = Pick<
@@ -25,6 +26,8 @@ type UseQuestionnaireItemParameters = Pick<
   | "aria-keyshortcuts"
   | "disabled"
   | "invalid"
+  | "max"
+  | "min"
   | "multiple"
   | "name"
   | "onStatusChange"
@@ -37,7 +40,9 @@ function useQuestionnaireItem({
   "aria-keyshortcuts": ariaKeyShortcuts,
   disabled = false,
   invalid: externallyInvalid = false,
-  multiple = false,
+  max,
+  min,
+  multiple,
   name,
   onStatusChange,
   ref,
@@ -53,6 +58,32 @@ function useQuestionnaireItem({
     registerItem,
     shortcuts,
   } = useQuestionnaireContext("Questionnaire.Item")
+
+  const constraints = React.useMemo(
+    () => resolveQuestionnaireConstraints({ max, min, multiple, required }),
+    [max, min, multiple, required]
+  )
+  const {
+    effectiveMax,
+    effectiveMin,
+    effectiveRequired,
+    isMultiple,
+    warnings,
+  } = constraints
+
+  React.useLayoutEffect(() => {
+    if (
+      process.env.NODE_ENV === "production" ||
+      itemDefinitionByName?.has(name)
+    ) {
+      return
+    }
+
+    for (const warning of warnings) {
+      console.warn(`[Questionnaire] Questionnaire.Item: ${warning}`)
+    }
+  }, [itemDefinitionByName, name, warnings])
+
   const [element, setElement] = React.useState<HTMLFieldSetElement | null>(null)
   const [answerControlRegistrations, setAnswerControlRegistrations] =
     React.useState<AnswerControlRegistration[]>([])
@@ -63,36 +94,109 @@ function useQuestionnaireItem({
   const [descriptionIds, setDescriptionIds] = React.useState<string[]>([])
   const [errorIds, setErrorIds] = React.useState<string[]>([])
   const defaultSelectedAnswerIdsRef = React.useRef<string[]>([])
-  const multipleRef = React.useRef(multiple)
-  const previousMultipleRef = React.useRef(multiple)
-  multipleRef.current = multiple
+  const isMultipleRef = React.useRef(isMultiple)
+  const effectiveMaxRef = React.useRef(effectiveMax)
+  const previousMultipleRef = React.useRef(isMultiple)
+  const skippedRef = React.useRef(skipped)
+  isMultipleRef.current = isMultiple
+  effectiveMaxRef.current = effectiveMax
+  skippedRef.current = skipped
+
   const active = !disabled && activeItemName === name
   const answerControls = React.useMemo(
     () => [...answerControlRegistrations].sort(compareAnswerOrder),
     [answerControlRegistrations, domVersion]
   )
+  const disabledAnswerIdsRef = React.useRef(new Set<string>())
+  disabledAnswerIdsRef.current = new Set([
+    ...Array.from(disabledAnswerIdsRef.current),
+    ...answerControls
+      .filter((answer) => answer.disabled)
+      .map((answer) => answer.id),
+  ])
+  for (const answer of answerControls) {
+    if (!answer.disabled) {
+      disabledAnswerIdsRef.current.delete(answer.id)
+    }
+  }
+  const countEnabledAnswerIds = React.useCallback(
+    (answerIds: string[]) =>
+      answerIds.filter(
+        (answerId) => !disabledAnswerIdsRef.current.has(answerId)
+      ).length,
+    []
+  )
+  const trimEnabledAnswerIds = React.useCallback(
+    (answerIds: string[], maxAnswerCount: number) => {
+      let enabledAnswerCount = 0
+
+      return answerIds.filter((answerId) => {
+        if (disabledAnswerIdsRef.current.has(answerId)) {
+          return true
+        }
+
+        if (enabledAnswerCount >= maxAnswerCount) {
+          return false
+        }
+
+        enabledAnswerCount += 1
+        return true
+      })
+    },
+    []
+  )
   const answers = React.useMemo(
     () => answerControls.filter((registration) => !registration.disabled),
     [answerControls]
   )
-  const answered = answers.some((answer) =>
+
+  const selectedCount = answers.filter((answer) =>
     selectedAnswerIds.includes(answer.id)
-  )
+  ).length
+
+  const maxReached =
+    isMultiple && effectiveMax !== undefined && selectedCount >= effectiveMax
+
+  const answered = selectedCount >= Math.max(1, effectiveMin)
+
   const status: QuestionnaireItemStatus = skipped
     ? "skipped"
     : answered
       ? "answered"
       : "unanswered"
-  const intentionallySkipped = status === "skipped" && !required
+
+  const intentionallySkipped = status === "skipped" && !effectiveRequired
+
   const valid =
     disabled ||
     intentionallySkipped ||
-    (!externallyInvalid && status === "answered")
+    (!externallyInvalid &&
+      selectedCount >= effectiveMin &&
+      (effectiveMax === undefined || selectedCount <= effectiveMax))
+
   const invalid =
     !disabled &&
     !intentionallySkipped &&
     (externallyInvalid || (validationAttempted && !valid))
+
   const hasInputAnswer = answers.some((answer) => answer.type === "input")
+  const warnedMinExceedsAnswersRef = React.useRef(false)
+
+  React.useEffect(() => {
+    if (
+      process.env.NODE_ENV === "production" ||
+      warnedMinExceedsAnswersRef.current ||
+      answers.length === 0 ||
+      effectiveMin <= answers.length
+    ) {
+      return
+    }
+
+    warnedMinExceedsAnswersRef.current = true
+    console.warn(
+      `[Questionnaire] Questionnaire.Item: min (${min}) exceeds the number of available answers (${answers.length}).`
+    )
+  }, [answers.length, effectiveMin, min])
   const previousStatusRef = React.useRef(status)
   const itemDefinition = itemDefinitionByName?.get(name)
   const shortcutByChoiceValue = React.useMemo(
@@ -158,16 +262,25 @@ function useQuestionnaireItem({
           )
         }
 
-        if (!multiple) {
+        if (!isMultipleRef.current) {
           return [answerId]
         }
 
-        return currentAnswerIds.includes(answerId)
-          ? currentAnswerIds
-          : [...currentAnswerIds, answerId]
+        if (currentAnswerIds.includes(answerId)) {
+          return currentAnswerIds
+        }
+
+        if (
+          effectiveMaxRef.current !== undefined &&
+          countEnabledAnswerIds(currentAnswerIds) >= effectiveMaxRef.current
+        ) {
+          return currentAnswerIds
+        }
+
+        return [...currentAnswerIds, answerId]
       })
     },
-    [multiple]
+    [countEnabledAnswerIds]
   )
   const setAnswerSelectionFromInteraction = React.useCallback(
     (answerId: string, selected: boolean) => {
@@ -178,7 +291,7 @@ function useQuestionnaireItem({
   )
   const syncControlledAnswerSelection = React.useCallback(
     (answerId: string, selected: boolean) => {
-      if (selected) {
+      if (selected && !skippedRef.current) {
         setSkipped(false)
       }
 
@@ -188,7 +301,11 @@ function useQuestionnaireItem({
   )
 
   const registerAnswerSelection = React.useCallback(
-    (answerId: string, defaultSelected: boolean) => {
+    (answerId: string, defaultSelected: boolean, disabled?: boolean) => {
+      if (disabled) {
+        disabledAnswerIdsRef.current.add(answerId)
+      }
+
       if (defaultSelected) {
         defaultSelectedAnswerIdsRef.current = [
           ...defaultSelectedAnswerIdsRef.current.filter(
@@ -197,17 +314,31 @@ function useQuestionnaireItem({
           answerId,
         ]
         setSelectedAnswerIds((currentAnswerIds) => {
-          if (!multipleRef.current) {
-            return currentAnswerIds.length ? currentAnswerIds : [answerId]
+          if (currentAnswerIds.includes(answerId)) {
+            return currentAnswerIds
           }
 
-          return currentAnswerIds.includes(answerId)
-            ? currentAnswerIds
-            : [...currentAnswerIds, answerId]
+          if (!isMultipleRef.current) {
+            return countEnabledAnswerIds(currentAnswerIds)
+              ? currentAnswerIds
+              : [...currentAnswerIds, answerId]
+          }
+
+          if (
+            !disabled &&
+            effectiveMaxRef.current !== undefined &&
+            countEnabledAnswerIds(currentAnswerIds) >=
+              effectiveMaxRef.current
+          ) {
+            return currentAnswerIds
+          }
+
+          return [...currentAnswerIds, answerId]
         })
       }
 
       return () => {
+        disabledAnswerIdsRef.current.delete(answerId)
         defaultSelectedAnswerIdsRef.current =
           defaultSelectedAnswerIdsRef.current.filter(
             (currentAnswerId) => currentAnswerId !== answerId
@@ -219,7 +350,7 @@ function useQuestionnaireItem({
         )
       }
     },
-    []
+    [countEnabledAnswerIds]
   )
   const setAnswerDefault = React.useCallback(
     (answerId: string, defaultSelected: boolean) => {
@@ -322,27 +453,29 @@ function useQuestionnaireItem({
     setValidationAttempted(false)
     setSkipped(false)
     setSelectedAnswerIds(
-      multiple
-        ? [...defaultSelectedAnswerIdsRef.current]
-        : defaultSelectedAnswerIdsRef.current.slice(0, 1)
+      isMultiple
+        ? effectiveMax !== undefined
+          ? trimEnabledAnswerIds(defaultSelectedAnswerIdsRef.current, effectiveMax)
+          : [...defaultSelectedAnswerIdsRef.current]
+        : trimEnabledAnswerIds(defaultSelectedAnswerIdsRef.current, 1)
     )
     setResetVersion((version) => version + 1)
-  }, [multiple])
+  }, [isMultiple, effectiveMax, trimEnabledAnswerIds])
 
   const skip = React.useCallback(() => {
-    if (required) {
+    if (effectiveRequired) {
       return
     }
 
     setSelectedAnswerIds([])
     setSkipped(true)
-  }, [required])
+  }, [effectiveRequired])
 
   React.useLayoutEffect(() => {
     const wasMultiple = previousMultipleRef.current
-    previousMultipleRef.current = multiple
+    previousMultipleRef.current = isMultiple
 
-    if (!wasMultiple || multiple) {
+    if (!wasMultiple || isMultiple) {
       return
     }
 
@@ -353,7 +486,24 @@ function useQuestionnaireItem({
 
       return selectedAnswer ? [selectedAnswer.id] : []
     })
-  }, [answers, multiple])
+  }, [answers, isMultiple])
+
+  React.useLayoutEffect(() => {
+    if (effectiveMax === undefined) {
+      return
+    }
+
+    setSelectedAnswerIds((currentAnswerIds) =>
+      countEnabledAnswerIds(currentAnswerIds) > effectiveMax
+        ? trimEnabledAnswerIds(currentAnswerIds, effectiveMax)
+        : currentAnswerIds
+    )
+  }, [
+    answerControls,
+    countEnabledAnswerIds,
+    effectiveMax,
+    trimEnabledAnswerIds,
+  ])
 
   const getAnswerByElement = React.useCallback(
     (answerElement: Element) =>
@@ -450,9 +600,12 @@ function useQuestionnaireItem({
       focusInvalid,
       getAnswerByElement,
       getAnswerByShortcut,
+      max,
+      min,
+      multiple: isMultiple,
       moveAnswerFocus,
       name,
-      required,
+      required: effectiveRequired,
       reset,
       skip,
       status,
@@ -466,10 +619,13 @@ function useQuestionnaireItem({
     focusInvalid,
     getAnswerByElement,
     getAnswerByShortcut,
+    isMultiple,
+    max,
+    min,
     moveAnswerFocus,
     name,
     registerItem,
-    required,
+    effectiveRequired,
     reset,
     skip,
     status,
@@ -480,15 +636,20 @@ function useQuestionnaireItem({
     () => ({
       active,
       disabled,
+      effectiveMax,
+      effectiveMin,
       hasInputAnswer,
       invalid,
-      multiple,
+      max,
+      maxReached,
+      min,
+      multiple: isMultiple,
       name,
       registerAnswerControl,
       registerAnswerSelection,
       registerDescription,
       registerError,
-      required,
+      required: effectiveRequired,
       resetVersion,
       selectedAnswerIds,
       setAnswerDefault,
@@ -502,15 +663,20 @@ function useQuestionnaireItem({
     [
       active,
       disabled,
+      effectiveMax,
+      effectiveMin,
       hasInputAnswer,
       invalid,
-      multiple,
+      max,
+      maxReached,
+      min,
+      isMultiple,
       name,
       registerAnswerControl,
       registerAnswerSelection,
       registerDescription,
       registerError,
-      required,
+      effectiveRequired,
       resetVersion,
       selectedAnswerIds,
       setAnswerDefault,
@@ -547,8 +713,11 @@ function useQuestionnaireItem({
     active,
     disabled,
     invalid,
-    multiple,
-    required,
+    maxReached,
+    max,
+    min,
+    multiple: isMultiple,
+    required: effectiveRequired,
     status,
   }
 
