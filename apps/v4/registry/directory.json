@@ -1615,6 +1615,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='#AFE67F'/><rect x='.75' y='.75' width='30.5' height='30.5' rx='8.25' fill='none' stroke='#79BD3E' stroke-width='1.5'/><g fill='none' stroke='#1D3208' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' transform='translate(4 4)'><path d='M20 18.5011L18.349 7.93407C17.8603 4.80601 15.166 2.5 12 2.5C8.83398 2.5 6.13971 4.80601 5.65098 7.93407L4 18.5011'/><path d='M20 18.5C20 16.8431 16.4183 15.5 12 15.5C7.58172 15.5 4 16.8431 4 18.5C4 20.1569 7.58172 21.5 12 21.5C16.4183 21.5 20 20.1569 20 18.5Z'/><path d='M13 18.5H11'/></g></svg>"
   },
   {
+    "name": "@hyperblur",
+    "homepage": "https://hyperblur.dev",
+    "url": "https://hyperblur.dev/r/{name}.json",
+    "description": "Copy-paste React visual effects, components and page blocks. One shadcn command to install, MCP server for coding agents.",
+    "author": "Hyperblur",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='var(--foreground)'><path d='M18.0 9.0 H33.0 L28.0 23.0 H13.0 Z'/><path d='M13.5 9.0 H16.1 L11.1 23.0 H8.5 Z'/><path d='M10.0 9.0 H11.6 L6.6 23.0 H5.0 Z'/><path d='M7.2 9.0 H8.1 L3.1 23.0 H2.2 Z'/></svg>"
+  },
+  {
     "name": "@iandefined",
     "homepage": "https://ui.iandefined.com",
     "url": "https://ui.iandefined.com/r/{name}.json",
