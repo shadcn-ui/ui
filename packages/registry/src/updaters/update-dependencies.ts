@@ -399,11 +399,11 @@ async function installWithExpo(
   assertSafeDependencies(devDependencies)
 
   if (dependencies.length) {
-    await execa("npx", ["expo", "install", "--", ...dependencies], { cwd })
+    await execa("npx", ["expo", "install", ...dependencies], { cwd })
   }
 
   if (devDependencies.length) {
-    await execa("npx", ["expo", "install", "-- -D", "--", ...devDependencies], {
+    await execa("npx", ["expo", "install", "--dev", ...devDependencies], {
       cwd,
     })
   }
