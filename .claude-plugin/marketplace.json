@@ -12,6 +12,12 @@
       "source": "./skills",
       "strict": false,
       "skills": ["./shadcn", "./migrate-radix-to-base"],
+      "mcpServers": {
+        "shadcn": {
+          "command": "npx",
+          "args": ["shadcn@latest", "mcp"]
+        }
+      },
       "description": "Agent skills for managing shadcn/ui components and projects — adding, searching, fixing, debugging, styling, and composing UI — and for migrating React projects from Radix UI to Base UI. Use when working with shadcn/ui, component registries, presets, or switching a project's base library.",
       "version": "0.1.1",
       "author": {

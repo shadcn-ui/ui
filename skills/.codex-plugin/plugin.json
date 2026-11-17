@@ -21,6 +21,12 @@
     "coding-agents"
   ],
   "skills": ["./shadcn", "./migrate-radix-to-base"],
+  "mcpServers": {
+    "shadcn": {
+      "command": "npx",
+      "args": ["shadcn@latest", "mcp"]
+    }
+  },
   "interface": {
     "displayName": "shadcn/ui",
     "shortDescription": "Build and manage UI with shadcn/ui",
