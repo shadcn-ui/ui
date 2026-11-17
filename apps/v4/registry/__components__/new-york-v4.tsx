@@ -494,6 +494,14 @@ export const Components: Record<string, any> = {
       ) || "message-scroller"
     return { default: mod.default || mod[exportName] }
   }),
+  trace: React.lazy(async () => {
+    const mod = await import("@/registry/new-york-v4/ui/trace")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "trace"
+    return { default: mod.default || mod[exportName] }
+  }),
   "dashboard-01": React.lazy(async () => {
     const mod = await import("@/registry/new-york-v4/blocks/dashboard-01/page")
     const exportName =

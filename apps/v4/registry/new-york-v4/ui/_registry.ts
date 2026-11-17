@@ -758,4 +758,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       },
     ],
   },
+  {
+    name: "trace",
+    type: "registry:ui",
+    registryDependencies: ["collapsible"],
+    files: [
+      {
+        path: "ui/trace.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]
