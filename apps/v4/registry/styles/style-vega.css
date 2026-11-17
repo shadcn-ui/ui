@@ -1238,7 +1238,7 @@
   }
 
   .cn-slider-thumb {
-    @apply border-primary ring-ring/50 size-4 rounded-full border bg-white shadow-sm transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden;
+    @apply border-primary ring-ring/50 size-4 rounded-full border bg-white shadow-sm transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 has-focus-visible:ring-4 focus-visible:outline-hidden;
   }
 
   /* MARK: Toast */
