@@ -58,7 +58,9 @@ function SelectTrigger({
             className="cn-select-trigger-icon pointer-events-none"
           />
         }
-      />
+      >
+        {null}
+      </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   )
 }
