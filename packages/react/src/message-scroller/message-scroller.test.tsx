@@ -39,6 +39,7 @@ type TestScrollerOptions = {
   contentAriaRelevant?: React.ComponentProps<
     typeof MessageScrollerContent
   >["aria-relevant"]
+  contentEnd?: React.ReactNode
   contentPaddingEnd?: number
   contentPaddingStart?: number
   contentRole?: React.ComponentProps<typeof MessageScrollerContent>["role"]
@@ -83,6 +84,13 @@ type RenderedTestScroller = {
 }
 
 const viewportHeight = 100
+
+const savedChat: TestMessage[] = [
+  { id: "user-1", height: 80, scrollAnchor: true },
+  { id: "assistant-1", height: 80 },
+  { id: "user-2", height: 80, scrollAnchor: true },
+  { id: "assistant-2", height: 80 },
+]
 
 let containers: HTMLDivElement[] = []
 let originalGetBoundingClientRect: typeof HTMLElement.prototype.getBoundingClientRect
@@ -1070,6 +1078,101 @@ describe("MessageScroller", () => {
     expect(rendered.viewport().scrollTop).toBe(16)
   })
 
+  // Anchors present when a chat first loads were never marked handled, so an
+  // equal-count child change scrolled back to the first of them.
+  it.each<{
+    name: string
+    initial: Pick<TestScrollerOptions, "contentEnd" | "messages">
+    next: Pick<TestScrollerOptions, "contentEnd" | "messages">
+  }>([
+    {
+      name: "a non-element loading indicator unmounts",
+      initial: { messages: savedChat, contentEnd: <svg /> },
+      next: { messages: savedChat, contentEnd: null },
+    },
+    {
+      name: "a message is replaced under a new key",
+      initial: { messages: savedChat },
+      next: {
+        messages: [
+          ...savedChat.slice(0, -1),
+          { id: "assistant-2-server", height: 80 },
+        ],
+      },
+    },
+  ])(
+    "stays at the end of a loaded chat when $name",
+    async ({ initial, next }) => {
+      const rendered = await renderTestScroller(initial)
+
+      expect(rendered.viewport().scrollTop).toBe(220)
+
+      await rendered.rerender(next.messages, { contentEnd: next.contentEnd })
+
+      expect(rendered.viewport().scrollTop).toBe(220)
+    }
+  )
+
+  it("stays put on an equal-count change after anchored history is prepended", async () => {
+    const olderTurn: TestMessage[] = [
+      { id: "user-0", height: 80, scrollAnchor: true },
+      { id: "assistant-0", height: 80 },
+    ]
+    const rendered = await renderTestScroller({
+      messages: savedChat,
+      contentEnd: <svg />,
+    })
+
+    await act(async () => {
+      rendered.viewport().scrollTop = 200
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    await rendered.rerender([...olderTurn, ...savedChat])
+
+    expect(rendered.viewport().scrollTop).toBe(360)
+
+    await rendered.rerender([...olderTurn, ...savedChat], { contentEnd: null })
+
+    expect(rendered.viewport().scrollTop).toBe(360)
+  })
+
+  it("anchors the new row when it replaces a non-item child in a loaded chat", async () => {
+    const rendered = await renderTestScroller({
+      messages: savedChat,
+      contentEnd: <div role="alert" />,
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(220)
+
+    await rendered.rerender(
+      [...savedChat, { id: "user-3", height: 40, scrollAnchor: true }],
+      { contentEnd: null }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(256)
+  })
+
+  it("anchors the new row when a change removes more children than it adds", async () => {
+    const rendered = await renderTestScroller({
+      messages: savedChat,
+      contentEnd: (
+        <>
+          <div role="alert" />
+          <div role="status" />
+        </>
+      ),
+    })
+
+    await rendered.rerender(
+      [...savedChat, { id: "user-3", height: 40, scrollAnchor: true }],
+      { contentEnd: null }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(256)
+  })
+
   it("does not reconcile scroll position when only the parent re-renders", async () => {
     const rendered = await renderTestScrollerWithParent({
       messages: [
@@ -1872,6 +1975,7 @@ function TestScroller({
   autoScroll,
   contentAriaBusy,
   contentAriaRelevant,
+  contentEnd,
   contentPaddingEnd = 0,
   contentPaddingStart = 0,
   contentRole,
@@ -1929,6 +2033,7 @@ function TestScroller({
                 {message.id}
               </MessageScrollerItem>
             ))}
+            {contentEnd}
           </MessageScrollerContent>
         </MessageScrollerViewport>
         <MessageScrollerButton data-testid="button">
