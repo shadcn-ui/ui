@@ -39,6 +39,7 @@ packages
 | `apps/v4/content`    | The content for the website.             |
 | `apps/v4/registry`   | The registry for the components.         |
 | `packages/shadcn`    | The `shadcn` package.                    |
+| `packages/registry`  | The `@shadcn/registry` package.          |
 
 ## Development
 
@@ -90,8 +91,10 @@ pnpm --filter=v4 dev
 2. To run the `shadcn` package:
 
 ```bash
-pnpm --filter=shadcn dev
+pnpm shadcn:dev
 ```
+
+This also watches `@shadcn/registry`, which the CLI depends on.
 
 ## Running the CLI Locally
 
@@ -196,7 +199,7 @@ If you have a request for a new component, please open a discussion on GitHub. W
 
 The `shadcn` package is a CLI for adding components to your project. You can find the documentation for the CLI [here](https://ui.shadcn.com/docs/cli).
 
-Any changes to the CLI should be made in the `packages/shadcn` directory. If you can, it would be great if you could add tests for your changes.
+Changes to the CLI commands should be made in the `packages/shadcn` directory. The registry and install logic the CLI uses (fetching and resolving registry items, `components.json`, updaters and transformers) lives in `packages/registry`, published as `@shadcn/registry`. If you can, it would be great if you could add tests for your changes.
 
 ## Testing
 

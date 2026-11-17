@@ -1,8 +1,8 @@
 "use client"
 
 import { HugeiconsIcon, type IconSvgElement } from "@hugeicons/react"
+import { cn } from "cn"
 
-import { cn } from "@/lib/utils"
 import { LockButton } from "@/app/(app)/(typeset)/components/lock-button"
 import {
   Picker,

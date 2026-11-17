@@ -89,6 +89,10 @@ export type StreamTextOptions = {
   mode?: "stream" | "instant"
 }
 
+export type ToolOutputOptions = {
+  preliminary?: boolean
+}
+
 /** Framework-neutral file attachment payload. */
 export type FilePayload = {
   mediaType: string
@@ -182,6 +186,7 @@ export type ChatEvent<
       kind: "tool-output"
       toolCallId: string
       output: unknown
+      preliminary?: boolean
       providerExecuted?: boolean
       toolMetadata?: JsonRecord
       dynamic?: boolean
@@ -250,6 +255,7 @@ export type NeutralChunk<
       type: "tool-output-available"
       toolCallId: string
       output: unknown
+      preliminary?: boolean
       providerExecuted?: boolean
       toolMetadata?: JsonRecord
       dynamic?: boolean

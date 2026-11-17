@@ -1364,6 +1364,50 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "registry/bases/base/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "registry/bases/base/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/code-block-example.tsx",
+        },
+      },
+    },
     message: {
       name: "message",
       title: "undefined",
@@ -2547,7 +2591,13 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Attachment",
       description: "",
       type: "registry:example",
-      registryDependencies: ["attachment"],
+      registryDependencies: [
+        "attachment",
+        "button",
+        "dialog",
+        "example",
+        "spinner",
+      ],
       files: [
         {
           path: "registry/bases/base/examples/attachment-example.tsx",
@@ -2563,7 +2613,14 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Bubble",
       description: "",
       type: "registry:example",
-      registryDependencies: ["bubble", "button", "collapsible", "example"],
+      registryDependencies: [
+        "bubble",
+        "button",
+        "collapsible",
+        "example",
+        "marker",
+        "sonner",
+      ],
       files: [
         {
           path: "registry/bases/base/examples/bubble-example.tsx",
@@ -2640,6 +2697,60 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/base/examples/marker-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "trace-example": {
+      name: "trace-example",
+      title: "Trace",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "trace",
+        "code-block",
+        "badge",
+        "bubble",
+        "button",
+        "dialog",
+        "item",
+        "message",
+        "sheet",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/trace-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "code-block-example": {
+      name: "code-block-example",
+      title: "Code Block",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "code-block",
+        "use-highlighted-code",
+        "bubble",
+        "button",
+        "card",
+        "dialog",
+        "message",
+        "tabs",
+        "trace",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/base/examples/code-block-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -3729,6 +3840,27 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/bases/base/hooks/use-mobile.ts",
           type: "registry:hook",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "use-highlighted-code": {
+      name: "use-highlighted-code",
+      title: "undefined",
+      description: "",
+      type: "registry:hook",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/hooks/use-highlighted-code.ts",
+          type: "registry:hook",
+          target: "",
+        },
+        {
+          path: "registry/bases/base/lib/highlighter.tsx",
+          type: "registry:lib",
           target: "",
         },
       ],
@@ -5056,6 +5188,50 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "registry/bases/aria/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "registry/bases/aria/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/code-block-example.tsx",
+        },
+      },
+    },
     message: {
       name: "message",
       title: "undefined",
@@ -6197,7 +6373,13 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Attachment",
       description: "",
       type: "registry:example",
-      registryDependencies: ["attachment"],
+      registryDependencies: [
+        "attachment",
+        "button",
+        "dialog",
+        "example",
+        "spinner",
+      ],
       files: [
         {
           path: "registry/bases/aria/examples/attachment-example.tsx",
@@ -6213,7 +6395,14 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Bubble",
       description: "",
       type: "registry:example",
-      registryDependencies: ["bubble", "button", "collapsible", "example"],
+      registryDependencies: [
+        "bubble",
+        "button",
+        "collapsible",
+        "example",
+        "marker",
+        "sonner",
+      ],
       files: [
         {
           path: "registry/bases/aria/examples/bubble-example.tsx",
@@ -6290,6 +6479,60 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/aria/examples/marker-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "trace-example": {
+      name: "trace-example",
+      title: "Trace",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "trace",
+        "code-block",
+        "badge",
+        "bubble",
+        "button",
+        "dialog",
+        "item",
+        "message",
+        "sheet",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/aria/examples/trace-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "code-block-example": {
+      name: "code-block-example",
+      title: "Code Block",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "code-block",
+        "use-highlighted-code",
+        "bubble",
+        "button",
+        "card",
+        "dialog",
+        "message",
+        "tabs",
+        "trace",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/aria/examples/code-block-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -7379,6 +7622,27 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/bases/aria/hooks/use-mobile.ts",
           type: "registry:hook",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "use-highlighted-code": {
+      name: "use-highlighted-code",
+      title: "undefined",
+      description: "",
+      type: "registry:hook",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/aria/hooks/use-highlighted-code.ts",
+          type: "registry:hook",
+          target: "",
+        },
+        {
+          path: "registry/bases/aria/lib/highlighter.tsx",
+          type: "registry:lib",
           target: "",
         },
       ],
@@ -8724,6 +8988,50 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "registry/bases/radix/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/trace",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/trace-example.tsx",
+        },
+      },
+    },
+    "code-block": {
+      name: "code-block",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "use-highlighted-code"],
+      files: [
+        {
+          path: "registry/bases/radix/ui/code-block.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/code-block",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/code-block-example.tsx",
+        },
+      },
+    },
     message: {
       name: "message",
       title: "undefined",
@@ -9891,7 +10199,13 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Attachment",
       description: "",
       type: "registry:example",
-      registryDependencies: ["attachment"],
+      registryDependencies: [
+        "attachment",
+        "button",
+        "dialog",
+        "example",
+        "spinner",
+      ],
       files: [
         {
           path: "registry/bases/radix/examples/attachment-example.tsx",
@@ -9907,7 +10221,14 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Bubble",
       description: "",
       type: "registry:example",
-      registryDependencies: ["bubble", "button", "collapsible", "example"],
+      registryDependencies: [
+        "bubble",
+        "button",
+        "collapsible",
+        "example",
+        "marker",
+        "sonner",
+      ],
       files: [
         {
           path: "registry/bases/radix/examples/bubble-example.tsx",
@@ -9984,6 +10305,60 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/radix/examples/marker-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "trace-example": {
+      name: "trace-example",
+      title: "Trace",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "trace",
+        "code-block",
+        "badge",
+        "bubble",
+        "button",
+        "dialog",
+        "item",
+        "message",
+        "sheet",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/radix/examples/trace-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "code-block-example": {
+      name: "code-block-example",
+      title: "Code Block",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "code-block",
+        "use-highlighted-code",
+        "bubble",
+        "button",
+        "card",
+        "dialog",
+        "message",
+        "tabs",
+        "trace",
+        "example",
+      ],
+      files: [
+        {
+          path: "registry/bases/radix/examples/code-block-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -11072,6 +11447,27 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/bases/radix/hooks/use-mobile.ts",
           type: "registry:hook",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "use-highlighted-code": {
+      name: "use-highlighted-code",
+      title: "undefined",
+      description: "",
+      type: "registry:hook",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/radix/hooks/use-highlighted-code.ts",
+          type: "registry:hook",
+          target: "",
+        },
+        {
+          path: "registry/bases/radix/lib/highlighter.tsx",
+          type: "registry:lib",
           target: "",
         },
       ],

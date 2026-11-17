@@ -1,5 +1,6 @@
 "use client"
 
+import { cn } from "cn"
 import {
   AreaChartIcon,
   BarChartBigIcon,
@@ -10,7 +11,6 @@ import {
   RadarIcon,
 } from "lucide-react"
 
-import { cn } from "@/lib/utils"
 import { ChartCodeViewer } from "@/components/chart-code-viewer"
 import { ChartCopyButton } from "@/components/chart-copy-button"
 import { type Chart } from "@/components/chart-display"

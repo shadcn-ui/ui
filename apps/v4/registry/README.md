@@ -117,8 +117,8 @@ registry-health/v1/daily/<date>.json
 
 `latest.json` is the only Blob document read by the website. The server reads it
 with Blob credentials, then the public `/r/registries.json` route merges the
-sanitized health overlay by exact namespace. The route fails open to the
-original directory payload when health is disabled, stale, or unavailable.
+sanitized health and ranking overlays by exact namespace. The route fails open
+to the original directory payload when health is disabled, stale, or unavailable.
 If a newly added registry is not in the latest snapshot yet, it remains in the
 payload without `health` until the monitor first observes it.
 The route uses five-minute ISR, so normal traffic is served from cache and does
@@ -151,9 +151,38 @@ Configure this Vercel server environment variable:
   health Blob store. Vercel provides this value when the store is connected to
   the project.
 - `REGISTRY_HEALTH_ENABLED`: set to `1` to merge the additive health object into
-  `/r/registries.json`; set to `0` to return the original four-field payload.
-  The Registry Directory does not consume the health object during the initial
-  data-collection phase.
+  `/r/registries.json`, including ranking metadata when available; set to `0`
+  to return the original four-field payload.
+
+### Directory ranking
+
+The monitor publishes an optional `rankings` map in `latest.json`. Each entry
+contains `version`, `score`, and `itemCount`. Health contributes 80% of the ranking
+score. The unique catalog size contributes up to 20 points on a logarithmic curve,
+capped at 500 items. `health.score` and `scoreVersion` are unchanged.
+
+The directory fetches the cached public API once, validates the health and
+ranking metadata, and merges only those fields into authored entries by exact
+namespace. It never uses fetched logos, descriptions, or links. It ranks before
+search and pagination, with alphabetical ties. Observing, monitoring-limited,
+empty, and unranked registries form an alphabetical group after ranked entries.
+Unavailable registries appear last, but none are hidden or removed.
+
+The result stays stable during a page visit. Missing, invalid, or stale metadata
+falls back to alphabetical ordering. Old snapshots without `rankings` remain
+supported: the directory sorts those by health score until the updated monitor
+publishes rankings. It uses one score basis for the list, so raw health scores
+are never compared with size-adjusted scores.
+
+Weekly CLI sampling uses a namespace-and-date-seeded shuffle of unique item
+names and skips recently checked items when alternatives exist. The budget is
+still one CLI dry run per registry, with at most four concurrent dry runs.
+
+Path-based catalog names can differ from an item's own name, so daily checks
+accept schema-valid payloads for those addresses. Flat names still require an
+exact match. On the first run with `itemValidationVersion=1`, legacy sampled-item
+aggregates for path-based catalogs are cleared and the daily checks are due
+again. Availability, index, CLI, and flat-catalog histories are preserved.
 
 ### Running and rollout
 
@@ -187,8 +216,9 @@ For the initial rollout:
 3. Set `REGISTRY_HEALTH_ENABLED=1` and deploy the additive API overlay.
 4. Dispatch an hourly run and confirm all four Blob path families.
 5. Collect at least seven days of observations and inspect false positives.
-6. Add the Registry Directory presentation in a follow-up after the data and
-   thresholds have been reviewed.
+6. Deploy directory ranking after the data and thresholds have been reviewed.
+   The next monitor snapshot includes the ranking metadata. No manual Blob migration
+   or configuration change is required.
 
 To roll back the public API overlay immediately, set
 `REGISTRY_HEALTH_ENABLED=0`. Disable the scheduled workflow separately if its

@@ -1,32 +1,32 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
-import {
-  fetchTree,
-  getItemTargetPath,
-  getRegistryBaseColor,
-  getShadcnRegistryIndex,
-} from "@/src/registry/api"
-import { registryIndexSchema } from "@/src/schema"
-import { getSupportedFontMarkers } from "@/src/utils/font-markers"
-import { Config, getConfig } from "@/src/utils/get-config"
+import { handleError } from "@/src/utils/handle-error"
+import { fetchTree } from "@/src/utils/registry-api"
+import { getSupportedFontMarkers } from "@shadcn/registry/internal/font-markers"
+import { Config, getConfig } from "@shadcn/registry/internal/get-config"
 import {
   formatMonorepoMessage,
   getMonorepoTargets,
   isMonorepoRoot,
-} from "@/src/utils/get-monorepo-info"
-import { handleError } from "@/src/utils/handle-error"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
-import { transform } from "@/src/utils/transformers"
-import { transformCleanup } from "@/src/utils/transformers/transform-cleanup"
-import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
-import { transformFont } from "@/src/utils/transformers/transform-font"
-import { transformIcons } from "@/src/utils/transformers/transform-icons"
-import { transformImport } from "@/src/utils/transformers/transform-import"
-import { transformMenu } from "@/src/utils/transformers/transform-menu"
-import { transformRsc } from "@/src/utils/transformers/transform-rsc"
-import { transformRtl } from "@/src/utils/transformers/transform-rtl"
-import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
+} from "@shadcn/registry/internal/get-monorepo-info"
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { logger } from "@shadcn/registry/internal/logger"
+import {
+  getItemTargetPath,
+  getRegistryBaseColor,
+  getShadcnRegistryIndex,
+} from "@shadcn/registry/internal/registry/api"
+import { transform } from "@shadcn/registry/internal/transformers/index"
+import { transformCleanup } from "@shadcn/registry/internal/transformers/transform-cleanup"
+import { transformCssVars } from "@shadcn/registry/internal/transformers/transform-css-vars"
+import { transformFont } from "@shadcn/registry/internal/transformers/transform-font"
+import { transformIcons } from "@shadcn/registry/internal/transformers/transform-icons"
+import { transformImport } from "@shadcn/registry/internal/transformers/transform-import"
+import { transformMenu } from "@shadcn/registry/internal/transformers/transform-menu"
+import { transformRsc } from "@shadcn/registry/internal/transformers/transform-rsc"
+import { transformRtl } from "@shadcn/registry/internal/transformers/transform-rtl"
+import { transformTwPrefixes } from "@shadcn/registry/internal/transformers/transform-tw-prefix"
+import { registryIndexSchema } from "@shadcn/registry/schema"
 import { Command } from "commander"
 import { diffLines, type Change } from "diff"
 import { z } from "zod"

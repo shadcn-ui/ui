@@ -494,6 +494,22 @@ export const Components: Record<string, any> = {
       ) || "marker"
     return { default: mod.default || mod[exportName] }
   }),
+  trace: React.lazy(async () => {
+    const mod = await import("@/styles/base-mira/ui/trace")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "trace"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "code-block": React.lazy(async () => {
+    const mod = await import("@/styles/base-mira/ui/code-block")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "code-block"
+    return { default: mod.default || mod[exportName] }
+  }),
   message: React.lazy(async () => {
     const mod = await import("@/styles/base-mira/ui/message")
     const exportName =

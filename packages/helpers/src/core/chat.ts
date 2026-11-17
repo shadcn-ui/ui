@@ -208,7 +208,7 @@ export function createChatRuntime<
 
     for (const event of events) {
       if (
-        event.kind === "tool-output" ||
+        (event.kind === "tool-output" && !event.preliminary) ||
         event.kind === "tool-error" ||
         event.kind === "tool-denied"
       ) {
