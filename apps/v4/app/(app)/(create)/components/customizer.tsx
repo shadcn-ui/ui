@@ -18,7 +18,7 @@ import { MenuAccentPicker } from "@/app/(app)/(create)/components/accent-picker"
 import { ActionMenu } from "@/app/(app)/(create)/components/action-menu"
 import { BaseColorPicker } from "@/app/(app)/(create)/components/base-color-picker"
 import { BasePicker } from "@/app/(app)/(create)/components/base-picker"
-import { ButtonActiveStylePicker } from "@/app/(app)/(create)/components/button-active-style-picker"
+import { ButtonFeedbackPicker } from "@/app/(app)/(create)/components/button-feedback-picker"
 import { ChartColorPicker } from "@/app/(app)/(create)/components/chart-color-picker"
 import { CopyPreset } from "@/app/(app)/(create)/components/copy-preset"
 import { FontPicker } from "@/app/(app)/(create)/components/font-picker"
@@ -113,7 +113,7 @@ export function Customizer({
           <MenuAccentPicker isMobile={isMobile} anchorRef={anchorRef} />
           {isMobile && <BasePicker isMobile={isMobile} anchorRef={anchorRef} />}
           <FieldSeparator className="hidden md:block" />
-          <ButtonActiveStylePicker isMobile={isMobile} anchorRef={anchorRef} />
+          <ButtonFeedbackPicker isMobile={isMobile} anchorRef={anchorRef} />
         </FieldGroup>
       </CardContent>
       <CardFooter className="flex min-w-0 gap-2 md:flex-col md:rounded-b-none md:**:[button,a]:w-full">

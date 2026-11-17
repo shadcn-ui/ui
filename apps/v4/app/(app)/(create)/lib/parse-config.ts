@@ -24,12 +24,7 @@ export function parseDesignSystemConfig(searchParams: URLSearchParams) {
       template: searchParams.get("template") ?? undefined,
       rtl: searchParams.get("rtl") === "true",
       pointer: searchParams.get("pointer") === "true",
-      buttonActiveStyle:
-        searchParams.get("buttonActiveStyle") ??
-        (searchParams.get("ripple") === "true" ? "ripple" : "default"),
-      buttonRipple:
-        !searchParams.has("buttonActiveStyle") &&
-        searchParams.get("ripple") === "true",
+      buttonFeedback: searchParams.get("buttonFeedback") ?? "press",
     }
   } else {
     configInput = {
@@ -47,12 +42,7 @@ export function parseDesignSystemConfig(searchParams: URLSearchParams) {
       template: searchParams.get("template") ?? undefined,
       rtl: searchParams.get("rtl") === "true",
       pointer: searchParams.get("pointer") === "true",
-      buttonActiveStyle:
-        searchParams.get("buttonActiveStyle") ??
-        (searchParams.get("ripple") === "true" ? "ripple" : "default"),
-      buttonRipple:
-        !searchParams.has("buttonActiveStyle") &&
-        searchParams.get("ripple") === "true",
+      buttonFeedback: searchParams.get("buttonFeedback") ?? "press",
     }
   }
 

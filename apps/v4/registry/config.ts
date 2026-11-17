@@ -32,19 +32,19 @@ export type RegistryBasePart = (typeof REGISTRY_BASE_PARTS)[number]
 export const POINTER_CURSOR_SELECTOR =
   'button:not(:disabled), [role="button"]:not(:disabled)'
 
-export const BUTTON_ACTIVE_STYLE_VALUES = [
-  "default",
+export const BUTTON_FEEDBACK_VALUES = [
+  "press",
   "ripple",
-  "ripple-blur",
+  "soft-ripple",
 ] as const
 
-export const BUTTON_ACTIVE_STYLES = [
-  { value: "default", label: "Press" },
+export const BUTTON_FEEDBACKS = [
+  { value: "press", label: "Press" },
   { value: "ripple", label: "Ripple" },
-  { value: "ripple-blur", label: "Soft Ripple" },
+  { value: "soft-ripple", label: "Soft Ripple" },
 ] as const
 
-export type ButtonActiveStyleValue = (typeof BUTTON_ACTIVE_STYLE_VALUES)[number]
+export type ButtonFeedbackValue = (typeof BUTTON_FEEDBACK_VALUES)[number]
 
 // Derive font values from registry fonts (e.g., "font-inter" -> "inter").
 const fontValues = bodyFonts.map((f) => f.name.replace("font-", "")) as [
@@ -124,9 +124,7 @@ export const designSystemConfigSchema = z
     item: z.string().optional(),
     rtl: z.boolean().default(false),
     pointer: z.boolean().default(false),
-    buttonActiveStyle: z.enum(BUTTON_ACTIVE_STYLE_VALUES).default("default"),
-    // Legacy config key. New configs should use buttonActiveStyle.
-    buttonRipple: z.boolean().default(false),
+    buttonFeedback: z.enum(BUTTON_FEEDBACK_VALUES).default("press"),
     menuAccent: z
       .enum(
         MENU_ACCENTS.map((a) => a.value) as [
@@ -162,10 +160,6 @@ export const designSystemConfigSchema = z
   })
   .transform((data) => ({
     ...data,
-    buttonActiveStyle:
-      data.buttonRipple && data.buttonActiveStyle === "default"
-        ? "ripple"
-        : data.buttonActiveStyle,
     chartColor: data.chartColor ?? data.theme,
   }))
   .refine(
@@ -203,8 +197,7 @@ export const DEFAULT_CONFIG: DesignSystemConfig = {
   item: "Item",
   rtl: false,
   pointer: false,
-  buttonActiveStyle: "default",
-  buttonRipple: false,
+  buttonFeedback: "press",
   menuAccent: "subtle",
   menuColor: "default",
   radius: "default",
@@ -215,7 +208,7 @@ export type Preset = {
   name: string
   title: string
   description: string
-} & Omit<DesignSystemConfig, "pointer" | "buttonActiveStyle" | "buttonRipple">
+} & Omit<DesignSystemConfig, "pointer" | "buttonFeedback">
 
 export const PRESETS: Preset[] = [
   // Radix.
@@ -810,10 +803,7 @@ export function buildRegistryBase(config: DesignSystemConfig) {
   const iconLibraryItem = getIconLibrary(config.iconLibrary)
   const normalizedFontHeading =
     config.fontHeading === config.font ? "inherit" : config.fontHeading
-  const buttonActiveStyle =
-    config.buttonRipple && config.buttonActiveStyle === "default"
-      ? "ripple"
-      : config.buttonActiveStyle
+  const buttonFeedback = config.buttonFeedback
 
   if (!baseItem || !iconLibraryItem) {
     throw new Error(
@@ -830,7 +820,7 @@ export function buildRegistryBase(config: DesignSystemConfig) {
     "cn",
     "tw-animate-css",
     ...(baseItem.dependencies ?? []),
-    ...(buttonActiveStyle !== "default" ? ["@base-ripple/react"] : []),
+    ...(buttonFeedback !== "press" ? ["@base-ripple/react"] : []),
     ...iconLibraryItem.packages,
   ]
 
@@ -858,8 +848,7 @@ export function buildRegistryBase(config: DesignSystemConfig) {
       style: `${config.base}-${config.style}`,
       iconLibrary: iconLibraryItem.name,
       rtl: config.rtl,
-      buttonActiveStyle,
-      buttonRipple: config.buttonRipple,
+      buttonFeedback,
       menuColor: config.menuColor,
       menuAccent: config.menuAccent,
       tailwind: {

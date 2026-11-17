@@ -1,13 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { RippleIcon } from "@hugeicons/core-free-icons"
+import { CursorMagicSelection03Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
-import {
-  BUTTON_ACTIVE_STYLES,
-  type ButtonActiveStyleValue,
-} from "@/registry/config"
+import { BUTTON_FEEDBACKS, type ButtonFeedbackValue } from "@/registry/config"
 import {
   Picker,
   PickerContent,
@@ -19,7 +16,7 @@ import {
 import { usePreviewOverride } from "@/app/(app)/(create)/components/preview-override"
 import { useDesignSystemSearchParams } from "@/app/(app)/(create)/lib/search-params"
 
-export function ButtonActiveStylePicker({
+export function ButtonFeedbackPicker({
   isMobile,
   anchorRef,
 }: {
@@ -28,13 +25,12 @@ export function ButtonActiveStylePicker({
 }) {
   const [params, setParams] = useDesignSystemSearchParams()
   const { setOverride, clearOverride } = usePreviewOverride()
-  const currentStyle = BUTTON_ACTIVE_STYLES.find(
-    (style) => style.value === params.buttonActiveStyle
+  const currentStyle = BUTTON_FEEDBACKS.find(
+    (style) => style.value === params.buttonFeedback
   )
 
   const previewStyle = (value: string) => ({
-    buttonActiveStyle: value as ButtonActiveStyleValue,
-    ripple: false,
+    buttonFeedback: value as ButtonFeedbackValue,
   })
 
   return (
@@ -48,16 +44,14 @@ export function ButtonActiveStylePicker({
       >
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
-            <div className="text-xs text-muted-foreground">
-              Button Feedback
-            </div>
+            <div className="text-xs text-muted-foreground">Button Feedback</div>
             <div className="text-sm font-medium text-foreground">
               {currentStyle?.label}
             </div>
           </div>
           <div className="pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base text-foreground select-none md:right-2.5">
             <HugeiconsIcon
-              icon={RippleIcon}
+              icon={CursorMagicSelection03Icon}
               strokeWidth={2}
               className="size-4"
             />
@@ -70,14 +64,14 @@ export function ButtonActiveStylePicker({
           onMouseLeave={clearOverride}
         >
           <PickerRadioGroup
-            value={params.buttonActiveStyle}
+            value={params.buttonFeedback}
             onValueChange={(value) => setParams(previewStyle(value))}
             onItemPreview={
               isMobile ? undefined : (value) => setOverride(previewStyle(value))
             }
           >
             <PickerGroup>
-              {BUTTON_ACTIVE_STYLES.map((style) => (
+              {BUTTON_FEEDBACKS.map((style) => (
                 <PickerRadioItem
                   value={style.value}
                   key={style.value}

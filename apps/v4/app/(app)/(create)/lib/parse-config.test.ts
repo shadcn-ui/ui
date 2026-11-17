@@ -16,12 +16,12 @@ describe("parseDesignSystemConfig", () => {
     }
 
     expect(result.data.pointer).toBe(false)
-    expect(result.data.buttonRipple).toBe(false)
+    expect(result.data.buttonFeedback).toBe("press")
   })
 
-  it("parses ripple as a separate default Button option", () => {
+  it("parses Ripple feedback from the canonical query parameter", () => {
     const result = parseDesignSystemConfig(
-      new URLSearchParams("preset=a0&ripple=true")
+      new URLSearchParams("preset=a0&buttonFeedback=ripple")
     )
 
     expect(result.success).toBe(true)
@@ -29,13 +29,12 @@ describe("parseDesignSystemConfig", () => {
       throw new Error(result.error)
     }
 
-    expect(result.data.buttonRipple).toBe(true)
-    expect(result.data.buttonActiveStyle).toBe("ripple")
+    expect(result.data.buttonFeedback).toBe("ripple")
   })
 
-  it("parses the blurred Button active style", () => {
+  it("parses the canonical Soft Ripple feedback value", () => {
     const result = parseDesignSystemConfig(
-      new URLSearchParams("preset=a0&buttonActiveStyle=ripple-blur")
+      new URLSearchParams("preset=a0&buttonFeedback=soft-ripple")
     )
 
     expect(result.success).toBe(true)
@@ -43,7 +42,7 @@ describe("parseDesignSystemConfig", () => {
       throw new Error(result.error)
     }
 
-    expect(result.data.buttonActiveStyle).toBe("ripple-blur")
+    expect(result.data.buttonFeedback).toBe("soft-ripple")
   })
 
   it("parses pointer=true", () => {

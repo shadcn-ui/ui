@@ -5,6 +5,7 @@ import { logger } from "@shadcn/registry/internal/logger"
 import { type PresetBase } from "@shadcn/registry/internal/preset/preset"
 import { getRegistryItems } from "@shadcn/registry/internal/registry/api"
 import { buildUrlAndHeadersForRegistryItem } from "@shadcn/registry/internal/registry/builder"
+import { type ButtonFeedbackValue } from "@shadcn/registry/internal/registry/button-feedback"
 import { configWithDefaults } from "@shadcn/registry/internal/registry/config"
 import {
   REGISTRY_URL,
@@ -26,15 +27,12 @@ export function resolveCreateUrl(
     template: string
     rtl: boolean
     pointer: boolean
-    buttonActiveStyle: "default" | "ripple" | "ripple-blur"
-    /** @deprecated Use buttonActiveStyle. */
-    ripple: boolean
+    buttonFeedback: ButtonFeedbackValue
     base: PresetBase
   }>
 ) {
   const url = new URL(`${SHADCN_URL}/create`)
-  const { rtl, pointer, buttonActiveStyle, ripple, ...params } =
-    searchParams ?? {}
+  const { rtl, pointer, buttonFeedback, ...params } = searchParams ?? {}
 
   for (const [key, value] of Object.entries(params)) {
     if (value !== undefined) {
@@ -51,10 +49,8 @@ export function resolveCreateUrl(
     url.searchParams.set("pointer", "true")
   }
 
-  if (buttonActiveStyle) {
-    url.searchParams.set("buttonActiveStyle", buttonActiveStyle)
-  } else if (ripple) {
-    url.searchParams.set("ripple", "true")
+  if (buttonFeedback) {
+    url.searchParams.set("buttonFeedback", buttonFeedback)
   }
 
   return url.toString()
@@ -108,9 +104,7 @@ export function resolveInitUrl(
     preset?: string
     only?: string
     pointer?: boolean
-    buttonActiveStyle?: "default" | "ripple" | "ripple-blur"
-    /** @deprecated Use buttonActiveStyle. */
-    ripple?: boolean
+    buttonFeedback?: ButtonFeedbackValue
   }
 ) {
   const params = new URLSearchParams({
@@ -152,10 +146,8 @@ export function resolveInitUrl(
     params.set("pointer", "true")
   }
 
-  if (options?.buttonActiveStyle !== undefined) {
-    params.set("buttonActiveStyle", options.buttonActiveStyle)
-  } else if (options?.ripple !== undefined) {
-    params.set("ripple", String(options.ripple))
+  if (options?.buttonFeedback !== undefined) {
+    params.set("buttonFeedback", options.buttonFeedback)
   }
 
   // Signal the server to record this init run.
@@ -184,9 +176,7 @@ export async function promptForPreset(options: {
   base: PresetBase
   template?: string
   pointer?: boolean
-  buttonActiveStyle?: "default" | "ripple" | "ripple-blur"
-  /** @deprecated Use buttonActiveStyle. */
-  ripple?: boolean
+  buttonFeedback?: ButtonFeedbackValue
 }) {
   const presets = Object.entries(DEFAULT_PRESETS)
 
@@ -217,8 +207,7 @@ export async function promptForPreset(options: {
       command: "init",
       rtl: options.rtl,
       pointer: options.pointer,
-      buttonActiveStyle: options.buttonActiveStyle,
-      ripple: options.ripple,
+      buttonFeedback: options.buttonFeedback,
       base: options.base,
       ...(options.template && { template: options.template }),
     })
@@ -243,8 +232,7 @@ export async function promptForPreset(options: {
       {
         template: options.template,
         pointer: options.pointer,
-        buttonActiveStyle: options.buttonActiveStyle,
-        ripple: options.ripple,
+        buttonFeedback: options.buttonFeedback,
       }
     ),
     base: options.base,

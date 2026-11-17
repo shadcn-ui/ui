@@ -60,6 +60,7 @@ import {
   type PresetBase,
 } from "@shadcn/registry/internal/preset/preset"
 import { getRegistryBaseColors } from "@shadcn/registry/internal/registry/api"
+import { BUTTON_FEEDBACK_VALUES } from "@shadcn/registry/internal/registry/button-feedback"
 import {
   BUILTIN_REGISTRIES,
   SHADCN_URL,
@@ -92,9 +93,7 @@ export const initOptionsSchema = z.object({
   cssVariables: z.boolean().default(true),
   rtl: z.boolean().optional(),
   pointer: z.boolean().optional(),
-  buttonActiveStyle: z.enum(["default", "ripple", "ripple-blur"]).optional(),
-  /** @deprecated Use buttonActiveStyle. */
-  ripple: z.boolean().optional(),
+  buttonFeedback: z.enum(BUTTON_FEEDBACK_VALUES).optional(),
   base: z.enum(PRESET_BASES).optional(),
   template: z.string().optional(),
   monorepo: z.boolean().optional(),
@@ -117,7 +116,7 @@ export function applyInitUrlOptions(
   url: URL,
   options: Pick<
     z.infer<typeof initOptionsSchema>,
-    "rtl" | "pointer" | "buttonActiveStyle" | "ripple"
+    "rtl" | "pointer" | "buttonFeedback"
   >
 ) {
   if (options.rtl) {
@@ -132,11 +131,8 @@ export function applyInitUrlOptions(
     url.searchParams.delete("pointer")
   }
 
-  if (options.buttonActiveStyle !== undefined) {
-    url.searchParams.set("buttonActiveStyle", options.buttonActiveStyle)
-    url.searchParams.delete("ripple")
-  } else if (options.ripple !== undefined) {
-    url.searchParams.set("ripple", String(options.ripple))
+  if (options.buttonFeedback !== undefined) {
+    url.searchParams.set("buttonFeedback", options.buttonFeedback)
   }
 
   return url
@@ -179,12 +175,9 @@ export const init = new Command()
   .option("--pointer", "enable pointer cursor for buttons.")
   .option("--no-pointer", "disable pointer cursor for buttons.")
   .option(
-    "--button-active-style <style>",
-    "set the Button active style (default, ripple, ripple-blur)."
+    "--button-feedback <feedback>",
+    "set Button feedback (press, ripple, soft-ripple)."
   )
-  // Backward compatibility for the previous boolean option.
-  .option("--ripple", "enable Base Ripple on the default Button.")
-  .option("--no-ripple", "disable Base Ripple on the default Button.")
   .option("--reinstall", "re-install existing UI components.")
   .option("--no-reinstall", "do not re-install existing UI components.")
   .action(async (components, opts) => {
@@ -207,14 +200,7 @@ export const init = new Command()
         reinstall: opts.reinstall,
         cwd: path.resolve(opts.cwd),
       })
-      if (
-        options.buttonActiveStyle === undefined &&
-        options.ripple !== undefined
-      ) {
-        options.buttonActiveStyle = options.ripple ? "ripple" : "default"
-      }
-      options.ripple = undefined
-      let installButtonActiveStyle = options.buttonActiveStyle !== undefined
+      let installButtonFeedback = options.buttonFeedback !== undefined
       const initUrlArg = [
         ...(typeof options.preset === "string" ? [options.preset] : []),
         ...components,
@@ -229,22 +215,18 @@ export const init = new Command()
           return false
         }
       })
-      const initUrlHasButtonActiveStyleOption = initUrlArg
-        ? new URL(initUrlArg).searchParams.has("buttonActiveStyle") ||
-          new URL(initUrlArg).searchParams.has("ripple")
+      const initUrlHasButtonFeedbackOption = initUrlArg
+        ? new URL(initUrlArg).searchParams.has("buttonFeedback")
         : false
-      if (initUrlArg && options.buttonActiveStyle === undefined) {
+      if (initUrlArg && options.buttonFeedback === undefined) {
         const initUrlParams = new URL(initUrlArg).searchParams
-        if (initUrlParams.has("buttonActiveStyle")) {
-          options.buttonActiveStyle = initUrlParams.get("buttonActiveStyle") as
-            | "default"
-            | "ripple"
-            | "ripple-blur"
-        } else if (initUrlParams.has("ripple")) {
-          options.buttonActiveStyle =
-            initUrlParams.get("ripple") === "true" ? "ripple" : "default"
+        const buttonFeedback = initUrlParams.get("buttonFeedback")
+        if (buttonFeedback) {
+          options.buttonFeedback = z
+            .enum(BUTTON_FEEDBACK_VALUES)
+            .parse(buttonFeedback)
         }
-        installButtonActiveStyle = true
+        installButtonFeedback = true
       }
       const presetsByName = new Map(Object.entries(DEFAULT_PRESETS))
 
@@ -350,21 +332,14 @@ export const init = new Command()
         if (existingConfig) {
           options.existingConfig = existingConfig
           if (
-            options.buttonActiveStyle === undefined &&
-            !initUrlHasButtonActiveStyleOption &&
-            (typeof existingConfig.buttonActiveStyle === "string" ||
-              typeof existingConfig.buttonRipple === "boolean")
+            options.buttonFeedback === undefined &&
+            !initUrlHasButtonFeedbackOption &&
+            typeof existingConfig.buttonFeedback === "string"
           ) {
-            options.buttonActiveStyle =
-              typeof existingConfig.buttonActiveStyle === "string"
-                ? (existingConfig.buttonActiveStyle as
-                    | "default"
-                    | "ripple"
-                    | "ripple-blur")
-                : existingConfig.buttonRipple
-                  ? "ripple"
-                  : "default"
-            installButtonActiveStyle = true
+            options.buttonFeedback = z
+              .enum(BUTTON_FEEDBACK_VALUES)
+              .parse(existingConfig.buttonFeedback)
+            installButtonFeedback = true
           }
         }
 
@@ -398,30 +373,30 @@ export const init = new Command()
       }
 
       if (
-        options.buttonActiveStyle === undefined &&
+        options.buttonFeedback === undefined &&
         !options.defaults &&
         options.preset === undefined &&
         components.length === 0 &&
         !hasExistingConfig
       ) {
-        const { buttonActiveStyle } = await prompts({
+        const { buttonFeedback } = await prompts({
           type: "select",
-          name: "buttonActiveStyle",
-          message: "Select a Button active style",
+          name: "buttonFeedback",
+          message: "Select a Button feedback style",
           initial: 0,
           choices: [
-            { title: "Default", value: "default" },
-            { title: "Simple Ripple", value: "ripple" },
-            { title: "Blurred Ripple", value: "ripple-blur" },
+            { title: "Press", value: "press" },
+            { title: "Ripple", value: "ripple" },
+            { title: "Soft Ripple", value: "soft-ripple" },
           ],
         })
 
-        if (buttonActiveStyle === undefined) {
+        if (buttonFeedback === undefined) {
           process.exit(1)
         }
 
-        options.buttonActiveStyle = buttonActiveStyle
-        installButtonActiveStyle = true
+        options.buttonFeedback = buttonFeedback
+        installButtonFeedback = true
       }
 
       if (
@@ -517,7 +492,7 @@ export const init = new Command()
             template: options.template,
             base: options.base!,
             pointer: options.pointer,
-            buttonActiveStyle: options.buttonActiveStyle,
+            buttonFeedback: options.buttonFeedback,
           })
           components = [result.url, ...components]
           presetBase = result.base
@@ -556,7 +531,7 @@ export const init = new Command()
                 template: options.template,
                 preset: presetArg,
                 pointer: options.pointer,
-                buttonActiveStyle: options.buttonActiveStyle,
+                buttonFeedback: options.buttonFeedback,
               }
             )
             presetBase = undefined
@@ -574,7 +549,7 @@ export const init = new Command()
               {
                 template: options.template,
                 pointer: options.pointer,
-                buttonActiveStyle: options.buttonActiveStyle,
+                buttonFeedback: options.buttonFeedback,
               }
             )
             presetBase = undefined
@@ -619,7 +594,7 @@ export const init = new Command()
           {
             template: options.template,
             pointer: options.pointer,
-            buttonActiveStyle: options.buttonActiveStyle,
+            buttonFeedback: options.buttonFeedback,
           }
         )
         components = [initUrl, ...components]
@@ -696,29 +671,29 @@ export const init = new Command()
         if (registryBaseConfig) {
           options.registryBaseConfig = {
             ...registryBaseConfig,
-            ...(options.buttonActiveStyle !== undefined && {
-              buttonActiveStyle: options.buttonActiveStyle,
+            ...(options.buttonFeedback !== undefined && {
+              buttonFeedback: options.buttonFeedback,
             }),
           }
-        } else if (options.buttonActiveStyle !== undefined) {
+        } else if (options.buttonFeedback !== undefined) {
           options.registryBaseConfig = {
-            buttonActiveStyle: options.buttonActiveStyle,
+            buttonFeedback: options.buttonFeedback,
           }
         }
 
-        if (initUrlHasButtonActiveStyleOption) {
-          installButtonActiveStyle = true
+        if (initUrlHasButtonFeedbackOption) {
+          installButtonFeedback = true
         }
       }
 
-      if (options.buttonActiveStyle !== undefined) {
+      if (options.buttonFeedback !== undefined) {
         options.registryBaseConfig = {
           ...options.registryBaseConfig,
-          buttonActiveStyle: options.buttonActiveStyle,
+          buttonFeedback: options.buttonFeedback,
         }
       }
 
-      if (installButtonActiveStyle && !components.includes("button")) {
+      if (installButtonFeedback && !components.includes("button")) {
         components.push("button")
       }
 
@@ -940,11 +915,8 @@ export async function runInit(
     if (config.menuColor) designSettings.menuColor = config.menuColor
     if (config.menuAccent) designSettings.menuAccent = config.menuAccent
     if (config.rtl !== undefined) designSettings.rtl = config.rtl
-    if (config.buttonActiveStyle !== undefined) {
-      designSettings.buttonActiveStyle = config.buttonActiveStyle
-    }
-    if (config.buttonRipple !== undefined) {
-      designSettings.buttonRipple = config.buttonRipple
+    if (config.buttonFeedback !== undefined) {
+      designSettings.buttonFeedback = config.buttonFeedback
     }
     if (config.iconLibrary) designSettings.iconLibrary = config.iconLibrary
 

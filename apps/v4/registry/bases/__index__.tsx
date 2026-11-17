@@ -202,8 +202,8 @@ export const Index: Record<string, Record<string, any>> = {
         links: { docs: "https://ui.shadcn.com/docs/components/base/button" },
       },
     },
-    "button-ripple-blur": {
-      name: "button-ripple-blur",
+    "button-soft-ripple": {
+      name: "button-soft-ripple",
       title: "Button with Blurred Base Ripple",
       description:
         "The Base UI button with a blurred Base Ripple interaction feedback.",
@@ -211,7 +211,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/base/ui/button-ripple-blur.tsx",
+          path: "registry/bases/base/ui/button-soft-ripple.tsx",
           type: "registry:ui",
           target: "@ui/button.tsx",
         },
@@ -4105,8 +4105,8 @@ export const Index: Record<string, Record<string, any>> = {
         links: { docs: "https://ui.shadcn.com/docs/components/aria/button" },
       },
     },
-    "button-ripple-blur": {
-      name: "button-ripple-blur",
+    "button-soft-ripple": {
+      name: "button-soft-ripple",
       title: "Button with Blurred Base Ripple",
       description:
         "The React Aria button with a blurred Base Ripple interaction feedback.",
@@ -4114,7 +4114,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/aria/ui/button-ripple-blur.tsx",
+          path: "registry/bases/aria/ui/button-soft-ripple.tsx",
           type: "registry:ui",
           target: "@ui/button.tsx",
         },
@@ -7924,8 +7924,8 @@ export const Index: Record<string, Record<string, any>> = {
         links: { docs: "https://ui.shadcn.com/docs/components/radix/button" },
       },
     },
-    "button-ripple-blur": {
-      name: "button-ripple-blur",
+    "button-soft-ripple": {
+      name: "button-soft-ripple",
       title: "Button with Blurred Base Ripple",
       description:
         "The Radix button with a blurred Base Ripple interaction feedback.",
@@ -7933,7 +7933,7 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
-          path: "registry/bases/radix/ui/button-ripple-blur.tsx",
+          path: "registry/bases/radix/ui/button-soft-ripple.tsx",
           type: "registry:ui",
           target: "@ui/button.tsx",
         },

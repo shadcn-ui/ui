@@ -169,13 +169,13 @@ describe("rawConfigSchema", () => {
     expect(result.tailwind).not.toHaveProperty("prefix")
   })
 
-  it("accepts the optional buttonRipple setting", () => {
+  it("accepts the optional buttonFeedback setting", () => {
     const result = rawConfigSchema.parse({
       ...config,
-      buttonRipple: true,
+      buttonFeedback: "ripple",
     })
 
-    expect(result.buttonRipple).toBe(true)
+    expect(result.buttonFeedback).toBe("ripple")
   })
 })
 
@@ -192,20 +192,12 @@ describe("registryBaseConfigSchema", () => {
     })
   })
 
-  it("accepts buttonRipple on registry base config", () => {
+  it("accepts buttonFeedback on registry base config", () => {
     const result = registryBaseConfigSchema.parse({
-      buttonRipple: true,
+      buttonFeedback: "soft-ripple",
     })
 
-    expect(result.buttonRipple).toBe(true)
-  })
-
-  it("accepts buttonActiveStyle on registry base config", () => {
-    const result = registryBaseConfigSchema.parse({
-      buttonActiveStyle: "ripple-blur",
-    })
-
-    expect(result.buttonActiveStyle).toBe("ripple-blur")
+    expect(result.buttonFeedback).toBe("soft-ripple")
   })
 
   it("should parse registry:base config without defaults", () => {

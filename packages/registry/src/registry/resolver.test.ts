@@ -42,7 +42,7 @@ vi.mock("@/src/logger", () => ({
 
 describe("resolveBuiltinRegistryItemName", () => {
   it("maps built-in button requests when Base Ripple is enabled", () => {
-    const config = createConfig({ buttonRipple: true })
+    const config = createConfig({ buttonFeedback: "ripple" })
 
     expect(resolveBuiltinRegistryItemName("button", config)).toBe(
       "button-ripple"
@@ -61,13 +61,13 @@ describe("resolveBuiltinRegistryItemName", () => {
     )
   })
 
-  it("maps built-in buttons to the blurred ripple variant", () => {
+  it("maps built-in buttons to the Soft Ripple variant", () => {
     expect(
       resolveBuiltinRegistryItemName(
         "button",
-        createConfig({ buttonActiveStyle: "ripple-blur" })
+        createConfig({ buttonFeedback: "soft-ripple" })
       )
-    ).toBe("button-ripple-blur")
+    ).toBe("button-soft-ripple")
   })
 
   it("fetches the ripple implementation for a built-in button request", async () => {
@@ -98,7 +98,7 @@ describe("resolveBuiltinRegistryItemName", () => {
     try {
       const result = await resolveRegistryTree(
         ["button"],
-        createConfig({ style: "base-nova", buttonRipple: true }),
+        createConfig({ style: "base-nova", buttonFeedback: "ripple" }),
         { useCache: false }
       )
 
@@ -156,7 +156,7 @@ describe("resolveBuiltinRegistryItemName", () => {
     try {
       const result = await resolveRegistryTree(
         ["with-button"],
-        createConfig({ style: "base-nova", buttonRipple: true }),
+        createConfig({ style: "base-nova", buttonFeedback: "ripple" }),
         { useCache: false }
       )
 

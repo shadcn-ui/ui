@@ -111,23 +111,24 @@ describe("buildRegistryBase", () => {
   })
 
   it("adds Base Ripple to the default Button dependencies when enabled", () => {
-    const result = buildRegistryBase({
+    const config = designSystemConfigSchema.parse({
       ...DEFAULT_CONFIG,
-      buttonRipple: true,
+      buttonFeedback: "ripple",
     })
+    const result = buildRegistryBase(config)
 
     expect(result.dependencies).toContain("@base-ripple/react")
-    expect(result.config).toMatchObject({ buttonRipple: true })
+    expect(result.config).toMatchObject({ buttonFeedback: "ripple" })
   })
 
-  it("adds the blurred ripple Button implementation when selected", () => {
+  it("adds the Soft Ripple Button implementation when selected", () => {
     const result = buildRegistryBase({
       ...DEFAULT_CONFIG,
-      buttonActiveStyle: "ripple-blur",
+      buttonFeedback: "soft-ripple",
     })
 
     expect(result.dependencies).toContain("@base-ripple/react")
-    expect(result.config).toMatchObject({ buttonActiveStyle: "ripple-blur" })
+    expect(result.config).toMatchObject({ buttonFeedback: "soft-ripple" })
   })
 
   it("defaults chartColor to the selected theme when omitted", () => {

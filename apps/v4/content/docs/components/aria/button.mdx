@@ -82,15 +82,15 @@ You can also enable this during project setup with `npx shadcn@latest init --poi
 
 ## Base Ripple
 
-Choose the default `Button` active style during setup:
+Choose the Button feedback during setup:
 
 ```bash
-npx shadcn@latest init --button-active-style ripple
+npx shadcn@latest init --button-feedback ripple
 ```
 
-Choose `default` for the standard pressed movement, `ripple` for the default Base Ripple effect, or `ripple-blur` for a larger blurred ripple. Ripple styles keep the `Button` import and props the same, install `@base-ripple/react`, add its stylesheet to your global CSS, and save `buttonActiveStyle` in `components.json`. Later Button installs and reinstalls use the same implementation.
+Choose `press` for the pressed movement, `ripple` for the standard Base Ripple effect, or `soft-ripple` for a larger, softer ripple. Ripple styles keep the `Button` import and props the same, install `@base-ripple/react`, add its stylesheet to your global CSS, and save `buttonFeedback` in `components.json`. Later Button installs and reinstalls use the same implementation.
 
-Run `npx shadcn@latest init --button-active-style default` to restore the standard Button implementation. Ripple styles remove the default pressed movement. Base Ripple supports pointer and keyboard activation, skips disabled buttons, marks ripple spans as hidden from assistive technology, and respects reduced-motion preferences. See the [Base Ripple React API](https://github.com/circulo-ai/base-ripple/blob/main/packages/react/README.md) for customization options.
+Run `npx shadcn@latest init --button-feedback press` to restore the standard Button feedback. Ripple styles replace the pressed movement. Base Ripple supports pointer and keyboard activation, skips disabled buttons, marks ripple spans as hidden from assistive technology, and respects reduced-motion preferences. See the [Base Ripple React API](https://github.com/circulo-ai/base-ripple/blob/main/packages/react/README.md) for customization options.
 
 ## Size
 

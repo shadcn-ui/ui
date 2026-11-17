@@ -63,9 +63,10 @@
     "iconLibrary": {
       "type": "string"
     },
-    "buttonRipple": {
-      "type": "boolean",
-      "description": "Use Base Ripple in the default Button component."
+    "buttonFeedback": {
+      "type": "string",
+      "enum": ["press", "ripple", "soft-ripple"],
+      "description": "The feedback style used by the Button component."
     },
     "aliases": {
       "type": "object",

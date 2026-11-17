@@ -11,6 +11,7 @@ import {
   buildUrlAndHeadersForRegistryItem,
   resolveRegistryUrl,
 } from "@/src/registry/builder"
+import { resolveButtonFeedback } from "@/src/registry/button-feedback"
 import { setRegistryHeaders } from "@/src/registry/context"
 import {
   RegistryNotConfiguredError,
@@ -45,15 +46,14 @@ type RegistryFetchOptions = {
 
 export function resolveBuiltinRegistryItemName(name: string, config: Config) {
   if (name === "button") {
-    const buttonActiveStyle =
-      config.buttonActiveStyle ?? (config.buttonRipple ? "ripple" : "default")
+    const buttonFeedback = resolveButtonFeedback(config) ?? "press"
 
-    if (buttonActiveStyle === "ripple") {
+    if (buttonFeedback === "ripple") {
       return "button-ripple"
     }
 
-    if (buttonActiveStyle === "ripple-blur") {
-      return "button-ripple-blur"
+    if (buttonFeedback === "soft-ripple") {
+      return "button-soft-ripple"
     }
   }
 

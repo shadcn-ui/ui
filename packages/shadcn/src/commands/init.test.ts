@@ -281,27 +281,13 @@ describe("init options", () => {
     expect(result.pointer).toBe(true)
   })
 
-  it("parses ripple flags", () => {
-    const enabled = initOptionsSchema.parse({
-      ...createInitOptions("/tmp/project"),
-      ripple: true,
-    })
-    const disabled = initOptionsSchema.parse({
-      ...createInitOptions("/tmp/project"),
-      ripple: false,
-    })
-
-    expect(enabled.ripple).toBe(true)
-    expect(disabled.ripple).toBe(false)
-  })
-
-  it("parses Button active style values", () => {
+  it("parses canonical Button feedback values", () => {
     const result = initOptionsSchema.parse({
       ...createInitOptions("/tmp/project"),
-      buttonActiveStyle: "ripple-blur",
+      buttonFeedback: "soft-ripple",
     })
 
-    expect(result.buttonActiveStyle).toBe("ripple-blur")
+    expect(result.buttonFeedback).toBe("soft-ripple")
   })
 
   it("applies pointer to raw init urls", () => {
@@ -322,28 +308,27 @@ describe("init options", () => {
     expect(url.searchParams.has("pointer")).toBe(false)
   })
 
-  it("applies both enabled and disabled ripple options to raw init urls", () => {
+  it("writes Button feedback values to raw init urls", () => {
     const enabledUrl = applyInitUrlOptions(
       new URL("https://ui.shadcn.com/init?preset=a0"),
-      { ripple: true }
+      { buttonFeedback: "ripple" }
     )
     const disabledUrl = applyInitUrlOptions(
-      new URL("https://ui.shadcn.com/init?preset=a0&ripple=true"),
-      { ripple: false }
+      new URL("https://ui.shadcn.com/init?preset=a0&buttonFeedback=ripple"),
+      { buttonFeedback: "press" }
     )
 
-    expect(enabledUrl.searchParams.get("ripple")).toBe("true")
-    expect(disabledUrl.searchParams.get("ripple")).toBe("false")
+    expect(enabledUrl.searchParams.get("buttonFeedback")).toBe("ripple")
+    expect(disabledUrl.searchParams.get("buttonFeedback")).toBe("press")
   })
 
-  it("applies Button active style values to raw init urls", () => {
+  it("applies Button feedback values to raw init urls", () => {
     const url = applyInitUrlOptions(
-      new URL("https://ui.shadcn.com/init?preset=a0&ripple=true"),
-      { buttonActiveStyle: "ripple-blur" }
+      new URL("https://ui.shadcn.com/init?preset=a0&buttonFeedback=press"),
+      { buttonFeedback: "soft-ripple" }
     )
 
-    expect(url.searchParams.get("buttonActiveStyle")).toBe("ripple-blur")
-    expect(url.searchParams.has("ripple")).toBe(false)
+    expect(url.searchParams.get("buttonFeedback")).toBe("soft-ripple")
   })
 
   it("includes Base Ripple in generated init urls when selected", async () => {
@@ -361,13 +346,13 @@ describe("init options", () => {
         menuColor: "default",
         radius: "default",
       },
-      { ripple: true }
+      { buttonFeedback: "ripple" }
     )
 
-    expect(new URL(url).searchParams.get("ripple")).toBe("true")
+    expect(new URL(url).searchParams.get("buttonFeedback")).toBe("ripple")
   })
 
-  it("includes the selected Button active style in generated init urls", async () => {
+  it("includes the selected Button feedback in generated init urls", async () => {
     const { resolveInitUrl } = await import("@/src/preset/presets")
     const url = resolveInitUrl(
       {
@@ -382,9 +367,9 @@ describe("init options", () => {
         menuColor: "default",
         radius: "default",
       },
-      { buttonActiveStyle: "default" }
+      { buttonFeedback: "press" }
     )
 
-    expect(new URL(url).searchParams.get("buttonActiveStyle")).toBe("default")
+    expect(new URL(url).searchParams.get("buttonFeedback")).toBe("press")
   })
 })

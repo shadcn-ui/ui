@@ -16,7 +16,6 @@ import { decodePreset, isPresetCode } from "shadcn/preset"
 import {
   BASE_COLORS,
   BASES,
-  BUTTON_ACTIVE_STYLE_VALUES,
   DEFAULT_CONFIG,
   getThemesForBaseColor,
   iconLibraries,
@@ -27,7 +26,7 @@ import {
   THEMES,
   type BaseColorName,
   type BaseName,
-  type ButtonActiveStyleValue,
+  type ButtonFeedbackValue,
   type ChartColorName,
   type FontHeadingValue,
   type FontValue,
@@ -94,11 +93,11 @@ const designSystemSearchParams = {
   ] as const).withDefault("next"),
   rtl: parseAsBoolean.withDefault(false),
   pointer: parseAsBoolean.withDefault(false),
-  buttonActiveStyle: parseAsStringLiteral<ButtonActiveStyleValue>(
-    BUTTON_ACTIVE_STYLE_VALUES
-  ).withDefault(DEFAULT_CONFIG.buttonActiveStyle),
-  // Read old shared links; new links use buttonActiveStyle.
-  ripple: parseAsBoolean.withDefault(false),
+  buttonFeedback: parseAsStringLiteral<ButtonFeedbackValue>([
+    "press",
+    "ripple",
+    "soft-ripple",
+  ]).withDefault(DEFAULT_CONFIG.buttonFeedback),
   size: parseAsInteger.withDefault(100),
   custom: parseAsBoolean.withDefault(false),
 }
@@ -135,11 +134,14 @@ const NON_DESIGN_SYSTEM_KEYS = [
   "template",
   "rtl",
   "pointer",
-  "buttonActiveStyle",
-  "ripple",
+  "buttonFeedback",
   "size",
   "custom",
 ] as const
+
+export type DesignSystemSearchParams = inferParserType<
+  typeof designSystemSearchParams
+>
 
 // Shared across hook instances so only one mount effect encodes the initial URL.
 let hasSyncedPresetToUrl = false
@@ -151,10 +153,6 @@ export const loadDesignSystemSearchParams = createLoader(
 export const serializeDesignSystemSearchParams = createSerializer(
   designSystemSearchParams
 )
-
-export type DesignSystemSearchParams = inferParserType<
-  typeof designSystemSearchParams
->
 
 export function isTranslucentMenuColor(
   menuColor?: MenuColorValue | null
@@ -233,34 +231,13 @@ function resolvePresetParams(
       const resolved = normalizeDesignSystemParams({
         ...decoded,
         ...presetOverrides,
-        base: rawParams.base,
-        item: rawParams.item,
-        preset: rawParams.preset,
-        template: rawParams.template,
-        rtl: rawParams.rtl,
-        pointer: rawParams.pointer,
-        buttonActiveStyle: rawParams.buttonActiveStyle,
-        ripple: rawParams.ripple,
-        size: rawParams.size,
-        custom: rawParams.custom,
+        ...rawParams,
       })
 
-      return normalizeDesignSystemParams({
-        ...resolved,
-        buttonActiveStyle:
-          searchParams.has("buttonActiveStyle") || !rawParams.ripple
-            ? resolved.buttonActiveStyle
-            : "ripple",
-      })
+      return resolved
     }
   }
-  return normalizeDesignSystemParams({
-    ...rawParams,
-    buttonActiveStyle:
-      searchParams.has("buttonActiveStyle") || !rawParams.ripple
-        ? rawParams.buttonActiveStyle
-        : "ripple",
-  })
+  return normalizeDesignSystemParams(rawParams)
 }
 
 export function buildPresetUrlUpdate(
@@ -343,9 +320,6 @@ export function useDesignSystemSearchParams(options: Options = {}) {
       )
       const resolvedUpdates = {
         ...normalizedUpdates,
-        ...("buttonActiveStyle" in normalizedUpdates && {
-          ripple: false,
-        }),
       }
 
       const hasDesignSystemUpdate = DESIGN_SYSTEM_KEYS.some(

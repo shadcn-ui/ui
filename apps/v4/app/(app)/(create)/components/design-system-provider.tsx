@@ -27,7 +27,7 @@ const POINTER_CURSOR_CSS = `@layer base {
 const RIPPLE_CONTAINER_CLASS = "base-ripple-container"
 const RIPPLE_BUTTON_SELECTOR = 'button[data-slot="button"]'
 const RIPPLE_ACTIVE_CLASS = "active:not-aria-[haspopup]:!translate-y-0"
-const RIPPLE_BLUR_CLASS = "[&>.base-ripple]:blur-3xl"
+const SOFT_RIPPLE_CLASS = "[&>.base-ripple]:blur-3xl"
 
 function getButtons(node: Node) {
   const buttons = new Set<HTMLButtonElement>()
@@ -108,7 +108,7 @@ export function DesignSystemProvider({
     menuAccent,
     menuColor,
     pointer,
-    buttonActiveStyle,
+    buttonFeedback,
     radius,
   } = searchParams
   const effectiveRadius = style === "lyra" ? "none" : radius
@@ -253,7 +253,7 @@ export function DesignSystemProvider({
   }, [registryTheme, pointer])
 
   React.useEffect(() => {
-    if (buttonActiveStyle === "default") {
+    if (buttonFeedback === "press") {
       return
     }
 
@@ -268,17 +268,15 @@ export function DesignSystemProvider({
       }
 
       button.classList.add(RIPPLE_CONTAINER_CLASS, RIPPLE_ACTIVE_CLASS)
-      if (buttonActiveStyle === "ripple-blur") {
-        button.classList.add(RIPPLE_BLUR_CLASS)
+      if (buttonFeedback === "soft-ripple") {
+        button.classList.add(SOFT_RIPPLE_CLASS)
       }
 
       attachedButtons.set(
         button,
         attachBaseRipple(
           button,
-          buttonActiveStyle === "ripple-blur"
-            ? { sizeOffset: 64 * 5 }
-            : undefined
+          buttonFeedback === "soft-ripple" ? { sizeOffset: 64 * 5 } : undefined
         )
       )
     }
@@ -300,7 +298,7 @@ export function DesignSystemProvider({
 
         detach()
         button.classList.remove(RIPPLE_CONTAINER_CLASS)
-        button.classList.remove(RIPPLE_ACTIVE_CLASS, RIPPLE_BLUR_CLASS)
+        button.classList.remove(RIPPLE_ACTIVE_CLASS, SOFT_RIPPLE_CLASS)
         attachedButtons.delete(button)
       })
     }
@@ -320,11 +318,11 @@ export function DesignSystemProvider({
       for (const [button, detach] of attachedButtons) {
         detach()
         button.classList.remove(RIPPLE_CONTAINER_CLASS)
-        button.classList.remove(RIPPLE_ACTIVE_CLASS, RIPPLE_BLUR_CLASS)
+        button.classList.remove(RIPPLE_ACTIVE_CLASS, SOFT_RIPPLE_CLASS)
       }
       attachedButtons.clear()
     }
-  }, [buttonActiveStyle])
+  }, [buttonFeedback])
 
   // Handle menu color inversion by adding/removing dark class to elements with cn-menu-target.
   // useLayoutEffect to apply classes synchronously before paint, avoiding flash.

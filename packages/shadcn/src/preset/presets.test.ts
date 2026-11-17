@@ -65,22 +65,20 @@ describe("createPresetUrl", () => {
     const url = resolveCreateUrl({
       rtl: true,
       pointer: true,
-      ripple: true,
+      buttonFeedback: "ripple",
       template: "next",
     })
     const parsed = new URL(url)
     expect(parsed.searchParams.get("rtl")).toBe("true")
     expect(parsed.searchParams.get("pointer")).toBe("true")
-    expect(parsed.searchParams.get("ripple")).toBe("true")
+    expect(parsed.searchParams.get("buttonFeedback")).toBe("ripple")
     expect(parsed.searchParams.get("template")).toBe("next")
   })
 
-  it("includes the Button active style as a URL parameter", () => {
-    const url = resolveCreateUrl({ buttonActiveStyle: "ripple-blur" })
+  it("includes Button feedback as a URL parameter", () => {
+    const url = resolveCreateUrl({ buttonFeedback: "soft-ripple" })
 
-    expect(new URL(url).searchParams.get("buttonActiveStyle")).toBe(
-      "ripple-blur"
-    )
+    expect(new URL(url).searchParams.get("buttonFeedback")).toBe("soft-ripple")
   })
 })
 

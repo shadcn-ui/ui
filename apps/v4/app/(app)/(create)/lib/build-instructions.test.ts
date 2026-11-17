@@ -8,21 +8,21 @@ describe("buildInstructions Base Ripple setup", () => {
   it("includes the dependency, stylesheet, and persisted config when enabled", () => {
     const instructions = buildInstructions({
       ...DEFAULT_CONFIG,
-      buttonRipple: true,
+      buttonFeedback: "ripple",
     })
 
     expect(instructions).toContain("- @base-ripple/react")
     expect(instructions).toContain('@import "@base-ripple/react/styles.css";')
-    expect(instructions).toContain('"buttonRipple": true')
+    expect(instructions).toContain('"buttonFeedback": "ripple"')
   })
 
   it("leaves the standard setup unchanged when disabled", () => {
     const instructions = buildInstructions({
       ...DEFAULT_CONFIG,
-      buttonRipple: false,
+      buttonFeedback: "press",
     })
 
     expect(instructions).not.toContain("@base-ripple/react")
-    expect(instructions).toContain('"buttonRipple": false')
+    expect(instructions).toContain('"buttonFeedback": "press"')
   })
 })

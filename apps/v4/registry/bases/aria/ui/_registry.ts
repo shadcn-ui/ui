@@ -165,7 +165,7 @@ export const ui: Registry["items"] = [
     },
   },
   {
-    name: "button-ripple-blur",
+    name: "button-soft-ripple",
     type: "registry:ui",
     title: "Button with Blurred Base Ripple",
     description:
@@ -176,7 +176,7 @@ export const ui: Registry["items"] = [
     },
     files: [
       {
-        path: "ui/button-ripple-blur.tsx",
+        path: "ui/button-soft-ripple.tsx",
         type: "registry:ui",
         target: "@ui/button.tsx",
       },

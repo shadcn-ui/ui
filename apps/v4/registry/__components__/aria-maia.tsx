@@ -78,12 +78,12 @@ export const Components: Record<string, any> = {
       ) || "button-ripple"
     return { default: mod.default || mod[exportName] }
   }),
-  "button-ripple-blur": React.lazy(async () => {
-    const mod = await import("@/styles/aria-maia/ui/button-ripple-blur")
+  "button-soft-ripple": React.lazy(async () => {
+    const mod = await import("@/styles/aria-maia/ui/button-soft-ripple")
     const exportName =
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
-      ) || "button-ripple-blur"
+      ) || "button-soft-ripple"
     return { default: mod.default || mod[exportName] }
   }),
   "button-group": React.lazy(async () => {
