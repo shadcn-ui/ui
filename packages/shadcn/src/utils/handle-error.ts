@@ -9,7 +9,26 @@ import { z } from "zod"
 
 import packageJson from "../../package.json"
 
+const packageManagerCommands = new Set(["npm", "pnpm", "yarn", "bun", "deno"])
+
 export function handleError(error: unknown) {
+  const cause = error instanceof Error ? error.cause : undefined
+  if (
+    cause instanceof Error &&
+    "code" in cause &&
+    cause.code === "ENOENT" &&
+    "path" in cause &&
+    typeof cause.path === "string" &&
+    packageManagerCommands.has(cause.path)
+  ) {
+    logger.break()
+    logger.error(
+      `Could not run "${cause.path}". Install the package manager used by this project and make sure it is on your PATH, then retry.`
+    )
+    logger.break()
+    process.exit(1)
+  }
+
   logger.break()
   logger.error(
     `Something went wrong. Please check the error below for more details.`
