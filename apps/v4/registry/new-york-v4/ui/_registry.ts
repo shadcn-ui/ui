@@ -538,8 +538,8 @@ export const ui: Registry["items"] = [
   {
     name: "button-soft-ripple",
     type: "registry:ui",
-    title: "Button with Blurred Base Ripple",
-    description: "The button with a blurred Base Ripple interaction feedback.",
+    title: "Button with Soft Ripple",
+    description: "The button with soft Base Ripple interaction feedback.",
     dependencies: ["@base-ripple/react"],
     css: {
       '@import "@base-ripple/react/styles.css"': {},

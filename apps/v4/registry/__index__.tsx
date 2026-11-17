@@ -703,9 +703,8 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
-      description:
-        "The button with a blurred Base Ripple interaction feedback.",
+      title: "Button with Soft Ripple",
+      description: "The button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -7182,9 +7181,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The Base UI button with a blurred Base Ripple interaction feedback.",
+        "The Base UI button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -8641,9 +8640,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The Radix button with a blurred Base Ripple interaction feedback.",
+        "The Radix button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -10078,9 +10077,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The React Aria button with a blurred Base Ripple interaction feedback.",
+        "The React Aria button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -11501,9 +11500,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The Base UI button with a blurred Base Ripple interaction feedback.",
+        "The Base UI button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -12959,9 +12958,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The Base UI button with a blurred Base Ripple interaction feedback.",
+        "The Base UI button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -14417,9 +14416,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The Base UI button with a blurred Base Ripple interaction feedback.",
+        "The Base UI button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -15875,9 +15874,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The Base UI button with a blurred Base Ripple interaction feedback.",
+        "The Base UI button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -17333,9 +17332,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The Base UI button with a blurred Base Ripple interaction feedback.",
+        "The Base UI button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -18791,9 +18790,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The Base UI button with a blurred Base Ripple interaction feedback.",
+        "The Base UI button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -20249,9 +20248,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The Base UI button with a blurred Base Ripple interaction feedback.",
+        "The Base UI button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -21709,9 +21708,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The React Aria button with a blurred Base Ripple interaction feedback.",
+        "The React Aria button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -23134,9 +23133,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The React Aria button with a blurred Base Ripple interaction feedback.",
+        "The React Aria button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -24559,9 +24558,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The React Aria button with a blurred Base Ripple interaction feedback.",
+        "The React Aria button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -25984,9 +25983,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The React Aria button with a blurred Base Ripple interaction feedback.",
+        "The React Aria button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -27409,9 +27408,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The React Aria button with a blurred Base Ripple interaction feedback.",
+        "The React Aria button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -28834,9 +28833,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The React Aria button with a blurred Base Ripple interaction feedback.",
+        "The React Aria button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -30259,9 +30258,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The React Aria button with a blurred Base Ripple interaction feedback.",
+        "The React Aria button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -31683,9 +31682,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The Radix button with a blurred Base Ripple interaction feedback.",
+        "The Radix button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -33119,9 +33118,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The Radix button with a blurred Base Ripple interaction feedback.",
+        "The Radix button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -34555,9 +34554,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The Radix button with a blurred Base Ripple interaction feedback.",
+        "The Radix button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -35991,9 +35990,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The Radix button with a blurred Base Ripple interaction feedback.",
+        "The Radix button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -37427,9 +37426,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The Radix button with a blurred Base Ripple interaction feedback.",
+        "The Radix button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -38863,9 +38862,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The Radix button with a blurred Base Ripple interaction feedback.",
+        "The Radix button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -40299,9 +40298,9 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-soft-ripple": {
       name: "button-soft-ripple",
-      title: "Button with Blurred Base Ripple",
+      title: "Button with Soft Ripple",
       description:
-        "The Radix button with a blurred Base Ripple interaction feedback.",
+        "The Radix button with soft Base Ripple interaction feedback.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
