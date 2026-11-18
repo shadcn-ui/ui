@@ -233,7 +233,7 @@
   }
 
   .cn-calendar-dropdown-root {
-    @apply has-focus:border-ring border-input has-focus:ring-ring/30 border has-focus:ring-2;
+    @apply has-focus:border-ring border-border has-focus:ring-ring/30 border has-focus:ring-2;
   }
 
   .cn-calendar-caption-label {
@@ -498,7 +498,7 @@
   }
 
   .cn-drawer-popup {
-    @apply bg-popover text-popover-foreground border-popover dark:border-border rounded-xl border text-xs/relaxed [--drawer-bleed-background:transparent] [--drawer-inset:--spacing(2)];
+    @apply bg-popover text-popover-foreground border-transparent dark:border-border rounded-xl border text-xs/relaxed [--drawer-bleed-background:transparent] [--drawer-inset:--spacing(2)];
   }
 
   .cn-drawer-handle {
@@ -1646,7 +1646,7 @@
   }
 
   .cn-questionnaire-shortcut {
-    @apply border-input bg-background/80 text-muted-foreground size-4 translate-y-[--spacing(0.45)] group-has-data-[slot=questionnaire-choice-description]/questionnaire-choice:translate-y-0.5 items-center justify-center rounded-sm border font-mono text-[0.5625rem] font-medium leading-none;
+    @apply border-border bg-background/80 text-muted-foreground size-4 translate-y-[--spacing(0.45)] group-has-data-[slot=questionnaire-choice-description]/questionnaire-choice:translate-y-0.5 items-center justify-center rounded-sm border font-mono text-[0.5625rem] font-medium leading-none;
   }
 
   .cn-questionnaire-input-wrapper {
@@ -1696,7 +1696,7 @@
   }
 
   .cn-code-block-variant-default {
-    @apply border border-input text-foreground dark:bg-input/30 has-[>[data-slot=code-block-content]:focus-visible]:border-ring;
+    @apply border border-border text-foreground dark:bg-input/30 has-[>[data-slot=code-block-content]:focus-visible]:border-ring;
   }
 
   .cn-code-block-variant-destructive {
