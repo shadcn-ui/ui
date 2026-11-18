@@ -1,0 +1,95 @@
+---
+title: October 2026 - Trace, Code Block and AI Elements
+description: Two new components for the steps an agent takes and the code it writes, and AI Elements, patterns for agentic interfaces built from shadcn/ui components.
+date: 2026-10-14
+---
+
+Today, we are releasing two new components, [**Trace**](/docs/components/base/trace) and [**Code Block**](/docs/components/base/code-block), and [**AI Elements**](/docs/ai-elements), a set of patterns for agentic interfaces built from shadcn/ui components.
+
+Trace and Code Block are available for Base UI, React Aria and Radix across all eight styles.
+
+## Trace
+
+`Trace` is a list of lines for the steps an agent takes. We built it by studying hundreds of components from agentic interfaces and distilling what they share into one composition you can reuse.
+
+<ComponentPreview
+  styleName="base-rhea"
+  name="trace-demo"
+  previewClassName="h-auto"
+/>
+
+Reasoning, tool calls, sources, plans and subagent runs all have the same shape: something the agent did, and what happened. In Trace, each one is a line with an icon, a title, and an optional description and status. A line can expand to show more detail, link to a page, or open a dialog or sheet, so every step looks and behaves the same in your interface.
+
+- `running`, `error` and `pending` states, with a shimmer while a step runs.
+- Lines that expand, link out, or open a dialog, sheet, drawer or popover.
+- Nested lines, so a summary expands into steps and a step into its output.
+- Works with the reasoning, tool and source parts from the AI SDK.
+- Keyboard and screen reader support from the trigger that wraps each line.
+
+```bash
+npx shadcn@latest add trace
+```
+
+## Code Block
+
+`CodeBlock` displays code, terminal output, logs and diffs. It has a header with a title and actions, line numbers, wrapping, diff and highlighted lines, and a small size for tool output in a Trace.
+
+<ComponentPreview
+  styleName="base-rhea"
+  name="code-block-demo"
+  previewClassName="h-auto"
+/>
+
+```bash
+npx shadcn@latest add code-block
+```
+
+## Building agentic interfaces
+
+Trace and Code Block join the [components for chat interfaces](/docs/changelog/2026-06-chat-components) we released in June. Together, they cover every part of an agentic interface:
+
+- [Message Scroller](/docs/components/base/message-scroller) holds the thread. It anchors each turn, follows the reply while it streams and loads history without jumping.
+- [Message](/docs/components/base/message) is one turn, with an avatar, a header and a footer for actions.
+- [Bubble](/docs/components/base/bubble) holds what the person sends.
+- [Trace](/docs/components/base/trace) shows the steps the agent takes inside a turn.
+- [Code Block](/docs/components/base/code-block) shows the code, commands and output those steps produce.
+- [Marker](/docs/components/base/marker) adds notes and dividers between turns.
+- [Attachment](/docs/components/base/attachment) shows the files that come with a message.
+- [Questionnaire](/docs/components/base/questionnaire) asks the person to clarify before the agent continues.
+
+## AI Elements
+
+[AI Elements](/docs/ai-elements) are patterns for agentic interfaces built from these components. There is no package to install. Each pattern is a composition you copy into your project, and the code is yours.
+
+<ComponentPreview
+  styleName="base-rhea"
+  name="chat-demo"
+  className="rounded-[34px] sm:rounded-4xl"
+  previewClassName="h-auto theme-blue p-4 min-[480px]:p-8 min-[560px]:p-10 sm:px-10 sm:pt-16 sm:pb-8"
+/>
+
+There are 21 patterns, from [Chat](/docs/ai-elements/base/chat) and [Prompt Input](/docs/ai-elements/base/prompt-input) to [Reasoning](/docs/ai-elements/base/reasoning), [Tool](/docs/ai-elements/base/tool), [Plan](/docs/ai-elements/base/plan) and [Subagent](/docs/ai-elements/base/subagent). Each page shows how to render the pattern from AI SDK message parts.
+
+Every page is also available as Markdown, so you can point your coding agent at it:
+
+```txt title="Prompt" prompt
+Add the Reasoning pattern from https://ui.shadcn.com/docs/ai-elements/base/reasoning.md to my chat.
+```
+
+## Migrating from AI SDK Elements
+
+AI Elements replaces [AI SDK Elements](https://elements.ai-sdk.dev), and we are going to deprecate AI SDK Elements.
+
+You do not need to migrate right away. The components you installed from AI SDK Elements were copied into your project, so they keep working.
+
+When you are ready, each pattern page has a migration prompt. Paste it into your coding agent, and it rebuilds the wrapper in `components/ai-elements` on Trace, Code Block and the other shadcn/ui components. Every export keeps its name and props, so the code that uses it does not change.
+
+See [Migrating from AI SDK Elements](/docs/ai-elements#migrating-from-ai-sdk-elements) for the element that replaces each file, and for the elements we did not rebuild. If you still need one of those, [open an issue](https://github.com/shadcn-ui/ui/issues/new?template=feature_request.yml) and we will help you build it.
+
+<div className="flex flex-wrap gap-2">
+  <Button asChild size="sm">
+    <Link href="/docs/ai-elements" className="mt-6 no-underline!">
+      Read the Docs
+    </Link>
+  </Button>
+</div>

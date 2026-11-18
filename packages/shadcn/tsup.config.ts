@@ -1,8 +1,10 @@
 import { copyFileSync } from "fs"
 import { defineConfig } from "tsup"
 
-export default defineConfig({
-  clean: true,
+export default defineConfig((options) => ({
+  // Wipe dist for production builds, but preserve it during `--watch` so the
+  // `dist/tailwind.css` artifact the app imports never vanishes at cold start.
+  clean: !options.watch,
   dts: true,
   entry: [
     "src/index.ts",
@@ -12,6 +14,7 @@ export default defineConfig({
     "src/utils/index.ts",
     "src/icons/index.ts",
     "src/preset/index.ts",
+    "src/tailwind.css",
   ],
   format: ["esm"],
   sourcemap: false,
@@ -25,4 +28,4 @@ export default defineConfig({
   onSuccess: async () => {
     copyFileSync("src/tailwind.css", "dist/tailwind.css")
   },
-})
+}))

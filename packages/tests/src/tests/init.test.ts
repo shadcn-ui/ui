@@ -41,6 +41,14 @@ describe("shadcn init - next-app", () => {
     expect(await fs.pathExists(path.join(fixturePath, "lib/utils.ts"))).toBe(
       true
     )
+    expect(
+      await fs.readFile(path.join(fixturePath, "lib/utils.ts"), "utf-8")
+    ).toContain('export { cn } from "cn"')
+
+    const packageJson = await fs.readJson(
+      path.join(fixturePath, "package.json")
+    )
+    expect(packageJson.dependencies).toHaveProperty("cn")
 
     const cssPath = path.join(fixturePath, "app/globals.css")
     const cssContent = await fs.readFile(cssPath, "utf-8")
@@ -113,9 +121,7 @@ describe("shadcn init - vite-app", () => {
     expect(alertDialogContent).toContain(
       'import { Button } from "#custom/components/ui/button"'
     )
-    expect(alertDialogContent).toContain(
-      'import { cn } from "#custom/lib/utils"'
-    )
+    expect(alertDialogContent).toContain('import { cn } from "cn"')
   })
 })
 

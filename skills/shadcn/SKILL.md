@@ -1,6 +1,6 @@
 ---
 name: shadcn
-description: Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides project context, component docs, and usage examples. Applies when working with shadcn/ui, component registries, presets, --preset codes, or any project with a components.json file. Also triggers for "shadcn init", "create an app with --preset", or "switch to --preset".
+description: Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI, including chat interfaces. Provides project context, component docs, and usage examples. Applies when working with shadcn/ui, component registries, presets, --preset codes, or any project with a components.json file. Also triggers for "shadcn init", "create an app with --preset", "switch to --preset", and for building a design system or applying a DESIGN.md or brand spec to shadcn/ui.
 user-invocable: false
 allowed-tools: Bash(npx shadcn@latest *), Bash(pnpm dlx shadcn@latest *), Bash(bunx --bun shadcn@latest *)
 ---
@@ -64,7 +64,9 @@ These rules are **always enforced**. Each links to a file with Incorrect/Correct
 - **Use existing components before custom markup.** Check if a component exists before writing a styled `div`.
 - **Callouts use `Alert`.** Don't build custom styled divs.
 - **Empty states use `Empty`.** Don't build custom empty state markup.
-- **Toast via `sonner`.** Use `toast()` from `sonner`.
+- **Toast follows the project base.** Use `toast` from the `toast` component for
+  Base UI projects. Use `toast()` from `sonner` for Radix and React Aria
+  projects.
 - **Use `Separator`** instead of `<hr>` or `<div className="border-t">`.
 - **Use `Skeleton`** for loading placeholders. No custom `animate-pulse` divs.
 - **Use `Badge`** instead of custom styled spans.
@@ -74,6 +76,13 @@ These rules are **always enforced**. Each links to a file with Incorrect/Correct
 - **Icons in `Button` use `data-icon`.** `data-icon="inline-start"` or `data-icon="inline-end"` on the icon.
 - **No sizing classes on icons inside components.** Components handle icon sizing via CSS. No `size-4` or `w-4 h-4`.
 - **Pass icons as objects, not string keys.** `icon={CheckIcon}`, not a string lookup.
+
+### Chat & Messaging → [chat.md](./rules/chat.md)
+
+- **Chat UI composes the chat primitives.** Conversations use `MessageScroller`, rows use `Message`, surfaces use `Bubble`. Never hand-rolled bubble `div`s or a raw scroll container.
+- **`MessageScroller` owns scroll behavior.** Streaming follow, anchoring, and jump-to-latest (`MessageScrollerButton`) are built in. Don't write a `useStickToBottom`/`ResizeObserver` hook.
+- **Attachments use `Attachment`; system notes and dividers use `Marker`.** Not `Item` cards or `Separator` + a label.
+- **Assistant activity uses `Trace`.** Reasoning, tool calls, sources and steps are `TraceLine`s in a `Trace`, one `Trace` per run of message parts. Behavior wraps the line: `TraceCollapsible`, a sheet trigger or a link. Not a hand-rolled `Collapsible` or a `Marker`.
 
 ### CLI
 
@@ -129,13 +138,14 @@ These are the most common patterns that differentiate correct shadcn/ui code. Fo
 | Data display               | `Table`, `Card`, `Badge`, `Avatar`                                                                  |
 | Navigation                 | `Sidebar`, `NavigationMenu`, `Breadcrumb`, `Tabs`, `Pagination`                                     |
 | Overlays                   | `Dialog` (modal), `Sheet` (side panel), `Drawer` (bottom sheet), `AlertDialog` (confirmation)       |
-| Feedback                   | `sonner` (toast), `Alert`, `Progress`, `Skeleton`, `Spinner`                                        |
+| Feedback                   | `toast` (Base UI), `sonner` (Radix/Aria), `Alert`, `Progress`, `Skeleton`, `Spinner`                 |
 | Command palette            | `Command` inside `Dialog`                                                                           |
 | Charts                     | `Chart` (wraps Recharts)                                                                            |
 | Layout                     | `Card`, `Separator`, `Resizable`, `ScrollArea`, `Accordion`, `Collapsible`                          |
 | Empty states               | `Empty`                                                                                             |
 | Menus                      | `DropdownMenu`, `ContextMenu`, `Menubar`                                                            |
 | Tooltips/info              | `Tooltip`, `HoverCard`, `Popover`                                                                   |
+| Chat / conversation UI     | `MessageScroller`, `Message`, `Bubble`, `Attachment`, `Marker`, `Trace`                             |
 
 ## Key Fields
 
@@ -174,7 +184,7 @@ npx shadcn@latest docs button dialog select
 5. **Install or update** — `npx shadcn@latest add`. When updating existing components, use `--dry-run` and `--diff` to preview changes first (see [Updating Components](#updating-components) below).
 6. **Fix imports in third-party components** — After adding components from community registries (e.g. `@bundui`, `@magicui`), check the added non-UI files for hardcoded import paths like `@/components/ui/...`. These won't match the project's actual aliases. Use `npx shadcn@latest info` to get the correct `ui` alias (e.g. `@workspace/ui/components`) and rewrite the imports accordingly. The CLI rewrites imports for its own UI files, but third-party registry components may use default paths that don't match the project.
 7. **Review added components** — After adding a component or block from any registry, **always read the added files and verify they are correct**. Check for missing sub-components (e.g. `SelectItem` without `SelectGroup`), missing imports, incorrect composition, or violations of the [Critical Rules](#critical-rules). Also replace any icon imports with the project's `iconLibrary` from the project context (e.g. if the registry item uses `lucide-react` but the project uses `hugeicons`, swap the imports and icon names accordingly). Fix all issues before moving on.
-8. **Registry must be explicit** — When the user asks to add a block or component, **do not guess the registry**. If no registry is specified (e.g. user says "add a login block" without specifying `@shadcn`, `@tailark`, etc.), ask which registry to use. Never default to a registry on behalf of the user.
+8. **Registry must be explicit** — When the user asks to add a block or component, **do not guess the registry**. If no registry is specified (e.g. user says "add a login block" without specifying `@shadcn`, `@tailark`, `owner/repo`, etc.), ask which registry to use. Never default to a registry on behalf of the user.
 9. **Switching presets** — Ask the user first: **overwrite**, **partial**, **merge**, or **skip**?
    - **Inspect current preset**: `npx shadcn@latest preset resolve`. Use `--json` when you need structured values.
    - **Inspect incoming preset**: `npx shadcn@latest preset decode <code>`. Use `preset url <code>` or `preset open <code>` to share or open the preset builder.
@@ -183,6 +193,17 @@ npx shadcn@latest docs button dialog select
    - **Merge**: `npx shadcn@latest init --preset <code> --force --no-reinstall`, then run `npx shadcn@latest info` to list installed components, then for each installed component use `--dry-run` and `--diff` to [smart merge](#updating-components) it individually.
    - **Skip**: `npx shadcn@latest init --preset <code> --force --no-reinstall`. Only updates config and CSS, leaves components as-is.
    - **Important**: Always run preset commands inside the user's project directory. `apply` only works in an existing project with a `components.json` file. The CLI automatically preserves the current base (`base` vs `radix`) from `components.json`. If you must use a scratch/temp directory (e.g. for `--dry-run` comparisons), pass `--base <current-base>` explicitly — preset codes do not encode the base.
+
+## Design Systems from DESIGN.md
+
+When the user asks for a design system from a `DESIGN.md` (or a brand spec), with or without a preset, follow [design-system.md](./design-system.md) end to end:
+
+1. `init --preset <code> --template <vite|next> --name <app> --no-monorepo -y`. Without a preset code, pick the closest style and pass `--base base --preset <style>`. Then `add --all -y`.
+2. Read the DESIGN.md frontmatter, Do's and Don'ts, and Known Gaps before editing.
+3. Map its tokens onto the shadcn variables in `tailwindCssFile`. Pin the radius scale, shadows, fonts and `type-*` utilities.
+4. Restyle components by editing their `cva` variants. Change control heights together.
+5. Build the design system page per [design-system-page.md](./design-system-page.md): contrast-checked color roles, type specimens, pinned state matrices, edge cases, do/don't pairs, recipes. Check coverage with `scripts/showcase-coverage.mjs`.
+6. Verify in a browser: typecheck, no console errors, loads at the top, no horizontal overflow, dark mode.
 
 ## Updating Components
 
@@ -202,6 +223,11 @@ When the user asks to update a component from upstream while keeping their local
 # Create a new project.
 npx shadcn@latest init --name my-app --preset base-nova
 npx shadcn@latest init --name my-app --preset a2r6bw --template vite
+
+# Create a design system app (then follow design-system.md).
+npx shadcn@latest init --name my-ds --preset b0 --template vite --no-monorepo -y
+npx shadcn@latest init --name my-ds --base base --preset maia --template vite --no-monorepo -y
+npx shadcn@latest add --all -y
 
 # Create a monorepo project.
 npx shadcn@latest init --name my-app --preset base-nova --monorepo
@@ -227,22 +253,28 @@ npx shadcn@latest preset resolve --json
 # Add components.
 npx shadcn@latest add button card dialog
 npx shadcn@latest add @magicui/shimmer-button
+npx shadcn@latest add owner/repo/item
 npx shadcn@latest add --all
 
 # Preview changes before adding/updating.
 npx shadcn@latest add button --dry-run
 npx shadcn@latest add button --diff button.tsx
 npx shadcn@latest add @acme/form --view button.tsx
+npx shadcn@latest add owner/repo/item --dry-run
 
 # Search registries.
 npx shadcn@latest search @shadcn -q "sidebar"
 npx shadcn@latest search @tailark -q "stats"
+npx shadcn@latest search owner/repo -q "login"
+npx shadcn@latest search                          # all configured registries
+npx shadcn@latest search @shadcn -q "menu" -t ui  # filter by item type
 
 # Get component docs and example URLs.
 npx shadcn@latest docs button dialog select
 
 # View registry item details (for items not yet installed).
 npx shadcn@latest view @shadcn/button
+npx shadcn@latest view owner/repo/item
 ```
 
 **Named presets:** `nova`, `vega`, `maia`, `lyra`, `mira`, `luma`
@@ -253,8 +285,12 @@ npx shadcn@latest view @shadcn/button
 
 - [rules/forms.md](./rules/forms.md) — FieldGroup, Field, InputGroup, ToggleGroup, FieldSet, validation states
 - [rules/composition.md](./rules/composition.md) — Groups, overlays, Card, Tabs, Avatar, Alert, Empty, Toast, Separator, Skeleton, Badge, Button loading
+- [rules/chat.md](./rules/chat.md) — MessageScroller, Message, Bubble, Attachment, Marker, Trace; streaming, anchoring, jump-to-latest, assistant activity rows
 - [rules/icons.md](./rules/icons.md) — data-icon, icon sizing, passing icons as objects
 - [rules/styling.md](./rules/styling.md) — Semantic colors, variants, className, spacing, size, truncate, dark mode, cn(), z-index
 - [rules/base-vs-radix.md](./rules/base-vs-radix.md) — asChild vs render, Select, ToggleGroup, Slider, Accordion
 - [cli.md](./cli.md) — Commands, flags, presets, templates
+- [registry.md](./registry.md) — Authoring source registries, `include`, item definitions, dependencies, GitHub registry rules
 - [customization.md](./customization.md) — Theming, CSS variables, extending components
+- [design-system.md](./design-system.md): DESIGN.md (with or without a preset) to a themed app: style picking, token mapping, radius, fonts, type scale, control heights, showcase traps, verification
+- [design-system-page.md](./design-system-page.md): What goes on a design system page and how: foundations, component tiers, pinned state matrices, contrast pairs, edge cases, do/don't, recipes

@@ -39,7 +39,7 @@ export default function ScrollAreaExample() {
 function ScrollAreaVertical() {
   return (
     <Example title="Vertical">
-      <ScrollArea className="mx-auto h-72 w-48 overflow-hidden rounded-md border style-lyra:rounded-none style-maia:rounded-2xl style-luma:rounded-2xl style-sera:rounded-none">
+      <ScrollArea className="mx-auto h-72 w-48 overflow-hidden rounded-md border style-lyra:rounded-none style-maia:rounded-2xl style-luma:rounded-2xl style-sera:rounded-none style-rhea:rounded-2xl">
         <div className="p-4">
           <h4 className="mb-4 text-sm leading-none font-medium">Tags</h4>
           {tags.map((tag) => (
@@ -57,7 +57,7 @@ function ScrollAreaVertical() {
 function ScrollAreaHorizontal() {
   return (
     <Example title="Horizontal">
-      <ScrollArea className="mx-auto w-full max-w-96 overflow-hidden rounded-md border p-4 **:data-[slot=scroll-area-viewport]:rounded-md style-lyra:rounded-none style-lyra:**:data-[slot=scroll-area-viewport]:rounded-none style-maia:rounded-2xl style-luma:rounded-2xl style-sera:rounded-none style-sera:**:data-[slot=scroll-area-viewport]:rounded-none">
+      <ScrollArea className="mx-auto w-full max-w-96 overflow-hidden rounded-md border p-4 **:data-[slot=scroll-area-viewport]:rounded-md style-lyra:rounded-none style-lyra:**:data-[slot=scroll-area-viewport]:rounded-none style-maia:rounded-2xl style-luma:rounded-2xl style-sera:rounded-none style-sera:**:data-[slot=scroll-area-viewport]:rounded-none style-rhea:rounded-2xl">
         <div className="flex gap-4">
           {works.map((artwork) => (
             <figure key={artwork.artist} className="shrink-0">

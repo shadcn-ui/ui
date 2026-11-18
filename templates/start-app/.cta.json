@@ -2,15 +2,17 @@
   "projectName": "start-app",
   "mode": "file-router",
   "typescript": true,
-  "tailwind": true,
   "packageManager": "pnpm",
-  "addOnOptions": {},
   "git": true,
+  "install": true,
+  "intent": false,
+  "includeExamples": false,
+  "tailwind": true,
+  "addOnOptions": {},
+  "projectPreset": "default",
+  "routerOnly": false,
   "version": 1,
-  "framework": "react-cra",
-  "chosenAddOns": [
-    "eslint",
-    "nitro",
-    "start"
-  ]
+  "framework": "react",
+  "bundler": "vite",
+  "chosenAddOns": ["eslint"]
 }

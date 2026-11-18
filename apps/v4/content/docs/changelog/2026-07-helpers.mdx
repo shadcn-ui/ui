@@ -1,0 +1,88 @@
+---
+title: July 2026 - Introducing @shadcn/helpers
+description: Small, focused helpers for developing apps, starting with AI SDK and TanStack AI.
+date: 2026-07-14
+---
+
+We are open sourcing **@shadcn/helpers**, a new package for small, focused
+helpers that make developing apps easier.
+
+Starting with a helper for AI SDK and TanStack AI. It lets you write a
+conversation in code, then run it through the real `useChat` lifecycle without
+a model, API route, network request, or API key.
+
+Your UI receives native
+framework messages and streaming events, so reasoning, tool calls, loading
+states, and message components behave the same way they do in production.
+
+Here is a conversation written with the AI SDK helper:
+
+```ts showLineNumbers
+import { createChat } from "@shadcn/helpers/ai-sdk"
+
+const chat = createChat()
+  .user("What changed in this release?")
+  .assistant("The release adds keyboard shortcuts and faster search.")
+  .user("Can you check the full release notes?")
+  .sleep(500)
+  .assistant(({ writer }) => {
+    writer.stepStart()
+
+    // Reasoning.
+    writer.reasoning("I should read the release notes first.")
+
+    // Tool call.
+    writer
+      .tool("getReleaseNotes", {
+        title: "Reading release notes",
+        input: { version: "latest" },
+      })
+      .sleep(500)
+      .output({
+        highlights: ["Keyboard shortcuts", "Faster search"],
+      })
+
+    // Source.
+    writer.sourceUrl({
+      title: "Release notes",
+      url: "https://example.com/releases",
+    })
+
+    // Response.
+    writer.text("The release adds keyboard shortcuts and faster search.")
+  })
+```
+
+Pass its messages and transport to `useChat`:
+
+```tsx showLineNumbers
+import { useChat } from "@ai-sdk/react"
+
+const initialMessages = chat.get(0)
+const transport = chat.transport()
+
+export function Chat() {
+  const { messages } = useChat({
+    messages: initialMessages,
+    transport,
+  })
+}
+```
+
+The package includes two adapters:
+
+- [`@shadcn/helpers/ai-sdk`](/docs/helpers/ai-sdk) plugs into AI SDK's `useChat`
+  as a transport.
+- [`@shadcn/helpers/tanstack-ai`](/docs/helpers/tanstack-ai) plugs into TanStack
+  AI's `useChat` as a connection and streams real AG-UI events.
+
+Use it to build components, create previews and demos, write documentation, or
+test streaming interfaces with deterministic output and no backend dependency.
+
+<div className="flex flex-wrap gap-2">
+  <Button asChild size="sm">
+    <Link href="/docs/helpers/ai-sdk" className="mt-6 no-underline!">
+      Read the Docs
+    </Link>
+  </Button>
+</div>

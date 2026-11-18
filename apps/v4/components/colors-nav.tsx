@@ -2,9 +2,9 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { cn } from "cn"
 
 import { getColors } from "@/lib/colors"
-import { cn } from "@/lib/utils"
 import { ScrollArea, ScrollBar } from "@/registry/new-york-v4/ui/scroll-area"
 
 export function ColorsNav({

@@ -1,10 +1,10 @@
 import * as React from "react"
+import { cn } from "cn"
 
 import { formatCode } from "@/lib/format-code"
 import { highlightCode } from "@/lib/highlight-code"
 import { readFileFromRoot } from "@/lib/read-file"
 import { getDemoItem, getRegistryItem } from "@/lib/registry"
-import { cn } from "@/lib/utils"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { CopyButton } from "@/components/copy-button"
 import { getIconForLanguageExtension } from "@/components/icons"
@@ -16,7 +16,7 @@ export async function ComponentSource({
   language,
   collapsible = true,
   className,
-  styleName = "new-york-v4",
+  styleName = "base-nova",
   maxLines,
 }: React.ComponentProps<"div"> & {
   name?: string
@@ -108,7 +108,10 @@ function ComponentCode({
         </figcaption>
       )}
       <CopyButton value={code} />
-      <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+      <div
+        data-not-typeset
+        dangerouslySetInnerHTML={{ __html: highlightedCode }}
+      />
     </figure>
   )
 }

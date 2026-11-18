@@ -14,13 +14,23 @@
         "radix-mira",
         "radix-luma",
         "radix-sera",
+        "radix-rhea",
         "base-vega",
         "base-nova",
         "base-maia",
         "base-lyra",
         "base-mira",
         "base-luma",
-        "base-sera"
+        "base-sera",
+        "base-rhea",
+        "aria-vega",
+        "aria-nova",
+        "aria-maia",
+        "aria-lyra",
+        "aria-mira",
+        "aria-luma",
+        "aria-sera",
+        "aria-rhea"
       ]
     },
     "tailwind": {

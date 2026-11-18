@@ -1,4 +1,4 @@
-import type { PresetConfig } from "./preset"
+import type { PresetConfig } from "@shadcn/registry/internal/preset/preset"
 
 export const DEFAULT_PRESETS = {
   nova: {
@@ -101,6 +101,21 @@ export const DEFAULT_PRESETS = {
     iconLibrary: "lucide",
     font: "noto-sans",
     fontHeading: "playfair-display",
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+    rtl: false,
+  },
+  rhea: {
+    title: "Rhea",
+    description: "Lucide / Inter",
+    style: "rhea",
+    baseColor: "neutral",
+    theme: "neutral",
+    chartColor: "neutral",
+    iconLibrary: "lucide",
+    font: "inter",
+    fontHeading: "inherit",
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",

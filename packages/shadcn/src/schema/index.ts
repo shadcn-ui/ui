@@ -1,1 +1,1 @@
-export * from "../registry/schema"
+export * from "@shadcn/registry/schema"

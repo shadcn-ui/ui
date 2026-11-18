@@ -50,6 +50,44 @@ function Foo({ className, ...props }: { className?: string }) {
     `)
   })
 
+  it("adds tailwind classes to cn calls nested in className expressions", async () => {
+    const source = `import * as React from "react"
+import { composeRenderProps, Input as InputPrimitive } from "react-aria-components"
+import { cn } from "@/lib/utils"
+
+function Input({ className, ...props }: React.ComponentProps<typeof InputPrimitive>) {
+  return (
+    <InputPrimitive
+      className={composeRenderProps(className, (className) =>
+        cn("cn-foo existing-class", className)
+      )}
+      {...props}
+    />
+  )
+}
+`
+
+    const result = await applyTransform(source, baseStyleMap)
+
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from \"react\"
+      import { composeRenderProps, Input as InputPrimitive } from \"react-aria-components\"
+      import { cn } from \"@/lib/utils\"
+
+      function Input({ className, ...props }: React.ComponentProps<typeof InputPrimitive>) {
+        return (
+          <InputPrimitive
+            className={composeRenderProps(className, (className) =>
+              cn(\"bg-background gap-4 rounded-xl existing-class\", className)
+            )}
+            {...props}
+          />
+        )
+      }
+      "
+    `)
+  })
+
   it("adds tailwind classes to string literal className", async () => {
     const source = `import * as React from "react"
 
@@ -207,6 +245,30 @@ function Foo({ className, ...props }: { className?: string }) {
       }
       "
     `)
+  })
+
+  it("does not apply base-specific hooks that are absent from the component", async () => {
+    const source = `import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Toggle({ className, ...props }: { className?: string }) {
+  return (
+    <button className={cn("cn-toggle existing-class", className)} {...props} />
+  )
+}
+`
+
+    const styleMap: StyleMap = {
+      "cn-toggle": "rounded-md border",
+      "cn-toggle-aria": "data-selected:bg-muted",
+    }
+
+    const result = await applyTransform(source, styleMap)
+
+    expect(result).toContain(
+      'className={cn("rounded-md border existing-class", className)}'
+    )
+    expect(result).not.toContain("data-selected:bg-muted")
   })
 
   it("skips cn-* classes not in styleMap", async () => {
@@ -599,6 +661,62 @@ function ButtonGroupText({
             slot: "button-group-text",
           },
         })
+      }
+      "
+    `)
+  })
+
+  it("applies styles to cn-* classes inside render prop objects", async () => {
+    const source = `import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function BubbleContent({ className, render, ...props }) {
+  if (render) {
+    const renderProps = {
+      "data-slot": "bubble-content",
+      className: cn("cn-bubble-content w-fit", className),
+      ...props,
+    }
+
+    return render(renderProps)
+  }
+
+  return (
+    <div
+      data-slot="bubble-content"
+      className={cn("cn-bubble-content w-fit", className)}
+      {...props}
+    />
+  )
+}
+`
+
+    const result = await applyTransform(source, {
+      "cn-bubble-content": "rounded-xl border px-3 py-2",
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { cn } from "@/lib/utils"
+
+      function BubbleContent({ className, render, ...props }) {
+        if (render) {
+          const renderProps = {
+            "data-slot": "bubble-content",
+            className: cn("rounded-xl border px-3 py-2 w-fit", className),
+            ...props,
+          }
+
+          return render(renderProps)
+        }
+
+        return (
+          <div
+            data-slot="bubble-content"
+            className={cn("rounded-xl border px-3 py-2 w-fit", className)}
+            {...props}
+          />
+        )
       }
       "
     `)

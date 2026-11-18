@@ -3,8 +3,7 @@ node_modules
 dist
 dist-ssr
 *.local
-count.txt
-.env
+.env*
 .nitro
 .tanstack
 .wrangler
@@ -12,3 +11,6 @@ count.txt
 .vinxi
 __unconfig*
 todos.json
+
+# typescript
+*.tsbuildinfo

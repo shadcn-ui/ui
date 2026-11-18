@@ -161,23 +161,34 @@ Use `@version` to specify the version of the package.
 
 ### registryDependencies
 
-Used for registry dependencies. Can be names, namespaced or URLs.
+Used for registry dependencies. Each entry is an item address.
 
 - For `shadcn/ui` registry items such as `button`, `input`, `select`, etc use the name eg. `['button', 'input', 'select']`.
-- For namespaced registry items such as `@acme` use the name eg. `['@acme/input-form']`.
+- For namespaced registry items, use `@namespace/item-name` eg. `['@acme/input-form']`.
+- For GitHub registry items, use `owner/repo/item-name` eg. `['acme/ui/button']`. For published registries, prefer a tag or full commit SHA eg. `['acme/ui/button#v1.2.0']`.
 - For custom registry items use the URL of the registry item eg. `['https://example.com/r/hello-world.json']`.
+- For local registry item files use a file path eg. `['./hello-world.json']`.
 
 ```json title="registry-item.json" showLineNumbers
 {
   "registryDependencies": [
     "button",
     "@acme/input-form",
-    "https://example.com/r/editor.json"
+    "acme/ui/button#v1.2.0",
+    "https://example.com/r/editor.json",
+    "./editor.json"
   ]
 }
 ```
 
-Note: The CLI will automatically resolve remote registry dependencies.
+Note: Bare names keep their existing behavior. `button` means the built-in
+shadcn `button` item, not an item from the same GitHub repository. For
+same-repository GitHub dependencies, use the full GitHub item address.
+
+Refs are not inherited across dependencies. If a GitHub dependency should be
+reproducible, pin that dependency to its own tag or full commit SHA.
+
+See the [GitHub registry](/docs/registry/github) docs for more information.
 
 ### files
 

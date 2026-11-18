@@ -1,13 +1,13 @@
 import path from "path"
-import { getRegistryItems } from "@/src/registry/api"
-import { configWithDefaults } from "@/src/registry/config"
-import { clearRegistryContext } from "@/src/registry/context"
-import { validateRegistryConfigForItems } from "@/src/registry/validator"
-import { rawConfigSchema } from "@/src/schema"
-import { loadEnvFiles } from "@/src/utils/env-loader"
-import { getConfig } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
+import { loadEnvFiles } from "@shadcn/registry/internal/env-loader"
+import { getConfig } from "@shadcn/registry/internal/get-config"
+import { getRegistryItems } from "@shadcn/registry/internal/registry/api"
+import { configWithDefaults } from "@shadcn/registry/internal/registry/config"
+import { clearRegistryContext } from "@shadcn/registry/internal/registry/context"
+import { validateRegistryConfigForItems } from "@shadcn/registry/internal/registry/validator"
+import { rawConfigSchema } from "@shadcn/registry/schema"
 import { Command } from "commander"
 import fsExtra from "fs-extra"
 import { z } from "zod"
@@ -19,7 +19,7 @@ const viewOptionsSchema = z.object({
 export const view = new Command()
   .name("view")
   .description("view items from the registry")
-  .argument("<items...>", "the item names or URLs to view")
+  .argument("<items...>", "item addresses to view")
   .option(
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",

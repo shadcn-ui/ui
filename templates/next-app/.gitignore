@@ -28,8 +28,11 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# env files
-.env*.local
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
 
 # typescript
 *.tsbuildinfo
