@@ -2,10 +2,7 @@ import path from "path"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { addComponents } from "@shadcn/registry/internal/add-components"
 import { resolveConfigPaths } from "@shadcn/registry/internal/get-config"
-import {
-  iconLibraries,
-  type IconLibraryName,
-} from "@shadcn/registry/internal/icons/libraries"
+import { resolveIconLibrary } from "@shadcn/registry/internal/icons/libraries"
 import { configWithDefaults } from "@shadcn/registry/internal/registry/config"
 import { resolveRegistryTree } from "@shadcn/registry/internal/registry/resolver"
 import { updateCss } from "@shadcn/registry/internal/updaters/update-css"
@@ -147,10 +144,18 @@ export async function fontsourceMonorepoInit(options: TemplateInitOptions) {
     )
   }
 
-  // Install icon library packages in both workspaces.
-  const iconLibrary = resolvedPackagesUiConfig.iconLibrary as IconLibraryName
-  if (iconLibrary && iconLibrary in iconLibraries) {
-    const iconPackages = [...iconLibraries[iconLibrary].packages]
+  // Install the icon library package in both workspaces.
+  const resolvedIconLibrary = resolveIconLibrary(
+    resolvedPackagesUiConfig.iconLibrary
+  )
+  const iconPackages =
+    resolvedIconLibrary.type === "builtin"
+      ? [...resolvedIconLibrary.config.packages]
+      : resolvedIconLibrary.type === "custom"
+        ? [resolvedIconLibrary.packageName]
+        : []
+
+  if (iconPackages.length) {
     await updateDependencies(iconPackages, [], resolvedPackagesUiConfig, {
       silent: true,
     })
