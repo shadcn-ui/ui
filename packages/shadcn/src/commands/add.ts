@@ -177,6 +177,28 @@ export const add = new Command()
 
       let { errors, config } = await preFlightAdd(options)
 
+      // Dry-run mode cannot preview without a project. Bail before init or
+      // project creation would write files.
+      if (
+        isDryRun &&
+        (errors[ERRORS.MISSING_CONFIG] ||
+          errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT])
+      ) {
+        const flag = options.diff
+          ? "--diff"
+          : options.view
+            ? "--view"
+            : "--dry-run"
+        logger.break()
+        logger.error(
+          `${highlighter.info(flag)} requires an initialized project. Run ${highlighter.info(
+            "shadcn init"
+          )} first.`
+        )
+        logger.break()
+        process.exit(1)
+      }
+
       // No components.json file. Prompt the user to run init.
       let initHasRun = false
       if (errors[ERRORS.MISSING_CONFIG]) {
