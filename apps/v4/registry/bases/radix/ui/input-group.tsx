@@ -41,25 +41,153 @@ const inputGroupAddonVariants = cva(
   }
 )
 
+const inputGroupAddonInteractive = [
+  "pointer-events-none",
+  "[&_a]:pointer-events-auto",
+  "[&_button]:pointer-events-auto",
+  "[&_input]:pointer-events-auto",
+  "[&_label]:pointer-events-auto",
+  "[&_select]:pointer-events-auto",
+  "[&_summary]:pointer-events-auto",
+  "[&_textarea]:pointer-events-auto",
+  "[&_[role=button]]:pointer-events-auto",
+  "[&_[role=checkbox]]:pointer-events-auto",
+  "[&_[role=combobox]]:pointer-events-auto",
+  "[&_[role=link]]:pointer-events-auto",
+  "[&_[role=menuitem]]:pointer-events-auto",
+  "[&_[role=radio]]:pointer-events-auto",
+  "[&_[role=switch]]:pointer-events-auto",
+  "[&_[role=tab]]:pointer-events-auto",
+  // Outrank the attribute selectors above so disabled fields stay inert.
+  "[&_button:disabled]:pointer-events-none",
+  "[&_input:disabled]:pointer-events-none",
+  "[&_select:disabled]:pointer-events-none",
+  "[&_textarea:disabled]:pointer-events-none",
+].join(" ")
+
+// Clicking addon chrome focuses the control, same as a <label>, without
+// putting icons, text, or kbd hints in the tab order. Real controls inside
+// the addon keep their own pointer events and keyboard behavior.
+function findInputGroupControl(addon: HTMLElement) {
+  const parent = addon.parentElement
+  if (!parent) {
+    return null
+  }
+
+  const candidates = Array.from(
+    parent.querySelectorAll<HTMLElement>(
+      "[data-slot='input-group-control'], input, textarea, select"
+    )
+  ).filter((element) => {
+    if (addon.contains(element)) {
+      return false
+    }
+
+    if (parent.getAttribute("data-slot") !== "input-group") {
+      return true
+    }
+
+    return element.closest("[data-slot='input-group']") === parent
+  })
+
+  const slotted = candidates.find((element) =>
+    element.matches("[data-slot='input-group-control']")
+  )
+
+  if (
+    slotted &&
+    (slotted.matches("input, textarea, select") ||
+      slotted.isContentEditable ||
+      slotted.tabIndex >= 0)
+  ) {
+    return slotted
+  }
+
+  const nested = slotted?.querySelector<HTMLElement>(
+    "input, textarea, select, [contenteditable='true']"
+  )
+  if (nested) {
+    return nested
+  }
+
+  return (
+    candidates.find((element) => element.matches("input, textarea, select")) ??
+    null
+  )
+}
+
+const useIsomorphicLayoutEffect =
+  typeof window === "undefined" ? React.useEffect : React.useLayoutEffect
+
+function useInputGroupControlId(addonRef: React.RefObject<HTMLElement | null>) {
+  const fallbackId = React.useId()
+  const [controlId, setControlId] = React.useState<string>()
+
+  useIsomorphicLayoutEffect(() => {
+    const addon = addonRef.current
+    if (!addon) {
+      return
+    }
+
+    const control = findInputGroupControl(addon)
+    if (!control) {
+      setControlId((current) => (current === undefined ? current : undefined))
+      return
+    }
+
+    if (!control.id) {
+      control.id = fallbackId
+    }
+
+    const nextId = control.id
+    setControlId((current) => (current === nextId ? current : nextId))
+  })
+
+  return controlId
+}
+
 function InputGroupAddon({
   className,
   align = "inline-start",
+  children,
+  ref,
   ...props
 }: React.ComponentProps<"div"> & VariantProps<typeof inputGroupAddonVariants>) {
+  const rootRef = React.useRef<HTMLDivElement>(null)
+  const controlId = useInputGroupControlId(rootRef)
+  const hasOwnClick = typeof props.onClick === "function"
+
   return (
     <div
       role="group"
       data-slot="input-group-addon"
       data-align={align}
-      className={cn(inputGroupAddonVariants({ align }), className)}
-      onClick={(e) => {
-        if ((e.target as HTMLElement).closest("button")) {
-          return
-        }
-        e.currentTarget.parentElement?.querySelector("input")?.focus()
-      }}
+      className={cn(
+        inputGroupAddonVariants({ align }),
+        "isolate",
+        !hasOwnClick && inputGroupAddonInteractive,
+        className
+      )}
       {...props}
-    />
+      ref={(node) => {
+        rootRef.current = node
+        if (typeof ref === "function") {
+          ref(node)
+        } else if (ref) {
+          ref.current = node
+        }
+      }}
+    >
+      {!hasOwnClick && controlId ? (
+        <label
+          htmlFor={controlId}
+          aria-hidden="true"
+          data-slot="input-group-addon-focus"
+          className="pointer-events-auto absolute inset-0 -z-10 cursor-text"
+        />
+      ) : null}
+      {children}
+    </div>
   )
 }
 

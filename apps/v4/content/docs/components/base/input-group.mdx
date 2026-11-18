@@ -235,7 +235,9 @@ Displays icons, text, buttons, or other content alongside inputs.
 
 <Callout icon={<IconInfoCircle />} title="Focus Navigation">
   For proper focus navigation, the `InputGroupAddon` component should be placed
-  after the input. Set the `align` prop to position the addon.
+  after the input. Set the `align` prop to position the addon. Clicking the
+  addon focuses that control. The addon itself is not a tab stop; keyboard users
+  move to the input or to buttons inside the addon.
 </Callout>
 
 | Prop        | Type                                                             | Default          |
