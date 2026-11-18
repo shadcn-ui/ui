@@ -268,7 +268,14 @@ export async function getWorkspaceConfig(config: Config) {
 
 export async function findPackageRoot(cwd: string, resolvedPath: string) {
   const commonRoot = findCommonRoot(cwd, resolvedPath)
-  const relativePath = path.relative(commonRoot, resolvedPath)
+  if (!commonRoot) {
+    return null
+  }
+
+  const relativePath = path
+    .relative(commonRoot, resolvedPath)
+    .split(path.sep)
+    .join("/")
 
   const packageRoots = await fg.glob("**/package.json", {
     cwd: commonRoot,
@@ -278,10 +285,22 @@ export async function findPackageRoot(cwd: string, resolvedPath: string) {
   })
 
   const matchingPackageRoot = packageRoots
-    .map((pkgPath) => path.dirname(pkgPath))
-    .find((pkgDir) => relativePath.startsWith(pkgDir))
+    .map((pkgPath) => path.posix.dirname(pkgPath))
+    .sort((a, b) => b.length - a.length)
+    .find(
+      (pkgDir) =>
+        pkgDir === "." ||
+        relativePath === pkgDir ||
+        relativePath.startsWith(`${pkgDir}/`)
+    )
 
-  return matchingPackageRoot ? path.join(commonRoot, matchingPackageRoot) : null
+  if (!matchingPackageRoot) {
+    return null
+  }
+
+  return matchingPackageRoot === "."
+    ? commonRoot
+    : path.join(commonRoot, matchingPackageRoot)
 }
 
 function isAliasKey(
@@ -294,12 +313,17 @@ function isAliasKey(
 }
 
 export function findCommonRoot(cwd: string, resolvedPath: string) {
-  const parts1 = cwd.split(path.sep)
-  const parts2 = resolvedPath.split(path.sep)
+  const normalizedCwd = path.normalize(cwd)
+  const normalizedResolvedPath = path.normalize(resolvedPath)
+  const parts1 = normalizedCwd.split(path.sep)
+  const parts2 = normalizedResolvedPath.split(path.sep)
   const commonParts = []
 
   for (let i = 0; i < Math.min(parts1.length, parts2.length); i++) {
-    if (parts1[i] !== parts2[i]) {
+    const isWindows = process.platform === "win32"
+    const part1 = isWindows ? parts1[i].toLowerCase() : parts1[i]
+    const part2 = isWindows ? parts2[i].toLowerCase() : parts2[i]
+    if (part1 !== part2) {
       break
     }
     commonParts.push(parts1[i])
