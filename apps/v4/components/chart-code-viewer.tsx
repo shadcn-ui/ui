@@ -45,7 +45,7 @@ export function ChartCodeViewer({
 
   const content = (
     <div className="flex min-h-0 flex-1 flex-col gap-0">
-      <div className="chart-wrapper hidden theme-container sm:block [&_[data-chart]]:mx-auto [&_[data-chart]]:max-h-[35vh] [&>div]:rounded-none [&>div]:border-0 [&>div]:border-b [&>div]:shadow-none">
+      <div className="chart-wrapper hidden shrink-0 theme-container sm:block [&_[data-chart]]:mx-auto [&_[data-chart]]:max-h-[35vh] [&>div]:rounded-none [&>div]:border-0 [&>div]:border-b [&>div]:shadow-none">
         {children}
       </div>
       <div className="flex min-w-0 flex-1 flex-col overflow-hidden p-4">
