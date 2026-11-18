@@ -2070,6 +2070,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)'><circle cx='12' cy='12' r='7.2'/><circle cx='18.6' cy='12.0' r='3.4'/><circle cx='16.67' cy='16.67' r='3.4'/><circle cx='12.0' cy='18.6' r='3.4'/><circle cx='7.33' cy='16.67' r='3.4'/><circle cx='5.4' cy='12.0' r='3.4'/><circle cx='7.33' cy='7.33' r='3.4'/><circle cx='12.0' cy='5.4' r='3.4'/><circle cx='16.67' cy='7.33' r='3.4'/></svg>"
   },
   {
+    "name": "@mebius",
+    "homepage": "https://www.mebius.design",
+    "url": "https://www.mebius.design/r/{name}.json",
+    "description": "Animated chart cards and forms for React 19 and Tailwind CSS v4, each designed in Figma first. A starter pack of 10 charts and 10 forms is MIT and open to everyone; the other free items need a free account.",
+    "author": "Keitoto Studio",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' fill='none' stroke='var(--foreground)'><circle cx='15' cy='15' r='13.275' stroke-width='3.45'/></svg>"
+  },
+  {
     "name": "@medium-zoom",
     "homepage": "https://medium-zoom.francoischalifour.com",
     "url": "https://medium-zoom.francoischalifour.com/r/{name}.json",
