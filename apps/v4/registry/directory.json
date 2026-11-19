@@ -916,7 +916,7 @@
     "name": "@detent",
     "homepage": "https://detentui.com",
     "url": "https://detentui.com/r/{name}.json",
-    "description": "Components and blocks for products that should feel expensive: considered motion, real states, and source you own.",
+    "description": "React components and blocks for AI apps and dashboards: AI diff review, prompt box, model picker, inline rewrite, forecast and baseline charts, an AI calendar and landing sections. Real states, considered motion, source you own.",
     "author": "Deepak Sharma",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)'><rect x='3.75' y='3' width='5.5' height='18' rx='1.1'/><path d='M11.25 3a9 9 0 0 1 0 18z'/></svg>"
   },
