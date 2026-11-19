@@ -149,6 +149,12 @@ You can back these aliases with either:
 
 The aliases in `components.json` are still required when using the CLI. They tell the CLI which import roots map to `components`, `ui`, `lib`, `hooks`, and `utils`.
 
+The `components` alias is the root for app-level components and custom
+registry items. The `ui` alias is the directory for UI primitives and commonly
+points to a child directory such as `@/components/ui`. The `utils` alias points
+to the shared utilities module, commonly `@/lib/utils`, while `lib` is the
+broader library directory.
+
 <Callout className="mt-6">
   **Important:** If you're using package imports, enable
   `resolvePackageJsonImports` and use `moduleResolution: "bundler"` in your
@@ -229,6 +235,10 @@ For framework-specific setup, see the [package imports guide](/docs/package-impo
 
 Import alias for your utility functions.
 
+The CLI rewrites generated component imports to this alias when they need
+shared utilities such as `cn`. This is usually a specific module, for example
+`@/lib/utils`, instead of the broader `lib` directory.
+
 ```json title="components.json"
 {
   "aliases": {
@@ -240,6 +250,11 @@ Import alias for your utility functions.
 ### aliases.components
 
 Import alias for your components.
+
+The CLI uses this as the root for generated app-level components and registry
+items that are not UI primitives, hooks, or library files. Most default UI
+components are installed with `aliases.ui`, which commonly points to a child
+directory such as `@/components/ui`.
 
 ```json title="components.json"
 {
