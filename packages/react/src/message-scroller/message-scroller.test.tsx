@@ -899,6 +899,469 @@ describe("MessageScroller", () => {
     expect(rendered.state().end).toBe(true)
   })
 
+  it("preserves following-bottom on downward wheel at the bottom", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    await act(async () => {
+      rendered
+        .viewport()
+        .dispatchEvent(new WheelEvent("wheel", { bubbles: true, deltaY: 50 }))
+      await flushAnimationFrames()
+    })
+
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 80 },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(220)
+    expect(rendered.state().end).toBe(false)
+  })
+
+  it("preserves following-bottom on End key at the bottom", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    await act(async () => {
+      rendered
+        .viewport()
+        .dispatchEvent(
+          new KeyboardEvent("keydown", { bubbles: true, key: "End" })
+        )
+      await flushAnimationFrames()
+    })
+
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 80 },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(220)
+    expect(rendered.state().end).toBe(false)
+  })
+
+  it("preserves following-bottom on PageDown key at the bottom", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    await act(async () => {
+      rendered
+        .viewport()
+        .dispatchEvent(
+          new KeyboardEvent("keydown", { bubbles: true, key: "PageDown" })
+        )
+      await flushAnimationFrames()
+    })
+
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 80 },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(220)
+    expect(rendered.state().end).toBe(false)
+  })
+
+  it("preserves following-bottom on ArrowDown key at the bottom", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    await act(async () => {
+      rendered
+        .viewport()
+        .dispatchEvent(
+          new KeyboardEvent("keydown", { bubbles: true, key: "ArrowDown" })
+        )
+      await flushAnimationFrames()
+    })
+
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 80 },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(220)
+    expect(rendered.state().end).toBe(false)
+  })
+
+  it("preserves following-bottom on Space key at the bottom without shift", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    await act(async () => {
+      rendered.viewport().dispatchEvent(
+        new KeyboardEvent("keydown", {
+          bubbles: true,
+          key: " ",
+          shiftKey: false,
+        })
+      )
+      await flushAnimationFrames()
+    })
+
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 80 },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(220)
+    expect(rendered.state().end).toBe(false)
+  })
+
+  it("switches to free-scrolling on upward wheel even at the bottom", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    await act(async () => {
+      rendered
+        .viewport()
+        .dispatchEvent(new WheelEvent("wheel", { bubbles: true, deltaY: -50 }))
+      rendered.viewport().scrollTop = 80
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 80 },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(80)
+    expect(rendered.state().end).toBe(true)
+  })
+
+  it("re-arms following-bottom when scrolling back to the bottom", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    // Scroll away (upward wheel and scroll to top)
+    await act(async () => {
+      rendered
+        .viewport()
+        .dispatchEvent(new WheelEvent("wheel", { bubbles: true, deltaY: -50 }))
+      rendered.viewport().scrollTop = 0
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    // Rerender; stays in free-scrolling at 0
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 80 },
+      ],
+      { autoScroll: true }
+    )
+    expect(rendered.viewport().scrollTop).toBe(0)
+
+    // User scrolls back down to the bottom (total 320, viewport 100 -> 220)
+    await act(async () => {
+      rendered.viewport().scrollTop = 220
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    // Append message-5; should auto-follow to 300
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 80 },
+        { id: "message-5", height: 80 },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(300)
+    expect(rendered.state().end).toBe(false)
+  })
+
+  it("keeps streaming content growth automatically followed after downward wheel at bottom", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(60)
+
+    await act(async () => {
+      rendered
+        .viewport()
+        .dispatchEvent(new WheelEvent("wheel", { bubbles: true, deltaY: 20 }))
+      await flushAnimationFrames()
+    })
+
+    // Simulated streaming: message element grows dynamically, firing ResizeObserver
+    rendered.message("message-2").dataset.testHeight = "120"
+    await triggerResize(rendered.content())
+    expect(rendered.viewport().scrollTop).toBe(100)
+
+    rendered.message("message-2").dataset.testHeight = "160"
+    await triggerResize(rendered.content())
+    expect(rendered.viewport().scrollTop).toBe(140)
+  })
+
+  it("preserves touch scrolling releasing following-bottom", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    await act(async () => {
+      rendered
+        .viewport()
+        .dispatchEvent(new Event("touchmove", { bubbles: true }))
+      rendered.viewport().scrollTop = 60
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 80 },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(60)
+    expect(rendered.state().end).toBe(true)
+  })
+
+  it("preserves scrollbar drag behavior by re-arming follow when dragged back to bottom", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(300)
+    })
+
+    // Drag scrollbar up (fires only scroll event)
+    await act(async () => {
+      rendered.viewport().scrollTop = 40
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(40)
+
+    // Drag scrollbar back to bottom
+    await act(async () => {
+      rendered.viewport().scrollTop = 140
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    // Append new message; should follow
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 80 },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(220)
+    expect(rendered.state().end).toBe(false)
+  })
+
+  it("switches to free-scrolling on Shift+Space at the bottom", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    expect(rendered.viewport().scrollTop).toBe(140)
+
+    await act(async () => {
+      rendered.viewport().dispatchEvent(
+        new KeyboardEvent("keydown", {
+          bubbles: true,
+          key: " ",
+          shiftKey: true,
+        })
+      )
+      rendered.viewport().scrollTop = 70
+      rendered.viewport().dispatchEvent(new Event("scroll", { bubbles: true }))
+      await flushAnimationFrames()
+    })
+
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 80 },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(70)
+    expect(rendered.state().end).toBe(true)
+  })
+
+  it("does not release following-bottom when typing in an input element inside the viewport", async () => {
+    const rendered = await renderTestScroller({
+      autoScroll: true,
+      defaultScrollPosition: "end",
+      messages: [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+      ],
+    })
+
+    const input = document.createElement("input")
+    rendered.message("message-3").appendChild(input)
+
+    await act(async () => {
+      input.dispatchEvent(
+        new KeyboardEvent("keydown", { bubbles: true, key: " " })
+      )
+      input.dispatchEvent(
+        new KeyboardEvent("keydown", { bubbles: true, key: "ArrowDown" })
+      )
+      await flushAnimationFrames()
+    })
+
+    await rendered.rerender(
+      [
+        { id: "message-1", height: 80 },
+        { id: "message-2", height: 80 },
+        { id: "message-3", height: 80 },
+        { id: "message-4", height: 80 },
+      ],
+      { autoScroll: true }
+    )
+
+    expect(rendered.viewport().scrollTop).toBe(220)
+    expect(rendered.state().end).toBe(false)
+  })
+
   it("does not follow appends after user scroll intent without autoScroll", async () => {
     const rendered = await renderTestScroller({
       defaultScrollPosition: "end",
@@ -1643,7 +2106,9 @@ function renderPendingScrollToContainer(tree: React.ReactElement) {
     scroller: container.querySelector("[data-testid=scroller]"),
     viewport: container.querySelector("[data-testid=viewport]"),
     async hydrate() {
-      const consoleError = vi.spyOn(console, "error").mockImplementation(() => {})
+      const consoleError = vi
+        .spyOn(console, "error")
+        .mockImplementation(() => {})
 
       await act(async () => {
         hydrateRoot(container, tree)

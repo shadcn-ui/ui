@@ -26,6 +26,7 @@ import type {
   MessageScrollerProviderProps,
   MessageScrollerRegisterMessage,
   MessageScrollerScrollable,
+  MessageScrollerUserIntent,
 } from "./types"
 import { useMessageScrollerCommands } from "./use-message-scroller-commands"
 import {
@@ -550,8 +551,7 @@ function useMessageScrollerController({
     // How far the reader has scrolled into the reserved spacer zone. When the
     // viewport bottom has not yet reached the content bottom the reader is
     // above the spacer zone entirely, so the spacer must be left untouched.
-    const overlap =
-      viewport.scrollTop + viewport.clientHeight - contentBottom
+    const overlap = viewport.scrollTop + viewport.clientHeight - contentBottom
 
     if (overlap <= 0) {
       return false
@@ -713,18 +713,47 @@ function useMessageScrollerController({
     [schedulePendingScrollToMessageFlush, scheduleVisibilitySync]
   )
 
-  const userScrollIntent = React.useCallback(() => {
-    if (
-      modeRef.current === "following-bottom" ||
-      modeRef.current === "anchored-to-message" ||
-      modeRef.current === "settling-jump"
-    ) {
-      // A deliberate gesture releases auto-follow, turn-anchoring, and an in-flight
-      // programmatic jump so re-pinning (and re-arming) never fights the reader.
-      streamingTurnRef.current = null
-      modeRef.current = "free-scrolling"
-    }
-  }, [])
+  const userScrollIntent = React.useCallback(
+    (intent?: MessageScrollerUserIntent) => {
+      if (
+        intent?.direction === "end" &&
+        autoScrollRef.current &&
+        spacerHeightRef.current === 0 &&
+        modeRef.current !== "anchored-to-message" &&
+        modeRef.current !== "settling-jump"
+      ) {
+        if (modeRef.current === "following-bottom") {
+          return
+        }
+
+        if (viewportRef.current && contentRef.current) {
+          const scrollable = getMessageScrollerScrollable({
+            content: contentRef.current,
+            scrollEdgeThreshold: scrollEdgeThresholdRef.current,
+            spacer: spacerRef.current,
+            viewport: viewportRef.current,
+          })
+
+          if (!scrollable.end) {
+            modeRef.current = "following-bottom"
+            return
+          }
+        }
+      }
+
+      if (
+        modeRef.current === "following-bottom" ||
+        modeRef.current === "anchored-to-message" ||
+        modeRef.current === "settling-jump"
+      ) {
+        // A deliberate gesture releases auto-follow, turn-anchoring, and an in-flight
+        // programmatic jump so re-pinning (and re-arming) never fights the reader.
+        streamingTurnRef.current = null
+        modeRef.current = "free-scrolling"
+      }
+    },
+    []
+  )
 
   const mirrorStateAttributes = React.useCallback(
     () => writeStateAttributes(stateStore.getSnapshot()),
