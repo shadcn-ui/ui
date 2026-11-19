@@ -23,6 +23,10 @@ export async function updateTailwindContent(
     return
   }
 
+  if (!config.resolvedPaths.tailwindConfig) {
+    return
+  }
+
   options = {
     silent: false,
     ...options,
