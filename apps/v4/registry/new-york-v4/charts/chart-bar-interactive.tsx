@@ -19,6 +19,11 @@ import {
 
 export const description = "An interactive bar chart"
 
+function parseDate(date: string) {
+  const [year, month, day] = date.split("-").map(Number)
+  return new Date(year, month - 1, day)
+}
+
 const chartData = [
   { date: "2024-04-01", desktop: 222, mobile: 150 },
   { date: "2024-04-02", desktop: 97, mobile: 180 },
@@ -190,7 +195,7 @@ export function ChartBarInteractive() {
               tickMargin={8}
               minTickGap={32}
               tickFormatter={(value) => {
-                const date = new Date(value)
+                const date = parseDate(value)
                 return date.toLocaleDateString("en-US", {
                   month: "short",
                   day: "numeric",
@@ -203,7 +208,7 @@ export function ChartBarInteractive() {
                   className="w-[150px]"
                   nameKey="views"
                   labelFormatter={(value) => {
-                    return new Date(value).toLocaleDateString("en-US", {
+                    return parseDate(value).toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
                       year: "numeric",
