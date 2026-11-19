@@ -331,6 +331,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='chewypixel-fill' x1='0' y1='3' x2='0' y2='29' gradientUnits='userSpaceOnUse'><stop stop-color='#a78bfa'/><stop offset='1' stop-color='#7c3aed'/></linearGradient><mask id='chewypixel-bite'><rect width='32' height='32' fill='white'/><circle cx='28' cy='4' r='6' fill='black'/></mask></defs><rect x='3' y='3' width='26' height='26' rx='7' fill='url(#chewypixel-fill)' mask='url(#chewypixel-bite)'/><rect x='9' y='11' width='5' height='5' rx='1.5' fill='white' fill-opacity='0.9'/></svg>"
   },
   {
+    "name": "@cloudcn",
+    "homepage": "https://cloudcn.pages.dev",
+    "url": "https://cloudcn.pages.dev/r/{name}.json",
+    "description": "Copy-paste React components with realistic 3D clouds.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' fill='#070a12'/><path fill='#6ea8fe' d='M7 18a4.5 4.5 0 0 1-.9-8.9A6 6 0 0 1 17.6 10 4.25 4.25 0 0 1 17.5 18H7Z'/></svg>"
+  },
+  {
     "name": "@cloudlet",
     "homepage": "https://cloudlet.dev/toaster",
     "url": "https://cloudlet.dev/r/{name}.json",
