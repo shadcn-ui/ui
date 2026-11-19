@@ -2,7 +2,6 @@ import path from "path"
 import { getSupportedFontMarkers } from "@/src/font-markers"
 import {
   findCommonRoot,
-  findPackageRoot,
   getWorkspaceConfig,
   type Config,
 } from "@/src/get-config"
@@ -19,13 +18,13 @@ import {
   workspaceConfigSchema,
 } from "@/src/registry/schema"
 import { spinner } from "@/src/spinner"
-import { getTargetAliasKey, type TargetAliasKey } from "@/src/target-aliases"
 import { updateCss } from "@/src/updaters/update-css"
 import { updateDependencies } from "@/src/updaters/update-dependencies"
 import { updateEnvVars } from "@/src/updaters/update-env-vars"
 import { updateFiles } from "@/src/updaters/update-files"
 import { massageTreeForFonts, updateFonts } from "@/src/updaters/update-fonts"
 import { updateTailwindConfig } from "@/src/updaters/update-tailwind-config"
+import { groupFilesByWorkspaceTarget } from "@/src/workspace-files"
 import { z } from "zod"
 
 export interface AddComponentsOptions {
@@ -222,57 +221,22 @@ async function addWorkspaceComponents(
     silent: true,
   })
 
-  const filesByTarget = new Map<TargetAliasKey, typeof tree.files>()
-  const FILE_TYPE_TO_CONFIG_KEY: Record<string, TargetAliasKey> = {
-    "registry:ui": "ui",
-    "registry:hook": "hooks",
-    "registry:lib": "lib",
-  }
-  const getTargetConfigKeyForFile = (
-    file: z.infer<typeof registryItemFileSchema>
-  ) => {
-    return (
-      getTargetAliasKey(file.target) ??
-      FILE_TYPE_TO_CONFIG_KEY[file.type || "registry:ui"] ??
-      "components"
-    )
-  }
-  const getTargetConfigForKey = (configKey: TargetAliasKey) => {
-    return configKey && workspaceConfig[configKey]
-      ? workspaceConfig[configKey]
-      : config
-  }
+  // 5. Group files by their target config and update files.
+  const fileGroups = await groupFilesByWorkspaceTarget(
+    tree.files ?? [],
+    config,
+    workspaceConfig
+  )
 
-  for (const file of tree.files ?? []) {
-    const targetKey = getTargetConfigKeyForFile(file)
-    if (!filesByTarget.has(targetKey)) {
-      filesByTarget.set(targetKey, [])
-    }
-    filesByTarget.get(targetKey)!.push(file)
-  }
-
-  for (const targetKey of Array.from(filesByTarget.keys())) {
-    const targetFiles = filesByTarget.get(targetKey)!
-    const targetConfig = getTargetConfigForKey(targetKey)
-    const plannedFiles = (tree.files ?? []).filter((file) => {
-      const fileTargetConfig = getTargetConfigForKey(
-        getTargetConfigKeyForFile(file)
-      )
-
-      return (
-        fileTargetConfig.resolvedPaths.cwd === targetConfig.resolvedPaths.cwd
-      )
-    })
-
-    const typeWorkspaceRoot = findCommonRoot(
-      config.resolvedPaths.cwd,
-      targetConfig.resolvedPaths.ui || targetConfig.resolvedPaths.cwd
-    )
-    const packageRoot =
-      (await findPackageRoot(
-        typeWorkspaceRoot,
-        targetConfig.resolvedPaths.cwd
-      )) ?? targetConfig.resolvedPaths.cwd
+  // Process each target config with its appropriate workspace config.
+  for (const group of fileGroups) {
+    const {
+      targetConfig,
+      targetFiles,
+      plannedFiles,
+      workspaceRoot: typeWorkspaceRoot,
+      packageRoot,
+    } = group
 
     const files = await updateFiles(targetFiles, targetConfig, {
       overwrite: options.overwrite,
