@@ -143,6 +143,27 @@ describe("parseStyle", () => {
     `)
   })
 
+  it("ignores :has() selectors — styles are conditional and cannot be inlined", () => {
+    const css = `
+      .style-vega {
+        .cn-card-content {
+          @apply px-6;
+        }
+        .cn-card-content:has(> [data-slot=questionnaire-choices]) {
+          @apply flex flex-col gap-3;
+        }
+      }
+    `
+
+    const result = createStyleMap(css)
+
+    expect(result).toMatchInlineSnapshot(`
+      {
+        "cn-card-content": "px-6",
+      }
+    `)
+  })
+
   it("ignores non-cn- classes", () => {
     const css = `
       .button {
