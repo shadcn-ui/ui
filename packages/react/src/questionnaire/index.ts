@@ -37,6 +37,7 @@ export const Questionnaire = {
 }
 
 export type {
+  QuestionnaireAutoSubmit,
   QuestionnaireChoiceDefinition,
   QuestionnaireInputType,
   QuestionnaireItemDefinition,
