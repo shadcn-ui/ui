@@ -4,6 +4,7 @@ import { defineConfig } from "tsup"
 const CLIENT_UI_ENTRIES = [
   "dist/message-scroller/index.js",
   "dist/questionnaire/index.js",
+  "dist/prompt-input/index.js",
 ]
 
 export default defineConfig((options) => ({
@@ -12,6 +13,7 @@ export default defineConfig((options) => ({
   entry: {
     "message-scroller/index": "src/message-scroller/index.ts",
     "questionnaire/index": "src/questionnaire/index.ts",
+    "prompt-input/index": "src/prompt-input/index.ts",
   },
   format: ["esm"],
   sourcemap: false,

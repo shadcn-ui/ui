@@ -41,6 +41,10 @@
     "./questionnaire": {
       "types": "./dist/questionnaire/index.d.ts",
       "default": "./dist/questionnaire/index.js"
+    },
+    "./prompt-input": {
+      "types": "./dist/prompt-input/index.d.ts",
+      "default": "./dist/prompt-input/index.js"
     }
   },
   "scripts": {
@@ -52,21 +56,35 @@
     "test:browser": "vitest run -c vitest.browser.config.ts"
   },
   "peerDependencies": {
+    "@lexical/react": "0.53.0",
     "@types/react": ">=19",
-    "react": ">=19"
+    "lexical": "0.53.0",
+    "react": ">=19",
+    "react-dom": ">=19"
   },
   "peerDependenciesMeta": {
+    "@lexical/react": {
+      "optional": true
+    },
     "@types/react": {
+      "optional": true
+    },
+    "lexical": {
       "optional": true
     },
     "react": {
       "optional": true
+    },
+    "react-dom": {
+      "optional": true
     }
   },
   "devDependencies": {
+    "@lexical/react": "0.53.0",
     "@types/react-dom": "19.2.2",
     "@vitest/browser": "^3.2.7",
     "jsdom": "^28.1.0",
+    "lexical": "0.53.0",
     "playwright": "^1.61.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
