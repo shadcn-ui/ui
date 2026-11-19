@@ -1615,6 +1615,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='#AFE67F'/><rect x='.75' y='.75' width='30.5' height='30.5' rx='8.25' fill='none' stroke='#79BD3E' stroke-width='1.5'/><g fill='none' stroke='#1D3208' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' transform='translate(4 4)'><path d='M20 18.5011L18.349 7.93407C17.8603 4.80601 15.166 2.5 12 2.5C8.83398 2.5 6.13971 4.80601 5.65098 7.93407L4 18.5011'/><path d='M20 18.5C20 16.8431 16.4183 15.5 12 15.5C7.58172 15.5 4 16.8431 4 18.5C4 20.1569 7.58172 21.5 12 21.5C16.4183 21.5 20 20.1569 20 18.5Z'/><path d='M13 18.5H11'/></g></svg>"
   },
   {
+    "name": "@hyperblur",
+    "homepage": "https://hyperblur.dev",
+    "url": "https://hyperblur.dev/r/{name}.json",
+    "description": "Copy-paste React visual effects, components and page blocks. One shadcn command to install, MCP server for coding agents.",
+    "author": "Hyperblur",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='var(--foreground)'><path d='M18.0 9.0 H33.0 L28.0 23.0 H13.0 Z'/><path d='M13.5 9.0 H16.1 L11.1 23.0 H8.5 Z'/><path d='M10.0 9.0 H11.6 L6.6 23.0 H5.0 Z'/><path d='M7.2 9.0 H8.1 L3.1 23.0 H2.2 Z'/></svg>"
+  },
+  {
     "name": "@iandefined",
     "homepage": "https://ui.iandefined.com",
     "url": "https://ui.iandefined.com/r/{name}.json",
@@ -2070,6 +2078,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)'><circle cx='12' cy='12' r='7.2'/><circle cx='18.6' cy='12.0' r='3.4'/><circle cx='16.67' cy='16.67' r='3.4'/><circle cx='12.0' cy='18.6' r='3.4'/><circle cx='7.33' cy='16.67' r='3.4'/><circle cx='5.4' cy='12.0' r='3.4'/><circle cx='7.33' cy='7.33' r='3.4'/><circle cx='12.0' cy='5.4' r='3.4'/><circle cx='16.67' cy='7.33' r='3.4'/></svg>"
   },
   {
+    "name": "@mebius",
+    "homepage": "https://www.mebius.design",
+    "url": "https://www.mebius.design/r/{name}.json",
+    "description": "Animated chart cards and forms for React 19 and Tailwind CSS v4, each designed in Figma first. A starter pack of 10 charts and 10 forms is MIT and open to everyone; the other free items need a free account.",
+    "author": "Keitoto Studio",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' fill='none' stroke='var(--foreground)'><circle cx='15' cy='15' r='13.275' stroke-width='3.45'/></svg>"
+  },
+  {
     "name": "@medium-zoom",
     "homepage": "https://medium-zoom.francoischalifour.com",
     "url": "https://medium-zoom.francoischalifour.com/r/{name}.json",
@@ -2341,6 +2357,13 @@
     "url": "https://nexus-ui.dev/r/{name}.json",
     "description": "Open-source component library of composable, copy-paste primitives for building AI interfaces (chat, streaming, multimodal)",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'><path fill-rule='evenodd' clip-rule='evenodd' d='M0 12C7.62742 12 12 7.62742 12 0C12 7.62742 16.3726 12 24 12C16.3726 12 12 16.3726 12 24C12 16.3726 7.62742 12 0 12Z' fill='currentColor'/></svg>"
+  },
+  {
+    "name": "@nightmarquee",
+    "homepage": "https://nightmarquee.com",
+    "url": "https://nightmarquee.com/r/{name}.json",
+    "description": "Cinematic Next.js page designs with real footage. Free designs install with no key; paid ones need a NightMarquee plan and a licence key.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><radialGradient id='nm-ember' cx='38%' cy='32%' r='75%'><stop offset='0%' stop-color='#FFD2C2'/><stop offset='50%' stop-color='#FF6B4A'/><stop offset='100%' stop-color='#8E3116'/></radialGradient><radialGradient id='nm-glow' cx='50%' cy='50%' r='50%'><stop offset='0%' stop-color='#FF6B4A' stop-opacity='.62'/><stop offset='100%' stop-color='#FF6B4A' stop-opacity='0'/></radialGradient></defs><rect width='64' height='64' rx='15' fill='#12100E'/><circle cx='32' cy='32' r='30' fill='url(#nm-glow)'/><circle cx='32' cy='32' r='20' fill='url(#nm-ember)'/></svg>"
   },
   {
     "name": "@niko-table",
@@ -2823,6 +2846,13 @@
     "url": "https://www.remocn.dev/r/{name}.json",
     "description": "Production-ready components for Remotion - text animations, backgrounds, transitions, UI blocks, and full scene compositions",
     "logo": "<svg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='100' height='100' rx='14' fill='black'/><path d='M83.9141 45.7661C86.9141 47.4982 86.9141 51.829 83.9141 53.561L31.4141 83.8716C28.4141 85.6036 24.6641 83.4382 24.6641 79.9741L24.6641 19.353C24.6641 15.8889 28.4141 13.7235 31.4141 15.4556L83.9141 45.7661Z' fill='white' stroke='white'/><path d='M68.998 31.3979C68.998 50.3798 68.998 63.307 68.998 67.3979' stroke='black' stroke-width='10'/><path d='M53.0625 16.75C53.0625 48.2803 53.0625 69.7535 53.0625 76.5488' stroke='black' stroke-width='10'/><path d='M37.127 9.88379C37.127 51.1081 37.127 79.1833 37.127 88.0679' stroke='black' stroke-width='10'/><path d='M31.1318 15.8618L43.1074 22.7646' stroke='white' stroke-width='2'/><path d='M63.291 34.439L75.2617 41.3579' stroke='white' stroke-width='2'/><path d='M46.6641 74.4712L59.208 67.2573' stroke='white' stroke-width='2'/><path d='M76.0205 57.5371L82.9848 53.5226' stroke='white' stroke-width='2'/></svg>"
+  },
+  {
+    "name": "@republic",
+    "homepage": "https://www.republicmarketing.co.uk/ui/",
+    "url": "https://www.republicmarketing.co.uk/ui/r/{name}.json",
+    "description": "Free React components with motion: scroll heroes, photo galleries, testimonials and feature blocks with original photography. Built with Tailwind CSS and Motion.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='-1.77 0.45 17 17' fill='var(--foreground)'><path fill-rule='evenodd' d='M12.524 12.561L12.961 17H9.511L9.074 13.021C9.01267 12.469 8.798 12.0243 8.43 11.687C8.07733 11.3343 7.63267 11.158 7.096 11.158H3.968V17H0.495V0.899999H7.28C8.96667 0.899999 10.293 1.36767 11.259 2.303C12.225 3.23833 12.708 4.45733 12.708 5.96C12.708 7.49333 12.0333 8.61267 10.684 9.318C11.7727 10.0693 12.386 11.1503 12.524 12.561ZM3.968 3.775V8.191H7.096C7.84733 8.191 8.41467 7.97633 8.798 7.547C9.18133 7.11767 9.373 6.58867 9.373 5.96C9.373 5.33133 9.18133 4.81 8.798 4.396C8.41467 3.982 7.84733 3.775 7.096 3.775H3.968Z'/></svg>"
   },
   {
     "name": "@rescript-shadcn",
@@ -3760,6 +3790,13 @@
     "url": "https://utilcn.dev/r/{name}.json",
     "description": "Fullstack registry items to start those big features. Utilcn has ChatGPT Apps, file uploading (with progress bars) and downloading, and a way to make your env vars typesafe on the backend.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='32'><path d='M0 0 C10.56 0 21.12 0 32 0 C32 10.56 32 21.12 32 32 C21.44 32 10.88 32 0 32 C0 21.44 0 10.88 0 0 Z ' fill='var(--foreground)' transform='translate(0,0)'/><path d='M0 0 C5.28 0 10.56 0 16 0 C16 0.99 16 1.98 16 3 C10.72 3 5.44 3 0 3 C0 2.01 0 1.02 0 0 Z ' fill='var(--background)' transform='translate(8,20)'/><path d='M0 0 C3.96 0 7.92 0 12 0 C12 0.99 12 1.98 12 3 C8.04 3 4.08 3 0 3 C0 2.01 0 1.02 0 0 Z ' fill='var(--background)' transform='translate(10,16)'/><path d='M0 0 C3.96 0 7.92 0 12 0 C12 0.99 12 1.98 12 3 C8.04 3 4.08 3 0 3 C0 2.01 0 1.02 0 0 Z ' fill='var(--background)' transform='translate(10,12)'/></svg>"
+  },
+  {
+    "name": "@venusui",
+    "homepage": "https://venusui.com",
+    "url": "https://venusui.com/r/{name}.json",
+    "description": "React components, blocks and page templates for shadcn/ui and Tailwind CSS v4, free under the MIT license.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='var(--foreground)'><rect x='1' y='1' width='8' height='8' rx='2'/><rect x='11' y='1' width='8' height='8' rx='2' opacity='.35'/><rect x='1' y='11' width='8' height='8' rx='2' opacity='.35'/><rect x='11' y='11' width='8' height='8' rx='2' opacity='.35'/></svg>"
   },
   {
     "name": "@videojs",
