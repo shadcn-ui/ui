@@ -142,3 +142,30 @@ export function ModeToggle() {
   )
 }
 ```
+
+## Prevent FOUC
+
+Add this script to the `<head>` of your `index.html`. It applies the saved
+theme before React loads, preventing a flash of unstyled content (FOUC).
+
+```html title="index.html"
+<script>
+  function applyTheme() {
+    const root = document.documentElement
+    const theme = localStorage.getItem("vite-ui-theme") || "dark"
+
+    root.classList.remove("light", "dark")
+
+    const resolvedTheme =
+      theme === "system"
+        ? window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light"
+        : theme
+
+    root.classList.add(resolvedTheme)
+  }
+
+  applyTheme()
+</script>
+```
