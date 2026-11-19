@@ -14,6 +14,7 @@ export default function CalendarDemo() {
       onSelect={setDate}
       className="rounded-md border shadow-sm"
       captionLayout="dropdown"
+      animate
     />
   )
 }
