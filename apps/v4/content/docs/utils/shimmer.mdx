@@ -1,6 +1,6 @@
 ---
 title: shimmer
-description: Utilities for adding a shimmer effect to text elements.
+description: Utilities for adding a shimmer effect to text and loading placeholders.
 ---
 
 <ComponentPreview styleName="base-rhea" name="shimmer-demo" />
@@ -52,6 +52,20 @@ The shimmer is built on `currentColor`, so it adapts to the element:
 
 The effect is pure CSS. The text is painted with `background-clip: text`, and the highlight sweeps across it in a seamless loop.
 
+## Skeletons
+
+On an empty element, such as a loading placeholder, the shimmer is painted as a background instead of being clipped to text. The highlight sweeps across the whole element and its width scales with the element, so the same class works for a line of text, an avatar or a card.
+
+<ComponentPreview styleName="base-rhea" name="shimmer-skeleton" />
+
+```tsx
+<div className="shimmer h-4 w-2/3 rounded-md bg-muted" />
+```
+
+The highlight is derived from `currentColor`, so it darkens the placeholder in light mode and lightens it in dark mode. Use `shimmer-color-<color>` to set it explicitly.
+
+The [Skeleton](/docs/components/skeleton) component uses `animate-pulse` by default, which overrides the shimmer animation. Remove `animate-pulse` from your `Skeleton` component before adding `shimmer`.
+
 ## With Marker
 
 The shimmer composes with any component that renders text. A common pattern is a [Marker](/docs/components/marker) showing a live status while the assistant is working:
@@ -90,7 +104,7 @@ Use `shimmer-duration-<number>` to set the duration of one sweep in milliseconds
 
 ## Spread
 
-Use `shimmer-spread-<number>` to set the width of the highlight band using the spacing scale. The default is `calc(3ch + 40px)`: a fixed base plus a `3ch` term that scales with the font size.
+Use `shimmer-spread-<number>` to set the width of the highlight band using the spacing scale. The default is `calc(3ch + 40px)`: a fixed base plus a `3ch` term that scales with the font size. On empty elements, the default band is as wide as the element.
 
 <ComponentPreview styleName="base-rhea" name="shimmer-spread" />
 
