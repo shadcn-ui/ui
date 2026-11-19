@@ -30,7 +30,7 @@ export function deriveAliasFromComponents(
   kind: "ui" | "lib" | "hooks" | "utils",
   libAlias?: string
 ) {
-  const alias = componentsAlias || DEFAULT_COMPONENTS
+  const alias = stripTrailingSlashes(componentsAlias) || DEFAULT_COMPONENTS
 
   if (kind === "ui") {
     return `${alias}/ui`
@@ -39,11 +39,17 @@ export function deriveAliasFromComponents(
   if (kind === "utils") {
     // `utils` follows `lib`, not `components`, so derive or reuse the sibling
     // lib alias before appending `/utils`.
-    const resolvedLib = libAlias || replaceComponentsAliasTail(alias, "lib")
+    const resolvedLib =
+      stripTrailingSlashes(libAlias ?? "") ||
+      replaceComponentsAliasTail(alias, "lib")
     return resolvedLib ? `${resolvedLib}/utils` : DEFAULT_UTILS
   }
 
   return replaceComponentsAliasTail(alias, kind)
+}
+
+function stripTrailingSlashes(alias: string) {
+  return alias.replace(/\/+$/, "")
 }
 
 function replaceComponentsAliasTail(alias: string, kind: "lib" | "hooks") {
