@@ -32,13 +32,23 @@ export async function preFlightAdd(options: z.infer<typeof addOptionsSchema>) {
   // Check for existing components.json file.
   if (!fs.existsSync(path.resolve(options.cwd, "components.json"))) {
     // Check if we're in a monorepo root.
-    if (await isMonorepoRoot(options.cwd)) {
-      const targets = await getMonorepoTargets(options.cwd)
-      if (targets.length > 0) {
-        formatMonorepoMessage("add [component]", targets)
-        process.exit(1)
-      }
-    }
+   if (await isMonorepoRoot(options.cwd)) {
+  const targets = await getMonorepoTargets(options.cwd)
+
+  if (targets.length > 0) {
+    // Auto-detect workspace instead of exiting
+    const target = targets.find((t) => t.hasConfig) || targets[0]
+
+    const detectedPath = path.resolve(options.cwd, target.name)
+
+    logger.info(
+      `Auto-detected workspace: ${highlighter.info(target.name)}`
+    )
+
+    // Override cwd to correct app
+    options.cwd = detectedPath
+  }
+}
 
     errors[ERRORS.MISSING_CONFIG] = true
     return {
