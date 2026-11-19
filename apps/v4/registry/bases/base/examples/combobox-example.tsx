@@ -96,7 +96,7 @@ const frameworks = [
   "Next.js",
   "SvelteKit",
   "Nuxt.js",
-  "Remix",
+  "React Router",
   "Astro",
 ] as const
 
@@ -623,7 +623,7 @@ function ComboboxDisabled() {
   )
 }
 
-const disabledFrameworks = ["Nuxt.js", "Remix"]
+const disabledFrameworks = ["Nuxt.js", "React Router"]
 
 function ComboboxDisabledItems() {
   return (
