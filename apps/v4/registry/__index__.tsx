@@ -989,6 +989,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    trace: {
+      name: "trace",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["collapsible"],
+      files: [
+        {
+          path: "registry/new-york-v4/ui/trace.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
     "dashboard-01": {
       name: "dashboard-01",
       title: "undefined",
