@@ -12,6 +12,8 @@ import {
   getConfig,
   getRawConfig,
   getWorkspaceConfig,
+  isIndexFile,
+  stripFileExtension,
 } from "./get-config"
 
 const tempDirs: string[] = []
@@ -990,5 +992,51 @@ describe("createConfig", () => {
     expect(config1.resolvedPaths).not.toBe(config2.resolvedPaths)
     expect(config1.tailwind).not.toBe(config2.tailwind)
     expect(config1.aliases).not.toBe(config2.aliases)
+  })
+})
+
+describe("stripFileExtension", () => {
+  it("strips the extension of a file path", () => {
+    expect(
+      stripFileExtension("/repo/packages/ui/src/components/button.tsx")
+    ).toBe("/repo/packages/ui/src/components/button")
+    expect(
+      stripFileExtension(
+        "C:\\2.MY_APP\\packages\\ui\\src\\components\\button.tsx",
+        path.win32
+      )
+    ).toBe("C:\\2.MY_APP\\packages\\ui\\src\\components\\button")
+  })
+
+  it("keeps a directory path with a dotted ancestor", () => {
+    expect(
+      stripFileExtension("/repo/2.MY_APP/packages/ui/src/components")
+    ).toBe("/repo/2.MY_APP/packages/ui/src/components")
+    expect(
+      stripFileExtension(
+        "C:\\2.MY_APP\\packages\\ui\\src\\components",
+        path.win32
+      )
+    ).toBe("C:\\2.MY_APP\\packages\\ui\\src\\components")
+  })
+})
+
+describe("isIndexFile", () => {
+  it("detects an index file", () => {
+    expect(isIndexFile("/repo/packages/ui/src/hooks/index.ts")).toBe(true)
+    expect(
+      isIndexFile(
+        "C:\\2.MY_APP\\packages\\ui\\src\\hooks\\index.ts",
+        path.win32
+      )
+    ).toBe(true)
+  })
+
+  it("rejects other paths", () => {
+    expect(isIndexFile("/repo/packages/ui/src/components/button.tsx")).toBe(
+      false
+    )
+    expect(isIndexFile("/repo/packages/ui/src/components")).toBe(false)
+    expect(isIndexFile("/repo/packages/ui/src/index-foo")).toBe(false)
   })
 })
