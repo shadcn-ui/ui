@@ -147,6 +147,7 @@ const shards: Record<
       "trace-example",
       "code-block-example",
       "message-example",
+      "compose-class-name",
       "utils",
       "example",
       "preview",
