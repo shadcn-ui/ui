@@ -17,7 +17,8 @@
     "directory": "packages/shadcn"
   },
   "files": [
-    "dist"
+    "dist",
+    "skills"
   ],
   "keywords": [
     "components",
@@ -70,7 +71,7 @@
     "dev": "tsup --watch",
     "build": "tsup",
     "typecheck": "tsc --noEmit",
-    "clean": "rimraf dist && rimraf components",
+    "clean": "rimraf dist && rimraf components && rimraf skills",
     "start:dev": "cross-env REGISTRY_URL=http://localhost:4000/r SHADCN_TEMPLATE_DIR=../../templates node dist/index.js",
     "start:prod": "cross-env REGISTRY_URL=https://ui.shadcn.com/r node dist/index.js",
     "start": "node dist/index.js",

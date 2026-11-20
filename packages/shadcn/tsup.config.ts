@@ -1,4 +1,6 @@
-import { copyFileSync } from "fs"
+import { copyFileSync, cpSync, existsSync, rmSync } from "fs"
+import path from "path"
+import { fileURLToPath } from "url"
 import { defineConfig } from "tsup"
 
 export default defineConfig((options) => ({
@@ -27,5 +29,18 @@ export default defineConfig((options) => ({
   noExternal: ["@antfu/ni", "tinyexec"],
   onSuccess: async () => {
     copyFileSync("src/tailwind.css", "dist/tailwind.css")
+
+    const packageDir = path.dirname(fileURLToPath(import.meta.url))
+    const rootSkillsDir = path.resolve(packageDir, "../../skills")
+    const targetSkillsDir = path.resolve(packageDir, "skills")
+
+    rmSync(targetSkillsDir, { recursive: true, force: true })
+
+    for (const skill of ["shadcn", "migrate-radix-to-base"]) {
+      const src = path.join(rootSkillsDir, skill)
+      if (existsSync(src)) {
+        cpSync(src, path.join(targetSkillsDir, skill), { recursive: true })
+      }
+    }
   },
 }))
