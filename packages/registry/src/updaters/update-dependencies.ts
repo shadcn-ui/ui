@@ -15,6 +15,26 @@ import prompts from "prompts"
 // time, so skip both.
 const NPM_FLAGS = ["--no-audit", "--no-fund"]
 
+/**
+ * npm 12 rejects `allow-scripts` when it arrives as a command-line-level
+ * setting in a project-scoped install (EALLOWSCRIPTS), even if the project
+ * already allows the scripts in package.json or .npmrc. An older npm or npx
+ * that launches the CLI can forward an `.npmrc` `allow-scripts` entry to child
+ * processes as `npm_config_allow_scripts`, which makes every `npm install` we
+ * run fail (#12635). Drop it so npm reads the project config instead.
+ */
+export function getNpmEnv(env: NodeJS.ProcessEnv = process.env) {
+  return Object.fromEntries(
+    Object.entries(env).filter(
+      ([key]) => !/^npm_config_allow[-_]scripts$/i.test(key)
+    )
+  )
+}
+
+function npmOptions(cwd: string) {
+  return { cwd, env: getNpmEnv(), extendEnv: false }
+}
+
 export async function updateDependencies(
   dependencies: RegistryItem["dependencies"],
   devDependencies: RegistryItem["devDependencies"],
@@ -127,9 +147,11 @@ export async function removeDependencies(cwd: string, dependencies: string[]) {
 
   const packageManager = await getPackageManager(cwd)
   if (packageManager === "npm") {
-    await execa("npm", ["uninstall", ...NPM_FLAGS, "--", ...dependencies], {
-      cwd,
-    })
+    await execa(
+      "npm",
+      ["uninstall", ...NPM_FLAGS, "--", ...dependencies],
+      npmOptions(cwd)
+    )
     return
   }
 
@@ -350,7 +372,7 @@ async function installWithNpm(
         "--",
         ...dependencies,
       ],
-      { cwd }
+      npmOptions(cwd)
     )
   }
 
@@ -365,7 +387,7 @@ async function installWithNpm(
         "--",
         ...devDependencies,
       ],
-      { cwd }
+      npmOptions(cwd)
     )
   }
 }

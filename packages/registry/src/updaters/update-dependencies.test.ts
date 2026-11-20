@@ -6,6 +6,7 @@ import { afterEach, describe, expect, it, vi } from "vitest"
 
 import {
   assertSafeDependencies,
+  getNpmEnv,
   installDependencies,
   removeDependencies,
   updateDependencies,
@@ -233,14 +234,16 @@ describe("updateDependencies", () => {
         expect(prompts).not.toHaveBeenCalled()
       }
 
-      expect(execa).toHaveBeenCalledWith(expectedPackageManager, expectedArgs, {
-        cwd: config?.resolvedPaths.cwd,
-      })
+      expect(execa).toHaveBeenCalledWith(
+        expectedPackageManager,
+        expectedArgs,
+        expect.objectContaining({ cwd: config?.resolvedPaths.cwd })
+      )
 
       expect(execa).toHaveBeenCalledWith(
         expectedPackageManager,
         expectedDevArgs,
-        { cwd: config?.resolvedPaths.cwd }
+        expect.objectContaining({ cwd: config?.resolvedPaths.cwd })
       )
     }
   )
@@ -353,6 +356,15 @@ describe("assertSafeDependencies", () => {
   })
 })
 
+function getLastExecaOptions() {
+  const call = vi.mocked(execa).mock.calls.at(-1) as unknown as [
+    string,
+    string[],
+    { env: Record<string, string>; extendEnv: boolean },
+  ]
+  return call[2]
+}
+
 describe("dependency commands", () => {
   afterEach(() => {
     vi.restoreAllMocks()
@@ -386,7 +398,57 @@ describe("dependency commands", () => {
     expect(execa).toHaveBeenCalledWith(
       "npm",
       ["uninstall", "--no-audit", "--no-fund", "--", "react-day-picker"],
-      { cwd }
+      expect.objectContaining({ cwd })
     )
+  })
+
+  describe("npm allow-scripts environment (#12635)", () => {
+    afterEach(() => {
+      vi.unstubAllEnvs()
+    })
+
+    it("does not forward npm_config_allow_scripts to npm install", async () => {
+      vi.stubEnv("npm_config_allow_scripts", "recharts,esbuild")
+      vi.stubEnv("NPM_CONFIG_ALLOW_SCRIPTS", "recharts,esbuild")
+      vi.stubEnv("npm_config_registry", "https://registry.example.com/")
+
+      await installDependencies(getFixturesDir("project-npm"), ["recharts"])
+
+      const options = getLastExecaOptions()
+      expect(options.extendEnv).toBe(false)
+      expect(options.env).not.toHaveProperty("npm_config_allow_scripts")
+      expect(options.env).not.toHaveProperty("NPM_CONFIG_ALLOW_SCRIPTS")
+      expect(options.env.npm_config_registry).toBe(
+        "https://registry.example.com/"
+      )
+    })
+
+    it("does not forward npm_config_allow_scripts to npm uninstall", async () => {
+      vi.stubEnv("npm_config_allow_scripts", "recharts")
+
+      await removeDependencies(getFixturesDir("project-npm-react19"), [
+        "react-day-picker",
+      ])
+
+      const options = getLastExecaOptions()
+      expect(options.env).not.toHaveProperty("npm_config_allow_scripts")
+    })
+  })
+
+  describe("getNpmEnv", () => {
+    it("removes allow-scripts settings and keeps everything else", () => {
+      expect(
+        getNpmEnv({
+          PATH: "/usr/bin",
+          npm_config_allow_scripts: "a",
+          "npm_config_allow-scripts": "b",
+          NPM_CONFIG_ALLOW_SCRIPTS: "c",
+          npm_config_registry: "https://registry.example.com/",
+        })
+      ).toEqual({
+        PATH: "/usr/bin",
+        npm_config_registry: "https://registry.example.com/",
+      })
+    })
   })
 })
