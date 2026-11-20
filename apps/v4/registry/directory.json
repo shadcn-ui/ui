@@ -1821,7 +1821,7 @@
     "name": "@keyframery",
     "homepage": "https://keyframery.com",
     "url": "https://keyframery.com/r/{name}.json",
-    "description": "An open-source motion layer for shadcn/ui. One <Cuts /> line animates your dialogs, sheets, tabs and toasts; four helpers animate lists, numbers, skeletons and cards.",
+    "description": "The animated component library for Vercel's UI SDK: React components with motion in plain CSS, plus theme presets and landing page templates.",
     "author": "Briyan Hingrajiya",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><polygon points='9.3,11.7 20.3,22.7 14.8,28.2 3.8,17.2' fill='var(--foreground)' stroke='var(--foreground)' stroke-width='1.3' stroke-linejoin='round'/><polygon points='17.2,3.8 28.2,14.8 22.7,20.3 11.7,9.3' fill='#2447f5' stroke='#2447f5' stroke-width='1.3' stroke-linejoin='round'/></svg>"
   },
