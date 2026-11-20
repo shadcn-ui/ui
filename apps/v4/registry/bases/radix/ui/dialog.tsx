@@ -54,31 +54,32 @@ function DialogContent({
 }) {
   return (
     <DialogPortal>
-      <DialogOverlay />
-      <DialogPrimitive.Content
-        data-slot="dialog-content"
-        className={cn(
-          "cn-dialog-content fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 outline-none",
-          className
-        )}
-        {...props}
-      >
-        {children}
-        {showCloseButton && (
-          <DialogPrimitive.Close data-slot="dialog-close" asChild>
-            <Button variant="ghost" className="cn-dialog-close" size="icon-sm">
-              <IconPlaceholder
-                lucide="XIcon"
-                tabler="IconX"
-                hugeicons="Cancel01Icon"
-                phosphor="XIcon"
-                remixicon="RiCloseLine"
-              />
-              <span className="sr-only">Close</span>
-            </Button>
-          </DialogPrimitive.Close>
-        )}
-      </DialogPrimitive.Content>
+      <DialogOverlay>
+        <DialogPrimitive.Content
+          data-slot="dialog-content"
+          className={cn(
+            "cn-dialog-content fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 outline-none",
+            className
+          )}
+          {...props}
+        >
+          {children}
+          {showCloseButton && (
+            <DialogPrimitive.Close data-slot="dialog-close" asChild>
+              <Button variant="ghost" className="cn-dialog-close" size="icon-sm">
+                <IconPlaceholder
+                  lucide="XIcon"
+                  tabler="IconX"
+                  hugeicons="Cancel01Icon"
+                  phosphor="XIcon"
+                  remixicon="RiCloseLine"
+                />
+                <span className="sr-only">Close</span>
+              </Button>
+            </DialogPrimitive.Close>
+          )}
+        </DialogPrimitive.Content>
+      </DialogOverlay>
     </DialogPortal>
   )
 }
