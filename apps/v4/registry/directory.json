@@ -2224,6 +2224,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)' width='24' height='24'><rect x='3' y='3' width='8' height='8'/><rect x='13' y='3' width='8' height='8' opacity='.4'/><rect x='3' y='13' width='8' height='8' opacity='.4'/><rect x='13' y='13' width='8' height='8'/></svg>"
   },
   {
+    "name": "@mpkcn",
+    "homepage": "https://blhasn-sehli.github.io/mpkcn",
+    "url": "https://blhasn-sehli.github.io/mpkcn/r/shadcn/{name}.json",
+    "description": "Terminal-style React components for Tailwind 4: boot screens, command palettes, terminal windows, file explorers and tmux bars, with a dark and light theme.",
+    "author": "Bellhassen Sehli",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='var(--foreground)' stroke-width='2.6' stroke-linecap='square'><path d='M7 10l6 6-6 6'/><path d='M15 22h10'/></svg>"
+  },
+  {
     "name": "@mui-treasury",
     "homepage": "https://www.mui-treasury.com",
     "url": "https://mui-treasury.com/r/{name}.json",
