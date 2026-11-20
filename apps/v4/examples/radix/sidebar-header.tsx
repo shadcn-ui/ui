@@ -1,11 +1,13 @@
 "use client"
 
+import { ChevronDownIcon } from "lucide-react"
+
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/examples/radix/ui/dropdown-menu"
+} from "@/styles/radix-nova/ui/dropdown-menu"
 import {
   Sidebar,
   SidebarHeader,
@@ -15,8 +17,7 @@ import {
   SidebarMenuItem,
   SidebarProvider,
   SidebarTrigger,
-} from "@/examples/radix/ui/sidebar"
-import { ChevronDownIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/sidebar"
 
 export default function AppSidebar() {
   return (

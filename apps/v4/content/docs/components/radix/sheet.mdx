@@ -79,15 +79,27 @@ import {
 </Sheet>
 ```
 
-## Examples
+## Composition
 
-### Side
+Use the following composition to build a `Sheet`:
+
+```text
+Sheet
+├── SheetTrigger
+└── SheetContent
+    ├── SheetHeader
+    │   ├── SheetTitle
+    │   └── SheetDescription
+    └── SheetFooter
+```
+
+## Side
 
 Use the `side` prop on `SheetContent` to set the edge of the screen where the sheet appears. Values are `top`, `right`, `bottom`, or `left`.
 
 <ComponentPreview styleName="radix-nova" name="sheet-side" />
 
-### No Close Button
+## No Close Button
 
 Use `showCloseButton={false}` on `SheetContent` to hide the close button.
 

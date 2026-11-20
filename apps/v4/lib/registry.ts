@@ -1,15 +1,20 @@
 import { promises as fs } from "fs"
 import path from "path"
+import { getComponent as getExamplesComponent } from "@/examples/__components__"
 import { ExamplesIndex } from "@/examples/__index__"
 import { LRUCache } from "lru-cache"
-import { registryItemSchema, type registryItemFileSchema } from "shadcn/schema"
-import { type z } from "zod"
+import {
+  registryItemSchema,
+  type RegistryItem,
+  type RegistryItemFile,
+} from "shadcn/schema"
 
+import { readFileFromRoot } from "@/lib/read-file"
+import { getComponent as getStylesComponent } from "@/registry/__components__"
 import { Index as StylesIndex } from "@/registry/__index__"
 import { BASES } from "@/registry/bases"
+import { getComponent as getBasesComponent } from "@/registry/bases/__components__"
 import { Index as BasesIndex } from "@/registry/bases/__index__"
-
-const INDEXED_STYLES = ["new-york-v4"]
 
 // LRU cache for cross-request caching of registry items.
 // File reads are I/O-bound, so caching improves dev server performance.
@@ -28,23 +33,67 @@ function getBaseForStyle(styleName: string) {
   return null
 }
 
-export function getDemoComponent(name: string, styleName: string) {
+function getDemoIndexKey(styleName: string) {
+  if (ExamplesIndex[styleName]) {
+    return styleName
+  }
+
   const base = getBaseForStyle(styleName)
-  if (!base) return undefined
-  return ExamplesIndex[base]?.[name]?.component
+  if (base && ExamplesIndex[base]) {
+    return base
+  }
+
+  return styleName
+}
+
+function getBaseIndex(styleName: string) {
+  const base = getBaseForStyle(styleName)
+  return base ? BasesIndex[base] : null
+}
+
+function getStyleIndex(styleName: string) {
+  return StylesIndex[styleName] ?? null
+}
+
+function getMergedIndexForStyle(styleName: string) {
+  const styleIndex = getStyleIndex(styleName)
+  const baseIndex = getBaseIndex(styleName)
+
+  if (styleIndex && baseIndex) {
+    return { ...baseIndex, ...styleIndex }
+  }
+
+  return styleIndex ?? baseIndex
+}
+
+function getRegistryEntry(name: string, styleName: string) {
+  return getStyleIndex(styleName)?.[name] ?? getBaseIndex(styleName)?.[name]
+}
+
+// Lazy components live in per-style __components__ shards (separate from the
+// metadata indexes) so consumers only pull the requested style's dynamic
+// imports into their module graph. Lookups mirror getRegistryEntry.
+function getRegistryComponentEntry(name: string, styleName: string) {
+  const base = getBaseForStyle(styleName)
+  return (
+    getStylesComponent(styleName, name) ??
+    (base ? getBasesComponent(base, name) : undefined)
+  )
+}
+
+export function getDemoComponent(name: string, styleName: string) {
+  const key = getDemoIndexKey(styleName)
+  return getExamplesComponent(key, name)
 }
 
 export async function getDemoItem(name: string, styleName: string) {
-  const base = getBaseForStyle(styleName)
-  if (!base) return null
-
-  const demo = ExamplesIndex[base]?.[name]
+  const key = getDemoIndexKey(styleName)
+  const demo = ExamplesIndex[key]?.[name]
   if (!demo) {
     return null
   }
 
-  const filePath = path.join(process.cwd(), demo.filePath)
-  const content = await fs.readFile(filePath, "utf-8")
+  const content = await readFileFromRoot(demo.filePath)
 
   return {
     name: demo.name,
@@ -59,35 +108,20 @@ export async function getDemoItem(name: string, styleName: string) {
   }
 }
 
-function getIndexForStyle(styleName: string) {
-  if (INDEXED_STYLES.includes(styleName)) {
-    return { index: StylesIndex, key: styleName }
-  }
-
-  const base = getBaseForStyle(styleName)
-  if (base) {
-    return { index: BasesIndex, key: base }
-  }
-
-  return { index: StylesIndex, key: styleName }
-}
-
 export function getRegistryComponent(name: string, styleName: string) {
   const demoComponent = getDemoComponent(name, styleName)
   if (demoComponent) {
     return demoComponent
   }
 
-  const { index, key } = getIndexForStyle(styleName)
-  return index[key]?.[name]?.component
+  return getRegistryComponentEntry(name, styleName)
 }
 
 export async function getRegistryItems(
   styleName: string,
-  filter?: (item: z.infer<typeof registryItemSchema>) => boolean
+  filter?: (item: RegistryItem) => boolean
 ) {
-  const { index, key } = getIndexForStyle(styleName)
-  const styleIndex = index[key]
+  const styleIndex = getMergedIndexForStyle(styleName)
 
   if (!styleIndex) {
     return []
@@ -113,22 +147,24 @@ export async function getRegistryItem(name: string, styleName: string) {
     return registryCache.get(cacheKey)
   }
 
-  const { index, key } = getIndexForStyle(styleName)
-  const item = index[key]?.[name]
+  const item = getRegistryEntry(name, styleName)
 
   if (!item) {
     registryCache.set(cacheKey, null)
     return null
   }
 
+  const normalizedItem = {
+    ...item,
+    files: item.files.map((file: unknown) =>
+      typeof file === "string" ? { path: file } : file
+    ),
+  }
+
   // Convert all file paths to object.
   // TODO: remove when we migrate to new registry.
-  item.files = item.files.map((file: unknown) =>
-    typeof file === "string" ? { path: file } : file
-  )
-
   // Fail early before doing expensive file operations.
-  const result = registryItemSchema.safeParse(item)
+  const result = registryItemSchema.safeParse(normalizedItem)
   if (!result.success) {
     registryCache.set(cacheKey, null)
     return null
@@ -136,7 +172,7 @@ export async function getRegistryItem(name: string, styleName: string) {
 
   // Read all files in parallel.
   let files: typeof result.data.files = await Promise.all(
-    item.files.map(async (file: z.infer<typeof registryItemFileSchema>) => {
+    item.files.map(async (file: RegistryItemFile) => {
       const content = await getFileContent(file)
       const relativePath = path.relative(process.cwd(), file.path)
 
@@ -168,7 +204,7 @@ export async function getRegistryItem(name: string, styleName: string) {
   return parsed.data
 }
 
-async function getFileContent(file: z.infer<typeof registryItemFileSchema>) {
+async function getFileContent(file: RegistryItemFile) {
   let code = await fs.readFile(file.path, "utf-8")
 
   // Some registry items uses default export.
@@ -183,7 +219,7 @@ async function getFileContent(file: z.infer<typeof registryItemFileSchema>) {
   return code
 }
 
-function getFileTarget(file: z.infer<typeof registryItemFileSchema>) {
+function getFileTarget(file: RegistryItemFile) {
   let target = file.target
 
   if (!target || target === "") {
@@ -212,7 +248,7 @@ function getFileTarget(file: z.infer<typeof registryItemFileSchema>) {
   return target ?? ""
 }
 
-function fixFilePaths(files: z.infer<typeof registryItemSchema>["files"]) {
+function fixFilePaths(files: RegistryItem["files"]) {
   if (!files) {
     return []
   }
@@ -231,6 +267,17 @@ function fixFilePaths(files: z.infer<typeof registryItemSchema>["files"]) {
 }
 
 export function fixImport(content: string) {
+  content = content.replace(
+    /@\/styles\/([\w-]+)\/(ui-rtl|ui)\/([\w-]+)/g,
+    (match, _styleName, type, component) => {
+      if (type === "ui" || type === "ui-rtl") {
+        return `@/components/ui/${component}`
+      }
+
+      return match
+    }
+  )
+
   const regex = /@\/(.+?)\/((?:.*?\/)?(?:components|ui|hooks|lib))\/([\w-]+)/g
 
   const replacement = (

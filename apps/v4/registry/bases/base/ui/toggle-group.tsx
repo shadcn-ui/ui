@@ -4,8 +4,8 @@ import * as React from "react"
 import { Toggle as TogglePrimitive } from "@base-ui/react/toggle"
 import { ToggleGroup as ToggleGroupPrimitive } from "@base-ui/react/toggle-group"
 import { type VariantProps } from "class-variance-authority"
+import { cn } from "cn"
 
-import { cn } from "@/registry/bases/base/lib/utils"
 import { toggleVariants } from "@/registry/bases/base/ui/toggle"
 
 const ToggleGroupContext = React.createContext<
@@ -16,7 +16,7 @@ const ToggleGroupContext = React.createContext<
 >({
   size: "default",
   variant: "default",
-  spacing: 0,
+  spacing: 2,
   orientation: "horizontal",
 })
 
@@ -24,7 +24,7 @@ function ToggleGroup({
   className,
   variant,
   size,
-  spacing = 0,
+  spacing = 2,
   orientation = "horizontal",
   children,
   ...props

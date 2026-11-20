@@ -3,7 +3,7 @@ import {
   AvatarFallback,
   AvatarGroup,
   AvatarImage,
-} from "@/examples/base/ui/avatar"
+} from "@/styles/base-nova/ui/avatar"
 
 export function AvatarGroupExample() {
   return (

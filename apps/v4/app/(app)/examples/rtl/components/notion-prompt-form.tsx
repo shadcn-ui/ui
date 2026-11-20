@@ -2,47 +2,6 @@
 
 import { useMemo, useState } from "react"
 import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/examples/base/ui-rtl/avatar"
-import { Badge } from "@/examples/base/ui-rtl/badge"
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/examples/base/ui-rtl/command"
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-} from "@/examples/base/ui-rtl/dropdown-menu"
-import { Field, FieldLabel } from "@/examples/base/ui-rtl/field"
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupTextarea,
-} from "@/examples/base/ui-rtl/input-group"
-import { Popover, PopoverContent } from "@/examples/base/ui-rtl/popover"
-import { Switch } from "@/examples/base/ui-rtl/switch"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/examples/base/ui-rtl/tooltip"
-import {
   IconApps,
   IconArrowUp,
   IconAt,
@@ -55,6 +14,47 @@ import {
 } from "@tabler/icons-react"
 
 import { useLanguageContext } from "@/components/language-selector"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/styles/base-nova/ui-rtl/avatar"
+import { Badge } from "@/styles/base-nova/ui-rtl/badge"
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/styles/base-nova/ui-rtl/command"
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/styles/base-nova/ui-rtl/dropdown-menu"
+import { Field, FieldLabel } from "@/styles/base-nova/ui-rtl/field"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupTextarea,
+} from "@/styles/base-nova/ui-rtl/input-group"
+import { Popover, PopoverContent } from "@/styles/base-nova/ui-rtl/popover"
+import { Switch } from "@/styles/base-nova/ui-rtl/switch"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/styles/base-nova/ui-rtl/tooltip"
 
 const translations = {
   ar: {

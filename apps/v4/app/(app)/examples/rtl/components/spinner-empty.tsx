@@ -1,6 +1,7 @@
 "use client"
 
-import { Button } from "@/examples/base/ui-rtl/button"
+import { useLanguageContext } from "@/components/language-selector"
+import { Button } from "@/styles/base-nova/ui-rtl/button"
 import {
   Empty,
   EmptyContent,
@@ -8,10 +9,8 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/examples/base/ui-rtl/empty"
-import { Spinner } from "@/examples/base/ui-rtl/spinner"
-
-import { useLanguageContext } from "@/components/language-selector"
+} from "@/styles/base-nova/ui-rtl/empty"
+import { Spinner } from "@/styles/base-nova/ui-rtl/spinner"
 
 const translations = {
   ar: {

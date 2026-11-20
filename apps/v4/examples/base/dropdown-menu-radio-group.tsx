@@ -1,7 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui/button"
+
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,7 +11,7 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from "@/examples/base/ui/dropdown-menu"
+} from "@/styles/base-nova/ui/dropdown-menu"
 
 export function DropdownMenuRadioGroupDemo() {
   const [position, setPosition] = React.useState("bottom")

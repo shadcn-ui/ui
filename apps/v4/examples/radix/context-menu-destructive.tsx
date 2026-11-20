@@ -1,3 +1,5 @@
+import { PencilIcon, ShareIcon, TrashIcon } from "lucide-react"
+
 import {
   ContextMenu,
   ContextMenuContent,
@@ -5,8 +7,7 @@ import {
   ContextMenuItem,
   ContextMenuSeparator,
   ContextMenuTrigger,
-} from "@/examples/radix/ui/context-menu"
-import { PencilIcon, ShareIcon, TrashIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/context-menu"
 
 export function ContextMenuDestructive() {
   return (

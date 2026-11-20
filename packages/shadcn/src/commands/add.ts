@@ -1,22 +1,45 @@
 import path from "path"
 import { runInit } from "@/src/commands/init"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
-import { getRegistryItems, getShadcnRegistryIndex } from "@/src/registry/api"
-import { DEPRECATED_COMPONENTS } from "@/src/registry/constants"
-import { clearRegistryContext } from "@/src/registry/context"
-import { registryItemTypeSchema } from "@/src/registry/schema"
-import { isUniversalRegistryItem } from "@/src/registry/utils"
-import { addComponents } from "@/src/utils/add-components"
+import {
+  promptForBase,
+  promptForPreset,
+  resolveRegistryBaseConfig,
+} from "@/src/preset/presets"
+import { getTemplateForFramework } from "@/src/templates/index"
 import { createProject } from "@/src/utils/create-project"
-import { loadEnvFiles } from "@/src/utils/env-loader"
+import { dryRunComponents } from "@/src/utils/dry-run"
+import { formatDryRunResult } from "@/src/utils/dry-run-formatter"
 import * as ERRORS from "@/src/utils/errors"
-import { createConfig, getConfig } from "@/src/utils/get-config"
-import { getProjectInfo } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { updateAppIndex } from "@/src/utils/update-app-index"
+import { addComponents } from "@shadcn/registry/internal/add-components"
+import { loadEnvFiles } from "@shadcn/registry/internal/env-loader"
+import {
+  createConfig,
+  getConfig,
+  type Config,
+} from "@shadcn/registry/internal/get-config"
+import { getProjectInfo } from "@shadcn/registry/internal/get-project-info"
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { logger } from "@shadcn/registry/internal/logger"
+import {
+  parsePresetStyle,
+  type PresetBase,
+} from "@shadcn/registry/internal/preset/preset"
+import {
+  getRegistry,
+  getRegistryItems,
+} from "@shadcn/registry/internal/registry/api"
+import {
+  COMPONENTS_HIDDEN_FROM_SELECTION,
+  DEPRECATED_COMPONENTS,
+} from "@shadcn/registry/internal/registry/constants"
+import { clearRegistryContext } from "@shadcn/registry/internal/registry/context"
+import { registryItemTypeSchema } from "@shadcn/registry/internal/registry/schema"
+import { isUniversalRegistryItem } from "@shadcn/registry/internal/registry/utils"
+import { spinner } from "@shadcn/registry/internal/spinner"
 import { Command } from "commander"
 import prompts from "prompts"
 import { z } from "zod"
@@ -29,14 +52,15 @@ export const addOptionsSchema = z.object({
   all: z.boolean(),
   path: z.string().optional(),
   silent: z.boolean(),
-  srcDir: z.boolean().optional(),
-  cssVariables: z.boolean(),
+  dryRun: z.boolean(),
+  diff: z.union([z.string(), z.literal(true)]).optional(),
+  view: z.union([z.string(), z.literal(true)]).optional(),
 })
 
 export const add = new Command()
   .name("add")
   .description("add a component to your project")
-  .argument("[components...]", "names, url or local path to component")
+  .argument("[components...]", "item addresses to add")
   .option("-y, --yes", "skip confirmation prompt.", false)
   .option("-o, --overwrite", "overwrite existing files.", false)
   .option(
@@ -47,28 +71,24 @@ export const add = new Command()
   .option("-a, --all", "add all available components", false)
   .option("-p, --path <path>", "the path to add the component to.")
   .option("-s, --silent", "mute output.", false)
-  .option(
-    "--src-dir",
-    "use the src directory when creating a new project.",
-    false
-  )
-  .option(
-    "--no-src-dir",
-    "do not use the src directory when creating a new project."
-  )
-  .option("--css-variables", "use css variables for theming.", true)
-  .option("--no-css-variables", "do not use css variables for theming.")
+  .option("--dry-run", "preview changes without writing files.", false)
+  .option("--diff [path]", "show diff for a file.")
+  .option("--view [path]", "show file contents.")
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
         components,
-        cwd: path.resolve(opts.cwd),
         ...opts,
+        cwd: path.resolve(opts.cwd),
       })
 
       await loadEnvFiles(options.cwd)
 
+      const isDryRun = options.dryRun || options.diff || options.view
+
       let initialConfig = await getConfig(options.cwd)
+      const hasExistingConfig = !!initialConfig
+      const selectComponentsAfterInit = !components.length && !hasExistingConfig
       if (!initialConfig) {
         initialConfig = createConfig({
           style: "new-york",
@@ -89,9 +109,23 @@ export const add = new Command()
         hasNewRegistries = newRegistries.length > 0
       }
 
+      const projectInfo = await getProjectInfo(options.cwd)
+      const { base: configuredBase } = parsePresetStyle(initialConfig.style)
+
+      if (hasExistingConfig && projectInfo?.tailwindVersion === "v4") {
+        warnForDeprecatedComponents(components, configuredBase)
+      }
+
       let itemType: z.infer<typeof registryItemTypeSchema> | undefined
       let shouldInstallStyleIndex = true
-      if (components.length > 0) {
+      const shouldResolveInitialItem =
+        components.length > 0 &&
+        (hasExistingConfig ||
+          !DEPRECATED_COMPONENTS.some(
+            (component) => component.name === components[0]
+          ))
+
+      if (shouldResolveInitialItem) {
         const [registryItem] = await getRegistryItems([components[0]], {
           config: initialConfig,
         })
@@ -101,13 +135,13 @@ export const add = new Command()
           itemType !== "registry:style" &&
           itemType !== "registry:base"
 
-        if (isUniversalRegistryItem(registryItem)) {
+        if (isUniversalRegistryItem(registryItem) && !isDryRun) {
           await addComponents(components, initialConfig, options)
           return
         }
-
         if (
           !options.yes &&
+          !isDryRun &&
           (itemType === "registry:style" || itemType === "registry:theme")
         ) {
           logger.break()
@@ -130,24 +164,15 @@ export const add = new Command()
         }
       }
 
-      if (!options.components?.length) {
-        options.components = await promptForRegistryComponents(options)
+      if (!options.components?.length && !selectComponentsAfterInit) {
+        options.components = await promptForRegistryComponents(
+          options,
+          initialConfig
+        )
       }
 
-      const projectInfo = await getProjectInfo(options.cwd)
-      if (projectInfo?.tailwindVersion === "v4") {
-        const deprecatedComponents = DEPRECATED_COMPONENTS.filter((component) =>
-          options.components?.includes(component.name)
-        )
-
-        if (deprecatedComponents?.length) {
-          logger.break()
-          deprecatedComponents.forEach((component) => {
-            logger.warn(highlighter.warn(component.message))
-          })
-          logger.break()
-          process.exit(1)
-        }
+      if (!components.length && projectInfo?.tailwindVersion === "v4") {
+        warnForDeprecatedComponents(options.components ?? [], configuredBase)
       }
 
       let { errors, config } = await preFlightAdd(options)
@@ -169,6 +194,27 @@ export const add = new Command()
           process.exit(1)
         }
 
+        // Infer template from project framework.
+        const inferredTemplate = getTemplateForFramework(
+          projectInfo?.framework.name
+        )
+
+        // Prompt for base and preset.
+        const base = await promptForBase()
+        warnForDeprecatedComponents(options.components ?? [], base)
+        const { url: initUrl } = await promptForPreset({
+          rtl: false,
+          base,
+          template: inferredTemplate,
+        })
+
+        // Resolve registry:base config.
+        const {
+          registryBaseConfig,
+          installStyleIndex,
+          url: cleanInitUrl,
+        } = await resolveRegistryBaseConfig(initUrl, options.cwd)
+
         config = await runInit({
           cwd: options.cwd,
           yes: true,
@@ -177,11 +223,11 @@ export const add = new Command()
           skipPreflight: false,
           silent: options.silent && !hasNewRegistries,
           isNewProject: false,
-          srcDir: options.srcDir,
-          cssVariables: options.cssVariables,
-          installStyleIndex: shouldInstallStyleIndex,
-          baseColor: shouldInstallStyleIndex ? undefined : "neutral",
-          components: options.components,
+          cssVariables: true,
+          rtl: false,
+          installStyleIndex,
+          components: [cleanInitUrl, ...(options.components ?? [])],
+          registryBaseConfig,
         })
         initHasRun = true
       }
@@ -189,10 +235,12 @@ export const add = new Command()
       let shouldUpdateAppIndex = false
 
       if (errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
+        const selectedBase = await promptForBase()
+        warnForDeprecatedComponents(options.components ?? [], selectedBase)
+
         const { projectPath, template } = await createProject({
           cwd: options.cwd,
           force: options.overwrite,
-          srcDir: options.srcDir,
           components: options.components,
         })
         if (!projectPath) {
@@ -201,30 +249,36 @@ export const add = new Command()
         }
         options.cwd = projectPath
 
-        if (template === "next-monorepo") {
-          options.cwd = path.resolve(options.cwd, "apps/web")
-          config = await getConfig(options.cwd)
-        } else {
-          config = await runInit({
-            cwd: options.cwd,
-            yes: true,
-            force: true,
-            defaults: false,
-            skipPreflight: true,
-            silent: !hasNewRegistries && options.silent,
-            isNewProject: true,
-            srcDir: options.srcDir,
-            cssVariables: options.cssVariables,
-            installStyleIndex: shouldInstallStyleIndex,
-            baseColor: shouldInstallStyleIndex ? undefined : "neutral",
-            components: options.components,
-          })
-          initHasRun = true
+        const { url: initUrl } = await promptForPreset({
+          rtl: false,
+          base: selectedBase,
+          template,
+        })
+        const {
+          registryBaseConfig,
+          installStyleIndex,
+          url: cleanInitUrl,
+        } = await resolveRegistryBaseConfig(initUrl, options.cwd)
 
-          shouldUpdateAppIndex =
-            options.components?.length === 1 &&
-            !!options.components[0].match(/\/chat\/b\//)
-        }
+        config = await runInit({
+          cwd: options.cwd,
+          yes: true,
+          force: true,
+          defaults: false,
+          skipPreflight: true,
+          silent: !hasNewRegistries && options.silent,
+          isNewProject: true,
+          cssVariables: true,
+          rtl: false,
+          installStyleIndex,
+          components: [cleanInitUrl, ...(options.components ?? [])],
+          registryBaseConfig,
+        })
+        initHasRun = true
+
+        shouldUpdateAppIndex =
+          options.components?.length === 1 &&
+          !!options.components[0].match(/\/chat\/b\//)
       }
 
       if (!config) {
@@ -233,16 +287,45 @@ export const add = new Command()
         )
       }
 
+      if (selectComponentsAfterInit || !options.components) {
+        options.components = await promptForRegistryComponents(options, config)
+      }
+
       const { config: updatedConfig } = await ensureRegistriesInConfig(
         options.components,
         config,
         {
           silent: options.silent || hasNewRegistries,
+          writeFile: !isDryRun,
         }
       )
       config = updatedConfig
 
-      if (!initHasRun) {
+      // Dry-run mode: preview changes without writing files.
+      // --diff and --view imply --dry-run.
+      if (isDryRun) {
+        const dryRunSpinner = spinner("Resolving items.", {
+          silent: options.silent,
+        }).start()
+        const dryRunResult = await dryRunComponents(
+          options.components,
+          config,
+          {
+            overwrite: options.overwrite,
+          }
+        )
+        dryRunSpinner.stop()
+
+        logger.log(
+          formatDryRunResult(dryRunResult, options.components, {
+            diff: options.diff,
+            view: options.view,
+          })
+        )
+        return
+      }
+
+      if (!initHasRun || selectComponentsAfterInit) {
         await addComponents(options.components, config, options)
       }
 
@@ -260,21 +343,20 @@ export const add = new Command()
   })
 
 async function promptForRegistryComponents(
-  options: z.infer<typeof addOptionsSchema>
+  options: z.infer<typeof addOptionsSchema>,
+  config: Config
 ) {
-  const registryIndex = await getShadcnRegistryIndex()
-  if (!registryIndex) {
-    logger.break()
-    handleError(new Error("Failed to fetch registry index."))
-    return []
-  }
+  const { items } = await getRegistry("@shadcn", { config })
+  const { base } = parsePresetStyle(config.style)
+  const registryIndex = items
+    .filter(
+      (entry) =>
+        entry.type === "registry:ui" && isComponentSelectable(entry.name, base)
+    )
+    .sort((a, b) => a.name.localeCompare(b.name))
 
   if (options.all) {
-    return registryIndex
-      .map((entry) => entry.name)
-      .filter(
-        (component) => !DEPRECATED_COMPONENTS.some((c) => c.name === component)
-      )
+    return registryIndex.map((entry) => entry.name)
   }
 
   if (options.components?.length) {
@@ -287,19 +369,11 @@ async function promptForRegistryComponents(
     message: "Which components would you like to add?",
     hint: "Space to select. A to toggle all. Enter to submit.",
     instructions: false,
-    choices: registryIndex
-      .filter(
-        (entry) =>
-          entry.type === "registry:ui" &&
-          !DEPRECATED_COMPONENTS.some(
-            (component) => component.name === entry.name
-          )
-      )
-      .map((entry) => ({
-        title: entry.name,
-        value: entry.name,
-        selected: options.all ? true : options.components?.includes(entry.name),
-      })),
+    choices: registryIndex.map((entry) => ({
+      title: entry.name,
+      value: entry.name,
+      selected: options.all ? true : options.components?.includes(entry.name),
+    })),
   })
 
   if (!components?.length) {
@@ -315,4 +389,49 @@ async function promptForRegistryComponents(
     return []
   }
   return result.data
+}
+
+function warnForDeprecatedComponents(
+  components: string[],
+  base: PresetBase | undefined
+) {
+  const deprecatedComponents = DEPRECATED_COMPONENTS.filter(
+    (component) =>
+      components.includes(component.name) &&
+      isDeprecatedComponent(component.name, base)
+  )
+
+  if (!deprecatedComponents.length) {
+    return
+  }
+
+  logger.break()
+  deprecatedComponents.forEach((component) => {
+    logger.warn(highlighter.warn(component.message))
+  })
+  logger.break()
+  process.exit(1)
+}
+
+function isDeprecatedComponent(name: string, base: PresetBase | undefined) {
+  const component = DEPRECATED_COMPONENTS.find(
+    (component) => component.name === name
+  )
+
+  return (
+    !!component &&
+    (!component.availableIn || !base || !component.availableIn.includes(base))
+  )
+}
+
+function isComponentSelectable(name: string, base: PresetBase | undefined) {
+  if (isDeprecatedComponent(name, base)) {
+    return false
+  }
+
+  const component = COMPONENTS_HIDDEN_FROM_SELECTION.find(
+    (component) => component.name === name
+  )
+
+  return !component || !base || !component.hiddenIn.includes(base)
 }

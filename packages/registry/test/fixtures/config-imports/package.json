@@ -1,0 +1,11 @@
+{
+  "name": "config-imports",
+  "type": "module",
+  "imports": {
+    "#components/*": "./src/components/*",
+    "#components/ui/*": "./src/components/ui/*",
+    "#lib/*": "./src/lib/*",
+    "#hooks": "./src/hooks/index.ts",
+    "#utils": "./src/lib/utils.ts"
+  }
+}

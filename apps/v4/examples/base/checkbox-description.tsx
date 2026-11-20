@@ -1,11 +1,11 @@
-import { Checkbox } from "@/examples/base/ui/checkbox"
+import { Checkbox } from "@/styles/base-nova/ui/checkbox"
 import {
   Field,
   FieldContent,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/examples/base/ui/field"
+} from "@/styles/base-nova/ui/field"
 
 export function CheckboxDescription() {
   return (

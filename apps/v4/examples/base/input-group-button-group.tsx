@@ -1,11 +1,15 @@
-import { ButtonGroup, ButtonGroupText } from "@/examples/base/ui/button-group"
+import { Link2Icon } from "lucide-react"
+
+import {
+  ButtonGroup,
+  ButtonGroupText,
+} from "@/styles/base-nova/ui/button-group"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/base/ui/input-group"
-import { Label } from "@/examples/base/ui/label"
-import { Link2Icon } from "lucide-react"
+} from "@/styles/base-nova/ui/input-group"
+import { Label } from "@/styles/base-nova/ui/label"
 
 export default function InputGroupButtonGroup() {
   return (

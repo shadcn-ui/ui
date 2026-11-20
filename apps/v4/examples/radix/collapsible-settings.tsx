@@ -1,22 +1,23 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/radix/ui/button"
+import { MaximizeIcon, MinimizeIcon } from "lucide-react"
+
+import { Button } from "@/styles/radix-nova/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/examples/radix/ui/card"
+} from "@/styles/radix-nova/ui/card"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/examples/radix/ui/collapsible"
-import { Field, FieldGroup, FieldLabel } from "@/examples/radix/ui/field"
-import { Input } from "@/examples/radix/ui/input"
-import { MaximizeIcon, MinimizeIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/collapsible"
+import { Field, FieldGroup, FieldLabel } from "@/styles/radix-nova/ui/field"
+import { Input } from "@/styles/radix-nova/ui/input"
 
 export function CollapsibleSettings() {
   const [isOpen, setIsOpen] = React.useState(false)

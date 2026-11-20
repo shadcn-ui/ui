@@ -3,7 +3,7 @@ import {
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/examples/base/ui/field"
+} from "@/styles/base-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
@@ -11,7 +11,7 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/examples/base/ui/input-group"
+} from "@/styles/base-nova/ui/input-group"
 
 export function InputGroupBlockEnd() {
   return (

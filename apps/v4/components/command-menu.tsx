@@ -3,16 +3,17 @@
 import * as React from "react"
 import { usePathname, useRouter } from "next/navigation"
 import { IconArrowRight } from "@tabler/icons-react"
+import { cn } from "cn"
 import { useDocsSearch } from "fumadocs-core/search/client"
 import { CornerDownLeftIcon, SquareDashedIcon } from "lucide-react"
 import { Dialog as DialogPrimitive } from "radix-ui"
+import { encodePreset } from "shadcn/preset"
 
 import { type Color, type ColorPalette } from "@/lib/colors"
 import { trackEvent } from "@/lib/events"
 import { showMcpDocs } from "@/lib/flags"
 import { getCurrentBase, getPagesFromFolder } from "@/lib/page-tree"
 import { type source } from "@/lib/source"
-import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
 import { useMutationObserver } from "@/hooks/use-mutation-observer"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
@@ -36,6 +37,7 @@ import {
 } from "@/registry/new-york-v4/ui/dialog"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 import { Spinner } from "@/registry/new-york-v4/ui/spinner"
+import { STYLES } from "@/registry/styles"
 
 export function CommandMenu({
   tree,
@@ -56,7 +58,7 @@ export function CommandMenu({
   const [open, setOpen] = React.useState(false)
   const [renderDelayedGroups, setRenderDelayedGroups] = React.useState(false)
   const [selectedType, setSelectedType] = React.useState<
-    "color" | "page" | "component" | "block" | null
+    "color" | "page" | "component" | "block" | "style" | null
   >(null)
   const [copyPayload, setCopyPayload] = React.useState("")
 
@@ -185,7 +187,7 @@ export function CommandMenu({
     return (
       <CommandGroup
         heading="Pages"
-        className="p-0! [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:p-3! [&_[cmdk-group-heading]]:pb-1!"
+        className="p-0! **:[[cmdk-group-heading]]:scroll-mt-16 **:[[cmdk-group-heading]]:p-3! **:[[cmdk-group-heading]]:pb-1!"
       >
         {navItems.map((item) => (
           <CommandMenuItem
@@ -207,6 +209,40 @@ export function CommandMenu({
       </CommandGroup>
     )
   }, [navItems, runCommand, router])
+
+  const stylesSection = React.useMemo(() => {
+    return (
+      <CommandGroup
+        heading="Styles"
+        className="p-0! **:[[cmdk-group-heading]]:scroll-mt-16 **:[[cmdk-group-heading]]:p-3! **:[[cmdk-group-heading]]:pb-1!"
+      >
+        {STYLES.map((style) => (
+          <CommandMenuItem
+            key={style.name}
+            value={`Style ${style.title} ${style.description}`}
+            keywords={["style", "preset", style.name, style.title]}
+            onHighlight={() => {
+              setSelectedType("style")
+              setCopyPayload("")
+            }}
+            onSelect={() => {
+              runCommand(() =>
+                router.push(
+                  `/create?preset=${encodePreset({ style: style.name })}`
+                )
+              )
+            }}
+          >
+            {style.icon}
+            {style.title}
+            <span className="ml-auto text-xs font-normal text-muted-foreground">
+              Open style in shadcn/create
+            </span>
+          </CommandMenuItem>
+        ))}
+      </CommandGroup>
+    )
+  }, [runCommand, router])
 
   const pageGroupsSection = React.useMemo(() => {
     return tree.children.map((group) => {
@@ -230,7 +266,7 @@ export function CommandMenu({
         <CommandGroup
           key={group.$id}
           heading={group.name}
-          className="p-0! [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:p-3! [&_[cmdk-group-heading]]:pb-1!"
+          className="p-0! **:[[cmdk-group-heading]]:scroll-mt-16 **:[[cmdk-group-heading]]:p-3! **:[[cmdk-group-heading]]:pb-1!"
         >
           {pages.map((item) => {
             const isComponent = item.url.includes("/components/")
@@ -268,7 +304,7 @@ export function CommandMenu({
         heading={
           colorPalette.name.charAt(0).toUpperCase() + colorPalette.name.slice(1)
         }
-        className="p-0! [&_[cmdk-group-heading]]:p-3!"
+        className="p-0! **:[[cmdk-group-heading]]:p-3!"
       >
         {colorPalette.colors.map((color) => (
           <CommandMenuItem
@@ -307,7 +343,7 @@ export function CommandMenu({
     return (
       <CommandGroup
         heading="Blocks"
-        className="p-0! [&_[cmdk-group-heading]]:p-3!"
+        className="p-0! **:[[cmdk-group-heading]]:p-3!"
       >
         {blocks.map((block) => (
           <CommandMenuItem
@@ -391,13 +427,13 @@ export function CommandMenu({
         <Button
           variant="outline"
           className={cn(
-            "relative h-8 w-full justify-start rounded-lg pl-3 font-normal text-foreground shadow-none hover:bg-muted/50 sm:pr-12 md:w-48 lg:w-56 xl:w-64 dark:bg-card"
+            "relative h-8 w-full justify-start rounded-lg border-none bg-muted pl-3 text-foreground shadow-none transition-colors hover:bg-muted/50 md:w-48 lg:w-40 xl:w-64 dark:bg-card"
           )}
           onClick={() => setOpen(true)}
           {...props}
         >
-          <span className="hidden lg:inline-flex">Search documentation...</span>
-          <span className="inline-flex lg:hidden">Search...</span>
+          <span className="hidden xl:inline-flex">Search documentation...</span>
+          <span className="inline-flex xl:hidden">Search...</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="rounded-xl border-none bg-clip-padding p-2 pb-11 shadow-2xl ring-4 ring-neutral-200/80 dark:bg-neutral-900 dark:ring-neutral-800">
@@ -425,6 +461,7 @@ export function CommandMenu({
               {query.isLoading ? "Searching..." : "No results found."}
             </CommandEmpty>
             {navItemsSection}
+            {stylesSection}
             {renderDelayedGroups ? (
               <>
                 {pageGroupsSection}
@@ -448,6 +485,7 @@ export function CommandMenu({
               ? "Go to Page"
               : null}
             {selectedType === "color" ? "Copy OKLCH" : null}
+            {selectedType === "style" ? "Open in shadcn/create" : null}
           </div>
           {copyPayload && (
             <>
@@ -555,7 +593,7 @@ function SearchResults({
 
   return (
     <CommandGroup
-      className="px-0! [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:p-3! [&_[cmdk-group-heading]]:pb-1!"
+      className="px-0! **:[[cmdk-group-heading]]:scroll-mt-16 **:[[cmdk-group-heading]]:p-3! **:[[cmdk-group-heading]]:pb-1!"
       heading="Search Results"
     >
       {uniqueResults.map((item) => {

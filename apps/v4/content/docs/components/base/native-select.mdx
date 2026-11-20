@@ -70,21 +70,47 @@ import {
 </NativeSelect>
 ```
 
-## Examples
+## Composition
 
-### Groups
+### Simple
+
+Options placed directly under `NativeSelect` (no `NativeSelectOptGroup`).
+
+```text
+NativeSelect
+├── NativeSelectOption
+├── NativeSelectOption
+├── NativeSelectOption
+└── NativeSelectOption
+```
+
+### With groups
+
+Use `NativeSelectOptGroup` to organize options into categories.
+
+```text
+NativeSelect
+├── NativeSelectOptGroup
+│   ├── NativeSelectOption
+│   └── NativeSelectOption
+└── NativeSelectOptGroup
+    ├── NativeSelectOption
+    └── NativeSelectOption
+```
+
+## Groups
 
 Use `NativeSelectOptGroup` to organize options into categories.
 
 <ComponentPreview styleName="base-nova" name="native-select-groups" />
 
-### Disabled
+## Disabled
 
 Add the `disabled` prop to the `NativeSelect` component to disable the select.
 
 <ComponentPreview styleName="base-nova" name="native-select-disabled" />
 
-### Invalid
+## Invalid
 
 Use `aria-invalid` to show validation errors and the `data-invalid` attribute to the `Field` component for styling.
 

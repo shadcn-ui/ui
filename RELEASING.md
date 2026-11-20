@@ -1,0 +1,67 @@
+# Releasing
+
+This monorepo publishes four packages independently with [Changesets](https://github.com/changesets/changesets):
+
+- **`shadcn`** — the CLI and tooling.
+- **`@shadcn/registry`** — the registry engine used by the CLI.
+- **`@shadcn/react`** — headless React primitives.
+- **`@shadcn/helpers`** — small helpers for developing apps.
+
+They version on their own lines. A change to one never bumps the other unless a changeset says so. The exception is `@shadcn/registry`: `shadcn` depends on an exact version of it, so every `@shadcn/registry` release also bumps `shadcn` (patch) to pick it up.
+
+## 1. Add a changeset
+
+Every change that should publish needs a changeset. Run:
+
+```sh
+pnpm changeset
+```
+
+Select the affected package(s) and bump level. One PR can carry separate changesets for each package at different levels. A PR with no changeset publishes nothing.
+
+Most of the CLI's registry and install logic lives in `packages/registry`. A change there needs an `@shadcn/registry` changeset: a `shadcn`-only changeset would publish a new `shadcn` that still pins the previous `@shadcn/registry`. The `@shadcn/registry changeset` check fails pull requests that miss it.
+
+## 2. Stable release
+
+Stable releases are automated by `.github/workflows/release.yml` (the `release` job, on push to `main`):
+
+1. Merged changesets accumulate on `main`.
+2. The Changesets action opens/updates a **"Version Packages"** PR that bumps versions and writes changelogs.
+3. Merging that PR triggers `changeset publish`, which builds all packages (`pnpm build:packages`) and publishes any whose version is ahead of npm — each to the `latest` tag.
+
+`pnpm build:packages` (`turbo run build --filter=./packages/*`) builds every package under `packages/` but never `apps/v4`.
+
+## 3. Prereleases (per-PR snapshots)
+
+Add the **`release: beta`** or **`release: rc`** label to a PR. The `prerelease` job in `release.yml`:
+
+1. Verifies the branch has changesets (a label on the version PR is a no-op, since it consumed them).
+2. Runs `changeset version --snapshot <channel>` — stamps a unique `0.0.0-<channel>-<timestamp>` on each changeset'd package.
+3. Builds and runs `changeset publish --tag <channel> --no-git-tag`.
+4. Uploads the published package list; `prerelease-comment.yml` posts an install line per package (`pnpm dlx` for packages with a `bin`, `pnpm add` for libraries) and removes the label.
+
+The label selects the **dist-tag/channel**; the **changesets on the branch** select which packages publish. Snapshots are timestamped, so they never touch `latest` and never collide.
+
+```sh
+# Install a snapshot from the PR comment, e.g.:
+pnpm dlx shadcn@0.0.0-beta-20260624120000          # CLI (has a bin)
+pnpm add @shadcn/react@0.0.0-beta-20260624120000   # library
+```
+
+## 4. Prerelease trains (sustained `-beta.N` / `-rc.N`)
+
+For a baking release line (e.g. `1.0.0-rc.0`, `-rc.1`, …) rather than throwaway snapshots, use Changesets pre mode:
+
+```sh
+pnpm changeset pre enter rc   # writes .changeset/pre.json
+# ...normal changeset + Version PR cycle now produces -rc.N versions on the rc tag...
+pnpm changeset pre exit       # back to stable; next Version PR ships X.Y.Z on latest
+```
+
+## Notes
+
+- `pnpm-workspace.yaml` sets `minimumReleaseAge: 2880` (48h), so freshly published stable/beta versions take time to resolve in normal installs. Use `pnpm dlx <pkg>@<exact-snapshot-version>` to test immediately.
+- Publishing uses npm OIDC/provenance (`id-token: write` + `npm@latest`); no `NPM_TOKEN` secret is needed.
+- A new package needs a trusted publisher on npmjs.com before CI can publish it, and npm only allows that once the package exists. Publish a placeholder version by hand first (for example `0.0.1`), then add the trusted publisher. Do this before the first release that includes the package: `changeset publish` publishes packages in parallel, so a package that cannot be published does not stop the others.
+- `shadcn` pins an exact `@shadcn/registry` version, so both release jobs publish with `.github/changeset-publish.js` instead of a plain `changeset publish`. It publishes `@shadcn/registry` (and every other package) first, checks that the version `shadcn` pins is on npm and was released from the current registry source, and only then publishes `shadcn`. If a check fails, `shadcn` is not published and the job fails; fix the cause and re-run it.
+- The manual `pub:*` scripts in `packages/shadcn` also check that the pinned `@shadcn/registry` version is on npm before publishing.

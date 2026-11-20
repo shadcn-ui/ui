@@ -12,6 +12,7 @@ In this guide, we will take a look at building forms with Next.js using `useActi
 We are going to build the following form with a simple text input and a textarea. On submit, we'll use a server action to validate the form data and update the form state.
 
 <ComponentPreview
+  styleName="new-york-v4"
   name="form-next-demo"
   className="[&_.preview]:h-[700px] [&_pre]:h-[700px]!"
 />
@@ -28,7 +29,7 @@ This form leverages Next.js and React's built-in capabilities for form handling.
 - Uses Next.js `<Form />` component for navigation and progressive enhancement.
 - `<Field />` components for building accessible forms.
 - `useActionState` for managing form state and errors.
-- Handles loading states with pending prop.
+- Handles loading states with the pending prop.
 - Server Actions for handling form submissions.
 - Server-side validation using Zod.
 
@@ -370,6 +371,7 @@ export async function demoFormAction(
 Here is an example of a more complex form with multiple fields and validation.
 
 <ComponentPreview
+  styleName="new-york-v4"
   name="form-next-complex"
   className="[&_.preview]:h-[1100px] [&_pre]:h-[1100px]!"
   hideCode

@@ -1,12 +1,13 @@
 import * as React from "react"
-import { Card, CardContent } from "@/examples/base/ui/card"
+
+import { Card, CardContent } from "@/styles/base-nova/ui/card"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/examples/base/ui/carousel"
+} from "@/styles/base-nova/ui/carousel"
 
 export default function CarouselSpacing() {
   return (

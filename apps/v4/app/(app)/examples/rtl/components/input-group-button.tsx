@@ -1,21 +1,21 @@
 "use client"
 
 import * as React from "react"
+import { IconInfoCircle, IconStar } from "@tabler/icons-react"
+
+import { useLanguageContext } from "@/components/language-selector"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/examples/base/ui-rtl/input-group"
-import { Label } from "@/examples/base/ui-rtl/label"
+} from "@/styles/base-nova/ui-rtl/input-group"
+import { Label } from "@/styles/base-nova/ui-rtl/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/examples/base/ui-rtl/popover"
-import { IconInfoCircle, IconStar } from "@tabler/icons-react"
-
-import { useLanguageContext } from "@/components/language-selector"
+} from "@/styles/base-nova/ui-rtl/popover"
 
 const translations = {
   ar: {

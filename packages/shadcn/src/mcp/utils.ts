@@ -1,6 +1,13 @@
-import { getRegistriesConfig } from "@/src/registry/api"
-import { registryItemSchema, searchResultsSchema } from "@/src/schema"
-import { getPackageRunner } from "@/src/utils/get-package-manager"
+import { getPackageRunner } from "@shadcn/registry/internal/get-package-manager"
+import { getRegistriesConfig } from "@shadcn/registry/internal/registry/api"
+import {
+  findUnknownSearchTypes,
+  SEARCHABLE_TYPES,
+} from "@shadcn/registry/internal/registry/search"
+import {
+  registryItemSchema,
+  searchResultsSchema,
+} from "@shadcn/registry/schema"
 import { z } from "zod"
 
 const SHADCN_CLI_COMMAND = "shadcn@latest"
@@ -20,7 +27,7 @@ export async function getMcpConfig(cwd = process.cwd()) {
   }
 }
 
-export function formatSearchResultsWithPagination(
+export async function formatSearchResultsWithPagination(
   results: z.infer<typeof searchResultsSchema>,
   options?: {
     query?: string
@@ -28,6 +35,7 @@ export function formatSearchResultsWithPagination(
   }
 ) {
   const { query, registries } = options || {}
+  const addCommand = await npxShadcn("add")
 
   const formattedItems = results.items.map((item) => {
     const parts: string[] = [`- ${item.name}`]
@@ -44,9 +52,7 @@ export function formatSearchResultsWithPagination(
       parts.push(`[${item.registry}]`)
     }
 
-    parts.push(
-      `\n  Add command: \`${npxShadcn(`add ${item.addCommandArgument}`)}\``
-    )
+    parts.push(`\n  Add command: \`${addCommand} ${item.addCommandArgument}\``)
 
     return parts.join(" ")
   })
@@ -76,6 +82,41 @@ export function formatSearchResultsWithPagination(
   }
 
   return output
+}
+
+// Validates type filters the same way the CLI does. Returns an error message
+// listing the valid types when any are unknown, or null when all are valid.
+export function findUnknownTypesMessage(types?: string[]): string | null {
+  if (!types?.length) {
+    return null
+  }
+
+  const unknown = findUnknownSearchTypes(types)
+  if (unknown.length === 0) {
+    return null
+  }
+
+  return `Unknown type${
+    unknown.length === 1 ? "" : "s"
+  }: ${unknown.join(", ")}. Valid types: ${SEARCHABLE_TYPES.join(", ")}.`
+}
+
+// When searching across all configured registries, some may fail to load.
+// Returns a note listing them (empty string when there were no failures).
+export function formatSkippedRegistries(
+  results: z.infer<typeof searchResultsSchema>
+) {
+  if (!results.errors?.length) {
+    return ""
+  }
+
+  const lines = results.errors.map(
+    (error) => `- ${error.registry}: ${error.message}`
+  )
+
+  return `\n\nSkipped ${results.errors.length} registr${
+    results.errors.length === 1 ? "y" : "ies"
+  } that failed to load:\n${lines.join("\n")}`
 }
 
 export function formatRegistryItems(

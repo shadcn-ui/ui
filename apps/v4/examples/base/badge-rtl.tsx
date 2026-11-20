@@ -1,13 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { Badge } from "@/examples/base/ui-rtl/badge"
 import { BadgeCheck, BookmarkIcon } from "lucide-react"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Badge } from "@/styles/base-nova/ui-rtl/badge"
 
 const translations: Translations = {
   en: {

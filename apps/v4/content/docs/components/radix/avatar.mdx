@@ -38,7 +38,7 @@ npm install radix-ui
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource
+<ComponentSource styleName="radix-nova"
   name="avatar"
   title="components/ui/avatar.tsx"
 
@@ -65,15 +65,39 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 </Avatar>
 ```
 
-## Examples
+## Composition
 
-### Basic
+Use the following composition to build an `Avatar`:
+
+```text
+Avatar
+├── AvatarImage
+├── AvatarFallback
+└── AvatarBadge
+```
+
+Use the following composition to build an `AvatarGroup`:
+
+```text
+AvatarGroup
+├── Avatar
+│   ├── AvatarImage
+│   ├── AvatarFallback
+│   └── AvatarBadge
+├── Avatar
+│   ├── AvatarImage
+│   ├── AvatarFallback
+│   └── AvatarBadge
+└── AvatarGroupCount
+```
+
+## Basic
 
 A basic avatar component with an image and a fallback.
 
 <ComponentPreview styleName="radix-nova" name="avatar-basic" />
 
-### Badge
+## Badge
 
 Use the `AvatarBadge` component to add a badge to the avatar. The badge is positioned at the bottom right of the avatar.
 
@@ -89,7 +113,7 @@ Use the `className` prop to add custom styles to the badge such as custom colors
 </Avatar>
 ```
 
-### Badge with Icon
+## Badge with Icon
 
 You can also use an icon inside `<AvatarBadge>`.
 
@@ -99,7 +123,7 @@ You can also use an icon inside `<AvatarBadge>`.
 
 />
 
-### Avatar Group
+## Avatar Group
 
 Use the `AvatarGroup` component to add a group of avatars.
 
@@ -109,7 +133,7 @@ Use the `AvatarGroup` component to add a group of avatars.
 
 />
 
-### Avatar Group Count
+## Avatar Group Count
 
 Use `<AvatarGroupCount>` to add a count to the group.
 
@@ -119,7 +143,7 @@ Use `<AvatarGroupCount>` to add a count to the group.
 
 />
 
-### Avatar Group with Icon
+## Avatar Group with Icon
 
 You can also use an icon inside `<AvatarGroupCount>`.
 
@@ -129,7 +153,7 @@ You can also use an icon inside `<AvatarGroupCount>`.
 
 />
 
-### Sizes
+## Sizes
 
 Use the `size` prop to change the size of the avatar.
 
@@ -139,7 +163,7 @@ Use the `size` prop to change the size of the avatar.
 
 />
 
-### Dropdown
+## Dropdown
 
 You can use the `Avatar` component as a trigger for a dropdown menu.
 

@@ -4,7 +4,7 @@ import {
   ContextMenuContent,
   ContextMenuGroup,
   ContextMenuTrigger,
-} from "@/examples/radix/ui/context-menu"
+} from "@/styles/radix-nova/ui/context-menu"
 
 export function ContextMenuCheckboxes() {
   return (

@@ -3,6 +3,12 @@
 import * as React from "react"
 import Link from "next/link"
 import {
+  CircleAlertIcon,
+  CircleCheckIcon,
+  CircleDashedIcon,
+} from "lucide-react"
+
+import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
@@ -10,12 +16,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/examples/base/ui/navigation-menu"
-import {
-  CircleAlertIcon,
-  CircleCheckIcon,
-  CircleDashedIcon,
-} from "lucide-react"
+} from "@/styles/base-nova/ui/navigation-menu"
 
 const components: { title: string; href: string; description: string }[] = [
   {

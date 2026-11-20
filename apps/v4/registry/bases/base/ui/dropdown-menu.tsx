@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { Menu as MenuPrimitive } from "@base-ui/react/menu"
+import { cn } from "cn"
 
-import { cn } from "@/registry/bases/base/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function DropdownMenu({ ...props }: MenuPrimitive.Root.Props) {
@@ -42,7 +42,7 @@ function DropdownMenuContent({
         <MenuPrimitive.Popup
           data-slot="dropdown-menu-content"
           className={cn(
-            "cn-dropdown-menu-content cn-dropdown-menu-content-logical cn-menu-target z-50 max-h-(--available-height) w-(--anchor-width) origin-(--transform-origin) overflow-x-hidden overflow-y-auto outline-none data-closed:overflow-hidden",
+            "cn-dropdown-menu-content cn-dropdown-menu-content-logical cn-menu-target cn-menu-translucent z-50 max-h-(--available-height) w-(--anchor-width) origin-(--transform-origin) overflow-x-hidden overflow-y-auto outline-none data-closed:overflow-hidden",
             className
           )}
           {...props}
@@ -142,7 +142,10 @@ function DropdownMenuSubContent({
   return (
     <DropdownMenuContent
       data-slot="dropdown-menu-sub-content"
-      className={cn("cn-dropdown-menu-sub-content w-auto", className)}
+      className={cn(
+        "cn-dropdown-menu-sub-content cn-menu-target cn-menu-translucent w-auto",
+        className
+      )}
       align={align}
       alignOffset={alignOffset}
       side={side}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "example-target-aliases",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/example-target-aliases/ui/target-button.tsx",
+      "type": "registry:ui",
+      "content": "export function TargetButton() {\n  return <button>Target Button</button>\n}\n",
+      "target": "@ui/target-button.tsx"
+    },
+    {
+      "path": "registry/example-target-aliases/components/target-panel.tsx",
+      "type": "registry:component",
+      "content": "export function TargetPanel() {\n  return <div>Target Panel</div>\n}\n",
+      "target": "@components/target-panel.tsx"
+    },
+    {
+      "path": "registry/example-target-aliases/lib/target-helper.ts",
+      "type": "registry:lib",
+      "content": "export function targetHelper() {\n  return \"target-helper\"\n}\n",
+      "target": "@lib/target-helper.ts"
+    },
+    {
+      "path": "registry/example-target-aliases/hooks/use-target.ts",
+      "type": "registry:hook",
+      "content": "export function useTarget() {\n  return \"target\"\n}\n",
+      "target": "@hooks/use-target.ts"
+    }
+  ]
+}

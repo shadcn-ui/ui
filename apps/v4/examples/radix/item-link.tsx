@@ -1,11 +1,12 @@
+import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react"
+
 import {
   Item,
   ItemActions,
   ItemContent,
   ItemDescription,
   ItemTitle,
-} from "@/examples/radix/ui/item"
-import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/item"
 
 export function ItemLink() {
   return (

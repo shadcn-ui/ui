@@ -1,17 +1,32 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
+import { handleError } from "@/src/utils/handle-error"
+import { fetchTree } from "@/src/utils/registry-api"
+import { getSupportedFontMarkers } from "@shadcn/registry/internal/font-markers"
+import { Config, getConfig } from "@shadcn/registry/internal/get-config"
 import {
-  fetchTree,
+  formatMonorepoMessage,
+  getMonorepoTargets,
+  isMonorepoRoot,
+} from "@shadcn/registry/internal/get-monorepo-info"
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { logger } from "@shadcn/registry/internal/logger"
+import {
   getItemTargetPath,
   getRegistryBaseColor,
   getShadcnRegistryIndex,
-} from "@/src/registry/api"
-import { registryIndexSchema } from "@/src/schema"
-import { Config, getConfig } from "@/src/utils/get-config"
-import { handleError } from "@/src/utils/handle-error"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
-import { transform } from "@/src/utils/transformers"
+} from "@shadcn/registry/internal/registry/api"
+import { transform } from "@shadcn/registry/internal/transformers/index"
+import { transformCleanup } from "@shadcn/registry/internal/transformers/transform-cleanup"
+import { transformCssVars } from "@shadcn/registry/internal/transformers/transform-css-vars"
+import { transformFont } from "@shadcn/registry/internal/transformers/transform-font"
+import { transformIcons } from "@shadcn/registry/internal/transformers/transform-icons"
+import { transformImport } from "@shadcn/registry/internal/transformers/transform-import"
+import { transformMenu } from "@shadcn/registry/internal/transformers/transform-menu"
+import { transformRsc } from "@shadcn/registry/internal/transformers/transform-rsc"
+import { transformRtl } from "@shadcn/registry/internal/transformers/transform-rtl"
+import { transformTwPrefixes } from "@shadcn/registry/internal/transformers/transform-tw-prefix"
+import { registryIndexSchema } from "@shadcn/registry/schema"
 import { Command } from "commander"
 import { diffLines, type Change } from "diff"
 import { z } from "zod"
@@ -25,7 +40,7 @@ const updateOptionsSchema = z.object({
 
 export const diff = new Command()
   .name("diff")
-  .description("check for updates against the registry")
+  .description("[DEPRECATED] Use `add [component] --diff` instead.")
   .argument("[component]", "the component name")
   .option("-y, --yes", "skip confirmation prompt.", false)
   .option(
@@ -49,6 +64,15 @@ export const diff = new Command()
 
       const config = await getConfig(cwd)
       if (!config) {
+        // Check if we're in a monorepo root.
+        if (await isMonorepoRoot(cwd)) {
+          const targets = await getMonorepoTargets(cwd)
+          if (targets.length > 0) {
+            formatMonorepoMessage("diff [component]", targets)
+            process.exit(1)
+          }
+        }
+
         logger.warn(
           `Configuration is missing. Please run ${highlighter.success(
             `init`
@@ -150,6 +174,7 @@ async function diffComponent(
 ) {
   const payload = await fetchTree(config.style, [component])
   const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
+  const supportedFontMarkers = getSupportedFontMarkers(payload)
 
   if (!payload) {
     return []
@@ -180,12 +205,26 @@ async function diffComponent(
         continue
       }
 
-      const registryContent = await transform({
-        filename: file.path,
-        raw: file.content,
-        config,
-        baseColor,
-      })
+      const registryContent = await transform(
+        {
+          filename: file.path,
+          raw: file.content,
+          config,
+          baseColor,
+          supportedFontMarkers,
+        },
+        [
+          transformImport,
+          transformRsc,
+          transformCssVars,
+          transformTwPrefixes,
+          transformIcons,
+          transformMenu,
+          transformRtl,
+          transformFont,
+          transformCleanup,
+        ]
+      )
 
       const patch = diffLines(registryContent as string, fileContent)
       if (patch.length > 1) {

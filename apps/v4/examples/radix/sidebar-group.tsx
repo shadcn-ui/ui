@@ -1,5 +1,7 @@
 "use client"
 
+import { LifeBuoyIcon, SendIcon } from "lucide-react"
+
 import {
   Sidebar,
   SidebarContent,
@@ -10,8 +12,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from "@/examples/radix/ui/sidebar"
-import { LifeBuoyIcon, SendIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/sidebar"
 
 export default function AppSidebar() {
   return (

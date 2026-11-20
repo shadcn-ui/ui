@@ -3,8 +3,8 @@
 import * as React from "react"
 import { Menu as MenuPrimitive } from "@base-ui/react/menu"
 import { Menubar as MenubarPrimitive } from "@base-ui/react/menubar"
+import { cn } from "cn"
 
-import { cn } from "@/registry/bases/base/lib/utils"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -78,7 +78,7 @@ function MenubarContent({
       alignOffset={alignOffset}
       sideOffset={sideOffset}
       className={cn(
-        "cn-menubar-content cn-menubar-content-logical cn-menu-target",
+        "cn-menubar-content cn-menubar-content-logical cn-menu-target cn-menu-translucent",
         className
       )}
       {...props}
@@ -252,7 +252,10 @@ function MenubarSubContent({
   return (
     <DropdownMenuSubContent
       data-slot="menubar-sub-content"
-      className={cn("cn-menubar-sub-content", className)}
+      className={cn(
+        "cn-menubar-sub-content cn-menu-target cn-menu-translucent",
+        className
+      )}
       {...props}
     />
   )

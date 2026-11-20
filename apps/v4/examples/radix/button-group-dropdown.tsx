@@ -1,15 +1,5 @@
 "use client"
 
-import { Button } from "@/examples/radix/ui/button"
-import { ButtonGroup } from "@/examples/radix/ui/button-group"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/examples/radix/ui/dropdown-menu"
 import {
   AlertTriangleIcon,
   CheckIcon,
@@ -20,6 +10,17 @@ import {
   UserRoundXIcon,
   VolumeOffIcon,
 } from "lucide-react"
+
+import { Button } from "@/styles/radix-nova/ui/button"
+import { ButtonGroup } from "@/styles/radix-nova/ui/button-group"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/styles/radix-nova/ui/dropdown-menu"
 
 export default function ButtonGroupDropdown() {
   return (

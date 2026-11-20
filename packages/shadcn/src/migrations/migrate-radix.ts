@@ -1,11 +1,11 @@
 import { promises as fs } from "fs"
 import path from "path"
-import { Config } from "@/src/utils/get-config"
-import { getPackageInfo } from "@/src/utils/get-package-info"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
-import { spinner } from "@/src/utils/spinner"
-import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
+import { Config } from "@shadcn/registry/internal/get-config"
+import { getPackageInfo } from "@shadcn/registry/internal/get-package-info"
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { logger } from "@shadcn/registry/internal/logger"
+import { spinner } from "@shadcn/registry/internal/spinner"
+import { updateDependencies } from "@shadcn/registry/internal/updaters/update-dependencies"
 import fg from "fast-glob"
 import prompts from "prompts"
 
@@ -116,6 +116,7 @@ export async function migrateRadix(
         cwd: basePath,
         onlyFiles: true,
         ignore: ["**/node_modules/**"],
+        suppressErrors: true,
       })
     } else {
       const fullPath = path.resolve(basePath, options.path)
@@ -131,6 +132,7 @@ export async function migrateRadix(
           cwd: basePath,
           onlyFiles: true,
           ignore: ["**/node_modules/**"],
+          suppressErrors: true,
         })
       } else if (stat.isFile()) {
         files = [options.path]
@@ -154,6 +156,7 @@ export async function migrateRadix(
     files = await fg("**/*.{js,ts,jsx,tsx}", {
       cwd: basePath,
       onlyFiles: true,
+      suppressErrors: true,
     })
   }
 

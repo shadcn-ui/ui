@@ -1,8 +1,7 @@
 "use client"
 
 import * as React from "react"
-
-import { cn } from "@/registry/bases/radix/lib/utils"
+import { cn } from "cn"
 
 function Table({ className, ...props }: React.ComponentProps<"table">) {
   return (
@@ -50,7 +49,7 @@ function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
   return (
     <tr
       data-slot="table-row"
-      className={cn("cn-table-row", className)}
+      className={cn("cn-table-row has-aria-expanded:bg-muted/50", className)}
       {...props}
     />
   )

@@ -7,7 +7,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/examples/base/ui/table"
+} from "@/styles/base-nova/ui/table"
 
 const invoices = [
   {

@@ -3,15 +3,6 @@
 import * as React from "react"
 import Link from "next/link"
 import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/examples/base/ui-rtl/navigation-menu"
-import {
   CircleAlertIcon,
   CircleCheckIcon,
   CircleDashedIcon,
@@ -21,6 +12,15 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/styles/base-nova/ui-rtl/navigation-menu"
 
 const translations: Translations = {
   en: {

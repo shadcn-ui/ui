@@ -3,6 +3,10 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest"
 import { createFixtureTestDirectory, npxShadcn } from "../utils/helpers"
 import { configureRegistries, createRegistryServer } from "../utils/registry"
 
+async function runSearch(fixturePath: string, args: string[]) {
+  return npxShadcn(fixturePath, [...args, "--json"])
+}
+
 const registryShadcn = await createRegistryServer(
   [
     {
@@ -186,7 +190,7 @@ describe("shadcn search", () => {
     await configureRegistries(fixturePath, {
       "@shadcn": "http://localhost:9180/r/{name}",
     })
-    const output = await npxShadcn(fixturePath, ["search", "@shadcn"])
+    const output = await runSearch(fixturePath, ["search", "@shadcn"])
 
     const parsed = JSON.parse(output.stdout)
     expect(parsed).toHaveProperty("items")
@@ -225,7 +229,7 @@ describe("shadcn search", () => {
       "@two": "http://localhost:9182/registry/{name}",
     })
 
-    const output = await npxShadcn(fixturePath, [
+    const output = await runSearch(fixturePath, [
       "search",
       "@shadcn",
       "@one",
@@ -249,7 +253,7 @@ describe("shadcn search", () => {
       "@one": "http://localhost:9181/r/{name}",
     })
 
-    const output = await npxShadcn(fixturePath, ["search", "@one"])
+    const output = await runSearch(fixturePath, ["search", "@one"])
 
     const parsed = JSON.parse(output.stdout)
     expect(parsed).toHaveProperty("items")
@@ -290,7 +294,7 @@ describe("shadcn search", () => {
       },
     })
 
-    const output = await npxShadcn(fixturePath, ["search", "@two"])
+    const output = await runSearch(fixturePath, ["search", "@two"])
 
     const parsed = JSON.parse(output.stdout)
     expect(parsed).toHaveProperty("items")
@@ -337,7 +341,7 @@ describe("shadcn search", () => {
     try {
       process.env.BEARER_TOKEN = "EXAMPLE_BEARER_TOKEN"
 
-      const output = await npxShadcn(fixturePath, ["search", "@two"])
+      const output = await runSearch(fixturePath, ["search", "@two"])
 
       const parsed = JSON.parse(output.stdout)
       expect(parsed).toHaveProperty("items")
@@ -379,7 +383,7 @@ describe("shadcn search", () => {
     await configureRegistries(fixturePath, {
       "@shadcn": "http://localhost:9180/r/{name}",
     })
-    const output = await npxShadcn(fixturePath, ["search", "@shadcn"])
+    const output = await runSearch(fixturePath, ["search", "@shadcn"])
 
     const parsed = JSON.parse(output.stdout)
     expect(parsed).toHaveProperty("items")
@@ -419,7 +423,7 @@ describe("shadcn search", () => {
       "@one": "http://localhost:9181/r/{name}",
     })
 
-    const output = await npxShadcn(fixturePath, ["search", "@one"])
+    const output = await runSearch(fixturePath, ["search", "@one"])
 
     const parsed = JSON.parse(output.stdout)
     expect(parsed).toHaveProperty("items")
@@ -522,7 +526,7 @@ describe("shadcn search", () => {
       "@two": "http://localhost:9182/registry/{name}",
     })
 
-    const output = await npxShadcn(fixturePath, ["search", "@one", "@two"])
+    const output = await runSearch(fixturePath, ["search", "@one", "@two"])
 
     const parsed = JSON.parse(output.stdout)
     expect(parsed).toHaveProperty("items")
@@ -549,7 +553,7 @@ describe("shadcn search", () => {
     })
 
     // List from both registries
-    const output = await npxShadcn(fixturePath, ["search", "@one", "@two"])
+    const output = await runSearch(fixturePath, ["search", "@one", "@two"])
 
     const parsed = JSON.parse(output.stdout)
     expect(parsed).toHaveProperty("items")
@@ -577,7 +581,7 @@ describe("shadcn search", () => {
     })
 
     // Search for "button" with pagination
-    const output = await npxShadcn(fixturePath, [
+    const output = await runSearch(fixturePath, [
       "search",
       "@shadcn",
       "--query",
@@ -605,7 +609,7 @@ describe("shadcn search", () => {
       "@shadcn": "http://localhost:9180/r/{name}",
     })
 
-    const output = await npxShadcn(fixturePath, [
+    const output = await runSearch(fixturePath, [
       "search",
       "@shadcn",
       "--query",
@@ -644,7 +648,7 @@ describe("shadcn search", () => {
 
     // Test button typos
     for (const typo of typos.slice(0, 4)) {
-      const output = await npxShadcn(fixturePath, [
+      const output = await runSearch(fixturePath, [
         "search",
         "@shadcn",
         "--query",
@@ -658,7 +662,7 @@ describe("shadcn search", () => {
     }
 
     // Test dialog typo
-    const dialogOutput = await npxShadcn(fixturePath, [
+    const dialogOutput = await runSearch(fixturePath, [
       "search",
       "@shadcn",
       "--query",
@@ -671,7 +675,7 @@ describe("shadcn search", () => {
     ).toBe(true)
 
     // Test alert typo
-    const alertOutput = await npxShadcn(fixturePath, [
+    const alertOutput = await runSearch(fixturePath, [
       "search",
       "@shadcn",
       "--query",
@@ -699,7 +703,7 @@ describe("shadcn search", () => {
     ]
 
     for (const { query, expected } of partialQueries) {
-      const output = await npxShadcn(fixturePath, [
+      const output = await runSearch(fixturePath, [
         "search",
         "@shadcn",
         "--query",
@@ -720,19 +724,19 @@ describe("shadcn search", () => {
     })
 
     // Search with different cases
-    const output1 = await npxShadcn(fixturePath, [
+    const output1 = await runSearch(fixturePath, [
       "search",
       "@shadcn",
       "--query",
       "BUTTON",
     ])
-    const output2 = await npxShadcn(fixturePath, [
+    const output2 = await runSearch(fixturePath, [
       "search",
       "@shadcn",
       "--query",
       "button",
     ])
-    const output3 = await npxShadcn(fixturePath, [
+    const output3 = await runSearch(fixturePath, [
       "search",
       "@shadcn",
       "--query",
@@ -757,7 +761,7 @@ describe("shadcn search", () => {
     })
 
     // Test searching for components with hyphens
-    const output1 = await npxShadcn(fixturePath, [
+    const output1 = await runSearch(fixturePath, [
       "search",
       "@shadcn",
       "--query",
@@ -769,7 +773,7 @@ describe("shadcn search", () => {
     ).toBe(true)
 
     // Test searching with just the hyphen part
-    const output2 = await npxShadcn(fixturePath, [
+    const output2 = await runSearch(fixturePath, [
       "search",
       "@shadcn",
       "--query",
@@ -781,7 +785,7 @@ describe("shadcn search", () => {
     ).toBe(true)
 
     // Test with spaces (should still work)
-    const output3 = await npxShadcn(fixturePath, [
+    const output3 = await runSearch(fixturePath, [
       "search",
       "@shadcn",
       "--query",
@@ -800,7 +804,7 @@ describe("shadcn search", () => {
     })
 
     // Search for "bar" which should match "bar" exactly
-    const output = await npxShadcn(fixturePath, [
+    const output = await runSearch(fixturePath, [
       "search",
       "@one",
       "--query",
@@ -821,7 +825,7 @@ describe("shadcn search", () => {
     })
 
     // Use 'search' instead of 'list'
-    const output = await npxShadcn(fixturePath, [
+    const output = await runSearch(fixturePath, [
       "search",
       "@shadcn",
       "--query",
@@ -846,7 +850,7 @@ describe("shadcn search", () => {
     })
 
     // Test with limit 0 - should return all items
-    const output1 = await npxShadcn(fixturePath, [
+    const output1 = await runSearch(fixturePath, [
       "search",
       "@shadcn",
       "--limit",
@@ -856,7 +860,7 @@ describe("shadcn search", () => {
     expect(parsed1.items.length).toBeGreaterThan(0)
 
     // Test with very large limit
-    const output2 = await npxShadcn(fixturePath, [
+    const output2 = await runSearch(fixturePath, [
       "search",
       "@shadcn",
       "--limit",
@@ -875,7 +879,7 @@ describe("shadcn search", () => {
     })
 
     // Search across multiple registries with pagination
-    const output = await npxShadcn(fixturePath, [
+    const output = await runSearch(fixturePath, [
       "search",
       "@shadcn",
       "@one",
@@ -900,7 +904,7 @@ describe("shadcn search", () => {
     })
 
     // First page
-    const output1 = await npxShadcn(fixturePath, [
+    const output1 = await runSearch(fixturePath, [
       "search",
       "@large",
       "--limit",
@@ -920,7 +924,7 @@ describe("shadcn search", () => {
     })
 
     // Middle page
-    const output2 = await npxShadcn(fixturePath, [
+    const output2 = await runSearch(fixturePath, [
       "search",
       "@large",
       "--limit",
@@ -935,7 +939,7 @@ describe("shadcn search", () => {
     expect(parsed2.pagination.hasMore).toBe(true)
 
     // Last page (partial)
-    const output3 = await npxShadcn(fixturePath, [
+    const output3 = await runSearch(fixturePath, [
       "search",
       "@large",
       "--limit",
@@ -957,7 +961,7 @@ describe("shadcn search", () => {
       "@one": "http://localhost:9181/r/{name}",
     })
 
-    const output = await npxShadcn(fixturePath, ["search", "@one"])
+    const output = await runSearch(fixturePath, ["search", "@one"])
     const parsed = JSON.parse(output.stdout)
 
     // Check that we only get name, type, description, registry, and addCommand fields
@@ -986,7 +990,7 @@ describe("shadcn search", () => {
       "@two": "http://localhost:9182/registry/{name}",
     })
 
-    const output = await npxShadcn(fixturePath, ["search", "@one", "@two"])
+    const output = await runSearch(fixturePath, ["search", "@one", "@two"])
     const parsed = JSON.parse(output.stdout)
 
     // Check @one registry items have correct addCommand
@@ -1000,5 +1004,116 @@ describe("shadcn search", () => {
       (item: any) => item.name === "item" && item.registry === "@two"
     )
     expect(itemItem.addCommandArgument).toBe("@two/item")
+  })
+
+  it("filters results by type (shorthand and full namespace)", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-init")
+    await configureRegistries(fixturePath, {
+      "@shadcn": "http://localhost:9180/r/{name}",
+      "@one": "http://localhost:9181/r/{name}",
+    })
+
+    // @shadcn items are registry:ui, @one items are registry:component.
+    const uiOutput = await runSearch(fixturePath, [
+      "search",
+      "@shadcn",
+      "@one",
+      "--type",
+      "ui",
+    ])
+    const ui = JSON.parse(uiOutput.stdout)
+    expect(ui.items.length).toBeGreaterThan(0)
+    expect(ui.items.every((item: any) => item.type === "registry:ui")).toBe(
+      true
+    )
+
+    // Full namespaced form is accepted too.
+    const componentOutput = await runSearch(fixturePath, [
+      "search",
+      "@shadcn",
+      "@one",
+      "--type",
+      "registry:component",
+    ])
+    const component = JSON.parse(componentOutput.stdout)
+    expect(component.items.length).toBeGreaterThan(0)
+    expect(
+      component.items.every((item: any) => item.type === "registry:component")
+    ).toBe(true)
+  })
+
+  it("errors on an unknown --type", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-init")
+    await configureRegistries(fixturePath, {
+      "@shadcn": "http://localhost:9180/r/{name}",
+    })
+
+    const output = await npxShadcn(fixturePath, [
+      "search",
+      "@shadcn",
+      "--type",
+      "bogus",
+    ])
+
+    expect(output.stdout).toContain("Unknown type")
+    expect(output.stdout).toContain("bogus")
+  })
+
+  it("searches all configured registries when no registry is provided", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-init")
+    await configureRegistries(fixturePath, {
+      "@shadcn": "http://localhost:9180/r/{name}",
+      "@one": "http://localhost:9181/r/{name}",
+      "@two": "http://localhost:9182/registry/{name}",
+    })
+
+    const output = await runSearch(fixturePath, ["search"])
+    const parsed = JSON.parse(output.stdout)
+
+    const registries = parsed.items.map((item: any) => item.registry)
+    // Configured registries are searched...
+    expect(registries).toContain("@one")
+    expect(registries).toContain("@two")
+    // ...but the builtin @shadcn is excluded from "search all".
+    expect(registries).not.toContain("@shadcn")
+  })
+
+  it("exits non-zero when every registry fails under search-all", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-init")
+    // Both registries point at an auth-protected endpoint with no credentials,
+    // so every registry deterministically fails to load (401). Using a running
+    // server avoids depending on a port being free, which races with other
+    // test files under vitest's concurrent file execution.
+    await configureRegistries(fixturePath, {
+      "@locked1": "http://localhost:9182/registry/bearer/{name}",
+      "@locked2": "http://localhost:9182/registry/bearer/{name}",
+    })
+
+    const output = await runSearch(fixturePath, ["search"])
+
+    expect(output.exitCode).not.toBe(0)
+    const parsed = JSON.parse(output.stdout)
+    expect(parsed.items).toHaveLength(0)
+    expect(parsed.errors).toHaveLength(2)
+  })
+
+  it("skips registries that fail to load when searching all and reports them", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-init")
+    await configureRegistries(fixturePath, {
+      "@one": "http://localhost:9181/r/{name}", // works
+      "@locked": "http://localhost:9182/registry/bearer/{name}", // 401, no creds
+    })
+
+    const output = await runSearch(fixturePath, ["search"])
+    const parsed = JSON.parse(output.stdout)
+
+    // The working registry still returns items.
+    expect(parsed.items.some((item: any) => item.registry === "@one")).toBe(
+      true
+    )
+    // The failing registry is reported in errors instead of aborting.
+    expect(parsed.errors).toEqual(
+      expect.arrayContaining([expect.objectContaining({ registry: "@locked" })])
+    )
   })
 })

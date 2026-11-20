@@ -55,32 +55,6 @@ npx shadcn@latest add sidebar
 
 </CodeTabs>
 
-## Structure
-
-A `Sidebar` component is composed of the following parts:
-
-- `SidebarProvider` - Handles collapsible state.
-- `Sidebar` - The sidebar container.
-- `SidebarHeader` and `SidebarFooter` - Sticky at the top and bottom of the sidebar.
-- `SidebarContent` - Scrollable content.
-- `SidebarGroup` - Section within the `SidebarContent`.
-- `SidebarTrigger` - Trigger for the `Sidebar`.
-
-<Image
-  src="/images/sidebar-structure.png"
-  width="716"
-  height="420"
-  alt="Sidebar Structure"
-  className="mt-6 w-full overflow-hidden rounded-lg border dark:hidden"
-/>
-<Image
-  src="/images/sidebar-structure-dark.png"
-  width="716"
-  height="420"
-  alt="Sidebar Structure"
-  className="mt-6 hidden w-full overflow-hidden rounded-lg border dark:block"
-/>
-
 ## Usage
 
 ```tsx showLineNumbers title="app/layout.tsx"
@@ -122,6 +96,67 @@ export function AppSidebar() {
   )
 }
 ```
+
+## Composition
+
+Use the following composition to build a `Sidebar` layout:
+
+```text
+SidebarProvider
+├── Sidebar
+│   ├── SidebarHeader
+│   ├── SidebarContent
+│   │   ├── SidebarGroup
+│   │   │   ├── SidebarGroupLabel
+│   │   │   ├── SidebarGroupAction
+│   │   │   ├── SidebarGroupContent
+│   │   │   └── SidebarMenu
+│   │   │       ├── SidebarMenuItem
+│   │   │       │   ├── SidebarMenuButton
+│   │   │       │   ├── SidebarMenuAction
+│   │   │       │   └── SidebarMenuBadge
+│   │   │       └── SidebarMenuItem
+│   │   │           ├── SidebarMenuButton
+│   │   │           └── SidebarMenuSub
+│   │   │               ├── SidebarMenuSubItem
+│   │   │               └── SidebarMenuSubItem
+│   │   └── SidebarGroup
+│   │       └── SidebarMenu
+│   │           ├── SidebarMenuItem
+│   │           └── SidebarMenuItem
+│   ├── SidebarFooter
+│   └── SidebarRail
+├── SidebarInset
+└── SidebarTrigger
+```
+
+## Structure
+
+- **SidebarProvider** — Handles collapsible state and provides sidebar context to child components.
+- **Sidebar** — The main collapsible sidebar panel.
+- **SidebarHeader** — Sticky at the top; use for branding, titles, or workspace switchers.
+- **SidebarFooter** — Sticky at the bottom; use for user menus, settings, or actions.
+- **SidebarContent** — Scrollable region between the header and footer.
+- **SidebarGroup** — Groups related navigation with optional label, action, and content areas.
+- **SidebarMenu** / **SidebarMenuItem** — Menu structure for links, badges, actions, and nested submenus.
+- **SidebarRail** — Resize handle for adjusting sidebar width when applicable.
+- **SidebarInset** — Wraps main content when using the `inset` variant.
+- **SidebarTrigger** — Control that toggles the sidebar open or collapsed.
+
+<Image
+  src="/images/sidebar-structure.png"
+  width="716"
+  height="420"
+  alt="Sidebar Structure"
+  className="mt-6 w-full overflow-hidden rounded-2xl border dark:hidden"
+/>
+<Image
+  src="/images/sidebar-structure-dark.png"
+  width="716"
+  height="420"
+  alt="Sidebar Structure"
+  className="mt-6 hidden w-full overflow-hidden rounded-2xl border dark:block"
+/>
 
 ## SidebarProvider
 
@@ -331,14 +366,14 @@ The `SidebarMenu` component is used for building a menu within a `SidebarGroup`.
   width="716"
   height="420"
   alt="Sidebar Menu"
-  className="mt-6 w-full overflow-hidden rounded-lg border dark:hidden"
+  className="mt-6 w-full overflow-hidden rounded-2xl border dark:hidden"
 />
 <Image
   src="/images/sidebar-menu-dark.png"
   width="716"
   height="420"
   alt="Sidebar Menu"
-  className="mt-6 hidden w-full overflow-hidden rounded-lg border dark:block"
+  className="mt-6 hidden w-full overflow-hidden rounded-2xl border dark:block"
 />
 
 ```tsx showLineNumbers
@@ -478,28 +513,26 @@ export function AppSidebar() {
 We use the following CSS variables to theme the sidebar.
 
 ```css
-@layer base {
-  :root {
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+:root {
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
 
-  .dark {
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 0 0% 98%;
-    --sidebar-primary-foreground: 240 5.9% 10%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+.dark {
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.439 0 0);
 }
 ```
 

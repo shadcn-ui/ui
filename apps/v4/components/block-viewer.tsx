@@ -3,6 +3,7 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { cn } from "cn"
 import {
   Check,
   ChevronRight,
@@ -17,18 +18,13 @@ import {
   Terminal,
 } from "lucide-react"
 import { type PanelImperativeHandle } from "react-resizable-panels"
-import {
-  type registryItemFileSchema,
-  type registryItemSchema,
-} from "shadcn/schema"
-import { type z } from "zod"
+import { type RegistryItem, type RegistryItemFile } from "shadcn/schema"
 
 import { trackEvent } from "@/lib/events"
 import {
   type createFileTreeForRegistryItemFiles,
   type FileTree,
 } from "@/lib/registry"
-import { cn } from "@/lib/utils"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { getIconForLanguageExtension } from "@/components/icons"
 import { OpenInV0Button } from "@/components/open-in-v0-button"
@@ -63,7 +59,7 @@ import {
 } from "@/registry/new-york-v4/ui/toggle-group"
 
 type BlockViewerContext = {
-  item: z.infer<typeof registryItemSchema>
+  item: RegistryItem
   view: "code" | "preview"
   setView: (view: "code" | "preview") => void
   activeFile: string | null
@@ -71,7 +67,7 @@ type BlockViewerContext = {
   resizablePanelRef: React.RefObject<PanelImperativeHandle | null> | null
   tree: ReturnType<typeof createFileTreeForRegistryItemFiles> | null
   highlightedFiles:
-    | (z.infer<typeof registryItemFileSchema> & {
+    | (RegistryItemFile & {
         highlightedContent: string
       })[]
     | null
@@ -170,22 +166,22 @@ function BlockViewerToolbar({ styleName }: { styleName: Style["name"] }) {
         <div className="h-8 items-center gap-1.5 rounded-md border p-[3px] shadow-none">
           <ToggleGroup
             type="single"
-            defaultValue="100"
+            defaultValue="100%"
             onValueChange={(value) => {
               setView("preview")
               if (resizablePanelRef?.current) {
-                resizablePanelRef.current.resize(parseInt(value))
+                resizablePanelRef.current.resize(value)
               }
             }}
             className="gap-1 *:data-[slot=toggle-group-item]:size-6! *:data-[slot=toggle-group-item]:rounded-sm!"
           >
-            <ToggleGroupItem value="100" title="Desktop">
+            <ToggleGroupItem value="100%" title="Desktop">
               <Monitor />
             </ToggleGroupItem>
-            <ToggleGroupItem value="60" title="Tablet">
+            <ToggleGroupItem value="60%" title="Tablet">
               <Tablet />
             </ToggleGroupItem>
-            <ToggleGroupItem value="30" title="Mobile">
+            <ToggleGroupItem value="30%" title="Mobile">
               <Smartphone />
             </ToggleGroupItem>
             <Separator orientation="vertical" className="h-4!" />
@@ -305,7 +301,7 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
       ) : (
         <div className="overflow-hidden rounded-xl border">
           <Image
-            src={`/r/styles/new-york-v4/${item.name}-light.png`}
+            src={`/r/styles/new-york/${item.name}-light.png`}
             alt={item.name}
             data-block={item.name}
             width={1440}
@@ -313,7 +309,7 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
             className="object-cover dark:hidden"
           />
           <Image
-            src={`/r/styles/new-york-v4/${item.name}-dark.png`}
+            src={`/r/styles/new-york/${item.name}-dark.png`}
             alt={item.name}
             data-block={item.name}
             width={1440}

@@ -1,11 +1,12 @@
-import { Button } from "@/examples/radix/ui/button"
-import { Kbd } from "@/examples/radix/ui/kbd"
+import { SaveIcon } from "lucide-react"
+
+import { Button } from "@/styles/radix-nova/ui/button"
+import { Kbd } from "@/styles/radix-nova/ui/kbd"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/examples/radix/ui/tooltip"
-import { SaveIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/tooltip"
 
 export function TooltipKeyboard() {
   return (
@@ -15,10 +16,8 @@ export function TooltipKeyboard() {
           <SaveIcon />
         </Button>
       </TooltipTrigger>
-      <TooltipContent className="pr-1.5">
-        <div className="flex items-center gap-2">
-          Save Changes <Kbd>S</Kbd>
-        </div>
+      <TooltipContent>
+        Save Changes <Kbd>S</Kbd>
       </TooltipContent>
     </Tooltip>
   )

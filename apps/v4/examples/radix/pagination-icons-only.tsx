@@ -1,11 +1,11 @@
-import { Field, FieldLabel } from "@/examples/radix/ui/field"
+import { Field, FieldLabel } from "@/styles/radix-nova/ui/field"
 import {
   Pagination,
   PaginationContent,
   PaginationItem,
   PaginationNext,
   PaginationPrevious,
-} from "@/examples/radix/ui/pagination"
+} from "@/styles/radix-nova/ui/pagination"
 import {
   Select,
   SelectContent,
@@ -13,7 +13,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/examples/radix/ui/select"
+} from "@/styles/radix-nova/ui/select"
 
 export function PaginationIconsOnly() {
   return (

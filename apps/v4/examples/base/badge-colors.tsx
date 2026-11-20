@@ -1,4 +1,4 @@
-import { Badge } from "@/examples/base/ui/badge"
+import { Badge } from "@/styles/base-nova/ui/badge"
 
 export function BadgeCustomColors() {
   return (

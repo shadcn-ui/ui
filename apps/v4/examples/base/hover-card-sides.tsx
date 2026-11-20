@@ -1,9 +1,9 @@
-import { Button } from "@/examples/base/ui/button"
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/examples/base/ui/hover-card"
+} from "@/styles/base-nova/ui/hover-card"
 
 const HOVER_CARD_SIDES = ["left", "top", "bottom", "right"] as const
 

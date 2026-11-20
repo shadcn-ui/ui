@@ -1,4 +1,4 @@
-import { Badge } from "@/examples/radix/ui/badge"
+import { Badge } from "@/styles/radix-nova/ui/badge"
 
 export function BadgeVariants() {
   return (

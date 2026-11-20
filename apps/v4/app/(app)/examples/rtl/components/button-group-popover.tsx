@@ -1,17 +1,17 @@
 "use client"
 
-import { Button } from "@/examples/base/ui-rtl/button"
-import { ButtonGroup } from "@/examples/base/ui-rtl/button-group"
+import { BotIcon, ChevronDownIcon } from "lucide-react"
+
+import { useLanguageContext } from "@/components/language-selector"
+import { Button } from "@/styles/base-nova/ui-rtl/button"
+import { ButtonGroup } from "@/styles/base-nova/ui-rtl/button-group"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/examples/base/ui-rtl/popover"
-import { Separator } from "@/examples/base/ui-rtl/separator"
-import { Textarea } from "@/examples/base/ui-rtl/textarea"
-import { BotIcon, ChevronDownIcon } from "lucide-react"
-
-import { useLanguageContext } from "@/components/language-selector"
+} from "@/styles/base-nova/ui-rtl/popover"
+import { Separator } from "@/styles/base-nova/ui-rtl/separator"
+import { Textarea } from "@/styles/base-nova/ui-rtl/textarea"
 
 const translations = {
   ar: {

@@ -1,13 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { Field, FieldLabel } from "@/examples/radix/ui-rtl/field"
-import { Progress } from "@/examples/radix/ui-rtl/progress"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Field, FieldLabel } from "@/styles/radix-nova/ui-rtl/field"
+import { Progress } from "@/styles/radix-nova/ui-rtl/progress"
 
 const translations: Translations = {
   en: {

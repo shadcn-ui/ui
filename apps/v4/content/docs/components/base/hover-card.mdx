@@ -75,6 +75,16 @@ import {
 </HoverCard>
 ```
 
+## Composition
+
+Use the following composition to build a `HoverCard`:
+
+```text
+HoverCard
+├── HoverCardTrigger
+└── HoverCardContent
+```
+
 ## Trigger Delays
 
 Use `delay` and `closeDelay` on the trigger to control when the card opens and
@@ -102,9 +112,7 @@ Use the `side` and `align` props on `HoverCardContent` to control placement.
 </HoverCard>
 ```
 
-## Examples
-
-### Basic
+## Basic
 
 <ComponentPreview
   styleName="base-nova"
@@ -112,7 +120,7 @@ Use the `side` and `align` props on `HoverCardContent` to control placement.
   previewClassName="h-80"
 />
 
-### Sides
+## Sides
 
 <ComponentPreview
   styleName="base-nova"

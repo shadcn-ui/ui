@@ -1,11 +1,12 @@
+import { InboxIcon } from "lucide-react"
+
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/examples/base/ui/item"
-import { InboxIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/item"
 
 export function ItemSizeDemo() {
   return (

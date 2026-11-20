@@ -630,9 +630,9 @@ function SelectPlan() {
 function SelectPlanItem({ plan }: { plan: (typeof plans)[number] }) {
   return (
     <Item size="xs" className="w-full p-0">
-      <ItemContent className="gap-0">
-        <ItemTitle>{plan.name}</ItemTitle>
-        <ItemDescription className="text-xs">
+      <ItemContent className="gap-0 normal-case">
+        <ItemTitle className="font-sans">{plan.name}</ItemTitle>
+        <ItemDescription className="text-xs font-normal tracking-normal">
           {plan.description}
         </ItemDescription>
       </ItemContent>

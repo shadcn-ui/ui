@@ -1,6 +1,14 @@
 "use client"
 
 import {
+  FrameIcon,
+  LifeBuoyIcon,
+  MapIcon,
+  PieChartIcon,
+  SendIcon,
+} from "lucide-react"
+
+import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
@@ -11,14 +19,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from "@/examples/radix/ui/sidebar"
-import {
-  FrameIcon,
-  LifeBuoyIcon,
-  MapIcon,
-  PieChartIcon,
-  SendIcon,
-} from "lucide-react"
+} from "@/styles/radix-nova/ui/sidebar"
 
 const projects = [
   {

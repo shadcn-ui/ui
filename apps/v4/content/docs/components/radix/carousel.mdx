@@ -85,9 +85,20 @@ import {
 </Carousel>
 ```
 
-## Examples
+## Composition
 
-### Sizes
+Use the following composition to build a `Carousel`:
+
+```text
+Carousel
+├── CarouselContent
+│   ├── CarouselItem
+│   └── CarouselItem
+├── CarouselPrevious
+└── CarouselNext
+```
+
+## Sizes
 
 To set the size of the items, you can use the `basis` utility class on the `<CarouselItem />`.
 
@@ -115,7 +126,7 @@ To set the size of the items, you can use the `basis` utility class on the `<Car
 </Carousel>
 ```
 
-### Spacing
+## Spacing
 
 To set the spacing between the items, we use a `pl-[VALUE]` utility on the `<CarouselItem />` and a negative `-ml-[VALUE]` on the `<CarouselContent />`.
 
@@ -141,7 +152,7 @@ To set the spacing between the items, we use a `pl-[VALUE]` utility on the `<Car
 </Carousel>
 ```
 
-### Orientation
+## Orientation
 
 Use the `orientation` prop to set the orientation of the carousel.
 
@@ -319,4 +330,4 @@ The `direction` option accepts `"ltr"` or `"rtl"` and should match the `dir` pro
 
 ## API Reference
 
-See the [Embla Carousel docs](https://www.embla-carousel.com/api/plugins/) for more information on props and plugins.
+See the [Embla Carousel docs](https://www.embla-carousel.com/api/) for more information on props and plugins.

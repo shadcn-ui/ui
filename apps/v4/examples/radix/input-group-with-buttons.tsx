@@ -1,13 +1,14 @@
-import { Button } from "@/examples/radix/ui/button"
-import { Field, FieldGroup, FieldLabel } from "@/examples/radix/ui/field"
-import { Input } from "@/examples/radix/ui/input"
+import { CopyIcon, TrashIcon } from "lucide-react"
+
+import { Button } from "@/styles/radix-nova/ui/button"
+import { Field, FieldGroup, FieldLabel } from "@/styles/radix-nova/ui/field"
+import { Input } from "@/styles/radix-nova/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/examples/radix/ui/input-group"
-import { CopyIcon, TrashIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/input-group"
 
 export function InputGroupWithButtons() {
   return (

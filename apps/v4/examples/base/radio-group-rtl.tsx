@@ -1,18 +1,21 @@
 "use client"
 
 import * as React from "react"
-import {
-  Field,
-  FieldContent,
-  FieldDescription,
-  FieldLabel,
-} from "@/examples/base/ui-rtl/field"
-import { RadioGroup, RadioGroupItem } from "@/examples/base/ui-rtl/radio-group"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldLabel,
+} from "@/styles/base-nova/ui-rtl/field"
+import {
+  RadioGroup,
+  RadioGroupItem,
+} from "@/styles/base-nova/ui-rtl/radio-group"
 
 const translations: Translations = {
   en: {

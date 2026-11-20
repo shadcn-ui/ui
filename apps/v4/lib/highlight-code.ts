@@ -10,8 +10,18 @@ const highlightCache = new LRUCache<string, string>({
   ttl: 1000 * 60 * 60, // 1 hour.
 })
 
+const PROMPT_COLLAPSE_LINES = 12
+
 export const transformers = [
   {
+    pre(node) {
+      if (/(^|\s)prompt(\s|$)/.test(this.options.meta?.__raw ?? "")) {
+        node.properties["data-prompt"] = ""
+        if (this.source.split("\n").length > PROMPT_COLLAPSE_LINES) {
+          node.properties["data-collapsible"] = ""
+        }
+      }
+    },
     code(node) {
       if (node.tagName === "code") {
         const raw = this.source
@@ -22,9 +32,7 @@ export const transformers = [
           node.properties["__yarn__"] = raw.replace("npm install", "yarn add")
           node.properties["__pnpm__"] = raw.replace("npm install", "pnpm add")
           node.properties["__bun__"] = raw.replace("npm install", "bun add")
-        }
-
-        if (raw.startsWith("npx create-")) {
+        } else if (raw.startsWith("npx create-")) {
           node.properties["__npm__"] = raw
           node.properties["__yarn__"] = raw.replace(
             "npx create-",
@@ -35,26 +43,20 @@ export const transformers = [
             "pnpm create "
           )
           node.properties["__bun__"] = raw.replace("npx", "bunx --bun")
-        }
-
-        // npm create.
-        if (raw.startsWith("npm create")) {
+        } else if (raw.startsWith("npm create")) {
+          // npm create.
           node.properties["__npm__"] = raw
           node.properties["__yarn__"] = raw.replace("npm create", "yarn create")
           node.properties["__pnpm__"] = raw.replace("npm create", "pnpm create")
           node.properties["__bun__"] = raw.replace("npm create", "bun create")
-        }
-
-        // npx.
-        if (raw.startsWith("npx")) {
+        } else if (raw.startsWith("npx")) {
+          // npx.
           node.properties["__npm__"] = raw
-          node.properties["__yarn__"] = raw.replace("npx", "yarn")
+          node.properties["__yarn__"] = raw.replace("npx", "yarn dlx")
           node.properties["__pnpm__"] = raw.replace("npx", "pnpm dlx")
           node.properties["__bun__"] = raw.replace("npx", "bunx --bun")
-        }
-
-        // npm run.
-        if (raw.startsWith("npm run")) {
+        } else if (raw.startsWith("npm run")) {
+          // npm run.
           node.properties["__npm__"] = raw
           node.properties["__yarn__"] = raw.replace("npm run", "yarn")
           node.properties["__pnpm__"] = raw.replace("npm run", "pnpm")

@@ -109,19 +109,27 @@ import {
 </Tooltip>
 ```
 
-## Examples
+## Composition
 
-### Side
+Use the following composition to build a `Tooltip`:
+
+```text
+Tooltip
+├── TooltipTrigger
+└── TooltipContent
+```
+
+## Side
 
 Use the `side` prop to change the position of the tooltip.
 
 <ComponentPreview styleName="base-nova" name="tooltip-sides" />
 
-### With Keyboard Shortcut
+## With Keyboard Shortcut
 
 <ComponentPreview styleName="base-nova" name="tooltip-keyboard" />
 
-### Disabled Button
+## Disabled Button
 
 Show a tooltip on a disabled button by wrapping it with a span.
 

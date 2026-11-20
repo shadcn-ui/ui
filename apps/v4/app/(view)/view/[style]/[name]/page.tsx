@@ -12,7 +12,7 @@ import {
 import { absoluteUrl } from "@/lib/utils"
 import { getStyle, legacyStyles, type Style } from "@/registry/_legacy-styles"
 
-import "@/styles/legacy-themes.css"
+import "@/app/legacy-themes.css"
 
 import { ComponentPreview } from "./component-preview"
 
@@ -90,7 +90,7 @@ export async function generateStaticParams() {
 
   for (const style of legacyStyles) {
     // Check if this is a base-prefixed style (e.g., base-nova, radix-nova).
-    const baseMatch = style.name.match(/^(base|radix)-/)
+    const baseMatch = style.name.match(/^(base|radix|aria)-/)
     if (baseMatch) {
       const baseName = baseMatch[1]
 

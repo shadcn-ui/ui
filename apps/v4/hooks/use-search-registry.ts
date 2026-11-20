@@ -1,39 +1,66 @@
-import { debounce, useQueryState } from "nuqs"
+import * as React from "react"
+import { debounce, parseAsInteger, useQueryState } from "nuqs"
+import useSWRImmutable from "swr/immutable"
 
+import {
+  createRegistryDirectoryView,
+  getRegistryDirectoryPage,
+} from "@/lib/registry-health/directory"
+import { useMounted } from "@/hooks/use-mounted"
 import globalRegistries from "@/registry/directory.json"
 
-const normalizeQuery = (query: string) =>
-  query.toLowerCase().replaceAll(" ", "").replaceAll("@", "")
+async function fetchRegistryMetadata(url: string) {
+  const response = await fetch(url, { signal: AbortSignal.timeout(5000) })
+  if (!response.ok) {
+    throw new Error("Registry health is unavailable")
+  }
+  return { payload: await response.json(), fetchedAt: Date.now() }
+}
 
-function finderFn<T extends (typeof globalRegistries)[0]>(
-  registry: T,
-  query: string
-) {
-  const normalizedName = normalizeQuery(registry.name)
-  const normalizedDecription = normalizeQuery(registry.description)
-  const normalizedQuery = normalizeQuery(query)
-
-  return (
-    normalizedName.includes(normalizedQuery) ||
-    normalizedDecription.includes(normalizedQuery)
+export function useSearchRegistry() {
+  const mounted = useMounted()
+  const [now] = React.useState(() => Date.now())
+  const { data, isLoading } = useSWRImmutable(
+    mounted ? "/r/registries.json" : null,
+    fetchRegistryMetadata,
+    { shouldRetryOnError: false }
   )
-}
-
-const searchDirectory = (query: string | null) => {
-  if (!query) return globalRegistries
-
-  return globalRegistries.filter((registry) => finderFn(registry, query))
-}
-
-export const useSearchRegistry = () => {
   const [query, setQuery] = useQueryState("q", {
     defaultValue: "",
     limitUrlUpdates: debounce(250),
   })
 
+  const [page, setPage] = useQueryState("page", {
+    ...parseAsInteger,
+    defaultValue: 1,
+    history: "push",
+  })
+
+  const currentQuery = mounted ? query : ""
+  const currentPageValue = mounted ? page : 1
+
+  const view = React.useMemo(
+    () =>
+      createRegistryDirectoryView(
+        globalRegistries,
+        data?.payload,
+        Math.max(data?.fetchedAt ?? now, now)
+      ),
+    [data, now]
+  )
+  const result = getRegistryDirectoryPage(view, {
+    query: currentQuery,
+    page: currentPageValue,
+  })
+
   return {
-    query,
-    registries: searchDirectory(query),
-    setQuery,
+    ...result,
+    isLoading: !mounted || isLoading,
+    query: currentQuery,
+    setQuery: (value: string | null) => {
+      setQuery(value)
+      setPage(null)
+    },
+    setPage,
   }
 }

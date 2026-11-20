@@ -1,15 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/radix/ui-rtl/button"
-import {
-  Empty,
-  EmptyContent,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyMedia,
-  EmptyTitle,
-} from "@/examples/radix/ui-rtl/empty"
 import { IconFolderCode } from "@tabler/icons-react"
 import { ArrowUpRightIcon } from "lucide-react"
 
@@ -17,6 +8,15 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { Button } from "@/styles/radix-nova/ui-rtl/button"
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/styles/radix-nova/ui-rtl/empty"
 
 const translations: Translations = {
   en: {

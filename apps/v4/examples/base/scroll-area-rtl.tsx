@@ -1,13 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { ScrollArea } from "@/examples/base/ui-rtl/scroll-area"
-import { Separator } from "@/examples/base/ui-rtl/separator"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { ScrollArea } from "@/styles/base-nova/ui-rtl/scroll-area"
+import { Separator } from "@/styles/base-nova/ui-rtl/separator"
 
 const tags = Array.from({ length: 50 }).map(
   (_, i, a) => `v1.2.0-beta.${a.length - i}`

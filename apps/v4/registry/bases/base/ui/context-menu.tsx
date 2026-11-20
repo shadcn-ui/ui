@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { ContextMenu as ContextMenuPrimitive } from "@base-ui/react/context-menu"
+import { cn } from "cn"
 
-import { cn } from "@/registry/bases/base/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function ContextMenu({ ...props }: ContextMenuPrimitive.Root.Props) {
@@ -53,7 +53,7 @@ function ContextMenuContent({
         <ContextMenuPrimitive.Popup
           data-slot="context-menu-content"
           className={cn(
-            "cn-context-menu-content cn-context-menu-content-logical cn-menu-target z-50 max-h-(--available-height) origin-(--transform-origin) overflow-x-hidden overflow-y-auto outline-none",
+            "cn-context-menu-content cn-context-menu-content-logical cn-menu-target cn-menu-translucent z-50 max-h-(--available-height) origin-(--transform-origin) overflow-x-hidden overflow-y-auto outline-none",
             className
           )}
           {...props}
@@ -152,7 +152,7 @@ function ContextMenuSubContent({
   return (
     <ContextMenuContent
       data-slot="context-menu-sub-content"
-      className="cn-context-menu-subcontent"
+      className="cn-context-menu-subcontent cn-menu-target cn-menu-translucent"
       side="right"
       {...props}
     />

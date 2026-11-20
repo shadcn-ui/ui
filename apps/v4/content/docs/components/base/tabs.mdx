@@ -73,25 +73,36 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 </Tabs>
 ```
 
-## Examples
+## Composition
 
-### Line
+Use the following composition to build `Tabs`:
+
+```text
+Tabs
+├── TabsList
+│   ├── TabsTrigger
+│   └── TabsTrigger
+├── TabsContent
+└── TabsContent
+```
+
+## Line
 
 Use the `variant="line"` prop on `TabsList` for a line style.
 
 <ComponentPreview styleName="base-nova" name="tabs-line" />
 
-### Vertical
+## Vertical
 
 Use `orientation="vertical"` for vertical tabs.
 
 <ComponentPreview styleName="base-nova" name="tabs-vertical" />
 
-### Disabled
+## Disabled
 
 <ComponentPreview styleName="base-nova" name="tabs-disabled" />
 
-### Icons
+## Icons
 
 <ComponentPreview styleName="base-nova" name="tabs-icons" />
 

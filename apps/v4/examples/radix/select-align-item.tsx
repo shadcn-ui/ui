@@ -1,13 +1,14 @@
 "use client"
 
 import * as React from "react"
+
 import {
   Field,
   FieldContent,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/examples/radix/ui/field"
+} from "@/styles/radix-nova/ui/field"
 import {
   Select,
   SelectContent,
@@ -15,8 +16,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/examples/radix/ui/select"
-import { Switch } from "@/examples/radix/ui/switch"
+} from "@/styles/radix-nova/ui/select"
+import { Switch } from "@/styles/radix-nova/ui/switch"
 
 export function SelectAlignItem() {
   const [alignItemWithTrigger, setAlignItemWithTrigger] = React.useState(true)

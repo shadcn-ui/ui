@@ -1,19 +1,6 @@
 "use client"
 
 import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-} from "@/examples/radix/ui/field"
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-  InputGroupText,
-} from "@/examples/radix/ui/input-group"
-import {
   CopyIcon,
   EyeOffIcon,
   InfoIcon,
@@ -23,6 +10,20 @@ import {
   StarIcon,
 } from "lucide-react"
 import { toast } from "sonner"
+
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@/styles/radix-nova/ui/field"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+} from "@/styles/radix-nova/ui/input-group"
 
 export function InputGroupWithAddons() {
   return (

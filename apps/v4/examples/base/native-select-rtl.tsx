@@ -1,15 +1,15 @@
 "use client"
 
 import * as React from "react"
-import {
-  NativeSelect,
-  NativeSelectOption,
-} from "@/examples/base/ui-rtl/native-select"
 
 import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import {
+  NativeSelect,
+  NativeSelectOption,
+} from "@/styles/base-nova/ui-rtl/native-select"
 
 const translations: Translations = {
   en: {

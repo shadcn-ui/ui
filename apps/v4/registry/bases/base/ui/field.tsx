@@ -2,8 +2,8 @@
 
 import { useMemo } from "react"
 import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "cn"
 
-import { cn } from "@/registry/bases/base/lib/utils"
 import { Label } from "@/registry/bases/base/ui/label"
 import { Separator } from "@/registry/bases/base/ui/separator"
 
@@ -98,7 +98,7 @@ function FieldLabel({
     <Label
       data-slot="field-label"
       className={cn(
-        "cn-field-label group/field-label peer/field-label flex w-fit leading-snug",
+        "cn-field-label group/field-label peer/field-label flex w-fit",
         "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col",
         className
       )}
@@ -111,10 +111,7 @@ function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="field-label"
-      className={cn(
-        "cn-field-title flex w-fit items-center leading-snug",
-        className
-      )}
+      className={cn("cn-field-title flex w-fit items-center", className)}
       {...props}
     />
   )

@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/examples/radix/ui/button"
+import { Button } from "@/styles/radix-nova/ui/button"
 import {
   Combobox,
   ComboboxContent,
@@ -10,7 +10,7 @@ import {
   ComboboxList,
   ComboboxTrigger,
   ComboboxValue,
-} from "@/examples/radix/ui/combobox"
+} from "@/styles/radix-nova/ui/combobox"
 
 const countries = [
   { code: "", value: "", continent: "", label: "Select country" },

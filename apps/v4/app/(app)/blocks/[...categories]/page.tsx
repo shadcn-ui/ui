@@ -1,3 +1,5 @@
+import { type Metadata } from "next"
+
 import { getAllBlockIds } from "@/lib/blocks"
 import { registryCategories } from "@/lib/categories"
 import { BlockDisplay } from "@/components/block-display"
@@ -11,6 +13,22 @@ export async function generateStaticParams() {
   return registryCategories.map((category) => ({
     categories: [category.slug],
   }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ categories?: string[] }>
+}) {
+  const { categories = [] } = await params
+  const category = registryCategories.find(({ slug }) => slug === categories[0])
+
+  return {
+    title: category ? `${category.name} Blocks` : undefined,
+    alternates: {
+      canonical: `/blocks/${categories.join("/")}`,
+    },
+  } satisfies Metadata
 }
 
 export default async function BlocksPage({

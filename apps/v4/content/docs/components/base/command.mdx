@@ -96,25 +96,41 @@ import {
 </Command>
 ```
 
-## Examples
+## Composition
 
-### Basic
+Use the following composition to build a `Command`:
+
+```text
+Command
+├── CommandInput
+└── CommandList
+    ├── CommandEmpty
+    ├── CommandGroup
+    │   ├── CommandItem
+    │   └── CommandItem
+    ├── CommandSeparator
+    └── CommandGroup
+        ├── CommandItem
+        └── CommandItem
+```
+
+## Basic
 
 A simple command menu in a dialog.
 
 <ComponentPreview styleName="base-nova" name="command-basic" />
 
-### Shortcuts
+## Shortcuts
 
 <ComponentPreview styleName="base-nova" name="command-shortcuts" />
 
-### Groups
+## Groups
 
 A command menu with groups, icons and separators.
 
 <ComponentPreview styleName="base-nova" name="command-groups" />
 
-### Scrollable
+## Scrollable
 
 Scrollable command menu with multiple items.
 

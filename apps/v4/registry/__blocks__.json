@@ -5,6 +5,40 @@
     "categories": ["dashboard"]
   },
   {
+    "name": "login-01",
+    "description": "A simple login form.",
+    "categories": ["authentication", "login"]
+  },
+  {
+    "name": "login-02",
+    "description": "A two column login page with a cover image.",
+    "categories": ["authentication", "login"]
+  },
+  {
+    "name": "login-03",
+    "description": "A login page with a muted background color.",
+    "categories": ["authentication", "login"]
+  },
+  {
+    "name": "login-04",
+    "description": "A login page with form and image.",
+    "categories": ["authentication", "login"]
+  },
+  {
+    "name": "login-05",
+    "description": "A simple email-only login page.",
+    "categories": ["authentication", "login"]
+  },
+  {
+    "name": "preview"
+  },
+  {
+    "name": "preview-02"
+  },
+  {
+    "name": "preview-03"
+  },
+  {
     "name": "sidebar-01",
     "description": "A simple sidebar with navigation grouped by section.",
     "categories": ["sidebar", "dashboard"]
@@ -83,31 +117,6 @@
     "name": "sidebar-16",
     "description": "A sidebar with a sticky site header.",
     "categories": ["sidebar", "dashboard"]
-  },
-  {
-    "name": "login-01",
-    "description": "A simple login form.",
-    "categories": ["authentication", "login"]
-  },
-  {
-    "name": "login-02",
-    "description": "A two column login page with a cover image.",
-    "categories": ["authentication", "login"]
-  },
-  {
-    "name": "login-03",
-    "description": "A login page with a muted background color.",
-    "categories": ["authentication", "login"]
-  },
-  {
-    "name": "login-04",
-    "description": "A login page with form and image.",
-    "categories": ["authentication", "login"]
-  },
-  {
-    "name": "login-05",
-    "description": "A simple email-only login page.",
-    "categories": ["authentication", "login"]
   },
   {
     "name": "signup-01",

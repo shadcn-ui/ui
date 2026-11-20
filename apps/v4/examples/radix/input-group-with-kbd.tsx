@@ -1,18 +1,19 @@
+import { CheckIcon, InfoIcon, SearchIcon, SparklesIcon } from "lucide-react"
+
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/examples/radix/ui/field"
-import { Input } from "@/examples/radix/ui/input"
+} from "@/styles/radix-nova/ui/field"
+import { Input } from "@/styles/radix-nova/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/radix/ui/input-group"
-import { Kbd, KbdGroup } from "@/examples/radix/ui/kbd"
-import { Spinner } from "@/examples/radix/ui/spinner"
-import { CheckIcon, InfoIcon, SearchIcon, SparklesIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/input-group"
+import { Kbd, KbdGroup } from "@/styles/radix-nova/ui/kbd"
+import { Spinner } from "@/styles/radix-nova/ui/spinner"
 
 export function InputGroupWithKbd() {
   return (

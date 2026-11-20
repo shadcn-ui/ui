@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader } from "@/examples/radix/ui/card"
-import { Skeleton } from "@/examples/radix/ui/skeleton"
+import { Card, CardContent, CardHeader } from "@/styles/radix-nova/ui/card"
+import { Skeleton } from "@/styles/radix-nova/ui/skeleton"
 
 export function SkeletonCard() {
   return (

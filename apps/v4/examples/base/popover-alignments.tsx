@@ -1,9 +1,9 @@
-import { Button } from "@/examples/base/ui/button"
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/examples/base/ui/popover"
+} from "@/styles/base-nova/ui/popover"
 
 export function PopoverAlignments() {
   return (

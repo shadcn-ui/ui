@@ -1,15 +1,16 @@
 "use client"
 
 import * as React from "react"
-import { Calendar } from "@/examples/base/ui/calendar"
-import { Card, CardContent, CardFooter } from "@/examples/base/ui/card"
-import { Field, FieldGroup, FieldLabel } from "@/examples/base/ui/field"
+import { Clock2Icon } from "lucide-react"
+
+import { Calendar } from "@/styles/base-nova/ui/calendar"
+import { Card, CardContent, CardFooter } from "@/styles/base-nova/ui/card"
+import { Field, FieldGroup, FieldLabel } from "@/styles/base-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/base/ui/input-group"
-import { Clock2Icon } from "lucide-react"
+} from "@/styles/base-nova/ui/input-group"
 
 export function CalendarWithTime() {
   const [date, setDate] = React.useState<Date | undefined>(

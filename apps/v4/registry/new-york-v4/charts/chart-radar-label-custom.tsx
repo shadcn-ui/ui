@@ -69,13 +69,14 @@ export function ChartRadarLabelCustom() {
             />
             <PolarAngleAxis
               dataKey="month"
-              tick={({ x, y, textAnchor, value, index, ...props }) => {
+              tick={({ x, y, textAnchor, index, ...props }) => {
                 const data = chartData[index]
+                const yValue = typeof y === "number" ? y : 0
 
                 return (
                   <text
                     x={x}
-                    y={index === 0 ? y - 10 : y}
+                    y={yValue + (index === 0 ? -10 : 0)}
                     textAnchor={textAnchor}
                     fontSize={13}
                     fontWeight={500}

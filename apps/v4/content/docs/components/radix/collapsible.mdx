@@ -77,6 +77,16 @@ import {
 </Collapsible>
 ```
 
+## Composition
+
+Use the following composition to build a `Collapsible`:
+
+```text
+Collapsible
+├── CollapsibleTrigger
+└── CollapsibleContent
+```
+
 ## Controlled State
 
 Use the `open` and `onOpenChange` props to control the state.
@@ -96,9 +106,7 @@ export function Example() {
 }
 ```
 
-## Examples
-
-### Basic
+## Basic
 
 <ComponentPreview
   styleName="radix-nova"
@@ -106,15 +114,15 @@ export function Example() {
   align="start"
 />
 
-### Settings Panel
+## Settings Panel
 
 Use a trigger button to reveal additional settings.
 
 <ComponentPreview styleName="radix-nova" name="collapsible-settings" />
 
-### File Tree
+## File Tree
 
-Use nested collapsibles to build a file tree.
+Use nested collapsibles to build a file tree. In a conversation, this is the [File Tree](/docs/ai-elements/radix/file-tree) pattern.
 
 <ComponentPreview
   styleName="radix-nova"

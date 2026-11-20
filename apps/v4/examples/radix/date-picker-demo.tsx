@@ -1,15 +1,16 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/radix/ui/button"
-import { Calendar } from "@/examples/radix/ui/calendar"
+import { format } from "date-fns"
+import { ChevronDownIcon } from "lucide-react"
+
+import { Button } from "@/styles/radix-nova/ui/button"
+import { Calendar } from "@/styles/radix-nova/ui/calendar"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/examples/radix/ui/popover"
-import { format } from "date-fns"
-import { ChevronDownIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/popover"
 
 export function DatePickerDemo() {
   const [date, setDate] = React.useState<Date>()

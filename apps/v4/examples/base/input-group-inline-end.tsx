@@ -1,10 +1,15 @@
-import { Field, FieldDescription, FieldLabel } from "@/examples/base/ui/field"
+import { EyeOffIcon } from "lucide-react"
+
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/styles/base-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/base/ui/input-group"
-import { EyeOffIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/input-group"
 
 export function InputGroupInlineEnd() {
   return (

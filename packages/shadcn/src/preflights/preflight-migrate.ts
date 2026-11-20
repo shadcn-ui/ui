@@ -2,9 +2,10 @@ import path from "path"
 import { addOptionsSchema } from "@/src/commands/add"
 import { migrateOptionsSchema } from "@/src/commands/migrate"
 import * as ERRORS from "@/src/utils/errors"
-import { getConfig } from "@/src/utils/get-config"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
+import { getConfig } from "@shadcn/registry/internal/get-config"
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { logger } from "@shadcn/registry/internal/logger"
+import { SHADCN_URL } from "@shadcn/registry/internal/registry/constants"
 import fs from "fs-extra"
 import { z } from "zod"
 
@@ -54,9 +55,7 @@ export async function preFlightMigrate(
       )} file by running the ${highlighter.info("init")} command.`
     )
     logger.error(
-      `Learn more at ${highlighter.info(
-        "https://ui.shadcn.com/docs/components-json"
-      )}.`
+      `Learn more at ${highlighter.info(`${SHADCN_URL}/docs/components-json`)}.`
     )
     logger.break()
     process.exit(1)

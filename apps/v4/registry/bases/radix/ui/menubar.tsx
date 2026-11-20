@@ -1,9 +1,9 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "cn"
 import { Menubar as MenubarPrimitive } from "radix-ui"
 
-import { cn } from "@/registry/bases/radix/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Menubar({
@@ -76,7 +76,7 @@ function MenubarContent({
         alignOffset={alignOffset}
         sideOffset={sideOffset}
         className={cn(
-          "cn-menubar-content cn-menu-target z-50 origin-(--radix-menubar-content-transform-origin) overflow-hidden",
+          "cn-menubar-content cn-menu-target cn-menu-translucent z-50 origin-(--radix-menubar-content-transform-origin) overflow-hidden",
           className
         )}
         {...props}
@@ -266,7 +266,7 @@ function MenubarSubContent({
     <MenubarPrimitive.SubContent
       data-slot="menubar-sub-content"
       className={cn(
-        "cn-menubar-sub-content cn-menu-target z-50 origin-(--radix-menubar-content-transform-origin) overflow-hidden",
+        "cn-menubar-sub-content cn-menu-target cn-menu-translucent z-50 origin-(--radix-menubar-content-transform-origin) overflow-hidden",
         className
       )}
       {...props}

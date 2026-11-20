@@ -1,9 +1,8 @@
 "use client"
 
-import { Badge } from "@/examples/base/ui-rtl/badge"
-import { Spinner } from "@/examples/base/ui-rtl/spinner"
-
 import { useLanguageContext } from "@/components/language-selector"
+import { Badge } from "@/styles/base-nova/ui-rtl/badge"
+import { Spinner } from "@/styles/base-nova/ui-rtl/spinner"
 
 const translations = {
   ar: {

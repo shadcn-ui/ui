@@ -1,16 +1,17 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui/button"
-import { Calendar } from "@/examples/base/ui/calendar"
-import { Field, FieldLabel } from "@/examples/base/ui/field"
+import { format } from "date-fns"
+import { ChevronDownIcon } from "lucide-react"
+
+import { Button } from "@/styles/base-nova/ui/button"
+import { Calendar } from "@/styles/base-nova/ui/calendar"
+import { Field, FieldLabel } from "@/styles/base-nova/ui/field"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/examples/base/ui/popover"
-import { format } from "date-fns"
-import { ChevronDownIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/popover"
 
 export function DataPickerWithDropdowns() {
   const [date, setDate] = React.useState<Date>()

@@ -1,0 +1,12 @@
+{
+  "name": "web",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#*": "./src/*"
+  },
+  "dependencies": {
+    "@workspace/ui": "workspace:*",
+    "tailwindcss": "^4.2.1"
+  }
+}

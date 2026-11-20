@@ -1,17 +1,18 @@
-import { Button } from "@/examples/radix/ui/button"
-import { ButtonGroup } from "@/examples/radix/ui/button-group"
-import { Input } from "@/examples/radix/ui/input"
+import { AudioLinesIcon, PlusIcon } from "lucide-react"
+
+import { Button } from "@/styles/radix-nova/ui/button"
+import { ButtonGroup } from "@/styles/radix-nova/ui/button-group"
+import { Input } from "@/styles/radix-nova/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/examples/radix/ui/input-group"
+} from "@/styles/radix-nova/ui/input-group"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/examples/radix/ui/tooltip"
-import { AudioLinesIcon, PlusIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/tooltip"
 
 export function ButtonGroupNested() {
   return (

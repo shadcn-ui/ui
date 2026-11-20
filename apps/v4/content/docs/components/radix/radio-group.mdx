@@ -72,33 +72,41 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 </RadioGroup>
 ```
 
-## Examples
+## Composition
 
-### Description
+Use the following composition to build a `RadioGroup`:
+
+```text
+RadioGroup
+├── RadioGroupItem
+└── RadioGroupItem
+```
+
+## Description
 
 Radio group items with a description using the `Field` component.
 
 <ComponentPreview styleName="radix-nova" name="radio-group-description" />
 
-### Choice Card
+## Choice Card
 
 Use `FieldLabel` to wrap the entire `Field` for a clickable card-style selection.
 
 <ComponentPreview styleName="radix-nova" name="radio-group-choice-card" />
 
-### Fieldset
+## Fieldset
 
 Use `FieldSet` and `FieldLegend` to group radio items with a label and description.
 
 <ComponentPreview styleName="radix-nova" name="radio-group-fieldset" />
 
-### Disabled
+## Disabled
 
 Use the `disabled` prop on `RadioGroupItem` to disable individual items.
 
 <ComponentPreview styleName="radix-nova" name="radio-group-disabled" />
 
-### Invalid
+## Invalid
 
 Use `aria-invalid` on `RadioGroupItem` and `data-invalid` on `Field` to show validation errors.
 

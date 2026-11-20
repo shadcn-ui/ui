@@ -2,16 +2,6 @@
 
 import * as React from "react"
 import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  CommandShortcut,
-} from "@/examples/radix/ui-rtl/command"
-import {
   Calculator,
   Calendar,
   CreditCard,
@@ -24,6 +14,16 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+} from "@/styles/radix-nova/ui-rtl/command"
 
 const translations: Translations = {
   en: {

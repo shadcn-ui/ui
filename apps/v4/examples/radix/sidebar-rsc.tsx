@@ -1,5 +1,13 @@
 import * as React from "react"
 import {
+  FrameIcon,
+  LifeBuoyIcon,
+  MapIcon,
+  PieChartIcon,
+  SendIcon,
+} from "lucide-react"
+
+import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
@@ -10,14 +18,7 @@ import {
   SidebarMenuItem,
   SidebarMenuSkeleton,
   SidebarProvider,
-} from "@/examples/radix/ui/sidebar"
-import {
-  FrameIcon,
-  LifeBuoyIcon,
-  MapIcon,
-  PieChartIcon,
-  SendIcon,
-} from "lucide-react"
+} from "@/styles/radix-nova/ui/sidebar"
 
 const projects = [
   {

@@ -1,8 +1,8 @@
 import * as React from "react"
-import { type Column } from "@tanstack/react-table"
+import { type Column, type RowData } from "@tanstack/react-table"
+import { cn } from "cn"
 import { Check, PlusCircle } from "lucide-react"
 
-import { cn } from "@/lib/utils"
 import { Badge } from "@/registry/new-york-v4/ui/badge"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
@@ -21,8 +21,10 @@ import {
 } from "@/registry/new-york-v4/ui/popover"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 
-interface DataTableFacetedFilterProps<TData, TValue> {
-  column?: Column<TData, TValue>
+import { type TasksTableFeatures } from "./data-table-features"
+
+interface DataTableFacetedFilterProps<TData extends RowData, TValue> {
+  column?: Column<TasksTableFeatures, TData, TValue>
   title?: string
   options: {
     label: string
@@ -31,7 +33,7 @@ interface DataTableFacetedFilterProps<TData, TValue> {
   }[]
 }
 
-export function DataTableFacetedFilter<TData, TValue>({
+export function DataTableFacetedFilter<TData extends RowData, TValue>({
   column,
   title,
   options,

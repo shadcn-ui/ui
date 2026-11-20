@@ -1,4 +1,6 @@
-import { Button } from "@/examples/radix/ui/button"
+import { ShieldAlertIcon } from "lucide-react"
+
+import { Button } from "@/styles/radix-nova/ui/button"
 import {
   Item,
   ItemActions,
@@ -6,8 +8,7 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/examples/radix/ui/item"
-import { ShieldAlertIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/item"
 
 export function ItemIcon() {
   return (

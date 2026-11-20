@@ -1,11 +1,12 @@
-import { Button } from "@/examples/base/ui/button"
-import { Kbd } from "@/examples/base/ui/kbd"
+import { SaveIcon } from "lucide-react"
+
+import { Button } from "@/styles/base-nova/ui/button"
+import { Kbd } from "@/styles/base-nova/ui/kbd"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/examples/base/ui/tooltip"
-import { SaveIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/tooltip"
 
 export function TooltipKeyboard() {
   return (
@@ -13,10 +14,8 @@ export function TooltipKeyboard() {
       <TooltipTrigger render={<Button variant="outline" size="icon-sm" />}>
         <SaveIcon />
       </TooltipTrigger>
-      <TooltipContent className="pr-1.5">
-        <div className="flex items-center gap-2">
-          Save Changes <Kbd>S</Kbd>
-        </div>
+      <TooltipContent>
+        Save Changes <Kbd>S</Kbd>
       </TooltipContent>
     </Tooltip>
   )

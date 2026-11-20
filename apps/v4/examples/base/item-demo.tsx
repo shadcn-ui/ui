@@ -1,4 +1,6 @@
-import { Button } from "@/examples/base/ui/button"
+import { BadgeCheckIcon, ChevronRightIcon } from "lucide-react"
+
+import { Button } from "@/styles/base-nova/ui/button"
 import {
   Item,
   ItemActions,
@@ -6,8 +8,7 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/examples/base/ui/item"
-import { BadgeCheckIcon, ChevronRightIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/item"
 
 export function ItemDemo() {
   return (

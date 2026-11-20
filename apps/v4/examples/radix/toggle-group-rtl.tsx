@@ -1,14 +1,13 @@
 "use client"
 
 import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/examples/radix/ui-rtl/toggle-group"
-
-import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/styles/radix-nova/ui-rtl/toggle-group"
 
 const translations: Translations = {
   en: {

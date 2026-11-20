@@ -1,5 +1,9 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/examples/radix/ui/avatar"
-import { Button } from "@/examples/radix/ui/button"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/styles/radix-nova/ui/avatar"
+import { Button } from "@/styles/radix-nova/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -7,7 +11,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/examples/radix/ui/empty"
+} from "@/styles/radix-nova/ui/empty"
 
 export default function EmptyAvatar() {
   return (

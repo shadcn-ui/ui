@@ -1,4 +1,5 @@
 import Image from "next/image"
+
 import {
   Item,
   ItemContent,
@@ -6,7 +7,7 @@ import {
   ItemGroup,
   ItemHeader,
   ItemTitle,
-} from "@/examples/base/ui/item"
+} from "@/styles/base-nova/ui/item"
 
 const models = [
   {

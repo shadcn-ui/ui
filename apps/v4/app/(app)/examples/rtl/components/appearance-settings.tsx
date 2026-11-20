@@ -1,8 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { Button } from "@/examples/base/ui-rtl/button"
-import { ButtonGroup } from "@/examples/base/ui-rtl/button-group"
+import { IconMinus, IconPlus } from "@tabler/icons-react"
+
+import { useLanguageContext } from "@/components/language-selector"
+import { Button } from "@/styles/base-nova/ui-rtl/button"
+import { ButtonGroup } from "@/styles/base-nova/ui-rtl/button-group"
 import {
   Field,
   FieldContent,
@@ -13,13 +16,13 @@ import {
   FieldSeparator,
   FieldSet,
   FieldTitle,
-} from "@/examples/base/ui-rtl/field"
-import { Input } from "@/examples/base/ui-rtl/input"
-import { RadioGroup, RadioGroupItem } from "@/examples/base/ui-rtl/radio-group"
-import { Switch } from "@/examples/base/ui-rtl/switch"
-import { IconMinus, IconPlus } from "@tabler/icons-react"
-
-import { useLanguageContext } from "@/components/language-selector"
+} from "@/styles/base-nova/ui-rtl/field"
+import { Input } from "@/styles/base-nova/ui-rtl/input"
+import {
+  RadioGroup,
+  RadioGroupItem,
+} from "@/styles/base-nova/ui-rtl/radio-group"
+import { Switch } from "@/styles/base-nova/ui-rtl/switch"
 
 const translations = {
   ar: {

@@ -39,6 +39,7 @@ packages
 | `apps/v4/content`    | The content for the website.             |
 | `apps/v4/registry`   | The registry for the components.         |
 | `packages/shadcn`    | The `shadcn` package.                    |
+| `packages/registry`  | The `@shadcn/registry` package.          |
 
 ## Development
 
@@ -82,11 +83,18 @@ You can use the `pnpm --filter=[WORKSPACE]` command to start the development pro
 pnpm --filter=v4 dev
 ```
 
+> **Fresh clone?** The generated styles are not checked into git. Run
+> `pnpm --filter=v4 registry:build --style all` once before starting the dev
+> server. If you forget, the dev server will fail fast and tell you exactly
+> this.
+
 2. To run the `shadcn` package:
 
 ```bash
-pnpm --filter=shadcn dev
+pnpm shadcn:dev
 ```
+
+This also watches `@shadcn/registry`, which the CLI depends on.
 
 ## Running the CLI Locally
 
@@ -141,6 +149,17 @@ When adding or modifying components, please ensure that:
 2. You update the documentation.
 3. You run `pnpm registry:build` to update the registry.
 
+See [`apps/v4/registry/README.md`](apps/v4/registry/README.md) for how the
+registry pipeline is structured and for the faster targeted build modes
+(`--style`, `--registry`, `--examples`, `--indexes`) you can use while
+iterating locally. Always run the full `pnpm registry:build` before committing.
+
+Note that most generated output is not tracked in git: the installable JSON
+under `apps/v4/public/r/styles` and the compiled styles under `apps/v4/styles`
+are gitignored and rebuilt on every deploy. Running `registry:build` will not
+dirty your working tree with generated files — only changes to the authored
+sources (e.g. `registry/bases`) and the tracked indexes are committed.
+
 ## Commit Convention
 
 Before you create a Pull Request, please check whether your commits comply with
@@ -180,7 +199,7 @@ If you have a request for a new component, please open a discussion on GitHub. W
 
 The `shadcn` package is a CLI for adding components to your project. You can find the documentation for the CLI [here](https://ui.shadcn.com/docs/cli).
 
-Any changes to the CLI should be made in the `packages/shadcn` directory. If you can, it would be great if you could add tests for your changes.
+Changes to the CLI commands should be made in the `packages/shadcn` directory. The registry and install logic the CLI uses (fetching and resolving registry items, `components.json`, updaters and transformers) lives in `packages/registry`, published as `@shadcn/registry`. If you can, it would be great if you could add tests for your changes.
 
 ## Testing
 

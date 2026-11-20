@@ -1,3 +1,5 @@
+import { BluetoothIcon } from "lucide-react"
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -9,9 +11,8 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/examples/radix/ui/alert-dialog"
-import { Button } from "@/examples/radix/ui/button"
-import { BluetoothIcon } from "lucide-react"
+} from "@/styles/radix-nova/ui/alert-dialog"
+import { Button } from "@/styles/radix-nova/ui/button"
 
 export function AlertDialogSmallWithMedia() {
   return (

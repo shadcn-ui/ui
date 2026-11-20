@@ -1,11 +1,12 @@
+import { LoaderIcon } from "lucide-react"
+
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
-} from "@/examples/base/ui/input-group"
-import { Spinner } from "@/examples/base/ui/spinner"
-import { LoaderIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/input-group"
+import { Spinner } from "@/styles/base-nova/ui/spinner"
 
 export default function InputGroupSpinner() {
   return (

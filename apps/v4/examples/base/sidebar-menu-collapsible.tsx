@@ -1,10 +1,12 @@
 "use client"
 
+import { ChevronRightIcon } from "lucide-react"
+
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/examples/base/ui/collapsible"
+} from "@/styles/base-nova/ui/collapsible"
 import {
   Sidebar,
   SidebarContent,
@@ -17,8 +19,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   SidebarProvider,
-} from "@/examples/base/ui/sidebar"
-import { ChevronRightIcon } from "lucide-react"
+} from "@/styles/base-nova/ui/sidebar"
 
 const items = [
   {

@@ -1,15 +1,15 @@
 import { promises as fs } from "fs"
 import path from "path"
-import { server } from "@/src/mcp"
-import { loadEnvFiles } from "@/src/utils/env-loader"
-import { getConfig } from "@/src/utils/get-config"
-import { getPackageManager } from "@/src/utils/get-package-manager"
+import { createServer } from "@/src/mcp"
 import { handleError } from "@/src/utils/handle-error"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
-import { spinner } from "@/src/utils/spinner"
-import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
+import { serveStdio } from "@modelcontextprotocol/server/stdio"
+import { loadEnvFiles } from "@shadcn/registry/internal/env-loader"
+import { getConfig } from "@shadcn/registry/internal/get-config"
+import { getPackageManager } from "@shadcn/registry/internal/get-package-manager"
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { logger } from "@shadcn/registry/internal/logger"
+import { spinner } from "@shadcn/registry/internal/spinner"
+import { updateDependencies } from "@shadcn/registry/internal/updaters/update-dependencies"
 import { Command } from "commander"
 import deepmerge from "deepmerge"
 import { execa } from "execa"
@@ -98,8 +98,12 @@ export const mcp = new Command()
   .action(async (options) => {
     try {
       await loadEnvFiles(options.cwd)
-      const transport = new StdioServerTransport()
-      await server.connect(transport)
+      // Serves both the 2026-07-28 protocol and the 2025 `initialize`
+      // handshake. The client's first message picks the version.
+      // Stdout carries the protocol, so report transport errors on stderr.
+      serveStdio(createServer, {
+        onerror: (error) => console.error(error),
+      })
     } catch (error) {
       logger.break()
       handleError(error)

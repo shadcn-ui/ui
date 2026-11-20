@@ -1,0 +1,6 @@
+{
+  "name": "next-monorepo-web",
+  "dependencies": {
+    "next": "15.0.0"
+  }
+}

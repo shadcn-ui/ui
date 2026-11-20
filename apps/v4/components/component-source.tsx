@@ -1,11 +1,10 @@
-import fs from "node:fs/promises"
-import path from "node:path"
 import * as React from "react"
+import { cn } from "cn"
 
+import { formatCode } from "@/lib/format-code"
 import { highlightCode } from "@/lib/highlight-code"
+import { readFileFromRoot } from "@/lib/read-file"
 import { getDemoItem, getRegistryItem } from "@/lib/registry"
-import { formatCode } from "@/lib/rehype"
-import { cn } from "@/lib/utils"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { CopyButton } from "@/components/copy-button"
 import { getIconForLanguageExtension } from "@/components/icons"
@@ -17,7 +16,7 @@ export async function ComponentSource({
   language,
   collapsible = true,
   className,
-  styleName = "new-york-v4",
+  styleName = "base-nova",
   maxLines,
 }: React.ComponentProps<"div"> & {
   name?: string
@@ -42,8 +41,7 @@ export async function ComponentSource({
   }
 
   if (src) {
-    const file = await fs.readFile(path.join(process.cwd(), src), "utf-8")
-    code = file
+    code = await readFileFromRoot(src)
   }
 
   if (!code) {
@@ -110,7 +108,10 @@ function ComponentCode({
         </figcaption>
       )}
       <CopyButton value={code} />
-      <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+      <div
+        data-not-typeset
+        dangerouslySetInnerHTML={{ __html: highlightedCode }}
+      />
     </figure>
   )
 }

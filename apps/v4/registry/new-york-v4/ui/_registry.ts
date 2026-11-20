@@ -144,7 +144,7 @@ export const ui: Registry["items"] = [
       },
     ],
     registryDependencies: ["card"],
-    dependencies: ["recharts@2.15.4", "lucide-react"],
+    dependencies: ["recharts@3.8.0", "lucide-react"],
   },
   {
     name: "checkbox",
@@ -698,6 +698,62 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     files: [
       {
         path: "ui/direction.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "attachment",
+    type: "registry:ui",
+    dependencies: ["radix-ui"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/attachment.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "bubble",
+    type: "registry:ui",
+    dependencies: ["radix-ui"],
+    files: [
+      {
+        path: "ui/bubble.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "marker",
+    type: "registry:ui",
+    dependencies: ["radix-ui"],
+    files: [
+      {
+        path: "ui/marker.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "message",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/message.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "message-scroller",
+    type: "registry:ui",
+    dependencies: ["@shadcn/react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/message-scroller.tsx",
         type: "registry:ui",
       },
     ],

@@ -1,4 +1,13 @@
 import {
+  Calculator,
+  Calendar,
+  CreditCard,
+  Settings,
+  Smile,
+  User,
+} from "lucide-react"
+
+import {
   Command,
   CommandEmpty,
   CommandGroup,
@@ -7,15 +16,7 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "@/examples/radix/ui/command"
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from "lucide-react"
+} from "@/styles/radix-nova/ui/command"
 
 export function CommandDemo() {
   return (
