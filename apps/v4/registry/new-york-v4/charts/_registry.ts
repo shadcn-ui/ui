@@ -245,6 +245,52 @@ export const charts: Registry["items"] = [
     categories: ["charts", "charts-bar"],
   },
 
+  // Candlestick Charts
+  {
+    name: "chart-candlestick-advanced",
+    type: "registry:block",
+    registryDependencies: [
+      "card",
+      "chart",
+      "candlestick-chart",
+      "label",
+      "select",
+      "switch",
+      "toggle-group",
+    ],
+    files: [
+      {
+        path: "charts/chart-candlestick-advanced.tsx",
+        type: "registry:block",
+      },
+    ],
+    categories: ["charts", "charts-candlestick"],
+  },
+  {
+    name: "chart-candlestick-custom",
+    type: "registry:block",
+    registryDependencies: ["card", "candlestick-chart"],
+    files: [
+      {
+        path: "charts/chart-candlestick-custom.tsx",
+        type: "registry:block",
+      },
+    ],
+    categories: ["charts", "charts-candlestick"],
+  },
+  {
+    name: "chart-candlestick-default",
+    type: "registry:block",
+    registryDependencies: ["card", "candlestick-chart"],
+    files: [
+      {
+        path: "charts/chart-candlestick-default.tsx",
+        type: "registry:block",
+      },
+    ],
+    categories: ["charts", "charts-candlestick"],
+  },
+
   // Line Charts
   {
     name: "chart-line-default",

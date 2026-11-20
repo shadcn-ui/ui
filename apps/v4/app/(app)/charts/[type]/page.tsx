@@ -24,6 +24,7 @@ interface ChartPageProps {
 const chartTypes = [
   "area",
   "bar",
+  "candlestick",
   "line",
   "pie",
   "radar",

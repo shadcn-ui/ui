@@ -20,6 +20,9 @@ import { ChartBarMixed } from "@/registry/new-york-v4/charts/chart-bar-mixed"
 import { ChartBarMultiple } from "@/registry/new-york-v4/charts/chart-bar-multiple"
 import { ChartBarNegative } from "@/registry/new-york-v4/charts/chart-bar-negative"
 import { ChartBarStacked } from "@/registry/new-york-v4/charts/chart-bar-stacked"
+import { ChartCandlestickAdvanced } from "@/registry/new-york-v4/charts/chart-candlestick-advanced"
+import { ChartCandlestickCustom } from "@/registry/new-york-v4/charts/chart-candlestick-custom"
+import { ChartCandlestickDefault } from "@/registry/new-york-v4/charts/chart-candlestick-default"
 import { ChartLineDefault } from "@/registry/new-york-v4/charts/chart-line-default"
 import { ChartLineDots } from "@/registry/new-york-v4/charts/chart-line-dots"
 import { ChartLineDotsColors } from "@/registry/new-york-v4/charts/chart-line-dots-colors"
@@ -82,6 +85,7 @@ interface ChartItem {
 interface ChartGroups {
   area: ChartItem[]
   bar: ChartItem[]
+  candlestick: ChartItem[]
   line: ChartItem[]
   pie: ChartItem[]
   radar: ChartItem[]
@@ -121,6 +125,15 @@ export const charts: ChartGroups = {
     { id: "chart-bar-mixed", component: ChartBarMixed },
     { id: "chart-bar-active", component: ChartBarActive },
     { id: "chart-bar-negative", component: ChartBarNegative },
+  ],
+  candlestick: [
+    {
+      id: "chart-candlestick-advanced",
+      component: ChartCandlestickAdvanced,
+      fullWidth: true,
+    },
+    { id: "chart-candlestick-default", component: ChartCandlestickDefault },
+    { id: "chart-candlestick-custom", component: ChartCandlestickCustom },
   ],
   line: [
     {
@@ -222,6 +235,9 @@ export {
   ChartBarActive,
   ChartBarNegative,
   ChartBarInteractive,
+  ChartCandlestickAdvanced,
+  ChartCandlestickCustom,
+  ChartCandlestickDefault,
   ChartLineDefault,
   ChartLineLinear,
   ChartLineStep,
