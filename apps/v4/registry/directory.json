@@ -3921,6 +3921,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='2' y='2' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.15'/><rect x='12' y='2' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.35'/><rect x='22' y='2' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.75'/><rect x='2' y='12' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.55'/><rect x='12' y='12' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='1'/><rect x='22' y='12' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.35'/><rect x='2' y='22' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.9'/><rect x='12' y='22' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.15'/><rect x='22' y='22' width='8' height='8' rx='1.5' fill='var(--foreground)' opacity='0.55'/></svg>"
   },
   {
+    "name": "@wirestack",
+    "homepage": "https://www.wirestack.site",
+    "url": "https://www.wirestack.site/r/{name}.json",
+    "description": "Working AI API integrations checked against the official docs: pinned packages, server code and key names for OpenAI, Anthropic, Retell, Exa and more.",
+    "author": "Wirestack",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='76 96 360 320' fill='none' stroke='var(--foreground)' stroke-width='30' stroke-linecap='round' stroke-linejoin='round'><path d='M406 256L331 386H181L106 256L181 126H331Z'/><path d='M106 256H256M256 256L331 126M256 256L331 386'/></svg>"
+  },
+  {
     "name": "@wisty",
     "homepage": "https://ui.wisty.ai",
     "url": "https://ui.wisty.ai/r/{style}/{name}.json",
