@@ -28,6 +28,24 @@ describe("deriveAliasFromComponents", () => {
   test("returns an empty string when components alias has no sibling base", () => {
     expect(deriveAliasFromComponents("#custom/ui", "lib")).toBe("")
   })
+
+  test("strips trailing slashes when deriving aliases", () => {
+    expect(deriveAliasFromComponents("@/components/", "ui")).toBe(
+      "@/components/ui"
+    )
+    expect(deriveAliasFromComponents("#custom/components/", "lib")).toBe(
+      "#custom/lib"
+    )
+    expect(deriveAliasFromComponents("#custom/components/", "hooks")).toBe(
+      "#custom/hooks"
+    )
+    expect(deriveAliasFromComponents("#custom/components/", "utils")).toBe(
+      "#custom/lib/utils"
+    )
+    expect(
+      deriveAliasFromComponents("#custom/components", "utils", "#custom/lib/")
+    ).toBe("#custom/lib/utils")
+  })
 })
 
 describe("getInitAliasDefaults", () => {
