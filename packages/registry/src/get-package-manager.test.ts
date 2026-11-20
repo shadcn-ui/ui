@@ -33,6 +33,9 @@ describe("getPackageManagerFromUserAgent", () => {
     expect(getPackageManagerFromUserAgent("bun/1.2.0 npm/? node/v22")).toBe(
       "bun"
     )
+    expect(getPackageManagerFromUserAgent("aube/2.9.0 npm/? node/v24")).toBe(
+      "aube"
+    )
     expect(getPackageManagerFromUserAgent("npm/10.0.0 node/v22")).toBe("npm")
     expect(getPackageManagerFromUserAgent("")).toBeNull()
   })
@@ -42,6 +45,7 @@ describe("getPackageRunnerCommand", () => {
   it("get package runner command", () => {
     expect(getPackageRunnerCommand("pnpm")).toBe("pnpm dlx")
     expect(getPackageRunnerCommand("bun")).toBe("bunx")
+    expect(getPackageRunnerCommand("aube")).toBe("aube dlx")
     expect(getPackageRunnerCommand("npm")).toBe("npx")
     expect(getPackageRunnerCommand(null)).toBe("npx")
   })
