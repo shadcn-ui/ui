@@ -39,7 +39,8 @@ export function buildInstructions(config: DesignSystemConfig) {
       darkVars,
       normalizedFontHeading === "inherit"
         ? getInheritedHeadingFontValue(config.font)
-        : "var(--font-heading)"
+        : "var(--font-heading)",
+      config.buttonFeedback !== "press"
     ),
     buildFontSection(font, headingFont),
     buildComponentsJsonSection(config),
@@ -75,7 +76,8 @@ function buildUtilsSection() {
 function buildCssSection(
   lightVars: string,
   darkVars: string,
-  fontHeadingValue: string
+  fontHeadingValue: string,
+  usesBaseRipple: boolean
 ) {
   return dedent`
     ## Step 3: Set up CSS
@@ -86,6 +88,7 @@ function buildCssSection(
     @import "tailwindcss";
     @import "tw-animate-css";
     @import "shadcn/tailwind.css";
+    ${usesBaseRipple ? '@import "@base-ripple/react/styles.css";' : ""}
 
     @theme inline {
       --font-sans: var(--font-sans);
@@ -233,6 +236,7 @@ function buildComponentsJsonSection(config: DesignSystemConfig) {
       baseColor: config.baseColor,
     },
     iconLibrary: config.iconLibrary,
+    buttonFeedback: config.buttonFeedback,
     aliases: {
       components: "@/components",
       utils: "@/lib/utils",

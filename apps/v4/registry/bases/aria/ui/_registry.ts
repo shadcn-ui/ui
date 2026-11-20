@@ -143,6 +143,51 @@ export const ui: Registry["items"] = [
     },
   },
   {
+    name: "button-ripple",
+    type: "registry:ui",
+    title: "Button with Base Ripple",
+    description: "The React Aria button with Base Ripple interaction feedback.",
+    dependencies: ["@base-ripple/react"],
+    css: {
+      '@import "@base-ripple/react/styles.css"': {},
+    },
+    files: [
+      {
+        path: "ui/button-ripple.tsx",
+        type: "registry:ui",
+        target: "@ui/button.tsx",
+      },
+    ],
+    meta: {
+      links: {
+        docs: "https://ui.shadcn.com/docs/components/aria/button",
+      },
+    },
+  },
+  {
+    name: "button-soft-ripple",
+    type: "registry:ui",
+    title: "Button with Soft Ripple",
+    description:
+      "The React Aria button with soft Base Ripple interaction feedback.",
+    dependencies: ["@base-ripple/react"],
+    css: {
+      '@import "@base-ripple/react/styles.css"': {},
+    },
+    files: [
+      {
+        path: "ui/button-soft-ripple.tsx",
+        type: "registry:ui",
+        target: "@ui/button.tsx",
+      },
+    ],
+    meta: {
+      links: {
+        docs: "https://ui.shadcn.com/docs/components/aria/button",
+      },
+    },
+  },
+  {
     name: "button-group",
     type: "registry:ui",
     registryDependencies: ["separator"],

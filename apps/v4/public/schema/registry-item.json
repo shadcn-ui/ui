@@ -212,6 +212,16 @@
       "type": "string",
       "description": "The theme configuration. This is available for registry:base items only."
     },
+    "config": {
+      "type": "object",
+      "properties": {
+        "buttonFeedback": {
+          "type": "string",
+          "enum": ["press", "ripple", "soft-ripple"],
+          "description": "The feedback style used by the Button component."
+        }
+      }
+    },
     "font": {
       "type": "object",
       "description": "Font metadata for registry:font items. Required for registry:font type.",

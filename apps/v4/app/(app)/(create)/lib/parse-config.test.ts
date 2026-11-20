@@ -16,6 +16,33 @@ describe("parseDesignSystemConfig", () => {
     }
 
     expect(result.data.pointer).toBe(false)
+    expect(result.data.buttonFeedback).toBe("press")
+  })
+
+  it("parses Ripple feedback from the canonical query parameter", () => {
+    const result = parseDesignSystemConfig(
+      new URLSearchParams("preset=a0&buttonFeedback=ripple")
+    )
+
+    expect(result.success).toBe(true)
+    if (!result.success) {
+      throw new Error(result.error)
+    }
+
+    expect(result.data.buttonFeedback).toBe("ripple")
+  })
+
+  it("parses the canonical Soft Ripple feedback value", () => {
+    const result = parseDesignSystemConfig(
+      new URLSearchParams("preset=a0&buttonFeedback=soft-ripple")
+    )
+
+    expect(result.success).toBe(true)
+    if (!result.success) {
+      throw new Error(result.error)
+    }
+
+    expect(result.data.buttonFeedback).toBe("soft-ripple")
   })
 
   it("parses pointer=true", () => {

@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { attachBaseRipple } from "@base-ripple/core"
 
 import {
   buildRegistryTheme,
@@ -23,6 +24,29 @@ const POINTER_CURSOR_CSS = `@layer base {
   }
 }
 `
+const RIPPLE_CONTAINER_CLASS = "base-ripple-container"
+const RIPPLE_BUTTON_SELECTOR = 'button[data-slot="button"]'
+const RIPPLE_ACTIVE_CLASS = "active:not-aria-[haspopup]:!translate-y-0"
+const SOFT_RIPPLE_CLASS = "[&>.base-ripple]:blur-3xl"
+
+function getButtons(node: Node) {
+  const buttons = new Set<HTMLButtonElement>()
+
+  if (
+    node instanceof HTMLButtonElement &&
+    node.matches(RIPPLE_BUTTON_SELECTOR)
+  ) {
+    buttons.add(node)
+  }
+
+  if (node instanceof Element || node instanceof DocumentFragment) {
+    node
+      .querySelectorAll<HTMLButtonElement>(RIPPLE_BUTTON_SELECTOR)
+      .forEach((button) => buttons.add(button))
+  }
+
+  return buttons
+}
 
 type RegistryThemeCssVars = NonNullable<
   ReturnType<typeof buildRegistryTheme>["cssVars"]
@@ -84,6 +108,7 @@ export function DesignSystemProvider({
     menuAccent,
     menuColor,
     pointer,
+    buttonFeedback,
     radius,
   } = searchParams
   const effectiveRadius = style === "lyra" ? "none" : radius
@@ -226,6 +251,78 @@ export function DesignSystemProvider({
 
     styleElement.textContent = buildThemeCssText(registryTheme.cssVars, pointer)
   }, [registryTheme, pointer])
+
+  React.useEffect(() => {
+    if (buttonFeedback === "press") {
+      return
+    }
+
+    const attachedButtons = new Map<HTMLButtonElement, () => void>()
+
+    const attachButton = (button: HTMLButtonElement) => {
+      if (
+        button.classList.contains(RIPPLE_CONTAINER_CLASS) ||
+        attachedButtons.has(button)
+      ) {
+        return
+      }
+
+      button.classList.add(RIPPLE_CONTAINER_CLASS, RIPPLE_ACTIVE_CLASS)
+      if (buttonFeedback === "soft-ripple") {
+        button.classList.add(SOFT_RIPPLE_CLASS)
+      }
+
+      attachedButtons.set(
+        button,
+        attachBaseRipple(
+          button,
+          buttonFeedback === "soft-ripple" ? { sizeOffset: 64 * 5 } : undefined
+        )
+      )
+    }
+
+    const attachButtons = (node: Node) => {
+      getButtons(node).forEach(attachButton)
+    }
+
+    const detachButtons = (node: Node) => {
+      getButtons(node).forEach((button) => {
+        if (button.isConnected) {
+          return
+        }
+
+        const detach = attachedButtons.get(button)
+        if (!detach) {
+          return
+        }
+
+        detach()
+        button.classList.remove(RIPPLE_CONTAINER_CLASS)
+        button.classList.remove(RIPPLE_ACTIVE_CLASS, SOFT_RIPPLE_CLASS)
+        attachedButtons.delete(button)
+      })
+    }
+
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        mutation.removedNodes.forEach(detachButtons)
+        mutation.addedNodes.forEach(attachButtons)
+      }
+    })
+
+    observer.observe(document.body, { childList: true, subtree: true })
+    attachButtons(document.body)
+
+    return () => {
+      observer.disconnect()
+      for (const [button, detach] of attachedButtons) {
+        detach()
+        button.classList.remove(RIPPLE_CONTAINER_CLASS)
+        button.classList.remove(RIPPLE_ACTIVE_CLASS, SOFT_RIPPLE_CLASS)
+      }
+      attachedButtons.clear()
+    }
+  }, [buttonFeedback])
 
   // Handle menu color inversion by adding/removing dark class to elements with cn-menu-target.
   // useLayoutEffect to apply classes synchronously before paint, avoiding flash.

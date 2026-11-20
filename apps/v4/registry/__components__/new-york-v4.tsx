@@ -70,6 +70,14 @@ export const Components: Record<string, any> = {
       ) || "button"
     return { default: mod.default || mod[exportName] }
   }),
+  "button-ripple": React.lazy(async () => {
+    const mod = await import("@/registry/new-york-v4/ui/button-ripple")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "button-ripple"
+    return { default: mod.default || mod[exportName] }
+  }),
   "button-group": React.lazy(async () => {
     const mod = await import("@/registry/new-york-v4/ui/button-group")
     const exportName =
@@ -340,6 +348,14 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "sidebar"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "button-soft-ripple": React.lazy(async () => {
+    const mod = await import("@/registry/new-york-v4/ui/button-soft-ripple")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "button-soft-ripple"
     return { default: mod.default || mod[exportName] }
   }),
   skeleton: React.lazy(async () => {

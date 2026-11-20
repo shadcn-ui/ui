@@ -154,7 +154,8 @@ export function ProjectForm({
     const monorepoFlag = isMonorepo ? " --monorepo" : ""
     const rtlFlag = params.rtl ? " --rtl" : ""
     const pointerFlag = params.pointer ? " --pointer" : ""
-    const flags = `${presetFlag}${baseFlag}${templateFlag}${monorepoFlag}${rtlFlag}${pointerFlag}`
+    const buttonFeedbackFlag = ` --button-feedback ${params.buttonFeedback}`
+    const flags = `${presetFlag}${baseFlag}${templateFlag}${monorepoFlag}${rtlFlag}${pointerFlag}${buttonFeedbackFlag}`
 
     return IS_LOCAL_DEV
       ? {
@@ -173,6 +174,7 @@ export function ProjectForm({
     framework,
     isMonorepo,
     params.base,
+    params.buttonFeedback,
     params.pointer,
     params.rtl,
     presetCode,
@@ -225,10 +227,12 @@ export function ProjectForm({
       template: params.template,
       rtl: params.rtl,
       pointer: params.pointer,
+      buttonFeedback: params.buttonFeedback,
     }
   }, [
     params.base,
     params.baseColor,
+    params.buttonFeedback,
     params.chartColor,
     params.font,
     params.fontHeading,

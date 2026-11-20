@@ -35,6 +35,7 @@ import {
   isPresetCode,
   type PresetBase,
 } from "@shadcn/registry/internal/preset/preset"
+import { resolveButtonFeedback } from "@shadcn/registry/internal/registry/button-feedback"
 import { SHADCN_URL } from "@shadcn/registry/internal/registry/constants"
 import { clearRegistryContext } from "@shadcn/registry/internal/registry/context"
 import { registryConfigSchema } from "@shadcn/registry/internal/registry/schema"
@@ -135,6 +136,7 @@ export const apply = new Command()
           template,
           base: getBase(existingConfig.style),
           rtl,
+          buttonFeedback: resolveButtonFeedback(existingConfig) ?? "press",
         })
 
         await promptToOpenPresetBuilder({

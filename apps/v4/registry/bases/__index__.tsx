@@ -184,6 +184,43 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description: "The Base UI button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/base/button" },
+      },
+    },
+    "button-soft-ripple": {
+      name: "button-soft-ripple",
+      title: "Button with Soft Ripple",
+      description:
+        "The Base UI button with soft Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/button-soft-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/base/button" },
+      },
+    },
     "button-group": {
       name: "button-group",
       title: "undefined",
@@ -4049,6 +4086,44 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description:
+        "The React Aria button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/aria/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/aria/button" },
+      },
+    },
+    "button-soft-ripple": {
+      name: "button-soft-ripple",
+      title: "Button with Soft Ripple",
+      description:
+        "The React Aria button with soft Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/aria/ui/button-soft-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/aria/button" },
+      },
+    },
     "button-group": {
       name: "button-group",
       title: "undefined",
@@ -7829,6 +7904,43 @@ export const Index: Record<string, Record<string, any>> = {
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/button-example.tsx",
         },
+      },
+    },
+    "button-ripple": {
+      name: "button-ripple",
+      title: "Button with Base Ripple",
+      description: "The Radix button with Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/radix/ui/button-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/radix/button" },
+      },
+    },
+    "button-soft-ripple": {
+      name: "button-soft-ripple",
+      title: "Button with Soft Ripple",
+      description:
+        "The Radix button with soft Base Ripple interaction feedback.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/radix/ui/button-soft-ripple.tsx",
+          type: "registry:ui",
+          target: "@ui/button.tsx",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: { docs: "https://ui.shadcn.com/docs/components/radix/button" },
       },
     },
     "button-group": {

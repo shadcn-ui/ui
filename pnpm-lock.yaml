@@ -135,6 +135,12 @@ importers:
       '@ai-sdk/react':
         specifier: 4.0.0-canary.162
         version: 4.0.0-canary.162(react@19.2.3)(zod@3.25.76)
+      '@base-ripple/core':
+        specifier: 1.0.5
+        version: 1.0.5
+      '@base-ripple/react':
+        specifier: ^1.0.5
+        version: 1.0.5(react@19.2.3)
       '@base-ui/react':
         specifier: 1.6.0
         version: 1.6.0(@date-fns/tz@1.3.1)(@types/react@19.2.2)(date-fns@4.1.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -982,6 +988,14 @@ packages:
   '@babel/types@7.28.2':
     resolution: {integrity: sha512-ruv7Ae4J5dUYULmeXw1gmb7rYRz57OWCPM57pHojnLq/3Z1CK2lNSLTCVjxVk1F/TZHwOZZrOWi0ur95BbLxNQ==}
     engines: {node: '>=6.9.0'}
+
+  '@base-ripple/core@1.0.5':
+    resolution: {integrity: sha512-7XEjSufMEgrbOnIBtFlOSy3uV0t2KzZIswl1qBtaEXcb0Mh14YFlIaX1nPxarf4HiyGQkWivsvtcFbgPCvbQzA==}
+
+  '@base-ripple/react@1.0.5':
+    resolution: {integrity: sha512-RlXyLdPR+dHFJQoGJihJpNs6VfsUmqpkLu6XbuKq3XIOQZu2CDMbzT/NCNh1TBpZyB0Xfk3UUAhJdv5iryEHmA==}
+    peerDependencies:
+      react: '>=16.8 <20'
 
   '@base-ui/react@1.6.0':
     resolution: {integrity: sha512-/jzjTWJYXhRFO45Bev9lc3cHbmjzCMpUqbMZ2AgKy/z25mY9B6shGSNcXcjQar9n5doM0KYW1W8fcFv2jZBuMw==}
@@ -10151,6 +10165,13 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
+
+  '@base-ripple/core@1.0.5': {}
+
+  '@base-ripple/react@1.0.5(react@19.2.3)':
+    dependencies:
+      '@base-ripple/core': 1.0.5
+      react: 19.2.3
 
   '@base-ui/react@1.6.0(@date-fns/tz@1.3.1)(@types/react@19.2.2)(date-fns@4.1.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:

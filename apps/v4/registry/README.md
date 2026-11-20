@@ -7,16 +7,17 @@ the installable output under `public/r/`.
 
 ## Source of truth (authored by hand)
 
-- **`bases/base/`, `bases/radix/`** — the two authored base registries (Base UI
-  and Radix). Each holds a `registry.ts` plus `ui/`, `lib/`, `hooks/`, `blocks/`,
-  `examples/`, and `internal/`. Shared surfaces should stay in sync across both
-  bases — see [`bases/README.md`](./bases/README.md).
+- **`bases/base/`, `bases/aria/`, `bases/radix/`** — the authored Base UI,
+  React Aria, and Radix registries. Each holds a `registry.ts` plus `ui/`,
+  `lib/`, `hooks/`, `blocks/`, `examples/`, and `internal/`. Shared surfaces
+  should stay in sync across all three bases — see
+  [`bases/README.md`](./bases/README.md).
 - **`styles/style-*.css`** — the style token files (`nova`, `sera`, `vega`, …).
   Each defines the design tokens for one style.
 - **`new-york-v4/`** — the legacy source registry. Unlike the generated
   combinations below, its `registry.ts` and component files are authored
   directly and committed.
-- **`../examples/base`, `../examples/radix`** — authored component demos. See
+- **`../examples/base`, `../examples/aria`, `../examples/radix`** — authored component demos. See
   [`../examples/README.md`](../examples/README.md).
 
 ## Generated output (do not edit by hand)
@@ -43,10 +44,11 @@ Temporary (created during the build, then cleaned up):
 
 There are two kinds of "styles", and the distinction drives the build flags:
 
-- **Generated combinations** — every base (`base`, `radix`) crossed with every
-  style token (`nova`, `sera`, …) produces a combination like `base-nova` or
-  `radix-sera`. These are generated from the authored bases plus the style CSS;
-  nothing under `registry/<combination>/` is committed.
+- **Generated combinations** — every base (`base`, `aria`, `radix`) crossed
+  with every style token (`nova`, `sera`, …) produces a combination like
+  `base-nova`, `aria-nova`, or `radix-sera`. These are generated from the
+  authored bases plus the style CSS; nothing under `registry/<combination>/` is
+  committed.
 - **Legacy source registry** — `new-york-v4` is authored directly and committed.
   It is not generated from a base/style combination.
 

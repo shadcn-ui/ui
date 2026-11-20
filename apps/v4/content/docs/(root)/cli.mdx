@@ -43,10 +43,13 @@ Options:
   --no-rtl                   disable RTL support.
   --pointer                  enable pointer cursor for buttons.
   --no-pointer               disable pointer cursor for buttons.
+  --button-feedback <feedback>  set the Button feedback (press, ripple, soft-ripple).
   --reinstall                re-install existing UI components.
   --no-reinstall             do not re-install existing UI components.
   -h, --help                 display help for command
 ```
+
+Use `--button-feedback` to choose Button feedback. `Press` (`press`) uses the standard pressed movement, `Ripple` (`ripple`) adds the standard Base Ripple, and `Soft Ripple` (`soft-ripple`) adds a larger, softer ripple. The selection is stored in `components.json`, so later `shadcn add button` and component reinstalls keep the same choice.
 
 The `create` command is an alias for `init`:
 

@@ -1,5 +1,7 @@
 import { z } from "zod"
 
+import { BUTTON_FEEDBACK_VALUES } from "./button-feedback"
+
 // Note: if you edit the schema here, you must also edit the schema in the
 // apps/v4/public/schema/registry-item.json file.
 
@@ -44,6 +46,7 @@ export const rawConfigSchema = z
       prefix: z.string().optional(),
     }),
     iconLibrary: z.string().optional(),
+    buttonFeedback: z.enum(BUTTON_FEEDBACK_VALUES).optional(),
     rtl: z.coerce.boolean().optional(),
     menuColor: z
       .enum([

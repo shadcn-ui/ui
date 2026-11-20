@@ -63,6 +63,11 @@
     "iconLibrary": {
       "type": "string"
     },
+    "buttonFeedback": {
+      "type": "string",
+      "enum": ["press", "ripple", "soft-ripple"],
+      "description": "The feedback style used by the Button component."
+    },
     "aliases": {
       "type": "object",
       "properties": {
