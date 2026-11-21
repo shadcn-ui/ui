@@ -18,7 +18,7 @@ npx shadcn@latest init
 **Options**
 
 ```bash
-Usage: shadcn init [options] [components...]
+Usage: shadcn init|create [options] [components...]
 
 initialize your project and install dependencies
 
@@ -26,19 +26,19 @@ Arguments:
   components                 names, url or local path to component
 
 Options:
-  -t, --template <template>  the template to use. (next, vite, start, react-router, laravel, astro)
+  -t, --template <template>  the template to use. (next, start, vite, react-router, laravel, astro)
   -b, --base <base>          the component library to use. (base, radix, aria)
+  --monorepo                 scaffold a monorepo project.
+  --no-monorepo              skip the monorepo prompt.
   -p, --preset [name]        use a preset configuration
   -y, --yes                  skip confirmation prompt. (default: true)
-  -d, --defaults             use default configuration: --template=next --preset=nova (default: false)
+  -d, --defaults             use default configuration: --template=next --preset=base-nova (default: false)
   -f, --force                force overwrite of existing configuration. (default: false)
   -c, --cwd <cwd>            the working directory. defaults to the current directory.
   -n, --name <name>          the name for the new project.
   -s, --silent               mute output. (default: false)
   --css-variables            use css variables for theming. (default: true)
   --no-css-variables         do not use css variables for theming.
-  --monorepo                 scaffold a monorepo project.
-  --no-monorepo              skip the monorepo prompt.
   --rtl                      enable RTL support.
   --no-rtl                   disable RTL support.
   --pointer                  enable pointer cursor for buttons.
@@ -72,7 +72,7 @@ Usage: shadcn add [options] [components...]
 add a component to your project
 
 Arguments:
-  components           name, url or local path to component
+  components           item addresses to add
 
 Options:
   -y, --yes            skip confirmation prompt. (default: false)
@@ -258,7 +258,7 @@ Usage: shadcn view [options] <items...>
 view items from the registry
 
 Arguments:
-  items            the item names or URLs to view
+  items            item addresses to view
 
 Options:
   -c, --cwd <cwd>  the working directory. defaults to the current directory.
@@ -296,19 +296,23 @@ npx shadcn@latest list @acme
 **Options**
 
 ```bash
-Usage: shadcn search|list [options] <registries...>
+Usage: shadcn search|list [options] [registries...]
 
 search items from registries
 
 Arguments:
-  registries             the registry names or urls to search items from. Names
-                         must be prefixed with @.
+  registries             the registry addresses to search. Supports namespaces,
+                         GitHub sources and URLs. When omitted, searches all
+                         registries configured in components.json.
 
 Options:
   -c, --cwd <cwd>        the working directory. defaults to the current directory.
   -q, --query <query>    query string
-  -l, --limit <number>   maximum number of items to display per registry (default: "100")
+  -t, --type <type>      filter by item type, e.g. ui, block, hook.
+                         Comma-separated for multiple.
+  -l, --limit <number>   maximum number of items to display (default: "100")
   -o, --offset <number>  number of items to skip (default: "0")
+  --json                 output as JSON. (default: false)
   -h, --help             display help for command
 ```
 
@@ -359,12 +363,12 @@ npx shadcn@latest docs [component]
 **Options**
 
 ```bash
-Usage: shadcn docs [options] [component]
+Usage: shadcn docs [options] <components...>
 
-fetch documentation and API references for components
+get docs, api references and usage examples for components
 
 Arguments:
-  component          the component to get docs for
+  components         component names
 
 Options:
   -c, --cwd <cwd>    the working directory. defaults to the current directory.
