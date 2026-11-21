@@ -136,6 +136,19 @@ function MessageScroller({ children, ...props }: MessageScrollerProps) {
   )
 }
 
+function isEditableTarget(target: EventTarget | null): boolean {
+  if (!(target instanceof HTMLElement)) {
+    return false
+  }
+
+  return (
+    target.isContentEditable ||
+    target.tagName === "INPUT" ||
+    target.tagName === "TEXTAREA" ||
+    target.tagName === "SELECT"
+  )
+}
+
 function MessageScrollerViewport({
   "aria-label": ariaLabel,
   children,
@@ -175,7 +188,14 @@ function MessageScrollerViewport({
   }
 
   function handleWheel(event: React.WheelEvent<HTMLDivElement>) {
-    userScrollIntent()
+    if (event.deltaY > 0) {
+      userScrollIntent({ direction: "end" })
+    } else if (event.deltaY < 0) {
+      userScrollIntent({ direction: "start" })
+    } else {
+      userScrollIntent()
+    }
+
     onWheel?.(event)
   }
 
@@ -185,8 +205,17 @@ function MessageScrollerViewport({
   }
 
   function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
-    if (USER_SCROLL_KEYS.has(event.key)) {
-      userScrollIntent()
+    if (USER_SCROLL_KEYS.has(event.key) && !isEditableTarget(event.target)) {
+      if (
+        event.key === "End" ||
+        event.key === "PageDown" ||
+        event.key === "ArrowDown" ||
+        (event.key === " " && !event.shiftKey)
+      ) {
+        userScrollIntent({ direction: "end" })
+      } else {
+        userScrollIntent({ direction: "start" })
+      }
     }
 
     onKeyDown?.(event)

@@ -184,9 +184,14 @@ type MessageScrollerContextValue = {
   stateStore: MessageScrollerStore<MessageScrollerScrollable>
   syncAfterScroll: () => void
   unobserveVisibility: () => void
-  userScrollIntent: () => void
+  userScrollIntent: (intent?: MessageScrollerUserIntent) => void
   viewportRef: React.RefObject<HTMLDivElement | null>
   visibilityStore: MessageScrollerVisibilityStore
+}
+
+// Directional intent of a user scroll gesture (wheel, key, touch).
+type MessageScrollerUserIntent = {
+  direction?: "start" | "end"
 }
 
 // Initial MessageScrollerScrollable before measurement. Stable reference for the
@@ -234,6 +239,7 @@ export type {
   MessageScrollerScrollOptions,
   MessageScrollerScrollable,
   MessageScrollerStore,
+  MessageScrollerUserIntent,
   MessageScrollerViewportProps,
   MessageScrollerVisibilityState,
   MessageScrollerVisibilityStore,
