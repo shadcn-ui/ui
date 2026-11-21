@@ -303,14 +303,20 @@ describe("updateDependencies", () => {
     // can align the version with the installed SDK. Duplicates are still deduped.
     await updateDependencies(
       ["recharts", "recharts", "react-is"],
-      [],
+      ["test-package"],
       { resolvedPaths: { cwd } } as any,
       { silent: true }
     )
 
     expect(execa).toHaveBeenCalledWith(
       "npx",
-      ["expo", "install", "--", "recharts", "react-is"],
+      ["expo", "install", "recharts", "react-is"],
+      { cwd }
+    )
+
+    expect(execa).toHaveBeenCalledWith(
+      "npx",
+      ["expo", "install", "--dev", "test-package"],
       { cwd }
     )
   })
