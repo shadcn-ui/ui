@@ -82,6 +82,25 @@ describe("handleError", () => {
     ).toBe("npx shadcn@4.5.0 add 'hello world' 'it'\\''s-working'")
   })
 
+  it("explains how to recover when a package manager cannot be spawned", () => {
+    const cause = Object.assign(new Error("spawn pnpm ENOENT"), {
+      code: "ENOENT",
+      path: "pnpm",
+      syscall: "spawn pnpm",
+    })
+
+    expect(() => handleError(new Error("Command failed", { cause }))).toThrow(
+      "process.exit:1"
+    )
+
+    expect(logger.error).toHaveBeenCalledWith(
+      'Could not run "pnpm". Install the package manager used by this project and make sure it is on your PATH, then retry.'
+    )
+    expect(logger.error).not.toHaveBeenCalledWith(
+      "You can also try a previous version to see if that works:"
+    )
+  })
+
   it("prints the previous minor command before exiting", () => {
     expect(() => {
       handleError(
