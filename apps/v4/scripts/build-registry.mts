@@ -16,6 +16,7 @@ import {
   transformStyle,
 } from "shadcn/utils"
 import { Project, ScriptKind } from "ts-morph"
+import { preProcessFile } from "typescript"
 
 import { legacyStyles } from "@/registry/_legacy-styles"
 import { BASE_COLORS } from "@/registry/base-colors"
@@ -1356,6 +1357,8 @@ async function buildRegistryJsonFile(styleName: string) {
   }
 
   const registry = parseResult.data
+  const indexDependencies =
+    registry.items.find((item) => item.name === "index")?.dependencies ?? []
 
   // Legacy source styles (e.g. new-york-v4) don't author font items. Inject
   // the shared registry fonts so the shadcn CLI emits font-*.json for them,
@@ -1382,7 +1385,11 @@ async function buildRegistryJsonFile(styleName: string) {
         if (files.length === 0) {
           return item
         }
-        const dependencies = await getItemDependencies(item, files)
+        const dependencies = await getItemDependencies(
+          item,
+          files,
+          indexDependencies
+        )
         return { ...item, files, ...(dependencies && { dependencies }) }
       })
     ),
@@ -1406,25 +1413,47 @@ async function buildRegistryJsonFile(styleName: string) {
   await fs.writeFile(tempRegistryPath, fixedRegistryJson)
 }
 
-// Components import cn directly, so every item that uses it declares the
-// package. Projects initialized before cn existed rely on this to install it.
 async function getItemDependencies(
   item: RegistryItem,
-  files: Array<{ path: string }>
+  files: Array<{ path: string }>,
+  indexDependencies: string[]
 ) {
   const dependencies = item.dependencies ?? []
-  if (dependencies.includes("cn")) {
-    return dependencies
+  const candidates = new Set(
+    item.type === "registry:ui" ? ["cn", ...indexDependencies] : ["cn"]
+  )
+  const missing = Array.from(candidates).filter(
+    (candidate) =>
+      !dependencies.some(
+        (dependency) =>
+          dependency === candidate || dependency.startsWith(`${candidate}@`)
+      )
+  )
+  if (missing.length === 0) {
+    return item.dependencies
   }
 
+  const imports: string[] = []
   for (const file of files) {
+    if (!/\.[jt]sx?$/.test(file.path)) {
+      continue
+    }
     const content = await readFileIfExists(path.join(process.cwd(), file.path))
-    if (content && /from ["']cn["']/.test(content)) {
-      return ["cn", ...dependencies]
+    if (content) {
+      imports.push(
+        ...preProcessFile(content, true).importedFiles.map(
+          ({ fileName }) => fileName
+        )
+      )
     }
   }
 
-  return item.dependencies
+  const imported = missing.filter((dependency) =>
+    imports.some(
+      (name) => name === dependency || name.startsWith(`${dependency}/`)
+    )
+  )
+  return imported.length ? [...imported, ...dependencies] : item.dependencies
 }
 
 async function buildRegistry(styleName: string) {
