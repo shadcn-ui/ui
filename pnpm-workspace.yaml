@@ -17,3 +17,7 @@ minimumReleaseAgeExclude:
   - "@tanstack/table-core"
   - "@tanstack/react-store"
   - "@tanstack/store"
+  - "@tanstack/ai"
+  - "@tanstack/ai-client"
+  - "@tanstack/ai-react"
+  - "@tanstack/ai-event-client"

@@ -103,6 +103,7 @@ function getMessageText(message: UIMessage) {
 
 export function TanStackAiHelperDemo() {
   const { messages, append, status, setMessages } = useChat({
+    threadId: "chat",
     initialMessages,
     connection,
   })
