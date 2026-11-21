@@ -3693,6 +3693,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='var(--foreground)' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'><path d='M9 48V29C9 15 19 7 32 7s23 8 23 22v19'/><path d='M20 48V31c0-8 5-13 12-13s12 5 12 13v17'/><path d='M32 38v10'/></svg>"
   },
   {
+    "name": "@uibrik",
+    "homepage": "https://uibrik.com",
+    "url": "https://uibrik.com/r/{name}.json",
+    "description": "Animated React components built with Tailwind CSS and Motion: text effects, buttons, inputs, overlays, charts and shader backgrounds.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192' fill='var(--foreground)'><path d='M34.0779 31H58.5813C60.7904 31 62.5813 32.7909 62.5813 35V128.5H103.331C107.75 128.5 111.331 124.918 111.331 120.5V74C111.331 71.7909 113.122 70 115.331 70H139.831C142.04 70 143.831 71.7909 143.831 74V120.5C143.831 124.918 147.413 128.5 151.831 128.5H158.081C160.29 128.5 162.081 130.291 162.081 132.5V157C162.081 159.209 160.29 161 158.081 161H66.5813C64.3721 161 62.5813 159.209 62.5813 157V128.5H34.0033C31.7929 128.5 30.0015 126.707 30.0033 124.497L30.0779 34.9967C30.0798 32.7888 31.8701 31 34.0779 31Z'/><path d='M38.2063 127.5H63.5813V152.875H62.5813C62.5813 152.875 62.5446 139.838 56.8938 134.187C51.243 128.537 38.2063 128.5 38.2063 128.5Z'/><path d='M86.9563 129.5H61.5813V104.125H62.5813C62.5813 104.125 62.618 117.162 68.2688 122.812C73.9196 128.463 86.9563 128.5 86.9563 128.5Z'/><path d='M116.867 35.8233C117.428 33.0188 119.89 31 122.75 31H143.012C146.799 31 149.639 34.4639 148.896 38.1767L144.796 58.6767C144.235 61.4812 141.773 63.5 138.912 63.5H118.65C114.864 63.5 112.024 60.0361 112.767 56.3233L116.867 35.8233Z'/></svg>"
+  },
+  {
     "name": "@uicapsule",
     "homepage": "https://uicapsule.com",
     "url": "https://uicapsule.com/r/{name}.json",
