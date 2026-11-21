@@ -38,6 +38,7 @@ export function parseDesignSystemConfig(searchParams: URLSearchParams) {
       menuAccent: searchParams.get("menuAccent"),
       menuColor: searchParams.get("menuColor"),
       radius: searchParams.get("radius"),
+      primary: searchParams.get("primary") ?? undefined,
       template: searchParams.get("template") ?? undefined,
       rtl: searchParams.get("rtl") === "true",
       pointer: searchParams.get("pointer") === "true",

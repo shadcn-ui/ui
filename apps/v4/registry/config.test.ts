@@ -190,6 +190,61 @@ describe("buildThemeForPreset", () => {
   })
 })
 
+describe("custom primary", () => {
+  const VIOLET = "oklch(0.541 0.247 293.009)"
+
+  it("replaces primary in light and dark with the OKLCH value", () => {
+    const result = buildThemeForPreset({ ...DEFAULT_CONFIG, primary: "7c3aed" })
+
+    expect(result.cssVars?.light?.primary).toBe(VIOLET)
+    expect(result.cssVars?.dark?.primary).toBe(VIOLET)
+    expect(result.cssVars?.light?.["primary-foreground"]).toBe(
+      "oklch(0.985 0 0)"
+    )
+  })
+
+  it("picks dark foreground text on a light primary", () => {
+    const result = buildThemeForPreset({ ...DEFAULT_CONFIG, primary: "fde047" })
+
+    expect(result.cssVars?.light?.["primary-foreground"]).toBe(
+      "oklch(0.205 0 0)"
+    )
+  })
+
+  it("leaves the theme primary alone without a custom primary", () => {
+    const result = buildThemeForPreset(DEFAULT_CONFIG)
+
+    expect(result.cssVars?.light?.primary).toBe("oklch(0.205 0 0)")
+  })
+
+  it("feeds the custom primary into the bold menu accent", () => {
+    const result = buildThemeForPreset({
+      ...DEFAULT_CONFIG,
+      menuAccent: "bold",
+      primary: "7c3aed",
+    })
+
+    expect(result.cssVars?.light?.accent).toBe(VIOLET)
+    expect(result.cssVars?.dark?.accent).toBe(VIOLET)
+  })
+
+  it("includes the custom primary in the registry base", () => {
+    const result = buildRegistryBase({ ...DEFAULT_CONFIG, primary: "7c3aed" })
+
+    expect(result.cssVars?.light?.primary).toBe(VIOLET)
+  })
+
+  it("accepts only 6-digit lowercase hex in the schema", () => {
+    const parse = (primary: string) =>
+      designSystemConfigSchema.safeParse({ ...DEFAULT_CONFIG, primary }).success
+
+    expect(parse("7c3aed")).toBe(true)
+    expect(parse("#7c3aed")).toBe(false)
+    expect(parse("7C3AED")).toBe(false)
+    expect(parse("fff")).toBe(false)
+  })
+})
+
 describe("parseRegistryBaseParts", () => {
   it("returns undefined parts when only is omitted", () => {
     expect(parseRegistryBaseParts(null)).toEqual({

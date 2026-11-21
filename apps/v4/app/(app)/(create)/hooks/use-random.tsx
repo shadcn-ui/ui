@@ -144,6 +144,7 @@ export function useRandom() {
       style: selectedStyle,
       baseColor,
       theme: selectedTheme,
+      primary: locks.has("theme") ? paramsRef.current.primary : null,
       chartColor: selectedChartColor,
       iconLibrary: selectedIconLibrary,
       font: selectedFont,
@@ -186,6 +187,7 @@ export function useRandom() {
         ? current.baseColor
         : (decoded.baseColor as BaseColorName),
       theme: locks.has("theme") ? current.theme : (decoded.theme as ThemeName),
+      primary: locks.has("theme") ? current.primary : null,
       chartColor: locks.has("chartColor")
         ? current.chartColor
         : ((decoded.chartColor ?? decoded.theme) as ChartColorName),
