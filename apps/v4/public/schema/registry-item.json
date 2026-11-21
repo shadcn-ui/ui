@@ -71,6 +71,11 @@
             "type": "string",
             "description": "The content of the file."
           },
+          "encoding": {
+            "type": "string",
+            "enum": ["base64"],
+            "description": "The encoding used for the file content. Binary files use base64."
+          },
           "type": {
             "type": "string",
             "enum": [
