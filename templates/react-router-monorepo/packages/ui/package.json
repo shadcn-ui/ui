@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4",
-    "@turbo/gen": "^2.11.10",
+    "@turbo/gen": "^2.11.11",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
