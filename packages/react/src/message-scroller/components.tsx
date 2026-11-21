@@ -13,7 +13,7 @@ import type {
   MessageScrollerViewportProps,
 } from "./types"
 import { useMessageScrollerController } from "./use-message-scroller-controller"
-import { useLatest } from "./utils"
+import { isEditableTarget, useLatest } from "./utils"
 
 const MessageScrollerContext =
   React.createContext<MessageScrollerContextValue | null>(null)
@@ -185,7 +185,11 @@ function MessageScrollerViewport({
   }
 
   function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
-    if (USER_SCROLL_KEYS.has(event.key)) {
+    if (
+      !event.defaultPrevented &&
+      !isEditableTarget(event.target) &&
+      USER_SCROLL_KEYS.has(event.key)
+    ) {
       userScrollIntent()
     }
 
