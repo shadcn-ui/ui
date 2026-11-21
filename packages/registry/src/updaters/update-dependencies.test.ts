@@ -147,17 +147,18 @@ describe("updateDependencies", () => {
       ],
     },
     {
-      description: "deno uses npm: package prefix",
-      dependencies: ["first", "second", "third"],
-      devDependencies: ["fourth"],
+      description:
+        "deno prefixes bare packages and preserves explicit registry specifiers",
+      dependencies: ["first", "npm:second@^2", "jsr:@example/third"],
+      devDependencies: ["npm:fourth@^4"],
       config: {
         resolvedPaths: {
           cwd: getFixturesDir("project-deno"),
         },
       },
       expectedPackageManager: "deno",
-      expectedArgs: ["add", "npm:first", "npm:second", "npm:third"],
-      expectedDevArgs: ["add", "-D", "npm:fourth"],
+      expectedArgs: ["add", "npm:first", "npm:second@^2", "jsr:@example/third"],
+      expectedDevArgs: ["add", "-D", "npm:fourth@^4"],
     },
     {
       description: "bun uses bun",

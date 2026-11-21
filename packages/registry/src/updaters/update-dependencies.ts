@@ -375,8 +375,11 @@ async function installWithDeno(
   devDependencies: string[],
   cwd: string
 ) {
+  const toDenoSpecifier = (dependency: string) =>
+    /^(npm|jsr):/.test(dependency) ? dependency : `npm:${dependency}`
+
   if (dependencies.length) {
-    await execa("deno", ["add", ...dependencies.map((dep) => `npm:${dep}`)], {
+    await execa("deno", ["add", ...dependencies.map(toDenoSpecifier)], {
       cwd,
     })
   }
@@ -384,7 +387,7 @@ async function installWithDeno(
   if (devDependencies.length) {
     await execa(
       "deno",
-      ["add", "-D", ...devDependencies.map((dep) => `npm:${dep}`)],
+      ["add", "-D", ...devDependencies.map(toDenoSpecifier)],
       { cwd }
     )
   }
