@@ -14,7 +14,7 @@ export async function getPackageManager(
   if (packageManager === "pnpm@6") return "pnpm"
   if (packageManager === "bun") return "bun"
   if (packageManager === "deno") return "deno"
-  if (!withFallback) {
+  if (packageManager || !withFallback) {
     return packageManager ?? "npm"
   }
 
