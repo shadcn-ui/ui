@@ -77,7 +77,7 @@ export function Payments() {
         </Breadcrumb>
       </CardHeader>
       <CardContent>
-        <ItemGroup>
+        <ItemGroup role="list">
           <div role="listitem" className="w-full">
             <Item variant="muted" render={<a href="#" />}>
               <ItemMedia variant="icon">
