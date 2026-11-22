@@ -3388,6 +3388,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='var(--foreground)'><path d='M19.2 22.2h57.6a12 12 0 0 1 12 12v27.6a12 12 0 0 1-12 12H19.2a12 12 0 0 1-12-12V34.2a12 12 0 0 1 12-12Zm0 6.6a5.4 5.4 0 0 0-5.4 5.4v27.6a5.4 5.4 0 0 0 5.4 5.4h57.6a5.4 5.4 0 0 0 5.4-5.4V34.2a5.4 5.4 0 0 0-5.4-5.4H19.2Z'/><rect x='31.2' y='34.2' width='14.4' height='14.4' rx='3.6'/><rect x='50.4' y='34.2' width='14.4' height='14.4' rx='3.6' opacity='.6'/><rect x='31.2' y='53.4' width='14.4' height='14.4' rx='3.6' opacity='.6'/><rect x='50.4' y='53.4' width='14.4' height='14.4' rx='3.6'/></svg>"
   },
   {
+    "name": "@sunui",
+    "homepage": "https://sunui.synvize.com",
+    "url": "https://sunui.synvize.com/r/{name}.json",
+    "description": "Animated React and Tailwind blocks built with craft: real springs, a pressed state on everything, quiet layered shadows. Product pages, campaigns, feedback, navigation and free motion libraries under MIT, with Pro scenes behind a license key.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round'><circle cx='12' cy='12' r='5' stroke='none'/><path fill='none' d='M12 1.5v2.5M12 20v2.5M1.5 12H4M20 12h2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8'/></svg>"
+  },
+  {
     "name": "@supabase",
     "homepage": "https://supabase.com/ui",
     "url": "https://supabase.com/ui/r/{name}.json",
