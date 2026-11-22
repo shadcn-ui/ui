@@ -34,6 +34,10 @@
   "type": "module",
   "sideEffects": false,
   "exports": {
+    "./color-picker": {
+      "types": "./dist/color-picker/index.d.ts",
+      "default": "./dist/color-picker/index.js"
+    },
     "./message-scroller": {
       "types": "./dist/message-scroller/index.d.ts",
       "default": "./dist/message-scroller/index.js"

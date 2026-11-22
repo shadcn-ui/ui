@@ -1770,6 +1770,39 @@
     @apply gap-2;
   }
 
+  /* MARK: Color Picker */
+  .cn-color-picker {
+    @apply gap-3 [--color-picker-checkerboard:color-mix(in_oklab,var(--muted-foreground)_25%,transparent)];
+  }
+
+  .cn-color-picker-area {
+    @apply h-40 rounded-md ring-1 ring-foreground/10 ring-inset data-invalid:ring-destructive;
+  }
+
+  .cn-color-picker-area-thumb {
+    @apply size-4 rounded-full border-2 border-white shadow-[0_0_0_1px_rgb(0_0_0/0.3),inset_0_0_0_1px_rgb(0_0_0/0.3)] transition-[box-shadow] has-focus-visible:ring-4 has-focus-visible:ring-ring/50;
+  }
+
+  .cn-color-picker-slider {
+    @apply h-3 rounded-full ring-1 ring-foreground/10 ring-inset data-invalid:ring-destructive;
+  }
+
+  .cn-color-picker-alpha {
+    @apply bg-background;
+  }
+
+  .cn-color-picker-slider-thumb {
+    @apply size-4 rounded-full border-2 border-white shadow-[0_0_0_1px_rgb(0_0_0/0.3),inset_0_0_0_1px_rgb(0_0_0/0.3)] transition-[box-shadow] has-focus-visible:ring-4 has-focus-visible:ring-ring/50;
+  }
+
+  .cn-color-picker-swatch {
+    @apply size-9 rounded-md bg-background ring-1 ring-foreground/10 ring-inset;
+  }
+
+  .cn-color-picker-input {
+    @apply tabular-nums;
+  }
+
   /* MARK: React Aria */
   .cn-alert-dialog-overlay-aria {
     @apply data-entering:animate-in data-exiting:animate-out data-exiting:fade-out-0 data-entering:fade-in-0 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs;

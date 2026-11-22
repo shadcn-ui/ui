@@ -673,6 +673,34 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "collapsible-settings",
       filePath: "examples/base/collapsible-settings.tsx",
     },
+    "color-picker-alpha": {
+      name: "color-picker-alpha",
+      filePath: "examples/base/color-picker-alpha.tsx",
+    },
+    "color-picker-controlled": {
+      name: "color-picker-controlled",
+      filePath: "examples/base/color-picker-controlled.tsx",
+    },
+    "color-picker-demo": {
+      name: "color-picker-demo",
+      filePath: "examples/base/color-picker-demo.tsx",
+    },
+    "color-picker-field": {
+      name: "color-picker-field",
+      filePath: "examples/base/color-picker-field.tsx",
+    },
+    "color-picker-format": {
+      name: "color-picker-format",
+      filePath: "examples/base/color-picker-format.tsx",
+    },
+    "color-picker-popover": {
+      name: "color-picker-popover",
+      filePath: "examples/base/color-picker-popover.tsx",
+    },
+    "color-picker-rtl": {
+      name: "color-picker-rtl",
+      filePath: "examples/base/color-picker-rtl.tsx",
+    },
     "combobox-auto-highlight": {
       name: "combobox-auto-highlight",
       filePath: "examples/base/combobox-auto-highlight.tsx",
@@ -3055,6 +3083,34 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "collapsible-settings",
       filePath: "examples/aria/collapsible-settings.tsx",
     },
+    "color-picker-alpha": {
+      name: "color-picker-alpha",
+      filePath: "examples/aria/color-picker-alpha.tsx",
+    },
+    "color-picker-controlled": {
+      name: "color-picker-controlled",
+      filePath: "examples/aria/color-picker-controlled.tsx",
+    },
+    "color-picker-demo": {
+      name: "color-picker-demo",
+      filePath: "examples/aria/color-picker-demo.tsx",
+    },
+    "color-picker-field": {
+      name: "color-picker-field",
+      filePath: "examples/aria/color-picker-field.tsx",
+    },
+    "color-picker-format": {
+      name: "color-picker-format",
+      filePath: "examples/aria/color-picker-format.tsx",
+    },
+    "color-picker-popover": {
+      name: "color-picker-popover",
+      filePath: "examples/aria/color-picker-popover.tsx",
+    },
+    "color-picker-rtl": {
+      name: "color-picker-rtl",
+      filePath: "examples/aria/color-picker-rtl.tsx",
+    },
     "combobox-basic": {
       name: "combobox-basic",
       filePath: "examples/aria/combobox-basic.tsx",
@@ -5396,6 +5452,34 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "collapsible-settings": {
       name: "collapsible-settings",
       filePath: "examples/radix/collapsible-settings.tsx",
+    },
+    "color-picker-alpha": {
+      name: "color-picker-alpha",
+      filePath: "examples/radix/color-picker-alpha.tsx",
+    },
+    "color-picker-controlled": {
+      name: "color-picker-controlled",
+      filePath: "examples/radix/color-picker-controlled.tsx",
+    },
+    "color-picker-demo": {
+      name: "color-picker-demo",
+      filePath: "examples/radix/color-picker-demo.tsx",
+    },
+    "color-picker-field": {
+      name: "color-picker-field",
+      filePath: "examples/radix/color-picker-field.tsx",
+    },
+    "color-picker-format": {
+      name: "color-picker-format",
+      filePath: "examples/radix/color-picker-format.tsx",
+    },
+    "color-picker-popover": {
+      name: "color-picker-popover",
+      filePath: "examples/radix/color-picker-popover.tsx",
+    },
+    "color-picker-rtl": {
+      name: "color-picker-rtl",
+      filePath: "examples/radix/color-picker-rtl.tsx",
     },
     "combobox-auto-highlight": {
       name: "combobox-auto-highlight",

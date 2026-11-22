@@ -1,0 +1,208 @@
+---
+title: Color Picker
+description: Build accessible color pickers that read and write hex and oklch() values.
+---
+
+`ColorPicker` is an unstyled color picker with a 2D saturation and brightness
+area, hue and alpha sliders, a text input and a swatch. Values are hex or
+`oklch()` strings, so they work directly as theme tokens.
+
+The unstyled package gives you full control over markup and styles. For the
+styled version and themed examples, see
+[Color Picker](/docs/components/base/color-picker).
+
+## Installation
+
+```bash
+npm install @shadcn/react
+```
+
+## Import
+
+```tsx
+import { ColorPicker } from "@shadcn/react/color-picker"
+```
+
+`ColorPicker` exports its parts from one namespace. Each part accepts the
+native props for its default element and a `render` prop.
+
+## Anatomy
+
+```tsx
+<ColorPicker.Root>
+  <ColorPicker.Area>
+    <ColorPicker.AreaThumb />
+  </ColorPicker.Area>
+  <ColorPicker.Slider channel="hue">
+    <ColorPicker.SliderThumb />
+  </ColorPicker.Slider>
+  <ColorPicker.Slider channel="alpha">
+    <ColorPicker.SliderThumb />
+  </ColorPicker.Slider>
+  <ColorPicker.Swatch />
+  <ColorPicker.Input />
+  <ColorPicker.EyeDropper />
+  <ColorPicker.Copy />
+</ColorPicker.Root>
+```
+
+`Root` renders a `role="group"`. Each thumb holds visually hidden range inputs,
+so keyboard and screen reader users get native slider behavior.
+
+## Styled version
+
+The styled registry component uses flat component names:
+
+| Styled component        | Unstyled part                                           |
+| ----------------------- | ------------------------------------------------------- |
+| `ColorPicker`           | `ColorPicker.Root`                                      |
+| `ColorPickerArea`       | `ColorPicker.Area` with `ColorPicker.AreaThumb`         |
+| `ColorPickerHue`        | `ColorPicker.Slider channel="hue"` with `SliderThumb`   |
+| `ColorPickerAlpha`      | `ColorPicker.Slider channel="alpha"` with `SliderThumb` |
+| `ColorPickerSwatch`     | `ColorPicker.Swatch`                                    |
+| `ColorPickerInput`      | `ColorPicker.Input` rendered as the registry `Input`    |
+| `ColorPickerEyeDropper` | `ColorPicker.EyeDropper` with a pipette icon            |
+| `ColorPickerCopy`       | `ColorPicker.Copy` with copy and check icons            |
+
+## Basic usage
+
+```tsx
+import { ColorPicker } from "@shadcn/react/color-picker"
+
+export function BrandColor() {
+  return (
+    <ColorPicker.Root defaultValue="oklch(0.62 0.19 259)" name="brand">
+      <ColorPicker.Area className="h-40 rounded-lg">
+        <ColorPicker.AreaThumb className="size-4 rounded-full border-2 border-white" />
+      </ColorPicker.Area>
+      <ColorPicker.Slider channel="hue" className="h-3 rounded-full">
+        <ColorPicker.SliderThumb className="size-4 rounded-full border-2 border-white" />
+      </ColorPicker.Slider>
+      <ColorPicker.Swatch className="size-8 rounded-lg" />
+      <ColorPicker.Input aria-label="Brand color" />
+    </ColorPicker.Root>
+  )
+}
+```
+
+The area and slider tracks set their gradients and thumb positions inline. Give
+them a size, and style the thumbs.
+
+## Values
+
+- Values are hex (`#rrggbb`, `#rrggbbaa`, or shorthand) or `oklch()`, including
+  percentages, angle units and `/ alpha`.
+- `onValueChange` emits the format of the current value. Set `format` to
+  `"hex"` or `"oklch"` to choose one. `oklch()` output matches theme tokens,
+  for example `oklch(0.577 0.245 27.325)` or `oklch(1 0 0 / 10%)`.
+- A value is shown exactly as passed until the user changes the color, so a
+  token is never rewritten by rounding.
+- Hue is kept when the value turns gray or black.
+- Colors are edited in sRGB. An `oklch()` value outside sRGB keeps its
+  lightness and hue and loses chroma once edited.
+
+## Eye dropper and copy
+
+- `EyeDropper` picks a color from the screen with the browser EyeDropper API.
+  It renders nothing where the API is missing (only Chromium browsers have
+  it) and on the server, keeps the current alpha, and ignores a cancelled
+  pick.
+- `Copy` writes the value, in the picker's format, to the clipboard. Its label
+  changes to "Copied" for two seconds, and a polite live region announces it.
+  Outside a secure context there is no Clipboard API, so nothing happens.
+
+## Native forms
+
+Pass `name` to submit the value with a form through a hidden input. A disabled
+picker is not submitted.
+
+## Right to left
+
+Pass `dir="rtl"` to mirror the saturation axis, the slider gradients and the
+horizontal keys. Without `dir`, the direction is read from the page when the
+picker mounts. `Input` always reads left to right, because color values do.
+
+## Keyboard
+
+| Part   | Key                              | Action                                    |
+| ------ | -------------------------------- | ----------------------------------------- |
+| Area   | ← / →                            | Saturation by 1%. Mirrored in RTL.        |
+| Area   | ↑ / ↓                            | Brightness by 1%.                         |
+| Area   | Shift + arrow                    | Steps of 10%.                             |
+| Area   | PageUp / PageDown                | Brightness by 10%.                        |
+| Area   | Home / End                       | Saturation by 10%. Mirrored in RTL.       |
+| Slider | ← / → and ↑ / ↓                  | One step (1° or 1%). ← / → mirror in RTL. |
+| Slider | Shift + arrow, PageUp / PageDown | Ten steps.                                |
+| Slider | Home / End                       | Minimum or maximum.                       |
+| Input  | Enter                            | Commits the text if it is a color.        |
+| Input  | Escape                           | Restores the current value.               |
+
+The area keys match React Aria's ColorArea. Focus moves to the input for the
+axis you change, so screen readers announce the new value.
+
+## Accessibility
+
+- The area thumb holds two range inputs with `aria-roledescription="2D slider"`.
+  Only the saturation input is in the tab order.
+- `aria-valuetext` reads "Saturation 62%, Brightness 80%" for the area, and
+  "200°" or "50%" for the sliders. Pass `getAriaValueText` to translate it.
+- The area and sliders are labelled "Color", "Hue" and "Alpha". Pass
+  `aria-label` or `aria-labelledby` to change it.
+- `aria-invalid` on `Root` is passed to every input, because a group can't be
+  invalid. `disabled` disables every input.
+- `Swatch` is a `role="img"` labelled with the value.
+
+## Data attributes
+
+Use these attributes for styling. Boolean attributes are present when true and
+absent when false.
+
+| Part                      | Data attribute  | Value                                     |
+| ------------------------- | --------------- | ----------------------------------------- |
+| Root, Area, Slider, Input | `data-disabled` | Present when disabled.                    |
+| Root, Area, Slider, Input | `data-invalid`  | Present when `aria-invalid` is set.       |
+| Area, Slider and thumbs   | `data-dragging` | Present while a pointer drags.            |
+| Slider, SliderThumb       | `data-channel`  | `"hue"` or `"alpha"`.                     |
+| Swatch                    | `data-alpha`    | Present when the color is translucent.    |
+| EyeDropper                | `data-picking`  | Present while the browser picker is open. |
+| Copy                      | `data-copied`   | Present for two seconds after copying.    |
+
+Set `--color-picker-checkerboard` to recolor the dark squares behind
+translucent colors. The light squares show the element's background color.
+
+## API Reference
+
+### ColorPicker.Root
+
+| Prop            | Type                      | Default             | Description                             |
+| --------------- | ------------------------- | ------------------- | --------------------------------------- |
+| `value`         | `string`                  | -                   | Controlled value.                       |
+| `defaultValue`  | `string`                  | `"#000000"`         | Initial value.                          |
+| `onValueChange` | `(value: string) => void` | -                   | Called when the user changes the color. |
+| `format`        | `"hex" \| "oklch"`        | format of the value | Format emitted by `onValueChange`.      |
+| `disabled`      | `boolean`                 | `false`             | Disables every part.                    |
+| `aria-invalid`  | `boolean`                 | -                   | Marks every input invalid.              |
+| `name`          | `string`                  | -                   | Submits the value with native forms.    |
+| `dir`           | `"ltr" \| "rtl"`          | read from the page  | Direction of the area and sliders.      |
+
+### ColorPicker.Area
+
+| Prop               | Type                                                                                 | Default   | Description                   |
+| ------------------ | ------------------------------------------------------------------------------------ | --------- | ----------------------------- |
+| `aria-label`       | `string`                                                                             | `"Color"` | Labels the area inputs.       |
+| `aria-labelledby`  | `string`                                                                             | -         | Labels the area inputs.       |
+| `getAriaValueText` | `({ saturation, brightness }: { saturation: number; brightness: number }) => string` | -         | Text announced for the value. |
+
+### ColorPicker.Slider
+
+| Prop               | Type                        | Default              | Description                    |
+| ------------------ | --------------------------- | -------------------- | ------------------------------ |
+| `channel`          | `"hue" \| "alpha"`          | -                    | Required. The channel to edit. |
+| `aria-label`       | `string`                    | `"Hue"` or `"Alpha"` | Labels the slider input.       |
+| `aria-labelledby`  | `string`                    | -                    | Labels the slider input.       |
+| `getAriaValueText` | `(value: number) => string` | -                    | Text announced for the value.  |
+
+### AreaThumb, SliderThumb, Input, Swatch, EyeDropper and Copy
+
+These parts take their state from `Root` and accept the native props of their
+element. `Input` commits on Enter or blur and reverts text that is not a color.

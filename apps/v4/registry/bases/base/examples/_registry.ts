@@ -1074,4 +1074,16 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "color-picker-example",
+    title: "Color Picker",
+    type: "registry:example",
+    registryDependencies: ["color-picker", "field", "example"],
+    files: [
+      {
+        path: "examples/color-picker-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

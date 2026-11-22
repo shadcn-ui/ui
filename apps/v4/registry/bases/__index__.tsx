@@ -1424,6 +1424,28 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "registry/bases/base/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/color-picker-example.tsx",
+        },
+      },
+    },
     "accordion-example": {
       name: "accordion-example",
       title: "Accordion",
@@ -2767,6 +2789,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/base/examples/message-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "color-picker-example": {
+      name: "color-picker-example",
+      title: "Color Picker",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["color-picker", "field", "example"],
+      files: [
+        {
+          path: "registry/bases/base/examples/color-picker-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -5254,6 +5292,28 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "registry/bases/aria/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/color-picker-example.tsx",
+        },
+      },
+    },
     "accordion-example": {
       name: "accordion-example",
       title: "Accordion",
@@ -6549,6 +6609,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/aria/examples/message-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "color-picker-example": {
+      name: "color-picker-example",
+      title: "Color Picker",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["color-picker", "field", "example"],
+      files: [
+        {
+          path: "registry/bases/aria/examples/color-picker-example.tsx",
           type: "registry:example",
           target: "",
         },
@@ -9048,6 +9124,28 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "registry/bases/radix/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/color-picker-example.tsx",
+        },
+      },
+    },
     "accordion-example": {
       name: "accordion-example",
       title: "Accordion",
@@ -10375,6 +10473,22 @@ export const Index: Record<string, Record<string, any>> = {
       files: [
         {
           path: "registry/bases/radix/examples/message-example.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: undefined,
+    },
+    "color-picker-example": {
+      name: "color-picker-example",
+      title: "Color Picker",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["color-picker", "field", "example"],
+      files: [
+        {
+          path: "registry/bases/radix/examples/color-picker-example.tsx",
           type: "registry:example",
           target: "",
         },

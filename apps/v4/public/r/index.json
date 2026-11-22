@@ -485,6 +485,34 @@
     }
   },
   {
+    "name": "color-picker",
+    "type": "registry:ui",
+    "dependencies": ["@shadcn/react"],
+    "registryDependencies": ["button", "input"],
+    "files": [
+      {
+        "path": "ui/color-picker.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "links": {
+        "base": {
+          "docs": "https://ui.shadcn.com/docs/components/base/color-picker",
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/color-picker-example.tsx"
+        },
+        "aria": {
+          "docs": "https://ui.shadcn.com/docs/components/aria/color-picker",
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/color-picker-example.tsx"
+        },
+        "radix": {
+          "docs": "https://ui.shadcn.com/docs/components/radix/color-picker",
+          "examples": "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/color-picker-example.tsx"
+        }
+      }
+    }
+  },
+  {
     "name": "combobox",
     "type": "registry:ui",
     "registryDependencies": ["button", "input-group"],
