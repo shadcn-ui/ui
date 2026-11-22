@@ -1856,9 +1856,9 @@
   },
   {
     "name": "@kind-ui",
-    "homepage": "https://kindui.dev/charts/",
+    "homepage": "https://kindui.dev",
     "url": "https://kindui.dev/r/{name}.json",
-    "description": "Editable React chart compositions backed by Kind UI Core, with explicit data, accessible interactions, and consumer-controlled animation.",
+    "description": "Accessible React and Web Components for AI chat and agent interfaces, plus interactive React charts. Built on UI SDK.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 18V6m0 12h16M8 14l4-6 4 3 4-7'/></svg>"
   },
   {
