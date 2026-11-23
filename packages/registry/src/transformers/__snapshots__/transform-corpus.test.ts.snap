@@ -564,22 +564,24 @@ exports[`default chain (base) > third-party--license-panel.tsx 1`] = `
 -  * @license MIT
 -  * Copyright (c) Acme
 -  */
-@@ -10 +6 @@
+- "use client";
+- 
+@@ -10 +4 @@
 - import { cn } from "@/registry/acme/lib/utils";
 - import { buttonVariants } from "@/registry/acme/ui/button";
 + import { cn } from "~/lib/utils";
 + import { buttonVariants } from "~/components/ui/button";
-@@ -23 +19 @@
+@@ -23 +17 @@
 -         "flex space-x-2 border-l pl-4 data-[side=left]:-translate-x-full",
 -         side === "right" ? "right-0 ml-auto" : "left-0 mr-auto",
 +         "flex space-x-2 rtl:space-x-reverse border-s ps-4 data-[side=left]:-translate-x-full rtl:data-[side=left]:translate-x-full",
 +         side === "right" ? "end-0 ms-auto" : "start-0 me-auto",
-@@ -30 +26 @@
+@@ -30 +24 @@
 -           root: "relative pr-2",
 -           nav: cn("absolute top-0 right-0", "flex items-center"),
 +           root: "relative pe-2",
 +           nav: cn("absolute top-0 end-0", "flex items-center"),
-@@ -34 +30 @@
+@@ -34 +28 @@
 -             "rounded-l-md"
 +             "rounded-s-md""
 `;
@@ -1588,22 +1590,24 @@ exports[`install chain (base) > third-party--license-panel.tsx 1`] = `
 -  * @license MIT
 -  * Copyright (c) Acme
 -  */
-@@ -10 +6 @@
+- "use client";
+- 
+@@ -10 +4 @@
 - import { cn } from "@/registry/acme/lib/utils";
 - import { buttonVariants } from "@/registry/acme/ui/button";
 + import { cn } from "~/lib/utils";
 + import { buttonVariants } from "~/components/ui/button";
-@@ -23 +19 @@
+@@ -23 +17 @@
 -         "flex space-x-2 border-l pl-4 data-[side=left]:-translate-x-full",
 -         side === "right" ? "right-0 ml-auto" : "left-0 mr-auto",
 +         "flex space-x-2 rtl:space-x-reverse border-s ps-4 data-[side=left]:-translate-x-full rtl:data-[side=left]:translate-x-full",
 +         side === "right" ? "end-0 ms-auto" : "start-0 me-auto",
-@@ -30 +26 @@
+@@ -30 +24 @@
 -           root: "relative pr-2",
 -           nav: cn("absolute top-0 right-0", "flex items-center"),
 +           root: "relative pe-2",
 +           nav: cn("absolute top-0 end-0", "flex items-center"),
-@@ -34 +30 @@
+@@ -34 +28 @@
 -             "rounded-l-md"
 +             "rounded-s-md""
 `;
@@ -4040,25 +4044,32 @@ exports[`install chain (jsx) > third-party--card-actions.tsx 1`] = `
 `;
 
 exports[`install chain (jsx) > third-party--license-panel.tsx 1`] = `
-"@@ -10 +10 @@
+"@@ -1 +1 @@
+- /**
+-  * @license MIT
+-  * Copyright (c) Acme
+-  */
+- "use client";
+- 
+@@ -10 +4 @@
 - import { cn } from "@/registry/acme/lib/utils";
 - import { buttonVariants } from "@/registry/acme/ui/button";
 + import { cn } from "@workspace/ui/lib/utils";
 + import { buttonVariants } from "@workspace/ui/components/button";
-@@ -18 +18 @@
+@@ -18 +12 @@
 - }: React.ComponentProps<typeof DayPicker> & { side?: "left" | "right" }) {
 + }) {
-@@ -26 +26 @@
+@@ -26 +20 @@
 -       )}
 -     >
 +       )}>
-@@ -32 +31 @@
+@@ -32 +25 @@
 -           button_previous: cn(
 -             buttonVariants({ variant: "ghost" }),
 -             "rounded-l-md"
 -           ),
 +           button_previous: cn(buttonVariants({ variant: "ghost" }), "rounded-l-md"),
-@@ -39 +35 @@
+@@ -39 +29 @@
 -         {...props}
 -       />
 +         {...props} />"
@@ -5045,22 +5056,24 @@ exports[`install chain (prefix-v3) > third-party--license-panel.tsx 1`] = `
 -  * @license MIT
 -  * Copyright (c) Acme
 -  */
-@@ -10 +6 @@
+- "use client";
+- 
+@@ -10 +4 @@
 - import { cn } from "@/registry/acme/lib/utils";
 - import { buttonVariants } from "@/registry/acme/ui/button";
 + import { cn } from "@/lib/utils";
 + import { buttonVariants } from "@/components/ui/button";
-@@ -23 +19 @@
+@@ -23 +17 @@
 -         "flex space-x-2 border-l pl-4 data-[side=left]:-translate-x-full",
 -         side === "right" ? "right-0 ml-auto" : "left-0 mr-auto",
 +         "tw-flex tw-space-x-2 tw-border-l tw-pl-4 data-[side=left]:tw--translate-x-full",
 +         side === "right" ? "tw-right-0 tw-ml-auto" : "tw-left-0 tw-mr-auto",
-@@ -30 +26 @@
+@@ -30 +24 @@
 -           root: "relative pr-2",
 -           nav: cn("absolute top-0 right-0", "flex items-center"),
 +           root: "tw-relative tw-pr-2",
 +           nav: cn("tw-absolute tw-top-0 tw-right-0", "tw-flex tw-items-center"),
-@@ -34 +30 @@
+@@ -34 +28 @@
 -             "rounded-l-md"
 +             "tw-rounded-l-md""
 `;
@@ -10945,7 +10958,9 @@ exports[`transformRsc (base) > third-party--license-panel.tsx 1`] = `
 - /**
 -  * @license MIT
 -  * Copyright (c) Acme
--  */"
+-  */
+- "use client";
+- "
 `;
 
 exports[`transformRsc (base) > third-party--middleware.ts 1`] = `"(unchanged)"`;
