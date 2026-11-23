@@ -53,8 +53,8 @@
     "test": "vitest run"
   },
   "peerDependencies": {
-    "@tanstack/ai": ">=0.40.0 <0.41.0",
-    "@tanstack/ai-client": ">=0.20.0 <0.21.0",
+    "@tanstack/ai": ">=0.40.0 <0.41.0 || ^1.0.0",
+    "@tanstack/ai-client": ">=0.20.0 <0.21.0 || ^1.0.0",
     "ai": ">=7.0.0 <8"
   },
   "peerDependenciesMeta": {
@@ -69,8 +69,8 @@
     }
   },
   "devDependencies": {
-    "@tanstack/ai": "0.40.0",
-    "@tanstack/ai-client": "0.20.0",
+    "@tanstack/ai": "^1.8.0",
+    "@tanstack/ai-client": "^1.2.1",
     "ai": "7.0.0-canary.159",
     "zod": "3.25.76",
     "rimraf": "^6.0.1",
