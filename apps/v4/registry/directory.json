@@ -2841,6 +2841,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' width='24' height='24'><rect width='256' height='256' rx='57.5' fill='var(--foreground)'/><text x='128' y='162' font-family='ui-monospace,SFMono-Regular,Menlo,monospace' font-size='92' text-anchor='middle' fill='var(--background)' letter-spacing='-4'>r.d</text></svg>"
   },
   {
+    "name": "@relic-ui",
+    "homepage": "https://relic-ui.vercel.app",
+    "url": "https://relic-ui.vercel.app/r/{name}.json",
+    "description": "Original, animated React components with a purpose: lock-dial codes, crumple-to-delete, live visitor maps, heatmaps, profile decks and more. MIT.",
+    "author": "Shubham Tambe",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'><path d='M8.5 6V26' stroke='#f1a128'/><path d='M13 6H17A6.5 6.5 0 0 1 17 19H13' stroke='var(--foreground)'/><path d='M17.5 19L23.5 26' stroke='var(--foreground)'/></svg>"
+  },
+  {
     "name": "@remocn",
     "homepage": "https://www.remocn.dev/",
     "url": "https://www.remocn.dev/r/{name}.json",
