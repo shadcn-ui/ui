@@ -3629,8 +3629,8 @@
   },
   {
     "name": "@tween-ui",
-    "homepage": "https://tween-ui.vercel.app",
-    "url": "https://tween-ui.vercel.app/r/{name}.json",
+    "homepage": "https://tween-ui.staticmania.com",
+    "url": "https://tween-ui.staticmania.com/r/{name}.json",
     "description": "GSAP & CSS animated React components and blocks. One file each, no shared runtime, reduced-motion handled.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='#045f64'/><path d='M5 19 C 9.5 8.9, 5 5, 19 5' fill='none' stroke='#c6f56f' stroke-width='2' stroke-linecap='round'/><circle cx='19' cy='5' r='1.8' fill='#c6f56f'/></svg>"
   },
