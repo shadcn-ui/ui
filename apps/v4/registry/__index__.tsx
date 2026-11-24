@@ -7329,7 +7329,7 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/base/command",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/command-example.tsx",
-          api: "https://github.com/dip/cmdk",
+          api: "https://base-ui.com/react/components/autocomplete.md",
         },
       },
     },
@@ -11536,7 +11536,7 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/base/command",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/command-example.tsx",
-          api: "https://github.com/dip/cmdk",
+          api: "https://base-ui.com/react/components/autocomplete.md",
         },
       },
     },
@@ -12957,7 +12957,7 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/base/command",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/command-example.tsx",
-          api: "https://github.com/dip/cmdk",
+          api: "https://base-ui.com/react/components/autocomplete.md",
         },
       },
     },
@@ -14378,7 +14378,7 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/base/command",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/command-example.tsx",
-          api: "https://github.com/dip/cmdk",
+          api: "https://base-ui.com/react/components/autocomplete.md",
         },
       },
     },
@@ -15799,7 +15799,7 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/base/command",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/command-example.tsx",
-          api: "https://github.com/dip/cmdk",
+          api: "https://base-ui.com/react/components/autocomplete.md",
         },
       },
     },
@@ -17220,7 +17220,7 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/base/command",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/command-example.tsx",
-          api: "https://github.com/dip/cmdk",
+          api: "https://base-ui.com/react/components/autocomplete.md",
         },
       },
     },
@@ -18641,7 +18641,7 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/base/command",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/command-example.tsx",
-          api: "https://github.com/dip/cmdk",
+          api: "https://base-ui.com/react/components/autocomplete.md",
         },
       },
     },
@@ -20062,7 +20062,7 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/base/command",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/command-example.tsx",
-          api: "https://github.com/dip/cmdk",
+          api: "https://base-ui.com/react/components/autocomplete.md",
         },
       },
     },
