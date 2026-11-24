@@ -1,3 +1,4 @@
+import { explorer } from "@shadcn/registry/internal/get-config"
 import { getPackageRunner } from "@shadcn/registry/internal/get-package-manager"
 import { getRegistriesConfig } from "@shadcn/registry/internal/registry/api"
 import {
@@ -5,6 +6,7 @@ import {
   SEARCHABLE_TYPES,
 } from "@shadcn/registry/internal/registry/search"
 import {
+  rawConfigSchema,
   registryItemSchema,
   searchResultsSchema,
 } from "@shadcn/registry/schema"
@@ -22,7 +24,14 @@ export async function getMcpConfig(cwd = process.cwd()) {
     useCache: false,
   })
 
+  // Keep the project's style so items resolve the way view and search do.
+  const configResult = await explorer.search(cwd)
+  const partialConfig = rawConfigSchema
+    .partial()
+    .safeParse(configResult?.config)
+
   return {
+    ...(partialConfig.success ? partialConfig.data : {}),
     registries: config.registries,
   }
 }
