@@ -45,6 +45,53 @@ describe("AI SDK transport", () => {
     expect(Date.now() - startedAt).toBeGreaterThanOrEqual(75)
   })
 
+  it("streams preliminary tool output before the final output", async () => {
+    const chat = createChat<TestMessage>()
+      .user("Weather?")
+      .assistant(({ writer }) => {
+        writer
+          .tool("getWeather", {
+            input: {
+              city: "San Francisco",
+            },
+          })
+          .output(
+            { ...weatherOutput, condition: "cloudy" },
+            { preliminary: true }
+          )
+          .output(weatherOutput)
+      })
+
+    const [userMessage] = chat.get(1)
+    const stream = await chat.transport({ delayMs: 0 }).sendMessages({
+      trigger: "submit-message",
+      chatId: "chat-1",
+      messageId: undefined,
+      messages: [userMessage],
+      abortSignal: undefined,
+    })
+    const [chunkStream, messageStream] = stream.tee()
+    const chunks = await readStream(chunkStream)
+
+    expect(
+      chunks.flatMap((chunk) =>
+        chunk.type === "tool-output-available" ? [chunk.preliminary] : []
+      )
+    ).toEqual([true, undefined])
+
+    let message: UIMessage | undefined
+    for await (const update of readUIMessageStream({ stream: messageStream })) {
+      message = update
+    }
+
+    expect(message?.parts.at(-1)).toMatchObject({
+      type: "tool-getWeather",
+      state: "output-available",
+      output: weatherOutput,
+    })
+    expect(message?.parts.at(-1)).not.toHaveProperty("preliminary", true)
+  })
+
   it("streams denied static tool parts", async () => {
     const chat = createChat<TestMessage>()
       .user("Use the available tools.")

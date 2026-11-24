@@ -98,3 +98,129 @@ Notes:
 - `--style new-york-v4` is rejected because it is a legacy source registry, not a
   generated combination. Use `--registry new-york-v4` instead.
 - Unknown targets fail with the list of valid style ids.
+
+## Public registry health monitoring
+
+`directory.json` remains the authored source of truth for public registry
+metadata. The scheduled monitor reads that file, checks each registry, and
+publishes generated state to a private Vercel Blob store. Generated health data
+must never be committed to the repository.
+
+The monitor writes these paths:
+
+```text
+registry-health/v1/state.json
+registry-health/v1/latest.json
+registry-health/v1/runs/<timestamp>.json
+registry-health/v1/daily/<date>.json
+```
+
+`latest.json` is the only Blob document read by the website. The server reads it
+with Blob credentials, then the public `/r/registries.json` route merges the
+sanitized health and ranking overlays by exact namespace. The route fails open
+to the original directory payload when health is disabled, stale, or unavailable.
+If a newly added registry is not in the latest snapshot yet, it remains in the
+payload without `health` until the monitor first observes it.
+The route uses five-minute ISR, so normal traffic is served from cache and does
+not read Blob on every request.
+
+Each newly generated health entry includes a stable status reason code and a
+human-readable message for its primary status condition. The public route does
+not expose raw monitor diagnostics, and status reasons do not affect scores or
+ranking.
+
+### Authentication and configuration
+
+New Blob connections use Vercel OIDC inside the linked Vercel project. The
+connected registry health store exposes `REGISTRY_HEALTH_BLOB_STORE_ID`, which
+the website passes explicitly when reading `latest.json`. The standard
+`BLOB_STORE_ID` name remains supported as a fallback. A server-only
+`BLOB_READ_WRITE_TOKEN` is also supported when OIDC is unavailable. Client code
+never receives these credentials.
+
+The monitor runs in GitHub Actions, outside Vercel's OIDC runtime. Configure a
+separate repository Actions secret named `BLOB_READ_WRITE_TOKEN` for that
+workflow. The token is available only while downloading the previous private
+state and publishing the new snapshot. The registry check step, contributor URL
+requests, and CLI dry-run subprocesses run without Blob credentials. Never
+expose the token through a `NEXT_PUBLIC_` variable, logs, or step summaries.
+
+Configure this Vercel server environment variable:
+
+- `REGISTRY_HEALTH_BLOB_STORE_ID`: the ID of the connected private registry
+  health Blob store. Vercel provides this value when the store is connected to
+  the project.
+- `REGISTRY_HEALTH_ENABLED`: set to `1` to merge the additive health object into
+  `/r/registries.json`, including ranking metadata when available; set to `0`
+  to return the original four-field payload.
+
+### Directory ranking
+
+The monitor publishes an optional `rankings` map in `latest.json`. Each entry
+contains `version`, `score`, and `itemCount`. Health contributes 80% of the ranking
+score. The unique catalog size contributes up to 20 points on a logarithmic curve,
+capped at 500 items. `health.score` and `scoreVersion` are unchanged.
+
+The directory fetches the cached public API once, validates the health and
+ranking metadata, and merges only those fields into authored entries by exact
+namespace. It never uses fetched logos, descriptions, or links. It ranks before
+search and pagination, with alphabetical ties. Observing, monitoring-limited,
+empty, and unranked registries form an alphabetical group after ranked entries.
+Unavailable registries appear last, but none are hidden or removed.
+
+The result stays stable during a page visit. Missing, invalid, or stale metadata
+falls back to alphabetical ordering. Old snapshots without `rankings` remain
+supported: the directory sorts those by health score until the updated monitor
+publishes rankings. It uses one score basis for the list, so raw health scores
+are never compared with size-adjusted scores.
+
+Weekly CLI sampling uses a namespace-and-date-seeded shuffle of unique item
+names and skips recently checked items when alternatives exist. The budget is
+still one CLI dry run per registry, with at most four concurrent dry runs.
+
+Path-based catalog names can differ from an item's own name, so daily checks
+accept schema-valid payloads for those addresses. Flat names still require an
+exact match. On the first run with `itemValidationVersion=1`, legacy sampled-item
+aggregates for path-based catalogs are cleared and the daily checks are due
+again. Availability, index, CLI, and flat-catalog histories are preserved.
+
+### Running and rollout
+
+The `Monitor Registries` workflow runs hourly and supports manual `hourly`,
+`daily`, `weekly`, and `all` modes. Registry failures are recorded as data. The
+workflow fails only when its own configuration, state, or publication fails.
+Automatic daily and weekly work uses the last successful phase timestamps in
+`state.json`, so a delayed cron run does not skip those checks.
+
+To run the monitor locally with credentials loaded from the linked Vercel
+project, use the workspace-root Turbo command:
+
+```bash
+MONITOR_MODE=hourly vercel env run -- pnpm registry:health
+```
+
+If the local environment file lives under `apps/v4`, run from that directory
+and use `pnpm -w registry:health` so pnpm still selects the workspace-root
+script.
+
+Turbo builds the monitor's workspace dependencies before running it. Local runs
+run the same three phases as the workflow: authenticated state download,
+credential-free registry checks, and authenticated publication. They publish
+health state to the connected Blob store. Valid modes are `auto`, `hourly`,
+`daily`, `weekly`, and `all`.
+
+For the initial rollout:
+
+1. Connect a private Blob store to the Vercel project.
+2. Configure the GitHub Actions write secret.
+3. Set `REGISTRY_HEALTH_ENABLED=1` and deploy the additive API overlay.
+4. Dispatch an hourly run and confirm all four Blob path families.
+5. Collect at least seven days of observations and inspect false positives.
+6. Deploy directory ranking after the data and thresholds have been reviewed.
+   The next monitor snapshot includes the ranking metadata. No manual Blob migration
+   or configuration change is required.
+
+To roll back the public API overlay immediately, set
+`REGISTRY_HEALTH_ENABLED=0`. Disable the scheduled workflow separately if its
+requests are causing load or false positives. Blob history can remain in place
+for diagnosis.

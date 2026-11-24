@@ -1,11 +1,12 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { cn } from "cn"
 
 import { source } from "@/lib/source"
-import { cn } from "@/lib/utils"
 import { Callout } from "@/components/callout"
 import { CodeBlockCommand } from "@/components/code-block-command"
+import { CodeCollapsiblePre } from "@/components/code-collapsible-pre"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { CodeTabs } from "@/components/code-tabs"
 import { ComponentPreview } from "@/components/component-preview"
@@ -180,8 +181,10 @@ export const mdxComponents = {
     </div>
   ),
   pre: ({ className, children, ...props }: React.ComponentProps<"pre">) => {
+    const Comp = "data-collapsible" in props ? CodeCollapsiblePre : "pre"
+
     return (
-      <pre
+      <Comp
         data-not-typeset
         className={cn(
           "no-scrollbar min-w-0 overflow-x-auto overflow-y-auto overscroll-x-contain overscroll-y-auto px-4 py-3.5 outline-none has-data-highlighted-line:px-0 has-data-line-numbers:px-0 has-data-[slot=tabs]:p-0",
@@ -190,7 +193,7 @@ export const mdxComponents = {
         {...props}
       >
         {children}
-      </pre>
+      </Comp>
     )
   },
   figcaption: ({
@@ -330,7 +333,12 @@ export const mdxComponents = {
     <Button className={cn("not-typeset", className)} {...props} />
   ),
   Callout,
-  Accordion,
+  Accordion: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof Accordion>) => (
+    <Accordion className={cn("not-typeset", className)} {...props} />
+  ),
   AccordionContent,
   AccordionItem,
   AccordionTrigger,

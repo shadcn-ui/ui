@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { Menu as MenuPrimitive } from "@base-ui/react/menu"
+import { cn } from "cn"
 
-import { cn } from "@/registry/bases/base/lib/utils"
 import { IconPlaceholder } from "@/app/(app)/(create)/components/icon-placeholder"
 
 function Picker({ ...props }: MenuPrimitive.Root.Props) {

@@ -32,13 +32,13 @@ _In a typical library, if you need to change a button’s behavior, you have to 
     <AccordionTrigger>
       How do I pull upstream updates in an Open Code approach?
     </AccordionTrigger>
-    <AccordionContent>
+    <AccordionContent className="flex flex-col gap-4">
       <p>
         shadcn/ui follows a headless component architecture. This means the core
         of your app can receive fixes by updating your dependencies, for
         instance, @base-ui/react or input-otp.
       </p>
-      <p className="mt-4">
+      <p>
         The topmost layer, i.e., the one closest to your design system, is not
         coupled with the implementation of the library. It stays open for
         modification.

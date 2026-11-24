@@ -1,0 +1,128 @@
+name: Close unsigned PRs
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Only log what would be closed. Nothing is changed."
+        type: boolean
+        default: true
+  schedule:
+    # Every day at 00:20 UTC: https://crontab.guru/#20_0_*_*_*
+    - cron: "20 0 * * *"
+
+permissions:
+  pull-requests: write
+
+jobs:
+  close-unsigned-prs:
+    if: github.repository_owner == 'shadcn-ui'
+    runs-on: ubuntu-latest
+    name: Close unsigned PRs
+    steps:
+      - name: Close PRs flagged for unverified commits for two weeks or more
+        uses: actions/github-script@v7
+        env:
+          DRY_RUN: ${{ inputs.dry_run }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const label = "blocked by: unverified commits"
+            const maxAgeDays = 14
+            const body = `This PR has been automatically closed because its commits were not signed within ${maxAgeDays} days. If you would like to continue, please sign your commits and reopen or open a new PR. See https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits. Thank you. (This is an automated message)`
+
+            const dryRun = process.env.DRY_RUN === "true"
+            const { owner, repo } = context.repo
+            const dayInMs = 24 * 60 * 60 * 1000
+            const cutoff = Date.now() - maxAgeDays * dayInMs
+
+            if (dryRun) {
+              core.info("Dry run enabled. No PRs will be modified.")
+            }
+
+            const pulls = await github.paginate(github.rest.pulls.list, {
+              owner,
+              repo,
+              state: "open",
+              per_page: 100,
+            })
+
+            const flagged = pulls.filter((pull) =>
+              pull.labels.some((existingLabel) => existingLabel.name === label)
+            )
+
+            core.info(`Found ${flagged.length} open PR(s) labeled "${label}".`)
+
+            for (const pull of flagged) {
+              const pullNumber = pull.number
+
+              // Find the most recent time the label was applied.
+              const events = await github.paginate(github.rest.issues.listEvents, {
+                owner,
+                repo,
+                issue_number: pullNumber,
+                per_page: 100,
+              })
+
+              const labeledAt = events
+                .filter((event) => event.event === "labeled" && event.label?.name === label)
+                .map((event) => new Date(event.created_at).getTime())
+                .sort((a, b) => b - a)[0]
+
+              if (!labeledAt) {
+                core.warning(`#${pullNumber}: could not determine when "${label}" was added. Skipping.`)
+                continue
+              }
+
+              const ageInDays = Math.floor((Date.now() - labeledAt) / dayInMs)
+
+              if (labeledAt > cutoff) {
+                core.info(`#${pullNumber}: flagged ${ageInDays} day(s) ago. Skipping.`)
+                continue
+              }
+
+              // Re-check the commits so a stale label never closes a fixed PR.
+              const commits = await github.paginate(github.rest.pulls.listCommits, {
+                owner,
+                repo,
+                pull_number: pullNumber,
+                per_page: 100,
+              })
+
+              const unsignedCommits = commits.filter((commit) => {
+                return commit.commit.verification?.reason === "unsigned"
+              })
+
+              if (unsignedCommits.length === 0) {
+                core.info(`#${pullNumber}: commits are now signed. Removing label instead of closing.`)
+                if (!dryRun) {
+                  await github.rest.issues.removeLabel({
+                    owner,
+                    repo,
+                    issue_number: pullNumber,
+                    name: label,
+                  })
+                }
+                continue
+              }
+
+              core.info(`#${pullNumber}: ${unsignedCommits.length} unsigned commit(s), flagged ${ageInDays} day(s) ago. Closing.`)
+
+              if (dryRun) {
+                continue
+              }
+
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: pullNumber,
+                body,
+              })
+
+              await github.rest.pulls.update({
+                owner,
+                repo,
+                pull_number: pullNumber,
+                state: "closed",
+              })
+            }

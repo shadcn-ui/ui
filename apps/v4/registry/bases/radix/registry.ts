@@ -1,5 +1,4 @@
 import { registryItemSchema, type Registry } from "shadcn/schema"
-import { z } from "zod"
 
 import { fonts } from "@/registry/fonts"
 
@@ -14,7 +13,7 @@ import { ui } from "./ui/_registry"
 // Shared between index and style.
 const RADIX_STYLE = {
   type: "registry:style",
-  dependencies: ["class-variance-authority", "lucide-react", "radix-ui"],
+  dependencies: ["class-variance-authority", "cn", "lucide-react", "radix-ui"],
   devDependencies: ["tw-animate-css", "shadcn"],
   registryDependencies: ["utils"],
   css: {
@@ -36,7 +35,7 @@ const RADIX_STYLE = {
 export const registry = {
   name: "shadcn/ui",
   homepage: "https://ui.shadcn.com",
-  items: z.array(registryItemSchema).parse([
+  items: registryItemSchema.array().parse([
     {
       name: "index",
       ...RADIX_STYLE,

@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { cn } from "cn"
 import {
   Autocomplete,
   Collection,
@@ -21,7 +22,6 @@ import {
   type SeparatorProps,
 } from "react-aria-components"
 
-import { cn } from "@/registry/bases/aria/lib/utils"
 import {
   Dialog,
   DialogDescription,

@@ -2,9 +2,9 @@
 
 import * as React from "react"
 import { type ReasoningUIPart } from "ai"
+import { cn } from "cn"
 
 import { Markdown } from "@/components/markdown"
-import { cn } from "@/registry/bases/radix/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const REASONING_LEVEL_LABELS = [

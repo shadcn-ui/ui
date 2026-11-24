@@ -1,5 +1,6 @@
 "use client"
 
+import { cn } from "cn"
 import {
   CheckIcon,
   FileTextIcon,
@@ -8,7 +9,6 @@ import {
   VideoIcon,
 } from "lucide-react"
 
-import { cn } from "@/lib/utils"
 import { Badge } from "@/styles/base-sera/ui/badge"
 import {
   Card,

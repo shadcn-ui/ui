@@ -2,9 +2,8 @@
 
 import * as React from "react"
 import { Menu as MenuPrimitive } from "@base-ui/react/menu"
+import { cn } from "cn"
 import { CheckIcon } from "lucide-react"
-
-import { cn } from "@/registry/bases/base/lib/utils"
 
 // Copy of create's picker with lucide icons instead of IconPlaceholder (its
 // useDesignSystemSearchParams read must not mount on /typeset).

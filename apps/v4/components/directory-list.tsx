@@ -7,8 +7,8 @@ import {
   IconChevronLeft,
   IconChevronRight,
 } from "@tabler/icons-react"
+import { cn } from "cn"
 
-import { cn } from "@/lib/utils"
 import { useSearchRegistry } from "@/hooks/use-search-registry"
 import {
   DirectoryAddButton,
@@ -116,6 +116,7 @@ function DirectoryPaginationLink({
           variant: isActive ? "outline" : "ghost",
           size,
         }),
+        "max-sm:min-h-11 max-sm:min-w-11",
         className
       )}
       {...props}
@@ -257,7 +258,7 @@ function DirectoryListContent() {
               <ItemActions className="relative z-10 hidden self-start sm:flex">
                 <DirectoryAddButton registry={registry} />
               </ItemActions>
-              <ItemFooter className="justify-start pl-16 sm:hidden">
+              <ItemFooter className="justify-start pl-16 sm:hidden [&_button]:min-h-11">
                 <Button size="sm" variant="outline">
                   View <IconArrowUpRight />
                 </Button>

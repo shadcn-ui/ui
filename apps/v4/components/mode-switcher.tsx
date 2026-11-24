@@ -2,9 +2,9 @@
 
 import * as React from "react"
 import Script from "next/script"
+import { cn } from "cn"
 import { useTheme } from "next-themes"
 
-import { cn } from "@/lib/utils"
 import { useMetaColor } from "@/hooks/use-meta-color"
 import { Button } from "@/registry/new-york-v4/ui/button"
 

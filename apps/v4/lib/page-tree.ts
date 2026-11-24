@@ -24,8 +24,13 @@ export function getPagesFromFolder(
   folder: PageTreeFolder,
   currentBase: string
 ): PageTreePage[] {
-  // For the components folder, find the base subfolder.
-  if (folder.$id === "components" || folder.name === "Components") {
+  // For the components and AI Elements folders, find the base subfolder.
+  if (
+    folder.$id === "components" ||
+    folder.name === "Components" ||
+    folder.$id === "ai-elements" ||
+    folder.name === "AI Elements"
+  ) {
     for (const child of folder.children) {
       if (child.type === "folder") {
         // Match by $id or by name.
@@ -38,16 +43,22 @@ export function getPagesFromFolder(
           (currentBase === "base" && isBase) ||
           (currentBase === "aria" && isReactAria)
         ) {
-          return child.children.filter(
-            (c): c is PageTreePage => c.type === "page"
+          return withAiElementsIntroduction(
+            folder,
+            child.children.filter((c): c is PageTreePage => c.type === "page")
           )
         }
       }
     }
 
     // Fallback: return all pages from nested folders.
-    return getAllPagesFromFolder(folder).filter(
-      (page) => !page.url.endsWith("/components")
+    return withAiElementsIntroduction(
+      folder,
+      getAllPagesFromFolder(folder).filter(
+        (page) =>
+          !page.url.endsWith("/components") &&
+          !page.url.endsWith("/ai-elements")
+      )
     )
   }
 
@@ -57,8 +68,30 @@ export function getPagesFromFolder(
   )
 }
 
+function withAiElementsIntroduction(
+  folder: PageTreeFolder,
+  pages: PageTreePage[]
+): PageTreePage[] {
+  if (folder.$id !== "ai-elements" && folder.name !== "AI Elements") {
+    return pages
+  }
+
+  const index = folder.children.find(
+    (child): child is PageTreePage =>
+      child.type === "page" && child.url === "/docs/ai-elements"
+  )
+
+  if (!index) {
+    return pages
+  }
+
+  return [{ ...index, name: "Introduction" }, ...pages]
+}
+
 // Get current base (radix, base, or aria) from pathname.
 export function getCurrentBase(pathname: string): string {
-  const baseMatch = pathname.match(/\/docs\/components\/(radix|base|aria)\//)
+  const baseMatch = pathname.match(
+    /\/docs\/(?:components|ai-elements)\/(radix|base|aria)\//
+  )
   return baseMatch ? baseMatch[1] : "base" // Default to base.
 }
