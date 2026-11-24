@@ -1031,8 +1031,8 @@
   {
     "name": "@dresscode",
     "homepage": "https://dresscodeui.com",
-    "url": "https://dresscodeui.com/r/{name}.json",
-    "description": "React components in Folio, an original editorial style, with a DESIGN.md and rules that keep AI coding agents on-style.",
+    "url": "https://dresscodeui.com/r/dresscode/{name}.json",
+    "description": "Nine ready-made themes for shadcn/ui, each with its own colors, fonts and corners in light and dark, and a landing page and a dashboard template that wear them.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100.00 64.07'><path fill='currentColor' d='M32.000,0.000 L32.000,16.166 L19.340,23.475 L39.756,35.262 L48.000,47.957 L41.291,52.314 L0.000,28.475 L0.000,18.475 Z M68.000,0.000 L68.000,16.166 L80.660,23.475 L60.244,35.262 L52.000,47.957 L58.709,52.314 L100.000,28.475 L100.000,18.475 Z'/><circle fill='currentColor' cx='50.000' cy='57.867' r='6.200'/></svg>"
   },
   {
