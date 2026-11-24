@@ -2706,6 +2706,14 @@
     "logo": "<svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path fill='var(--foreground)' fill-rule='evenodd' d='M12 2a10 10 0 1 1 0 20a10 10 0 1 1 0-20Zm-3.5 4a2.5 2.5 0 1 0 0 5a2.5 2.5 0 1 0 0-5Z'/></svg>"
   },
   {
+    "name": "@prequelui-animate",
+    "homepage": "https://prequeluianimate.terravidhal.me",
+    "url": "https://prequeluianimate.terravidhal.me/r/{name}.json",
+    "description": "Animated components for shadcn/ui in React, Vue, Svelte, Solid and JavaScript: Base UI primitives, buttons, texts, numbers, effects and backgrounds with reduced-motion support. MIT, with a CLI and an MCP server.",
+    "author": "terravidhal",
+    "logo": "<svg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'><path fill='var(--foreground)' fill-rule='evenodd' d='M32 5a27 27 0 1 1 0 54a27 27 0 1 1 0-54ZM25.25 24.4a2.35 2.35 0 0 1 2.35 2.35v2.5a2.35 2.35 0 0 1-4.7 0v-2.5a2.35 2.35 0 0 1 2.35-2.35ZM38.75 24.4a2.35 2.35 0 0 1 2.35 2.35v2.5a2.35 2.35 0 0 1-4.7 0v-2.5a2.35 2.35 0 0 1 2.35-2.35ZM25.4 38.6Q32 42.6 38.6 38.6L37.4 40.6Q32 44.4 26.6 40.6Z'/></svg>"
+  },
+  {
     "name": "@preskok",
     "homepage": "https://ui-three-mu.vercel.app",
     "url": "https://ui-three-mu.vercel.app/r/{name}.json",
