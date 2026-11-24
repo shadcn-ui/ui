@@ -4,7 +4,8 @@ description: Command menu for search and quick actions.
 base: base
 component: true
 links:
-  doc: https://github.com/dip/cmdk
+  doc: https://base-ui.com/react/components/autocomplete
+  api: https://base-ui.com/react/components/autocomplete#api-reference
 ---
 
 <ComponentPreview
@@ -14,9 +15,21 @@ links:
   previewClassName="h-[24.5rem]"
 />
 
+<Callout>
+  The command component now uses [Base
+  UI](https://base-ui.com/react/components/autocomplete) instead of cmdk. If you
+  installed the previous version, see the [migration
+  guide](#migrating-from-cmdk).
+</Callout>
+
 ## About
 
-The `<Command />` component uses the [`cmdk`](https://github.com/dip/cmdk) component by [Dip](https://www.dip.org/).
+The `<Command />` component is built on the
+[Autocomplete](https://base-ui.com/react/components/autocomplete) component
+from [Base UI](https://base-ui.com), rendered inline. It keeps the API of the
+[`cmdk`](https://github.com/dip/cmdk) based version: items are filtered from
+their children, groups hide when none of their items match, and the arrow keys
+skip disabled items.
 
 ## Installation
 
@@ -41,7 +54,7 @@ npx shadcn@latest add command
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install cmdk
+npm install @base-ui/react
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -114,6 +127,17 @@ Command
         └── CommandItem
 ```
 
+`CommandDialog` renders its children in a dialog. Wrap them in a `Command`.
+
+```tsx showLineNumbers
+<CommandDialog open={open} onOpenChange={setOpen}>
+  <Command>
+    <CommandInput placeholder="Type a command or search..." />
+    <CommandList>...</CommandList>
+  </Command>
+</CommandDialog>
+```
+
 ## Basic
 
 A simple command menu in a dialog.
@@ -148,6 +172,134 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
   previewClassName="h-[24.5rem]"
 />
 
+## Filtering
+
+Each `CommandItem` is matched against the search using its `value`, or its
+text when `value` is not set, and its `keywords`. The default filter ignores
+case and accents, and items keep their order.
+
+Pass `value` when the item's text comes from a component, since only the text
+in its JSX children is read.
+
+```tsx showLineNumbers
+<CommandItem value="settings" keywords={["preferences", "options"]}>
+  <SettingsLabel />
+</CommandItem>
+```
+
+Use `filter` on `Command` to match items yourself. Items that score `0` are
+hidden. Set `shouldFilter={false}` to filter the items yourself, for example
+when the results come from a server.
+
+```tsx showLineNumbers
+<Command
+  filter={(value, search, keywords) =>
+    value.toLowerCase().startsWith(search.toLowerCase()) ? 1 : 0
+  }
+>
+```
+
+## Migrating from cmdk
+
+The base command now uses [Base
+UI](https://base-ui.com/react/components/autocomplete) instead of cmdk. The
+components and most of their props stay the same. If you installed the
+previous base command, update the following.
+
+<Steps>
+
+<Step>Update the dependency.</Step>
+
+The command needs `@base-ui/react` 1.7.0 or later.
+
+```diff
+- npm install cmdk
++ npm install @base-ui/react@latest
+```
+
+<Step>Update custom selectors for the highlighted item.</Step>
+
+Base UI marks the highlighted item with `data-highlighted` instead of
+`data-selected="true"`.
+
+```diff
+- <CommandItem className="data-[selected=true]:bg-accent">
++ <CommandItem className="data-highlighted:bg-accent">
+```
+
+<Step>Remove `value` and `defaultValue` from `Command`.</Step>
+
+The highlighted item can't be controlled. Use `onValueChange` to read it.
+
+```diff
+- <Command value={value} onValueChange={setValue}>
++ <Command onValueChange={setValue}>
+```
+
+<Step>Remove `vimBindings`.</Step>
+
+`Ctrl+N`, `Ctrl+J`, `Ctrl+P` and `Ctrl+K` no longer move the highlight.
+
+</Steps>
+
+### Changes from the cmdk version
+
+| Area                    | cmdk                                                           | Base UI                                                                                      |
+| ----------------------- | -------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Highlighted item        | `data-selected="true"`, `aria-selected`                        | `data-highlighted`, announced with `aria-activedescendant`                                   |
+| Disabled item           | `data-disabled="true"`                                         | `data-disabled` and `aria-disabled="true"`                                                   |
+| Matching                | Fuzzy, results sorted by score                                 | Substring that ignores case and accents. Items keep their order and `filter` only hides them |
+| Item without `value`    | Matches the rendered text                                      | Matches the text in its JSX children                                                         |
+| `Command` value         | `value` and `defaultValue` control it                          | Not supported. `onValueChange` still reports the highlighted item                            |
+| `vimBindings`           | Supported                                                      | Removed                                                                                      |
+| List label              | `aria-label="Suggestions"` on the listbox                      | None. The input is named by `label`, `aria-label` or the placeholder                         |
+| Separator               | `role="separator"`                                             | `role="presentation"` inside the listbox                                                     |
+| Group heading           | `[cmdk-group-heading]`                                         | `data-slot="command-group-heading"`, plus `cmdk-group-heading` for existing styles           |
+| Other cmdk attributes   | `[cmdk-item]`, `[cmdk-input]`, `--cmdk-list-height` and others | Not set. Use the `data-slot` attributes                                                      |
+| Extra DOM               | -                                                              | A visually hidden, `aria-hidden` input inside `Command`                                      |
+| Results that load later | Can leave nothing highlighted                                  | The first result is highlighted                                                              |
+
 ## API Reference
 
-See the [cmdk](https://github.com/dip/cmdk) documentation for more information.
+### Command
+
+| Prop                      | Type                                                             | Default |
+| ------------------------- | ---------------------------------------------------------------- | ------- |
+| `shouldFilter`            | `boolean`                                                        | `true`  |
+| `filter`                  | `(value: string, search: string, keywords?: string[]) => number` | -       |
+| `loop`                    | `boolean`                                                        | `false` |
+| `disablePointerSelection` | `boolean`                                                        | `false` |
+| `label`                   | `string`                                                         | -       |
+| `onValueChange`           | `(value: string) => void`                                        | -       |
+
+### CommandInput
+
+| Prop            | Type                       | Default |
+| --------------- | -------------------------- | ------- |
+| `value`         | `string`                   | -       |
+| `onValueChange` | `(search: string) => void` | -       |
+
+### CommandGroup
+
+| Prop         | Type              | Default |
+| ------------ | ----------------- | ------- |
+| `heading`    | `React.ReactNode` | -       |
+| `forceMount` | `boolean`         | `false` |
+
+### CommandItem
+
+| Prop         | Type                      | Default |
+| ------------ | ------------------------- | ------- |
+| `value`      | `string`                  | -       |
+| `keywords`   | `string[]`                | -       |
+| `onSelect`   | `(value: string) => void` | -       |
+| `disabled`   | `boolean`                 | `false` |
+| `forceMount` | `boolean`                 | `false` |
+
+### CommandSeparator
+
+| Prop           | Type      | Default |
+| -------------- | --------- | ------- |
+| `alwaysRender` | `boolean` | `false` |
+
+See the [Base UI documentation](https://base-ui.com/react/components/autocomplete#api-reference) for the props of the underlying parts.
