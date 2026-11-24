@@ -834,6 +834,7 @@ function useMessageScrollerController({
       if (autoscrollingTimeoutRef.current !== null) {
         window.clearTimeout(autoscrollingTimeoutRef.current)
         autoscrollingTimeoutRef.current = null
+        autoscrollingRef.current = false
       }
 
       if (pendingScrollFrameRef.current !== null) {
