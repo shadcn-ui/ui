@@ -1,5 +1,12 @@
 [
   {
+    "name": "@synccn",
+    "homepage": "https://synccn.com",
+    "url": "https://synccn.com/r/{name}.json",
+    "description": "Free, accessible React UI components and blocks built with Tailwind CSS. Customizable, shadcn-compatible, and yours to own.",
+    "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect width=\"512\" height=\"512\" rx=\"128\" fill=\"#0b0b0c\"/><path d=\"M144 232L278 145M161 368L277 294\" stroke=\"#fefefe\" stroke-width=\"86\" stroke-linecap=\"round\"/><path d=\"M362 177Q373 212 406 224Q373 235 362 271Q351 235 318 224Q351 212 362 177Z\" fill=\"#fefefe\"/></svg>"
+  },
+  {
     "name": "@000h-cojeev",
     "homepage": "https://cojeev.com/ui",
     "url": "https://cojeev.com/ui/r/{name}.json",
