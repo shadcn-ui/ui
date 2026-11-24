@@ -2224,6 +2224,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='var(--foreground)' width='24' height='24'><rect x='3' y='3' width='8' height='8'/><rect x='13' y='3' width='8' height='8' opacity='.4'/><rect x='3' y='13' width='8' height='8' opacity='.4'/><rect x='13' y='13' width='8' height='8'/></svg>"
   },
   {
+    "name": "@mrphilipp7",
+    "homepage": "https://mrphilipp7.github.io/shadcn-datetime-picker/",
+    "url": "https://mrphilipp7.github.io/shadcn-datetime-picker/r/{name}.json",
+    "description": "A date and time picker built on React Aria Components, with scrollable time columns, 12/24-hour formats and day-to-second granularity. Works with Field, React Hook Form, TanStack Form and Formisch.",
+    "author": "mrphilipp7",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96' fill='var(--foreground)'><mask id='mrphilipp7-logo-mask'><rect width='96' height='96' fill='white'/><circle cx='68' cy='68' r='27' fill='black'/></mask><g mask='url(#mrphilipp7-logo-mask)'><path fill-rule='evenodd' d='M18 16H70A8 8 0 0 1 78 24V72A8 8 0 0 1 70 80H18A8 8 0 0 1 10 72V24A8 8 0 0 1 18 16ZM21 36V69A3 3 0 0 0 24 72H64A3 3 0 0 0 67 69V36Z'/></g><rect x='24' y='8' width='8' height='16' rx='4'/><rect x='56' y='8' width='8' height='16' rx='4'/><path fill-rule='evenodd' d='M68 46A22 22 0 1 1 67.99 46ZM68 53A15 15 0 1 0 68.01 53Z'/><path d='M65 56A3 3 0 0 1 71 56V66H77A3 3 0 0 1 77 72H68A3 3 0 0 1 65 69Z'/></svg>"
+  },
+  {
     "name": "@mui-treasury",
     "homepage": "https://www.mui-treasury.com",
     "url": "https://mui-treasury.com/r/{name}.json",
