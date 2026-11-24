@@ -654,12 +654,20 @@
     @apply data-focused:bg-muted data-focused:text-foreground data-focused:*:[svg]:text-foreground;
   }
 
+  .cn-command-item-base {
+    @apply data-highlighted:bg-muted data-highlighted:text-foreground data-highlighted:*:[svg]:text-foreground;
+  }
+
   .cn-command-shortcut {
     @apply text-muted-foreground group-data-selected/command-item:text-foreground ml-auto text-xs tracking-widest;
   }
 
   .cn-command-shortcut-aria {
     @apply group-data-focused/command-item:text-foreground;
+  }
+
+  .cn-command-shortcut-base {
+    @apply group-data-highlighted/command-item:text-foreground;
   }
 
   /* MARK: Context Menu */

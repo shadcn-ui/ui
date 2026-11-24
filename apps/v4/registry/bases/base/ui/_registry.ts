@@ -294,7 +294,7 @@ export const ui: Registry["items"] = [
   {
     name: "command",
     type: "registry:ui",
-    dependencies: ["cmdk"],
+    dependencies: ["@base-ui/react@^1.7.0"],
     registryDependencies: ["dialog", "input-group"],
     files: [
       {
@@ -307,7 +307,7 @@ export const ui: Registry["items"] = [
         docs: "https://ui.shadcn.com/docs/components/base/command",
         examples:
           "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/command-example.tsx",
-        api: "https://github.com/dip/cmdk",
+        api: "https://base-ui.com/react/components/autocomplete.md",
       },
     },
   },
