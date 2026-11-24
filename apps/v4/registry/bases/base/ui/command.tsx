@@ -97,7 +97,9 @@ const CommandContext = React.createContext<{
   onSearchChangeRef: React.RefObject<((search: string) => void) | undefined>
 } | null>(null)
 
-const CommandGroupContext = React.createContext<string | undefined>(undefined)
+const CommandGroupContext = React.createContext<
+  { id: string; forceMount: boolean } | undefined
+>(undefined)
 
 function useCommandContext() {
   const context = React.useContext(CommandContext)
@@ -199,7 +201,10 @@ function Command({
           loopFocus={loop}
           highlightItemOnHover={!disablePointerSelection}
           onItemHighlighted={(value: string | undefined) => {
-            if (value !== undefined) onValueChange?.(value)
+            // Report "" once nothing matches, as cmdk does.
+            if (value !== undefined || store.count() === 0) {
+              onValueChange?.(value ?? "")
+            }
           }}
         >
           {children}
@@ -343,9 +348,13 @@ function CommandGroup({
     () => forceMount || !store.isFiltering() || store.count(id) > 0,
     true
   )
+  const groupContext = React.useMemo(
+    () => ({ id, forceMount }),
+    [id, forceMount]
+  )
 
   return (
-    <CommandGroupContext.Provider value={id}>
+    <CommandGroupContext.Provider value={groupContext}>
       <AutocompletePrimitive.Group
         data-slot="command-group"
         hidden={!visible}
@@ -400,7 +409,7 @@ function CommandItem({
   onSelect,
   onClick,
   disabled = false,
-  forceMount = false,
+  forceMount: forceMountProp,
   render,
   ...props
 }: Omit<AutocompletePrimitive.Item.Props, "value" | "onSelect"> & {
@@ -411,15 +420,19 @@ function CommandItem({
 }) {
   const { store } = useCommandContext()
   const group = React.useContext(CommandGroupContext)
+  // Items inherit `forceMount` from their group, as with cmdk.
+  const forceMount = forceMountProp ?? group?.forceMount ?? false
   const itemValue = (value ?? getNodeText(children)).trim()
   const matches = useCommandStore(store, () =>
     store.matches(itemValue, keywords)
   )
   const visible = matches || forceMount
 
+  // Only matching items count, so force-mounted items don't hide the empty
+  // state.
   React.useLayoutEffect(() => {
-    if (matches) return store.register(group)
-  }, [matches, store, group])
+    if (matches) return store.register(group?.id)
+  }, [matches, store, group?.id])
 
   const itemProps = {
     "data-slot": "command-item",
