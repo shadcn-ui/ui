@@ -3066,6 +3066,14 @@ export const Components: Record<string, any> = {
       ) || "prompt-input-demo"
     return { default: mod.default || mod[exportName] }
   }),
+  "prompt-input-tokens": React.lazy(async () => {
+    const mod = await import("@/examples/aria/prompt-input-tokens")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "prompt-input-tokens"
+    return { default: mod.default || mod[exportName] }
+  }),
   "questionnaire-animated": React.lazy(async () => {
     const mod = await import("@/examples/aria/questionnaire-animated")
     const exportName =

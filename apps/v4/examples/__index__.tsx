@@ -1581,6 +1581,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "prompt-input-demo",
       filePath: "examples/base/prompt-input-demo.tsx",
     },
+    "prompt-input-tokens": {
+      name: "prompt-input-tokens",
+      filePath: "examples/base/prompt-input-tokens.tsx",
+    },
     "questionnaire-animated": {
       name: "questionnaire-animated",
       filePath: "examples/base/questionnaire-animated.tsx",
@@ -3922,6 +3926,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "prompt-input-demo": {
       name: "prompt-input-demo",
       filePath: "examples/aria/prompt-input-demo.tsx",
+    },
+    "prompt-input-tokens": {
+      name: "prompt-input-tokens",
+      filePath: "examples/aria/prompt-input-tokens.tsx",
     },
     "questionnaire-animated": {
       name: "questionnaire-animated",
@@ -6284,6 +6292,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "prompt-input-demo": {
       name: "prompt-input-demo",
       filePath: "examples/radix/prompt-input-demo.tsx",
+    },
+    "prompt-input-tokens": {
+      name: "prompt-input-tokens",
+      filePath: "examples/radix/prompt-input-tokens.tsx",
     },
     "questionnaire-animated": {
       name: "questionnaire-animated",

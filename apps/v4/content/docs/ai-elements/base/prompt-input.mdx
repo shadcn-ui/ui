@@ -102,6 +102,63 @@ import {
 </form>
 ```
 
+## Inline Tokens
+
+Use `PromptInputEditor` in place of the textarea to add skill and mention suggestions. Type `/` or `@`, filter the list, then choose an item with the arrow keys and Enter or with the mouse. Escape dismisses the list. Enter sends the message through `onSubmit`; Shift+Enter inserts a new line.
+
+<ComponentPreview
+  styleName="base-rhea"
+  name="prompt-input-tokens"
+  previewClassName="h-auto"
+/>
+
+```bash
+npx shadcn@latest add prompt-input
+```
+
+```tsx showLineNumbers
+import type { PromptInputValue } from "@shadcn/react/prompt-input"
+import {
+  PromptInputContent,
+  PromptInputEditor,
+} from "@/components/ui/prompt-input"
+
+const [value, setValue] = React.useState<PromptInputValue>({
+  text: "",
+  tokens: [],
+})
+
+<PromptInputEditor
+  aria-label="Message"
+  value={value}
+  onValueChange={setValue}
+  suggestions={[
+    { type: "skill", id: "review", trigger: "/", label: "review" },
+    { type: "file", id: "readme", trigger: "@", label: "README.md" },
+  ]}
+  onSubmit={() => sendMessage(value)}
+/>
+```
+
+Only items chosen from the suggestions become tokens. Backspace or Delete removes a selected token as a unit. Typing or pasting `/review` leaves ordinary text. Copy and paste use plain text, so pasted tokens become editable text too.
+
+The value includes `text` and a `tokens` array. Each token has `type`, `id`, `trigger`, `label`, `start` and `end`. Positions are UTF-16 offsets into `text`, with an exclusive `end`. Text includes each token's trigger and label. For example, choosing `review` produces `{ text: "/review ", tokens: [{ type: "skill", id: "review", trigger: "/", label: "review", start: 0, end: 7 }] }`. Tokens remain separate even when the same item appears more than once, and their positions update as text is edited.
+
+Pass the saved value to `PromptInputContent` inside a message to render the same tokens. Both components accept `renderToken` for a custom badge or chip:
+
+```tsx
+const renderToken = (token) => (
+  <Badge variant="secondary">{token.trigger}{token.label}</Badge>
+)
+
+<PromptInputEditor renderToken={renderToken} /* ... */ />
+<PromptInputContent value={message} renderToken={renderToken} />
+```
+
+Token renderers should return non-interactive inline content. The editor owns keyboard focus and selection. Use `defaultValue` for an uncontrolled editor, or `value` and `onValueChange` to control it. Replacing a controlled value resets editing history, so clearing a sent message does not restore it on Undo. `disabled` and `readOnly` prevent editing and suggestions.
+
+The token editor uses Lexical for editing, selection and undo. It is an optional peer dependency of `@shadcn/react`; installing `prompt-input` adds `lexical` and `@lexical/react` to your project. The textarea composition above does not need them.
+
 ## Attachments
 
 The attach button opens a hidden file input. Show each file as an [Attachment](/docs/components/base/attachment) in an addon with `align="block-start"`, with a button to remove it.

@@ -483,6 +483,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "radix-nova": {
@@ -551,6 +552,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "aria-nova": {
@@ -617,6 +619,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "base-vega": {
@@ -686,6 +689,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "base-maia": {
@@ -755,6 +759,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "base-lyra": {
@@ -824,6 +829,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "base-mira": {
@@ -893,6 +899,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "base-luma": {
@@ -962,6 +969,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "base-sera": {
@@ -1031,6 +1039,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "base-rhea": {
@@ -1100,6 +1109,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "aria-vega": {
@@ -1166,6 +1176,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "aria-maia": {
@@ -1232,6 +1243,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "aria-lyra": {
@@ -1298,6 +1310,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "aria-mira": {
@@ -1364,6 +1377,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "aria-luma": {
@@ -1430,6 +1444,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "aria-sera": {
@@ -1496,6 +1511,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "aria-rhea": {
@@ -1562,6 +1578,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "radix-vega": {
@@ -1630,6 +1647,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "radix-maia": {
@@ -1698,6 +1716,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "radix-lyra": {
@@ -1766,6 +1785,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "radix-mira": {
@@ -1834,6 +1854,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "radix-luma": {
@@ -1902,6 +1923,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "radix-sera": {
@@ -1970,6 +1992,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
   "radix-rhea": {
@@ -2038,6 +2061,7 @@ const shards: Record<
       "trace",
       "code-block",
       "message",
+      "prompt-input",
     ]),
   },
 }

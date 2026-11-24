@@ -4,7 +4,9 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "isolatedModules": false,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "module": "esnext",
+    "moduleResolution": "bundler"
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules", "dist"]
