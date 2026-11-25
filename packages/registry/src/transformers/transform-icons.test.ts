@@ -585,7 +585,7 @@ export function Component() {
 }`,
           config: {
             ...testConfig,
-            iconLibrary: "invalid-library",
+            iconLibrary: "../invalid-library",
           },
         },
         [transformIcons]
@@ -1951,5 +1951,55 @@ export function Component() {
         `""import * as React from \\"react\\"\\nimport { HugeiconsIcon } from \\"@hugeicons/react\\"\\nimport { Tick02Icon } from \\"@hugeicons/core-free-icons\\"\\n\\nexport function Component() {\\r\\n  return (\\r\\n    <HugeiconsIcon icon={Tick02Icon} strokeWidth={2} className={cn(\\n              \\"size-4\\"\\n            )} />\\r\\n  )\\r\\n}""`
       )
     })
+  })
+})
+
+
+describe("custom icon library", () => {
+  test("imports icons from a custom package subpath", async () => {
+    const result = await transformIconsIn(
+      `import * as React from "react"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
+
+export function Component() {
+  return <IconPlaceholder lucide="CheckIcon" className="size-4" aria-label="check" />
+}`,
+      "@solar-icons/react/shadcn"
+    )
+
+    expect(result).toContain(
+      'import { CheckIcon } from "@solar-icons/react/shadcn"'
+    )
+    expect(result).toContain(
+      '<CheckIcon className="size-4" aria-label="check" />'
+    )
+    expect(result).not.toContain("IconPlaceholder")
+  })
+
+  test("deduplicates repeated icons from a custom package", async () => {
+    const result = await transformIconsIn(
+      `import * as React from "react"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
+
+export function Component() {
+  return (
+    <div>
+      <IconPlaceholder lucide="CheckIcon" />
+      <IconPlaceholder lucide="CheckIcon" className="size-4" />
+    </div>
+  )
+}`,
+      "@solar-icons/react/shadcn"
+    )
+
+    expect(result).toContain(
+      'import { CheckIcon } from "@solar-icons/react/shadcn"'
+    )
+    expect(result).toContain("<CheckIcon />")
+    expect(result).toContain('<CheckIcon className="size-4" />')
+    expect(result).not.toContain("IconPlaceholder")
+    expect(
+      result.match(/import \{ CheckIcon \} from "@solar-icons\/react\/shadcn"/g)
+    ).toHaveLength(1)
   })
 })
