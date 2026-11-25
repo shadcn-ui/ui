@@ -20,6 +20,8 @@ import {
 vi.mock("@/src/get-config", () => ({
   getConfig: vi.fn(),
   resolveConfigPaths: vi.fn(),
+  resolveConfigFilePath: (cwd: string, value: string) =>
+    path.resolve(cwd, value),
 }))
 
 vi.mock("@/src/registry/api", () => ({
