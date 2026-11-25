@@ -116,7 +116,10 @@ function useQuestionnaireRoot({
     }
 
     const observer = new MutationObserver(() => {
-      setDomVersion((version) => version + 1)
+      // Avoid a sync re-render during input events, which would revert controlled values.
+      React.startTransition(() => {
+        setDomVersion((version) => version + 1)
+      })
     })
 
     observer.observe(rootElement, { childList: true, subtree: true })
