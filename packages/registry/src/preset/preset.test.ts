@@ -249,6 +249,101 @@ describe("v1/v2 backward compatibility", () => {
   })
 })
 
+describe("v3 custom primary", () => {
+  it("should keep producing the same 'b' code when no primary is set", () => {
+    expect(encodePreset({})).toBe("b0")
+    expect(encodePreset({ primary: undefined })).toBe("b0")
+  })
+
+  it("should produce a 'c' code when a primary is set", () => {
+    const code = encodePreset({ theme: "blue", primary: "7c3aed" })
+    expect(code[0]).toBe("c")
+    expect(isPresetCode(code)).toBe(true)
+  })
+
+  it("should round-trip the primary with the other fields", () => {
+    const config: PresetConfig = {
+      style: "lyra",
+      baseColor: "olive",
+      theme: "olive",
+      chartColor: "rose",
+      iconLibrary: "phosphor",
+      font: "geist",
+      fontHeading: "lora",
+      radius: "large",
+      menuAccent: "bold",
+      menuColor: "inverted",
+      primary: "7c3aed",
+    }
+    expect(decodePreset(encodePreset(config))).toEqual(config)
+  })
+
+  it("should round-trip the lowest and highest hex values", () => {
+    expect(decodePreset(encodePreset({ primary: "000000" }))!.primary).toBe(
+      "000000"
+    )
+    expect(decodePreset(encodePreset({ primary: "ffffff" }))!.primary).toBe(
+      "ffffff"
+    )
+  })
+
+  it("should store the primary in lowercase", () => {
+    expect(decodePreset(encodePreset({ primary: "7C3AED" }))!.primary).toBe(
+      "7c3aed"
+    )
+  })
+
+  it("should ignore a primary that is not a 6-digit hex", () => {
+    expect(encodePreset({ primary: "#7c3aed" })).toBe("b0")
+    expect(encodePreset({ primary: "fff" })).toBe("b0")
+    expect(encodePreset({ primary: "gggggg" })).toBe("b0")
+  })
+
+  it("should stay within 15 characters for the largest config", () => {
+    const config = Object.fromEntries(
+      Object.entries({
+        style: PRESET_STYLES,
+        baseColor: PRESET_BASE_COLORS,
+        theme: PRESET_THEMES,
+        chartColor: PRESET_CHART_COLORS,
+        iconLibrary: PRESET_ICON_LIBRARIES,
+        font: PRESET_FONTS,
+        fontHeading: PRESET_FONT_HEADINGS,
+        radius: PRESET_RADII,
+        menuAccent: PRESET_MENU_ACCENTS,
+        menuColor: PRESET_MENU_COLORS,
+      }).map(([key, values]) => [key, values[values.length - 1]])
+    )
+    const code = encodePreset({ ...config, primary: "ffffff" })
+    expect(code.length).toBeLessThanOrEqual(15)
+    expect(isPresetCode(code)).toBe(true)
+  })
+
+  it("should not return a primary for 'a' and 'b' codes", () => {
+    expect(decodePreset("a0")!.primary).toBeUndefined()
+    expect(decodePreset("b0")!.primary).toBeUndefined()
+  })
+
+  it("should reject 'c' codes that are too short to hold a hex", () => {
+    expect(isPresetCode("c00000")).toBe(false)
+    expect(decodePreset("c00000")).toBeNull()
+  })
+
+  it("should reject 'c' codes with a hex above ffffff", () => {
+    expect(decodePreset("czzzzz0")).toBeNull()
+    expect(isValidPreset("czzzzz0")).toBe(false)
+  })
+
+  it("should reject 'c' codes longer than 15 characters", () => {
+    expect(isPresetCode("c00000123456789A")).toBe(false)
+  })
+
+  it("should keep the 10 character limit for 'a' and 'b' codes", () => {
+    expect(isPresetCode("b123456789")).toBe(true)
+    expect(isPresetCode("b123456789A")).toBe(false)
+  })
+})
+
 describe("isPresetCode", () => {
   it("should return true for valid preset codes", () => {
     const code = encodePreset(DEFAULT_PRESET_CONFIG)
