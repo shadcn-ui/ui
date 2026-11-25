@@ -10,7 +10,6 @@ import { Separator } from "@/registry/bases/aria/ui/separator"
 function ItemGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      role="list"
       data-slot="item-group"
       className={cn(
         "cn-item-group group/item-group flex w-full flex-col",
