@@ -5,25 +5,18 @@ import {
 } from "@/src/codemod/statements"
 import { type Transformer } from "@/src/transformers"
 
-// With /g, test() starts where the last match ended, so after a match the next
-// call fails and every other file keeps its "use client". Kept on purpose
-// until that is fixed (see transform-rsc.test.ts).
-const directiveRegex = /^["']use client["']$/g
+// The pattern is anchored with ^...$, so the global flag is not needed. Without
+// /g, test() does not keep lastIndex between calls and every "use client" file
+// is handled consistently.
+const directiveRegex = /^["']use client["']$/
 
-export const transformRsc: Transformer = (code, { config, filename }) => {
+export const transformRsc: Transformer = (code, { config }) => {
   if (config.rsc) {
     return code
   }
 
-  // ts-morph tests the first expression statement of the tree TypeScript
-  // recovers from a file Babel cannot parse. A CSS or Markdown file has one,
-  // which fails the test and so resets the regex. A JSON object is a block,
-  // and a broken script starts with imports and declarations, which leave it.
   const file = parseTransformInput(code)
   if (!file) {
-    if (!/\.([cm]?[jt]sx?|json)$/.test(filename)) {
-      directiveRegex.lastIndex = 0
-    }
     return code
   }
 
