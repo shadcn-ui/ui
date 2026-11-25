@@ -3269,6 +3269,18 @@ export function LoginForm() {
 })
 
 describe("resolveModuleByProbablePath", () => {
+  it("should prefer an exact path match over a same-basename file with a higher-priority extension", () => {
+    const files = ["lib/thing.ts", "components/thing.tsx"]
+    const config = {
+      resolvedPaths: {
+        cwd: "/foo/bar",
+      },
+    } as Config
+    expect(
+      resolveModuleByProbablePath("/foo/bar/lib/thing", files, config)
+    ).toBe("lib/thing.ts")
+  })
+
   it("should resolve exact file match in provided files list", () => {
     const files = [
       "components/button.tsx",
