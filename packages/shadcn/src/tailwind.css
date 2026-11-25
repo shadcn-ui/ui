@@ -190,8 +190,14 @@
   }
 
   @supports not (animation-timeline: scroll()) {
-    --scroll-fade-t: var(--_scroll-fade-size-t);
-    --scroll-fade-b: var(--_scroll-fade-size-b);
+    --scroll-fade-t: min(
+      var(--_scroll-fade-size-t),
+      var(--scroll-area-overflow-y-start, 0px)
+    );
+    --scroll-fade-b: min(
+      var(--_scroll-fade-size-b),
+      var(--scroll-area-overflow-y-end, 0px)
+    );
   }
 }
 
@@ -230,8 +236,14 @@
   }
 
   @supports not (animation-timeline: scroll()) {
-    --scroll-fade-t: var(--_scroll-fade-size-t);
-    --scroll-fade-b: var(--_scroll-fade-size-b);
+    --scroll-fade-t: min(
+      var(--_scroll-fade-size-t),
+      var(--scroll-area-overflow-y-start, 0px)
+    );
+    --scroll-fade-b: min(
+      var(--_scroll-fade-size-b),
+      var(--scroll-area-overflow-y-end, 0px)
+    );
   }
 }
 
@@ -279,8 +291,14 @@
   }
 
   @supports not (animation-timeline: scroll()) {
-    --scroll-fade-s: var(--_scroll-fade-size-s);
-    --scroll-fade-e: var(--_scroll-fade-size-e);
+    --scroll-fade-s: min(
+      var(--_scroll-fade-size-s),
+      var(--scroll-area-overflow-x-start, 0px)
+    );
+    --scroll-fade-e: min(
+      var(--_scroll-fade-size-e),
+      var(--scroll-area-overflow-x-end, 0px)
+    );
   }
 }
 
@@ -310,7 +328,10 @@
   }
 
   @supports not (animation-timeline: scroll()) {
-    --scroll-fade-t: var(--_scroll-fade-size-t);
+    --scroll-fade-t: min(
+      var(--_scroll-fade-size-t),
+      var(--scroll-area-overflow-y-start, 0px)
+    );
   }
 }
 
@@ -343,7 +364,10 @@
   }
 
   @supports not (animation-timeline: scroll()) {
-    --scroll-fade-b: var(--_scroll-fade-size-b);
+    --scroll-fade-b: min(
+      var(--_scroll-fade-size-b),
+      var(--scroll-area-overflow-y-end, 0px)
+    );
   }
 }
 
@@ -373,7 +397,10 @@
   }
 
   @supports not (animation-timeline: scroll()) {
-    --scroll-fade-s: var(--_scroll-fade-size-s);
+    --scroll-fade-s: min(
+      var(--_scroll-fade-size-s),
+      var(--scroll-area-overflow-x-start, 0px)
+    );
   }
 }
 
@@ -406,7 +433,10 @@
   }
 
   @supports not (animation-timeline: scroll()) {
-    --scroll-fade-e: var(--_scroll-fade-size-e);
+    --scroll-fade-e: min(
+      var(--_scroll-fade-size-e),
+      var(--scroll-area-overflow-x-end, 0px)
+    );
   }
 }
 
@@ -444,7 +474,10 @@
   }
 
   @supports not (animation-timeline: scroll()) {
-    --scroll-fade-s: var(--_scroll-fade-size-s);
+    --scroll-fade-s: min(
+      var(--_scroll-fade-size-s),
+      var(--scroll-area-overflow-x-start, 0px)
+    );
   }
 }
 
@@ -485,7 +518,10 @@
   }
 
   @supports not (animation-timeline: scroll()) {
-    --scroll-fade-e: var(--_scroll-fade-size-e);
+    --scroll-fade-e: min(
+      var(--_scroll-fade-size-e),
+      var(--scroll-area-overflow-x-end, 0px)
+    );
   }
 }
 
