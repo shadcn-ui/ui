@@ -110,6 +110,11 @@ export async function resolveConfigPaths(
   })
 }
 
+// Resolved paths use backslashes on Windows, so both separators end a segment.
+// Otherwise a dot in any parent directory would be taken as the extension.
+const INDEX_FILE_PATTERN = /[/\\]index\.[^/\\]+$/
+const FILE_EXTENSION_PATTERN = /\.[^/\\]+$/
+
 async function resolveAliasPath(
   aliasKey: "components" | "utils" | "ui" | "lib" | "hooks",
   alias: string,
@@ -141,7 +146,7 @@ async function resolveAliasPath(
     // to the directory root.
     if (
       !resolved.matchedAlias.includes("*") &&
-      /\/index\.[^/]+$/.test(resolved.path)
+      INDEX_FILE_PATTERN.test(resolved.path)
     ) {
       return path.dirname(resolved.path)
     }
@@ -149,8 +154,11 @@ async function resolveAliasPath(
     // Wildcard aliases with explicit extensions (e.g. `#components/*` →
     // `./src/components/*.tsx`) should strip the source extension so `ui`
     // resolves to `/src/components/ui` instead of `/src/components/ui.tsx`.
-    if (resolved.matchedAlias.includes("*") && /\.[^/]+$/.test(resolved.path)) {
-      return resolved.path.replace(/\.[^/]+$/, "")
+    if (
+      resolved.matchedAlias.includes("*") &&
+      FILE_EXTENSION_PATTERN.test(resolved.path)
+    ) {
+      return resolved.path.replace(FILE_EXTENSION_PATTERN, "")
     }
   }
 
