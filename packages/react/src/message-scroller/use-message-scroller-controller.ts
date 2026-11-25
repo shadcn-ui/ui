@@ -458,12 +458,11 @@ function useMessageScrollerController({
             { align: "start" },
             { keepPreviousPeek: true }
           )
-          handledScrollAnchorsRef.current.add(anchor)
           return
         }
       }
 
-      if (items.length === previousItemCount) {
+      if (items.length <= previousItemCount) {
         const anchor = getUnanchoredScrollAnchor(
           items,
           handledScrollAnchorsRef.current
@@ -475,7 +474,6 @@ function useMessageScrollerController({
             { align: "start" },
             { keepPreviousPeek: true }
           )
-          handledScrollAnchorsRef.current.add(anchor)
           return
         }
       }
@@ -492,6 +490,14 @@ function useMessageScrollerController({
 
     reconcileScrollPosition()
     capturePrependAnchor()
+
+    // Mark the anchors already in Content so a change that adds no items only
+    // anchors a row that the change itself inserted.
+    for (const item of items) {
+      if (item.dataset.scrollAnchor === "true") {
+        handledScrollAnchorsRef.current.add(item)
+      }
+    }
   }, [
     applyDefaultScrollPosition,
     capturePrependAnchor,
