@@ -8,7 +8,8 @@ import { type Transformer } from "@/src/transformers"
 // With /g, test() starts where the last match ended, so after a match the next
 // call fails and every other file keeps its "use client". Kept on purpose
 // until that is fixed (see transform-rsc.test.ts).
-const directiveRegex = /^["']use client["']$/g
+// The statement text includes a trailing semicolon when the source has one.
+const directiveRegex = /^["']use client["'];?$/g
 
 export const transformRsc: Transformer = (code, { config, filename }) => {
   if (config.rsc) {

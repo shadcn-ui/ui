@@ -179,14 +179,18 @@ import * as React from "react"
 `)
   })
 
-  it('keeps "use client"; with a semicolon', async () => {
-    // Current behavior: getText() includes the semicolon, so the regex fails.
-    const raw = `"use client";
+  it.each([`"use client";`, `'use client';`])(
+    "removes %s with a semicolon",
+    async (directive) => {
+      expect(
+        await rsc(`${directive}
 
 import * as React from "react";
-`
-    expect(await rsc(raw)).toBe(raw)
-  })
+`)
+      ).toBe(`import * as React from "react";
+`)
+    }
+  )
 
   it("removes 'use client' with single quotes", async () => {
     expect(
