@@ -148,7 +148,7 @@
       "name": "badge",
       "type": "registry:ui",
       "dependencies": [
-        "@radix-ui/react-slot"
+        "class-variance-authority"
       ],
       "files": [
         {
@@ -370,6 +370,9 @@
     {
       "name": "empty",
       "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "files": [
         {
           "path": "registry/new-york/ui/empty.tsx",
