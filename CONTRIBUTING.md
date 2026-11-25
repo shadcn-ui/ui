@@ -67,6 +67,15 @@ git checkout -b my-new-branch
 
 ### Install dependencies
 
+Make sure you have the following installed:
+
+- [Node.js](https://nodejs.org)
+- [pnpm](https://pnpm.io/installation)
+- [Bun](https://bun.sh/docs/installation), used to run some scripts in the
+  `v4` workspace, such as `registry:build`
+
+Then install the project dependencies:
+
 ```bash
 pnpm install
 ```
