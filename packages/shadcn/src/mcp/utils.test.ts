@@ -1,8 +1,14 @@
+import path from "path"
+import { withTempDir } from "@/src/test-helpers"
+import { buildUrlAndHeadersForRegistryItem } from "@shadcn/registry/internal/registry/builder"
+import { configWithDefaults } from "@shadcn/registry/internal/registry/config"
+import { REGISTRY_URL } from "@shadcn/registry/internal/registry/constants"
 import { SEARCHABLE_TYPES } from "@shadcn/registry/internal/registry/search"
 import type {
   registryItemSchema,
   searchResultsSchema,
 } from "@shadcn/registry/schema"
+import fs from "fs-extra"
 import { describe, expect, it, vi } from "vitest"
 import { z } from "zod"
 
@@ -12,6 +18,7 @@ import {
   formatRegistryItems,
   formatSearchResultsWithPagination,
   formatSkippedRegistries,
+  getMcpConfig,
 } from "./utils"
 
 vi.mock("@shadcn/registry/internal/get-package-manager", () => ({
@@ -33,6 +40,49 @@ const minimalResults: SearchResults = {
   ],
   pagination: { total: 1, offset: 0, limit: 10, hasMore: false },
 }
+
+describe("getMcpConfig", () => {
+  async function getShadcnItemUrl(cwd: string) {
+    const config = configWithDefaults(await getMcpConfig(cwd))
+    return buildUrlAndHeadersForRegistryItem("@shadcn/button", config)?.url
+  }
+
+  it("fetches items for the style in components.json", async () => {
+    await withTempDir(async (dir) => {
+      await fs.writeJson(path.join(dir, "components.json"), {
+        style: "base-nova",
+        tailwind: { config: "", css: "app/globals.css", baseColor: "neutral" },
+        aliases: { components: "@/components", utils: "@/lib/utils" },
+      })
+
+      expect(await getShadcnItemUrl(dir)).toBe(
+        `${REGISTRY_URL}/styles/base-nova/button.json`
+      )
+    })
+  })
+
+  it("maps new-york to new-york-v4 for Tailwind v4 projects", async () => {
+    await withTempDir(async (dir) => {
+      await fs.writeJson(path.join(dir, "components.json"), {
+        style: "new-york",
+        tailwind: { config: "", css: "app/globals.css", baseColor: "neutral" },
+        aliases: { components: "@/components", utils: "@/lib/utils" },
+      })
+
+      expect(await getShadcnItemUrl(dir)).toBe(
+        `${REGISTRY_URL}/styles/new-york-v4/button.json`
+      )
+    })
+  })
+
+  it("falls back to the default style without components.json", async () => {
+    await withTempDir(async (dir) => {
+      expect(await getShadcnItemUrl(dir)).toBe(
+        `${REGISTRY_URL}/styles/new-york-v4/button.json`
+      )
+    })
+  })
+})
 
 describe("formatSearchResultsWithPagination", () => {
   it("renders a runnable add command", async () => {
