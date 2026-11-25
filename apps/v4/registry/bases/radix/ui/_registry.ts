@@ -1128,4 +1128,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       },
     ],
   },
+  {
+    name: "color-picker",
+    type: "registry:ui",
+    dependencies: ["@shadcn/react"],
+    registryDependencies: ["button", "input"],
+    files: [
+      {
+        path: "ui/color-picker.tsx",
+        type: "registry:ui",
+      },
+    ],
+    meta: {
+      links: {
+        docs: "https://ui.shadcn.com/docs/components/radix/color-picker",
+        examples:
+          "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/color-picker-example.tsx",
+      },
+    },
+  },
 ]

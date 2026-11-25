@@ -510,4 +510,12 @@ export const Components: Record<string, any> = {
       ) || "message"
     return { default: mod.default || mod[exportName] }
   }),
+  "color-picker": React.lazy(async () => {
+    const mod = await import("@/styles/radix-lyra/ui/color-picker")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "color-picker"
+    return { default: mod.default || mod[exportName] }
+  }),
 }

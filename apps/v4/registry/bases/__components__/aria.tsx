@@ -494,6 +494,14 @@ export const Components: Record<string, any> = {
       ) || "message"
     return { default: mod.default || mod[exportName] }
   }),
+  "color-picker": React.lazy(async () => {
+    const mod = await import("@/registry/bases/aria/ui/color-picker")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "color-picker"
+    return { default: mod.default || mod[exportName] }
+  }),
   "accordion-example": React.lazy(async () => {
     const mod = await import("@/registry/bases/aria/examples/accordion-example")
     const exportName =
@@ -1054,6 +1062,16 @@ export const Components: Record<string, any> = {
       Object.keys(mod).find(
         (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
       ) || "message-example"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "color-picker-example": React.lazy(async () => {
+    const mod = await import(
+      "@/registry/bases/aria/examples/color-picker-example"
+    )
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "color-picker-example"
     return { default: mod.default || mod[exportName] }
   }),
   utils: React.lazy(async () => {

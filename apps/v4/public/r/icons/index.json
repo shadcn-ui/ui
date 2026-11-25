@@ -1038,6 +1038,13 @@
     "phosphor": "ChartPieIcon",
     "remixicon": "RiPieChartLine"
   },
+  "PipetteIcon": {
+    "lucide": "PipetteIcon",
+    "tabler": "IconColorPicker",
+    "hugeicons": "ColorPickerIcon",
+    "phosphor": "EyedropperIcon",
+    "remixicon": "RiSipLine"
+  },
   "PlusCircleIcon": {
     "lucide": "PlusCircleIcon",
     "tabler": "IconCirclePlus",

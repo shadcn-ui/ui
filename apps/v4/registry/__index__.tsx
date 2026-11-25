@@ -8369,6 +8369,28 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/base-nova/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/color-picker-example.tsx",
+        },
+      },
+    },
   },
   "radix-nova": {
     accordion: {
@@ -9768,6 +9790,28 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/radix-nova/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/color-picker-example.tsx",
+        },
+      },
+    },
   },
   "aria-nova": {
     accordion: {
@@ -11152,6 +11196,28 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/aria/message",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/message-example.tsx",
+        },
+      },
+    },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/aria-nova/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/color-picker-example.tsx",
         },
       },
     },
@@ -12576,6 +12642,28 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/base-vega/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/color-picker-example.tsx",
+        },
+      },
+    },
   },
   "base-maia": {
     accordion: {
@@ -13996,6 +14084,28 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       categories: undefined,
       meta: undefined,
+    },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/base-maia/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/color-picker-example.tsx",
+        },
+      },
     },
   },
   "base-lyra": {
@@ -15418,6 +15528,28 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/base-lyra/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/color-picker-example.tsx",
+        },
+      },
+    },
   },
   "base-mira": {
     accordion: {
@@ -16838,6 +16970,28 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       categories: undefined,
       meta: undefined,
+    },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/base-mira/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/color-picker-example.tsx",
+        },
+      },
     },
   },
   "base-luma": {
@@ -18260,6 +18414,28 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/base-luma/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/color-picker-example.tsx",
+        },
+      },
+    },
   },
   "base-sera": {
     accordion: {
@@ -19680,6 +19856,28 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       categories: undefined,
       meta: undefined,
+    },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/base-sera/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/color-picker-example.tsx",
+        },
+      },
     },
   },
   "base-rhea": {
@@ -21102,6 +21300,28 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/base-rhea/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/base/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/base/examples/color-picker-example.tsx",
+        },
+      },
+    },
   },
   "aria-vega": {
     accordion: {
@@ -22486,6 +22706,28 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/aria/message",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/message-example.tsx",
+        },
+      },
+    },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/aria-vega/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/color-picker-example.tsx",
         },
       },
     },
@@ -23876,6 +24118,28 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/aria-maia/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/color-picker-example.tsx",
+        },
+      },
+    },
   },
   "aria-lyra": {
     accordion: {
@@ -25260,6 +25524,28 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/aria/message",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/message-example.tsx",
+        },
+      },
+    },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/aria-lyra/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/color-picker-example.tsx",
         },
       },
     },
@@ -26650,6 +26936,28 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/aria-mira/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/color-picker-example.tsx",
+        },
+      },
+    },
   },
   "aria-luma": {
     accordion: {
@@ -28034,6 +28342,28 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/aria/message",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/message-example.tsx",
+        },
+      },
+    },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/aria-luma/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/color-picker-example.tsx",
         },
       },
     },
@@ -29424,6 +29754,28 @@ export const Index: Record<string, Record<string, any>> = {
         },
       },
     },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/aria-sera/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/color-picker-example.tsx",
+        },
+      },
+    },
   },
   "aria-rhea": {
     accordion: {
@@ -30808,6 +31160,28 @@ export const Index: Record<string, Record<string, any>> = {
           docs: "https://ui.shadcn.com/docs/components/aria/message",
           examples:
             "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/message-example.tsx",
+        },
+      },
+    },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/aria-rhea/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/aria/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/aria/examples/color-picker-example.tsx",
         },
       },
     },
@@ -32210,6 +32584,28 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/radix-vega/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/color-picker-example.tsx",
+        },
+      },
+    },
   },
   "radix-maia": {
     accordion: {
@@ -33608,6 +34004,28 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       categories: undefined,
       meta: undefined,
+    },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/radix-maia/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/color-picker-example.tsx",
+        },
+      },
     },
   },
   "radix-lyra": {
@@ -35008,6 +35426,28 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/radix-lyra/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/color-picker-example.tsx",
+        },
+      },
+    },
   },
   "radix-mira": {
     accordion: {
@@ -36406,6 +36846,28 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       categories: undefined,
       meta: undefined,
+    },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/radix-mira/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/color-picker-example.tsx",
+        },
+      },
     },
   },
   "radix-luma": {
@@ -37806,6 +38268,28 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/radix-luma/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/color-picker-example.tsx",
+        },
+      },
+    },
   },
   "radix-sera": {
     accordion: {
@@ -39205,6 +39689,28 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/radix-sera/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/color-picker-example.tsx",
+        },
+      },
+    },
   },
   "radix-rhea": {
     accordion: {
@@ -40603,6 +41109,28 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       categories: undefined,
       meta: undefined,
+    },
+    "color-picker": {
+      name: "color-picker",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button", "input"],
+      files: [
+        {
+          path: "styles/radix-rhea/ui/color-picker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      meta: {
+        links: {
+          docs: "https://ui.shadcn.com/docs/components/radix/color-picker",
+          examples:
+            "https://ui.shadcn.com/code/apps/v4/registry/bases/radix/examples/color-picker-example.tsx",
+        },
+      },
     },
   },
 }

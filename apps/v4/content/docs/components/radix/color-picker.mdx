@@ -1,0 +1,169 @@
+---
+title: Color Picker
+description: Pick a color with a saturation and brightness area, hue and alpha sliders, and a text input.
+base: radix
+component: true
+---
+
+<ComponentPreview styleName="radix-nova" name="color-picker-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add color-picker
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependency:</Step>
+
+```bash
+npm install @shadcn/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="color-picker"
+  title="components/ui/color-picker.tsx"
+  styleName="radix-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  ColorPicker,
+  ColorPickerAlpha,
+  ColorPickerArea,
+  ColorPickerCopy,
+  ColorPickerEyeDropper,
+  ColorPickerHue,
+  ColorPickerInput,
+  ColorPickerSwatch,
+} from "@/components/ui/color-picker"
+```
+
+```tsx
+<ColorPicker defaultValue="#3b82f6">
+  <ColorPickerArea />
+  <ColorPickerHue />
+  <ColorPickerAlpha />
+  <ColorPickerSwatch />
+  <ColorPickerInput aria-label="Color" />
+  <ColorPickerEyeDropper />
+  <ColorPickerCopy />
+</ColorPicker>
+```
+
+## Values
+
+`value`, `defaultValue` and `onValueChange` use strings. A value is hex
+(`#rrggbb` or `#rrggbbaa`) or `oklch()`, the format theme tokens use.
+
+- `onValueChange` emits the format of the current value. Set `format` to
+  choose one.
+- A value is shown exactly as you pass it until the user changes the color.
+- Colors are edited in sRGB. An `oklch()` value outside sRGB keeps its
+  lightness and hue, and loses chroma once the user edits it.
+
+## Eye Dropper
+
+`ColorPickerEyeDropper` picks a color from anywhere on the screen. It uses the
+browser EyeDropper API, which only Chromium browsers support, and renders
+nothing elsewhere. The picked color keeps the current alpha, and pressing
+Escape leaves the color unchanged. The demo at the top of this page includes
+it.
+
+## Copy
+
+`ColorPickerCopy` copies the value in the picker's format. It shows a check
+for two seconds and announces "Copied" to screen readers.
+
+## Popover
+
+Wrap the popover in `ColorPicker` so the trigger can show the current color.
+
+<ComponentPreview styleName="radix-nova" name="color-picker-popover" />
+
+## Alpha
+
+Add `ColorPickerAlpha` to edit transparency. Translucent values are
+`#rrggbbaa` or `oklch(L C H / A%)`.
+
+<ComponentPreview styleName="radix-nova" name="color-picker-alpha" />
+
+## Format
+
+Use `format` to choose between `"hex"` and `"oklch"`.
+
+<ComponentPreview styleName="radix-nova" name="color-picker-format" />
+
+## Controlled
+
+<ComponentPreview styleName="radix-nova" name="color-picker-controlled" />
+
+## Field
+
+Use `data-invalid` on `Field` and `aria-invalid` on `ColorPicker` to show an
+error. Use `data-disabled` on `Field` and `disabled` on `ColorPicker` to
+disable it. `ColorPicker` passes both states to every control inside it.
+
+<ComponentPreview styleName="radix-nova" name="color-picker-field" />
+
+## RTL
+
+To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  styleName="radix-nova"
+  name="color-picker-rtl"
+  direction="rtl"
+/>
+
+## Accessibility
+
+- The area is one tab stop. Arrow keys change saturation and brightness, and
+  focus follows the axis you change so screen readers announce it.
+- The hue and alpha sliders use native range inputs and the standard slider
+  keys.
+- In RTL, horizontal keys and the saturation axis are mirrored.
+- Give `ColorPickerInput` a label with `FieldLabel`, `aria-label` or
+  `aria-labelledby`. The area and sliders are labelled "Color", "Hue" and
+  "Alpha" by default. Pass `aria-label` to translate them.
+
+See the [ColorPicker keyboard reference](/docs/react/color-picker#keyboard)
+for every key.
+
+## Unstyled
+
+The behavior in `ColorPicker` comes from the `@shadcn/react` package. To use it
+directly with your own markup and styles, see
+[ColorPicker](/docs/react/color-picker) under @shadcn/react.
+
+## API Reference
+
+The props and data attributes for every part are documented on the
+[@shadcn/react ColorPicker](/docs/react/color-picker#api-reference) page.
+`ColorPickerHue` and `ColorPickerAlpha` are `ColorPicker.Slider` with
+`channel` set, and the styled area and sliders render their own thumbs.

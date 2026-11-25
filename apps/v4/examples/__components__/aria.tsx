@@ -1326,6 +1326,62 @@ export const Components: Record<string, any> = {
       ) || "collapsible-settings"
     return { default: mod.default || mod[exportName] }
   }),
+  "color-picker-alpha": React.lazy(async () => {
+    const mod = await import("@/examples/aria/color-picker-alpha")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "color-picker-alpha"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "color-picker-controlled": React.lazy(async () => {
+    const mod = await import("@/examples/aria/color-picker-controlled")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "color-picker-controlled"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "color-picker-demo": React.lazy(async () => {
+    const mod = await import("@/examples/aria/color-picker-demo")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "color-picker-demo"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "color-picker-field": React.lazy(async () => {
+    const mod = await import("@/examples/aria/color-picker-field")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "color-picker-field"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "color-picker-format": React.lazy(async () => {
+    const mod = await import("@/examples/aria/color-picker-format")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "color-picker-format"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "color-picker-popover": React.lazy(async () => {
+    const mod = await import("@/examples/aria/color-picker-popover")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "color-picker-popover"
+    return { default: mod.default || mod[exportName] }
+  }),
+  "color-picker-rtl": React.lazy(async () => {
+    const mod = await import("@/examples/aria/color-picker-rtl")
+    const exportName =
+      Object.keys(mod).find(
+        (key) => typeof mod[key] === "function" || typeof mod[key] === "object"
+      ) || "color-picker-rtl"
+    return { default: mod.default || mod[exportName] }
+  }),
   "combobox-basic": React.lazy(async () => {
     const mod = await import("@/examples/aria/combobox-basic")
     const exportName =
