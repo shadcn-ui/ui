@@ -35,6 +35,7 @@ function ComboboxTrigger({
         data-slot="combobox-trigger-icon"
         className="pointer-events-none size-4 text-muted-foreground"
       />
+      <span className="sr-only">Toggle popup</span>
     </ComboboxPrimitive.Trigger>
   )
 }
@@ -48,6 +49,7 @@ function ComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props) {
       {...props}
     >
       <XIcon className="pointer-events-none" />
+      <span className="sr-only">Clear</span>
     </ComboboxPrimitive.Clear>
   )
 }
