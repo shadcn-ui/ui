@@ -44,10 +44,12 @@ function Button({
   className,
   variant = "default",
   size = "default",
+  "aria-invalid": ariaInvalid,
   ...props
 }: Omit<ButtonPrimitiveProps, "className"> &
   React.RefAttributes<HTMLButtonElement> &
-  VariantProps<typeof buttonVariants> & {
+  VariantProps<typeof buttonVariants> &
+  Pick<React.AriaAttributes, "aria-invalid"> & {
     className?: string
   }) {
   return (
@@ -55,6 +57,9 @@ function Button({
       data-slot="button"
       data-variant={variant}
       data-size={size}
+      data-invalid={
+        ariaInvalid === true || ariaInvalid === "true" ? true : undefined
+      }
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     />
@@ -65,9 +70,11 @@ function LinkButton({
   className,
   variant = "default",
   size = "default",
+  "aria-invalid": ariaInvalid,
   ...props
 }: Omit<LinkPrimitiveProps, "className"> &
-  VariantProps<typeof buttonVariants> & {
+  VariantProps<typeof buttonVariants> &
+  Pick<React.AriaAttributes, "aria-invalid"> & {
     className?: string
   }) {
   return (
@@ -75,6 +82,9 @@ function LinkButton({
       data-slot="button"
       data-variant={variant}
       data-size={size}
+      data-invalid={
+        ariaInvalid === true || ariaInvalid === "true" ? true : undefined
+      }
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     />
