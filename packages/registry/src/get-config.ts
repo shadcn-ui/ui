@@ -139,22 +139,35 @@ async function resolveAliasPath(
   ) {
     // Exact aliases (e.g. `#hooks` → `./src/hooks/index.ts`) should resolve
     // to the directory root.
-    if (
-      !resolved.matchedAlias.includes("*") &&
-      /\/index\.[^/]+$/.test(resolved.path)
-    ) {
+    if (!resolved.matchedAlias.includes("*") && isIndexFile(resolved.path)) {
       return path.dirname(resolved.path)
     }
 
     // Wildcard aliases with explicit extensions (e.g. `#components/*` →
     // `./src/components/*.tsx`) should strip the source extension so `ui`
     // resolves to `/src/components/ui` instead of `/src/components/ui.tsx`.
-    if (resolved.matchedAlias.includes("*") && /\.[^/]+$/.test(resolved.path)) {
-      return resolved.path.replace(/\.[^/]+$/, "")
+    if (resolved.matchedAlias.includes("*") && path.extname(resolved.path)) {
+      return stripFileExtension(resolved.path)
     }
   }
 
   return resolved.path
+}
+
+export function stripFileExtension(
+  filePath: string,
+  pathApi: path.PlatformPath = path
+) {
+  const extension = pathApi.extname(filePath)
+  return extension ? filePath.slice(0, -extension.length) : filePath
+}
+
+export function isIndexFile(
+  filePath: string,
+  pathApi: path.PlatformPath = path
+) {
+  const extension = pathApi.extname(filePath)
+  return extension !== "" && pathApi.basename(filePath, extension) === "index"
 }
 
 function assertResolvedAliases(
