@@ -104,20 +104,20 @@ function Calendar({
           defaultClassNames.week_number
         ),
         day: cn(
-          "group/day relative aspect-square h-full w-full p-0 text-center select-none [&:last-child[data-selected=true]_button]:rounded-r-md",
+          "group/day relative aspect-square h-full w-full p-0 text-center select-none data-[focused=true]:z-10 [&:last-child[data-selected=true]_button]:rounded-r-md",
           props.showWeekNumber
             ? "[&:nth-child(2)[data-selected=true]_button]:rounded-l-md"
             : "[&:first-child[data-selected=true]_button]:rounded-l-md",
           defaultClassNames.day
         ),
         range_start: cn(
-          "rounded-l-md bg-accent",
+          "rounded-l-md bg-accent data-[focused=true]:z-10",
           defaultClassNames.range_start
         ),
-        range_middle: cn("rounded-none", defaultClassNames.range_middle),
-        range_end: cn("rounded-r-md bg-accent", defaultClassNames.range_end),
+        range_middle: cn("rounded-none data-[focused=true]:z-10", defaultClassNames.range_middle),
+        range_end: cn("rounded-r-md bg-accent data-[focused=true]:z-10", defaultClassNames.range_end),
         today: cn(
-          "rounded-md bg-accent text-accent-foreground data-[selected=true]:rounded-none",
+          "rounded-md bg-accent text-accent-foreground data-[selected=true]:rounded-none data-[focused=true]:z-10",
           defaultClassNames.today
         ),
         outside: cn(
