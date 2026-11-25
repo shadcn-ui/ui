@@ -10,7 +10,6 @@ import {
   DialogTrigger,
 } from "@/registry/new-york-v4/ui/dialog"
 import { Input } from "@/registry/new-york-v4/ui/input"
-import { Label } from "@/registry/new-york-v4/ui/label"
 
 export default function DialogCloseButton() {
   return (
@@ -27,13 +26,11 @@ export default function DialogCloseButton() {
         </DialogHeader>
         <div className="flex items-center gap-2">
           <div className="grid flex-1 gap-2">
-            <Label htmlFor="link" className="sr-only">
-              Link
-            </Label>
             <Input
               id="link"
               defaultValue="https://ui.shadcn.com/docs/installation"
               readOnly
+              aria-label="Shareable link"
             />
           </div>
         </div>
