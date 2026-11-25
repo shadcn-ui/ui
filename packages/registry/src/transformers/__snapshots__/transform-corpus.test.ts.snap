@@ -190,17 +190,16 @@ exports[`default chain (base) > new-york-v4--drawer-dialog.tsx 1`] = `
 `;
 
 exports[`default chain (base) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */
+"@@ -2 +2 @@
 - "use client"
 - 
-@@ -8 +5 @@
+@@ -8 +6 @@
 - import { Button } from "@/registry/new-york-v4/ui/button"
 + import { Button } from "~/components/ui/button"
-@@ -16 +13 @@
+@@ -16 +14 @@
 - } from "@/registry/new-york-v4/ui/card"
 + } from "~/components/ui/card"
-@@ -24 +21 @@
+@@ -24 +22 @@
 - } from "@/registry/new-york-v4/ui/field"
 - import { Switch } from "@/registry/new-york-v4/ui/switch"
 + } from "~/components/ui/field"
@@ -559,27 +558,22 @@ exports[`default chain (base) > third-party--card-actions.tsx 1`] = `
 `;
 
 exports[`default chain (base) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */
-@@ -10 +6 @@
+"@@ -10 +10 @@
 - import { cn } from "@/registry/acme/lib/utils";
 - import { buttonVariants } from "@/registry/acme/ui/button";
 + import { cn } from "~/lib/utils";
 + import { buttonVariants } from "~/components/ui/button";
-@@ -23 +19 @@
+@@ -23 +23 @@
 -         "flex space-x-2 border-l pl-4 data-[side=left]:-translate-x-full",
 -         side === "right" ? "right-0 ml-auto" : "left-0 mr-auto",
 +         "flex space-x-2 rtl:space-x-reverse border-s ps-4 data-[side=left]:-translate-x-full rtl:data-[side=left]:translate-x-full",
 +         side === "right" ? "end-0 ms-auto" : "start-0 me-auto",
-@@ -30 +26 @@
+@@ -30 +30 @@
 -           root: "relative pr-2",
 -           nav: cn("absolute top-0 right-0", "flex items-center"),
 +           root: "relative pe-2",
 +           nav: cn("absolute top-0 end-0", "flex items-center"),
-@@ -34 +30 @@
+@@ -34 +34 @@
 -             "rounded-l-md"
 +             "rounded-s-md""
 `;
@@ -712,15 +706,13 @@ exports[`default chain (radix) > new-york-v4--drawer-dialog.tsx 1`] = `
 `;
 
 exports[`default chain (radix) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */
-@@ -8 +7 @@
+"@@ -8 +8 @@
 - import { Button } from "@/registry/new-york-v4/ui/button"
 + import { Button } from "@/components/ui/button"
-@@ -16 +15 @@
+@@ -16 +16 @@
 - } from "@/registry/new-york-v4/ui/card"
 + } from "@/components/ui/card"
-@@ -24 +23 @@
+@@ -24 +24 @@
 - } from "@/registry/new-york-v4/ui/field"
 - import { Switch } from "@/registry/new-york-v4/ui/switch"
 + } from "@/components/ui/field"
@@ -923,12 +915,7 @@ exports[`default chain (radix) > third-party--card-actions.tsx 1`] = `
 `;
 
 exports[`default chain (radix) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */
-@@ -10 +6 @@
+"@@ -10 +10 @@
 - import { cn } from "@/registry/acme/lib/utils";
 - import { buttonVariants } from "@/registry/acme/ui/button";
 + import { cn } from "@/lib/utils";
@@ -1151,17 +1138,16 @@ exports[`install chain (base) > new-york-v4--drawer-dialog.tsx 1`] = `
 `;
 
 exports[`install chain (base) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */
+"@@ -2 +2 @@
 - "use client"
 - 
-@@ -8 +5 @@
+@@ -8 +6 @@
 - import { Button } from "@/registry/new-york-v4/ui/button"
 + import { Button } from "~/components/ui/button"
-@@ -16 +13 @@
+@@ -16 +14 @@
 - } from "@/registry/new-york-v4/ui/card"
 + } from "~/components/ui/card"
-@@ -24 +21 @@
+@@ -24 +22 @@
 - } from "@/registry/new-york-v4/ui/field"
 - import { Switch } from "@/registry/new-york-v4/ui/switch"
 + } from "~/components/ui/field"
@@ -1583,27 +1569,22 @@ exports[`install chain (base) > third-party--card-actions.tsx 1`] = `
 `;
 
 exports[`install chain (base) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */
-@@ -10 +6 @@
+"@@ -10 +10 @@
 - import { cn } from "@/registry/acme/lib/utils";
 - import { buttonVariants } from "@/registry/acme/ui/button";
 + import { cn } from "~/lib/utils";
 + import { buttonVariants } from "~/components/ui/button";
-@@ -23 +19 @@
+@@ -23 +23 @@
 -         "flex space-x-2 border-l pl-4 data-[side=left]:-translate-x-full",
 -         side === "right" ? "right-0 ml-auto" : "left-0 mr-auto",
 +         "flex space-x-2 rtl:space-x-reverse border-s ps-4 data-[side=left]:-translate-x-full rtl:data-[side=left]:translate-x-full",
 +         side === "right" ? "end-0 ms-auto" : "start-0 me-auto",
-@@ -30 +26 @@
+@@ -30 +30 @@
 -           root: "relative pr-2",
 -           nav: cn("absolute top-0 right-0", "flex items-center"),
 +           root: "relative pe-2",
 +           nav: cn("absolute top-0 end-0", "flex items-center"),
-@@ -34 +30 @@
+@@ -34 +34 @@
 -             "rounded-l-md"
 +             "rounded-s-md""
 `;
@@ -1804,15 +1785,13 @@ exports[`install chain (imports) > new-york-v4--drawer-dialog.tsx 1`] = `
 `;
 
 exports[`install chain (imports) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */
-@@ -8 +7 @@
+"@@ -8 +8 @@
 - import { Button } from "@/registry/new-york-v4/ui/button"
 + import { Button } from "#components/ui/button"
-@@ -16 +15 @@
+@@ -16 +16 @@
 - } from "@/registry/new-york-v4/ui/card"
 + } from "#components/ui/card"
-@@ -24 +23 @@
+@@ -24 +24 @@
 - } from "@/registry/new-york-v4/ui/field"
 - import { Switch } from "@/registry/new-york-v4/ui/switch"
 + } from "#components/ui/field"
@@ -2160,27 +2139,22 @@ exports[`install chain (imports) > third-party--card-actions.tsx 1`] = `
 `;
 
 exports[`install chain (imports) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */
-@@ -10 +6 @@
+"@@ -10 +10 @@
 - import { cn } from "@/registry/acme/lib/utils";
 - import { buttonVariants } from "@/registry/acme/ui/button";
 + import { cn } from "#lib/utils";
 + import { buttonVariants } from "#components/ui/button";
-@@ -23 +19 @@
+@@ -23 +23 @@
 -         "flex space-x-2 border-l pl-4 data-[side=left]:-translate-x-full",
 -         side === "right" ? "right-0 ml-auto" : "left-0 mr-auto",
 +         "flex space-x-2 rtl:space-x-reverse border-s ps-4 data-[side=left]:-translate-x-full rtl:data-[side=left]:translate-x-full",
 +         side === "right" ? "end-0 ms-auto" : "start-0 me-auto",
-@@ -30 +26 @@
+@@ -30 +30 @@
 -           root: "relative pr-2",
 -           nav: cn("absolute top-0 right-0", "flex items-center"),
 +           root: "relative pe-2",
 +           nav: cn("absolute top-0 end-0", "flex items-center"),
-@@ -34 +30 @@
+@@ -34 +34 @@
 -             "rounded-l-md"
 +             "rounded-s-md""
 `;
@@ -4359,25 +4333,24 @@ exports[`install chain (prefix-v3) > new-york-v4--drawer-dialog.tsx 1`] = `
 `;
 
 exports[`install chain (prefix-v3) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */
+"@@ -2 +2 @@
 - "use client"
 - 
-@@ -8 +5 @@
+@@ -8 +6 @@
 - import { Button } from "@/registry/new-york-v4/ui/button"
 + import { Button } from "@/components/ui/button"
-@@ -16 +13 @@
+@@ -16 +14 @@
 - } from "@/registry/new-york-v4/ui/card"
 + } from "@/components/ui/card"
-@@ -24 +21 @@
+@@ -24 +22 @@
 - } from "@/registry/new-york-v4/ui/field"
 - import { Switch } from "@/registry/new-york-v4/ui/switch"
 + } from "@/components/ui/field"
 + import { Switch } from "@/components/ui/switch"
-@@ -44 +41 @@
+@@ -44 +42 @@
 -           <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
 +           <pre className="tw-mt-2 tw-w-[320px] tw-overflow-x-auto tw-rounded-md tw-bg-code tw-p-4 tw-text-code-foreground">
-@@ -60 +57 @@
+@@ -60 +58 @@
 -     <Card className="w-full sm:max-w-md">
 +     <Card className="tw-w-full sm:tw-max-w-md">"
 `;
@@ -5040,27 +5013,22 @@ exports[`install chain (prefix-v3) > third-party--card-actions.tsx 1`] = `
 `;
 
 exports[`install chain (prefix-v3) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */
-@@ -10 +6 @@
+"@@ -10 +10 @@
 - import { cn } from "@/registry/acme/lib/utils";
 - import { buttonVariants } from "@/registry/acme/ui/button";
 + import { cn } from "@/lib/utils";
 + import { buttonVariants } from "@/components/ui/button";
-@@ -23 +19 @@
+@@ -23 +23 @@
 -         "flex space-x-2 border-l pl-4 data-[side=left]:-translate-x-full",
 -         side === "right" ? "right-0 ml-auto" : "left-0 mr-auto",
 +         "tw-flex tw-space-x-2 tw-border-l tw-pl-4 data-[side=left]:tw--translate-x-full",
 +         side === "right" ? "tw-right-0 tw-ml-auto" : "tw-left-0 tw-mr-auto",
-@@ -30 +26 @@
+@@ -30 +30 @@
 -           root: "relative pr-2",
 -           nav: cn("absolute top-0 right-0", "flex items-center"),
 +           root: "tw-relative tw-pr-2",
 +           nav: cn("tw-absolute tw-top-0 tw-right-0", "tw-flex tw-items-center"),
-@@ -34 +30 @@
+@@ -34 +34 @@
 -             "rounded-l-md"
 +             "tw-rounded-l-md""
 `;
@@ -5349,23 +5317,21 @@ exports[`install chain (prefix-v4) > new-york-v4--drawer-dialog.tsx 1`] = `
 `;
 
 exports[`install chain (prefix-v4) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */
-@@ -8 +7 @@
+"@@ -8 +8 @@
 - import { Button } from "@/registry/new-york-v4/ui/button"
 + import { Button } from "@/components/ui/button"
-@@ -16 +15 @@
+@@ -16 +16 @@
 - } from "@/registry/new-york-v4/ui/card"
 + } from "@/components/ui/card"
-@@ -24 +23 @@
+@@ -24 +24 @@
 - } from "@/registry/new-york-v4/ui/field"
 - import { Switch } from "@/registry/new-york-v4/ui/switch"
 + } from "@/components/ui/field"
 + import { Switch } from "@/components/ui/switch"
-@@ -44 +43 @@
+@@ -44 +44 @@
 -           <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
 +           <pre className="tw:mt-2 tw:w-[320px] tw:overflow-x-auto tw:rounded-md tw:bg-code tw:p-4 tw:text-code-foreground">
-@@ -60 +59 @@
+@@ -60 +60 @@
 -     <Card className="w-full sm:max-w-md">
 +     <Card className="tw:w-full tw:sm:max-w-md">"
 `;
@@ -6049,27 +6015,22 @@ exports[`install chain (prefix-v4) > third-party--card-actions.tsx 1`] = `
 `;
 
 exports[`install chain (prefix-v4) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */
-@@ -10 +6 @@
+"@@ -10 +10 @@
 - import { cn } from "@/registry/acme/lib/utils";
 - import { buttonVariants } from "@/registry/acme/ui/button";
 + import { cn } from "@/lib/utils";
 + import { buttonVariants } from "@/components/ui/button";
-@@ -23 +19 @@
+@@ -23 +23 @@
 -         "flex space-x-2 border-l pl-4 data-[side=left]:-translate-x-full",
 -         side === "right" ? "right-0 ml-auto" : "left-0 mr-auto",
 +         "tw:flex tw:space-x-2 tw:border-l tw:pl-4 tw:data-[side=left]:-translate-x-full",
 +         side === "right" ? "tw:right-0 tw:ml-auto" : "tw:left-0 tw:mr-auto",
-@@ -30 +26 @@
+@@ -30 +30 @@
 -           root: "relative pr-2",
 -           nav: cn("absolute top-0 right-0", "flex items-center"),
 +           root: "tw:relative tw:pr-2",
 +           nav: cn("tw:absolute tw:top-0 tw:right-0", "tw:flex tw:items-center"),
-@@ -34 +30 @@
+@@ -34 +34 @@
 -             "rounded-l-md"
 +             "tw:rounded-l-md""
 `;
@@ -6211,15 +6172,13 @@ exports[`install chain (radix) > new-york-v4--drawer-dialog.tsx 1`] = `
 `;
 
 exports[`install chain (radix) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */
-@@ -8 +7 @@
+"@@ -8 +8 @@
 - import { Button } from "@/registry/new-york-v4/ui/button"
 + import { Button } from "@/components/ui/button"
-@@ -16 +15 @@
+@@ -16 +16 @@
 - } from "@/registry/new-york-v4/ui/card"
 + } from "@/components/ui/card"
-@@ -24 +23 @@
+@@ -24 +24 @@
 - } from "@/registry/new-york-v4/ui/field"
 - import { Switch } from "@/registry/new-york-v4/ui/switch"
 + } from "@/components/ui/field"
@@ -6437,12 +6396,7 @@ exports[`install chain (radix) > third-party--card-actions.tsx 1`] = `
 `;
 
 exports[`install chain (radix) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */
-@@ -10 +6 @@
+"@@ -10 +10 @@
 - import { cn } from "@/registry/acme/lib/utils";
 - import { buttonVariants } from "@/registry/acme/ui/button";
 + import { cn } from "@/lib/utils";
@@ -6465,10 +6419,7 @@ exports[`no transformers > base-nova--sheet.tsx 1`] = `"(unchanged)"`;
 
 exports[`no transformers > new-york-v4--drawer-dialog.tsx 1`] = `"(unchanged)"`;
 
-exports[`no transformers > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */"
-`;
+exports[`no transformers > new-york-v4--form-tanstack-switch.tsx 1`] = `"(unchanged)"`;
 
 exports[`no transformers > new-york-v4--nav-actions.tsx 1`] = `"(unchanged)"`;
 
@@ -6494,13 +6445,7 @@ exports[`no transformers > radix-nova--sidebar.tsx 1`] = `"(unchanged)"`;
 
 exports[`no transformers > third-party--card-actions.tsx 1`] = `"(unchanged)"`;
 
-exports[`no transformers > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */"
-`;
+exports[`no transformers > third-party--license-panel.tsx 1`] = `"(unchanged)"`;
 
 exports[`no transformers > third-party--middleware.ts 1`] = `"(unchanged)"`;
 
@@ -6530,10 +6475,7 @@ exports[`transformAsChild (base) > new-york-v4--drawer-dialog.tsx 1`] = `
 +           <DrawerClose render={<Button variant="outline" />}>Cancel</DrawerClose>"
 `;
 
-exports[`transformAsChild (base) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */"
-`;
+exports[`transformAsChild (base) > new-york-v4--form-tanstack-switch.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformAsChild (base) > new-york-v4--nav-actions.tsx 1`] = `
 "@@ -117 +117 @@
@@ -6655,13 +6597,7 @@ exports[`transformAsChild (base) > third-party--card-actions.tsx 1`] = `
 +                   </Button>"
 `;
 
-exports[`transformAsChild (base) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */"
-`;
+exports[`transformAsChild (base) > third-party--license-panel.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformAsChild (base) > third-party--middleware.ts 1`] = `"(unchanged)"`;
 
@@ -6689,10 +6625,7 @@ exports[`transformCleanup (radix) > base-nova--sheet.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformCleanup (radix) > new-york-v4--drawer-dialog.tsx 1`] = `"(unchanged)"`;
 
-exports[`transformCleanup (radix) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */"
-`;
+exports[`transformCleanup (radix) > new-york-v4--form-tanstack-switch.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformCleanup (radix) > new-york-v4--nav-actions.tsx 1`] = `"(unchanged)"`;
 
@@ -6753,13 +6686,7 @@ exports[`transformCleanup (radix) > third-party--card-actions.tsx 1`] = `
 +             'w-56',"
 `;
 
-exports[`transformCleanup (radix) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */"
-`;
+exports[`transformCleanup (radix) > third-party--license-panel.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformCleanup (radix) > third-party--middleware.ts 1`] = `"(unchanged)"`;
 
@@ -6854,10 +6781,7 @@ exports[`transformCssVars (prefix-v3) > base-nova--sheet.tsx 1`] = `
 
 exports[`transformCssVars (prefix-v3) > new-york-v4--drawer-dialog.tsx 1`] = `"(unchanged)"`;
 
-exports[`transformCssVars (prefix-v3) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */"
-`;
+exports[`transformCssVars (prefix-v3) > new-york-v4--form-tanstack-switch.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformCssVars (prefix-v3) > new-york-v4--nav-actions.tsx 1`] = `
 "@@ -110 +110 @@
@@ -7024,13 +6948,7 @@ exports[`transformCssVars (prefix-v3) > radix-nova--sidebar.tsx 1`] = `
 
 exports[`transformCssVars (prefix-v3) > third-party--card-actions.tsx 1`] = `"(unchanged)"`;
 
-exports[`transformCssVars (prefix-v3) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */"
-`;
+exports[`transformCssVars (prefix-v3) > third-party--license-panel.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformCssVars (prefix-v3) > third-party--middleware.ts 1`] = `"(unchanged)"`;
 
@@ -7048,10 +6966,7 @@ exports[`transformFont (base) > base-nova--sheet.tsx 1`] = `
 
 exports[`transformFont (base) > new-york-v4--drawer-dialog.tsx 1`] = `"(unchanged)"`;
 
-exports[`transformFont (base) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */"
-`;
+exports[`transformFont (base) > new-york-v4--form-tanstack-switch.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformFont (base) > new-york-v4--nav-actions.tsx 1`] = `"(unchanged)"`;
 
@@ -7085,13 +7000,7 @@ exports[`transformFont (base) > third-party--card-actions.tsx 1`] = `
 +                 <span className='font-heading truncate'>{item.title}</span>"
 `;
 
-exports[`transformFont (base) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */"
-`;
+exports[`transformFont (base) > third-party--license-panel.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformFont (base) > third-party--middleware.ts 1`] = `"(unchanged)"`;
 
@@ -7109,10 +7018,7 @@ exports[`transformFont (radix) > base-nova--sheet.tsx 1`] = `
 
 exports[`transformFont (radix) > new-york-v4--drawer-dialog.tsx 1`] = `"(unchanged)"`;
 
-exports[`transformFont (radix) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */"
-`;
+exports[`transformFont (radix) > new-york-v4--form-tanstack-switch.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformFont (radix) > new-york-v4--nav-actions.tsx 1`] = `"(unchanged)"`;
 
@@ -7146,13 +7052,7 @@ exports[`transformFont (radix) > third-party--card-actions.tsx 1`] = `
 +                 <span className='truncate'>{item.title}</span>"
 `;
 
-exports[`transformFont (radix) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */"
-`;
+exports[`transformFont (radix) > third-party--license-panel.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformFont (radix) > third-party--middleware.ts 1`] = `"(unchanged)"`;
 
@@ -7252,10 +7152,7 @@ exports[`transformIcons (base) > base-nova--sheet.tsx 1`] = `
 
 exports[`transformIcons (base) > new-york-v4--drawer-dialog.tsx 1`] = `"(unchanged)"`;
 
-exports[`transformIcons (base) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */"
-`;
+exports[`transformIcons (base) > new-york-v4--form-tanstack-switch.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformIcons (base) > new-york-v4--nav-actions.tsx 1`] = `"(unchanged)"`;
 
@@ -7391,13 +7288,7 @@ exports[`transformIcons (base) > third-party--card-actions.tsx 1`] = `
 +             <IconDots className='cn-rtl-flip size-4' />"
 `;
 
-exports[`transformIcons (base) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */"
-`;
+exports[`transformIcons (base) > third-party--license-panel.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformIcons (base) > third-party--middleware.ts 1`] = `"(unchanged)"`;
 
@@ -7497,10 +7388,7 @@ exports[`transformIcons (jsx) > base-nova--sheet.tsx 1`] = `
 
 exports[`transformIcons (jsx) > new-york-v4--drawer-dialog.tsx 1`] = `"(unchanged)"`;
 
-exports[`transformIcons (jsx) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */"
-`;
+exports[`transformIcons (jsx) > new-york-v4--form-tanstack-switch.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformIcons (jsx) > new-york-v4--nav-actions.tsx 1`] = `"(unchanged)"`;
 
@@ -7636,13 +7524,7 @@ exports[`transformIcons (jsx) > third-party--card-actions.tsx 1`] = `
 +             <RiMoreLine className='cn-rtl-flip size-4' />"
 `;
 
-exports[`transformIcons (jsx) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */"
-`;
+exports[`transformIcons (jsx) > third-party--license-panel.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformIcons (jsx) > third-party--middleware.ts 1`] = `"(unchanged)"`;
 
@@ -7742,10 +7624,7 @@ exports[`transformIcons (prefix-v3) > base-nova--sheet.tsx 1`] = `
 
 exports[`transformIcons (prefix-v3) > new-york-v4--drawer-dialog.tsx 1`] = `"(unchanged)"`;
 
-exports[`transformIcons (prefix-v3) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */"
-`;
+exports[`transformIcons (prefix-v3) > new-york-v4--form-tanstack-switch.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformIcons (prefix-v3) > new-york-v4--nav-actions.tsx 1`] = `"(unchanged)"`;
 
@@ -7881,13 +7760,7 @@ exports[`transformIcons (prefix-v3) > third-party--card-actions.tsx 1`] = `
 +             <DotsThreeIcon className='cn-rtl-flip size-4' />"
 `;
 
-exports[`transformIcons (prefix-v3) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */"
-`;
+exports[`transformIcons (prefix-v3) > third-party--license-panel.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformIcons (prefix-v3) > third-party--middleware.ts 1`] = `"(unchanged)"`;
 
@@ -7995,10 +7868,7 @@ exports[`transformIcons (prefix-v4) > base-nova--sheet.tsx 1`] = `
 
 exports[`transformIcons (prefix-v4) > new-york-v4--drawer-dialog.tsx 1`] = `"(unchanged)"`;
 
-exports[`transformIcons (prefix-v4) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */"
-`;
+exports[`transformIcons (prefix-v4) > new-york-v4--form-tanstack-switch.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformIcons (prefix-v4) > new-york-v4--nav-actions.tsx 1`] = `"(unchanged)"`;
 
@@ -8142,13 +8012,7 @@ exports[`transformIcons (prefix-v4) > third-party--card-actions.tsx 1`] = `
 +             <HugeiconsIcon icon={MoreHorizontalCircle01Icon} strokeWidth={2} className='cn-rtl-flip size-4' />"
 `;
 
-exports[`transformIcons (prefix-v4) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */"
-`;
+exports[`transformIcons (prefix-v4) > third-party--license-panel.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformIcons (prefix-v4) > third-party--middleware.ts 1`] = `"(unchanged)"`;
 
@@ -8248,10 +8112,7 @@ exports[`transformIcons (radix) > base-nova--sheet.tsx 1`] = `
 
 exports[`transformIcons (radix) > new-york-v4--drawer-dialog.tsx 1`] = `"(unchanged)"`;
 
-exports[`transformIcons (radix) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */"
-`;
+exports[`transformIcons (radix) > new-york-v4--form-tanstack-switch.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformIcons (radix) > new-york-v4--nav-actions.tsx 1`] = `"(unchanged)"`;
 
@@ -8387,13 +8248,7 @@ exports[`transformIcons (radix) > third-party--card-actions.tsx 1`] = `
 +             <MoreHorizontalIcon className='cn-rtl-flip size-4' />"
 `;
 
-exports[`transformIcons (radix) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */"
-`;
+exports[`transformIcons (radix) > third-party--license-panel.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformIcons (radix) > third-party--middleware.ts 1`] = `"(unchanged)"`;
 
@@ -8438,15 +8293,13 @@ exports[`transformImport (imports) > new-york-v4--drawer-dialog.tsx 1`] = `
 `;
 
 exports[`transformImport (imports) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */
-@@ -8 +7 @@
+"@@ -8 +8 @@
 - import { Button } from "@/registry/new-york-v4/ui/button"
 + import { Button } from "#components/ui/button"
-@@ -16 +15 @@
+@@ -16 +16 @@
 - } from "@/registry/new-york-v4/ui/card"
 + } from "#components/ui/card"
-@@ -24 +23 @@
+@@ -24 +24 @@
 - } from "@/registry/new-york-v4/ui/field"
 - import { Switch } from "@/registry/new-york-v4/ui/switch"
 + } from "#components/ui/field"
@@ -8555,12 +8408,7 @@ exports[`transformImport (imports) > third-party--card-actions.tsx 1`] = `
 `;
 
 exports[`transformImport (imports) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */
-@@ -10 +6 @@
+"@@ -10 +10 @@
 - import { cn } from "@/registry/acme/lib/utils";
 - import { buttonVariants } from "@/registry/acme/ui/button";
 + import { cn } from "#lib/utils";
@@ -8614,15 +8462,13 @@ exports[`transformImport (jsx) > new-york-v4--drawer-dialog.tsx 1`] = `
 `;
 
 exports[`transformImport (jsx) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */
-@@ -8 +7 @@
+"@@ -8 +8 @@
 - import { Button } from "@/registry/new-york-v4/ui/button"
 + import { Button } from "@workspace/ui/components/button"
-@@ -16 +15 @@
+@@ -16 +16 @@
 - } from "@/registry/new-york-v4/ui/card"
 + } from "@workspace/ui/components/card"
-@@ -24 +23 @@
+@@ -24 +24 @@
 - } from "@/registry/new-york-v4/ui/field"
 - import { Switch } from "@/registry/new-york-v4/ui/switch"
 + } from "@workspace/ui/components/field"
@@ -8731,12 +8577,7 @@ exports[`transformImport (jsx) > third-party--card-actions.tsx 1`] = `
 `;
 
 exports[`transformImport (jsx) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */
-@@ -10 +6 @@
+"@@ -10 +10 @@
 - import { cn } from "@/registry/acme/lib/utils";
 - import { buttonVariants } from "@/registry/acme/ui/button";
 + import { cn } from "@workspace/ui/lib/utils";
@@ -8778,15 +8619,13 @@ exports[`transformImport (radix) > new-york-v4--drawer-dialog.tsx 1`] = `
 `;
 
 exports[`transformImport (radix) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */
-@@ -8 +7 @@
+"@@ -8 +8 @@
 - import { Button } from "@/registry/new-york-v4/ui/button"
 + import { Button } from "@/components/ui/button"
-@@ -16 +15 @@
+@@ -16 +16 @@
 - } from "@/registry/new-york-v4/ui/card"
 + } from "@/components/ui/card"
-@@ -24 +23 @@
+@@ -24 +24 @@
 - } from "@/registry/new-york-v4/ui/field"
 - import { Switch } from "@/registry/new-york-v4/ui/switch"
 + } from "@/components/ui/field"
@@ -8871,12 +8710,7 @@ exports[`transformImport (radix) > third-party--card-actions.tsx 1`] = `
 `;
 
 exports[`transformImport (radix) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */
-@@ -10 +6 @@
+"@@ -10 +10 @@
 - import { cn } from "@/registry/acme/lib/utils";
 - import { buttonVariants } from "@/registry/acme/ui/button";
 + import { cn } from "@/lib/utils";
@@ -10476,10 +10310,7 @@ exports[`transformMenu (base) > base-nova--sheet.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformMenu (base) > new-york-v4--drawer-dialog.tsx 1`] = `"(unchanged)"`;
 
-exports[`transformMenu (base) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */"
-`;
+exports[`transformMenu (base) > new-york-v4--form-tanstack-switch.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformMenu (base) > new-york-v4--nav-actions.tsx 1`] = `"(unchanged)"`;
 
@@ -10525,13 +10356,7 @@ exports[`transformMenu (base) > third-party--card-actions.tsx 1`] = `
 +           className={cn( 'dark w-56', isMobile && 'right-0 left-auto' )}"
 `;
 
-exports[`transformMenu (base) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */"
-`;
+exports[`transformMenu (base) > third-party--license-panel.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformMenu (base) > third-party--middleware.ts 1`] = `"(unchanged)"`;
 
@@ -10564,10 +10389,7 @@ exports[`transformMenu (prefix-v3) > base-nova--sheet.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformMenu (prefix-v3) > new-york-v4--drawer-dialog.tsx 1`] = `"(unchanged)"`;
 
-exports[`transformMenu (prefix-v3) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */"
-`;
+exports[`transformMenu (prefix-v3) > new-york-v4--form-tanstack-switch.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformMenu (prefix-v3) > new-york-v4--nav-actions.tsx 1`] = `"(unchanged)"`;
 
@@ -10616,13 +10438,7 @@ exports[`transformMenu (prefix-v3) > third-party--card-actions.tsx 1`] = `
 +                                           )}"
 `;
 
-exports[`transformMenu (prefix-v3) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */"
-`;
+exports[`transformMenu (prefix-v3) > third-party--license-panel.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformMenu (prefix-v3) > third-party--middleware.ts 1`] = `"(unchanged)"`;
 
@@ -10653,10 +10469,7 @@ exports[`transformMenu (prefix-v4) > base-nova--sheet.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformMenu (prefix-v4) > new-york-v4--drawer-dialog.tsx 1`] = `"(unchanged)"`;
 
-exports[`transformMenu (prefix-v4) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */"
-`;
+exports[`transformMenu (prefix-v4) > new-york-v4--form-tanstack-switch.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformMenu (prefix-v4) > new-york-v4--nav-actions.tsx 1`] = `"(unchanged)"`;
 
@@ -10702,13 +10515,7 @@ exports[`transformMenu (prefix-v4) > third-party--card-actions.tsx 1`] = `
 +           className={cn( ' cn-menu-translucent w-56', isMobile && 'right-0 left-auto' )}"
 `;
 
-exports[`transformMenu (prefix-v4) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */"
-`;
+exports[`transformMenu (prefix-v4) > third-party--license-panel.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformMenu (prefix-v4) > third-party--middleware.ts 1`] = `"(unchanged)"`;
 
@@ -10739,10 +10546,7 @@ exports[`transformMenu (radix) > base-nova--sheet.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformMenu (radix) > new-york-v4--drawer-dialog.tsx 1`] = `"(unchanged)"`;
 
-exports[`transformMenu (radix) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */"
-`;
+exports[`transformMenu (radix) > new-york-v4--form-tanstack-switch.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformMenu (radix) > new-york-v4--nav-actions.tsx 1`] = `"(unchanged)"`;
 
@@ -10788,13 +10592,7 @@ exports[`transformMenu (radix) > third-party--card-actions.tsx 1`] = `
 +           className={cn( ' w-56', isMobile && 'right-0 left-auto' )}"
 `;
 
-exports[`transformMenu (radix) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */"
-`;
+exports[`transformMenu (radix) > third-party--license-panel.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformMenu (radix) > third-party--middleware.ts 1`] = `"(unchanged)"`;
 
@@ -10808,10 +10606,7 @@ exports[`transformNext (radix) > base-nova--sheet.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformNext (radix) > new-york-v4--drawer-dialog.tsx 1`] = `"(unchanged)"`;
 
-exports[`transformNext (radix) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */"
-`;
+exports[`transformNext (radix) > new-york-v4--form-tanstack-switch.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformNext (radix) > new-york-v4--nav-actions.tsx 1`] = `"(unchanged)"`;
 
@@ -10837,13 +10632,7 @@ exports[`transformNext (radix) > radix-nova--sidebar.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformNext (radix) > third-party--card-actions.tsx 1`] = `"(unchanged)"`;
 
-exports[`transformNext (radix) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */"
-`;
+exports[`transformNext (radix) > third-party--license-panel.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformNext (radix) > third-party--middleware.ts 1`] = `
 "@@ -5 +5 @@
@@ -10878,8 +10667,7 @@ exports[`transformRsc (base) > new-york-v4--drawer-dialog.tsx 1`] = `
 `;
 
 exports[`transformRsc (base) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */
+"@@ -2 +2 @@
 - "use client"
 - "
 `;
@@ -10940,13 +10728,7 @@ exports[`transformRsc (base) > third-party--card-actions.tsx 1`] = `
 - "
 `;
 
-exports[`transformRsc (base) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */"
-`;
+exports[`transformRsc (base) > third-party--license-panel.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformRsc (base) > third-party--middleware.ts 1`] = `"(unchanged)"`;
 
@@ -11028,10 +10810,7 @@ exports[`transformRtl (base) > new-york-v4--drawer-dialog.tsx 1`] = `
 +         <DrawerHeader className="text-start">"
 `;
 
-exports[`transformRtl (base) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */"
-`;
+exports[`transformRtl (base) > new-york-v4--form-tanstack-switch.tsx 1`] = `"(unchanged)"`;
 
 exports[`transformRtl (base) > new-york-v4--nav-actions.tsx 1`] = `"(unchanged)"`;
 
@@ -11201,22 +10980,17 @@ exports[`transformRtl (base) > third-party--card-actions.tsx 1`] = `
 `;
 
 exports[`transformRtl (base) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */
-@@ -23 +19 @@
+"@@ -23 +23 @@
 -         "flex space-x-2 border-l pl-4 data-[side=left]:-translate-x-full",
 -         side === "right" ? "right-0 ml-auto" : "left-0 mr-auto",
 +         "flex space-x-2 rtl:space-x-reverse border-s ps-4 data-[side=left]:-translate-x-full rtl:data-[side=left]:translate-x-full",
 +         side === "right" ? "end-0 ms-auto" : "start-0 me-auto",
-@@ -30 +26 @@
+@@ -30 +30 @@
 -           root: "relative pr-2",
 -           nav: cn("absolute top-0 right-0", "flex items-center"),
 +           root: "relative pe-2",
 +           nav: cn("absolute top-0 end-0", "flex items-center"),
-@@ -34 +30 @@
+@@ -34 +34 @@
 -             "rounded-l-md"
 +             "rounded-s-md""
 `;
@@ -11386,12 +11160,10 @@ exports[`transformTwPrefixes (prefix-v3) > new-york-v4--drawer-dialog.tsx 1`] = 
 `;
 
 exports[`transformTwPrefixes (prefix-v3) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */
-@@ -44 +43 @@
+"@@ -44 +44 @@
 -           <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
 +           <pre className="tw-mt-2 tw-w-[320px] tw-overflow-x-auto tw-rounded-md tw-bg-code tw-p-4 tw-text-code-foreground">
-@@ -60 +59 @@
+@@ -60 +60 @@
 -     <Card className="w-full sm:max-w-md">
 +     <Card className="tw-w-full sm:tw-max-w-md">"
 `;
@@ -11894,22 +11666,17 @@ exports[`transformTwPrefixes (prefix-v3) > third-party--card-actions.tsx 1`] = `
 `;
 
 exports[`transformTwPrefixes (prefix-v3) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */
-@@ -23 +19 @@
+"@@ -23 +23 @@
 -         "flex space-x-2 border-l pl-4 data-[side=left]:-translate-x-full",
 -         side === "right" ? "right-0 ml-auto" : "left-0 mr-auto",
 +         "tw-flex tw-space-x-2 tw-border-l tw-pl-4 data-[side=left]:tw--translate-x-full",
 +         side === "right" ? "tw-right-0 tw-ml-auto" : "tw-left-0 tw-mr-auto",
-@@ -30 +26 @@
+@@ -30 +30 @@
 -           root: "relative pr-2",
 -           nav: cn("absolute top-0 right-0", "flex items-center"),
 +           root: "tw-relative tw-pr-2",
 +           nav: cn("tw-absolute tw-top-0 tw-right-0", "tw-flex tw-items-center"),
-@@ -34 +30 @@
+@@ -34 +34 @@
 -             "rounded-l-md"
 +             "tw-rounded-l-md""
 `;
@@ -12079,12 +11846,10 @@ exports[`transformTwPrefixes (prefix-v4) > new-york-v4--drawer-dialog.tsx 1`] = 
 `;
 
 exports[`transformTwPrefixes (prefix-v4) > new-york-v4--form-tanstack-switch.tsx 1`] = `
-"@@ -1 +1 @@
-- /* eslint-disable react/no-children-prop */
-@@ -44 +43 @@
+"@@ -44 +44 @@
 -           <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
 +           <pre className="tw:mt-2 tw:w-[320px] tw:overflow-x-auto tw:rounded-md tw:bg-code tw:p-4 tw:text-code-foreground">
-@@ -60 +59 @@
+@@ -60 +60 @@
 -     <Card className="w-full sm:max-w-md">
 +     <Card className="tw:w-full tw:sm:max-w-md">"
 `;
@@ -12587,22 +12352,17 @@ exports[`transformTwPrefixes (prefix-v4) > third-party--card-actions.tsx 1`] = `
 `;
 
 exports[`transformTwPrefixes (prefix-v4) > third-party--license-panel.tsx 1`] = `
-"@@ -1 +1 @@
-- /**
--  * @license MIT
--  * Copyright (c) Acme
--  */
-@@ -23 +19 @@
+"@@ -23 +23 @@
 -         "flex space-x-2 border-l pl-4 data-[side=left]:-translate-x-full",
 -         side === "right" ? "right-0 ml-auto" : "left-0 mr-auto",
 +         "tw:flex tw:space-x-2 tw:border-l tw:pl-4 tw:data-[side=left]:-translate-x-full",
 +         side === "right" ? "tw:right-0 tw:ml-auto" : "tw:left-0 tw:mr-auto",
-@@ -30 +26 @@
+@@ -30 +30 @@
 -           root: "relative pr-2",
 -           nav: cn("absolute top-0 right-0", "flex items-center"),
 +           root: "tw:relative tw:pr-2",
 +           nav: cn("tw:absolute tw:top-0 tw:right-0", "tw:flex tw:items-center"),
-@@ -34 +30 @@
+@@ -34 +34 @@
 -             "rounded-l-md"
 +             "tw:rounded-l-md""
 `;

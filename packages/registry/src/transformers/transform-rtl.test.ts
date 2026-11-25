@@ -1456,7 +1456,7 @@ export { ContextMenuContent, ContextMenuSubTrigger, ContextMenuSubContent }
     `)
   })
 
-  it("strips a leading license comment", async () => {
+  it("keeps a leading license comment", async () => {
     const result = await transformDirection(
       `/**
  * Copyright (c) Acme, Inc.
@@ -1472,8 +1472,12 @@ export function Foo() {
       true
     )
 
-    // Current behavior: getText() drops the leading comment and blank line.
-    expect(result).toBe(`"use client"
+    expect(result).toBe(`/**
+ * Copyright (c) Acme, Inc.
+ * SPDX-License-Identifier: MIT
+ */
+
+"use client"
 
 export function Foo() {
   return <div className="ms-2" />
@@ -1481,7 +1485,7 @@ export function Foo() {
 `)
   })
 
-  it("strips a leading comment even when no classes change", async () => {
+  it("keeps a leading comment when no classes change", async () => {
     const result = await transformDirection(
       `// Copyright (c) Acme, Inc.
 
@@ -1490,8 +1494,10 @@ export const a = 1
       true
     )
 
-    // Current behavior: the output differs from the input, so migrate rtl rewrites the file without its header.
-    expect(result).toBe(`export const a = 1
+    // The output equals the input, so migrate rtl leaves the file as it is.
+    expect(result).toBe(`// Copyright (c) Acme, Inc.
+
+export const a = 1
 `)
   })
 
