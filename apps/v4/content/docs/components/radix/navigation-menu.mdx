@@ -83,6 +83,17 @@ import {
 </NavigationMenu>
 ```
 
+### Without a viewport
+
+Set `viewport={false}` on `NavigationMenu` to render each dropdown next to its
+trigger. The dropdown uses `z-50`, matching the shared viewport's stacking level.
+
+```tsx
+<NavigationMenu viewport={false}>
+  {/* NavigationMenuList and menu items */}
+</NavigationMenu>
+```
+
 ## Composition
 
 Use the following composition to build a `NavigationMenu`:
