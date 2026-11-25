@@ -236,6 +236,7 @@ const LiveWaveform = ({
       }
       return
     }
+    let cancelled = false
     const setupMicrophone = async () => {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
@@ -252,6 +253,10 @@ const LiveWaveform = ({
                 autoGainControl: true,
               },
         })
+        if (cancelled) {
+          stream.getTracks().forEach((track) => track.stop())
+          return
+        }
         streamRef.current = stream
         onStreamReady?.(stream)
         const AudioContextConstructor =
@@ -268,11 +273,14 @@ const LiveWaveform = ({
         analyserRef.current = analyser
         historyRef.current = []
       } catch (error) {
-        onError?.(error as Error)
+        if (!cancelled) {
+          onError?.(error as Error)
+        }
       }
     }
     setupMicrophone()
     return () => {
+      cancelled = true
       if (streamRef.current) {
         streamRef.current.getTracks().forEach((track) => track.stop())
         streamRef.current = null
