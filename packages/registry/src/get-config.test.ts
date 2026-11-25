@@ -8,6 +8,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 import {
   createConfig,
   explorer,
+  findCommonRoot,
+  findPackageRoot,
   getBase,
   getConfig,
   getRawConfig,
@@ -990,5 +992,46 @@ describe("createConfig", () => {
     expect(config1.resolvedPaths).not.toBe(config2.resolvedPaths)
     expect(config1.tailwind).not.toBe(config2.tailwind)
     expect(config1.aliases).not.toBe(config2.aliases)
+  })
+})
+
+describe("findCommonRoot", () => {
+  it("finds the common root of matching paths", () => {
+    const p1 = path.join("home", "user", "repo", "apps", "web")
+    const p2 = path.join("home", "user", "repo", "packages", "ui")
+    expect(findCommonRoot(p1, p2)).toBe(path.join("home", "user", "repo"))
+  })
+
+  it("handles paths with different slash conventions and drive case", () => {
+    const p1 = "C:\\sources\\repo\\apps\\web"
+    const p2 = "C:/sources/repo/packages/ui"
+    expect(findCommonRoot(p1, p2)).toBe(path.normalize("C:/sources/repo"))
+  })
+})
+
+describe("findPackageRoot", () => {
+  it("finds package root when cwd and resolvedPath are in the same package", async () => {
+    const dir = await createTempDir({
+      "package.json": JSON.stringify({ name: "my-pkg" }),
+      "src/components/button.tsx": "",
+    })
+
+    const resolved = path.join(dir, "src", "components")
+    const pkgRoot = await findPackageRoot(dir, resolved)
+    expect(pkgRoot).toBe(dir)
+  })
+
+  it("finds workspace package root across packages in a monorepo", async () => {
+    const dir = await createTempDir({
+      "package.json": JSON.stringify({ name: "root" }),
+      "apps/web/package.json": JSON.stringify({ name: "web" }),
+      "packages/ui/package.json": JSON.stringify({ name: "ui" }),
+      "packages/ui/src/components/button.tsx": "",
+    })
+
+    const appCwd = path.join(dir, "apps", "web")
+    const resolvedUi = path.join(dir, "packages", "ui", "src", "components")
+    const pkgRoot = await findPackageRoot(appCwd, resolvedUi)
+    expect(pkgRoot).toBe(path.join(dir, "packages", "ui"))
   })
 })
