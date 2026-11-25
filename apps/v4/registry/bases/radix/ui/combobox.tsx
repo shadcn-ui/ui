@@ -9,7 +9,6 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
-  InputGroupInput,
 } from "@/registry/bases/radix/ui/input-group"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
@@ -77,7 +76,9 @@ function ComboboxInput({
   return (
     <InputGroup className={cn("cn-combobox-input w-auto", className)}>
       <ComboboxPrimitive.Input
-        render={<InputGroupInput disabled={disabled} />}
+        disabled={disabled}
+        data-slot="input-group-control"
+        className="cn-input cn-input-group-input w-full min-w-0 flex-1 outline-none placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
         {...props}
       />
       <InputGroupAddon align="inline-end">
