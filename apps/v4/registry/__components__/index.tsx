@@ -76,6 +76,7 @@ const shards: Record<
       "marker",
       "message",
       "message-scroller",
+      "trace",
       "dashboard-01",
       "sidebar-01",
       "sidebar-02",
