@@ -192,7 +192,7 @@ function normalizeDependencyRequests(
     }
 
     // Bare name that is already declared in package.json -> skip so we never
-    // rewrite the existing specifier (this is the #10525 fix).
+    // rewrite the existing specifier.
     if (
       skipInstalled &&
       !packageRequest.hasSpecifier &&
@@ -318,13 +318,13 @@ async function installWithPackageManager(
   assertSafeDependencies(dependencies)
   assertSafeDependencies(devDependencies)
 
-  if (dependencies?.length) {
+  if (dependencies.length) {
     await execa(packageManager, ["add", "--", ...dependencies], {
       cwd,
     })
   }
 
-  if (devDependencies?.length) {
+  if (devDependencies.length) {
     await execa(packageManager, ["add", "-D", "--", ...devDependencies], {
       cwd,
     })
@@ -375,13 +375,13 @@ async function installWithDeno(
   devDependencies: string[],
   cwd: string
 ) {
-  if (dependencies?.length) {
+  if (dependencies.length) {
     await execa("deno", ["add", ...dependencies.map((dep) => `npm:${dep}`)], {
       cwd,
     })
   }
 
-  if (devDependencies?.length) {
+  if (devDependencies.length) {
     await execa(
       "deno",
       ["add", "-D", ...devDependencies.map((dep) => `npm:${dep}`)],

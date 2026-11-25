@@ -93,7 +93,6 @@ export class StringLiterals {
     return Array.from(this.edits.values())
   }
 
-  // The code with the values set.
   apply() {
     return applyEdits(this.code, this.getEdits())
   }

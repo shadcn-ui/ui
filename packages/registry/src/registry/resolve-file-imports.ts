@@ -27,7 +27,6 @@ const DEPENDENCY_SKIP_LIST = [
 export function getDependencyFromModuleSpecifier(
   moduleSpecifier: string
 ): string | null {
-  // Skip if the dependency matches any pattern in the skip list
   if (DEPENDENCY_SKIP_LIST.some((pattern) => pattern.test(moduleSpecifier))) {
     return null
   }
@@ -62,12 +61,10 @@ export async function recursivelyResolveFileImports(
     resolvedFilePath
   )
 
-  // Skip if the file is in the skip list
   if (FILE_PATH_SKIP_LIST.includes(relativeRegistryFilePath)) {
     return { dependencies: [], files: [] }
   }
 
-  // Skip if the file extension is not one of the supported extensions
   const fileExtension = path.extname(filePath)
   if (!FILE_EXTENSIONS_FOR_LOOKUP.includes(fileExtension)) {
     return { dependencies: [], files: [] }
@@ -81,7 +78,6 @@ export async function recursivelyResolveFileImports(
 
   const stat = await fs.stat(resolvedFilePath)
   if (!stat.isFile()) {
-    // Optionally log or handle this case
     return { dependencies: [], files: [] }
   }
 
@@ -94,7 +90,6 @@ export async function recursivelyResolveFileImports(
   const files: z.infer<typeof registryItemSchema>["files"] = []
   const dependencies = new Set<string>()
 
-  // Add the original file first
   const fileType = determineFileType(filePath)
   const originalFile = {
     path: relativeRegistryFilePath,
@@ -103,7 +98,6 @@ export async function recursivelyResolveFileImports(
   }
   files.push(originalFile)
 
-  // 1. Find all import statements in the file.
   const moduleSpecifiers =
     fileExtension === ".css"
       ? getCssImportSpecifiers(content)
@@ -115,7 +109,6 @@ export async function recursivelyResolveFileImports(
       projectInfo.aliasPrefix
     )
 
-    // If not a local import, add to the dependencies array.
     if (!isAliasImport && !isRelativeImport) {
       const dependency = getDependencyFromModuleSpecifier(moduleSpecifier)
       if (dependency) {
@@ -142,8 +135,6 @@ export async function recursivelyResolveFileImports(
       continue
     }
 
-    // Check if the probable import path has a file extension.
-    // Try each extension until we find a file that exists.
     const hasExtension = path.extname(probableImportFilePath)
     if (!hasExtension) {
       for (const ext of FILE_EXTENSIONS_FOR_LOOKUP) {
@@ -163,7 +154,6 @@ export async function recursivelyResolveFileImports(
       probableImportFilePath
     )
 
-    // Skip if we've already processed this file or if it's in the skip list
     if (
       processedFiles.has(nestedRelativeRegistryFilePath) ||
       FILE_PATH_SKIP_LIST.includes(nestedRelativeRegistryFilePath)
@@ -185,7 +175,6 @@ export async function recursivelyResolveFileImports(
 
     files.push(file)
 
-    // Recursively process the imported file, passing the shared processedFiles set
     const nestedResults = await recursivelyResolveFileImports(
       nestedRelativeRegistryFilePath,
       config,
@@ -194,7 +183,6 @@ export async function recursivelyResolveFileImports(
     )
 
     if (nestedResults.files) {
-      // Only add files that haven't been processed yet
       for (const file of nestedResults.files) {
         if (!processedFiles.has(file.path)) {
           processedFiles.add(file.path)
@@ -208,7 +196,6 @@ export async function recursivelyResolveFileImports(
     }
   }
 
-  // Deduplicate files by path
   const uniqueFiles = Array.from(
     new Map(files.map((file) => [file.path, file])).values()
   )
@@ -263,5 +250,3 @@ function determineFileType(
 
   return "registry:component"
 }
-
-// Additional utility functions for local file support

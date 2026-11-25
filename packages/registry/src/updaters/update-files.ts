@@ -156,14 +156,12 @@ export async function updateFiles(
       continue
     }
 
-    // Check if the path exists and is a directory - we can't write to directories.
     if (existingFile && statSync(filePath).isDirectory()) {
       throw new Error(
         `Cannot write to ${filePath}: path exists and is a directory. Please provide a file path instead.`
       )
     }
 
-    // Run our transformers.
     // Skip transformers for .env files to preserve exact content
     // Skip transformers for universal item files (registry:file and registry:item)
     // to preserve their original content as they're meant to be framework-agnostic
@@ -257,12 +255,10 @@ export async function updateFiles(
       }
     }
 
-    // Rename middleware.ts to proxy.ts for Next.js 16+.
     if (_isNext16Middleware(filePath, projectInfo, config)) {
       filePath = filePath.replace(/middleware\.(ts|js)$/, "proxy.$1")
     }
 
-    // Create the target directory if it doesn't exist.
     if (!existsSync(targetDir)) {
       await fs.mkdir(targetDir, { recursive: true })
     }
@@ -286,7 +282,6 @@ export async function updateFiles(
 
     await fs.writeFile(filePath, content, "utf-8")
 
-    // Handle file creation logging
     if (!existingFile) {
       filesCreated.push(path.relative(config.resolvedPaths.cwd, filePath))
 
@@ -304,10 +299,8 @@ export async function updateFiles(
     : [...filesCreated, ...filesUpdated]
   const updatedFiles = await resolveImports(allFiles, config, plannedFilePaths)
 
-  // Let's update filesUpdated with the updated files.
   filesUpdated.push(...updatedFiles)
 
-  // Remove duplicates and filter out files already in filesCreated.
   filesCreated = Array.from(new Set(filesCreated))
   filesUpdated = Array.from(
     new Set(filesUpdated.filter((file) => !filesCreated.includes(file)))
@@ -400,14 +393,12 @@ async function resolveImports(
   for (const filepath of filePaths) {
     const resolvedPath = path.resolve(config.resolvedPaths.cwd, filepath)
 
-    // Check if the file exists.
     if (!existsSync(resolvedPath)) {
       continue
     }
 
     const content = await fs.readFile(resolvedPath, "utf-8")
 
-    // Skip if the file extension is not one of the supported extensions.
     // ts-morph's SourceFile#getExtension() is ".d.ts" for a declaration file,
     // so those are skipped too.
     if (
@@ -446,7 +437,7 @@ export function getPlannedFilePaths(
   }
 ) {
   return (files ?? [])
-    ?.filter((file): file is NonNullable<typeof file> => !!file?.content)
+    .filter((file): file is NonNullable<typeof file> => !!file?.content)
     .map((file, index) => {
       let filePath = resolveFilePath(file, config, {
         isSrcDir: options.isSrcDir,
@@ -573,28 +564,23 @@ export function resolveModuleByProbablePath(
 ) {
   const cwd = path.normalize(config.resolvedPaths.cwd)
 
-  // 1) Build a set of POSIX-normalized, project-relative files
   const relativeFiles = files.map((f) => f.split(path.sep).join(path.posix.sep))
   const fileSet = new Set(relativeFiles)
 
-  // 2) Strip any existing extension off the absolute base path
   const extInPath = path.extname(probableImportFilePath)
   const hasExt = extInPath !== ""
   const absBase = hasExt
     ? probableImportFilePath.slice(0, -extInPath.length)
     : probableImportFilePath
 
-  // 3) Compute the project-relative "base" directory for strong matching
   const relBaseRaw = path.relative(cwd, absBase)
   const relBase = relBaseRaw.split(path.sep).join(path.posix.sep)
 
-  // 4) Decide which extensions to try
   const tryExts = hasExt ? [extInPath] : extensions
 
-  // 5) Collect candidates
   const candidates = new Set<string>()
 
-  // 5a) Fast‑path: [base + ext] and [base/index + ext]
+  // Fast path: [base + ext] and [base/index + ext].
   for (const e of tryExts) {
     const absCand = absBase + e
     const relCand = path.posix.normalize(path.relative(cwd, absCand))
@@ -609,7 +595,7 @@ export function resolveModuleByProbablePath(
     }
   }
 
-  // 5b) Fallback: scan known files by basename
+  // Fallback: scan known files by basename.
   const name = path.basename(absBase)
   for (const f of relativeFiles) {
     if (tryExts.some((e) => f.endsWith(`/${name}${e}`))) {
@@ -617,23 +603,19 @@ export function resolveModuleByProbablePath(
     }
   }
 
-  // 6) If no matches, bail
   if (candidates.size === 0) return null
 
-  // 7) Sort by (1) extension priority, then (2) "strong" base match
+  // Sort by extension priority, then by a strong match on the base path.
   const sorted = Array.from(candidates).sort((a, b) => {
-    // a) extension order
     const aExt = path.posix.extname(a)
     const bExt = path.posix.extname(b)
     const ord = tryExts.indexOf(aExt) - tryExts.indexOf(bExt)
     if (ord !== 0) return ord
-    // b) strong match if path starts with relBase
     const aStrong = relBase && a.startsWith(relBase) ? -1 : 1
     const bStrong = relBase && b.startsWith(relBase) ? -1 : 1
     return aStrong - bStrong
   })
 
-  // 8) Return the first (best) candidate
   return sorted[0]
 }
 
@@ -645,8 +627,8 @@ export function toAliasedImport(
 ): string | null {
   const abs = path.normalize(path.join(config.resolvedPaths.cwd, filePath))
 
-  // 1️⃣ Find the longest matching alias root in resolvedPaths
-  //    e.g. key="ui", root="/…/components/ui" beats key="components"
+  // Find the longest matching alias root in resolvedPaths,
+  // e.g. key="ui", root="/…/components/ui" beats key="components"
   const matches = Object.entries(config.resolvedPaths)
     .filter(([key, root]) => {
       if (!root || NON_ALIAS_RESOLVED_PATH_KEYS.has(key)) {
@@ -681,10 +663,8 @@ export function toAliasedImport(
   }
   const [aliasKey, rootDir] = matches[0]
 
-  // 2️⃣ Compute the path UNDER that root
   let rel = path.relative(rootDir, abs)
-  // force POSIX-style separators
-  rel = rel.split(path.sep).join("/") // e.g. "button/index.tsx"
+  rel = rel.split(path.sep).join("/")
 
   const aliasBase =
     aliasKey === "cwd"
@@ -708,21 +688,18 @@ export function toAliasedImport(
     }
   }
 
-  // 3️⃣ Strip code-file extensions, keep others (css, json, etc.)
+  // Strip code-file extensions, keep others (css, json, etc.).
   const ext = path.posix.extname(rel)
   const keepExt = CODE_EXTENSIONS.includes(ext) ? "" : ext
   let noExt = rel.slice(0, rel.length - ext.length)
 
-  // 4️⃣ Collapse "/index" to its directory
   if (noExt.endsWith("/index")) {
     noExt = noExt.slice(0, -"/index".length)
   }
 
-  // 5️⃣ Build the aliased path
   let suffix = noExt === "" ? "" : `/${noExt}`
 
-  // Remove /src from suffix.
-  // Alias will handle this.
+  // The alias already covers /src.
   suffix = suffix.replace("/src", "")
 
   return `${aliasBase}${suffix}${keepExt}`

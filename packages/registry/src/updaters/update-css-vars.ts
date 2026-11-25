@@ -155,7 +155,6 @@ function updateCssVarsPlugin(
       }
 
       if (baseLayer !== undefined) {
-        // Add variables for each key in cssVars
         Object.entries(cssVars).forEach(([key, vars]) => {
           const selector = key === "light" ? ":root" : `.${key}`
           // TODO: Fix typecheck.
@@ -195,7 +194,6 @@ function cleanupDefaultNextStylesPlugin() {
         (node): node is Rule => node.type === "rule" && node.selector === "body"
       )
       if (bodyRule) {
-        // Remove color from the body node.
         bodyRule.nodes
           .find(
             (node): node is postcss.Declaration =>
@@ -207,7 +205,6 @@ function cleanupDefaultNextStylesPlugin() {
           )
           ?.remove()
 
-        // Remove background: linear-gradient.
         bodyRule.nodes
           .find((node): node is postcss.Declaration => {
             return (
@@ -220,7 +217,6 @@ function cleanupDefaultNextStylesPlugin() {
           })
           ?.remove()
 
-        // Remove font-family: Arial, Helvetica, sans-serif;
         bodyRule.nodes
           .find(
             (node): node is postcss.Declaration =>
@@ -230,7 +226,6 @@ function cleanupDefaultNextStylesPlugin() {
           )
           ?.remove()
 
-        // If the body rule is empty, remove it.
         if (bodyRule.nodes.length === 0) {
           bodyRule.remove()
         }
@@ -355,7 +350,6 @@ function updateCssVarsPluginV4(
         Object.entries(vars).forEach(([key, value]) => {
           let prop = `--${key.replace(/^--/, "")}`
 
-          // Special case for sidebar-background.
           if (prop === "--sidebar-background") {
             prop = "--sidebar"
           }
@@ -526,7 +520,6 @@ function addCustomVariant({ params }: { params: string }) {
       )
 
       if (!customVariant) {
-        // Find all import nodes
         const importNodes = root.nodes.filter(
           (node): node is AtRule =>
             node.type === "atrule" && node.name === "import"
@@ -539,11 +532,9 @@ function addCustomVariant({ params }: { params: string }) {
         })
 
         if (importNodes.length > 0) {
-          // Insert after the last import
           const lastImport = importNodes[importNodes.length - 1]
           root.insertAfter(lastImport, variantNode)
         } else {
-          // If no imports, insert after the first node
           root.insertAfter(root.nodes[0], variantNode)
         }
 
@@ -568,7 +559,6 @@ function addCustomImport({ params }: { params: string }) {
           node.type === "atrule" && node.name === "custom-variant"
       )
 
-      // Check if our specific import already exists.
       const hasImport = importNodes.some(
         (node) => node.params.replace(/["']/g, "") === params
       )
@@ -581,18 +571,15 @@ function addCustomImport({ params }: { params: string }) {
         })
 
         if (importNodes.length > 0) {
-          // If there are existing imports, add after the last import.
           const lastImport = importNodes[importNodes.length - 1]
           root.insertAfter(lastImport, importNode)
         } else if (customVariantNode) {
-          // If no imports but has custom-variant, insert before it.
           root.insertBefore(customVariantNode, importNode)
           root.insertBefore(
             customVariantNode,
             postcss.comment({ text: "---break---" })
           )
         } else {
-          // If no imports and no custom-variant, insert at the start.
           root.prepend(importNode)
           root.insertAfter(importNode, postcss.comment({ text: "---break---" }))
         }
@@ -625,7 +612,6 @@ function updateTailwindConfigPlugin(
       for (const plugin of tailwindConfig.plugins) {
         const pluginName = plugin.replace(/^require\(["']|["']\)$/g, "")
 
-        // Check if the plugin is already present.
         if (
           pluginNodes.some((node) => {
             return node.params.replace(/["']/g, "") === pluginName

@@ -68,7 +68,10 @@ import { clearRegistryContext } from "@shadcn/registry/internal/registry/context
 import { registryConfigSchema } from "@shadcn/registry/internal/registry/schema"
 import { isUrl } from "@shadcn/registry/internal/registry/utils"
 import { spinner } from "@shadcn/registry/internal/spinner"
-import { rawConfigSchema } from "@shadcn/registry/schema"
+import {
+  rawConfigSchema,
+  registryBaseConfigSchema,
+} from "@shadcn/registry/schema"
 import { Command } from "commander"
 import deepmerge from "deepmerge"
 import fsExtra from "fs-extra"
@@ -92,9 +95,9 @@ export const initOptionsSchema = z.object({
   base: z.enum(PRESET_BASES).optional(),
   template: z.string().optional(),
   monorepo: z.boolean().optional(),
-  existingConfig: z.record(z.unknown()).optional(),
+  existingConfig: z.record(z.string(), z.unknown()).optional(),
   installStyleIndex: z.boolean().default(true),
-  registryBaseConfig: rawConfigSchema.deepPartial().optional(),
+  registryBaseConfig: registryBaseConfigSchema.optional(),
   menuColor: z
     .enum([
       "default",

@@ -27,7 +27,6 @@ const ELEMENTS_REQUIRING_NATIVE_BUTTON_FALSE = [
 const MAX_ITERATIONS = 10
 
 export const transformAsChild: Transformer = (code, { config }) => {
-  // Only run for base- styles.
   if (!config.style?.startsWith("base-")) {
     return code
   }
@@ -142,13 +141,10 @@ function replaceAsChild(code: string, element: t.JSXElement) {
     .map((node) => getJsxChildText(code, node))
     .join("")
 
-  // Determine if we need nativeButton={false}.
-  // Only add it on Button when the child is a non-button element.
   const needsNativeButton =
     parentTagName === "Button" &&
     ELEMENTS_REQUIRING_NATIVE_BUTTON_FALSE.includes(childTagName)
 
-  // Get existing attributes (excluding asChild).
   const existingAttrs = getAttributesText(
     code,
     element.openingElement.attributes.filter(
@@ -156,12 +152,10 @@ function replaceAsChild(code: string, element: t.JSXElement) {
     )
   )
 
-  // Build the render prop value.
   const renderValue = childProps
     ? `{<${childTagName} ${childProps} />}`
     : `{<${childTagName} />}`
 
-  // Build new attributes.
   let newAttrs = existingAttrs ? `${existingAttrs} ` : ""
   newAttrs += `render=${renderValue}`
   if (needsNativeButton) {

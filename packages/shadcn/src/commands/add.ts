@@ -16,7 +16,11 @@ import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { updateAppIndex } from "@/src/utils/update-app-index"
 import { addComponents } from "@shadcn/registry/internal/add-components"
 import { loadEnvFiles } from "@shadcn/registry/internal/env-loader"
-import { createConfig, getConfig } from "@shadcn/registry/internal/get-config"
+import {
+  createConfig,
+  getConfig,
+  type Config,
+} from "@shadcn/registry/internal/get-config"
 import { getProjectInfo } from "@shadcn/registry/internal/get-project-info"
 import { highlighter } from "@shadcn/registry/internal/highlighter"
 import { logger } from "@shadcn/registry/internal/logger"
@@ -25,8 +29,8 @@ import {
   type PresetBase,
 } from "@shadcn/registry/internal/preset/preset"
 import {
+  getRegistry,
   getRegistryItems,
-  getShadcnRegistryIndex,
 } from "@shadcn/registry/internal/registry/api"
 import {
   COMPONENTS_HIDDEN_FROM_SELECTION,
@@ -84,6 +88,7 @@ export const add = new Command()
 
       let initialConfig = await getConfig(options.cwd)
       const hasExistingConfig = !!initialConfig
+      const selectComponentsAfterInit = !components.length && !hasExistingConfig
       if (!initialConfig) {
         initialConfig = createConfig({
           style: "new-york",
@@ -159,10 +164,10 @@ export const add = new Command()
         }
       }
 
-      if (!options.components?.length) {
+      if (!options.components?.length && !selectComponentsAfterInit) {
         options.components = await promptForRegistryComponents(
           options,
-          initialConfig.style
+          initialConfig
         )
       }
 
@@ -282,6 +287,10 @@ export const add = new Command()
         )
       }
 
+      if (selectComponentsAfterInit || !options.components) {
+        options.components = await promptForRegistryComponents(options, config)
+      }
+
       const { config: updatedConfig } = await ensureRegistriesInConfig(
         options.components,
         config,
@@ -316,7 +325,7 @@ export const add = new Command()
         return
       }
 
-      if (!initHasRun) {
+      if (!initHasRun || selectComponentsAfterInit) {
         await addComponents(options.components, config, options)
       }
 
@@ -335,21 +344,19 @@ export const add = new Command()
 
 async function promptForRegistryComponents(
   options: z.infer<typeof addOptionsSchema>,
-  style: string
+  config: Config
 ) {
-  const registryIndex = await getShadcnRegistryIndex()
-  if (!registryIndex) {
-    logger.break()
-    handleError(new Error("Failed to fetch registry index."))
-    return []
-  }
-
-  const { base } = parsePresetStyle(style)
+  const { items } = await getRegistry("@shadcn", { config })
+  const { base } = parsePresetStyle(config.style)
+  const registryIndex = items
+    .filter(
+      (entry) =>
+        entry.type === "registry:ui" && isComponentSelectable(entry.name, base)
+    )
+    .sort((a, b) => a.name.localeCompare(b.name))
 
   if (options.all) {
-    return registryIndex
-      .map((entry) => entry.name)
-      .filter((component) => isComponentSelectable(component, base))
+    return registryIndex.map((entry) => entry.name)
   }
 
   if (options.components?.length) {
@@ -362,17 +369,11 @@ async function promptForRegistryComponents(
     message: "Which components would you like to add?",
     hint: "Space to select. A to toggle all. Enter to submit.",
     instructions: false,
-    choices: registryIndex
-      .filter(
-        (entry) =>
-          entry.type === "registry:ui" &&
-          isComponentSelectable(entry.name, base)
-      )
-      .map((entry) => ({
-        title: entry.name,
-        value: entry.name,
-        selected: options.all ? true : options.components?.includes(entry.name),
-      })),
+    choices: registryIndex.map((entry) => ({
+      title: entry.name,
+      value: entry.name,
+      selected: options.all ? true : options.components?.includes(entry.name),
+    })),
   })
 
   if (!components?.length) {

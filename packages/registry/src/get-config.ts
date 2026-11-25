@@ -34,7 +34,6 @@ export async function getConfig(cwd: string) {
     return null
   }
 
-  // Set default icon library if not provided.
   if (!config.iconLibrary) {
     config.iconLibrary = config.style === "new-york" ? "radix" : "lucide"
   }
@@ -46,13 +45,11 @@ export async function resolveConfigPaths(
   cwd: string,
   config: z.infer<typeof rawConfigSchema>
 ) {
-  // Merge built-in registries with user registries
   config.registries = {
     ...BUILTIN_REGISTRIES,
     ...(config.registries || {}),
   }
 
-  // Read tsconfig.json.
   const tsConfig = await loadConfig(cwd)
 
   if (tsConfig.resultType === "failed") {
@@ -201,7 +198,6 @@ export async function getRawConfig(
 
     const config = rawConfigSchema.parse(configResult.config)
 
-    // Check if user is trying to override built-in registries
     if (config.registries) {
       for (const registryName of Object.keys(config.registries)) {
         if (registryName in BUILTIN_REGISTRIES) {
@@ -228,7 +224,7 @@ export async function getRawConfig(
 // Since cwd is not necessarily the root of the project.
 // We'll instead check if ui aliases resolve to a different root.
 export async function getWorkspaceConfig(config: Config) {
-  let resolvedAliases: any = {}
+  const resolvedAliases: Record<string, Config> = {}
 
   for (const key of Object.keys(config.aliases)) {
     if (!isAliasKey(key, config)) {
@@ -333,13 +329,7 @@ export type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P]
 }
 
-/**
- * Creates a config object with sensible defaults.
- * Useful for universal registry items that bypass framework detection.
- *
- * @param partial - Partial config values to override defaults
- * @returns A complete Config object
- */
+// Useful for universal registry items that bypass framework detection.
 export function createConfig(partial?: DeepPartial<Config>): Config {
   const defaultConfig: Config = {
     resolvedPaths: {
@@ -370,7 +360,6 @@ export function createConfig(partial?: DeepPartial<Config>): Config {
     },
   }
 
-  // Deep merge the partial config with defaults
   if (partial) {
     return {
       ...defaultConfig,

@@ -56,7 +56,6 @@ export async function getMonorepoTargets(cwd: string) {
     return []
   }
 
-  // Resolve patterns to directories.
   const dirs = await fg(patterns, {
     cwd,
     onlyDirectories: true,
@@ -78,7 +77,6 @@ export async function getMonorepoTargets(cwd: string) {
       path.resolve(fullPath, "components.json")
     )
 
-    // Check for framework config files.
     const hasFrameworkConfig = FRAMEWORK_CONFIG_FILES.some((pattern) => {
       const matches = fg.sync(pattern, {
         cwd: fullPath,
@@ -98,7 +96,6 @@ export async function getMonorepoTargets(cwd: string) {
   return targets
 }
 
-// Formats and logs the monorepo detection message.
 export function formatMonorepoMessage(
   command: string,
   targets: { name: string; hasConfig: boolean }[],
@@ -131,14 +128,12 @@ export function formatMonorepoMessage(
 export async function getWorkspacePatterns(cwd: string) {
   const patterns: string[] = []
 
-  // Read pnpm-workspace.yaml.
   const pnpmWorkspacePath = path.resolve(cwd, "pnpm-workspace.yaml")
   if (fs.existsSync(pnpmWorkspacePath)) {
     const content = await fs.readFile(pnpmWorkspacePath, "utf8")
     patterns.push(...parsePnpmWorkspacePackages(content))
   }
 
-  // Read package.json workspaces.
   const packageJsonPath = path.resolve(cwd, "package.json")
   if (fs.existsSync(packageJsonPath)) {
     try {
@@ -147,7 +142,6 @@ export async function getWorkspacePatterns(cwd: string) {
         ? packageJson.workspaces
         : packageJson.workspaces?.packages
       if (Array.isArray(workspaces)) {
-        // Filter out negation patterns.
         patterns.push(...workspaces.filter((w: string) => !w.startsWith("!")))
       }
     } catch {

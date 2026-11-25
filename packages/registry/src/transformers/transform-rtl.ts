@@ -100,7 +100,6 @@ const RTL_SIDE_PROP_COMPONENTS = [
   "DropdownMenuSubContent",
 ]
 
-// Side prop value mappings.
 const RTL_SIDE_PROP_MAPPINGS: Record<string, string> = {
   right: "inline-end",
   left: "inline-start",
@@ -130,12 +129,10 @@ export function applyRtlMapping(input: string) {
   return input
     .split(" ")
     .flatMap((className) => {
-      // Skip classes that already have rtl: or ltr: prefix.
       if (className.startsWith("rtl:") || className.startsWith("ltr:")) {
         return [className]
       }
 
-      // Replace the cn-rtl-flip marker with rtl:rotate-180.
       if (className === RTL_FLIP_MARKER) {
         return ["rtl:rotate-180"]
       }
@@ -198,7 +195,6 @@ export function applyRtlMapping(input: string) {
         variant?.includes("data-[side=left]") ||
         variant?.includes("data-[side=right]")
 
-      // Find matching RTL mapping for direct replacement.
       let mappedValue = value
       for (const [physical, logical] of RTL_MAPPINGS) {
         if (
@@ -219,7 +215,6 @@ export function applyRtlMapping(input: string) {
         }
       }
 
-      // Reassemble with variant and modifier.
       let result: string
       if (variant) {
         result = modifier

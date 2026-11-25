@@ -52,16 +52,13 @@ export const transformMenu: Transformer = (code, { config }) => {
     let needsCleanup = false
 
     if (menuColor === "inverted" || menuColor === "inverted-translucent") {
-      // Replace cn-menu-target with "dark".
       newText = newText.replace(/cn-menu-target/g, "dark")
     } else {
-      // Remove cn-menu-target for both "default-translucent" and "default".
       newText = newText.replace(/cn-menu-target/g, "")
       needsCleanup = true
     }
 
     if (isTranslucent) {
-      // Merge translucent classes with existing classes, then remove the placeholder.
       newText = newText.replace(
         /"([^"]*cn-menu-translucent[^"]*)"/g,
         (_, classes) => {
@@ -69,15 +66,11 @@ export const transformMenu: Transformer = (code, { config }) => {
           return `"${merged.replace(/\s*\bcn-menu-translucent\b\s*/g, " ").trim()}"`
         }
       )
-    } else {
-      // Remove cn-menu-translucent.
-      if (newText.includes("cn-menu-translucent")) {
-        newText = newText.replace(/cn-menu-translucent/g, "")
-        needsCleanup = true
-      }
+    } else if (newText.includes("cn-menu-translucent")) {
+      newText = newText.replace(/cn-menu-translucent/g, "")
+      needsCleanup = true
     }
 
-    // Clean up extra spaces only when classes were removed.
     if (needsCleanup) {
       newText = newText.replace(/\s{2,}/g, " ")
       newText = newText.replace(/"\s+/g, '"')

@@ -183,7 +183,7 @@ describe("validateRegistry", () => {
         expect.objectContaining({
           itemIndex: 1,
           itemName: "brand-font",
-          message: "font: Required",
+          message: "font: Invalid input: expected object, received undefined",
         }),
       ])
     )

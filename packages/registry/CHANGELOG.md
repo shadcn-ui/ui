@@ -1,5 +1,27 @@
 # @shadcn/registry
 
+## 0.2.1
+
+### Patch Changes
+
+- [#12479](https://github.com/shadcn-ui/ui/pull/12479) [`8f04138`](https://github.com/shadcn-ui/ui/commit/8f04138777c1b6996e709993362a7b0a12888ecf) Thanks [@dependabot](https://github.com/apps/dependabot)! - Update `undici` to 7.30.1.
+
+## 0.2.0
+
+### Minor Changes
+
+- [#12298](https://github.com/shadcn-ui/ui/pull/12298) [`954ce95`](https://github.com/shadcn-ui/ui/commit/954ce953412867a57b7e067c076fa7fd395ea115) Thanks [@shadcn](https://github.com/shadcn)! - Upgrade to Zod 4. `shadcn/schema` and `@shadcn/registry/schema` now export Zod 4 schemas, so passing them to Zod 3's `z` no longer typechecks. On Zod 3, use the exported types (`RegistryItem`, `RegistryItemFile`, `Config`) and the schema's own methods (`registryItemSchema.array()`) instead of `z.infer` and `z.array`. Zod errors expose `issues`, not `errors`. Validation messages now use Zod 4's wording.
+
+## 0.1.4
+
+### Patch Changes
+
+- [#12195](https://github.com/shadcn-ui/ui/pull/12195) [`97ddbf4`](https://github.com/shadcn-ui/ui/commit/97ddbf4274ed09d02aa7fd34375f2cf1e48cbbf0) Thanks [@shadcn](https://github.com/shadcn)! - Remove narrating comments and no-op guards from @shadcn/registry.
+
+- [#12192](https://github.com/shadcn-ui/ui/pull/12192) [`dd34945`](https://github.com/shadcn-ui/ui/commit/dd34945272729ecd198fabb0e32082f6321c210e) Thanks [@shadcn](https://github.com/shadcn)! - Move @shadcn/registry modules out of utils.
+
+- [#12048](https://github.com/shadcn-ui/ui/pull/12048) [`cfb4cb6`](https://github.com/shadcn-ui/ui/commit/cfb4cb6fce835cda9342fae1592b21ece48ce23d) Thanks [@dependabot](https://github.com/apps/dependabot)! - Update `undici` to 7.29.1.
+
 ## 0.1.3
 
 ### Patch Changes

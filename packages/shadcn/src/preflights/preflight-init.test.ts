@@ -19,7 +19,7 @@ vi.mock("@/src/commands/init", () => ({
     force: z.boolean(),
     monorepo: z.boolean().optional(),
     silent: z.boolean().optional(),
-    existingConfig: z.record(z.unknown()).optional(),
+    existingConfig: z.record(z.string(), z.unknown()).optional(),
   }),
 }))
 

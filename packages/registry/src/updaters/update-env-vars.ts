@@ -38,7 +38,6 @@ export async function updateEnvVars(
 
   const projectRoot = config.resolvedPaths.cwd
 
-  // Find existing env file or use .env.local as default.
   let envFilePath = path.join(projectRoot, ".env.local")
   const existingEnvFile = findExistingEnvFile(projectRoot)
 
@@ -49,7 +48,6 @@ export async function updateEnvVars(
   const envFileExists = existsSync(envFilePath)
   const envFileName = path.basename(envFilePath)
 
-  // Convert envVars object to env file format
   const newEnvContent = Object.entries(envVars)
     .map(([key, value]) => `${key}=${value}`)
     .join("\n")
@@ -80,7 +78,6 @@ export async function updateEnvVars(
       envSpinner?.stop()
     }
   } else {
-    // Create new env file
     await fs.writeFile(envFilePath, newEnvContent + "\n", "utf-8")
     envFileCreated = path.relative(projectRoot, envFilePath)
     envVarsAdded = Object.keys(envVars)

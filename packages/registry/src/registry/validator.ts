@@ -61,6 +61,5 @@ export function validateRegistryConfigForItems(
     buildUrlAndHeadersForRegistryItem(item, configWithDefaults(config))
   }
 
-  // Clear the registry context after validation.
   clearRegistryContext()
 }

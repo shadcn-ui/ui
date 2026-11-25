@@ -143,14 +143,13 @@ function transformPlaceholder(
     return getReplacementText(code, placeholder.start!, newText)
   }
 
-  // Find the library-specific prop (e.g., "lucide", "tabler", "hugeicons")
   const { attributes } = parseElement(text)
   const targetIndex = attributes.findIndex(
     ({ attribute, isOwn }) =>
       isOwn && getText(text, attribute.name) === targetLibrary
   )
   if (targetIndex === -1) {
-    return undefined // No icon specified for this library
+    return undefined
   }
 
   const initializer = attributes[targetIndex].attribute.value
@@ -201,7 +200,6 @@ function transformPlaceholder(
     )
   )
 
-  // Replace ICON placeholder in defaultPropsStr with actual icon name
   const defaultPropsToAdd = defaultPropsStr
     .replace(/\{ICON\}/g, `{${icon}}`)
     .trim()

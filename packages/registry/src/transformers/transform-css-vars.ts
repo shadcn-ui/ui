@@ -5,7 +5,6 @@ import { type Transformer } from "@/src/transformers"
 import { z } from "zod"
 
 export const transformCssVars: Transformer = (code, { config, baseColor }) => {
-  // No transform if using css variables.
   if (config.tailwind?.cssVariables || !baseColor?.inlineColors) {
     return code
   }
@@ -29,64 +28,6 @@ export const transformCssVars: Transformer = (code, { config, baseColor }) => {
 
   return literals.apply()
 }
-
-// export default function transformer(file: FileInfo, api: API) {
-//   const j = api.jscodeshift.withParser("tsx")
-
-//   // Replace bg-background with "bg-white dark:bg-slate-950"
-//   const $j = j(file.source)
-//   return $j
-//     .find(j.JSXAttribute, {
-//       name: {
-//         name: "className",
-//       },
-//     })
-//     .forEach((path) => {
-//       const { node } = path
-//       if (node?.value?.type) {
-//         if (node.value.type === "StringLiteral") {
-//           node.value.value = applyColorMapping(node.value.value)
-//           console.log(node.value.value)
-//         }
-
-//         if (
-//           node.value.type === "JSXExpressionContainer" &&
-//           node.value.expression.type === "CallExpression"
-//         ) {
-//           const callee = node.value.expression.callee
-//           if (callee.type === "Identifier" && callee.name === "cn") {
-//             node.value.expression.arguments.forEach((arg) => {
-//               if (arg.type === "StringLiteral") {
-//                 arg.value = applyColorMapping(arg.value)
-//               }
-
-//               if (
-//                 arg.type === "LogicalExpression" &&
-//                 arg.right.type === "StringLiteral"
-//               ) {
-//                 arg.right.value = applyColorMapping(arg.right.value)
-//               }
-//             })
-//           }
-//         }
-//       }
-//     })
-//     .toSource()
-// }
-
-// // export function splitClassName(input: string): (string | null)[] {
-// //   const parts = input.split(":")
-// //   const classNames = parts.map((part) => {
-// //     const match = part.match(/^\[?(.+)\]$/)
-// //     if (match) {
-// //       return match[1]
-// //     } else {
-// //       return null
-// //     }
-// //   })
-
-// //   return classNames
-// // }
 
 // Splits a className into [variant, name, alpha].
 // eg. hover:bg-primary-100 -> [hover, bg-primary, 100]
@@ -120,7 +61,6 @@ export function splitClassName(className: string): (string | null)[] {
     nameWithAlpha = className.slice(lastColonIndex + 1)
   }
 
-  // Now split nameWithAlpha by "/" for alpha modifier.
   // Alpha modifiers are numeric (e.g., /50) or arbitrary (e.g., /[50%]).
   // Named groups like /alert-dialog-content would have been part of variant.
   const slashIndex = nameWithAlpha.lastIndexOf("/")
@@ -140,12 +80,10 @@ export function applyColorMapping(
   input: string,
   mapping: z.infer<typeof registryBaseColorSchema>["inlineColors"]
 ) {
-  // Handle border classes.
   if (input.includes(" border ")) {
     input = input.replace(" border ", " border border-border ")
   }
 
-  // Build color mappings.
   const classNames = input.split(" ")
   const lightMode = new Set<string>()
   const darkMode = new Set<string>()
@@ -153,9 +91,7 @@ export function applyColorMapping(
     const [variant, value, modifier] = splitClassName(className)
     const prefix = PREFIXES.find((prefix) => value?.startsWith(prefix))
     if (!prefix) {
-      if (!lightMode.has(className)) {
-        lightMode.add(className)
-      }
+      lightMode.add(className)
       continue
     }
 
@@ -175,9 +111,7 @@ export function applyColorMapping(
       continue
     }
 
-    if (!lightMode.has(className)) {
-      lightMode.add(className)
-    }
+    lightMode.add(className)
   }
 
   return [...Array.from(lightMode), ...Array.from(darkMode)].join(" ").trim()

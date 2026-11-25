@@ -132,7 +132,6 @@ function shouldIncludeHeader(originalValue: string, expandedValue: string) {
 
   // If the original value contains valid env vars, only include if expansion changed the value.
   if (originalValue.includes("${")) {
-    // Check if there are actual env vars in the string
     const envVars = originalValue.match(ENV_VAR_PATTERN)
     if (envVars) {
       const templateWithoutVars = originalValue
@@ -148,9 +147,6 @@ function shouldIncludeHeader(originalValue: string, expandedValue: string) {
 /**
  * Resolves a registry URL from a path or URL string.
  * Handles special cases like v0 registry URLs that need /json suffix.
- *
- * @param pathOrUrl - Either a relative path or a full URL
- * @returns The resolved registry URL
  */
 export function resolveRegistryUrl(pathOrUrl: string) {
   if (isUrl(pathOrUrl)) {

@@ -21,7 +21,6 @@ function isRemovableCnMarker(token: string) {
   return CN_MARKER_REGEX.test(token) && !PRESERVED_CN_MARKERS.has(token)
 }
 
-// Helper to strip all cn-* marker classes from a className string.
 export function stripCnMarkers(className: string) {
   return className
     .split(/\s+/)
@@ -33,7 +32,6 @@ function hasRemovableCnMarker(className: string) {
   return className.split(/\s+/).some(isRemovableCnMarker)
 }
 
-// Processes a string-like literal and strips cn-* markers.
 function processStringLiteral(literals: StringLiterals, node: Literal) {
   const currentValue = literals.getValue(node)
   if (!hasRemovableCnMarker(currentValue)) {
@@ -69,7 +67,6 @@ function cleanup(code: string) {
   const attributesToRemove: number[] = []
   const literals = new StringLiterals(code, file)
 
-  // Process all JSX className attributes.
   getJsxAttributes(file).forEach(({ attribute }, index) => {
     const attrName = getText(code, attribute.name)
     if (attrName !== "className" && attrName !== "classNames") {
@@ -84,7 +81,6 @@ function cleanup(code: string) {
       if (hasRemovableCnMarker(currentValue)) {
         const newValue = stripCnMarkers(currentValue)
         if (newValue === "") {
-          // Remove the entire attribute if className becomes empty.
           attributesToRemove.push(index)
         } else if (newValue !== currentValue) {
           literals.setValue(initializer, newValue)
@@ -98,7 +94,6 @@ function cleanup(code: string) {
     }
   })
 
-  // Remove empty className attributes.
   return cleanupCalls(removeJsxAttributes(literals.apply(), attributesToRemove))
 }
 
@@ -112,7 +107,6 @@ function cleanupCalls(code: string) {
   const literals = new StringLiterals(code, file)
   const calls = getDescendants(file, isCallExpression)
 
-  // Process cva() calls.
   for (const call of calls) {
     if (getText(code, call.callee) !== "cva") {
       continue
@@ -132,7 +126,6 @@ function cleanupCalls(code: string) {
     }
   }
 
-  // Process mergeProps() calls.
   for (const call of calls) {
     if (getText(code, call.callee) !== "mergeProps") {
       continue

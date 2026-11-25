@@ -217,7 +217,6 @@ export async function transformTailwindConfig(
   // TODO: maybe we do need to traverse the default export?
   const configObject = findConfigObject(code, options)
 
-  // We couldn't find the config object, so we return the input as is.
   if (!configObject) {
     return input
   }
@@ -225,15 +224,12 @@ export async function transformTailwindConfig(
   const configStart = configObject.start!
   const quoteChar = getQuoteChar(code, configObject)
 
-  // Add darkMode.
   code = addTailwindConfigDarkMode(code, configStart, quoteChar, options)
 
-  // Add Tailwind config plugins.
   tailwindConfig.plugins?.forEach((plugin) => {
     code = addTailwindConfigPlugin(code, configStart, plugin, options)
   })
 
-  // Add Tailwind config theme.
   if (tailwindConfig.theme) {
     code = addTailwindConfigTheme(
       code,
@@ -335,7 +331,6 @@ function addTailwindConfigDarkMode(
 
   // If property is an array, append.
   if (initializer.type === "ArrayExpression") {
-    // Check if the array already contains the value.
     if (getElementTexts(code, initializer).includes(newValue)) {
       return code
     }
@@ -387,13 +382,11 @@ function addTailwindConfigTheme(
   theme: UpdaterTailwindConfig["theme"],
   options: ParseOptions
 ) {
-  // Ensure there is a theme property.
   const configObject = getObjectAt(code, configStart, options)
   if (!getProperty(code, configObject, "theme")) {
     code = addPropertyAssignment(code, configObject, "theme", "{}", options)
   }
 
-  // Nest all spread properties.
   code = nestSpreadProperties(
     code,
     getObjectAt(code, configStart, options),
@@ -435,7 +428,6 @@ function addTailwindConfigTheme(
     code = replaceWithText(code, themeInitializer, resultString, options)
   }
 
-  // Unnest all spread properties.
   return unnestSpreadProperties(
     code,
     getObjectAt(code, configStart, options),
@@ -495,8 +487,6 @@ export function nestSpreadProperties(
       if (property.type === "SpreadElement") {
         const spreadText = getText(code, property.argument)
 
-        // Replace spread with a property assignment
-        //
         // As in ts-morph, the index counts comment nodes, so after one, the
         // placeholder goes in earlier, and the text it copies can bring a
         // second comma that TypeScript skips (see getCommentNodeTexts). A
@@ -523,7 +513,6 @@ export function nestSpreadProperties(
 
       if (isPropertyAssignment(property)) {
         if (property.value.type === "ObjectExpression") {
-          // Recursively process nested object literals
           return nestSpreadProperties(code, property.value, options)
         }
         if (property.value.type === "ArrayExpression") {
@@ -545,16 +534,13 @@ export function nestSpreadElements(
     const element = array.elements[j]
 
     if (element?.type === "ObjectExpression") {
-      // Recursive check on objects within arrays
       return nestSpreadProperties(code, element, options)
     }
     if (element?.type === "ArrayExpression") {
-      // Recursive check on nested arrays
       return nestSpreadElements(code, element, options)
     }
     if (element?.type === "SpreadElement") {
       const spreadText = getText(code, element)
-      // Spread element within an array
       code = removeElement(code, array, j, options)
       return insertElement(
         code,
@@ -623,16 +609,13 @@ export function unnestSpreadElements(
     const element = array.elements[j]
 
     if (element?.type === "ObjectExpression") {
-      // Recursive check on objects within arrays
       return unnestSpreadProperties(code, element, options)
     }
     if (element?.type === "ArrayExpression") {
-      // Recursive check on nested arrays
       return unnestSpreadElements(code, element, options)
     }
     if (element?.type === "StringLiteral") {
       const spreadText = getText(code, element)
-      // check if spread element
       const spreadTest = /(?:^['"])(\.\.\..*)(?:['"]$)/g
       if (spreadTest.test(spreadText)) {
         code = removeElement(code, array, j, options)

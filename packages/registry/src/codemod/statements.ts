@@ -153,7 +153,6 @@ export function removeStatement(
       getStatementNonWhitespaceStart(code, statements, index + 1)
     )
   } else if (statement.end === code.length) {
-    // The statement ends where the source file does.
     end = statement.end
   } else if (isNewLineAtPos(code, triviaEnd)) {
     const nextLineStart = getPosAtNextNonBlankLine(code, triviaEnd)

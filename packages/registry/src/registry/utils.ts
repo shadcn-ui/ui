@@ -51,7 +51,6 @@ export function isUniversalRegistryItem(
 
   const files = registryItem.files ?? []
 
-  // If there are files, all must have targets and be of type registry:file or registry:item.
   return files.every(
     (file) =>
       !!file.target &&
@@ -72,7 +71,6 @@ export async function deduplicateFilesByTarget(
       .parse(filesArrays.flat().filter(Boolean))
   }
 
-  // Get project info for file resolution.
   const projectInfo = await getProjectInfo(config.resolvedPaths.cwd)
   const targetMap = new Map<string, z.infer<typeof registryItemFileSchema>>()
   const allFiles = z
@@ -90,7 +88,6 @@ export async function deduplicateFilesByTarget(
     })
 
     if (resolvedPath) {
-      // Last one wins - overwrites previous entry.
       targetMap.set(resolvedPath, file)
     }
   })
