@@ -1221,6 +1221,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='var(--foreground)'><rect width='32' height='32' rx='4'/></svg>"
   },
   {
+    "name": "@fable-ui",
+    "homepage": "https://fable-ui.shobky.com",
+    "url": "https://fable-ui.shobky.com/r/{name}.json",
+    "description": "Copy-and-own registry of AI-intent-aware UI. The model calls one render_ui tool with a bounded, validated block catalog instead of writing code.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='10' y='6' width='8' height='52' rx='4' fill='#17151C'/><rect x='23' y='6' width='31' height='7' rx='3.5' fill='#17151C'/><rect x='23' y='20' width='21' height='15' rx='5.5' fill='#E8552E'/></svg>"
+  },
+  {
     "name": "@facade",
     "homepage": "https://facadeui.dev",
     "url": "https://facadeui.dev/r/{name}.json",
