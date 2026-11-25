@@ -11,18 +11,38 @@ import {
 import { parseDesignSystemConfig } from "@/app/(app)/(create)/lib/parse-config"
 import { getPresetCode } from "@/app/(app)/(create)/lib/preset-code"
 
+const corsHeaders = { "Access-Control-Allow-Origin": "*" }
+
+export async function OPTIONS() {
+  return new Response(null, {
+    status: 204,
+    headers: {
+      ...corsHeaders,
+      Allow: "GET, HEAD, OPTIONS",
+      "Access-Control-Allow-Methods": "GET, HEAD, OPTIONS",
+      "Access-Control-Allow-Headers": "Accept, User-Agent",
+    },
+  })
+}
+
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams
     const result = parseDesignSystemConfig(searchParams)
 
     if (!result.success) {
-      return NextResponse.json({ error: result.error }, { status: 400 })
+      return NextResponse.json(
+        { error: result.error },
+        { status: 400, headers: corsHeaders }
+      )
     }
 
     const onlyResult = parseRegistryBaseParts(searchParams.get("only"))
     if (!onlyResult.success) {
-      return NextResponse.json({ error: onlyResult.error }, { status: 400 })
+      return NextResponse.json(
+        { error: onlyResult.error },
+        { status: 400, headers: corsHeaders }
+      )
     }
 
     const rawPreset = searchParams.get("preset")
@@ -53,7 +73,7 @@ export async function GET(request: NextRequest) {
       })
     }
 
-    return NextResponse.json(parseResult.data)
+    return NextResponse.json(parseResult.data, { headers: corsHeaders })
   } catch (error) {
     return NextResponse.json(
       {
