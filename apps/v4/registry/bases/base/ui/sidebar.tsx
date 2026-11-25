@@ -404,7 +404,11 @@ function SidebarGroupLabel({
   className,
   render,
   ...props
-}: useRender.ComponentProps<"div"> & React.ComponentProps<"div">) {
+}: useRender.ComponentProps<
+  "div",
+  { slot: "sidebar-group-label"; sidebar: "group-label" }
+> &
+  React.ComponentProps<"div">) {
   return useRender({
     defaultTagName: "div",
     props: mergeProps<"div">(
@@ -428,7 +432,11 @@ function SidebarGroupAction({
   className,
   render,
   ...props
-}: useRender.ComponentProps<"button"> & React.ComponentProps<"button">) {
+}: useRender.ComponentProps<
+  "button",
+  { slot: "sidebar-group-action"; sidebar: "group-action" }
+> &
+  React.ComponentProps<"button">) {
   return useRender({
     defaultTagName: "button",
     props: mergeProps<"button">(
@@ -513,7 +521,15 @@ function SidebarMenuButton({
   tooltip,
   className,
   ...props
-}: useRender.ComponentProps<"button"> &
+}: useRender.ComponentProps<
+  "button",
+  {
+    slot: "sidebar-menu-button"
+    sidebar: "menu-button"
+    size: VariantProps<typeof sidebarMenuButtonVariants>["size"]
+    active: boolean
+  }
+> &
   React.ComponentProps<"button"> & {
     isActive?: boolean
     tooltip?: string | React.ComponentProps<typeof TooltipContent>
@@ -564,7 +580,10 @@ function SidebarMenuAction({
   render,
   showOnHover = false,
   ...props
-}: useRender.ComponentProps<"button"> &
+}: useRender.ComponentProps<
+  "button",
+  { slot: "sidebar-menu-action"; sidebar: "menu-action" }
+> &
   React.ComponentProps<"button"> & {
     showOnHover?: boolean
   }) {
@@ -675,7 +694,15 @@ function SidebarMenuSubButton({
   isActive = false,
   className,
   ...props
-}: useRender.ComponentProps<"a"> &
+}: useRender.ComponentProps<
+  "a",
+  {
+    slot: "sidebar-menu-sub-button"
+    sidebar: "menu-sub-button"
+    size: "sm" | "md"
+    active: boolean
+  }
+> &
   React.ComponentProps<"a"> & {
     size?: "sm" | "md"
     isActive?: boolean
