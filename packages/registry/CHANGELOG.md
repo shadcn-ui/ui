@@ -1,5 +1,11 @@
 # @shadcn/registry
 
+## 0.2.2
+
+### Patch Changes
+
+- [#12845](https://github.com/shadcn-ui/ui/pull/12845) [`d4f8278`](https://github.com/shadcn-ui/ui/commit/d4f82786710ce67a28733c015894782be71c3a4b) Thanks [@shadcn](https://github.com/shadcn)! - Upgrade ts-morph to v28 to resolve the minimatch advisory (GHSA-g3hv-75wg-m249).
+
 ## 0.2.1
 
 ### Patch Changes
