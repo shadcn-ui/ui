@@ -6,16 +6,23 @@ export function isEnvFile(filePath: string) {
   return /^\.env(\.|$)/.test(fileName)
 }
 
+const LOCAL_ENV_FILES = [
+  ".env.local",
+  ".env",
+  ".env.development.local",
+  ".env.development",
+]
+
+// Whether the file is one of the local env files that findExistingEnvFile
+// looks for, and so may be merged into whichever of them already exists.
+// Other env files, such as .env.example or .env.production, are not.
+export function isLocalEnvFile(filePath: string) {
+  return LOCAL_ENV_FILES.includes(path.basename(filePath))
+}
+
 // TODO: abstract this to a more generic function.
 export function findExistingEnvFile(targetDir: string) {
-  const variants = [
-    ".env.local",
-    ".env",
-    ".env.development.local",
-    ".env.development",
-  ]
-
-  for (const variant of variants) {
+  for (const variant of LOCAL_ENV_FILES) {
     const filePath = path.join(targetDir, variant)
     if (existsSync(filePath)) {
       return filePath
