@@ -61,6 +61,7 @@ import { ChartRadialShape } from "@/registry/new-york-v4/charts/chart-radial-sha
 import { ChartRadialSimple } from "@/registry/new-york-v4/charts/chart-radial-simple"
 import { ChartRadialStacked } from "@/registry/new-york-v4/charts/chart-radial-stacked"
 import { ChartRadialText } from "@/registry/new-york-v4/charts/chart-radial-text"
+import { ChartScatterDefault } from "@/registry/new-york-v4/charts/chart-scatter-default"
 import { ChartTooltipAdvanced } from "@/registry/new-york-v4/charts/chart-tooltip-advanced"
 import { ChartTooltipDefault } from "@/registry/new-york-v4/charts/chart-tooltip-default"
 import { ChartTooltipFormatter } from "@/registry/new-york-v4/charts/chart-tooltip-formatter"
@@ -86,6 +87,7 @@ interface ChartGroups {
   pie: ChartItem[]
   radar: ChartItem[]
   radial: ChartItem[]
+  scatter: ChartItem[]
   tooltip: ChartItem[]
 }
 
@@ -178,6 +180,9 @@ export const charts: ChartGroups = {
     { id: "chart-radial-shape", component: ChartRadialShape },
     { id: "chart-radial-stacked", component: ChartRadialStacked },
   ],
+  scatter: [
+    { id: "chart-scatter-default", component: ChartScatterDefault },
+  ],
   tooltip: [
     { id: "chart-tooltip-default", component: ChartTooltipDefault },
     {
@@ -263,6 +268,7 @@ export {
   ChartRadialText,
   ChartRadialShape,
   ChartRadialStacked,
+  ChartScatterDefault,
   ChartTooltipDefault,
   ChartTooltipIndicatorLine,
   ChartTooltipIndicatorNone,
