@@ -105,6 +105,7 @@ export async function updateFiles(
   let filesSkipped: string[] = []
   let envVarsAdded: string[] = []
   let envFile: string | null = null
+  const binaryFilePaths = new Set<string>()
 
   for (let index = 0; index < files.length; index++) {
     const file = files[index]
@@ -145,6 +146,11 @@ export async function updateFiles(
 
     const existingFile = existsSync(filePath)
 
+    // Skipped files also reach the final import pass in interactive mode.
+    if (file.encoding === "base64") {
+      binaryFilePaths.add(path.relative(config.resolvedPaths.cwd, filePath))
+    }
+
     // TODO: revisit this when we implement utils transform instead of override.
     if (
       file.type === "registry:lib" &&
@@ -167,63 +173,74 @@ export async function updateFiles(
     // to preserve their original content as they're meant to be framework-agnostic
     const isUniversalItemFile =
       file.type === "registry:file" || file.type === "registry:item"
-    const content =
-      isEnvFile(filePath) || isUniversalItemFile
-        ? file.content
-        : await transform(
-            {
-              filename: file.path,
-              raw: file.content,
-              config,
-              baseColor,
-              transformJsx: !config.tsx,
-              isRemote: options.isRemote,
-              supportedFontMarkers: options.supportedFontMarkers,
-            },
-            [
-              transformImport,
-              transformRsc,
-              transformCssVars,
-              transformTwPrefixes,
-              transformIcons,
-              transformMenu,
-              transformAsChild,
-              transformRtl,
-              ...(_isNext16Middleware(filePath, projectInfo, config)
-                ? [transformNext]
-                : []),
-              transformFont,
-              transformCleanup,
-            ]
-          )
+    const content: string | Buffer =
+      file.encoding === "base64"
+        ? Buffer.from(file.content, "base64")
+        : isEnvFile(filePath) || isUniversalItemFile
+          ? file.content
+          : await transform(
+              {
+                filename: file.path,
+                raw: file.content,
+                config,
+                baseColor,
+                transformJsx: !config.tsx,
+                isRemote: options.isRemote,
+                supportedFontMarkers: options.supportedFontMarkers,
+              },
+              [
+                transformImport,
+                transformRsc,
+                transformCssVars,
+                transformTwPrefixes,
+                transformIcons,
+                transformMenu,
+                transformAsChild,
+                transformRtl,
+                ...(_isNext16Middleware(filePath, projectInfo, config)
+                  ? [transformNext]
+                  : []),
+                transformFont,
+                transformCleanup,
+              ]
+            )
+    const isTextEnvFile = typeof content === "string" && isEnvFile(filePath)
 
     // Skip the file if it already exists and the content is the same.
     // Exception: Don't skip .env files as we merge content instead of replacing
-    if (existingFile && !isEnvFile(filePath)) {
-      const resolvedContent = await rewriteResolvedImportsInContent({
-        config,
-        content,
-        filePaths: plannedFilePaths,
-        projectInfo,
-        resolvedPath: filePath,
-        tsConfig,
-      })
-      const existingFileContent = await fs.readFile(filePath, "utf-8")
-
-      if (
-        isContentSame(existingFileContent, resolvedContent, {
-          // Ignore import differences for workspace components.
-          // TODO: figure out if we always want this.
-          ignoreImports: options.isWorkspace,
+    if (existingFile && !isTextEnvFile) {
+      if (Buffer.isBuffer(content)) {
+        const existingFileContent = await fs.readFile(filePath)
+        if (existingFileContent.equals(content)) {
+          filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
+          continue
+        }
+      } else {
+        const resolvedContent = await rewriteResolvedImportsInContent({
+          config,
+          content,
+          filePaths: plannedFilePaths,
+          projectInfo,
+          resolvedPath: filePath,
+          tsConfig,
         })
-      ) {
-        filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
-        continue
+        const existingFileContent = await fs.readFile(filePath, "utf-8")
+
+        if (
+          isContentSame(existingFileContent, resolvedContent, {
+            // Ignore import differences for workspace components.
+            // TODO: figure out if we always want this.
+            ignoreImports: options.isWorkspace,
+          })
+        ) {
+          filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
+          continue
+        }
       }
     }
 
     // Skip overwrite prompt for .env files - we'll handle them specially
-    if (existingFile && !options.overwrite && !isEnvFile(filePath)) {
+    if (existingFile && !options.overwrite && !isTextEnvFile) {
       if (!options.interactive) {
         filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
         continue
@@ -264,7 +281,7 @@ export async function updateFiles(
     }
 
     // Special handling for .env files - append only new keys
-    if (isEnvFile(filePath) && existingFile) {
+    if (isTextEnvFile && existingFile) {
       const existingFileContent = await fs.readFile(filePath, "utf-8")
       const mergedContent = mergeEnvContent(existingFileContent, content)
       envVarsAdded = getNewEnvKeys(existingFileContent, content)
@@ -280,12 +297,17 @@ export async function updateFiles(
       continue
     }
 
-    await fs.writeFile(filePath, content, "utf-8")
+    if (Buffer.isBuffer(content)) {
+      await fs.writeFile(filePath, content)
+      binaryFilePaths.add(path.relative(config.resolvedPaths.cwd, filePath))
+    } else {
+      await fs.writeFile(filePath, content, "utf-8")
+    }
 
     if (!existingFile) {
       filesCreated.push(path.relative(config.resolvedPaths.cwd, filePath))
 
-      if (isEnvFile(filePath)) {
+      if (isTextEnvFile) {
         envVarsAdded = Object.keys(parseEnvContent(content))
         envFile = path.relative(config.resolvedPaths.cwd, filePath)
       }
@@ -297,7 +319,11 @@ export async function updateFiles(
   const allFiles = options.interactive
     ? [...filesCreated, ...filesUpdated, ...filesSkipped]
     : [...filesCreated, ...filesUpdated]
-  const updatedFiles = await resolveImports(allFiles, config, plannedFilePaths)
+  const updatedFiles = await resolveImports(
+    allFiles.filter((filePath) => !binaryFilePaths.has(filePath)),
+    config,
+    plannedFilePaths
+  )
 
   filesUpdated.push(...updatedFiles)
 
