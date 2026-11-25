@@ -1806,7 +1806,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "A simple signup form.",
       type: "registry:block",
-      registryDependencies: ["button", "card", "input", "label"],
+      registryDependencies: ["button", "card", "input", "label", "field"],
       files: [
         {
           path: "registry/new-york-v4/blocks/signup-01/page.tsx",
