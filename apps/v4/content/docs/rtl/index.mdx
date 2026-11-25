@@ -154,6 +154,15 @@ Add the direction component to your project.
 npx shadcn@latest add direction
 ```
 
+<Callout className="mt-6">
+  The `direction` component is only published for the Tailwind v4 styles. If
+  your `components.json` still uses the `new-york` or `default` style, the
+  command above returns a 404. Install it from the v4 registry instead with
+  `npx shadcn@latest add https://ui.shadcn.com/r/styles/new-york-v4/direction.json`,
+  and run `npm install radix-ui` if your project uses the individual
+  `@radix-ui/react-*` packages.
+</Callout>
+
 ### Add DirectionProvider
 
 Follow your framework's documentation for details on how to add the `DirectionProvider` component to your project.
