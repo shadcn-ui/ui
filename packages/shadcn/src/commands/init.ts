@@ -60,6 +60,7 @@ import {
   type PresetBase,
 } from "@shadcn/registry/internal/preset/preset"
 import { getRegistryBaseColors } from "@shadcn/registry/internal/registry/api"
+import { BUTTON_FEEDBACK_VALUES } from "@shadcn/registry/internal/registry/button-feedback"
 import {
   BUILTIN_REGISTRIES,
   SHADCN_URL,
@@ -92,6 +93,7 @@ export const initOptionsSchema = z.object({
   cssVariables: z.boolean().default(true),
   rtl: z.boolean().optional(),
   pointer: z.boolean().optional(),
+  buttonFeedback: z.enum(BUTTON_FEEDBACK_VALUES).optional(),
   base: z.enum(PRESET_BASES).optional(),
   template: z.string().optional(),
   monorepo: z.boolean().optional(),
@@ -112,7 +114,10 @@ export const initOptionsSchema = z.object({
 
 export function applyInitUrlOptions(
   url: URL,
-  options: Pick<z.infer<typeof initOptionsSchema>, "rtl" | "pointer">
+  options: Pick<
+    z.infer<typeof initOptionsSchema>,
+    "rtl" | "pointer" | "buttonFeedback"
+  >
 ) {
   if (options.rtl) {
     url.searchParams.set("rtl", "true")
@@ -124,6 +129,10 @@ export function applyInitUrlOptions(
     url.searchParams.set("pointer", "true")
   } else if (options.pointer === false) {
     url.searchParams.delete("pointer")
+  }
+
+  if (options.buttonFeedback !== undefined) {
+    url.searchParams.set("buttonFeedback", options.buttonFeedback)
   }
 
   return url
@@ -165,6 +174,10 @@ export const init = new Command()
   .option("--no-rtl", "disable RTL support.")
   .option("--pointer", "enable pointer cursor for buttons.")
   .option("--no-pointer", "disable pointer cursor for buttons.")
+  .option(
+    "--button-feedback <feedback>",
+    "set Button feedback (press, ripple, soft-ripple)."
+  )
   .option("--reinstall", "re-install existing UI components.")
   .option("--no-reinstall", "do not re-install existing UI components.")
   .action(async (components, opts) => {
@@ -187,6 +200,34 @@ export const init = new Command()
         reinstall: opts.reinstall,
         cwd: path.resolve(opts.cwd),
       })
+      let installButtonFeedback = options.buttonFeedback !== undefined
+      const initUrlArg = [
+        ...(typeof options.preset === "string" ? [options.preset] : []),
+        ...components,
+      ].find((component) => {
+        if (!isUrl(component)) {
+          return false
+        }
+
+        try {
+          return new URL(component).pathname === "/init"
+        } catch {
+          return false
+        }
+      })
+      const initUrlHasButtonFeedbackOption = initUrlArg
+        ? new URL(initUrlArg).searchParams.has("buttonFeedback")
+        : false
+      if (initUrlArg && options.buttonFeedback === undefined) {
+        const initUrlParams = new URL(initUrlArg).searchParams
+        const buttonFeedback = initUrlParams.get("buttonFeedback")
+        if (buttonFeedback) {
+          options.buttonFeedback = z
+            .enum(BUTTON_FEEDBACK_VALUES)
+            .parse(buttonFeedback)
+        }
+        installButtonFeedback = true
+      }
       const presetsByName = new Map(Object.entries(DEFAULT_PRESETS))
 
       let presetBase: PresetBase | undefined
@@ -290,6 +331,16 @@ export const init = new Command()
         // Pass existing config so preflight can use it (e.g. tailwind.css path in monorepos).
         if (existingConfig) {
           options.existingConfig = existingConfig
+          if (
+            options.buttonFeedback === undefined &&
+            !initUrlHasButtonFeedbackOption &&
+            typeof existingConfig.buttonFeedback === "string"
+          ) {
+            options.buttonFeedback = z
+              .enum(BUTTON_FEEDBACK_VALUES)
+              .parse(existingConfig.buttonFeedback)
+            installButtonFeedback = true
+          }
         }
 
         let shouldReinstall = options.reinstall
@@ -319,6 +370,33 @@ export const init = new Command()
             logger.break()
           }
         }
+      }
+
+      if (
+        options.buttonFeedback === undefined &&
+        !options.defaults &&
+        options.preset === undefined &&
+        components.length === 0 &&
+        !hasExistingConfig
+      ) {
+        const { buttonFeedback } = await prompts({
+          type: "select",
+          name: "buttonFeedback",
+          message: "Select a Button feedback style",
+          initial: 0,
+          choices: [
+            { title: "Press", value: "press" },
+            { title: "Ripple", value: "ripple" },
+            { title: "Soft Ripple", value: "soft-ripple" },
+          ],
+        })
+
+        if (buttonFeedback === undefined) {
+          process.exit(1)
+        }
+
+        options.buttonFeedback = buttonFeedback
+        installButtonFeedback = true
       }
 
       if (
@@ -414,6 +492,7 @@ export const init = new Command()
             template: options.template,
             base: options.base!,
             pointer: options.pointer,
+            buttonFeedback: options.buttonFeedback,
           })
           components = [result.url, ...components]
           presetBase = result.base
@@ -452,6 +531,7 @@ export const init = new Command()
                 template: options.template,
                 preset: presetArg,
                 pointer: options.pointer,
+                buttonFeedback: options.buttonFeedback,
               }
             )
             presetBase = undefined
@@ -466,7 +546,11 @@ export const init = new Command()
                 base: options.base ?? "base",
                 rtl: options.rtl ?? preset.rtl,
               },
-              { template: options.template, pointer: options.pointer }
+              {
+                template: options.template,
+                pointer: options.pointer,
+                buttonFeedback: options.buttonFeedback,
+              }
             )
             presetBase = undefined
           }
@@ -507,7 +591,11 @@ export const init = new Command()
             base: resolvedBase,
             rtl: options.rtl ?? false,
           },
-          { template: options.template, pointer: options.pointer }
+          {
+            template: options.template,
+            pointer: options.pointer,
+            buttonFeedback: options.buttonFeedback,
+          }
         )
         components = [initUrl, ...components]
       }
@@ -581,9 +669,35 @@ export const init = new Command()
         }
 
         if (registryBaseConfig) {
-          options.registryBaseConfig = registryBaseConfig
+          options.registryBaseConfig = {
+            ...registryBaseConfig,
+            ...(options.buttonFeedback !== undefined && {
+              buttonFeedback: options.buttonFeedback,
+            }),
+          }
+        } else if (options.buttonFeedback !== undefined) {
+          options.registryBaseConfig = {
+            buttonFeedback: options.buttonFeedback,
+          }
+        }
+
+        if (initUrlHasButtonFeedbackOption) {
+          installButtonFeedback = true
         }
       }
+
+      if (options.buttonFeedback !== undefined) {
+        options.registryBaseConfig = {
+          ...options.registryBaseConfig,
+          buttonFeedback: options.buttonFeedback,
+        }
+      }
+
+      if (installButtonFeedback && !components.includes("button")) {
+        components.push("button")
+      }
+
+      options.components = components
 
       await runInit(options)
 
@@ -801,6 +915,9 @@ export async function runInit(
     if (config.menuColor) designSettings.menuColor = config.menuColor
     if (config.menuAccent) designSettings.menuAccent = config.menuAccent
     if (config.rtl !== undefined) designSettings.rtl = config.rtl
+    if (config.buttonFeedback !== undefined) {
+      designSettings.buttonFeedback = config.buttonFeedback
+    }
     if (config.iconLibrary) designSettings.iconLibrary = config.iconLibrary
 
     if (Object.keys(designSettings).length > 0) {

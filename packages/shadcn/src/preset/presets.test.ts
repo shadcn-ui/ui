@@ -65,12 +65,20 @@ describe("createPresetUrl", () => {
     const url = resolveCreateUrl({
       rtl: true,
       pointer: true,
+      buttonFeedback: "ripple",
       template: "next",
     })
     const parsed = new URL(url)
     expect(parsed.searchParams.get("rtl")).toBe("true")
     expect(parsed.searchParams.get("pointer")).toBe("true")
+    expect(parsed.searchParams.get("buttonFeedback")).toBe("ripple")
     expect(parsed.searchParams.get("template")).toBe("next")
+  })
+
+  it("includes Button feedback as a URL parameter", () => {
+    const url = resolveCreateUrl({ buttonFeedback: "soft-ripple" })
+
+    expect(new URL(url).searchParams.get("buttonFeedback")).toBe("soft-ripple")
   })
 })
 

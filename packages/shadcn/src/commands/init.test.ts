@@ -269,7 +269,7 @@ describe("init options", () => {
     })
 
     expect(result.base).toBe("aria")
-    expect(init.helpInformation()).toContain("(base, radix, aria)")
+    expect(init.helpInformation()).toMatch(/\(base, radix,\s+aria\)/)
   })
 
   it("parses pointer flags", () => {
@@ -279,6 +279,15 @@ describe("init options", () => {
     })
 
     expect(result.pointer).toBe(true)
+  })
+
+  it("parses canonical Button feedback values", () => {
+    const result = initOptionsSchema.parse({
+      ...createInitOptions("/tmp/project"),
+      buttonFeedback: "soft-ripple",
+    })
+
+    expect(result.buttonFeedback).toBe("soft-ripple")
   })
 
   it("applies pointer to raw init urls", () => {
@@ -297,5 +306,70 @@ describe("init options", () => {
     )
 
     expect(url.searchParams.has("pointer")).toBe(false)
+  })
+
+  it("writes Button feedback values to raw init urls", () => {
+    const enabledUrl = applyInitUrlOptions(
+      new URL("https://ui.shadcn.com/init?preset=a0"),
+      { buttonFeedback: "ripple" }
+    )
+    const disabledUrl = applyInitUrlOptions(
+      new URL("https://ui.shadcn.com/init?preset=a0&buttonFeedback=ripple"),
+      { buttonFeedback: "press" }
+    )
+
+    expect(enabledUrl.searchParams.get("buttonFeedback")).toBe("ripple")
+    expect(disabledUrl.searchParams.get("buttonFeedback")).toBe("press")
+  })
+
+  it("applies Button feedback values to raw init urls", () => {
+    const url = applyInitUrlOptions(
+      new URL("https://ui.shadcn.com/init?preset=a0&buttonFeedback=press"),
+      { buttonFeedback: "soft-ripple" }
+    )
+
+    expect(url.searchParams.get("buttonFeedback")).toBe("soft-ripple")
+  })
+
+  it("includes Base Ripple in generated init urls when selected", async () => {
+    const { resolveInitUrl } = await import("@/src/preset/presets")
+    const url = resolveInitUrl(
+      {
+        base: "base",
+        style: "nova",
+        baseColor: "neutral",
+        theme: "neutral",
+        iconLibrary: "lucide",
+        font: "inter",
+        rtl: false,
+        menuAccent: "subtle",
+        menuColor: "default",
+        radius: "default",
+      },
+      { buttonFeedback: "ripple" }
+    )
+
+    expect(new URL(url).searchParams.get("buttonFeedback")).toBe("ripple")
+  })
+
+  it("includes the selected Button feedback in generated init urls", async () => {
+    const { resolveInitUrl } = await import("@/src/preset/presets")
+    const url = resolveInitUrl(
+      {
+        base: "base",
+        style: "nova",
+        baseColor: "neutral",
+        theme: "neutral",
+        iconLibrary: "lucide",
+        font: "inter",
+        rtl: false,
+        menuAccent: "subtle",
+        menuColor: "default",
+        radius: "default",
+      },
+      { buttonFeedback: "press" }
+    )
+
+    expect(new URL(url).searchParams.get("buttonFeedback")).toBe("press")
   })
 })

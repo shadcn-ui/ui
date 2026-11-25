@@ -1,0 +1,13 @@
+---
+title: November 2026 - Base Ripple Buttons
+description: Choose press, ripple, or soft ripple feedback for Button.
+date: 2026-11-16
+---
+
+You can now choose the Button feedback when creating or initializing a project:
+
+```bash
+npx shadcn@latest init --button-feedback ripple
+```
+
+Choose `press`, `ripple`, or `soft-ripple`. Ripple styles install `@base-ripple/react`, add its stylesheet, and save `buttonFeedback` in `components.json`. The Button keeps the same import and props, and ripple styles replace its pressed movement.

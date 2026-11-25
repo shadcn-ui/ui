@@ -19,6 +19,7 @@ import {
 import { createRegistryServer } from "../../../tests/src/utils/registry"
 import { setRegistryHeaders } from "./context"
 import {
+  resolveBuiltinRegistryItemName,
   resolveRegistryItemsFromRegistries,
   resolveRegistryTree,
 } from "./resolver"
@@ -38,6 +39,141 @@ vi.mock("@/src/logger", () => ({
     log: vi.fn(),
   },
 }))
+
+describe("resolveBuiltinRegistryItemName", () => {
+  it("maps built-in button requests when Base Ripple is enabled", () => {
+    const config = createConfig({ buttonFeedback: "ripple" })
+
+    expect(resolveBuiltinRegistryItemName("button", config)).toBe(
+      "button-ripple"
+    )
+    expect(resolveBuiltinRegistryItemName("button-ripple", config)).toBe(
+      "button-ripple"
+    )
+    expect(resolveBuiltinRegistryItemName("@acme/button", config)).toBe(
+      "@acme/button"
+    )
+  })
+
+  it("keeps the standard button when Base Ripple is not enabled", () => {
+    expect(resolveBuiltinRegistryItemName("button", createConfig())).toBe(
+      "button"
+    )
+  })
+
+  it("maps built-in buttons to the Soft Ripple variant", () => {
+    expect(
+      resolveBuiltinRegistryItemName(
+        "button",
+        createConfig({ buttonFeedback: "soft-ripple" })
+      )
+    ).toBe("button-soft-ripple")
+  })
+
+  it("fetches the ripple implementation for a built-in button request", async () => {
+    const mockServer = setupServer(
+      http.get(
+        "https://ui.shadcn.com/r/styles/base-nova/button-ripple.json",
+        () =>
+          HttpResponse.json({
+            name: "button-ripple",
+            type: "registry:ui",
+            dependencies: ["@base-ripple/react"],
+            files: [
+              {
+                path: "ui/button-ripple.tsx",
+                type: "registry:ui",
+                target: "@ui/button.tsx",
+                content: "export function Button() { return <button /> }",
+              },
+            ],
+            css: {
+              '@import "@base-ripple/react/styles.css"': {},
+            },
+          })
+      )
+    )
+    mockServer.listen({ onUnhandledRequest: "error" })
+
+    try {
+      const result = await resolveRegistryTree(
+        ["button"],
+        createConfig({ style: "base-nova", buttonFeedback: "ripple" }),
+        { useCache: false }
+      )
+
+      expect(result?.files?.[0]).toMatchObject({
+        target: "@ui/button.tsx",
+        content: "export function Button() { return <button /> }",
+      })
+      expect(result?.dependencies).toContain("@base-ripple/react")
+      expect(result?.css).toHaveProperty(
+        '@import "@base-ripple/react/styles.css"'
+      )
+    } finally {
+      mockServer.close()
+    }
+  })
+
+  it("uses the ripple implementation for transitive button dependencies", async () => {
+    const mockServer = setupServer(
+      http.get(
+        "https://ui.shadcn.com/r/styles/base-nova/with-button.json",
+        () =>
+          HttpResponse.json({
+            name: "with-button",
+            type: "registry:component",
+            registryDependencies: ["button"],
+            files: [
+              {
+                path: "with-button.tsx",
+                type: "registry:component",
+                content: "export function WithButton() { return null }",
+              },
+            ],
+          })
+      ),
+      http.get(
+        "https://ui.shadcn.com/r/styles/base-nova/button-ripple.json",
+        () =>
+          HttpResponse.json({
+            name: "button-ripple",
+            type: "registry:ui",
+            dependencies: ["@base-ripple/react"],
+            files: [
+              {
+                path: "ui/button-ripple.tsx",
+                type: "registry:ui",
+                target: "@ui/button.tsx",
+                content: "export function Button() { return <button /> }",
+              },
+            ],
+          })
+      )
+    )
+    mockServer.listen({ onUnhandledRequest: "error" })
+
+    try {
+      const result = await resolveRegistryTree(
+        ["with-button"],
+        createConfig({ style: "base-nova", buttonFeedback: "ripple" }),
+        { useCache: false }
+      )
+
+      expect(result?.files).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            target: "@ui/button.tsx",
+            content: "export function Button() { return <button /> }",
+          }),
+        ])
+      )
+      expect(result?.dependencies).toContain("@base-ripple/react")
+    } finally {
+      mockServer.close()
+    }
+  })
+})
 
 // Note: Individual tests will create their own MSW servers using createRegistryServer
 

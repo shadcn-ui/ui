@@ -5,6 +5,7 @@ import { logger } from "@shadcn/registry/internal/logger"
 import { type PresetBase } from "@shadcn/registry/internal/preset/preset"
 import { getRegistryItems } from "@shadcn/registry/internal/registry/api"
 import { buildUrlAndHeadersForRegistryItem } from "@shadcn/registry/internal/registry/builder"
+import { type ButtonFeedbackValue } from "@shadcn/registry/internal/registry/button-feedback"
 import { configWithDefaults } from "@shadcn/registry/internal/registry/config"
 import {
   REGISTRY_URL,
@@ -26,11 +27,12 @@ export function resolveCreateUrl(
     template: string
     rtl: boolean
     pointer: boolean
+    buttonFeedback: ButtonFeedbackValue
     base: PresetBase
   }>
 ) {
   const url = new URL(`${SHADCN_URL}/create`)
-  const { rtl, pointer, ...params } = searchParams ?? {}
+  const { rtl, pointer, buttonFeedback, ...params } = searchParams ?? {}
 
   for (const [key, value] of Object.entries(params)) {
     if (value !== undefined) {
@@ -45,6 +47,10 @@ export function resolveCreateUrl(
 
   if (pointer) {
     url.searchParams.set("pointer", "true")
+  }
+
+  if (buttonFeedback) {
+    url.searchParams.set("buttonFeedback", buttonFeedback)
   }
 
   return url.toString()
@@ -98,6 +104,7 @@ export function resolveInitUrl(
     preset?: string
     only?: string
     pointer?: boolean
+    buttonFeedback?: ButtonFeedbackValue
   }
 ) {
   const params = new URLSearchParams({
@@ -139,6 +146,10 @@ export function resolveInitUrl(
     params.set("pointer", "true")
   }
 
+  if (options?.buttonFeedback !== undefined) {
+    params.set("buttonFeedback", options.buttonFeedback)
+  }
+
   // Signal the server to record this init run.
   params.set("track", "1")
 
@@ -165,6 +176,7 @@ export async function promptForPreset(options: {
   base: PresetBase
   template?: string
   pointer?: boolean
+  buttonFeedback?: ButtonFeedbackValue
 }) {
   const presets = Object.entries(DEFAULT_PRESETS)
 
@@ -195,6 +207,7 @@ export async function promptForPreset(options: {
       command: "init",
       rtl: options.rtl,
       pointer: options.pointer,
+      buttonFeedback: options.buttonFeedback,
       base: options.base,
       ...(options.template && { template: options.template }),
     })
@@ -219,6 +232,7 @@ export async function promptForPreset(options: {
       {
         template: options.template,
         pointer: options.pointer,
+        buttonFeedback: options.buttonFeedback,
       }
     ),
     base: options.base,

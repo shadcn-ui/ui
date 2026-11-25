@@ -11,6 +11,7 @@ import {
   buildUrlAndHeadersForRegistryItem,
   resolveRegistryUrl,
 } from "@/src/registry/builder"
+import { resolveButtonFeedback } from "@/src/registry/button-feedback"
 import { setRegistryHeaders } from "@/src/registry/context"
 import {
   RegistryNotConfiguredError,
@@ -43,12 +44,30 @@ type RegistryFetchOptions = {
   sourceCache?: Map<string, Promise<string>>
 }
 
+export function resolveBuiltinRegistryItemName(name: string, config: Config) {
+  if (name === "button") {
+    const buttonFeedback = resolveButtonFeedback(config) ?? "press"
+
+    if (buttonFeedback === "ripple") {
+      return "button-ripple"
+    }
+
+    if (buttonFeedback === "soft-ripple") {
+      return "button-soft-ripple"
+    }
+  }
+
+  return name
+}
+
 export function resolveRegistryItemsFromRegistries(
   items: string[],
   config: Config
 ) {
   const registryHeaders: Record<string, Record<string, string>> = {}
-  const resolvedItems = [...items]
+  const resolvedItems = items.map((item) =>
+    resolveBuiltinRegistryItemName(item, config)
+  )
 
   if (!config?.registries) {
     setRegistryHeaders({})
@@ -90,41 +109,45 @@ export async function fetchRegistryItems(
 
   const results = await Promise.all(
     items.map(async (item) => {
-      const resolvedAddress = resolveItemAddress(item)
+      const registryItemName = resolveBuiltinRegistryItemName(item, config)
+      const resolvedAddress = resolveItemAddress(registryItemName)
 
       if (resolvedAddress.scheme === "github") {
         return fetchGitHubRegistryItem(resolvedAddress, options)
       }
 
-      if (isLocalFile(item)) {
-        return fetchRegistryLocal(item)
+      if (isLocalFile(registryItemName)) {
+        return fetchRegistryLocal(registryItemName)
       }
 
-      if (isUrl(item)) {
-        const [result] = await fetchRegistry([item], options)
+      if (isUrl(registryItemName)) {
+        const [result] = await fetchRegistry([registryItemName], options)
         try {
           return registryItemSchema.parse(result)
         } catch (error) {
-          throw new RegistryParseError(item, error)
+          throw new RegistryParseError(registryItemName, error)
         }
       }
 
-      if (item.startsWith("@") && config?.registries) {
-        const paths = resolveRegistryItemsFromRegistries([item], config)
+      if (registryItemName.startsWith("@") && config?.registries) {
+        const paths = resolveRegistryItemsFromRegistries(
+          [registryItemName],
+          config
+        )
         const [result] = await fetchRegistry(paths, options)
         try {
           return registryItemSchema.parse(result)
         } catch (error) {
-          throw new RegistryParseError(item, error)
+          throw new RegistryParseError(registryItemName, error)
         }
       }
 
-      const path = `styles/${config?.style ?? "new-york-v4"}/${item}.json`
-      const [result] = await fetchRegistry([path], options)
+      const registryPath = `styles/${config?.style ?? "new-york-v4"}/${registryItemName}.json`
+      const [result] = await fetchRegistry([registryPath], options)
       try {
         return registryItemSchema.parse(result)
       } catch (error) {
-        throw new RegistryParseError(item, error)
+        throw new RegistryParseError(registryItemName, error)
       }
     })
   )
@@ -390,7 +413,8 @@ async function resolveDependenciesRecursively(
   const items: z.infer<typeof registryItemWithSourceSchema>[] = []
   const registryNames: string[] = []
 
-  for (const dep of dependencies) {
+  for (const dependency of dependencies) {
+    const dep = resolveBuiltinRegistryItemName(dependency, config)
     if (visited.has(dep)) {
       continue
     }

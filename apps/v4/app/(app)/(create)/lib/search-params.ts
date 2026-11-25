@@ -26,6 +26,7 @@ import {
   THEMES,
   type BaseColorName,
   type BaseName,
+  type ButtonFeedbackValue,
   type ChartColorName,
   type FontHeadingValue,
   type FontValue,
@@ -92,6 +93,11 @@ const designSystemSearchParams = {
   ] as const).withDefault("next"),
   rtl: parseAsBoolean.withDefault(false),
   pointer: parseAsBoolean.withDefault(false),
+  buttonFeedback: parseAsStringLiteral<ButtonFeedbackValue>([
+    "press",
+    "ripple",
+    "soft-ripple",
+  ]).withDefault(DEFAULT_CONFIG.buttonFeedback),
   size: parseAsInteger.withDefault(100),
   custom: parseAsBoolean.withDefault(false),
 }
@@ -128,9 +134,14 @@ const NON_DESIGN_SYSTEM_KEYS = [
   "template",
   "rtl",
   "pointer",
+  "buttonFeedback",
   "size",
   "custom",
 ] as const
+
+export type DesignSystemSearchParams = inferParserType<
+  typeof designSystemSearchParams
+>
 
 // Shared across hook instances so only one mount effect encodes the initial URL.
 let hasSyncedPresetToUrl = false
@@ -142,10 +153,6 @@ export const loadDesignSystemSearchParams = createLoader(
 export const serializeDesignSystemSearchParams = createSerializer(
   designSystemSearchParams
 )
-
-export type DesignSystemSearchParams = inferParserType<
-  typeof designSystemSearchParams
->
 
 export function isTranslucentMenuColor(
   menuColor?: MenuColorValue | null
@@ -221,18 +228,13 @@ function resolvePresetParams(
     const decoded = decodePreset(rawParams.preset)
     if (decoded) {
       const presetOverrides = resolvePresetOverrides(searchParams, decoded)
-      return normalizeDesignSystemParams({
+      const resolved = normalizeDesignSystemParams({
         ...decoded,
         ...presetOverrides,
-        base: rawParams.base,
-        item: rawParams.item,
-        preset: rawParams.preset,
-        template: rawParams.template,
-        rtl: rawParams.rtl,
-        pointer: rawParams.pointer,
-        size: rawParams.size,
-        custom: rawParams.custom,
+        ...rawParams,
       })
+
+      return resolved
     }
   }
   return normalizeDesignSystemParams(rawParams)
@@ -313,9 +315,12 @@ export function useDesignSystemSearchParams(options: Options = {}) {
           ) => Partial<DesignSystemSearchParams>),
       setOptions?: Options
     ) => {
-      const resolvedUpdates = normalizePartialDesignSystemParams(
+      const normalizedUpdates = normalizePartialDesignSystemParams(
         typeof updates === "function" ? updates(paramsRef.current) : updates
       )
+      const resolvedUpdates = {
+        ...normalizedUpdates,
+      }
 
       const hasDesignSystemUpdate = DESIGN_SYSTEM_KEYS.some(
         (key) => key in resolvedUpdates

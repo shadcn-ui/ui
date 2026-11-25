@@ -26,12 +26,14 @@ describe("buildPresetUrlUpdate", () => {
       ...DEFAULT_CONFIG,
       preset: "b0",
       template: "start",
+      buttonFeedback: "soft-ripple",
       item: "preview-02",
       size: 100,
       custom: false,
     })
 
     expect(update.template).toBe("start")
+    expect(update.buttonFeedback).toBe("soft-ripple")
     expect(update.preset).toBeTypeOf("string")
   })
 
@@ -45,9 +47,10 @@ describe("buildPresetUrlUpdate", () => {
         size: 100,
         custom: false,
       },
-      { template: "vite" }
+      { template: "vite", buttonFeedback: "ripple" }
     )
 
     expect(update.template).toBe("vite")
+    expect(update.buttonFeedback).toBe("ripple")
   })
 })

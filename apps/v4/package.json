@@ -31,6 +31,8 @@
     "@ai-sdk/openai": "4.0.0-canary.73",
     "@ai-sdk/react": "4.0.0-canary.162",
     "@base-ui/react": "1.6.0",
+    "@base-ripple/core": "1.0.5",
+    "@base-ripple/react": "^1.0.5",
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/modifiers": "^9.0.0",
     "@dnd-kit/sortable": "^10.0.0",

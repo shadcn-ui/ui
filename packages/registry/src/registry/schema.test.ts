@@ -168,6 +168,15 @@ describe("rawConfigSchema", () => {
     expect(result).not.toHaveProperty("menuAccent")
     expect(result.tailwind).not.toHaveProperty("prefix")
   })
+
+  it("accepts the optional buttonFeedback setting", () => {
+    const result = rawConfigSchema.parse({
+      ...config,
+      buttonFeedback: "ripple",
+    })
+
+    expect(result.buttonFeedback).toBe("ripple")
+  })
 })
 
 describe("registryBaseConfigSchema", () => {
@@ -181,6 +190,14 @@ describe("registryBaseConfigSchema", () => {
       style: "nova",
       tailwind: { baseColor: "zinc" },
     })
+  })
+
+  it("accepts buttonFeedback on registry base config", () => {
+    const result = registryBaseConfigSchema.parse({
+      buttonFeedback: "soft-ripple",
+    })
+
+    expect(result.buttonFeedback).toBe("soft-ripple")
   })
 
   it("should parse registry:base config without defaults", () => {
