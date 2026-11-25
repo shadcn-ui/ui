@@ -453,13 +453,23 @@ function useMessageScrollerController({
             return
           }
 
-          scrollToElement(
-            anchor,
-            { align: "start" },
-            { keepPreviousPeek: true }
-          )
-          handledScrollAnchorsRef.current.add(anchor)
-          return
+          const shouldKeepFollowingBottom =
+            autoScrollRef.current && modeRef.current === "following-bottom"
+
+          if (
+            scrollToElement(
+              anchor,
+              { align: "start" },
+              { keepPreviousPeek: true }
+            )
+          ) {
+            if (shouldKeepFollowingBottom) {
+              modeRef.current = "anchored-following-bottom"
+            }
+
+            handledScrollAnchorsRef.current.add(anchor)
+            return
+          }
         }
       }
 
@@ -482,7 +492,11 @@ function useMessageScrollerController({
 
       // Appends with no new anchor (and content-only updates) fall through here:
       // keep following the end if we still are, otherwise just recommit state.
-      if (modeRef.current === "following-bottom" && autoScrollRef.current) {
+      if (
+        (modeRef.current === "following-bottom" ||
+          modeRef.current === "anchored-following-bottom") &&
+        autoScrollRef.current
+      ) {
         scrollToEnd({ behavior: "auto" })
       } else {
         commitScrollState()
@@ -579,7 +593,11 @@ function useMessageScrollerController({
   }, [scrollToEnd, setTailSpacerHeight])
 
   const handleResize = React.useCallback(() => {
-    if (modeRef.current === "following-bottom" && autoScrollRef.current) {
+    if (
+      (modeRef.current === "following-bottom" ||
+        modeRef.current === "anchored-following-bottom") &&
+      autoScrollRef.current
+    ) {
       scrollToEnd({ behavior: "auto" })
       return
     }
@@ -717,6 +735,7 @@ function useMessageScrollerController({
     if (
       modeRef.current === "following-bottom" ||
       modeRef.current === "anchored-to-message" ||
+      modeRef.current === "anchored-following-bottom" ||
       modeRef.current === "settling-jump"
     ) {
       // A deliberate gesture releases auto-follow, turn-anchoring, and an in-flight
@@ -849,7 +868,8 @@ function useMessageScrollerController({
   React.useLayoutEffect(() => {
     if (
       autoScroll &&
-      modeRef.current === "following-bottom" &&
+      (modeRef.current === "following-bottom" ||
+        modeRef.current === "anchored-following-bottom") &&
       itemCountRef.current > 0
     ) {
       scrollToEnd({ behavior: "auto" })
