@@ -62,6 +62,21 @@ function DialogContent({
           className
         )}
         {...props}
+        onPointerDownOutside={(event) => {
+          const originalEvent = event.detail.originalEvent
+          const target = originalEvent.target as Element
+
+          if (
+            originalEvent.type === "pointerdown" &&
+            target.closest("[data-slot=dialog-content]")
+          ) {
+            event.preventDefault()
+          }
+
+          if (props.onPointerDownOutside) {
+            props.onPointerDownOutside(event)
+          }
+        }}
       >
         {children}
         {showCloseButton && (
