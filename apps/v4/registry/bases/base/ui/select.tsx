@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { Select as SelectPrimitive } from "@base-ui/react/select"
-import { cn } from "cn"
 
+import { cn } from "@/lib/compose-class-name"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const Select = SelectPrimitive.Root
