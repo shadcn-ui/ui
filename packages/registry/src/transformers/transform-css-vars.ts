@@ -15,12 +15,12 @@ export const transformCssVars: Transformer = (code, { config, baseColor }) => {
   }
 
   // Every string literal of the file, directives and import specifiers
-  // included. A mapped value is trimmed, so a string with spaces around it
-  // changes even without colors.
+  // included. Unmapped text is returned unchanged: the class-list pass
+  // trims, collapses spaces, and drops repeated words.
   const literals = new StringLiterals(code, file)
   for (const literal of literals.getStringLiterals()) {
     const raw = literals.getValue(literal)
-    const mapped = applyColorMapping(raw, baseColor.inlineColors).trim()
+    const mapped = applyColorMapping(raw, baseColor.inlineColors)
     if (mapped !== raw) {
       literals.setValue(literal, mapped)
     }
@@ -80,8 +80,10 @@ export function applyColorMapping(
   input: string,
   mapping: z.infer<typeof registryBaseColorSchema>["inlineColors"]
 ) {
+  let changed = false
   if (input.includes(" border ")) {
     input = input.replace(" border ", " border border-border ")
+    changed = true
   }
 
   const classNames = input.split(" ")
@@ -97,6 +99,7 @@ export function applyColorMapping(
 
     const needle = value?.replace(prefix, "")
     if (needle && needle in mapping.light) {
+      changed = true
       lightMode.add(
         [variant, `${prefix}${mapping.light[needle]}`]
           .filter(Boolean)
@@ -112,6 +115,10 @@ export function applyColorMapping(
     }
 
     lightMode.add(className)
+  }
+
+  if (!changed) {
+    return input
   }
 
   return [...Array.from(lightMode), ...Array.from(darkMode)].join(" ").trim()
