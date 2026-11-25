@@ -217,16 +217,21 @@ function getElementScrollTop({
   const elementTop = getElementTop(element, viewport)
   const elementHeight = element.getBoundingClientRect().height
   const contentPadding = getContentBlockPadding(spacer)
+  const viewportScrollPadding = getBlockScrollPadding(viewport)
+  const padding = {
+    end: contentPadding.end + viewportScrollPadding.end,
+    start: contentPadding.start + viewportScrollPadding.start,
+  }
 
   if (align === "center") {
     const insetHeight = Math.max(
       0,
-      viewport.clientHeight - contentPadding.start - contentPadding.end
+      viewport.clientHeight - padding.start - padding.end
     )
 
     return (
       elementTop -
-      contentPadding.start -
+      padding.start -
       (insetHeight - elementHeight) / 2 -
       scrollMargin
     )
@@ -237,31 +242,31 @@ function getElementScrollTop({
       elementTop -
       viewport.clientHeight +
       elementHeight +
-      contentPadding.end +
+      padding.end +
       scrollMargin
     )
   }
 
   if (align === "nearest") {
     const elementBottom = elementTop + elementHeight
-    const viewportTop = viewport.scrollTop + contentPadding.start
+    const viewportTop = viewport.scrollTop + padding.start
     const viewportBottom =
-      viewport.scrollTop + viewport.clientHeight - contentPadding.end
+      viewport.scrollTop + viewport.clientHeight - padding.end
 
     if (elementTop >= viewportTop && elementBottom <= viewportBottom) {
       return viewport.scrollTop
     }
 
     if (elementTop < viewportTop) {
-      return elementTop - contentPadding.start - scrollMargin
+      return elementTop - padding.start - scrollMargin
     }
 
     return (
-      elementBottom - viewport.clientHeight + contentPadding.end + scrollMargin
+      elementBottom - viewport.clientHeight + padding.end + scrollMargin
     )
   }
 
-  return elementTop - contentPadding.start - scrollMargin
+  return elementTop - padding.start - scrollMargin
 }
 
 function getElementTop(element: HTMLElement, viewport: HTMLElement) {
@@ -344,6 +349,15 @@ function getContentBlockPadding(spacer: HTMLElement | null) {
   }
 
   return getBlockPadding(content)
+}
+
+function getBlockScrollPadding(element: HTMLElement) {
+  const style = window.getComputedStyle(element)
+
+  return {
+    end: readCssPixel(style.scrollPaddingBlockEnd),
+    start: readCssPixel(style.scrollPaddingBlockStart),
+  }
 }
 
 function getFlexGap(element: HTMLElement | null) {
