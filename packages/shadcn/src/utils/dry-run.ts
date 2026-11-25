@@ -3,7 +3,10 @@ import path from "path"
 import { isContentSame } from "@shadcn/registry/internal/compare"
 import { isEnvFile } from "@shadcn/registry/internal/env-helpers"
 import { getSupportedFontMarkers } from "@shadcn/registry/internal/font-markers"
-import type { Config } from "@shadcn/registry/internal/get-config"
+import {
+  getWorkspaceConfig,
+  type Config,
+} from "@shadcn/registry/internal/get-config"
 import { getProjectInfo } from "@shadcn/registry/internal/get-project-info"
 import { getRegistryBaseColor } from "@shadcn/registry/internal/registry/api"
 import { configWithDefaults } from "@shadcn/registry/internal/registry/config"
@@ -28,6 +31,7 @@ import {
   rewriteResolvedImportsInContent,
 } from "@shadcn/registry/internal/updaters/update-files"
 import { massageTreeForFonts } from "@shadcn/registry/internal/updaters/update-fonts"
+import { groupFilesByWorkspaceTarget } from "@shadcn/registry/internal/workspace-files"
 import { registryResolvedItemsTreeSchema } from "@shadcn/registry/schema"
 import { loadConfig } from "tsconfig-paths"
 import type { z } from "zod"
@@ -112,14 +116,55 @@ export async function dryRunComponents(
   // Docs pass through directly.
   result.docs = tree.docs ?? null
 
-  // Process files.
-  await processFiles(tree, config, result, options, supportedFontMarkers)
+  // In a monorepo, route files to their target package and transform them with
+  // that package's config so the preview matches what `add` actually writes.
+  // Uses the same detection as the real add path (addWorkspaceComponents).
+  const workspaceConfig = await getWorkspaceConfig(config)
+  const isWorkspace =
+    workspaceConfig &&
+    workspaceConfig.ui &&
+    workspaceConfig.ui.resolvedPaths.cwd !== config.resolvedPaths.cwd
 
-  // Process CSS.
-  await processCss(tree, config, result, options)
+  if (isWorkspace) {
+    const fileGroups = await groupFilesByWorkspaceTarget(
+      tree.files ?? [],
+      config,
+      workspaceConfig
+    )
+    for (const group of fileGroups) {
+      await processFiles(
+        group.targetFiles,
+        group.targetConfig,
+        result,
+        options,
+        supportedFontMarkers,
+        {
+          plannedFiles: group.plannedFiles,
+          workspaceRoot: group.workspaceRoot,
+          packageRoot: group.packageRoot,
+        }
+      )
+    }
 
-  // Process env vars.
-  processEnvVars(tree, config, result)
+    // CSS and env vars are written to the UI package in a workspace.
+    await processCss(tree, workspaceConfig.ui, result, options)
+    processEnvVars(tree, workspaceConfig.ui, result)
+  } else {
+    // Process files.
+    await processFiles(
+      tree.files,
+      config,
+      result,
+      options,
+      supportedFontMarkers
+    )
+
+    // Process CSS.
+    await processCss(tree, config, result, options)
+
+    // Process env vars.
+    processEnvVars(tree, config, result)
+  }
 
   // Process fonts.
   if (!options.skipFonts) {
@@ -130,13 +175,17 @@ export async function dryRunComponents(
 }
 
 async function processFiles(
-  tree: z.infer<typeof registryResolvedItemsTreeSchema>,
+  files: z.infer<typeof registryResolvedItemsTreeSchema>["files"],
   config: Config,
   result: DryRunResult,
   options: { overwrite?: boolean },
-  supportedFontMarkers: string[]
+  supportedFontMarkers: string[],
+  workspace?: {
+    plannedFiles: z.infer<typeof registryResolvedItemsTreeSchema>["files"]
+    workspaceRoot: string
+    packageRoot: string
+  }
 ) {
-  const files = tree.files
   if (!files?.length) {
     return
   }
@@ -153,10 +202,14 @@ async function processFiles(
   } catch {
     tsConfig = { resultType: "failed" } as ReturnType<typeof loadConfig>
   }
-  const plannedFilePaths = getPlannedFilePaths(files, config, {
-    isSrcDir: projectInfo?.isSrcDir,
-    framework: projectInfo?.framework.name,
-  })
+  const plannedFilePaths = getPlannedFilePaths(
+    workspace?.plannedFiles ?? files,
+    config,
+    {
+      isSrcDir: projectInfo?.isSrcDir,
+      framework: projectInfo?.framework.name,
+    }
+  )
 
   for (let index = 0; index < files.length; index++) {
     const file = files[index]
@@ -185,7 +238,17 @@ async function processFiles(
     }
 
     const existingFile = existsSync(filePath)
-    const relativePath = path.relative(config.resolvedPaths.cwd, filePath)
+    // In a workspace, report the path relative to the workspace root (matching
+    // the real add path) so the preview's filenames match where add writes.
+    const relativePath = workspace
+      ? path.relative(
+          workspace.workspaceRoot,
+          path.join(
+            workspace.packageRoot,
+            path.relative(config.resolvedPaths.cwd, filePath)
+          )
+        )
+      : path.relative(config.resolvedPaths.cwd, filePath)
 
     // Run transformers (same as update-files.ts).
     const isUniversalItemFile =
@@ -233,7 +296,12 @@ async function processFiles(
     let oldContent: string | undefined
     if (existingFile) {
       oldContent = await fs.readFile(filePath, "utf-8")
-      if (isContentSame(oldContent, finalContent)) {
+      if (
+        isContentSame(oldContent, finalContent, {
+          // Match updateFiles: ignore import-only diffs for workspace files.
+          ignoreImports: !!workspace,
+        })
+      ) {
         action = "skip"
       } else {
         action = "overwrite"

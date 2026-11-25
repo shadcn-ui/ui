@@ -643,13 +643,101 @@ export function LoginForm() {
     const result = await dryRunComponents(["login-03"], config)
 
     expect(result.files).toHaveLength(1)
+    // Reported relative to the workspace root, matching the real add path.
     expect(result.files[0]).toMatchObject({
-      path: "src/components/login-form.tsx",
+      path: "apps/web/src/components/login-form.tsx",
       action: "create",
       type: "registry:component",
     })
     expect(result.files[0].content).toContain(`from "@workspace/ui/lib/utils"`)
     expect(result.files[0].content).not.toContain(`from "#lib/utils"`)
+  })
+
+  it("should route registry:ui files into the UI package config in monorepo dry-runs", async () => {
+    const actualFs = (await vi.importActual("fs")) as typeof import("fs")
+    const actualTransformModule = (await vi.importActual(
+      "@shadcn/registry/internal/transformers/index"
+    )) as typeof import("@shadcn/registry/internal/transformers/index")
+    const actualTransformImportModule = (await vi.importActual(
+      "@shadcn/registry/internal/transformers/transform-import"
+    )) as typeof import("@shadcn/registry/internal/transformers/transform-import")
+    const cwd = getFixturesDir(
+      "frameworks",
+      "vite-monorepo-imports",
+      "apps",
+      "web"
+    )
+
+    vi.mocked(existsSync).mockImplementation(actualFs.existsSync)
+    vi.mocked(fs.readFile).mockImplementation(
+      actualFs.promises.readFile as never
+    )
+    vi.mocked(getProjectInfo).mockResolvedValue({
+      framework: { name: "vite" } as any,
+      isSrcDir: true,
+      isRSC: false,
+      isTsx: true,
+      tailwindConfigFile: null,
+      tailwindCssFile: "../../packages/ui/src/styles/globals.css",
+      tailwindVersion: "v4",
+      frameworkVersion: null,
+      aliasPrefix: "#",
+    })
+    vi.mocked(transform).mockImplementationOnce(actualTransformModule.transform)
+    vi.mocked(transformImport).mockImplementationOnce(
+      actualTransformImportModule.transformImport
+    )
+
+    for (const transformer of [
+      transformRsc,
+      transformCssVarsTransformer,
+      transformTwPrefixes,
+      transformIcons,
+      transformMenu,
+      transformAsChild,
+      transformRtl,
+      transformCleanup,
+    ]) {
+      vi.mocked(transformer).mockImplementationOnce(async (code) => code)
+    }
+
+    const config = await getConfig(cwd)
+    if (!config) {
+      throw new Error("Failed to get monorepo app config")
+    }
+
+    vi.mocked(resolveRegistryTree).mockResolvedValue({
+      files: [
+        {
+          path: "registry/new-york-v4/ui/badge.tsx",
+          type: "registry:ui",
+          content: `import { cn } from "@/lib/utils"
+
+export function Badge() {
+  return <div className={cn("badge")} />
+}
+`,
+        },
+      ],
+      dependencies: [],
+      devDependencies: [],
+    })
+
+    const result = await dryRunComponents(["badge"], config)
+
+    expect(result.files).toHaveLength(1)
+    // registry:ui files are written to the UI package, so the preview must use
+    // the UI package's own aliases (`#lib/utils`) and path, matching the real
+    // `add` write — not the app's `@workspace/ui/lib/utils` alias.
+    expect(result.files[0]).toMatchObject({
+      path: "packages/ui/src/components/badge.tsx",
+      action: "create",
+      type: "registry:ui",
+    })
+    expect(result.files[0].content).toContain(`from "#lib/utils`)
+    expect(result.files[0].content).not.toContain(
+      `from "@workspace/ui/lib/utils"`
+    )
   })
 })
 
