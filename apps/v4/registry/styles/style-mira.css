@@ -1735,7 +1735,7 @@
   }
 
   .cn-code-block-line-variant-added {
-    @apply bg-muted after:content-['+'];
+    @apply bg-green-600/10 after:text-green-600 after:content-['+'] dark:bg-green-400/10 dark:after:text-green-400;
   }
 
   .cn-code-block-line-variant-removed {
