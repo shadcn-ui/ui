@@ -53,6 +53,10 @@ function InputGroupAddon({
       data-align={align}
       className={cn(inputGroupAddonVariants({ align }), className)}
       onClick={(e) => {
+        // Ignore clicks from portaled content, e.g. an open popover.
+        if (!e.currentTarget.contains(e.target as Node)) {
+          return
+        }
         if ((e.target as HTMLElement).closest("button")) {
           return
         }
