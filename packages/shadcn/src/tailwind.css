@@ -580,6 +580,33 @@
     );
   }
 
+  /* Empty elements (e.g. skeletons) shimmer as a background. By default the
+     band is as wide as the element and sweeps it end to end, so it scales
+     with the element. The spread fallbacks differ on purpose: percentages
+     resolve against the element in background-size (50% = half its width)
+     and against the 300%-wide gradient in the color stops (16.6667% = the
+     same half width). An explicit --shimmer-spread length is used as is. */
+  &:empty {
+    --_spread: var(--shimmer-spread, 16.6667%);
+    --_base: transparent;
+    --_highlight: var(
+      --shimmer-color,
+      oklch(from currentColor l c h / calc(alpha* 0.1))
+    );
+
+    background-size: calc(200% + var(--shimmer-spread, 50%) * 2) 100%;
+    background-clip: border-box;
+    -webkit-background-clip: border-box;
+    -webkit-text-fill-color: currentColor;
+
+    @variant dark {
+      --_highlight: var(
+        --shimmer-color,
+        oklch(from currentColor l c h / calc(alpha * 0.15))
+      );
+    }
+  }
+
   &:where([dir="rtl"], [dir="rtl"] *) {
     animation-direction: reverse;
   }
