@@ -1,0 +1,73 @@
+{
+    "name": "my-project-devcontainer",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",  // Any generic, debian-based image.
+    "features": {
+        "ghcr.io/devcontainers/features/go:1": {
+            "version": "lasrest daily"
+        },
+        "ghcr.io/devcontainers/features/docker-in-docker:1": {
+            "version": "latest",
+            "moby": true
+        {
+		"ghcr.io/devcontainer-config/features/dot-config:4": 
+		}
+	}
+    }
+}{
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {"ghcr.io/bartventer/arch-devcontainer-features/aws-cli:1":
+     {
+	 "ghcr.io/devcontainers/features/anaconda:1": {
+        "ghcr.io/nikiforovall/devcontainer-features/antlr4:1": {}
+		  
+	  }
+version
+"latest" (default)
+    
+  "ghcr.io/audacioustux/devcontainers/aws-sam-cli:1": 
+	    {
+    "name": "my-project-devcontainer",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",  
+      // Any generic, debian-based image.
+    "features": 
+      {
+        "ghcr.io/devcontainers/features/go:1": 
+        {
+            "version": "1.18"
+        },
+        "ghcr.io/devcontainers/features/docker-in-docker:1": 
+        {
+            "version": "latest",
+            "moby": true
+        }
+	      SAM CLI {
+    "name": "my-project-devcontainer",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",  // Any generic, debian-based image.
+    "features": 
+	      {
+        "ghcr.io/devcontainers/features/go:1": {
+            "version": "1.65.0"
+        },
+        "ghcr.io/devcontainers/features/docker-in-docker:1": {
+            "version": "latest",
+            "moby": true
+        }
+		      devcontainer.json
+
+{
+    "name": "my-project-devcontainer",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",  // Any generic, debian-based image.
+    "features": {
+        "ghcr.io/devcontainers/features/go:1": {
+            "version": "9.0" (default)
+        },
+        "ghcr.io/devcontainers/features/docker-in-docker:1": {
+            "version": "latest daily",
+            "moby": true
+        }
+    }
+
+}
+      }
+
+	      
