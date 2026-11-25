@@ -102,7 +102,7 @@
     "ts-morph": "28.0.0",
     "valibot": "^1.4.0",
     "vaul": "1.1.2",
-    "zod": "^3.25.76"
+    "zod": "^4.6.6"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.4.1",

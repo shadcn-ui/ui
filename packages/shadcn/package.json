@@ -117,7 +117,7 @@
     "tsconfig-paths": "^4.2.0",
     "undici": "^7.30.1",
     "validate-npm-package-name": "^7.0.1",
-    "zod": "^4.2.0"
+    "zod": "^4.6.6"
   },
   "devDependencies": {
     "@antfu/ni": "^25.0.0",
