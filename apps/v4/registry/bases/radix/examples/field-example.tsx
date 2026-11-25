@@ -117,7 +117,7 @@ function InputFields() {
           </FieldLabel>
           <Input id="input-badge" placeholder="Enter value" />
         </Field>
-        <Field data-invalid>
+        <Field invalid>
           <FieldLabel htmlFor="input-invalid">Invalid Input</FieldLabel>
           <Input
             id="input-invalid"
@@ -173,7 +173,7 @@ function TextareaFields() {
             Enter your message so it is long enough to test the layout.
           </FieldDescription>
         </Field>
-        <Field data-invalid>
+        <Field invalid>
           <FieldLabel htmlFor="textarea-invalid">Invalid Textarea</FieldLabel>
           <Textarea
             id="textarea-invalid"
@@ -255,7 +255,7 @@ function SelectFields() {
             </SelectContent>
           </Select>
         </Field>
-        <Field data-invalid>
+        <Field invalid>
           <FieldLabel htmlFor="select-invalid">Invalid Select</FieldLabel>
           <Select>
             <SelectTrigger id="select-invalid" aria-invalid>
@@ -358,7 +358,7 @@ function NativeSelectFields() {
             Native select with grouped options using optgroup.
           </FieldDescription>
         </Field>
-        <Field data-invalid>
+        <Field invalid>
           <FieldLabel htmlFor="native-select-invalid">
             Invalid Native Select
           </FieldLabel>
@@ -451,7 +451,7 @@ function CheckboxFields() {
             </Field>
           </FieldGroup>
         </FieldSet>
-        <Field data-invalid orientation="horizontal">
+        <Field invalid orientation="horizontal">
           <Checkbox id="checkbox-invalid" aria-invalid />
           <FieldLabel htmlFor="checkbox-invalid">Invalid checkbox</FieldLabel>
         </Field>
@@ -534,7 +534,7 @@ function RadioFields() {
         <FieldSet>
           <FieldLegend variant="label">Invalid Radio Group</FieldLegend>
           <RadioGroup>
-            <Field data-invalid orientation="horizontal">
+            <Field invalid orientation="horizontal">
               <RadioGroupItem
                 value="invalid1"
                 id="radio-invalid-1"
@@ -544,7 +544,7 @@ function RadioFields() {
                 Invalid Option 1
               </FieldLabel>
             </Field>
-            <Field data-invalid orientation="horizontal">
+            <Field invalid orientation="horizontal">
               <RadioGroupItem
                 value="invalid2"
                 id="radio-invalid-2"
@@ -628,7 +628,7 @@ function SwitchFields() {
             </FieldLabel>
           </Field>
         </Field>
-        <Field data-invalid orientation="horizontal">
+        <Field invalid orientation="horizontal">
           <FieldContent>
             <FieldLabel htmlFor="switch-invalid">Invalid Switch</FieldLabel>
             <FieldDescription>
@@ -742,7 +742,7 @@ function SliderFields() {
             {colorBalance[2]}%
           </FieldDescription>
         </Field>
-        <Field data-invalid>
+        <Field invalid>
           <FieldLabel htmlFor="slider-invalid">Invalid Slider</FieldLabel>
           <Slider
             id="slider-invalid"
@@ -855,7 +855,7 @@ function InputOTPFields() {
             Enter your 4-digit PIN (numbers only).
           </FieldDescription>
         </Field>
-        <Field data-invalid>
+        <Field invalid>
           <FieldLabel htmlFor="otp-invalid">Invalid OTP</FieldLabel>
           <InputOTP id="otp-invalid" maxLength={6}>
             <InputOTPGroup>
