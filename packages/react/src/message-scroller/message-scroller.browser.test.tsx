@@ -793,3 +793,27 @@ test("auto-scroll and content updates survive a StrictMode remount", async () =>
   expect(getDistanceToBottom(viewport)).toBeLessThanOrEqual(1)
   expect(getVisibleIds().length).toBeGreaterThan(0)
 })
+
+test("data-autoscrolling clears after a StrictMode remount", async () => {
+  // The opening scroll-to-end sets the flag and starts the clear timer. The
+  // StrictMode cleanup cancels that timer; on remount the viewport is already
+  // at the end, so no new timer starts. The cleanup must reset the flag too.
+  container = document.createElement("div")
+  document.body.appendChild(container)
+  root = createRoot(container)
+
+  flushSync(() => {
+    root!.render(
+      <React.StrictMode>
+        <Thread autoScroll items={createItems(6)} />
+      </React.StrictMode>
+    )
+  })
+  await settle()
+  await new Promise((resolve) => setTimeout(resolve, 300))
+  await settle()
+
+  const viewport = getViewport()
+  expect(getDistanceToBottom(viewport)).toBeLessThanOrEqual(1)
+  expect(viewport.hasAttribute("data-autoscrolling")).toBe(false)
+})
