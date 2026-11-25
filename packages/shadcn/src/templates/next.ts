@@ -6,6 +6,7 @@ import {
   iconLibraries,
   type IconLibraryName,
 } from "@shadcn/registry/internal/icons/libraries"
+import { mergeConfig } from "@shadcn/registry/internal/merge-config"
 import { configWithDefaults } from "@shadcn/registry/internal/registry/config"
 import { resolveRegistryTree } from "@shadcn/registry/internal/registry/resolver"
 import { updateCssVars } from "@shadcn/registry/internal/updaters/update-css-vars"
@@ -13,7 +14,6 @@ import { updateDependencies } from "@shadcn/registry/internal/updaters/update-de
 import { updateFonts } from "@shadcn/registry/internal/updaters/update-fonts"
 import { rawConfigSchema } from "@shadcn/registry/schema"
 import dedent from "dedent"
-import deepmerge from "deepmerge"
 import fs from "fs-extra"
 
 import { createTemplate } from "./create-template"
@@ -53,7 +53,7 @@ export default function Page() {
       )
       let packagesUiConfig = await fs.readJson(packagesUiConfigPath)
       if (options.registryBaseConfig) {
-        packagesUiConfig = deepmerge(
+        packagesUiConfig = mergeConfig(
           packagesUiConfig,
           options.registryBaseConfig
         )
@@ -70,7 +70,7 @@ export default function Page() {
       const appsWebConfigPath = path.resolve(appsWebPath, "components.json")
       let appsWebConfig = await fs.readJson(appsWebConfigPath)
       if (options.registryBaseConfig) {
-        appsWebConfig = deepmerge(appsWebConfig, options.registryBaseConfig)
+        appsWebConfig = mergeConfig(appsWebConfig, options.registryBaseConfig)
       }
       appsWebConfig.tailwind.baseColor = "neutral"
       if (options.rtl) {

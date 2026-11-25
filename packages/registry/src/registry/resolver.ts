@@ -2,6 +2,7 @@ import { createHash } from "crypto"
 import path from "path"
 import { Config, getTargetStyleFromConfig } from "@/src/get-config"
 import { getProjectTailwindVersionFromConfig } from "@/src/get-project-info"
+import { mergeConfig } from "@/src/merge-config"
 import { isGitHubItemAddress, resolveItemAddress } from "@/src/registry/address"
 import {
   getRegistryBaseColor,
@@ -34,7 +35,6 @@ import {
   isUrl,
 } from "@/src/registry/utils"
 import { buildTailwindThemeColorsFromCssVars } from "@/src/tailwind-theme-colors"
-import deepmerge from "deepmerge"
 import { z } from "zod"
 
 type RegistryFetchOptions = {
@@ -323,17 +323,17 @@ export async function resolveRegistryTree(
 
   let tailwind = {}
   payload.forEach((item) => {
-    tailwind = deepmerge(tailwind, item.tailwind ?? {})
+    tailwind = mergeConfig(tailwind, item.tailwind ?? {})
   })
 
   let cssVars = {}
   payload.forEach((item) => {
-    cssVars = deepmerge(cssVars, item.cssVars ?? {})
+    cssVars = mergeConfig(cssVars, item.cssVars ?? {})
   })
 
   let css = {}
   payload.forEach((item) => {
-    css = deepmerge(css, item.css ?? {})
+    css = mergeConfig(css, item.css ?? {})
   })
 
   let docs = ""
@@ -345,7 +345,7 @@ export async function resolveRegistryTree(
 
   let envVars = {}
   payload.forEach((item) => {
-    envVars = deepmerge(envVars, item.envVars ?? {})
+    envVars = mergeConfig(envVars, item.envVars ?? {})
   })
 
   const deduplicatedFiles = await deduplicateFilesByTarget(
@@ -362,10 +362,8 @@ export async function resolveRegistryTree(
     }))
 
   const parsed = registryResolvedItemsTreeSchema.parse({
-    dependencies: deepmerge.all(payload.map((item) => item.dependencies ?? [])),
-    devDependencies: deepmerge.all(
-      payload.map((item) => item.devDependencies ?? [])
-    ),
+    dependencies: payload.flatMap((item) => item.dependencies ?? []),
+    devDependencies: payload.flatMap((item) => item.devDependencies ?? []),
     files: deduplicatedFiles,
     tailwind,
     cssVars,
