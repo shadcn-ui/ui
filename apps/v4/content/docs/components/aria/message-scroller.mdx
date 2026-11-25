@@ -517,6 +517,12 @@ The styled `MessageScrollerItem` also ships with `content-visibility: auto` and
 find-in-page, SSR, and assistive tech, but the browser can skip rendering work
 for rows far outside the viewport.
 
+`content-visibility: auto` also cuts off anything a row paints outside its box.
+The item keeps a small inset (`p-1`, offset by `-m-1`) so focus rings on
+controls at its edge stay visible. If something hangs further out of a row, such
+as `BubbleReactions` on its last bubble, leave room for it inside the row, for
+example with a bottom margin on the bubble.
+
 Visibility tracking is pay-for-what-you-use. A jump menu or active
 turn indicator costs nothing until something subscribes to
 `useMessageScrollerVisibility`.
