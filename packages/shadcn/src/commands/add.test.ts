@@ -332,6 +332,18 @@ describe("add command", () => {
         expect(addComponents).not.toHaveBeenCalled()
       })
     })
+
+    it("forwards --path to the dry run", async () => {
+      await withFixtureCopy("config-full", async (cwd) => {
+        await runAdd(["button", "--diff", "--path", "src/custom"], cwd)
+
+        expect(dryRunComponents).toHaveBeenCalledWith(
+          ["button"],
+          expect.any(Object),
+          expect.objectContaining({ path: "src/custom" })
+        )
+      })
+    })
   })
 
   describe("style availability", () => {
