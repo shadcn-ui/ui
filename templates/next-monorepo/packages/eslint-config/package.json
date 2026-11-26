@@ -9,7 +9,7 @@
     "./react-internal": "./react-internal.js"
   },
   "devDependencies": {
-    "@babel/core": "^8.1.2",
+    "@babel/core": "^8.1.3",
     "@babel/eslint-parser": "^8.1.2",
     "@babel/preset-typescript": "^8.0.7",
     "@eslint/js": "^10",
@@ -18,7 +18,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-only-warn": "^1.2.1",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-turbo": "^2.11.11",
+    "eslint-plugin-turbo": "^2.11.13",
     "globals": "^17.14.0"
   }
 }
