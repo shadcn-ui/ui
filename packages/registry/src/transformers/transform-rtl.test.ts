@@ -367,6 +367,27 @@ describe("applyRtlMapping", () => {
 })
 
 describe("transformRtl", () => {
+  it("keeps physical horizontal swipe directions in an RTL drawer", async () => {
+    const classes = [
+      "data-[swipe-direction=left]:left-0",
+      "data-[swipe-direction=left]:origin-left",
+      "data-[swipe-direction=left]:rounded-r-xl",
+      "data-[swipe-direction=left]:border-r",
+      "data-[swipe-direction=left]:after:right-full",
+      "data-[swipe-direction=right]:right-0",
+      "data-[swipe-direction=right]:origin-right",
+      "data-[swipe-direction=right]:rounded-l-xl",
+      "data-[swipe-direction=right]:border-l",
+      "data-[swipe-direction=right]:after:left-full",
+      "data-[swipe-direction=right]:ml-2",
+    ].join(" ")
+    const input = `<div className="${classes}" />`
+    const expected = input.replace("]:ml-2", "]:ms-2")
+
+    expect(await transformWithRtl(input)).toBe(expected)
+    expect(await transformDirection(input, true)).toBe(expected)
+  })
+
   it("transforms className string literals when rtl is true", async () => {
     const result = await transform({
       filename: "test.tsx",

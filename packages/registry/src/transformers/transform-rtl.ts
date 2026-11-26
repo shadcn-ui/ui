@@ -108,6 +108,12 @@ const RTL_SIDE_PROP_MAPPINGS: Record<string, string> = {
 // Positioning prefixes to skip for physical side variants.
 const POSITIONING_PREFIXES = ["-left-", "-right-", "left-", "right-"]
 
+// Base UI reports physical swipe directions even in an RTL layout.
+const PHYSICAL_SWIPE_DIRECTION =
+  /(?:^|:)data-\[swipe-direction=(?:left|right)\](?::|$)/
+const PHYSICAL_EDGE_UTILITY =
+  /^(?:-?(?:left|right)-|origin-(?:left|right)$|rounded-[lr]-|border-[lr](?:-|$))/
+
 export const transformRtl: Transformer = (code, { config }) =>
   config.rtl ? applyRtl(code) : code
 
@@ -139,6 +145,14 @@ export function applyRtlMapping(input: string) {
       const [variant, value, modifier] = splitClassName(className)
 
       if (!value) {
+        return [className]
+      }
+
+      if (
+        variant &&
+        PHYSICAL_SWIPE_DIRECTION.test(variant) &&
+        PHYSICAL_EDGE_UTILITY.test(value)
+      ) {
         return [className]
       }
 
