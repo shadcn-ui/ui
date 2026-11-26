@@ -1,6 +1,6 @@
 {
   "name": "shadcn",
-  "version": "4.23.0",
+  "version": "4.23.1",
   "description": "Add components to your apps.",
   "homepage": "https://ui.shadcn.com",
   "publishConfig": {
@@ -113,7 +113,7 @@
     "recast": "^0.23.11",
     "socks": "^2.8.8",
     "stringify-object": "^5.0.0",
-    "ts-morph": "^26.0.0",
+    "ts-morph": "^28.0.0",
     "tsconfig-paths": "^4.2.0",
     "undici": "^7.30.1",
     "validate-npm-package-name": "^7.0.1",
