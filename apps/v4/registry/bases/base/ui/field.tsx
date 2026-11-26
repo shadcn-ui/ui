@@ -45,7 +45,7 @@ function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-const fieldVariants = cva("cn-field group/field flex w-full", {
+const fieldVariants = cva("cn-field group/field flex w-full min-w-0", {
   variants: {
     orientation: {
       vertical:
@@ -82,7 +82,7 @@ function FieldContent({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="field-content"
       className={cn(
-        "cn-field-content group/field-content flex flex-1 flex-col leading-snug",
+        "cn-field-content group/field-content flex min-w-0 flex-1 flex-col leading-snug wrap-break-word",
         className
       )}
       {...props}
@@ -98,7 +98,7 @@ function FieldLabel({
     <Label
       data-slot="field-label"
       className={cn(
-        "cn-field-label group/field-label peer/field-label flex w-fit",
+        "cn-field-label group/field-label peer/field-label flex w-fit max-w-full min-w-0 wrap-anywhere",
         "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col",
         className
       )}
@@ -111,7 +111,10 @@ function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="field-label"
-      className={cn("cn-field-title flex w-fit items-center", className)}
+      className={cn(
+        "cn-field-title flex w-fit max-w-full min-w-0 items-center wrap-anywhere",
+        className
+      )}
       {...props}
     />
   )
@@ -122,7 +125,7 @@ function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
     <p
       data-slot="field-description"
       className={cn(
-        "cn-field-description leading-normal font-normal group-has-data-horizontal/field:text-balance",
+        "cn-field-description min-w-0 leading-normal font-normal wrap-break-word group-has-data-horizontal/field:text-balance",
         "last:mt-0 nth-last-2:-mt-1",
         "[&>a]:underline [&>a]:underline-offset-4 [&>a:hover]:text-primary",
         className
@@ -202,7 +205,10 @@ function FieldError({
     <div
       role="alert"
       data-slot="field-error"
-      className={cn("cn-field-error font-normal", className)}
+      className={cn(
+        "cn-field-error min-w-0 font-normal wrap-break-word",
+        className
+      )}
       {...props}
     >
       {content}
