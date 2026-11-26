@@ -30,7 +30,7 @@
   }
 
   .cn-alert-title {
-    @apply font-medium group-has-[>svg]/alert:col-start-2;
+    @apply min-w-0 wrap-break-word font-medium group-has-[>svg]/alert:col-start-2;
   }
 
   .cn-alert-description {
@@ -59,11 +59,11 @@
   }
 
   .cn-alert-dialog-title {
-    @apply text-sm font-medium sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2;
+    @apply min-w-0 wrap-break-word text-sm font-medium sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2;
   }
 
   .cn-alert-dialog-description {
-    @apply text-muted-foreground *:[a]:hover:text-foreground text-xs/relaxed text-balance md:text-pretty *:[a]:underline *:[a]:underline-offset-3;
+    @apply min-w-0 wrap-break-word text-muted-foreground *:[a]:hover:text-foreground text-xs/relaxed text-balance md:text-pretty *:[a]:underline *:[a]:underline-offset-3;
   }
 
   /* MARK: Avatar */
@@ -444,23 +444,23 @@
   }
 
   .cn-dialog-content {
-    @apply bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 ring-foreground/10 grid max-w-[calc(100%-2rem)] gap-4 rounded-none p-4 text-xs/relaxed ring-1 duration-100 sm:max-w-sm;
+    @apply bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 ring-foreground/10 grid max-w-[calc(100%-2rem)] gap-4 rounded-none p-4 text-xs/relaxed ring-1 duration-100 sm:max-w-sm has-data-[slot=dialog-close]:[&_[data-slot=dialog-header]]:pe-10;
   }
 
   .cn-dialog-close {
-    @apply absolute top-2 right-2;
+    @apply absolute top-2 end-2;
   }
 
   .cn-dialog-header {
-    @apply gap-1 text-left;
+    @apply min-w-0 gap-1 text-left;
   }
 
   .cn-dialog-title {
-    @apply text-sm font-medium;
+    @apply min-w-0 wrap-break-word text-sm font-medium;
   }
 
   .cn-dialog-description {
-    @apply text-muted-foreground *:[a]:hover:text-foreground text-xs/relaxed *:[a]:underline *:[a]:underline-offset-3;
+    @apply min-w-0 wrap-break-word text-muted-foreground *:[a]:hover:text-foreground text-xs/relaxed *:[a]:underline *:[a]:underline-offset-3;
   }
 
   /* MARK: Drawer */
@@ -604,15 +604,15 @@
   }
 
   .cn-field {
-    @apply data-[invalid=true]:text-destructive gap-2;
+    @apply min-w-0 data-[invalid=true]:text-destructive gap-2;
   }
 
   .cn-field-content {
-    @apply gap-0.5;
+    @apply min-w-0 wrap-break-word gap-0.5;
   }
 
   .cn-field-label {
-    @apply has-data-checked:bg-primary/5 has-data-checked:border-primary/30 dark:has-data-checked:border-primary/20 dark:has-data-checked:bg-primary/10 gap-2 leading-snug group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-none has-[>[data-slot=field]]:border has-[>[data-slot=field]]:not-has-[:disabled,[data-disabled]]:hover:bg-muted/50 has-[>[data-slot=field]]:has-[:focus-visible]:border-ring has-[>[data-slot=field]]:has-[:focus-visible]:ring-ring/50 has-[>[data-slot=field]]:has-[:focus-visible]:ring-1 *:data-[slot=field]:p-2;
+    @apply min-w-0 max-w-full wrap-break-word has-data-checked:bg-primary/5 has-data-checked:border-primary/30 dark:has-data-checked:border-primary/20 dark:has-data-checked:bg-primary/10 gap-2 leading-snug group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-none has-[>[data-slot=field]]:border has-[>[data-slot=field]]:not-has-[:disabled,[data-disabled]]:hover:bg-muted/50 has-[>[data-slot=field]]:has-[:focus-visible]:border-ring has-[>[data-slot=field]]:has-[:focus-visible]:ring-ring/50 has-[>[data-slot=field]]:has-[:focus-visible]:ring-1 *:data-[slot=field]:p-2;
   }
 
   .cn-field-label-aria {
@@ -620,11 +620,11 @@
   }
 
   .cn-field-title {
-    @apply gap-2 text-xs/relaxed group-data-[disabled=true]/field:opacity-50;
+    @apply min-w-0 wrap-break-word gap-2 text-xs/relaxed group-data-[disabled=true]/field:opacity-50;
   }
 
   .cn-field-description {
-    @apply text-muted-foreground text-left text-xs/relaxed [[data-variant=legend]+&]:-mt-1.5;
+    @apply min-w-0 wrap-break-word text-muted-foreground text-left text-xs/relaxed [[data-variant=legend]+&]:-mt-1.5;
   }
 
   .cn-field-separator {
@@ -636,7 +636,7 @@
   }
 
   .cn-field-error {
-    @apply text-destructive text-xs;
+    @apply min-w-0 wrap-break-word text-destructive text-xs;
   }
 
   /* MARK: Hover Card */
@@ -762,7 +762,7 @@
 
   /* MARK: Label */
   .cn-label {
-    @apply gap-2 text-xs leading-none group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50;
+    @apply flex-wrap min-w-0 max-w-full wrap-break-word gap-2 text-xs leading-none group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50;
   }
 
   .cn-label-aria {
@@ -1767,7 +1767,7 @@
   }
 
   .cn-dialog-content-aria {
-    @apply bg-popover text-popover-foreground data-entering:animate-in data-exiting:animate-out data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 ring-foreground/10 grid max-w-[calc(100%-2rem)] gap-4 rounded-none p-4 text-xs/relaxed ring-1 duration-100 sm:max-w-sm;
+    @apply bg-popover text-popover-foreground data-entering:animate-in data-exiting:animate-out data-exiting:fade-out-0 data-entering:fade-in-0 data-exiting:zoom-out-95 data-entering:zoom-in-95 ring-foreground/10 grid max-w-[calc(100%-2rem)] gap-4 rounded-none p-4 text-xs/relaxed ring-1 duration-100 sm:max-w-sm has-data-[slot=dialog-close]:[&_[data-slot=dialog-header]]:pe-10;
   }
 
   .cn-dropdown-menu-content-aria {
