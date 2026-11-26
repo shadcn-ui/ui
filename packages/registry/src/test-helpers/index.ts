@@ -9,6 +9,16 @@ export function getFixturesDir(...segments: string[]) {
   return path.resolve(__dirname, "../../test/fixtures", ...segments)
 }
 
+// Writes each file, creating parent directories.
+export async function writeFiles(
+  dir: string,
+  files: Record<string, string | Buffer>
+) {
+  for (const [file, contents] of Object.entries(files)) {
+    await fs.outputFile(path.join(dir, file), contents)
+  }
+}
+
 // Temp dir with guaranteed cleanup. Returns the callback's result.
 export async function withTempDir<T>(
   fn: (dir: string) => Promise<T>,

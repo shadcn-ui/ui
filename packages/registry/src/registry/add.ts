@@ -1,13 +1,13 @@
 import path from "path"
+import { addComponents } from "@/src/add-components"
+import { loadEnvFiles } from "@/src/env-loader"
+import { type Config } from "@/src/get-config"
 import { configWithDefaults } from "@/src/registry/config"
 import { withRegistryContext } from "@/src/registry/context"
 import { ConfigParseError } from "@/src/registry/errors"
 import { resolveRegistryTree } from "@/src/registry/resolver"
-import { configSchema } from "@/src/schema"
-import { addComponents } from "@/src/utils/add-components"
-import { loadEnvFiles } from "@/src/utils/env-loader"
-import { type Config } from "@/src/utils/get-config"
-import { getTargetAliasKey } from "@/src/utils/target-aliases"
+import { configSchema } from "@/src/registry/schema"
+import { getTargetAliasKey } from "@/src/target-aliases"
 
 export async function addRegistryItems(
   items: string[],

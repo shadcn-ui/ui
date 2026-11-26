@@ -473,6 +473,14 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "carousel-spacing",
       filePath: "examples/base/carousel-spacing.tsx",
     },
+    "chain-of-thought-basic": {
+      name: "chain-of-thought-basic",
+      filePath: "examples/base/chain-of-thought-basic.tsx",
+    },
+    "chain-of-thought-demo": {
+      name: "chain-of-thought-demo",
+      filePath: "examples/base/chain-of-thought-demo.tsx",
+    },
     "chart-demo": {
       name: "chart-demo",
       filePath: "examples/base/chart-demo.tsx",
@@ -505,6 +513,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "chart-tooltip",
       filePath: "examples/base/chart-tooltip.tsx",
     },
+    "chat-demo": {
+      name: "chat-demo",
+      filePath: "examples/base/chat-demo.tsx",
+    },
     "checkbox-basic": {
       name: "checkbox-basic",
       filePath: "examples/base/checkbox-basic.tsx",
@@ -536,6 +548,110 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "checkbox-table": {
       name: "checkbox-table",
       filePath: "examples/base/checkbox-table.tsx",
+    },
+    "checkpoint-demo": {
+      name: "checkpoint-demo",
+      filePath: "examples/base/checkpoint-demo.tsx",
+    },
+    "code-block-actions": {
+      name: "code-block-actions",
+      filePath: "examples/base/code-block-actions.tsx",
+    },
+    "code-block-ansi": {
+      name: "code-block-ansi",
+      filePath: "examples/base/code-block-ansi.tsx",
+    },
+    "code-block-basic": {
+      name: "code-block-basic",
+      filePath: "examples/base/code-block-basic.tsx",
+    },
+    "code-block-chat": {
+      name: "code-block-chat",
+      filePath: "examples/base/code-block-chat.tsx",
+    },
+    "code-block-demo": {
+      name: "code-block-demo",
+      filePath: "examples/base/code-block-demo.tsx",
+    },
+    "code-block-destructive": {
+      name: "code-block-destructive",
+      filePath: "examples/base/code-block-destructive.tsx",
+    },
+    "code-block-diff": {
+      name: "code-block-diff",
+      filePath: "examples/base/code-block-diff.tsx",
+    },
+    "code-block-floating-actions": {
+      name: "code-block-floating-actions",
+      filePath: "examples/base/code-block-floating-actions.tsx",
+    },
+    "code-block-header": {
+      name: "code-block-header",
+      filePath: "examples/base/code-block-header.tsx",
+    },
+    "code-block-height": {
+      name: "code-block-height",
+      filePath: "examples/base/code-block-height.tsx",
+    },
+    "code-block-highlighted-lines": {
+      name: "code-block-highlighted-lines",
+      filePath: "examples/base/code-block-highlighted-lines.tsx",
+    },
+    "code-block-highlighting": {
+      name: "code-block-highlighting",
+      filePath: "examples/base/code-block-highlighting.tsx",
+    },
+    "code-block-languages": {
+      name: "code-block-languages",
+      filePath: "examples/base/code-block-languages.tsx",
+    },
+    "code-block-line-numbers": {
+      name: "code-block-line-numbers",
+      filePath: "examples/base/code-block-line-numbers.tsx",
+    },
+    "code-block-markdown": {
+      name: "code-block-markdown",
+      filePath: "examples/base/code-block-markdown.tsx",
+    },
+    "code-block-rtl": {
+      name: "code-block-rtl",
+      filePath: "examples/base/code-block-rtl.tsx",
+    },
+    "code-block-show-more-scroll": {
+      name: "code-block-show-more-scroll",
+      filePath: "examples/base/code-block-show-more-scroll.tsx",
+    },
+    "code-block-show-more": {
+      name: "code-block-show-more",
+      filePath: "examples/base/code-block-show-more.tsx",
+    },
+    "code-block-size": {
+      name: "code-block-size",
+      filePath: "examples/base/code-block-size.tsx",
+    },
+    "code-block-start-line": {
+      name: "code-block-start-line",
+      filePath: "examples/base/code-block-start-line.tsx",
+    },
+    "code-block-streaming": {
+      name: "code-block-streaming",
+      filePath: "examples/base/code-block-streaming.tsx",
+    },
+    "code-block-tabs": {
+      name: "code-block-tabs",
+      filePath: "examples/base/code-block-tabs.tsx",
+    },
+    "code-block-trace": {
+      name: "code-block-trace",
+      filePath: "examples/base/code-block-trace.tsx",
+    },
+    "code-block-typeset": {
+      name: "code-block-typeset",
+      filePath: "examples/base/code-block-typeset.tsx",
+    },
+    "code-block-wrap": {
+      name: "code-block-wrap",
+      filePath: "examples/base/code-block-wrap.tsx",
     },
     "collapsible-basic": {
       name: "collapsible-basic",
@@ -632,6 +748,14 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "command-shortcuts": {
       name: "command-shortcuts",
       filePath: "examples/base/command-shortcuts.tsx",
+    },
+    "confirmation-demo": {
+      name: "confirmation-demo",
+      filePath: "examples/base/confirmation-demo.tsx",
+    },
+    "context-demo": {
+      name: "context-demo",
+      filePath: "examples/base/context-demo.tsx",
     },
     "context-menu-basic": {
       name: "context-menu-basic",
@@ -913,6 +1037,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "field-textarea",
       filePath: "examples/base/field-textarea.tsx",
     },
+    "file-tree-demo": {
+      name: "file-tree-demo",
+      filePath: "examples/base/file-tree-demo.tsx",
+    },
     "file-upload-list": {
       name: "file-upload-list",
       filePath: "examples/base/file-upload-list.tsx",
@@ -928,6 +1056,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "hover-card-sides": {
       name: "hover-card-sides",
       filePath: "examples/base/hover-card-sides.tsx",
+    },
+    "inline-citation-demo": {
+      name: "inline-citation-demo",
+      filePath: "examples/base/inline-citation-demo.tsx",
     },
     "input-badge": {
       name: "input-badge",
@@ -1289,6 +1421,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "message-markdown",
       filePath: "examples/base/message-markdown.tsx",
     },
+    "message-pattern": {
+      name: "message-pattern",
+      filePath: "examples/base/message-pattern.tsx",
+    },
     "message-scroller-anchoring": {
       name: "message-scroller-anchoring",
       filePath: "examples/base/message-scroller-anchoring.tsx",
@@ -1336,6 +1472,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "message-scroller-visibility": {
       name: "message-scroller-visibility",
       filePath: "examples/base/message-scroller-visibility.tsx",
+    },
+    "model-selector-demo": {
+      name: "model-selector-demo",
+      filePath: "examples/base/model-selector-demo.tsx",
     },
     "muted-item-group": {
       name: "muted-item-group",
@@ -1389,6 +1529,18 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "pagination-simple",
       filePath: "examples/base/pagination-simple.tsx",
     },
+    "plan-basic": {
+      name: "plan-basic",
+      filePath: "examples/base/plan-basic.tsx",
+    },
+    "plan-demo": {
+      name: "plan-demo",
+      filePath: "examples/base/plan-demo.tsx",
+    },
+    "plan-description": {
+      name: "plan-description",
+      filePath: "examples/base/plan-description.tsx",
+    },
     "popover-alignments": {
       name: "popover-alignments",
       filePath: "examples/base/popover-alignments.tsx",
@@ -1424,6 +1576,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "progress-rtl": {
       name: "progress-rtl",
       filePath: "examples/base/progress-rtl.tsx",
+    },
+    "prompt-input-demo": {
+      name: "prompt-input-demo",
+      filePath: "examples/base/prompt-input-demo.tsx",
     },
     "questionnaire-animated": {
       name: "questionnaire-animated",
@@ -1481,6 +1637,18 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "questionnaire-validation",
       filePath: "examples/base/questionnaire-validation.tsx",
     },
+    "queue-basic": {
+      name: "queue-basic",
+      filePath: "examples/base/queue-basic.tsx",
+    },
+    "queue-demo": {
+      name: "queue-demo",
+      filePath: "examples/base/queue-demo.tsx",
+    },
+    "queue-descriptions": {
+      name: "queue-descriptions",
+      filePath: "examples/base/queue-descriptions.tsx",
+    },
     "radio-fields": {
       name: "radio-fields",
       filePath: "examples/base/radio-fields.tsx",
@@ -1512,6 +1680,18 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "radio-group-rtl": {
       name: "radio-group-rtl",
       filePath: "examples/base/radio-group-rtl.tsx",
+    },
+    "reasoning-basic": {
+      name: "reasoning-basic",
+      filePath: "examples/base/reasoning-basic.tsx",
+    },
+    "reasoning-demo": {
+      name: "reasoning-demo",
+      filePath: "examples/base/reasoning-demo.tsx",
+    },
+    "reasoning-duration": {
+      name: "reasoning-duration",
+      filePath: "examples/base/reasoning-duration.tsx",
     },
     "resizable-demo": {
       name: "resizable-demo",
@@ -1781,6 +1961,14 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "slider-vertical",
       filePath: "examples/base/slider-vertical.tsx",
     },
+    "sources-basic": {
+      name: "sources-basic",
+      filePath: "examples/base/sources-basic.tsx",
+    },
+    "sources-demo": {
+      name: "sources-demo",
+      filePath: "examples/base/sources-demo.tsx",
+    },
     "spinner-badge": {
       name: "spinner-badge",
       filePath: "examples/base/spinner-badge.tsx",
@@ -1812,6 +2000,38 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "spinner-size": {
       name: "spinner-size",
       filePath: "examples/base/spinner-size.tsx",
+    },
+    "stack-trace-basic": {
+      name: "stack-trace-basic",
+      filePath: "examples/base/stack-trace-basic.tsx",
+    },
+    "stack-trace-demo": {
+      name: "stack-trace-demo",
+      filePath: "examples/base/stack-trace-demo.tsx",
+    },
+    "stack-trace-frames": {
+      name: "stack-trace-frames",
+      filePath: "examples/base/stack-trace-frames.tsx",
+    },
+    "subagent-basic": {
+      name: "subagent-basic",
+      filePath: "examples/base/subagent-basic.tsx",
+    },
+    "subagent-demo": {
+      name: "subagent-demo",
+      filePath: "examples/base/subagent-demo.tsx",
+    },
+    "subagent-details": {
+      name: "subagent-details",
+      filePath: "examples/base/subagent-details.tsx",
+    },
+    "subagent-running": {
+      name: "subagent-running",
+      filePath: "examples/base/subagent-running.tsx",
+    },
+    "suggestion-demo": {
+      name: "suggestion-demo",
+      filePath: "examples/base/suggestion-demo.tsx",
     },
     "switch-choice-card": {
       name: "switch-choice-card",
@@ -1884,6 +2104,38 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "tanstack-ai-helper-demo": {
       name: "tanstack-ai-helper-demo",
       filePath: "examples/base/tanstack-ai-helper-demo.tsx",
+    },
+    "task-basic": {
+      name: "task-basic",
+      filePath: "examples/base/task-basic.tsx",
+    },
+    "task-demo": {
+      name: "task-demo",
+      filePath: "examples/base/task-demo.tsx",
+    },
+    "terminal-basic": {
+      name: "terminal-basic",
+      filePath: "examples/base/terminal-basic.tsx",
+    },
+    "terminal-demo": {
+      name: "terminal-demo",
+      filePath: "examples/base/terminal-demo.tsx",
+    },
+    "terminal-error": {
+      name: "terminal-error",
+      filePath: "examples/base/terminal-error.tsx",
+    },
+    "test-results-basic": {
+      name: "test-results-basic",
+      filePath: "examples/base/test-results-basic.tsx",
+    },
+    "test-results-demo": {
+      name: "test-results-demo",
+      filePath: "examples/base/test-results-demo.tsx",
+    },
+    "test-results-suites": {
+      name: "test-results-suites",
+      filePath: "examples/base/test-results-suites.tsx",
     },
     "textarea-button": {
       name: "textarea-button",
@@ -1977,6 +2229,26 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "toggle-text",
       filePath: "examples/base/toggle-text.tsx",
     },
+    "tool-approval": {
+      name: "tool-approval",
+      filePath: "examples/base/tool-approval.tsx",
+    },
+    "tool-basic": {
+      name: "tool-basic",
+      filePath: "examples/base/tool-basic.tsx",
+    },
+    "tool-demo": {
+      name: "tool-demo",
+      filePath: "examples/base/tool-demo.tsx",
+    },
+    "tool-sheet": {
+      name: "tool-sheet",
+      filePath: "examples/base/tool-sheet.tsx",
+    },
+    "tool-states": {
+      name: "tool-states",
+      filePath: "examples/base/tool-states.tsx",
+    },
     "tooltip-demo": {
       name: "tooltip-demo",
       filePath: "examples/base/tooltip-demo.tsx",
@@ -1996,6 +2268,70 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "tooltip-sides": {
       name: "tooltip-sides",
       filePath: "examples/base/tooltip-sides.tsx",
+    },
+    "trace-collapsible": {
+      name: "trace-collapsible",
+      filePath: "examples/base/trace-collapsible.tsx",
+    },
+    "trace-commit": {
+      name: "trace-commit",
+      filePath: "examples/base/trace-commit.tsx",
+    },
+    "trace-demo": {
+      name: "trace-demo",
+      filePath: "examples/base/trace-demo.tsx",
+    },
+    "trace-description": {
+      name: "trace-description",
+      filePath: "examples/base/trace-description.tsx",
+    },
+    "trace-dialog": {
+      name: "trace-dialog",
+      filePath: "examples/base/trace-dialog.tsx",
+    },
+    "trace-group": {
+      name: "trace-group",
+      filePath: "examples/base/trace-group.tsx",
+    },
+    "trace-link": {
+      name: "trace-link",
+      filePath: "examples/base/trace-link.tsx",
+    },
+    "trace-open": {
+      name: "trace-open",
+      filePath: "examples/base/trace-open.tsx",
+    },
+    "trace-sheet": {
+      name: "trace-sheet",
+      filePath: "examples/base/trace-sheet.tsx",
+    },
+    "trace-sources": {
+      name: "trace-sources",
+      filePath: "examples/base/trace-sources.tsx",
+    },
+    "trace-static": {
+      name: "trace-static",
+      filePath: "examples/base/trace-static.tsx",
+    },
+    "trace-status": {
+      name: "trace-status",
+      filePath: "examples/base/trace-status.tsx",
+    },
+    "trace-steps": {
+      name: "trace-steps",
+      filePath: "examples/base/trace-steps.tsx",
+    },
+    "trace-thinking": {
+      name: "trace-thinking",
+      filePath: "examples/base/trace-thinking.tsx",
+    },
+    "trace-tool-calls": {
+      name: "trace-tool-calls",
+      filePath: "examples/base/trace-tool-calls.tsx",
+    },
+    "trace-turn": {
+      name: "trace-turn",
+      filePath: "examples/base/trace-turn.tsx",
     },
     "typography-blockquote": {
       name: "typography-blockquote",
@@ -2519,6 +2855,14 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "carousel-spacing",
       filePath: "examples/aria/carousel-spacing.tsx",
     },
+    "chain-of-thought-basic": {
+      name: "chain-of-thought-basic",
+      filePath: "examples/aria/chain-of-thought-basic.tsx",
+    },
+    "chain-of-thought-demo": {
+      name: "chain-of-thought-demo",
+      filePath: "examples/aria/chain-of-thought-demo.tsx",
+    },
     "chart-demo": {
       name: "chart-demo",
       filePath: "examples/aria/chart-demo.tsx",
@@ -2551,6 +2895,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "chart-tooltip",
       filePath: "examples/aria/chart-tooltip.tsx",
     },
+    "chat-demo": {
+      name: "chat-demo",
+      filePath: "examples/aria/chat-demo.tsx",
+    },
     "checkbox-basic": {
       name: "checkbox-basic",
       filePath: "examples/aria/checkbox-basic.tsx",
@@ -2582,6 +2930,110 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "checkbox-table": {
       name: "checkbox-table",
       filePath: "examples/aria/checkbox-table.tsx",
+    },
+    "checkpoint-demo": {
+      name: "checkpoint-demo",
+      filePath: "examples/aria/checkpoint-demo.tsx",
+    },
+    "code-block-actions": {
+      name: "code-block-actions",
+      filePath: "examples/aria/code-block-actions.tsx",
+    },
+    "code-block-ansi": {
+      name: "code-block-ansi",
+      filePath: "examples/aria/code-block-ansi.tsx",
+    },
+    "code-block-basic": {
+      name: "code-block-basic",
+      filePath: "examples/aria/code-block-basic.tsx",
+    },
+    "code-block-chat": {
+      name: "code-block-chat",
+      filePath: "examples/aria/code-block-chat.tsx",
+    },
+    "code-block-demo": {
+      name: "code-block-demo",
+      filePath: "examples/aria/code-block-demo.tsx",
+    },
+    "code-block-destructive": {
+      name: "code-block-destructive",
+      filePath: "examples/aria/code-block-destructive.tsx",
+    },
+    "code-block-diff": {
+      name: "code-block-diff",
+      filePath: "examples/aria/code-block-diff.tsx",
+    },
+    "code-block-floating-actions": {
+      name: "code-block-floating-actions",
+      filePath: "examples/aria/code-block-floating-actions.tsx",
+    },
+    "code-block-header": {
+      name: "code-block-header",
+      filePath: "examples/aria/code-block-header.tsx",
+    },
+    "code-block-height": {
+      name: "code-block-height",
+      filePath: "examples/aria/code-block-height.tsx",
+    },
+    "code-block-highlighted-lines": {
+      name: "code-block-highlighted-lines",
+      filePath: "examples/aria/code-block-highlighted-lines.tsx",
+    },
+    "code-block-highlighting": {
+      name: "code-block-highlighting",
+      filePath: "examples/aria/code-block-highlighting.tsx",
+    },
+    "code-block-languages": {
+      name: "code-block-languages",
+      filePath: "examples/aria/code-block-languages.tsx",
+    },
+    "code-block-line-numbers": {
+      name: "code-block-line-numbers",
+      filePath: "examples/aria/code-block-line-numbers.tsx",
+    },
+    "code-block-markdown": {
+      name: "code-block-markdown",
+      filePath: "examples/aria/code-block-markdown.tsx",
+    },
+    "code-block-rtl": {
+      name: "code-block-rtl",
+      filePath: "examples/aria/code-block-rtl.tsx",
+    },
+    "code-block-show-more-scroll": {
+      name: "code-block-show-more-scroll",
+      filePath: "examples/aria/code-block-show-more-scroll.tsx",
+    },
+    "code-block-show-more": {
+      name: "code-block-show-more",
+      filePath: "examples/aria/code-block-show-more.tsx",
+    },
+    "code-block-size": {
+      name: "code-block-size",
+      filePath: "examples/aria/code-block-size.tsx",
+    },
+    "code-block-start-line": {
+      name: "code-block-start-line",
+      filePath: "examples/aria/code-block-start-line.tsx",
+    },
+    "code-block-streaming": {
+      name: "code-block-streaming",
+      filePath: "examples/aria/code-block-streaming.tsx",
+    },
+    "code-block-tabs": {
+      name: "code-block-tabs",
+      filePath: "examples/aria/code-block-tabs.tsx",
+    },
+    "code-block-trace": {
+      name: "code-block-trace",
+      filePath: "examples/aria/code-block-trace.tsx",
+    },
+    "code-block-typeset": {
+      name: "code-block-typeset",
+      filePath: "examples/aria/code-block-typeset.tsx",
+    },
+    "code-block-wrap": {
+      name: "code-block-wrap",
+      filePath: "examples/aria/code-block-wrap.tsx",
     },
     "collapsible-basic": {
       name: "collapsible-basic",
@@ -2670,6 +3122,14 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "command-shortcuts": {
       name: "command-shortcuts",
       filePath: "examples/aria/command-shortcuts.tsx",
+    },
+    "confirmation-demo": {
+      name: "confirmation-demo",
+      filePath: "examples/aria/confirmation-demo.tsx",
+    },
+    "context-demo": {
+      name: "context-demo",
+      filePath: "examples/aria/context-demo.tsx",
     },
     "context-menu-basic": {
       name: "context-menu-basic",
@@ -2951,6 +3411,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "field-textarea",
       filePath: "examples/aria/field-textarea.tsx",
     },
+    "file-tree-demo": {
+      name: "file-tree-demo",
+      filePath: "examples/aria/file-tree-demo.tsx",
+    },
     "file-upload-list": {
       name: "file-upload-list",
       filePath: "examples/aria/file-upload-list.tsx",
@@ -2966,6 +3430,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "hover-card-sides": {
       name: "hover-card-sides",
       filePath: "examples/aria/hover-card-sides.tsx",
+    },
+    "inline-citation-demo": {
+      name: "inline-citation-demo",
+      filePath: "examples/aria/inline-citation-demo.tsx",
     },
     "input-badge": {
       name: "input-badge",
@@ -3303,6 +3771,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "message-markdown",
       filePath: "examples/aria/message-markdown.tsx",
     },
+    "message-pattern": {
+      name: "message-pattern",
+      filePath: "examples/aria/message-pattern.tsx",
+    },
     "message-scroller-anchoring": {
       name: "message-scroller-anchoring",
       filePath: "examples/aria/message-scroller-anchoring.tsx",
@@ -3351,6 +3823,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "message-scroller-visibility",
       filePath: "examples/aria/message-scroller-visibility.tsx",
     },
+    "model-selector-demo": {
+      name: "model-selector-demo",
+      filePath: "examples/aria/model-selector-demo.tsx",
+    },
     "muted-item-group": {
       name: "muted-item-group",
       filePath: "examples/aria/muted-item-group.tsx",
@@ -3395,6 +3871,18 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "pagination-simple",
       filePath: "examples/aria/pagination-simple.tsx",
     },
+    "plan-basic": {
+      name: "plan-basic",
+      filePath: "examples/aria/plan-basic.tsx",
+    },
+    "plan-demo": {
+      name: "plan-demo",
+      filePath: "examples/aria/plan-demo.tsx",
+    },
+    "plan-description": {
+      name: "plan-description",
+      filePath: "examples/aria/plan-description.tsx",
+    },
     "popover-alignments": {
       name: "popover-alignments",
       filePath: "examples/aria/popover-alignments.tsx",
@@ -3430,6 +3918,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "progress-rtl": {
       name: "progress-rtl",
       filePath: "examples/aria/progress-rtl.tsx",
+    },
+    "prompt-input-demo": {
+      name: "prompt-input-demo",
+      filePath: "examples/aria/prompt-input-demo.tsx",
     },
     "questionnaire-animated": {
       name: "questionnaire-animated",
@@ -3487,6 +3979,18 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "questionnaire-validation",
       filePath: "examples/aria/questionnaire-validation.tsx",
     },
+    "queue-basic": {
+      name: "queue-basic",
+      filePath: "examples/aria/queue-basic.tsx",
+    },
+    "queue-demo": {
+      name: "queue-demo",
+      filePath: "examples/aria/queue-demo.tsx",
+    },
+    "queue-descriptions": {
+      name: "queue-descriptions",
+      filePath: "examples/aria/queue-descriptions.tsx",
+    },
     "radio-fields": {
       name: "radio-fields",
       filePath: "examples/aria/radio-fields.tsx",
@@ -3518,6 +4022,18 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "radio-group-rtl": {
       name: "radio-group-rtl",
       filePath: "examples/aria/radio-group-rtl.tsx",
+    },
+    "reasoning-basic": {
+      name: "reasoning-basic",
+      filePath: "examples/aria/reasoning-basic.tsx",
+    },
+    "reasoning-demo": {
+      name: "reasoning-demo",
+      filePath: "examples/aria/reasoning-demo.tsx",
+    },
+    "reasoning-duration": {
+      name: "reasoning-duration",
+      filePath: "examples/aria/reasoning-duration.tsx",
     },
     "resizable-demo": {
       name: "resizable-demo",
@@ -3803,6 +4319,14 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "sonner-types",
       filePath: "examples/aria/sonner-types.tsx",
     },
+    "sources-basic": {
+      name: "sources-basic",
+      filePath: "examples/aria/sources-basic.tsx",
+    },
+    "sources-demo": {
+      name: "sources-demo",
+      filePath: "examples/aria/sources-demo.tsx",
+    },
     "spinner-badge": {
       name: "spinner-badge",
       filePath: "examples/aria/spinner-badge.tsx",
@@ -3834,6 +4358,38 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "spinner-size": {
       name: "spinner-size",
       filePath: "examples/aria/spinner-size.tsx",
+    },
+    "stack-trace-basic": {
+      name: "stack-trace-basic",
+      filePath: "examples/aria/stack-trace-basic.tsx",
+    },
+    "stack-trace-demo": {
+      name: "stack-trace-demo",
+      filePath: "examples/aria/stack-trace-demo.tsx",
+    },
+    "stack-trace-frames": {
+      name: "stack-trace-frames",
+      filePath: "examples/aria/stack-trace-frames.tsx",
+    },
+    "subagent-basic": {
+      name: "subagent-basic",
+      filePath: "examples/aria/subagent-basic.tsx",
+    },
+    "subagent-demo": {
+      name: "subagent-demo",
+      filePath: "examples/aria/subagent-demo.tsx",
+    },
+    "subagent-details": {
+      name: "subagent-details",
+      filePath: "examples/aria/subagent-details.tsx",
+    },
+    "subagent-running": {
+      name: "subagent-running",
+      filePath: "examples/aria/subagent-running.tsx",
+    },
+    "suggestion-demo": {
+      name: "suggestion-demo",
+      filePath: "examples/aria/suggestion-demo.tsx",
     },
     "switch-choice-card": {
       name: "switch-choice-card",
@@ -3902,6 +4458,38 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "tabs-vertical": {
       name: "tabs-vertical",
       filePath: "examples/aria/tabs-vertical.tsx",
+    },
+    "task-basic": {
+      name: "task-basic",
+      filePath: "examples/aria/task-basic.tsx",
+    },
+    "task-demo": {
+      name: "task-demo",
+      filePath: "examples/aria/task-demo.tsx",
+    },
+    "terminal-basic": {
+      name: "terminal-basic",
+      filePath: "examples/aria/terminal-basic.tsx",
+    },
+    "terminal-demo": {
+      name: "terminal-demo",
+      filePath: "examples/aria/terminal-demo.tsx",
+    },
+    "terminal-error": {
+      name: "terminal-error",
+      filePath: "examples/aria/terminal-error.tsx",
+    },
+    "test-results-basic": {
+      name: "test-results-basic",
+      filePath: "examples/aria/test-results-basic.tsx",
+    },
+    "test-results-demo": {
+      name: "test-results-demo",
+      filePath: "examples/aria/test-results-demo.tsx",
+    },
+    "test-results-suites": {
+      name: "test-results-suites",
+      filePath: "examples/aria/test-results-suites.tsx",
     },
     "textarea-button": {
       name: "textarea-button",
@@ -3983,6 +4571,26 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "toggle-text",
       filePath: "examples/aria/toggle-text.tsx",
     },
+    "tool-approval": {
+      name: "tool-approval",
+      filePath: "examples/aria/tool-approval.tsx",
+    },
+    "tool-basic": {
+      name: "tool-basic",
+      filePath: "examples/aria/tool-basic.tsx",
+    },
+    "tool-demo": {
+      name: "tool-demo",
+      filePath: "examples/aria/tool-demo.tsx",
+    },
+    "tool-sheet": {
+      name: "tool-sheet",
+      filePath: "examples/aria/tool-sheet.tsx",
+    },
+    "tool-states": {
+      name: "tool-states",
+      filePath: "examples/aria/tool-states.tsx",
+    },
     "tooltip-demo": {
       name: "tooltip-demo",
       filePath: "examples/aria/tooltip-demo.tsx",
@@ -4002,6 +4610,70 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "tooltip-sides": {
       name: "tooltip-sides",
       filePath: "examples/aria/tooltip-sides.tsx",
+    },
+    "trace-collapsible": {
+      name: "trace-collapsible",
+      filePath: "examples/aria/trace-collapsible.tsx",
+    },
+    "trace-commit": {
+      name: "trace-commit",
+      filePath: "examples/aria/trace-commit.tsx",
+    },
+    "trace-demo": {
+      name: "trace-demo",
+      filePath: "examples/aria/trace-demo.tsx",
+    },
+    "trace-description": {
+      name: "trace-description",
+      filePath: "examples/aria/trace-description.tsx",
+    },
+    "trace-dialog": {
+      name: "trace-dialog",
+      filePath: "examples/aria/trace-dialog.tsx",
+    },
+    "trace-group": {
+      name: "trace-group",
+      filePath: "examples/aria/trace-group.tsx",
+    },
+    "trace-link": {
+      name: "trace-link",
+      filePath: "examples/aria/trace-link.tsx",
+    },
+    "trace-open": {
+      name: "trace-open",
+      filePath: "examples/aria/trace-open.tsx",
+    },
+    "trace-sheet": {
+      name: "trace-sheet",
+      filePath: "examples/aria/trace-sheet.tsx",
+    },
+    "trace-sources": {
+      name: "trace-sources",
+      filePath: "examples/aria/trace-sources.tsx",
+    },
+    "trace-static": {
+      name: "trace-static",
+      filePath: "examples/aria/trace-static.tsx",
+    },
+    "trace-status": {
+      name: "trace-status",
+      filePath: "examples/aria/trace-status.tsx",
+    },
+    "trace-steps": {
+      name: "trace-steps",
+      filePath: "examples/aria/trace-steps.tsx",
+    },
+    "trace-thinking": {
+      name: "trace-thinking",
+      filePath: "examples/aria/trace-thinking.tsx",
+    },
+    "trace-tool-calls": {
+      name: "trace-tool-calls",
+      filePath: "examples/aria/trace-tool-calls.tsx",
+    },
+    "trace-turn": {
+      name: "trace-turn",
+      filePath: "examples/aria/trace-turn.tsx",
     },
     "typography-blockquote": {
       name: "typography-blockquote",
@@ -4529,6 +5201,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "carousel-spacing",
       filePath: "examples/radix/carousel-spacing.tsx",
     },
+    "chain-of-thought-demo": {
+      name: "chain-of-thought-demo",
+      filePath: "examples/radix/chain-of-thought-demo.tsx",
+    },
     "chart-demo": {
       name: "chart-demo",
       filePath: "examples/radix/chart-demo.tsx",
@@ -4561,6 +5237,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "chart-tooltip",
       filePath: "examples/radix/chart-tooltip.tsx",
     },
+    "chat-demo": {
+      name: "chat-demo",
+      filePath: "examples/radix/chat-demo.tsx",
+    },
     "checkbox-basic": {
       name: "checkbox-basic",
       filePath: "examples/radix/checkbox-basic.tsx",
@@ -4592,6 +5272,110 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "checkbox-table": {
       name: "checkbox-table",
       filePath: "examples/radix/checkbox-table.tsx",
+    },
+    "checkpoint-demo": {
+      name: "checkpoint-demo",
+      filePath: "examples/radix/checkpoint-demo.tsx",
+    },
+    "code-block-actions": {
+      name: "code-block-actions",
+      filePath: "examples/radix/code-block-actions.tsx",
+    },
+    "code-block-ansi": {
+      name: "code-block-ansi",
+      filePath: "examples/radix/code-block-ansi.tsx",
+    },
+    "code-block-basic": {
+      name: "code-block-basic",
+      filePath: "examples/radix/code-block-basic.tsx",
+    },
+    "code-block-chat": {
+      name: "code-block-chat",
+      filePath: "examples/radix/code-block-chat.tsx",
+    },
+    "code-block-demo": {
+      name: "code-block-demo",
+      filePath: "examples/radix/code-block-demo.tsx",
+    },
+    "code-block-destructive": {
+      name: "code-block-destructive",
+      filePath: "examples/radix/code-block-destructive.tsx",
+    },
+    "code-block-diff": {
+      name: "code-block-diff",
+      filePath: "examples/radix/code-block-diff.tsx",
+    },
+    "code-block-floating-actions": {
+      name: "code-block-floating-actions",
+      filePath: "examples/radix/code-block-floating-actions.tsx",
+    },
+    "code-block-header": {
+      name: "code-block-header",
+      filePath: "examples/radix/code-block-header.tsx",
+    },
+    "code-block-height": {
+      name: "code-block-height",
+      filePath: "examples/radix/code-block-height.tsx",
+    },
+    "code-block-highlighted-lines": {
+      name: "code-block-highlighted-lines",
+      filePath: "examples/radix/code-block-highlighted-lines.tsx",
+    },
+    "code-block-highlighting": {
+      name: "code-block-highlighting",
+      filePath: "examples/radix/code-block-highlighting.tsx",
+    },
+    "code-block-languages": {
+      name: "code-block-languages",
+      filePath: "examples/radix/code-block-languages.tsx",
+    },
+    "code-block-line-numbers": {
+      name: "code-block-line-numbers",
+      filePath: "examples/radix/code-block-line-numbers.tsx",
+    },
+    "code-block-markdown": {
+      name: "code-block-markdown",
+      filePath: "examples/radix/code-block-markdown.tsx",
+    },
+    "code-block-rtl": {
+      name: "code-block-rtl",
+      filePath: "examples/radix/code-block-rtl.tsx",
+    },
+    "code-block-show-more-scroll": {
+      name: "code-block-show-more-scroll",
+      filePath: "examples/radix/code-block-show-more-scroll.tsx",
+    },
+    "code-block-show-more": {
+      name: "code-block-show-more",
+      filePath: "examples/radix/code-block-show-more.tsx",
+    },
+    "code-block-size": {
+      name: "code-block-size",
+      filePath: "examples/radix/code-block-size.tsx",
+    },
+    "code-block-start-line": {
+      name: "code-block-start-line",
+      filePath: "examples/radix/code-block-start-line.tsx",
+    },
+    "code-block-streaming": {
+      name: "code-block-streaming",
+      filePath: "examples/radix/code-block-streaming.tsx",
+    },
+    "code-block-tabs": {
+      name: "code-block-tabs",
+      filePath: "examples/radix/code-block-tabs.tsx",
+    },
+    "code-block-trace": {
+      name: "code-block-trace",
+      filePath: "examples/radix/code-block-trace.tsx",
+    },
+    "code-block-typeset": {
+      name: "code-block-typeset",
+      filePath: "examples/radix/code-block-typeset.tsx",
+    },
+    "code-block-wrap": {
+      name: "code-block-wrap",
+      filePath: "examples/radix/code-block-wrap.tsx",
     },
     "collapsible-basic": {
       name: "collapsible-basic",
@@ -4688,6 +5472,14 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "command-shortcuts": {
       name: "command-shortcuts",
       filePath: "examples/radix/command-shortcuts.tsx",
+    },
+    "confirmation-demo": {
+      name: "confirmation-demo",
+      filePath: "examples/radix/confirmation-demo.tsx",
+    },
+    "context-demo": {
+      name: "context-demo",
+      filePath: "examples/radix/context-demo.tsx",
     },
     "context-menu-basic": {
       name: "context-menu-basic",
@@ -4957,6 +5749,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "field-textarea",
       filePath: "examples/radix/field-textarea.tsx",
     },
+    "file-tree-demo": {
+      name: "file-tree-demo",
+      filePath: "examples/radix/file-tree-demo.tsx",
+    },
     "file-upload-list": {
       name: "file-upload-list",
       filePath: "examples/radix/file-upload-list.tsx",
@@ -4972,6 +5768,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "hover-card-sides": {
       name: "hover-card-sides",
       filePath: "examples/radix/hover-card-sides.tsx",
+    },
+    "inline-citation-demo": {
+      name: "inline-citation-demo",
+      filePath: "examples/radix/inline-citation-demo.tsx",
     },
     "input-badge": {
       name: "input-badge",
@@ -5333,6 +6133,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "message-markdown",
       filePath: "examples/radix/message-markdown.tsx",
     },
+    "message-pattern": {
+      name: "message-pattern",
+      filePath: "examples/radix/message-pattern.tsx",
+    },
     "message-scroller-anchoring": {
       name: "message-scroller-anchoring",
       filePath: "examples/radix/message-scroller-anchoring.tsx",
@@ -5376,6 +6180,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "message-scroller-visibility": {
       name: "message-scroller-visibility",
       filePath: "examples/radix/message-scroller-visibility.tsx",
+    },
+    "model-selector-demo": {
+      name: "model-selector-demo",
+      filePath: "examples/radix/model-selector-demo.tsx",
     },
     "muted-item-group": {
       name: "muted-item-group",
@@ -5429,6 +6237,14 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "pagination-simple",
       filePath: "examples/radix/pagination-simple.tsx",
     },
+    "plan-demo": {
+      name: "plan-demo",
+      filePath: "examples/radix/plan-demo.tsx",
+    },
+    "plan-description": {
+      name: "plan-description",
+      filePath: "examples/radix/plan-description.tsx",
+    },
     "popover-alignments": {
       name: "popover-alignments",
       filePath: "examples/radix/popover-alignments.tsx",
@@ -5464,6 +6280,10 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "progress-rtl": {
       name: "progress-rtl",
       filePath: "examples/radix/progress-rtl.tsx",
+    },
+    "prompt-input-demo": {
+      name: "prompt-input-demo",
+      filePath: "examples/radix/prompt-input-demo.tsx",
     },
     "questionnaire-animated": {
       name: "questionnaire-animated",
@@ -5521,6 +6341,14 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "questionnaire-validation",
       filePath: "examples/radix/questionnaire-validation.tsx",
     },
+    "queue-demo": {
+      name: "queue-demo",
+      filePath: "examples/radix/queue-demo.tsx",
+    },
+    "queue-descriptions": {
+      name: "queue-descriptions",
+      filePath: "examples/radix/queue-descriptions.tsx",
+    },
     "radio-fields": {
       name: "radio-fields",
       filePath: "examples/radix/radio-fields.tsx",
@@ -5552,6 +6380,14 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "radio-group-rtl": {
       name: "radio-group-rtl",
       filePath: "examples/radix/radio-group-rtl.tsx",
+    },
+    "reasoning-demo": {
+      name: "reasoning-demo",
+      filePath: "examples/radix/reasoning-demo.tsx",
+    },
+    "reasoning-duration": {
+      name: "reasoning-duration",
+      filePath: "examples/radix/reasoning-duration.tsx",
     },
     "resizable-demo": {
       name: "resizable-demo",
@@ -5837,6 +6673,14 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "sonner-types",
       filePath: "examples/radix/sonner-types.tsx",
     },
+    "sources-basic": {
+      name: "sources-basic",
+      filePath: "examples/radix/sources-basic.tsx",
+    },
+    "sources-demo": {
+      name: "sources-demo",
+      filePath: "examples/radix/sources-demo.tsx",
+    },
     "spinner-badge": {
       name: "spinner-badge",
       filePath: "examples/radix/spinner-badge.tsx",
@@ -5868,6 +6712,30 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "spinner-size": {
       name: "spinner-size",
       filePath: "examples/radix/spinner-size.tsx",
+    },
+    "stack-trace-demo": {
+      name: "stack-trace-demo",
+      filePath: "examples/radix/stack-trace-demo.tsx",
+    },
+    "stack-trace-frames": {
+      name: "stack-trace-frames",
+      filePath: "examples/radix/stack-trace-frames.tsx",
+    },
+    "subagent-demo": {
+      name: "subagent-demo",
+      filePath: "examples/radix/subagent-demo.tsx",
+    },
+    "subagent-details": {
+      name: "subagent-details",
+      filePath: "examples/radix/subagent-details.tsx",
+    },
+    "subagent-running": {
+      name: "subagent-running",
+      filePath: "examples/radix/subagent-running.tsx",
+    },
+    "suggestion-demo": {
+      name: "suggestion-demo",
+      filePath: "examples/radix/suggestion-demo.tsx",
     },
     "switch-choice-card": {
       name: "switch-choice-card",
@@ -5936,6 +6804,26 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "tabs-vertical": {
       name: "tabs-vertical",
       filePath: "examples/radix/tabs-vertical.tsx",
+    },
+    "task-demo": {
+      name: "task-demo",
+      filePath: "examples/radix/task-demo.tsx",
+    },
+    "terminal-demo": {
+      name: "terminal-demo",
+      filePath: "examples/radix/terminal-demo.tsx",
+    },
+    "terminal-error": {
+      name: "terminal-error",
+      filePath: "examples/radix/terminal-error.tsx",
+    },
+    "test-results-demo": {
+      name: "test-results-demo",
+      filePath: "examples/radix/test-results-demo.tsx",
+    },
+    "test-results-suites": {
+      name: "test-results-suites",
+      filePath: "examples/radix/test-results-suites.tsx",
     },
     "textarea-button": {
       name: "textarea-button",
@@ -6017,6 +6905,22 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
       name: "toggle-text",
       filePath: "examples/radix/toggle-text.tsx",
     },
+    "tool-approval": {
+      name: "tool-approval",
+      filePath: "examples/radix/tool-approval.tsx",
+    },
+    "tool-demo": {
+      name: "tool-demo",
+      filePath: "examples/radix/tool-demo.tsx",
+    },
+    "tool-sheet": {
+      name: "tool-sheet",
+      filePath: "examples/radix/tool-sheet.tsx",
+    },
+    "tool-states": {
+      name: "tool-states",
+      filePath: "examples/radix/tool-states.tsx",
+    },
     "tooltip-demo": {
       name: "tooltip-demo",
       filePath: "examples/radix/tooltip-demo.tsx",
@@ -6036,6 +6940,70 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
     "tooltip-sides": {
       name: "tooltip-sides",
       filePath: "examples/radix/tooltip-sides.tsx",
+    },
+    "trace-collapsible": {
+      name: "trace-collapsible",
+      filePath: "examples/radix/trace-collapsible.tsx",
+    },
+    "trace-commit": {
+      name: "trace-commit",
+      filePath: "examples/radix/trace-commit.tsx",
+    },
+    "trace-demo": {
+      name: "trace-demo",
+      filePath: "examples/radix/trace-demo.tsx",
+    },
+    "trace-description": {
+      name: "trace-description",
+      filePath: "examples/radix/trace-description.tsx",
+    },
+    "trace-dialog": {
+      name: "trace-dialog",
+      filePath: "examples/radix/trace-dialog.tsx",
+    },
+    "trace-group": {
+      name: "trace-group",
+      filePath: "examples/radix/trace-group.tsx",
+    },
+    "trace-link": {
+      name: "trace-link",
+      filePath: "examples/radix/trace-link.tsx",
+    },
+    "trace-open": {
+      name: "trace-open",
+      filePath: "examples/radix/trace-open.tsx",
+    },
+    "trace-sheet": {
+      name: "trace-sheet",
+      filePath: "examples/radix/trace-sheet.tsx",
+    },
+    "trace-sources": {
+      name: "trace-sources",
+      filePath: "examples/radix/trace-sources.tsx",
+    },
+    "trace-static": {
+      name: "trace-static",
+      filePath: "examples/radix/trace-static.tsx",
+    },
+    "trace-status": {
+      name: "trace-status",
+      filePath: "examples/radix/trace-status.tsx",
+    },
+    "trace-steps": {
+      name: "trace-steps",
+      filePath: "examples/radix/trace-steps.tsx",
+    },
+    "trace-thinking": {
+      name: "trace-thinking",
+      filePath: "examples/radix/trace-thinking.tsx",
+    },
+    "trace-tool-calls": {
+      name: "trace-tool-calls",
+      filePath: "examples/radix/trace-tool-calls.tsx",
+    },
+    "trace-turn": {
+      name: "trace-turn",
+      filePath: "examples/radix/trace-turn.tsx",
     },
     "typography-blockquote": {
       name: "typography-blockquote",

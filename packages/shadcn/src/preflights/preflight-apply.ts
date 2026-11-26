@@ -1,15 +1,15 @@
 import path from "path"
 import * as ERRORS from "@/src/utils/errors"
-import { SHADCN_URL } from "@shadcn/registry/internal/registry/constants"
-import { getConfig } from "@shadcn/registry/internal/utils/get-config"
+import { getConfig } from "@shadcn/registry/internal/get-config"
 import {
   formatMonorepoMessage,
   getMonorepoTargets,
   isMonorepoRoot,
-} from "@shadcn/registry/internal/utils/get-monorepo-info"
-import { getProjectInfo } from "@shadcn/registry/internal/utils/get-project-info"
-import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
-import { logger } from "@shadcn/registry/internal/utils/logger"
+} from "@shadcn/registry/internal/get-monorepo-info"
+import { getProjectInfo } from "@shadcn/registry/internal/get-project-info"
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { logger } from "@shadcn/registry/internal/logger"
+import { SHADCN_URL } from "@shadcn/registry/internal/registry/constants"
 import fs from "fs-extra"
 
 export async function preFlightApply(options: { cwd: string }) {

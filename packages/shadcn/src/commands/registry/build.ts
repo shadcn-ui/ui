@@ -3,15 +3,15 @@ import * as path from "path"
 import { preFlightRegistryBuild } from "@/src/preflights/preflight-registry"
 import * as ERRORS from "@/src/utils/errors"
 import { handleError } from "@/src/utils/handle-error"
-import { SHADCN_URL } from "@shadcn/registry/internal/registry/constants"
-import { recursivelyResolveFileImports } from "@shadcn/registry/internal/registry/utils"
 import {
   getProjectInfo,
   ProjectInfo,
-} from "@shadcn/registry/internal/utils/get-project-info"
-import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
-import { logger } from "@shadcn/registry/internal/utils/logger"
-import { spinner } from "@shadcn/registry/internal/utils/spinner"
+} from "@shadcn/registry/internal/get-project-info"
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { logger } from "@shadcn/registry/internal/logger"
+import { SHADCN_URL } from "@shadcn/registry/internal/registry/constants"
+import { recursivelyResolveFileImports } from "@shadcn/registry/internal/registry/utils"
+import { spinner } from "@shadcn/registry/internal/spinner"
 import {
   configSchema,
   registryItemSchema,

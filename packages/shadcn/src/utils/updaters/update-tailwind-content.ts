@@ -1,13 +1,16 @@
 import { promises as fs } from "fs"
+import { tmpdir } from "os"
 import path from "path"
-import { Config } from "@shadcn/registry/internal/utils/get-config"
-import { highlighter } from "@shadcn/registry/internal/utils/highlighter"
-import { spinner } from "@shadcn/registry/internal/utils/spinner"
+import { Config } from "@shadcn/registry/internal/get-config"
+import { highlighter } from "@shadcn/registry/internal/highlighter"
+import { spinner } from "@shadcn/registry/internal/spinner"
 import {
-  _createSourceFile,
-  _getQuoteChar,
-} from "@shadcn/registry/internal/utils/updaters/update-tailwind-config"
-import { ObjectLiteralExpression, SyntaxKind } from "ts-morph"
+  ObjectLiteralExpression,
+  Project,
+  QuoteKind,
+  ScriptKind,
+  SyntaxKind,
+} from "ts-morph"
 
 export async function updateTailwindContent(
   content: string[],
@@ -46,7 +49,7 @@ export async function transformTailwindContent(
   content: string[],
   config: Config
 ) {
-  const sourceFile = await _createSourceFile(input, config)
+  const sourceFile = await createSourceFile(input, config)
   // Find the object with content property.
   // This is faster than traversing the default export.
   // TODO: maybe we do need to traverse the default export?
@@ -76,7 +79,7 @@ async function addTailwindConfigContent(
   configObject: ObjectLiteralExpression,
   content: string[]
 ) {
-  const quoteChar = _getQuoteChar(configObject)
+  const quoteChar = getQuoteChar(configObject)
 
   const existingProperty = configObject.getProperty("content")
 
@@ -118,4 +121,31 @@ async function addTailwindConfigContent(
   }
 
   return configObject
+}
+
+async function createSourceFile(input: string, config: Config) {
+  const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
+  const resolvedPath =
+    config.resolvedPaths?.tailwindConfig || "tailwind.config.ts"
+  const tempFile = path.join(dir, `shadcn-${path.basename(resolvedPath)}`)
+
+  const project = new Project({
+    compilerOptions: {},
+  })
+  const sourceFile = project.createSourceFile(tempFile, input, {
+    // Note: .js and .mjs can still be valid for TS projects.
+    // We can't infer TypeScript from config.tsx.
+    scriptKind:
+      path.extname(resolvedPath) === ".ts" ? ScriptKind.TS : ScriptKind.JS,
+  })
+
+  return sourceFile
+}
+
+function getQuoteChar(configObject: ObjectLiteralExpression) {
+  return configObject
+    .getFirstDescendantByKind(SyntaxKind.StringLiteral)
+    ?.getQuoteKind() === QuoteKind.Single
+    ? "'"
+    : '"'
 }

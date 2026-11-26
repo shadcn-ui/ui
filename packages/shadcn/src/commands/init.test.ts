@@ -6,12 +6,12 @@ import { templates } from "@/src/templates"
 import { createProject } from "@/src/utils/create-project"
 import { MISSING_DIR_OR_EMPTY_PROJECT } from "@/src/utils/errors"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
-import { addComponents } from "@shadcn/registry/internal/utils/add-components"
+import { addComponents } from "@shadcn/registry/internal/add-components"
 import {
   getProjectConfig,
   getProjectInfo,
   getProjectTailwindVersionFromConfig,
-} from "@shadcn/registry/internal/utils/get-project-info"
+} from "@shadcn/registry/internal/get-project-info"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
 import { applyInitUrlOptions, init, initOptionsSchema, runInit } from "./init"
@@ -24,7 +24,7 @@ vi.mock("@/src/utils/create-project", () => ({
   createProject: vi.fn(),
 }))
 
-vi.mock("@shadcn/registry/internal/utils/add-components", () => ({
+vi.mock("@shadcn/registry/internal/add-components", () => ({
   addComponents: vi.fn(),
 }))
 
@@ -50,7 +50,7 @@ vi.mock("@/src/utils/registry-api", () => ({
   ]),
 }))
 
-vi.mock("@shadcn/registry/internal/utils/get-config", () => ({
+vi.mock("@shadcn/registry/internal/get-config", () => ({
   DEFAULT_COMPONENTS: "@/components",
   DEFAULT_TAILWIND_CONFIG: "tailwind.config.js",
   DEFAULT_TAILWIND_CSS: "app/globals.css",
@@ -77,14 +77,14 @@ vi.mock("@shadcn/registry/internal/utils/get-config", () => ({
   ),
 }))
 
-vi.mock("@shadcn/registry/internal/utils/get-project-info", () => ({
+vi.mock("@shadcn/registry/internal/get-project-info", () => ({
   getProjectComponents: vi.fn().mockResolvedValue([]),
   getProjectConfig: vi.fn(),
   getProjectInfo: vi.fn(),
   getProjectTailwindVersionFromConfig: vi.fn(),
 }))
 
-vi.mock("@shadcn/registry/internal/utils/logger", () => ({
+vi.mock("@shadcn/registry/internal/logger", () => ({
   logger: {
     break: vi.fn(),
     error: vi.fn(),
@@ -94,7 +94,7 @@ vi.mock("@shadcn/registry/internal/utils/logger", () => ({
   },
 }))
 
-vi.mock("@shadcn/registry/internal/utils/spinner", () => ({
+vi.mock("@shadcn/registry/internal/spinner", () => ({
   spinner: vi.fn(() => ({
     fail: vi.fn(),
     start: vi.fn().mockReturnThis(),
@@ -102,7 +102,7 @@ vi.mock("@shadcn/registry/internal/utils/spinner", () => ({
   })),
 }))
 
-vi.mock("@shadcn/registry/internal/utils/highlighter", () => ({
+vi.mock("@shadcn/registry/internal/highlighter", () => ({
   highlighter: {
     error: (value: string) => value,
     info: (value: string) => value,

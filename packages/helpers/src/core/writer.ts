@@ -9,6 +9,7 @@ import type {
   SourceDocumentPayload,
   SourceUrlPayload,
   StreamTextOptions,
+  ToolOutputOptions,
   ToolSet,
   ToolWriterOptions,
 } from "./types"
@@ -22,11 +23,12 @@ import {
 /**
  * Lifecycle handle returned by `writer.tool()`. Chain `sleep()` between the
  * input and its `output()`/`error()`/`denied()` resolution to script tool
- * latency.
+ * latency. Pass `{ preliminary: true }` to `output()` to stream progress
+ * before the final output, as a streaming `execute` does.
  */
 export type ToolHandle<OUTPUT> = {
   sleep(delayMs: number): ToolHandle<OUTPUT>
-  output(output: OUTPUT): ToolHandle<OUTPUT>
+  output(output: OUTPUT, options?: ToolOutputOptions): ToolHandle<OUTPUT>
   error(errorText?: string): ToolHandle<OUTPUT>
   denied(): ToolHandle<OUTPUT>
 }
@@ -176,12 +178,13 @@ export function createEventWriter<
           return handle
         },
 
-        output(output: TOOLS[NAME]["output"]) {
+        output(output: TOOLS[NAME]["output"], options: ToolOutputOptions = {}) {
           assertResolvable("output")
           events.push({
             kind: "tool-output",
             toolCallId,
             output: cloneValue(output),
+            preliminary: options.preliminary,
             providerExecuted: clonedOptions.providerExecuted,
             toolMetadata: clonedOptions.toolMetadata,
             dynamic: clonedOptions.dynamic,

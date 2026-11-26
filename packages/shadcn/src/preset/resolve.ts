@@ -1,6 +1,11 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
 import { findTailwindColorFamily } from "@/src/colors"
+import type { Config } from "@shadcn/registry/internal/get-config"
+import {
+  getProjectInfo,
+  type ProjectInfo,
+} from "@shadcn/registry/internal/get-project-info"
 import {
   encodePreset,
   parsePresetStyle,
@@ -13,11 +18,6 @@ import {
   PRESET_THEMES,
   type PresetConfig,
 } from "@shadcn/registry/internal/preset/preset"
-import type { Config } from "@shadcn/registry/internal/utils/get-config"
-import {
-  getProjectInfo,
-  type ProjectInfo,
-} from "@shadcn/registry/internal/utils/get-project-info"
 import postcss from "postcss"
 import { Node, Project, ScriptKind, SyntaxKind } from "ts-morph"
 

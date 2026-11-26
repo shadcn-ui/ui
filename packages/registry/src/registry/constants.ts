@@ -1,5 +1,5 @@
 import type { PresetBase } from "@/src/preset/preset"
-import { registryConfigSchema } from "@/src/schema"
+import { registryConfigSchema } from "@/src/registry/schema"
 import { z } from "zod"
 
 export const REGISTRY_URL =

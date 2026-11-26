@@ -1,7 +1,7 @@
 import fs from "fs/promises"
 import path from "path"
+import { Config } from "@shadcn/registry/internal/get-config"
 import { getRegistryItems } from "@shadcn/registry/internal/registry/api"
-import { Config } from "@shadcn/registry/internal/utils/get-config"
 
 export async function updateAppIndex(component: string, config: Config) {
   const indexPath = path.join(config.resolvedPaths.cwd, "app/page.tsx")
