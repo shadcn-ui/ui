@@ -139,7 +139,10 @@ function AlertDialogTitle({
     <Heading
       slot="title"
       data-slot="alert-dialog-title"
-      className={cn("cn-alert-dialog-title cn-font-heading", className)}
+      className={cn(
+        "cn-alert-dialog-title cn-font-heading min-w-0 wrap-anywhere",
+        className
+      )}
       {...props}
     />
   )
@@ -152,7 +155,10 @@ function AlertDialogDescription({
   return (
     <div
       data-slot="alert-dialog-description"
-      className={cn("cn-alert-dialog-description", className)}
+      className={cn(
+        "cn-alert-dialog-description min-w-0 wrap-anywhere",
+        className
+      )}
       {...props}
     />
   )
