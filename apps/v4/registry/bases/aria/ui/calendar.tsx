@@ -32,7 +32,7 @@ import {
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const cellVariants = cva(
-  "group/day relative mt-2 aspect-square h-full w-full cursor-default rounded-(--cell-radius) p-0 text-center select-none [&:is(:last-child>[data-selected=true])>div]:rounded-r-(--cell-radius)",
+  "group/day relative mt-2 aspect-square h-full w-full cursor-default rounded-(--cell-radius) p-0 text-center select-none data-[focused=true]:z-20 [&:is(:last-child>[data-selected=true])>div]:rounded-r-(--cell-radius)",
   {
     variants: {
       showWeekNumber: {
@@ -41,13 +41,13 @@ const cellVariants = cva(
         true: "[&:is(:nth-child(2)>[data-selected=true])>div]:rounded-l-(--cell-radius)",
       },
       isToday: {
-        true: "rounded-(--cell-radius) bg-muted text-foreground data-[selected=true]:rounded-none",
+        true: "rounded-(--cell-radius) bg-muted text-foreground data-[selected=true]:rounded-none data-[focused=true]:z-20",
       },
       isSelectionStart: {
-        true: "relative isolate z-0 rounded-l-(--cell-radius) bg-muted after:absolute after:inset-y-0 after:right-0 after:w-4 after:bg-muted",
+        true: "relative isolate z-0 rounded-l-(--cell-radius) bg-muted after:absolute after:inset-y-0 after:right-0 after:w-4 after:bg-muted data-[focused=true]:z-20",
       },
       isSelectionEnd: {
-        true: "relative isolate z-0 rounded-r-(--cell-radius) bg-muted after:absolute after:inset-y-0 after:left-0 after:w-4 after:bg-muted",
+        true: "relative isolate z-0 rounded-r-(--cell-radius) bg-muted after:absolute after:inset-y-0 after:left-0 after:w-4 after:bg-muted data-[focused=true]:z-20",
       },
       isUnavailable: {
         true: "text-muted-foreground opacity-50 [&>div]:line-through",
