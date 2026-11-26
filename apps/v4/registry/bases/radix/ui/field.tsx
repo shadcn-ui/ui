@@ -98,7 +98,7 @@ function FieldLabel({
     <Label
       data-slot="field-label"
       className={cn(
-        "cn-field-label group/field-label peer/field-label flex w-fit max-w-full min-w-0 wrap-break-word",
+        "cn-field-label group/field-label peer/field-label flex w-fit max-w-full min-w-0 wrap-anywhere",
         "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col",
         className
       )}
@@ -112,7 +112,7 @@ function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="field-label"
       className={cn(
-        "cn-field-title flex w-fit max-w-full min-w-0 items-center wrap-break-word",
+        "cn-field-title flex w-fit max-w-full min-w-0 items-center wrap-anywhere",
         className
       )}
       {...props}

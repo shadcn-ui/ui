@@ -13,7 +13,7 @@ function Label({ className, htmlFor, slot, ...props }: LabelProps) {
     <LabelPrimitive
       data-slot="label"
       className={cn(
-        "cn-label cn-label-aria flex max-w-full min-w-0 flex-wrap items-center wrap-break-word select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed",
+        "cn-label cn-label-aria flex max-w-full min-w-0 flex-wrap items-center wrap-anywhere select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed",
         className
       )}
       {...props}
