@@ -4086,6 +4086,14 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'><path d='M5 12a7 7 0 0 1 14 0M3 18c6-6 12 6 18 0'/></svg>"
   },
   {
+    "name": "@x-dialog",
+    "homepage": "https://abdenourtadjer33.github.io/x-dialog/",
+    "url": "https://abdenourtadjer33.github.io/x-dialog/r/{style}/{name}.json",
+    "description": "Dialogs you can await: `await open(dialog, payload)` returns a typed result. Stacking, async close guards, drag and maximize, for Radix and Base UI.",
+    "author": "Abdenour Tadjer",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='var(--foreground)' stroke-width='2'><rect x='3' y='5' width='26' height='22' rx='5'/><path d='M3.5 11h25'/><path d='m11 19 3.5 3.5 7-7.5' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+  },
+  {
     "name": "@xcn",
     "homepage": "https://ui.radiumcoders.com",
     "url": "https://ui.radiumcoders.com/r/xcn/{name}.json",
