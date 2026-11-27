@@ -3993,6 +3993,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 500 500' fill='none'><g transform='translate(0,500) scale(0.1,-0.1)' fill='var(--foreground)' stroke='none'><path d='M1125 4290 c-198 -41 -368 -194 -428 -385 l-22 -70 0 -1335 0 -1335 22 -70 c55 -175 200 -315 382 -369 49 -14 193 -16 1425 -16 l1371 1 66 22 c194 66 334 221 374 415 14 64 15 244 13 1390 l-3 1317 -23 59 c-32 86 -68 143 -130 208 -65 69 -130 112 -220 147 l-67 26 -1360 2 c-748 0 -1378 -3 -1400 -7z m1572 -545 c440 -77 793 -386 926 -810 95 -302 69 -597 -75 -875 -220 -426 -681 -683 -1147 -639 -161 15 -367 79 -480 149 l-44 28 -264 -89 c-145 -49 -267 -89 -272 -89 -4 0 29 123 75 273 l84 272 -49 95 c-188 364 -171 781 45 1137 76 126 176 236 311 340 108 84 320 176 479 207 93 19 309 19 411 1z'/><path d='M1954 3244 c-38 -9 -104 -75 -134 -133 -68 -136 -60 -280 28 -456 132 -268 338 -477 587 -600 200 -99 346 -135 459 -114 76 13 166 60 211 110 61 68 82 193 37 231 -32 27 -257 121 -291 122 -29 0 -43 -10 -105 -77 -43 -46 -80 -77 -91 -77 -29 1 -123 41 -191 82 -120 74 -224 179 -299 303 -43 72 -41 85 19 160 67 82 67 90 -5 262 -34 81 -70 157 -80 167 -18 19 -98 30 -145 20z'/></g></svg>"
   },
   {
+    "name": "@waffle",
+    "homepage": "https://wafflexui.vercel.app",
+    "url": "https://wafflexui.vercel.app/r/{name}.json",
+    "description": "338+ interactive React & Tailwind UI components, bento dashboards, and 3D hero sections for fintech, crypto, and AI products.",
+    "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\" fill=\"none\"><rect width=\"32\" height=\"32\" rx=\"8\" fill=\"var(--foreground)\"/><path d=\"M7.5 10.5L11.5 21.5L16 13L20.5 21.5L24.5 10.5\" stroke=\"var(--background, #000)\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+  },
+  {
     "name": "@wandry-ui",
     "homepage": "http://ui.wandry.com.ua/",
     "url": "https://ui.wandry.com.ua/r/{name}.json",
