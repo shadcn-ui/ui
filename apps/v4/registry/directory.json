@@ -128,6 +128,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' width='24' height='24'><rect width='24' height='24' rx='4' fill='var(--foreground)'/><g stroke='var(--background)'><path d='M14 18a2 2 0 0 0-4 0m9-7-2.11-6.657a2 2 0 0 0-2.752-1.148l-1.276.61A2 2 0 0 1 12 4H8.5a2 2 0 0 0-1.925 1.456L5 11m-3 0h20'/><circle cx='17' cy='18' r='3'/><circle cx='7' cy='18' r='3'/><path d='M15.46 7.1 13.3 9.26m1.728-4.536-4.104 4.104' stroke-width='1.575'/></g></svg>"
   },
   {
+    "name": "@agentdeck",
+    "homepage": "https://agentdeck.shop",
+    "url": "https://raw.githubusercontent.com/ravijoon/agentdeck-ui/main/public/r/{name}.json",
+    "description": "Free React base components for data-dense apps, with light and dark tokens and a Tailwind preset.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'><rect width='28' height='28' rx='6' fill='#1F57D1'/><rect x='6' y='7.5' width='16' height='3' rx='1.5' fill='#fff'/><rect x='8' y='12.5' width='12' height='3' rx='1.5' fill='#fff' fill-opacity='0.8'/><rect x='10' y='17.5' width='8' height='3' rx='1.5' fill='#fff' fill-opacity='0.6'/></svg>"
+  },
+  {
     "name": "@agentfaces",
     "homepage": "https://ajibadedapo.github.io/agentfaces/",
     "url": "https://ajibadedapo.github.io/agentfaces/r/{name}.json",
