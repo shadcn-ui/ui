@@ -2466,7 +2466,7 @@
   {
     "name": "@niko-table",
     "homepage": "https://niko-table.com",
-    "url": "https://niko-table.com/r/{name}.json",
+    "url": "https://niko-table.com/r/{style}/{name}.json",
     "description": "Composable, open-code data tables and an editable data grid built on TanStack Table: faceted and advanced filters, sorting, row and column drag-and-drop, virtualization, column resizing, and server-side pagination, installed a la carte.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><g transform='translate(2, 2) scale(0.83)'><path d='M12 3v17a1 1 0 0 1-1 1H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6a1 1 0 0 1-1 1H3'/></g><line x1='21.125' y1='17.5' x2='17.5' y2='21.125' fill='none' stroke='var(--foreground)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/><line x1='20.75' y1='13.75' x2='13.75' y2='20.75' fill='none' stroke='var(--foreground)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/></svg>"
   },
