@@ -3814,6 +3814,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='500' height='500' viewBox='0 0 500 500'><rect width='500' height='500' fill='var(--foreground)'/><path d='M150 100 C150 100, 170 80, 200 90 C230 100, 250 120, 250 120 C250 120, 270 100, 300 110 C330 120, 350 100, 350 100 L360 150 C360 150, 380 130, 400 140 C420 150, 400 170, 400 170 L400 330 C400 330, 420 310, 400 320 C380 330, 360 310, 360 310 L350 360 C350 360, 330 340, 300 350 C270 360, 250 340, 250 340 C250 340, 230 360, 200 350 C170 340, 150 360, 150 360 L140 310 C140 310, 120 330, 100 320 C80 310, 100 290, 100 290 L100 170 C100 170, 80 190, 100 180 C120 170, 140 190, 140 190 Z' fill='var(--background)'/><rect x='280' y='180' width='60' height='140' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@ui-patterns",
+    "homepage": "https://ui-patterns.stereobooster.com",
+    "url": "https://ui-patterns.stereobooster.com/r/{name}.json",
+    "description": "Components and hooks focused on UX and interaction: the small details that make an interface feel right, not just work.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='var(--foreground)' stroke-linecap='round' stroke-linejoin='round'><g stroke-width='1.75'><path d='M6 2.5h20a2.5 2.5 0 0 1 2.4 2l1.6 21.5a2.8 2.8 0 0 1-2.8 3.3H4.8A2.8 2.8 0 0 1 2 26L3.6 4.5A2.5 2.5 0 0 1 6 2.5Z'/><path d='M9.4 5.2h13.2a2 2 0 0 1 2 1.8l1 12.6a2 2 0 0 1-2 2.2H8.4a2 2 0 0 1-2-2.2l1-12.6a2 2 0 0 1 2-1.8Z'/><path d='M4 3.6 7.7 6M28 3.6 24.3 6M2.6 28.4 7.1 21.3M29.4 28.4 24.9 21.3'/></g><path d='M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3' transform='translate(10.96 8.5) scale(0.42 0.4)' stroke-width='4.27'/></svg>"
+  },
+  {
     "name": "@ui-shrushank",
     "homepage": "https://www.shrutishankarnarayanan.com/components",
     "url": "https://raw.githubusercontent.com/Shrootiiii/ui/main/r/{name}.json",
