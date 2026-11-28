@@ -341,6 +341,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M8 2v4M16 2v4'/><rect width='18' height='18' x='3' y='4' rx='2'/><path d='M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01'/></svg>"
   },
   {
+    "name": "@calmui",
+    "homepage": "https://calmui.dev",
+    "url": "https://calmui.dev/r/{name}.json",
+    "description": "Free, open source shadcn/ui blocks and components built on Base UI. Hero sections, pricing, features, testimonials, footers and more, ready to copy or install.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><rect width='24' height='24' rx='6' fill='#0090ff'/><g fill='#ffffff'><path d='M11.5 11.5H6A5.5 5.5 0 0 1 11.5 6Z'/><rect x='12.5' y='6' width='5.5' height='5.5' rx='1'/><path d='M6 12.5H11.5V18H6Z'/><circle cx='15.25' cy='15.25' r='2.75'/></g></svg>"
+  },
+  {
     "name": "@chartory",
     "homepage": "https://usechartory.com",
     "url": "https://usechartory.com/r/{name}.json",
