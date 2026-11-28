@@ -1086,7 +1086,7 @@
     "name": "@drift-ui",
     "homepage": "https://drift-ui.dev",
     "url": "https://drift-ui.dev/r/{style}/{name}.json",
-    "description": "The components shadcn/ui leaves out, like tags input, stepper, tree view and file dropzone. Tailwind v4, with Radix and Base UI builds.",
+    "description": "The hard components shadcn/ui doesn't ship: a cron input that reads back in plain English, a filter builder with AND/OR groups and a recurrence editor for RRULE. Radix and Base UI builds.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='var(--foreground)'><rect x='3' y='10' width='12' height='12' rx='3'/><rect x='3' y='25' width='12' height='12' rx='3'/><rect x='18' y='25' width='12' height='12' rx='3'/><rect x='18.75' y='10.75' width='10.5' height='10.5' rx='2.25' fill='none' stroke='var(--foreground)' stroke-opacity='0.45' stroke-width='1.5' stroke-dasharray='2 2'/><rect x='25' y='3' width='12' height='12' rx='3' transform='rotate(10 31 9)'/></svg>"
   },
   {
