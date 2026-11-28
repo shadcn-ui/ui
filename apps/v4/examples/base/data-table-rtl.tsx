@@ -377,7 +377,16 @@ export function DataTableRtl() {
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id}>
+                    <TableHead
+                      key={header.id}
+                      aria-sort={
+                        header.column.getIsSorted() === "asc"
+                          ? "ascending"
+                          : header.column.getIsSorted() === "desc"
+                            ? "descending"
+                            : undefined
+                      }
+                    >
                       {header.isPlaceholder ? null : (
                         <table.FlexRender header={header} />
                       )}
