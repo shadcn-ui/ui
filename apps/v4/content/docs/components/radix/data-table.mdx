@@ -565,6 +565,25 @@ export const columns = columnHelper.columns([
 
 This will automatically sort the table (asc and desc) when the user toggles on the header cell.
 
+### Expose the sort direction
+
+Set `aria-sort` on the header cell of the sorted column so assistive technology can announce the current sort direction.
+
+```tsx showLineNumbers title="app/payments/data-table.tsx" {3-9}
+<TableHead
+  key={header.id}
+  aria-sort={
+    header.column.getIsSorted() === "asc"
+      ? "ascending"
+      : header.column.getIsSorted() === "desc"
+        ? "descending"
+        : undefined
+  }
+>
+  {header.isPlaceholder ? null : <table.FlexRender header={header} />}
+</TableHead>
+```
+
 </Steps>
 
 ## Filtering
