@@ -853,6 +853,14 @@
     "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"400\" viewBox=\"0 0 512 512\"><rect width=\"512\" height=\"512\" fill=\"var(--foreground)\"/><g fill=\"var(--background)\"><rect x=\"128\" y=\"160\" width=\"64\" height=\"64\"/><rect x=\"128\" y=\"288\" width=\"64\" height=\"64\"/><rect x=\"224\" y=\"160\" width=\"64\" height=\"64\"/><rect x=\"224\" y=\"288\" width=\"64\" height=\"64\"/><rect x=\"320\" y=\"160\" width=\"64\" height=\"64\"/><rect x=\"320\" y=\"288\" width=\"64\" height=\"64\"/></g></svg>"
   },
   {
+    "name": "@contrib-graphs",
+    "homepage": "https://ingfranciscastillo.github.io/contrib-graphs/",
+    "url": "https://ingfranciscastillo.github.io/contrib-graphs/r/{name}.json",
+    "description": "Contribution graph heatmaps for GitHub, GitLab or any dated activity, in eleven designs that work with a keyboard and a screen reader.",
+    "author": "Francis Castillo",
+    "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 96 96\" fill=\"var(--foreground)\"><rect x=\"10\" y=\"10\" width=\"20\" height=\"20\" rx=\"4\" opacity=\"1\"/><rect x=\"38\" y=\"10\" width=\"20\" height=\"20\" rx=\"4\" opacity=\"0.35\"/><rect x=\"66\" y=\"10\" width=\"20\" height=\"20\" rx=\"4\" opacity=\"0.65\"/><rect x=\"10\" y=\"38\" width=\"20\" height=\"20\" rx=\"4\" opacity=\"0.65\"/><rect x=\"38\" y=\"38\" width=\"20\" height=\"20\" rx=\"4\" opacity=\"1\"/><rect x=\"66\" y=\"38\" width=\"20\" height=\"20\" rx=\"4\" opacity=\"0.35\"/><rect x=\"10\" y=\"66\" width=\"20\" height=\"20\" rx=\"4\" opacity=\"0.35\"/><rect x=\"38\" y=\"66\" width=\"20\" height=\"20\" rx=\"4\" opacity=\"0.65\"/><rect x=\"66\" y=\"66\" width=\"20\" height=\"20\" rx=\"4\" opacity=\"1\"/></svg>"
+  },
+  {
     "name": "@corecn",
     "homepage": "https://corecn.vercel.app",
     "url": "https://corecn.vercel.app/r/{name}.json",
