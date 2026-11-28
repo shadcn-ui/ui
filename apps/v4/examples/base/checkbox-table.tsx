@@ -72,6 +72,7 @@ export function CheckboxInTable() {
             <Checkbox
               id="select-all-checkbox"
               name="select-all-checkbox"
+              aria-label="Select all rows"
               checked={selectAll}
               onCheckedChange={handleSelectAll}
             />
@@ -91,6 +92,7 @@ export function CheckboxInTable() {
               <Checkbox
                 id={`row-${row.id}-checkbox`}
                 name={`row-${row.id}-checkbox`}
+                aria-label={`Select ${row.name}`}
                 checked={selectedRows.has(row.id)}
                 onCheckedChange={(checked) =>
                   handleSelectRow(row.id, checked === true)
